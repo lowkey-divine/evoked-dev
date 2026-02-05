@@ -29,6 +29,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <section class="container">
     <h2>Services</h2>
 
+    <div class="guarantee">
+      <strong>The Guarantee:</strong> If an assessment doesn't surface at least 3 actionable findings, you pay nothing.
+    </div>
+
     <h3>Assessments</h3>
     <table class="pricing-table">
       <thead>
@@ -41,17 +45,17 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <tbody>
         <tr>
           <td>COPPA Technical Review</td>
-          <td class="price">$2,000</td>
+          <td class="price">$3,500</td>
           <td>Architecture assessment + implementation roadmap</td>
         </tr>
         <tr>
           <td>Privacy Architecture Review</td>
-          <td class="price">$1,500</td>
+          <td class="price">$3,000</td>
           <td>Data flow audit + recommendations</td>
         </tr>
         <tr>
           <td>Security Code Review</td>
-          <td class="price">$2,000</td>
+          <td class="price">$3,500</td>
           <td>Auth, sessions, encryption audit + fixes list</td>
         </tr>
       </tbody>
@@ -69,12 +73,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <tbody>
         <tr>
           <td>Sovereignty-Honoring Design</td>
-          <td class="price">$2,500</td>
+          <td class="price">$4,000</td>
           <td>Half-day training + framework + recording</td>
         </tr>
         <tr>
           <td>Child Safety Implementation</td>
-          <td class="price">$3,000</td>
+          <td class="price">$4,500</td>
           <td>Half-day training + code templates + guide</td>
         </tr>
       </tbody>
@@ -92,12 +96,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <tbody>
         <tr>
           <td>Child Safety Build Support</td>
-          <td class="price">$8,000</td>
+          <td class="price">$12,000</td>
           <td>Age gates, consent flows, data protection — built with you</td>
         </tr>
         <tr>
           <td>Ethical AI Architecture</td>
-          <td class="price">$12,000</td>
+          <td class="price">$20,000</td>
           <td>Multi-agent design, governance, alignment</td>
         </tr>
       </tbody>
@@ -115,7 +119,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <tbody>
         <tr>
           <td>Advisory</td>
-          <td class="price">$2,000/mo</td>
+          <td class="price">$3,500/mo</td>
           <td>8 hours/month + async support</td>
         </tr>
       </tbody>
@@ -152,6 +156,19 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 </BaseLayout>
 
 <style>
+  .guarantee {
+    background: var(--accent-subtle);
+    border: 1px solid var(--border-accent);
+    border-radius: 8px;
+    padding: var(--space-md);
+    margin-bottom: var(--space-lg);
+    text-align: center;
+  }
+
+  .guarantee strong {
+    color: var(--accent-warm);
+  }
+
   .focus-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
