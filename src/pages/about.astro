@@ -1,0 +1,33 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="About" description="Building space for what matters.">
+  <div class="hero">
+    <h1>About</h1>
+  </div>
+
+  <section class="container text-center">
+    <p class="statement">
+      Building space for what matters.
+    </p>
+
+    <div class="links mt-lg">
+      <a href="mailto:hello@evoked.dev" class="btn">Contact</a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .statement {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    color: var(--text-primary);
+    line-height: 1.6;
+  }
+
+  .philosophy {
+    font-style: italic;
+    color: var(--text-muted);
+  }
+</style>

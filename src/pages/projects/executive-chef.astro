@@ -1,0 +1,115 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Executive Chef" description="Family flourishing through food. Meal planning and heritage recipe preservation.">
+  <div class="hero">
+    <h1>Executive Chef</h1>
+    <p class="tagline">Family flourishing through food.</p>
+    <span class="badge mt-md">Coming Soon</span>
+  </div>
+
+  <section class="container">
+    <h2>The Philosophy</h2>
+    <p>
+      Food is never just food. The moment you ask a family "what do you eat?"
+      you're asking about identity, culture, memory, survival.
+    </p>
+    <p>
+      Executive Chef is built to honor that complexity. Not to optimize your diet
+      or gamify your groceries — but to help families plan meals, preserve heritage
+      recipes, and eat together.
+    </p>
+  </section>
+
+  <section class="container">
+    <h2>The Kitchen Table</h2>
+    <p>
+      We rejected restaurant hierarchy. No "executive chefs" and "line cooks"
+      in your family.
+    </p>
+    <p>
+      Instead: <strong>The Kitchen Table</strong>. Table keepers, planners, members,
+      learners, guests. Everyone has a place. Everyone participates according to
+      their capacity.
+    </p>
+  </section>
+
+  <section class="container">
+    <h2>Heritage Ontology</h2>
+    <p>
+      How do you build software that makes space for what it cannot contain?
+    </p>
+    <ul class="principles">
+      <li><strong>Reverent references, not reductive captures</strong> — Point to meaning, don't contain it</li>
+      <li><strong>Fragments are sacred</strong> — Incomplete recipes are welcomed</li>
+      <li><strong>Family defines family</strong> — Their words, not our taxonomy</li>
+      <li><strong>Build for silence</strong> — The system knows when to be quiet</li>
+      <li><strong>Space for shadow</strong> — Complicated heritage has a place</li>
+    </ul>
+  </section>
+
+  <section class="container">
+    <h2>Features</h2>
+    <div class="feature-grid">
+      <div class="card">
+        <h3>Meal Planning</h3>
+        <p>Weekly planning with intelligent suggestions that learn your family's rhythms.</p>
+      </div>
+      <div class="card">
+        <h3>Heritage Recipes</h3>
+        <p>Preserve family recipes with their stories, sources, and emotional context.</p>
+      </div>
+      <div class="card">
+        <h3>48 Capabilities</h3>
+        <p>Fine-grained permissions across access, authority, responsibility, and participation.</p>
+      </div>
+      <div class="card">
+        <h3>Child Safety</h3>
+        <p>COPPA-compliant profiles with age-appropriate experiences and parental controls.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="container text-center">
+    <h2>Coming Soon</h2>
+    <p>Join the waitlist to be notified when Executive Chef launches.</p>
+    <a href="mailto:chef@evoked.dev?subject=Executive Chef Waitlist" class="btn mt-md">Join Waitlist</a>
+  </section>
+</BaseLayout>
+
+<style>
+  .principles {
+    list-style: none;
+    padding: 0;
+  }
+
+  .principles li {
+    padding: var(--space-sm) 0;
+    border-bottom: 1px solid var(--border-subtle);
+    color: var(--text-secondary);
+  }
+
+  .principles li:last-child {
+    border-bottom: none;
+  }
+
+  .principles strong {
+    color: var(--accent-warm);
+  }
+
+  .feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--space-md);
+  }
+
+  .feature-grid .card h3 {
+    font-size: 1.1rem;
+  }
+
+  .feature-grid .card p {
+    font-size: 0.9rem;
+    margin-bottom: 0;
+  }
+</style>

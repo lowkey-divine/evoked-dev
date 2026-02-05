@@ -1,0 +1,27 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Enzo" description="A game is forming.">
+  <div class="hero">
+    <h1>Enzo</h1>
+    <p class="tagline">A game is forming.</p>
+    <span class="badge mt-md">Forming</span>
+  </div>
+
+  <section class="container text-center">
+    <p class="patient">
+      More soon.
+    </p>
+  </section>
+</BaseLayout>
+
+<style>
+  .patient {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    font-style: italic;
+    color: var(--text-muted);
+    margin-top: var(--space-lg);
+  }
+</style>

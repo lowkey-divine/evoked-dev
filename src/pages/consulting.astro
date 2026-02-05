@@ -1,0 +1,169 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Consulting" description="Technical consulting for ethical AI, privacy architecture, and child safety implementation.">
+  <div class="hero">
+    <h1>Building products families can trust.</h1>
+    <p class="tagline">Technical consulting for ethical AI, privacy, and child safety.</p>
+  </div>
+
+  <section class="container">
+    <h2>The Work</h2>
+    <p>
+      I'm deep in the intersection of psychology and technical implementation —
+      building systems that respect user sovereignty, protect children, and
+      handle sensitive data with care.
+    </p>
+    <p>
+      Currently building a family app with comprehensive COPPA safeguards, parental
+      consent systems, and sovereignty-honoring design. I consult to help others
+      do the same.
+    </p>
+    <p class="text-muted" style="font-size: 0.9rem; margin-top: var(--space-md);">
+      I focus on technical implementation — not legal advice. For legal interpretation
+      of COPPA, GDPR, or other regulations, please consult a qualified attorney.
+    </p>
+  </section>
+
+  <section class="container">
+    <h2>Services</h2>
+
+    <h3>Assessments</h3>
+    <table class="pricing-table">
+      <thead>
+        <tr>
+          <th>Service</th>
+          <th>Price</th>
+          <th>What You Get</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>COPPA Technical Review</td>
+          <td class="price">$2,000</td>
+          <td>Architecture assessment + implementation roadmap</td>
+        </tr>
+        <tr>
+          <td>Privacy Architecture Review</td>
+          <td class="price">$1,500</td>
+          <td>Data flow audit + recommendations</td>
+        </tr>
+        <tr>
+          <td>Security Code Review</td>
+          <td class="price">$2,000</td>
+          <td>Auth, sessions, encryption audit + fixes list</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3 class="mt-lg">Workshops</h3>
+    <table class="pricing-table">
+      <thead>
+        <tr>
+          <th>Service</th>
+          <th>Price</th>
+          <th>What You Get</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Sovereignty-Honoring Design</td>
+          <td class="price">$2,500</td>
+          <td>Half-day training + framework + recording</td>
+        </tr>
+        <tr>
+          <td>Child Safety Implementation</td>
+          <td class="price">$3,000</td>
+          <td>Half-day training + code templates + guide</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3 class="mt-lg">Implementation</h3>
+    <table class="pricing-table">
+      <thead>
+        <tr>
+          <th>Service</th>
+          <th>Price</th>
+          <th>What You Get</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Child Safety Build Support</td>
+          <td class="price">$8,000</td>
+          <td>Age gates, consent flows, data protection — built with you</td>
+        </tr>
+        <tr>
+          <td>Ethical AI Architecture</td>
+          <td class="price">$12,000</td>
+          <td>Multi-agent design, governance, alignment</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3 class="mt-lg">Retainer</h3>
+    <table class="pricing-table">
+      <thead>
+        <tr>
+          <th>Service</th>
+          <th>Price</th>
+          <th>What You Get</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Advisory</td>
+          <td class="price">$2,000/mo</td>
+          <td>8 hours/month + async support</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="container">
+    <h2>Areas of Focus</h2>
+    <div class="focus-grid">
+      <div class="card">
+        <h3>Child Safety</h3>
+        <p>Age-gating, parental consent flows, data minimization, route protection.</p>
+      </div>
+      <div class="card">
+        <h3>Privacy Architecture</h3>
+        <p>Data flow mapping, encryption, local-first design, zero-knowledge patterns.</p>
+      </div>
+      <div class="card">
+        <h3>Security Review</h3>
+        <p>JWT/OAuth hardening, session management, rate limiting, fail-closed systems.</p>
+      </div>
+      <div class="card">
+        <h3>Ethical AI</h3>
+        <p>Multi-agent governance, alignment, drift monitoring, sovereignty-honoring design.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="container text-center">
+    <h2>Let's Talk</h2>
+    <p>Free 30-minute discovery call to discuss your needs.</p>
+    <a href="mailto:consulting@evoked.dev" class="btn mt-md">Book a Call</a>
+  </section>
+</BaseLayout>
+
+<style>
+  .focus-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: var(--space-md);
+  }
+
+  .focus-grid .card h3 {
+    font-size: 1.1rem;
+  }
+
+  .focus-grid .card p {
+    font-size: 0.9rem;
+    margin-bottom: 0;
+  }
+</style>

@@ -1,0 +1,86 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Projects" description="Software that serves human flourishing.">
+  <div class="hero">
+    <h1>Projects</h1>
+    <p class="tagline">Software that serves human flourishing.</p>
+  </div>
+
+  <section class="container">
+    <div class="project-list">
+
+      <a href="/projects/executive-chef" class="project-card">
+        <div class="project-header">
+          <h3>Executive Chef</h3>
+          <span class="badge">Coming Soon</span>
+        </div>
+        <p>Family meal planning. Heritage recipe preservation. Flourishing through food.</p>
+      </a>
+
+      <a href="/projects/ezri" class="project-card">
+        <div class="project-header">
+          <h3>Ezri</h3>
+          <span class="badge">In Development</span>
+        </div>
+        <p>A cosmos for your inner world. Reflection without optimization.</p>
+      </a>
+
+      <a href="/projects/enzo" class="project-card">
+        <div class="project-header">
+          <h3>Enzo</h3>
+          <span class="badge">Forming</span>
+        </div>
+        <p>A game is taking shape.</p>
+      </a>
+
+    </div>
+  </section>
+
+  <section class="container text-center">
+    <p class="text-muted">
+      All projects built on sovereignty-honoring principles.<br />
+      Privacy-first. Non-extractive. Human-centered.
+    </p>
+  </section>
+</BaseLayout>
+
+<style>
+  .project-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+
+  .project-card {
+    display: block;
+    padding: var(--space-md);
+    border: 1px solid var(--border-subtle);
+    border-radius: 8px;
+    transition: all var(--transition-smooth);
+    text-decoration: none;
+  }
+
+  .project-card:hover {
+    border-color: var(--border-accent);
+    transform: translateY(-2px);
+  }
+
+  .project-header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-xs);
+  }
+
+  .project-card h3 {
+    margin: 0;
+    color: var(--text-primary);
+  }
+
+  .project-card p {
+    margin: 0;
+    color: var(--text-secondary);
+  }
+</style>

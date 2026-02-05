@@ -1,0 +1,61 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Home" description="Space for what matters. Coaching, consulting, and projects by Erin Stanley.">
+  <div class="hero">
+    <h1 class="fade-in">Space for what matters.</h1>
+    <p class="tagline fade-in">Coaching. Consulting. Building toward a future worth creating.</p>
+  </div>
+
+  <section class="container text-center">
+    <div class="paths">
+      <div class="path-group">
+        <h3>Presence</h3>
+        <p>Life coaching for individuals and couples. Depth work oriented toward growth.</p>
+        <a href="/coaching" class="btn">Coaching</a>
+      </div>
+
+      <div class="path-group">
+        <h3>Building</h3>
+        <p>Technical consulting for ethical AI, privacy, and child safety.</p>
+        <a href="/consulting" class="btn">Consulting</a>
+      </div>
+
+      <div class="path-group">
+        <h3>Creating</h3>
+        <p>Software that serves human flourishing.</p>
+        <a href="/projects" class="btn">Projects</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .paths {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--space-md);
+    margin-top: var(--space-md);
+  }
+
+  .path-group {
+    padding: var(--space-md);
+    border: 1px solid var(--border-subtle);
+    border-radius: 8px;
+    transition: border-color var(--transition-smooth);
+  }
+
+  .path-group:hover {
+    border-color: var(--border-accent);
+  }
+
+  .path-group h3 {
+    margin-bottom: var(--space-xs);
+  }
+
+  .path-group p {
+    margin-bottom: var(--space-md);
+    font-size: 0.95rem;
+  }
+</style>
