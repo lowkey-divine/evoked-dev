@@ -1,0 +1,726 @@
+---
+interface Props {
+  mode?: 'floating' | 'embedded';
+}
+
+const { mode = 'embedded' } = Astro.props;
+---
+
+<div class:list={['chat-widget', mode]} data-mode={mode}>
+  <div class="chat-container">
+    <div class="chat-header" id="chat-header">
+      <span class="chat-title">Chat with Echo</span>
+      <button type="button" class="export-btn" id="export-btn" title="Save conversation" hidden>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3" />
+        </svg>
+      </button>
+    </div>
+    <div class="chat-messages" id="chat-messages" aria-live="polite" aria-label="Conversation with Echo">
+      <div class="message assistant">
+        <p>Hi, I'm Echo — an AI assistant for evoked.dev. I can answer questions about Erin's work, services, and projects. What would you like to know?</p>
+      </div>
+      <div class="suggestion-chips" id="suggestion-chips">
+        <button type="button" class="chip" data-message="What services do you offer?">What services do you offer?</button>
+        <button type="button" class="chip" data-message="Tell me about Executive Chef">Tell me about Executive Chef</button>
+        <button type="button" class="chip" data-message="What's your coaching philosophy?">What's your coaching philosophy?</button>
+        <button type="button" class="chip" data-message="How can I work with Erin?">How can I work with Erin?</button>
+      </div>
+    </div>
+    <div class="chat-error" id="chat-error" role="alert" aria-live="assertive" hidden>
+      <div class="error-content">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"></circle>
+          <line x1="12" y1="8" x2="12" y2="12"></line>
+          <line x1="12" y1="16" x2="12.01" y2="16"></line>
+        </svg>
+        <span id="error-text">Unable to connect. Please try again.</span>
+      </div>
+      <button type="button" class="retry-btn" id="retry-btn">Retry</button>
+    </div>
+    <form class="chat-input" id="chat-form">
+      <input
+        type="text"
+        id="chat-input"
+        placeholder="Ask me anything..."
+        autocomplete="off"
+      />
+      <button type="submit" id="chat-submit">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" />
+        </svg>
+      </button>
+    </form>
+  </div>
+</div>
+
+{mode === 'floating' && (
+  <button class="chat-toggle" id="chat-toggle" aria-label="Toggle chat">
+    <svg class="icon-chat" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+    </svg>
+    <svg class="icon-close" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M18 6L6 18M6 6l12 12" />
+    </svg>
+  </button>
+)}
+
+<script>
+  interface Message {
+    role: 'user' | 'assistant';
+    content: string;
+  }
+
+  const messagesContainer = document.getElementById('chat-messages') as HTMLDivElement;
+  const form = document.getElementById('chat-form') as HTMLFormElement;
+  const input = document.getElementById('chat-input') as HTMLInputElement;
+  const submitButton = document.getElementById('chat-submit') as HTMLButtonElement;
+  const toggleButton = document.getElementById('chat-toggle');
+  const widget = document.querySelector('.chat-widget') as HTMLDivElement;
+  const errorContainer = document.getElementById('chat-error') as HTMLDivElement;
+  const errorText = document.getElementById('error-text') as HTMLSpanElement;
+  const retryBtn = document.getElementById('retry-btn') as HTMLButtonElement;
+  const exportBtn = document.getElementById('export-btn') as HTMLButtonElement;
+  const suggestionChips = document.getElementById('suggestion-chips') as HTMLDivElement;
+
+  let conversationHistory: Message[] = [];
+  let isLoading = false;
+  let lastFailedMessage = '';
+
+  // Rate limiting (Chekov)
+  const RATE_LIMIT_MS = 2000; // Minimum 2 seconds between messages
+  let lastMessageTime = 0;
+  let rateLimitTimeout: number | null = null;
+
+  // Export conversation (Memoria)
+  function exportConversation() {
+    if (conversationHistory.length === 0) return;
+
+    const date = new Date().toISOString().split('T')[0];
+    let text = `# Conversation with Echo - evoked.dev\n`;
+    text += `Date: ${date}\n\n`;
+    text += `---\n\n`;
+
+    conversationHistory.forEach(msg => {
+      const role = msg.role === 'user' ? 'You' : 'Echo';
+      text += `**${role}:** ${msg.content}\n\n`;
+    });
+
+    text += `---\n\n`;
+    text += `*Exported from evoked.dev*\n`;
+
+    const blob = new Blob([text], { type: 'text/markdown' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `echo-conversation-${date}.md`;
+    a.click();
+    URL.revokeObjectURL(url);
+  }
+
+  exportBtn?.addEventListener('click', exportConversation);
+
+  function updateExportButton() {
+    if (exportBtn) {
+      exportBtn.hidden = conversationHistory.length === 0;
+    }
+  }
+
+  function showError(message: string) {
+    errorText.textContent = message;
+    errorContainer.hidden = false;
+  }
+
+  function hideError() {
+    errorContainer.hidden = true;
+  }
+
+  retryBtn?.addEventListener('click', () => {
+    hideError();
+    if (lastFailedMessage) {
+      sendMessage(lastFailedMessage, true);
+    }
+  });
+
+  // Toggle floating chat
+  toggleButton?.addEventListener('click', () => {
+    widget.classList.toggle('open');
+    if (widget.classList.contains('open')) {
+      input.focus();
+    }
+  });
+
+  function addMessage(role: 'user' | 'assistant', content: string, isTyping = false) {
+    const messageDiv = document.createElement('div');
+    messageDiv.className = `message ${role}${isTyping ? ' typing' : ''}`;
+    const p = document.createElement('p');
+    if (isTyping) {
+      p.innerHTML = '<span class="typing-indicator"><span></span><span></span><span></span></span>';
+    } else {
+      p.textContent = content;
+    }
+    messageDiv.appendChild(p);
+    messagesContainer.appendChild(messageDiv);
+    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+    return { element: messageDiv, paragraph: p };
+  }
+
+  function removeTypingIndicator(messageDiv: HTMLDivElement) {
+    messageDiv.classList.remove('typing');
+  }
+
+  function setLoading(loading: boolean) {
+    isLoading = loading;
+    submitButton.disabled = loading;
+    input.disabled = loading;
+    if (loading) {
+      submitButton.classList.add('loading');
+    } else {
+      submitButton.classList.remove('loading');
+    }
+  }
+
+  // Check rate limit (Chekov)
+  function checkRateLimit(): { allowed: boolean; waitMs: number } {
+    const now = Date.now();
+    const elapsed = now - lastMessageTime;
+    if (elapsed < RATE_LIMIT_MS) {
+      return { allowed: false, waitMs: RATE_LIMIT_MS - elapsed };
+    }
+    return { allowed: true, waitMs: 0 };
+  }
+
+  function showRateLimitMessage(waitMs: number) {
+    const seconds = Math.ceil(waitMs / 1000);
+    showError(`Please wait ${seconds} second${seconds > 1 ? 's' : ''} before sending another message.`);
+
+    // Auto-hide after the wait period
+    if (rateLimitTimeout) clearTimeout(rateLimitTimeout);
+    rateLimitTimeout = window.setTimeout(() => {
+      hideError();
+      rateLimitTimeout = null;
+    }, waitMs);
+  }
+
+  async function sendMessage(message: string, isRetry = false) {
+    if (!message.trim() || isLoading) return;
+
+    // Rate limit check (Chekov)
+    const rateCheck = checkRateLimit();
+    if (!rateCheck.allowed && !isRetry) {
+      showRateLimitMessage(rateCheck.waitMs);
+      return;
+    }
+
+    hideError();
+    lastFailedMessage = message;
+    lastMessageTime = Date.now();
+
+    // Add user message (only if not a retry)
+    if (!isRetry) {
+      addMessage('user', message);
+      conversationHistory.push({ role: 'user', content: message });
+      // Hide suggestion chips after first message (Neelix)
+      if (conversationHistory.length === 1) {
+        hideSuggestionChips();
+      }
+    }
+
+    // Clear input
+    input.value = '';
+    setLoading(true);
+
+    // Create assistant message with typing indicator
+    const { element: assistantDiv, paragraph: assistantP } = addMessage('assistant', '', true);
+
+    try {
+      const response = await fetch('/api/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          message,
+          history: conversationHistory.slice(0, -1),
+        }),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({}));
+        throw new Error(errorData.error || `Request failed (${response.status})`);
+      }
+
+      const reader = response.body?.getReader();
+      if (!reader) throw new Error('No response stream');
+
+      const decoder = new TextDecoder();
+      let fullResponse = '';
+      let typingRemoved = false;
+
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+
+        const chunk = decoder.decode(value);
+        const lines = chunk.split('\n');
+
+        for (const line of lines) {
+          if (line.startsWith('data: ')) {
+            const data = line.slice(6);
+            if (data === '[DONE]') continue;
+
+            try {
+              const parsed = JSON.parse(data);
+              if (parsed.text) {
+                // Remove typing indicator on first content
+                if (!typingRemoved) {
+                  removeTypingIndicator(assistantDiv);
+                  typingRemoved = true;
+                }
+                fullResponse += parsed.text;
+                assistantP.textContent = fullResponse;
+                messagesContainer.scrollTop = messagesContainer.scrollHeight;
+              }
+            } catch {
+              // Ignore parse errors for incomplete chunks
+            }
+          }
+        }
+      }
+
+      if (!fullResponse) {
+        throw new Error('No response received');
+      }
+
+      conversationHistory.push({ role: 'assistant', content: fullResponse });
+      lastFailedMessage = ''; // Clear on success
+      updateExportButton();
+    } catch (error) {
+      // Remove the empty assistant message on error
+      assistantDiv.remove();
+
+      // Show error UI
+      const errorMessage = error instanceof Error ? error.message : 'Something went wrong';
+      showError(errorMessage);
+      console.error('Chat error:', error);
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    sendMessage(input.value);
+  });
+
+  // Suggestion chips (Neelix)
+  function hideSuggestionChips() {
+    if (suggestionChips) {
+      suggestionChips.style.opacity = '0';
+      suggestionChips.style.transform = 'translateY(-10px)';
+      setTimeout(() => {
+        suggestionChips.style.display = 'none';
+      }, 200);
+    }
+  }
+
+  suggestionChips?.querySelectorAll('.chip').forEach(chip => {
+    chip.addEventListener('click', (e) => {
+      const target = e.currentTarget as HTMLButtonElement;
+      const message = target.dataset.message;
+      if (message) {
+        hideSuggestionChips();
+        sendMessage(message);
+      }
+    });
+  });
+</script>
+
+<style>
+  .chat-widget {
+    --chat-bg: var(--bg-surface);
+    --chat-border: var(--border-subtle);
+    --chat-radius: 12px;
+  }
+
+  .chat-widget.embedded {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .chat-widget.floating {
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    width: 480px;
+    max-width: calc(100vw - 40px);
+    z-index: 1000;
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+    pointer-events: none;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+  }
+
+  .chat-widget.floating.open {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    pointer-events: all;
+  }
+
+  .chat-container {
+    background: var(--chat-bg);
+    border: 1px solid var(--chat-border);
+    border-radius: var(--chat-radius);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .chat-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--space-sm) var(--space-md);
+    border-bottom: 1px solid var(--border-subtle);
+    background: var(--bg-elevated);
+  }
+
+  .chat-title {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    font-weight: 500;
+  }
+
+  .export-btn {
+    padding: var(--space-xs);
+    background: transparent;
+    border: 1px solid var(--border-subtle);
+    border-radius: 4px;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .export-btn:hover {
+    border-color: var(--accent-warm);
+    color: var(--accent-warm);
+  }
+
+  .export-btn[hidden] {
+    display: none;
+  }
+
+  .chat-messages {
+    height: 450px;
+    overflow-y: auto;
+    padding: var(--space-md);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+
+  .chat-widget.embedded .chat-messages {
+    height: 550px;
+    padding: var(--space-md) var(--space-lg);
+  }
+
+  .message {
+    max-width: 90%;
+    padding: var(--space-sm) var(--space-md);
+    border-radius: 12px;
+    line-height: 1.6;
+  }
+
+  .message p {
+    margin: 0;
+    color: var(--text-primary);
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+
+  .chat-widget.embedded .message {
+    max-width: 95%;
+  }
+
+  /* Typing indicator (Imago) */
+  .typing-indicator {
+    display: flex;
+    gap: 4px;
+    padding: 4px 0;
+  }
+
+  .typing-indicator span {
+    width: 8px;
+    height: 8px;
+    background: var(--text-muted);
+    border-radius: 50%;
+    animation: typingBounce 1.4s infinite ease-in-out both;
+  }
+
+  .typing-indicator span:nth-child(1) {
+    animation-delay: -0.32s;
+  }
+
+  .typing-indicator span:nth-child(2) {
+    animation-delay: -0.16s;
+  }
+
+  @keyframes typingBounce {
+    0%, 80%, 100% {
+      transform: scale(0.6);
+      opacity: 0.5;
+    }
+    40% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+  .message.user {
+    align-self: flex-end;
+    background: var(--accent-subtle);
+    border: 1px solid var(--border-accent);
+  }
+
+  .message.assistant {
+    align-self: flex-start;
+    background: var(--bg-elevated);
+    border: 1px solid var(--border-subtle);
+  }
+
+  /* Suggestion chips (Neelix) */
+  .suggestion-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-xs);
+    padding: var(--space-xs) 0;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+  }
+
+  .chip {
+    padding: var(--space-xs) var(--space-sm);
+    background: var(--bg-elevated);
+    border: 1px solid var(--border-accent);
+    border-radius: 16px;
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    font-family: var(--font-body);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+  }
+
+  .chip:hover {
+    background: var(--accent-subtle);
+    border-color: var(--accent-warm);
+    color: var(--text-primary);
+  }
+
+  .chip:active {
+    transform: scale(0.97);
+  }
+
+  .chat-input {
+    display: flex;
+    gap: var(--space-xs);
+    padding: var(--space-sm);
+    border-top: 1px solid var(--border-subtle);
+    background: var(--bg-elevated);
+  }
+
+  .chat-input input {
+    flex: 1;
+    padding: var(--space-sm) var(--space-md);
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: 8px;
+    color: var(--text-primary);
+    font-size: 0.95rem;
+    font-family: var(--font-body);
+  }
+
+  .chat-input input:focus {
+    outline: none;
+    border-color: var(--border-accent);
+  }
+
+  .chat-input input::placeholder {
+    color: var(--text-muted);
+  }
+
+  .chat-input button {
+    padding: var(--space-sm);
+    background: var(--accent-warm);
+    border: none;
+    border-radius: 8px;
+    color: var(--bg-deep);
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .chat-input button:hover:not(:disabled) {
+    opacity: 0.9;
+  }
+
+  .chat-input button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  .chat-input button.loading {
+    animation: pulse 1s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 0.8; }
+  }
+
+  /* Error state */
+  .chat-error {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-sm);
+    padding: var(--space-sm) var(--space-md);
+    background: rgba(239, 68, 68, 0.1);
+    border-top: 1px solid rgba(239, 68, 68, 0.3);
+  }
+
+  .chat-error[hidden] {
+    display: none;
+  }
+
+  .error-content {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    color: #ef4444;
+    font-size: 0.85rem;
+  }
+
+  .error-content svg {
+    flex-shrink: 0;
+  }
+
+  .retry-btn {
+    padding: var(--space-xs) var(--space-sm);
+    background: transparent;
+    border: 1px solid rgba(239, 68, 68, 0.5);
+    border-radius: 4px;
+    color: #ef4444;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .retry-btn:hover {
+    background: rgba(239, 68, 68, 0.1);
+    border-color: #ef4444;
+  }
+
+  /* Floating toggle button */
+  .chat-toggle {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: var(--accent-warm);
+    border: none;
+    color: var(--bg-deep);
+    cursor: pointer;
+    z-index: 1001;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s ease;
+  }
+
+  .chat-toggle:hover {
+    transform: scale(1.05);
+  }
+
+  .chat-toggle .icon-close {
+    display: none;
+  }
+
+  .chat-widget.open ~ .chat-toggle .icon-chat {
+    display: none;
+  }
+
+  .chat-widget.open ~ .chat-toggle .icon-close {
+    display: block;
+  }
+
+  /* Tablet */
+  @media (max-width: 900px) {
+    .chat-widget.embedded {
+      max-width: 100%;
+    }
+
+    .chat-widget.embedded .chat-messages {
+      padding: var(--space-md);
+    }
+  }
+
+  /* Mobile */
+  @media (max-width: 600px) {
+    .chat-widget.floating {
+      bottom: 70px;
+      right: 10px;
+      left: 10px;
+      width: auto;
+      max-width: none;
+    }
+
+    .chat-widget.embedded .chat-messages,
+    .chat-widget.floating .chat-messages {
+      height: 400px;
+      padding: var(--space-sm);
+    }
+
+    .message {
+      max-width: 95%;
+      padding: var(--space-xs) var(--space-sm);
+      font-size: 0.95rem;
+    }
+
+    .chat-toggle {
+      bottom: 10px;
+      right: 10px;
+    }
+  }
+
+  /* Reduced motion (Aequum) */
+  @media (prefers-reduced-motion: reduce) {
+    .typing-indicator span {
+      animation: none;
+      opacity: 0.7;
+    }
+
+    .chat-input button.loading {
+      animation: none;
+      opacity: 0.6;
+    }
+
+    .chat-widget.floating {
+      transition: none;
+    }
+
+    .suggestion-chips {
+      transition: none;
+    }
+
+    .chip {
+      transition: none;
+    }
+  }
+</style>

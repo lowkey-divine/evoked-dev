@@ -1,0 +1,109 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import FitAssessment from '../components/ai/FitAssessment.astro';
+
+export const prerender = false;
+---
+
+<BaseLayout title="Fit Assessment" description="See if your project is a good fit for my consulting services.">
+  <div class="hero-small">
+    <h1>Is this a good fit?</h1>
+    <p class="tagline">Honest assessment of project alignment.</p>
+  </div>
+
+  <section class="container">
+    <FitAssessment />
+  </section>
+
+  <section class="container explanation">
+    <h2>What I look for</h2>
+    <div class="fit-grid">
+      <div class="fit-column good">
+        <h3>Strong fit</h3>
+        <ul>
+          <li>Family-focused apps needing child safety</li>
+          <li>Products handling sensitive personal data</li>
+          <li>Teams building ethical AI systems</li>
+          <li>Companies wanting sovereignty-honoring design</li>
+          <li>Apps dealing with heritage, identity, or grief</li>
+        </ul>
+      </div>
+      <div class="fit-column moderate">
+        <h3>Moderate fit</h3>
+        <ul>
+          <li>General privacy reviews</li>
+          <li>Security audits for consumer apps</li>
+          <li>Teams needing security code review</li>
+        </ul>
+      </div>
+      <div class="fit-column limited">
+        <h3>Limited fit</h3>
+        <ul>
+          <li>Growth hacking or engagement optimization</li>
+          <li>Surveillance or tracking systems</li>
+          <li>Products extracting value from users</li>
+          <li>Quick fixes without architectural thinking</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="container text-center">
+    <p>Not sure? <a href="/ask">Ask me directly</a> or <a href="mailto:passionevoked@icloud.com?subject=Consulting Inquiry">reach out</a>.</p>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero-small {
+    text-align: center;
+    padding: var(--space-lg) var(--space-md);
+  }
+
+  .hero-small h1 {
+    font-size: clamp(2rem, 5vw, 3rem);
+    margin-bottom: var(--space-xs);
+  }
+
+  .hero-small .tagline {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    font-style: italic;
+  }
+
+  .explanation {
+    margin-top: var(--space-lg);
+  }
+
+  .fit-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: var(--space-md);
+    margin-top: var(--space-md);
+  }
+
+  .fit-column h3 {
+    font-size: 1rem;
+    margin-bottom: var(--space-sm);
+  }
+
+  .fit-column.good h3 { color: #22c55e; }
+  .fit-column.moderate h3 { color: var(--accent-warm); }
+  .fit-column.limited h3 { color: #eab308; }
+
+  .fit-column ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .fit-column li {
+    padding: var(--space-xs) 0;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .fit-column li:last-child {
+    border-bottom: none;
+  }
+</style>

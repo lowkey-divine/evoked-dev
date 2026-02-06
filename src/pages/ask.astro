@@ -1,0 +1,111 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ChatWidget from '../components/ai/ChatWidget.astro';
+
+export const prerender = false;
+---
+
+<BaseLayout title="Ask" description="Have questions about my work? Ask me anything.">
+  <div class="hero-small">
+    <h1>Ask me anything.</h1>
+    <p class="tagline">Questions about services, projects, philosophy, or fit.</p>
+    <p class="disclaimer">This AI assistant can share information about my work. For deeper conversation, <a href="mailto:passionevoked@icloud.com">reach out directly</a>.</p>
+  </div>
+
+  <section class="container-wide">
+    <ChatWidget mode="embedded" />
+  </section>
+
+  <section class="container-wide text-center suggestions">
+    <p class="text-muted">Try asking:</p>
+    <div class="suggestion-chips">
+      <button class="chip" data-question="What services do you offer?">Services</button>
+      <button class="chip" data-question="Tell me about Executive Chef">Executive Chef</button>
+      <button class="chip" data-question="What's your approach to coaching?">Coaching approach</button>
+      <button class="chip" data-question="What's COPPA and why does it matter?">COPPA</button>
+      <button class="chip" data-question="What does 'evoke, never extract' mean?">Philosophy</button>
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  const chips = document.querySelectorAll('.chip');
+  const input = document.getElementById('chat-input') as HTMLInputElement;
+  const form = document.getElementById('chat-form') as HTMLFormElement;
+
+  chips.forEach(chip => {
+    chip.addEventListener('click', () => {
+      const question = chip.getAttribute('data-question');
+      if (question && input) {
+        input.value = question;
+        input.focus();
+        // Trigger submit
+        form.dispatchEvent(new Event('submit'));
+      }
+    });
+  });
+</script>
+
+<style>
+  .hero-small {
+    text-align: center;
+    padding: var(--space-lg) var(--space-md);
+  }
+
+  .hero-small h1 {
+    font-size: clamp(2rem, 5vw, 3rem);
+    margin-bottom: var(--space-xs);
+  }
+
+  .hero-small .tagline {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    font-style: italic;
+  }
+
+  .hero-small .disclaimer {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-top: var(--space-sm);
+  }
+
+  .hero-small .disclaimer a {
+    color: var(--text-muted);
+    text-decoration: underline;
+  }
+
+  .hero-small .disclaimer a:hover {
+    color: var(--accent-warm);
+  }
+
+  .suggestions {
+    padding-top: var(--space-md);
+    border-top: none;
+  }
+
+  .suggestion-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-xs);
+    justify-content: center;
+    margin-top: var(--space-sm);
+  }
+
+  .chip {
+    padding: var(--space-xs) var(--space-sm);
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: 100px;
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    font-family: var(--font-body);
+  }
+
+  .chip:hover {
+    border-color: var(--border-accent);
+    color: var(--accent-warm);
+  }
+</style>

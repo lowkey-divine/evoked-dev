@@ -1,0 +1,403 @@
+---
+---
+
+<div class="fit-assessment">
+  <form id="fit-form" class="fit-form">
+    <label for="project-description">
+      <h3>Describe your project</h3>
+      <p class="label-hint">Include context like: target audience, data handled, technical requirements, and what kind of help you're looking for.</p>
+    </label>
+    <textarea
+      id="project-description"
+      name="projectDescription"
+      placeholder="We're building a mobile app for families that tracks kids' activities and needs help with COPPA compliance and privacy architecture..."
+      rows="6"
+    ></textarea>
+    <div class="char-count">
+      <span id="char-count">0</span> / 5000 characters
+    </div>
+    <button type="submit" class="btn" id="assess-btn">Assess Fit</button>
+  </form>
+
+  <div id="fit-result" class="fit-result hidden">
+    <div class="result-header">
+      <div class="fit-badge" id="fit-badge">
+        <span class="fit-level" id="fit-level">Strong Fit</span>
+        <span class="fit-score" id="fit-score">8/10</span>
+      </div>
+      <p class="fit-summary" id="fit-summary"></p>
+    </div>
+
+    <div class="result-sections">
+      <div class="result-section strengths">
+        <h4>Strengths</h4>
+        <ul id="strengths-list"></ul>
+      </div>
+
+      <div class="result-section considerations">
+        <h4>Considerations</h4>
+        <ul id="considerations-list"></ul>
+      </div>
+
+      <div class="result-section services">
+        <h4>Suggested Services</h4>
+        <ul id="services-list"></ul>
+      </div>
+
+      <div class="result-section next-step">
+        <h4>Next Step</h4>
+        <p id="next-step"></p>
+      </div>
+    </div>
+
+    <div class="result-actions">
+      <button type="button" class="btn" id="reset-btn">Assess Another Project</button>
+      <a href="mailto:passionevoked@icloud.com?subject=Consulting Inquiry" class="btn btn-primary">Get in Touch</a>
+    </div>
+  </div>
+
+  <div id="fit-loading" class="fit-loading hidden">
+    <div class="loading-spinner"></div>
+    <p>Assessing project fit...</p>
+  </div>
+
+  <div id="fit-error" class="fit-error hidden">
+    <p id="error-message">Something went wrong. Please try again.</p>
+    <button type="button" class="btn" id="retry-btn">Try Again</button>
+  </div>
+</div>
+
+<script>
+  interface FitAssessment {
+    fitLevel: 'strong' | 'moderate' | 'limited' | 'not-recommended';
+    score: number;
+    summary: string;
+    strengths: string[];
+    considerations: string[];
+    suggestedServices: string[];
+    nextStep: string;
+  }
+
+  const form = document.getElementById('fit-form') as HTMLFormElement;
+  const textarea = document.getElementById('project-description') as HTMLTextAreaElement;
+  const charCount = document.getElementById('char-count') as HTMLSpanElement;
+  const assessBtn = document.getElementById('assess-btn') as HTMLButtonElement;
+  const resultDiv = document.getElementById('fit-result') as HTMLDivElement;
+  const loadingDiv = document.getElementById('fit-loading') as HTMLDivElement;
+  const errorDiv = document.getElementById('fit-error') as HTMLDivElement;
+  const resetBtn = document.getElementById('reset-btn') as HTMLButtonElement;
+  const retryBtn = document.getElementById('retry-btn') as HTMLButtonElement;
+
+  // Character count
+  textarea.addEventListener('input', () => {
+    charCount.textContent = String(textarea.value.length);
+  });
+
+  function showForm() {
+    form.classList.remove('hidden');
+    resultDiv.classList.add('hidden');
+    loadingDiv.classList.add('hidden');
+    errorDiv.classList.add('hidden');
+  }
+
+  function showLoading() {
+    form.classList.add('hidden');
+    resultDiv.classList.add('hidden');
+    loadingDiv.classList.remove('hidden');
+    errorDiv.classList.add('hidden');
+  }
+
+  function showResult(assessment: FitAssessment) {
+    form.classList.add('hidden');
+    loadingDiv.classList.add('hidden');
+    errorDiv.classList.add('hidden');
+    resultDiv.classList.remove('hidden');
+
+    // Update badge
+    const badge = document.getElementById('fit-badge') as HTMLDivElement;
+    badge.className = `fit-badge ${assessment.fitLevel}`;
+
+    const levelText = {
+      strong: 'Strong Fit',
+      moderate: 'Moderate Fit',
+      limited: 'Limited Fit',
+      'not-recommended': 'Not Recommended',
+    };
+    (document.getElementById('fit-level') as HTMLSpanElement).textContent = levelText[assessment.fitLevel];
+    (document.getElementById('fit-score') as HTMLSpanElement).textContent = `${assessment.score}/10`;
+    (document.getElementById('fit-summary') as HTMLParagraphElement).textContent = assessment.summary;
+
+    // Populate lists
+    const strengthsList = document.getElementById('strengths-list') as HTMLUListElement;
+    strengthsList.innerHTML = assessment.strengths.map(s => `<li>${s}</li>`).join('');
+
+    const considerationsList = document.getElementById('considerations-list') as HTMLUListElement;
+    considerationsList.innerHTML = assessment.considerations.map(c => `<li>${c}</li>`).join('');
+
+    const servicesList = document.getElementById('services-list') as HTMLUListElement;
+    servicesList.innerHTML = assessment.suggestedServices.map(s => `<li>${s}</li>`).join('');
+
+    (document.getElementById('next-step') as HTMLParagraphElement).textContent = assessment.nextStep;
+  }
+
+  function showError(message: string) {
+    form.classList.add('hidden');
+    loadingDiv.classList.add('hidden');
+    resultDiv.classList.add('hidden');
+    errorDiv.classList.remove('hidden');
+    (document.getElementById('error-message') as HTMLParagraphElement).textContent = message;
+  }
+
+  async function assessFit(projectDescription: string) {
+    showLoading();
+
+    try {
+      const response = await fetch('/api/assess-fit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ projectDescription }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to assess fit');
+      }
+
+      showResult(data as FitAssessment);
+    } catch (error) {
+      showError(error instanceof Error ? error.message : 'Something went wrong. Please try again.');
+    }
+  }
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const description = textarea.value.trim();
+    if (description) {
+      assessFit(description);
+    }
+  });
+
+  resetBtn.addEventListener('click', () => {
+    textarea.value = '';
+    charCount.textContent = '0';
+    showForm();
+  });
+
+  retryBtn.addEventListener('click', () => {
+    showForm();
+  });
+</script>
+
+<style>
+  .fit-assessment {
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .fit-form label h3 {
+    margin-bottom: var(--space-xs);
+  }
+
+  .label-hint {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-bottom: var(--space-sm);
+  }
+
+  .fit-form textarea {
+    width: 100%;
+    padding: var(--space-md);
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: 8px;
+    color: var(--text-primary);
+    font-size: 1rem;
+    font-family: var(--font-body);
+    line-height: 1.6;
+    resize: vertical;
+  }
+
+  .fit-form textarea:focus {
+    outline: none;
+    border-color: var(--border-accent);
+  }
+
+  .fit-form textarea::placeholder {
+    color: var(--text-muted);
+  }
+
+  .char-count {
+    text-align: right;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-top: var(--space-xs);
+    margin-bottom: var(--space-md);
+  }
+
+  .hidden {
+    display: none !important;
+  }
+
+  /* Results */
+  .fit-result {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: 12px;
+    padding: var(--space-md);
+  }
+
+  .result-header {
+    text-align: center;
+    margin-bottom: var(--space-md);
+    padding-bottom: var(--space-md);
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .fit-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-sm) var(--space-md);
+    border-radius: 100px;
+    margin-bottom: var(--space-sm);
+  }
+
+  .fit-badge.strong {
+    background: rgba(34, 197, 94, 0.15);
+    border: 1px solid rgba(34, 197, 94, 0.3);
+  }
+  .fit-badge.strong .fit-level { color: #22c55e; }
+
+  .fit-badge.moderate {
+    background: rgba(196, 167, 125, 0.15);
+    border: 1px solid rgba(196, 167, 125, 0.3);
+  }
+  .fit-badge.moderate .fit-level { color: var(--accent-warm); }
+
+  .fit-badge.limited {
+    background: rgba(234, 179, 8, 0.15);
+    border: 1px solid rgba(234, 179, 8, 0.3);
+  }
+  .fit-badge.limited .fit-level { color: #eab308; }
+
+  .fit-badge.not-recommended {
+    background: rgba(239, 68, 68, 0.15);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+  }
+  .fit-badge.not-recommended .fit-level { color: #ef4444; }
+
+  .fit-level {
+    font-weight: 500;
+  }
+
+  .fit-score {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+  }
+
+  .fit-summary {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    color: var(--text-primary);
+    margin: 0;
+  }
+
+  .result-sections {
+    display: grid;
+    gap: var(--space-md);
+    margin-bottom: var(--space-md);
+  }
+
+  .result-section h4 {
+    color: var(--accent-warm);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: var(--space-xs);
+    font-family: var(--font-body);
+  }
+
+  .result-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .result-section li {
+    padding: var(--space-xs) 0;
+    padding-left: var(--space-md);
+    border-left: 2px solid var(--border-subtle);
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+  }
+
+  .result-section.strengths li {
+    border-left-color: rgba(34, 197, 94, 0.5);
+  }
+
+  .result-section.considerations li {
+    border-left-color: rgba(234, 179, 8, 0.5);
+  }
+
+  .result-section p {
+    color: var(--text-secondary);
+    margin: 0;
+  }
+
+  .result-actions {
+    display: flex;
+    gap: var(--space-sm);
+    justify-content: center;
+    padding-top: var(--space-md);
+    border-top: 1px solid var(--border-subtle);
+  }
+
+  .btn-primary {
+    background: var(--accent-warm);
+    color: var(--bg-deep);
+  }
+
+  .btn-primary:hover {
+    background: var(--accent-glow);
+    color: var(--bg-deep);
+  }
+
+  /* Loading */
+  .fit-loading {
+    text-align: center;
+    padding: var(--space-xl) var(--space-md);
+  }
+
+  .loading-spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid var(--border-subtle);
+    border-top-color: var(--accent-warm);
+    border-radius: 50%;
+    margin: 0 auto var(--space-md);
+    animation: spin 1s linear infinite;
+  }
+
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+
+  .fit-loading p {
+    color: var(--text-muted);
+  }
+
+  /* Error */
+  .fit-error {
+    text-align: center;
+    padding: var(--space-lg) var(--space-md);
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    border-radius: 12px;
+  }
+
+  .fit-error p {
+    color: #ef4444;
+    margin-bottom: var(--space-md);
+  }
+</style>

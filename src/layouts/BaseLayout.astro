@@ -1,10 +1,14 @@
 ---
+import ChatWidget from '../components/ai/ChatWidget.astro';
+
 interface Props {
   title: string;
   description?: string;
+  hideFloatingChat?: boolean;
 }
 
-const { title, description = "Space for what matters." } = Astro.props;
+const { title, description = "Space for what matters.", hideFloatingChat = false } = Astro.props;
+const showFloatingChat = !hideFloatingChat && Astro.url.pathname !== '/ask' && Astro.url.pathname !== '/ask/';
 ---
 
 <!DOCTYPE html>
@@ -31,6 +35,7 @@ const { title, description = "Space for what matters." } = Astro.props;
         <li><a href="/consulting">consulting</a></li>
         <li><a href="/writing">writing</a></li>
         <li><a href="/projects">projects</a></li>
+        <li><a href="/ask">ask</a></li>
         <li><a href="/about">about</a></li>
       </ul>
     </nav>
@@ -43,6 +48,8 @@ const { title, description = "Space for what matters." } = Astro.props;
       <p>evoked.dev</p>
       <p class="mt-sm">I evoke — I never extract.</p>
     </footer>
+
+    {showFloatingChat && <ChatWidget mode="floating" />}
   </body>
 </html>
 
