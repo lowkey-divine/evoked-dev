@@ -42,11 +42,18 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     </p>
     <ul class="principles">
       <li><strong>Reverent references, not reductive captures</strong> — Point to meaning, don't contain it</li>
-      <li><strong>Fragments are sacred</strong> — Incomplete recipes are welcomed</li>
-      <li><strong>Family defines family</strong> — Their words, not our taxonomy</li>
+      <li><strong>Fragments are sacred</strong> — A single memory is enough. A story without measurements is complete.</li>
+      <li><strong>Family defines family</strong> — Your words, not our taxonomy</li>
       <li><strong>Build for silence</strong> — The system knows when to be quiet</li>
-      <li><strong>Space for shadow</strong> — Complicated heritage has a place</li>
+      <li><strong>Space for all of it</strong> — Celebration and grief. Roots and searching. Heritage embraced and heritage reclaimed.</li>
     </ul>
+    <p class="heritage-example">
+      If a family only remembers "some kind of dumpling" from a grandmother lost to displacement,
+      that fragment is welcome here. We don't require completeness. We honor what remains.
+    </p>
+    <p class="heritage-closing">
+      Some recipes survive because someone made sure they would.
+    </p>
   </section>
 
   <section class="container">
@@ -105,6 +112,21 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 
   .principles strong {
     color: var(--accent-warm);
+  }
+
+  .heritage-example {
+    margin-top: var(--space-md);
+    font-style: italic;
+    color: var(--text-secondary);
+    border-left: 2px solid var(--accent-subtle);
+    padding-left: var(--space-md);
+  }
+
+  .heritage-closing {
+    margin-top: var(--space-sm);
+    color: var(--text-primary);
+    font-family: var(--font-display);
+    font-size: 1.1rem;
   }
 
   .feature-grid {
