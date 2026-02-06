@@ -1,0 +1,147 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const allPosts = await getCollection('writing', ({ data }) => !data.draft);
+const sortedPosts = allPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+---
+
+<BaseLayout title="Writing" description="Writing on psychology, families, and building something better.">
+  <div class="hero">
+    <h1>Writing</h1>
+    <p class="tagline">On psychology, families, and building something better.</p>
+  </div>
+
+  {sortedPosts.length > 0 ? (
+    <section class="container">
+      <div class="article-list">
+        {sortedPosts.map((post) => (
+          <a href={`/writing/${post.slug}`} class="article-card">
+            <h3>{post.data.title}</h3>
+            <p>{post.data.description}</p>
+            <time datetime={post.data.pubDate.toISOString()}>
+              {post.data.pubDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+            </time>
+          </a>
+        ))}
+      </div>
+    </section>
+  ) : (
+    <section class="container">
+      <p class="coming-soon">Articles coming soon. In the meantime:</p>
+    </section>
+  )}
+
+  <section class="container">
+    <h2>Newsletter</h2>
+    <p>Occasional updates on projects, writing, and building something better.</p>
+    <form
+      action="https://buttondown.email/api/emails/embed-subscribe/evoke"
+      method="post"
+      target="popupwindow"
+      class="newsletter-form mt-md"
+    >
+      <input type="email" name="email" placeholder="your@email.com" required />
+      <button type="submit" class="btn">Subscribe</button>
+    </form>
+  </section>
+
+  <section class="container">
+    <h2>Elsewhere</h2>
+    <p>More writing and work on other platforms.</p>
+    <div class="links mt-md">
+      <a href="https://substack.com/@weevoke" target="_blank" rel="noopener" class="btn">Substack</a>
+      <a href="https://medium.com/@evokepassion869" target="_blank" rel="noopener" class="btn">Medium</a>
+      <a href="https://github.com/lowkey-divine" target="_blank" rel="noopener" class="btn">GitHub</a>
+    </div>
+  </section>
+
+  <section class="container text-center">
+    <p class="text-muted" style="font-style: italic;">
+      "We evoke — we never extract."
+    </p>
+  </section>
+</BaseLayout>
+
+<style>
+  .article-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+
+  .article-card {
+    display: block;
+    padding: var(--space-md);
+    border: 1px solid var(--border-subtle);
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all var(--transition-smooth);
+  }
+
+  .article-card:hover {
+    border-color: var(--border-accent);
+    transform: translateY(-2px);
+  }
+
+  .article-card h3 {
+    margin: 0 0 var(--space-xs) 0;
+    color: var(--text-primary);
+    font-size: 1.3rem;
+  }
+
+  .article-card p {
+    margin: 0 0 var(--space-sm) 0;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+  }
+
+  .article-card time {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+  }
+
+  .coming-soon {
+    text-align: center;
+    color: var(--text-muted);
+    font-style: italic;
+  }
+
+  .newsletter-form {
+    display: flex;
+    gap: var(--space-xs);
+    justify-content: center;
+    flex-wrap: wrap;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .newsletter-form input[type="email"] {
+    flex: 1;
+    min-width: 200px;
+    padding: var(--space-sm) var(--space-md);
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: 4px;
+    color: var(--text-primary);
+    font-size: 0.95rem;
+    font-family: var(--font-body);
+  }
+
+  .newsletter-form input[type="email"]:focus {
+    outline: none;
+    border-color: var(--border-accent);
+  }
+
+  .newsletter-form input[type="email"]::placeholder {
+    color: var(--text-muted);
+  }
+
+  .links {
+    display: flex;
+    gap: var(--space-sm);
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+</style>
