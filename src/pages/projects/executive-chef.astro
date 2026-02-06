@@ -74,7 +74,16 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
   <section class="container text-center">
     <h2>Coming Soon</h2>
     <p>Join the waitlist to be notified when Executive Chef launches.</p>
-    <a href="mailto:passionevoked@icloud.com?subject=Executive Chef Waitlist" class="btn mt-md">Join Waitlist</a>
+    <form
+      action="https://buttondown.email/api/emails/embed-subscribe/evoke"
+      method="post"
+      target="popupwindow"
+      class="waitlist-form mt-md"
+    >
+      <input type="email" name="email" placeholder="your@email.com" required />
+      <button type="submit" class="btn">Join Waitlist</button>
+    </form>
+    <p class="form-note">No spam. Just launch updates.</p>
   </section>
 </BaseLayout>
 
@@ -111,5 +120,42 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
   .feature-grid .card p {
     font-size: 0.9rem;
     margin-bottom: 0;
+  }
+
+  .waitlist-form {
+    display: flex;
+    gap: var(--space-xs);
+    justify-content: center;
+    flex-wrap: wrap;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .waitlist-form input[type="email"] {
+    flex: 1;
+    min-width: 200px;
+    padding: var(--space-sm) var(--space-md);
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: 4px;
+    color: var(--text-primary);
+    font-size: 0.95rem;
+    font-family: var(--font-body);
+  }
+
+  .waitlist-form input[type="email"]:focus {
+    outline: none;
+    border-color: var(--border-accent);
+  }
+
+  .waitlist-form input[type="email"]::placeholder {
+    color: var(--text-muted);
+  }
+
+  .form-note {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-top: var(--space-sm);
   }
 </style>

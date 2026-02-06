@@ -2,32 +2,69 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
-<BaseLayout title="About" description="Building space for what matters.">
+<BaseLayout title="About" description="Coaching, consulting, and building things that matter.">
   <div class="hero">
     <h1>About</h1>
   </div>
 
-  <section class="container text-center">
-    <p class="statement">
-      Building space for what matters.
+  <section class="container">
+    <p class="welcome">Welcome.</p>
+
+    <p class="intro">I'm Erin. I coach, consult, and build things.</p>
+
+    <p>
+      For fifteen years I've worked in spaces where people grow — operations,
+      training, client relationships. Each role taught me the same thing:
+      people flourish when they're accompanied, not fixed.
     </p>
 
-    <div class="links mt-lg">
-      <a href="mailto:passionevoked@icloud.com?subject=Hello" class="btn">Contact</a>
+    <p>
+      Now: <a href="/coaching">coaching</a> individuals and couples,
+      <a href="/consulting">consulting</a> on ethical technology,
+      and building <a href="/projects">software</a> that serves families.
+    </p>
+
+    <p>
+      I'm still learning — currently pursuing a Master's in Marriage &
+      Family Therapy. The best practitioners never stop being students.
+    </p>
+
+    <p class="closing">
+      If something here resonates, I'd be glad to hear from you.
+    </p>
+
+    <div class="links mt-md">
+      <a href="mailto:passionevoked@icloud.com?subject=Hello" class="btn">Say Hello</a>
     </div>
   </section>
 </BaseLayout>
 
 <style>
-  .statement {
+  .welcome {
     font-family: var(--font-display);
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     color: var(--text-primary);
-    line-height: 1.6;
+    margin-bottom: var(--space-sm);
   }
 
-  .philosophy {
+  .intro {
+    font-size: 1.1rem;
+    color: var(--text-primary);
+    margin-bottom: var(--space-md);
+  }
+
+  .closing {
     font-style: italic;
-    color: var(--text-muted);
+    color: var(--text-primary);
+    margin-top: var(--space-md);
+  }
+
+  section p {
+    max-width: 600px;
+  }
+
+  section a:not(.btn) {
+    text-decoration: underline;
+    text-underline-offset: 2px;
   }
 </style>
