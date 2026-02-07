@@ -59,8 +59,8 @@ docs/consulting/
 
 | Service | Price | SOP Status |
 |---------|-------|------------|
-| Child Safety Build Support | $12,000 | Pending |
-| Ethical AI Architecture | $20,000 | Pending |
+| Child Safety Build Support | $12,000 | Complete |
+| Ethical AI Architecture | $20,000 | Complete |
 
 ### Retainer
 
