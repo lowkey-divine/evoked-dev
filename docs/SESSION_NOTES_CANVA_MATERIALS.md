@@ -1,8 +1,34 @@
 # Session Notes — Canva Materials for Consulting
 
 **Date:** February 7, 2026
-**Status:** Paused for Claude Code update
-**Resume from:** Canva materials prioritization
+**Status:** Ready to resume
+**Resume from:** Brand kit discussion + Canva materials
+
+---
+
+## Session Progress (Feb 7)
+
+### Completed This Session
+- All 8 consulting playbooks complete
+- Rebranded "Evoke Passion" → "Evoke"
+- Footer tagline updated to "I Evoke."
+- Fixed Echo deployment (vercel.json functions error + Astro static output)
+- Rotated API key after accidental exposure
+
+### Brand Architecture Decided
+| Brand | Type | Mark | Relationship |
+|-------|------|------|--------------|
+| **Evoke** | Parent | Has logo (lips) | — |
+| **Ezri** | Product | Needs own mark | Powered by Evoke |
+| **The Kitchen Table** | Product | Needs own mark | Powered by Evoke |
+
+### Evoke Brand Colors (from logo)
+| Color | Hex (approx) | Usage |
+|-------|--------------|-------|
+| Golden Yellow | `#E5A818` | Primary fill |
+| Coral Orange | `#E85D3B` | Alternate fill |
+| Navy Blue | `#2B2D5B` | Line work, text |
+| White | `#FFFFFF` | Background |
 
 ---
 
