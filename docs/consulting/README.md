@@ -46,7 +46,7 @@ docs/consulting/
 |---------|-------|------------|
 | COPPA Technical Review | $3,500 | Complete |
 | Privacy Architecture Review | $3,000 | Complete |
-| Security Code Review | $3,500 | Pending |
+| Security Code Review | $3,500 | Complete |
 
 ### Workshops
 
