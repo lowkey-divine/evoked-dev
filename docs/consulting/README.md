@@ -52,8 +52,8 @@ docs/consulting/
 
 | Service | Price | SOP Status |
 |---------|-------|------------|
-| Sovereignty-Honoring Design | $4,000 | Pending |
-| Child Safety Implementation | $4,500 | Pending |
+| Sovereignty-Honoring Design | $4,000 | Complete |
+| Child Safety Implementation | $4,500 | Complete |
 
 ### Implementation
 
