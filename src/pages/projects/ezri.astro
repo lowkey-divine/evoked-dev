@@ -24,10 +24,10 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
       without domination.
     </p>
     <ul class="features">
-      <li>Map your inner world symbolically and mathematically</li>
-      <li>Engage with archetypes, ethics, and shadow in a safe, private space</li>
-      <li>Encounter other perspectives without social comparison</li>
-      <li>Grow toward post-conventional moral reasoning</li>
+      <li>A private space to explore what's inside — without performance or judgment</li>
+      <li>Archetypes, patterns, shadows — met at your pace, on your terms</li>
+      <li>Other perspectives offered gently — no comparison, no competition</li>
+      <li>Room to grow — not toward a destination, but into yourself</li>
     </ul>
   </section>
 
@@ -54,6 +54,22 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
       Ezri never interferes with your autonomy, pace, or identity formation.
       No optimization toward "success." No nudging toward beliefs. No gamified
       attention extraction.
+    </p>
+  </section>
+
+  <section class="container note-section">
+    <h2>A Note on Inner Work</h2>
+    <p>
+      Reflection can surface things that are tender, confusing, or difficult.
+      This is part of the process — but it's not something to face alone.
+    </p>
+    <p>
+      If at any point you feel overwhelmed, please pause.
+      <a href="/resources" class="text-link">Here are some places to find support</a>.
+    </p>
+    <p class="privacy-note">
+      Your inner world belongs to you. Ezri is designed so your data stays private,
+      unanalyzed, and never sold.
     </p>
   </section>
 
@@ -94,5 +110,39 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     border-left: 3px solid var(--accent-warm);
     padding-left: var(--space-md);
     margin: var(--space-md) 0;
+  }
+
+  .note-section {
+    background: var(--bg-elevated);
+    border-radius: 8px;
+    padding: var(--space-lg);
+    margin-top: var(--space-lg);
+  }
+
+  .note-section h2 {
+    font-size: 1.2rem;
+    margin-bottom: var(--space-md);
+  }
+
+  .note-section p {
+    color: var(--text-secondary);
+    margin-bottom: var(--space-sm);
+  }
+
+  .text-link {
+    color: var(--accent-warm);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  .text-link:hover {
+    color: var(--accent-glow);
+  }
+
+  .privacy-note {
+    font-style: italic;
+    color: var(--text-muted);
+    margin-top: var(--space-md);
+    font-size: 0.95rem;
   }
 </style>
