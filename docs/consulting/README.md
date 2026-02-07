@@ -33,7 +33,20 @@ docs/consulting/
 │   └── security-review/         # Security Code Review ($3,500)
 ├── workshops/                   # Workshop services
 ├── implementation/              # Implementation services
+│   ├── child-safety-build/      # Child Safety Build Support ($12,000)
+│   │   ├── SOP.md
+│   │   ├── scoping-template.md
+│   │   └── handoff-checklist.md
+│   └── ethical-ai-architecture/ # Ethical AI Architecture ($20,000)
+│       ├── SOP.md
+│       ├── scoping-template.md
+│       ├── handoff-checklist.md
+│       └── alignment-spec-template.md
 └── retainer/                    # Retainer services
+    └── advisory/                # Advisory Retainer ($3,500/mo)
+        ├── SOP.md
+        ├── onboarding-template.md
+        └── monthly-summary-template.md
 ```
 
 ---
@@ -66,7 +79,7 @@ docs/consulting/
 
 | Service | Price | SOP Status |
 |---------|-------|------------|
-| Advisory | $3,500/mo | Pending |
+| Advisory | $3,500/mo | Complete |
 
 ---
 
