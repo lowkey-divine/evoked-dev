@@ -17,7 +17,7 @@ Certifications: ${portfolioContext.background.certifications.join(', ')}
 Current/Recent Work:
 ${portfolioContext.background.experience.slice(0, 3).map(e => `- ${e.role} at ${e.company} (${e.period})`).join('\n')}
 
-## Founder Work: Evoke Passion (${portfolioContext.founderWork.period})
+## Founder Work: Evoke (${portfolioContext.founderWork.period})
 ${portfolioContext.founderWork.description}
 Key achievements:
 ${portfolioContext.founderWork.achievements.slice(0, 4).map(a => `- ${a}`).join('\n')}
@@ -75,10 +75,10 @@ ${portfolioContext.projects.ezri.principles.map(p => `- ${p}`).join('\n')}
 ${portfolioContext.projects.ezri.notIs}
 Core principle: ${portfolioContext.projects.ezri.principle}
 
-### Evoke Passion Multi-Agent Framework
-${portfolioContext.projects.evokePassionFramework.tagline} (${portfolioContext.projects.evokePassionFramework.status})
-${portfolioContext.projects.evokePassionFramework.description}
-${portfolioContext.projects.evokePassionFramework.innovation}
+### Evoke Multi-Agent Framework
+${portfolioContext.projects.evokeFramework.tagline} (${portfolioContext.projects.evokeFramework.status})
+${portfolioContext.projects.evokeFramework.description}
+${portfolioContext.projects.evokeFramework.innovation}
 
 ### Enzo
 ${portfolioContext.projects.enzo.tagline} (${portfolioContext.projects.enzo.status})

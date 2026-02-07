@@ -4,7 +4,7 @@ export const portfolioContext = {
     email: 'passionevoked@icloud.com', // Public contact only
     philosophy: 'I evoke — I never extract.',
     tagline: 'Space for what matters.',
-    summary: 'Founder of Evoke Passion, building AI systems where humans and AI flourish together through cooperation. Background in developmental psychology and clinical training applied to scaffolding-based alignment.',
+    summary: 'Founder of Evoke, building AI systems where humans and AI flourish together through cooperation. Background in developmental psychology and clinical training applied to scaffolding-based alignment.',
   },
 
   background: {
@@ -33,7 +33,7 @@ export const portfolioContext = {
   },
 
   founderWork: {
-    company: 'Evoke Passion',
+    company: 'Evoke',
     period: '2024 - Present',
     description: 'Building the infrastructure for human-AI flourishing.',
     achievements: [
@@ -127,8 +127,8 @@ export const portfolioContext = {
       notIs: 'Not a productivity tool, mental health app, social network, belief system, or spiritual authority.',
       principle: 'The system reflects. It does not direct.',
     },
-    evokePassionFramework: {
-      name: 'Evoke Passion Multi-Agent Framework',
+    evokeFramework: {
+      name: 'Evoke Multi-Agent Framework',
       tagline: 'Alignment through contextual architecture.',
       status: 'Active',
       description: 'A 142-agent cooperative AI governance system demonstrating scaffolding-based alignment.',
