@@ -47,6 +47,9 @@ const showFloatingChat = !hideFloatingChat && Astro.url.pathname !== '/ask' && A
     <footer>
       <p>evoked.dev</p>
       <p class="mt-sm">I Evoke.</p>
+      <div class="footer-lips">
+        <img src="/images/evoke-lips-yellow.png" alt="Evoke" class="lips-footer" />
+      </div>
     </footer>
 
     {showFloatingChat && <ChatWidget mode="floating" />}
