@@ -1,7 +1,7 @@
 ---
 title: "Sovereignty-Honoring Design: Building Technology That Respects You"
 description: "What if the apps you use were built to make you more free and not more dependent? This is what sovereignty-honoring design looks like, why it matters now more than ever, and how we practice it."
-pubDate: 2026-02-07
+pubDate: 2026-02-10
 tags: ["sovereignty", "ethics", "design", "privacy", "philosophy"]
 draft: false
 ---
