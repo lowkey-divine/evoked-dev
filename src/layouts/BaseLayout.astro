@@ -5,10 +5,12 @@ interface Props {
   title: string;
   description?: string;
   hideFloatingChat?: boolean;
+  image?: string;
 }
 
-const { title, description = "Space for what matters.", hideFloatingChat = false } = Astro.props;
+const { title, description = "Space for what matters.", hideFloatingChat = false, image = "/images/evoke-lips-yellow.png" } = Astro.props;
 const showFloatingChat = !hideFloatingChat && Astro.url.pathname !== '/ask' && Astro.url.pathname !== '/ask/';
+const canonicalURL = new URL(Astro.url.pathname, "https://evoked.dev");
 ---
 
 <!DOCTYPE html>
@@ -19,6 +21,20 @@ const showFloatingChat = !hideFloatingChat && Astro.url.pathname !== '/ask' && A
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
     <meta name="generator" content={Astro.generator} />
+    <link rel="canonical" href={canonicalURL.href} />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL.href} />
+    <meta property="og:title" content={`${title} — evoked.dev`} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={new URL(image, "https://evoked.dev").href} />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={`${title} — evoked.dev`} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={new URL(image, "https://evoked.dev").href} />
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
