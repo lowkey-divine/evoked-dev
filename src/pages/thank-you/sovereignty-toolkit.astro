@@ -1,0 +1,84 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Thank You" description="Your Sovereignty Assessment Toolkit is ready to download.">
+  <div class="hero">
+    <h1>Thank you.</h1>
+    <p class="tagline">Your Sovereignty Assessment Toolkit is ready.</p>
+  </div>
+
+  <section class="container thank-you-content">
+    <div class="download-card">
+      <h2>Download Your Toolkit</h2>
+      <p>The Sovereignty Assessment Toolkit is a 47-point structured self-assessment across seven domains: Transparency, Autonomy, Invitation, Dignity, Silence, Data Sovereignty, and AI & Voice.</p>
+      <p>It takes about 90 minutes to complete - or start with the 6 Red Flag Items in 5 minutes.</p>
+      <a href="/downloads/Sovereignty-Assessment-Toolkit-v1.0.pdf" class="btn btn-primary mt-md" download>Download PDF</a>
+      <p class="text-muted mt-md" style="font-size: 0.85rem;">If you have any issues with your download, reach out at <a href="mailto:erin@evoked.dev">erin@evoked.dev</a>.</p>
+    </div>
+  </section>
+
+  <section class="container">
+    <h2>What's Next</h2>
+    <div class="next-steps">
+      <div class="card">
+        <h3>Run the Assessment</h3>
+        <p>Set aside 90 minutes. Be honest. The value is in the truth, not the score.</p>
+      </div>
+      <div class="card">
+        <h3>Go Deeper</h3>
+        <p>If the assessment surfaces structural questions, a <a href="/consulting">Sovereignty-Honoring Design Workshop</a> or <a href="/consulting">Privacy Architecture Review</a> can help.</p>
+      </div>
+      <div class="card">
+        <h3>Talk It Through</h3>
+        <p>Book a free <a href="https://cal.com/evoked/discovery-call" target="_blank" rel="noopener">discovery call</a> to discuss your results.</p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .thank-you-content {
+    max-width: 640px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .download-card {
+    background: var(--accent-subtle);
+    border: 2px solid var(--accent-warm);
+    border-radius: 12px;
+    padding: var(--space-lg);
+    text-align: center;
+  }
+
+  .download-card h2 {
+    margin-top: 0;
+  }
+
+  .next-steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--space-md);
+  }
+
+  .next-steps .card h3 {
+    font-size: 1.1rem;
+  }
+
+  .next-steps .card p {
+    font-size: 0.9rem;
+    margin-bottom: 0;
+  }
+
+  .btn-primary {
+    background: var(--accent-warm);
+    color: var(--bg-deep);
+    display: inline-block;
+  }
+
+  .btn-primary:hover {
+    background: var(--accent-glow);
+    color: var(--bg-deep);
+  }
+</style>

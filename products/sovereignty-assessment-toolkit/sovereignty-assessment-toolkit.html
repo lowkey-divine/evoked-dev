@@ -1,0 +1,1166 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>sovereignty-assessment-toolkit</title>
+  <style>
+
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+  <style type="text/css">@page {
+size: letter;
+margin: 1in 0.85in;
+@bottom-center {
+content: counter(page);
+font-size: 9pt;
+color: #888;
+font-family: 'Georgia', serif;
+}
+}
+body {
+font-family: 'Georgia', serif;
+font-size: 11pt;
+line-height: 1.6;
+color: #1a1a1a;
+}
+h1 {
+font-size: 24pt;
+color: #2c2c2c;
+border-bottom: 2px solid #c8956e;
+padding-bottom: 8pt;
+margin-top: 0;
+}
+h2 {
+font-size: 16pt;
+color: #2c2c2c;
+margin-top: 28pt;
+border-bottom: 1px solid #ddd;
+padding-bottom: 4pt;
+}
+h3 {
+font-size: 13pt;
+color: #444;
+margin-top: 20pt;
+}
+p {
+margin-bottom: 8pt;
+}
+blockquote {
+border-left: 3px solid #c8956e;
+padding-left: 12pt;
+margin-left: 0;
+color: #555;
+font-style: italic;
+}
+table {
+width: 100%;
+border-collapse: collapse;
+margin: 12pt 0;
+font-size: 10pt;
+}
+th {
+background: #f5f0eb;
+color: #2c2c2c;
+font-weight: bold;
+text-align: left;
+padding: 8pt 10pt;
+border: 1px solid #ddd;
+}
+td {
+padding: 6pt 10pt;
+border: 1px solid #ddd;
+vertical-align: top;
+}
+tr:nth-child(even) td {
+background: #fafaf8;
+}
+code {
+font-family: 'Courier New', monospace;
+font-size: 9pt;
+background: #f5f0eb;
+padding: 2pt 4pt;
+border-radius: 3pt;
+}
+pre {
+background: #f5f0eb;
+padding: 12pt;
+border-radius: 4pt;
+font-size: 9pt;
+line-height: 1.4;
+overflow-wrap: break-word;
+white-space: pre-wrap;
+}
+hr {
+border: none;
+border-top: 1px solid #ddd;
+margin: 24pt 0;
+}
+strong {
+color: #2c2c2c;
+}
+em {
+color: #555;
+}
+ul, ol {
+margin-bottom: 8pt;
+padding-left: 20pt;
+}
+li {
+margin-bottom: 4pt;
+}
+
+.cover {
+text-align: center;
+padding-top: 2in;
+page-break-after: always;
+}
+.cover h1 {
+font-size: 32pt;
+border: none;
+color: #2c2c2c;
+margin-bottom: 8pt;
+}
+.cover .subtitle {
+font-size: 14pt;
+color: #666;
+font-style: italic;
+margin-bottom: 48pt;
+}
+.cover .brand {
+font-size: 12pt;
+color: #c8956e;
+letter-spacing: 2pt;
+text-transform: uppercase;
+}
+.cover .version {
+font-size: 10pt;
+color: #888;
+margin-top: 8pt;
+}
+</style>
+</head>
+<body>
+<div class="cover">
+  <h1>Sovereignty Assessment Toolkit</h1>
+  <p class="subtitle">A structured self-assessment framework for evaluating<br>whether the technology you use or build honors human sovereignty.</p>
+  <p class="brand">evoked.dev</p>
+  <p class="version">Version 1.0 · 2026</p>
+</div>
+<h1 id="sovereignty-assessment-toolkit">Sovereignty Assessment
+Toolkit</h1>
+<p><strong>A structured self-assessment framework for evaluating whether
+the technology you use or build honors human sovereignty.</strong></p>
+<p>Version 1.0 | evoked.dev | 2026</p>
+<hr />
+<h2 id="how-to-use-this-toolkit">How to Use This Toolkit</h2>
+<p>This toolkit has three parts:</p>
+<ol type="1">
+<li><strong>The 47-Point Checklist</strong> - Walk through each item
+honestly. Rate your product or the product you’re evaluating.</li>
+<li><strong>The Scoring Rubric</strong> - Calculate a Sovereignty Score
+across seven domains.</li>
+<li><strong>The Action Plan Template</strong> - Prioritize what to fix,
+assign owners, and track progress.</li>
+</ol>
+<p>You can use this to assess: - A product you’re building - A product
+your organization uses - A vendor or partner’s product before adoption -
+Your own design practices and culture</p>
+<p>Be honest. The value of this assessment is in the truth, not in the
+score.</p>
+<p>This toolkit reflects a specific tradition of design ethics rooted in
+Western technology culture. The principles are offered as starting
+points - not universal truths. If your cultural context values community
+stewardship over individual data control, or warmth and presence over
+silence, that is not a failure of sovereignty. It is sovereignty in
+practice. Bring your own ground to this assessment.</p>
+<hr />
+<h2 id="start-here">Start Here</h2>
+<p>If you have 5 minutes, start with the six items that matter most.
+These are the <strong>Red Flag Items</strong> - fundamental sovereignty
+requirements that override everything else. A product that fails any one
+of these has work to do, regardless of its overall score.</p>
+<p>Score each item: <strong>2</strong> (yes), <strong>1</strong>
+(partial), <strong>0</strong> (no).</p>
+<table>
+<colgroup>
+<col style="width: 18%" />
+<col style="width: 37%" />
+<col style="width: 43%" />
+</colgroup>
+<thead>
+<tr>
+<th>#</th>
+<th>Item</th>
+<th>Score</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>13</td>
+<td>Account deletion is straightforward, complete, and timely.</td>
+<td>___</td>
+</tr>
+<tr>
+<td>24</td>
+<td>No confirmshaming.</td>
+<td>___</td>
+</tr>
+<tr>
+<td>25</td>
+<td>No artificial urgency or scarcity.</td>
+<td>___</td>
+</tr>
+<tr>
+<td>27</td>
+<td>No trick questions or misdirection in consent flows.</td>
+<td>___</td>
+</tr>
+<tr>
+<td>30</td>
+<td>Vulnerable populations receive additional protection, not additional
+targeting.</td>
+<td>___</td>
+</tr>
+<tr>
+<td>40</td>
+<td>User data is not sold or shared without explicit, informed
+consent.</td>
+<td>___</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Any item scored 0?</strong> That’s your priority. Address it
+before anything else.</p>
+<p><strong>All items scored 1 or 2?</strong> Good. Now do the full
+47-point assessment - it takes about 90 minutes and will show you the
+complete picture.</p>
+<hr />
+<p><em>You’re here because you care about getting this right. This
+assessment may surface things you hadn’t considered - that’s the point.
+Let it.</em></p>
+<hr />
+<h2 id="part-1-the-47-point-sovereignty-checklist">Part 1: The 47-Point
+Sovereignty Checklist</h2>
+<p>For each item, rate your product:</p>
+<ul>
+<li><strong>2</strong> = Yes, fully implemented</li>
+<li><strong>1</strong> = Partially implemented or inconsistently
+applied</li>
+<li><strong>0</strong> = No, not implemented</li>
+<li><strong>N/A</strong> = Not applicable to this product</li>
+</ul>
+<hr />
+<h3 id="domain-1-transparency-8-items">Domain 1: Transparency (8
+items)</h3>
+<p><em>“Are we honest about what we’re doing and why?”</em></p>
+<table>
+<colgroup>
+<col style="width: 18%" />
+<col style="width: 37%" />
+<col style="width: 43%" />
+</colgroup>
+<thead>
+<tr>
+<th>#</th>
+<th>Item</th>
+<th>Score</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Users can see what data is collected about them.</td>
+<td>___</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Privacy policy is in plain language - not legal boilerplate.</td>
+<td>___</td>
+</tr>
+<tr>
+<td>3</td>
+<td>The business model is visible. Users understand how the product
+makes money.</td>
+<td>___</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Algorithmic recommendations are explained or explainable on
+request.</td>
+<td>___</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Third-party data sharing is disclosed specifically - not bundled
+into a blanket consent.</td>
+<td>___</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Policy changes and updates are communicated proactively, not
+buried.</td>
+<td>___</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Pricing is clear. No hidden fees, surprise charges, or
+bait-and-switch.</td>
+<td>___</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Marketing claims match actual product behavior.</td>
+<td>___</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Domain 1 Total: ___ / 16</strong></p>
+<hr />
+<h3 id="domain-2-autonomy-8-items">Domain 2: Autonomy (8 items)</h3>
+<p><em>“Does the product support user goals - or hijack them?”</em></p>
+<table>
+<colgroup>
+<col style="width: 18%" />
+<col style="width: 37%" />
+<col style="width: 43%" />
+</colgroup>
+<thead>
+<tr>
+<th>#</th>
+<th>Item</th>
+<th>Score</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>9</td>
+<td>Users can complete their primary task without engineered friction
+barriers.</td>
+<td>___</td>
+</tr>
+<tr>
+<td>10</td>
+<td>The product has natural stopping points. No infinite scroll, no
+compulsive autoplay.</td>
+<td>___</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Time-awareness features are available - usage reminders, session
+limits, or break prompts.</td>
+<td>___</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Cancellation is as easy as signup. No retention mazes. No
+phone-call-required cancellation.</td>
+<td>___</td>
+</tr>
+<tr>
+<td>13</td>
+<td>Account deletion is straightforward, complete, and timely.</td>
+<td>___</td>
+</tr>
+<tr>
+<td>14</td>
+<td>Data export is available in a portable, standard format.</td>
+<td>___</td>
+</tr>
+<tr>
+<td>15</td>
+<td>Default settings serve the user’s interest, not engagement
+metrics.</td>
+<td>___</td>
+</tr>
+<tr>
+<td>16</td>
+<td>Users can customize notification frequency, type, and timing.</td>
+<td>___</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Domain 2 Total: ___ / 16</strong></p>
+<hr />
+<h3 id="domain-3-invitation-7-items">Domain 3: Invitation (7 items)</h3>
+<p><em>“Do we earn attention through value - or capture it through
+tricks?”</em></p>
+<table>
+<colgroup>
+<col style="width: 18%" />
+<col style="width: 37%" />
+<col style="width: 43%" />
+</colgroup>
+<thead>
+<tr>
+<th>#</th>
+<th>Item</th>
+<th>Score</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>17</td>
+<td>Onboarding demonstrates value before asking for commitment.</td>
+<td>___</td>
+</tr>
+<tr>
+<td>18</td>
+<td>Notifications respect user-set boundaries and schedules.</td>
+<td>___</td>
+</tr>
+<tr>
+<td>19</td>
+<td>Permission requests happen in context, when the feature is needed -
+not on first launch.</td>
+<td>___</td>
+</tr>
+<tr>
+<td>20</td>
+<td>Re-engagement messages provide genuine value, not guilt or
+manufactured urgency.</td>
+<td>___</td>
+</tr>
+<tr>
+<td>21</td>
+<td>Upgrade prompts are informational and dismissible - not manipulative
+or recurring.</td>
+<td>___</td>
+</tr>
+<tr>
+<td>22</td>
+<td>Free tiers are genuinely functional. Not crippled to coerce
+conversion.</td>
+<td>___</td>
+</tr>
+<tr>
+<td>23</td>
+<td>The product degrades gracefully - it works offline, on slow
+connections, on older devices when possible.</td>
+<td>___</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Domain 3 Total: ___ / 14</strong></p>
+<hr />
+<h3 id="domain-4-dignity-8-items">Domain 4: Dignity (8 items)</h3>
+<p><em>“Do we respect the person - or exploit their
+psychology?”</em></p>
+<table>
+<colgroup>
+<col style="width: 18%" />
+<col style="width: 37%" />
+<col style="width: 43%" />
+</colgroup>
+<thead>
+<tr>
+<th>#</th>
+<th>Item</th>
+<th>Score</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>24</td>
+<td>No confirmshaming. (“Are you sure you want to miss out?” is not a
+real question.)</td>
+<td>___</td>
+</tr>
+<tr>
+<td>25</td>
+<td>No artificial urgency or scarcity. (“Only 2 left!” when there are
+2,000.)</td>
+<td>___</td>
+</tr>
+<tr>
+<td>26</td>
+<td>No guilt mechanics - no streaks designed to punish absence, no sad
+mascots, no social pressure to re-engage.</td>
+<td>___</td>
+</tr>
+<tr>
+<td>27</td>
+<td>No trick questions or misdirection in consent flows. The “yes” and
+“no” are equally clear.</td>
+<td>___</td>
+</tr>
+<tr>
+<td>28</td>
+<td>Error messages are helpful and human - not blaming, not
+cryptic.</td>
+<td>___</td>
+</tr>
+<tr>
+<td>29</td>
+<td>The product accommodates diverse emotional states. It doesn’t assume
+everyone is having a good day.</td>
+<td>___</td>
+</tr>
+<tr>
+<td>30</td>
+<td>Vulnerable populations - children, elderly, people in grief or
+crisis - receive additional protection, not additional targeting.</td>
+<td>___</td>
+</tr>
+<tr>
+<td>31</td>
+<td>Social features don’t exploit comparison, competition, or fear of
+missing out.</td>
+<td>___</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Domain 4 Total: ___ / 16</strong></p>
+<hr />
+<h3 id="domain-5-silence-6-items">Domain 5: Silence (6 items)</h3>
+<p><em>“Do we know when to be quiet?”</em></p>
+<table>
+<colgroup>
+<col style="width: 18%" />
+<col style="width: 37%" />
+<col style="width: 43%" />
+</colgroup>
+<thead>
+<tr>
+<th>#</th>
+<th>Item</th>
+<th>Score</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>32</td>
+<td>The product knows when not to send a notification.</td>
+<td>___</td>
+</tr>
+<tr>
+<td>33</td>
+<td>Quiet modes, focus modes, or reduced-engagement options exist.</td>
+<td>___</td>
+</tr>
+<tr>
+<td>34</td>
+<td>Empty states are calm - not anxiety-inducing calls to action.</td>
+<td>___</td>
+</tr>
+<tr>
+<td>35</td>
+<td>The product doesn’t punish absence. Coming back after time away
+feels like a welcome, not a guilt trip.</td>
+<td>___</td>
+</tr>
+<tr>
+<td>36</td>
+<td>Background data collection and activity are minimal and fully
+disclosed.</td>
+<td>___</td>
+</tr>
+<tr>
+<td>37</td>
+<td>The product supports completion. It can be “done.” It doesn’t
+engineer endless engagement.</td>
+<td>___</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Domain 5 Total: ___ / 12</strong></p>
+<hr />
+<h3 id="domain-6-data-sovereignty-5-items">Domain 6: Data Sovereignty (5
+items)</h3>
+<p><em>“Does the user’s data serve the user - or the business?”</em></p>
+<table>
+<colgroup>
+<col style="width: 18%" />
+<col style="width: 37%" />
+<col style="width: 43%" />
+</colgroup>
+<thead>
+<tr>
+<th>#</th>
+<th>Item</th>
+<th>Score</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>38</td>
+<td>Data collection is minimized to what the feature actually needs. No
+“collect everything, figure out use later.”</td>
+<td>___</td>
+</tr>
+<tr>
+<td>39</td>
+<td>Sensitive data is encrypted at rest and in transit.</td>
+<td>___</td>
+</tr>
+<tr>
+<td>40</td>
+<td>User data is not sold, shared for advertising, or monetized without
+explicit, informed consent.</td>
+<td>___</td>
+</tr>
+<tr>
+<td>41</td>
+<td>Consent is granular. Separate permissions for separate uses. Users
+can say yes to some and no to others.</td>
+<td>___</td>
+</tr>
+<tr>
+<td>42</td>
+<td>Data retention has clear, documented limits. Users can see and
+control how long their data is kept.</td>
+<td>___</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Domain 6 Total: ___ / 10</strong></p>
+<hr />
+<h3 id="domain-7-ai-and-voice-5-items">Domain 7: AI and Voice (5
+items)</h3>
+<p><em>“If the product uses AI - does the AI honor sovereignty
+too?”</em></p>
+<table>
+<colgroup>
+<col style="width: 18%" />
+<col style="width: 37%" />
+<col style="width: 43%" />
+</colgroup>
+<thead>
+<tr>
+<th>#</th>
+<th>Item</th>
+<th>Score</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>43</td>
+<td>AI agents are honest about what they don’t know. They say “I’m not
+sure” instead of fabricating.</td>
+<td>___</td>
+</tr>
+<tr>
+<td>44</td>
+<td>The AI’s voice reflects intentional values - not unexamined
+defaults. Someone chose how it speaks.</td>
+<td>___</td>
+</tr>
+<tr>
+<td>45</td>
+<td>AI interactions don’t use sycophancy, emotional manipulation, or
+false urgency.</td>
+<td>___</td>
+</tr>
+<tr>
+<td>46</td>
+<td>AI outputs are presented as suggestions - not commands. The human
+remains the decision-maker.</td>
+<td>___</td>
+</tr>
+<tr>
+<td>47</td>
+<td>AI interactions are reviewable. Users can see what the AI said,
+correct it, or report problems.</td>
+<td>___</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Domain 7 Total: ___ / 10</strong></p>
+<hr />
+<h2 id="part-2-scoring-rubric">Part 2: Scoring Rubric</h2>
+<h3 id="calculate-your-sovereignty-score">Calculate Your Sovereignty
+Score</h3>
+<p>Transfer your domain totals here:</p>
+<table>
+<thead>
+<tr>
+<th>Domain</th>
+<th>Your Score</th>
+<th>Max Score</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. Transparency</td>
+<td>___</td>
+<td>16</td>
+</tr>
+<tr>
+<td>2. Autonomy</td>
+<td>___</td>
+<td>16</td>
+</tr>
+<tr>
+<td>3. Invitation</td>
+<td>___</td>
+<td>14</td>
+</tr>
+<tr>
+<td>4. Dignity</td>
+<td>___</td>
+<td>16</td>
+</tr>
+<tr>
+<td>5. Silence</td>
+<td>___</td>
+<td>12</td>
+</tr>
+<tr>
+<td>6. Data Sovereignty</td>
+<td>___</td>
+<td>10</td>
+</tr>
+<tr>
+<td>7. AI and Voice</td>
+<td>___</td>
+<td>10</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td>**___**</td>
+<td><strong>94</strong></td>
+</tr>
+</tbody>
+</table>
+<p>If you marked items N/A, adjust the maximum score accordingly.</p>
+<hr />
+<h3 id="sovereignty-score-bands">Sovereignty Score Bands</h3>
+<p><strong>80-94: Sovereignty-Honoring</strong> Your product
+demonstrates genuine respect for users. You’ve made intentional choices
+that prioritize human agency over engagement metrics. Keep going. The
+work is never finished, but the foundation is solid.</p>
+<p><strong>60-79: Progressing</strong> You’ve made real progress. Some
+domains are strong, others need work. Look at your weakest domain -
+that’s where your users feel it most. The gap between your best and
+worst domain tells you where your blind spots are.</p>
+<p><strong>40-59: Mixed</strong> The product serves users in some ways
+and extracts from them in others. This is where most products land - and
+where honesty matters most. The question isn’t whether you have
+problems. It’s whether you’re willing to name them. A score is a mirror,
+not a badge. Use it accordingly.</p>
+<p><strong>20-39: Extractive</strong> The product’s architecture is
+primarily designed to serve business metrics over user wellbeing. This
+isn’t a condemnation - it’s a starting point. Most products in this
+range were built inside systems that reward extraction. Changing
+requires structural commitment, not just interface adjustments.</p>
+<p><strong>0-19: Adversarial</strong> The product is actively working
+against user interests. This score suggests patterns that may also carry
+regulatory risk. Immediate attention is warranted - not just for ethics,
+but for business sustainability.</p>
+<hr />
+<h3 id="domain-health-map">Domain Health Map</h3>
+<p>Plot your domain scores to see your sovereignty shape. A balanced
+product scores consistently across all domains. A lopsided product may
+have strong privacy but weak dignity protections - or solid transparency
+but extractive engagement patterns.</p>
+<table>
+<thead>
+<tr>
+<th>Domain</th>
+<th>0-25%</th>
+<th>26-50%</th>
+<th>51-75%</th>
+<th>76-100%</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. Transparency</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>2. Autonomy</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>3. Invitation</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>4. Dignity</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>5. Silence</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>6. Data Sovereignty</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>7. AI and Voice</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Mark where each domain falls. The shape that emerges tells you where
+your product truly stands - not where you believe it stands.</p>
+<hr />
+<h3 id="red-flag-items">Red Flag Items</h3>
+<p>Certain items carry outsized weight. A score of 0 on any of the
+following indicates a fundamental sovereignty violation that should be
+addressed regardless of overall score:</p>
+<ul>
+<li><strong>Item 13</strong> - Account deletion unavailable or
+obstructed</li>
+<li><strong>Item 24</strong> - Confirmshaming in use</li>
+<li><strong>Item 25</strong> - Artificial scarcity or urgency
+deployed</li>
+<li><strong>Item 27</strong> - Trick questions in consent flows</li>
+<li><strong>Item 30</strong> - Vulnerable populations not receiving
+additional protection</li>
+<li><strong>Item 40</strong> - User data sold or shared without explicit
+consent</li>
+</ul>
+<p>A product can score 80 overall and still have a critical sovereignty
+failure if any of these six items scores 0.</p>
+<hr />
+<h2 id="the-question-beneath-the-questions">The Question Beneath the
+Questions</h2>
+<p>You now have a score, a domain map, and a list of red flags. Before
+you move to the action plan, sit with this:</p>
+<p>Every one of the 47 items you just assessed is a specific instance of
+three deeper questions.</p>
+<ol type="1">
+<li><strong>What is the person (user, participant, member) trying to
+do?</strong></li>
+<li><strong>What is the product trying to do?</strong></li>
+<li><strong>Are these aligned?</strong></li>
+</ol>
+<p>When the answer to question 3 is “yes,” sovereignty is honored. When
+the answer is “no,” you have a tension - and that tension is worth
+naming out loud, not burying in a backlog.</p>
+<p>These three questions are the generative principle behind this entire
+toolkit. Carry them with you after you close this document. They work in
+design reviews, product roadmaps, feature planning, and any conversation
+where someone says “but the metrics show…”</p>
+<p>The metrics show what the product is doing. These questions ask
+whether that’s the same thing the person needed.</p>
+<hr />
+<h2 id="part-3-action-plan-template">Part 3: Action Plan Template</h2>
+<h3 id="step-1-identify-priority-items">Step 1: Identify Priority
+Items</h3>
+<p>List every item that scored 0 or 1. Then categorize:</p>
+<p><strong>Red Flags (Score = 0 on critical items)</strong></p>
+<table>
+<thead>
+<tr>
+<th>Item #</th>
+<th>Description</th>
+<th>Current State</th>
+<th>Why It Matters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>High-Impact Gaps (Score = 0 on any item)</strong></p>
+<table>
+<thead>
+<tr>
+<th>Item #</th>
+<th>Description</th>
+<th>Users Affected</th>
+<th>Severity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Improvement Opportunities (Score = 1)</strong></p>
+<table>
+<thead>
+<tr>
+<th>Item #</th>
+<th>Description</th>
+<th>What’s Missing</th>
+<th>Effort to Complete</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="step-2-prioritize">Step 2: Prioritize</h3>
+<p>Use this matrix to sequence your work:</p>
+<pre><code>                    HIGH IMPACT
+                        |
+        Quick Wins      |      Major Projects
+        (Do first)      |      (Plan and schedule)
+                        |
+   LOW EFFORT --------- + --------- HIGH EFFORT
+                        |
+        Nice to Have    |      Revisit Later
+        (When bandwidth |      (After quick wins
+         allows)        |       show results)
+                        |
+                    LOW IMPACT</code></pre>
+<p>Place each item in the appropriate quadrant. Start with the upper
+left.</p>
+<hr />
+<h3 id="step-3-create-the-plan">Step 3: Create the Plan</h3>
+<p><strong>Quick Wins (This Sprint - 1-2 Weeks)</strong></p>
+<table>
+<thead>
+<tr>
+<th>Item #</th>
+<th>What Changes</th>
+<th>Owner</th>
+<th>Deadline</th>
+<th>Done?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Medium-Term (This Quarter)</strong></p>
+<table>
+<thead>
+<tr>
+<th>Item #</th>
+<th>What Changes</th>
+<th>Owner</th>
+<th>Deadline</th>
+<th>Done?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Structural Changes (This Year)</strong></p>
+<table>
+<thead>
+<tr>
+<th>Item #</th>
+<th>What Changes</th>
+<th>Owner</th>
+<th>Resources Needed</th>
+<th>Done?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="step-4-culture-and-process">Step 4: Culture and Process</h3>
+<p>Technical changes fix individual items. Culture changes prevent new
+violations.</p>
+<p><strong>Design Review Sovereignty Check</strong> Add these three
+questions to every design review: 1. What is the user trying to do? 2.
+What is the product trying to do? 3. Are these aligned?</p>
+<p>If the answer to question 3 is “no” - that’s a sovereignty tension.
+Name it. Discuss it. Decide consciously.</p>
+<p><strong>Using This With Your Team</strong></p>
+<p>This toolkit is powerful alone. It’s transformative with a team.</p>
+<ol type="1">
+<li>Have each person score independently first. Don’t discuss until
+everyone has finished.</li>
+<li>Compare scores. Where you disagree is where the real conversation
+lives.</li>
+<li>The goal is not consensus on the score. The goal is honesty about
+the product.</li>
+<li>If the team unanimously scores every item high, be suspicious.
+Unanimous comfort usually means someone isn’t speaking.</li>
+</ol>
+<p>If your team runs this assessment and discovers significant
+disagreement about where you stand - that’s not a problem. That’s the
+beginning of the real work. For facilitated team assessments and
+sovereignty workshops, visit evoked.dev/consulting.</p>
+<p><strong>Quarterly Re-Assessment</strong> Run this assessment every
+quarter. Track your score over time. Celebrate improvements. Investigate
+regressions. The score isn’t the goal - the practice of looking honestly
+is.</p>
+<p><strong>New Feature Sovereignty Gate</strong> Before shipping any new
+feature, run items 9, 15, 24, 25, 26, and 27 against it. These six items
+catch the most common sovereignty violations in new work.</p>
+<hr />
+<h2 id="appendix-the-five-principles">Appendix: The Five Principles</h2>
+<p>These five principles form the foundation of sovereignty-honoring
+design. They are not aspirations - they are decision-making tools. When
+you face a trade-off, these tell you which direction to lean.</p>
+<h3 id="transparency-over-manipulation">1. Transparency over
+Manipulation</h3>
+<p>Be honest about what you’re doing and why. No hidden agendas in UI
+choices. Users should understand the exchange they’re making. If you
+wouldn’t be comfortable explaining a feature’s real purpose to a user’s
+face, reconsider the feature.</p>
+<h3 id="autonomy-over-addiction">2. Autonomy over Addiction</h3>
+<p>Support user goals, not your metrics. Make it easy to stop. Make it
+easy to leave. Optimize for time well spent - not time spent. The
+product that helps someone finish faster and get back to their life is
+more valuable than the one that holds them hostage.</p>
+<h3 id="invitation-over-extraction">3. Invitation over Extraction</h3>
+<p>Earn attention through genuine value. Notifications should be gifts,
+not interruptions. Permission requests should happen when context makes
+them meaningful. Defaults should be what a friend would choose for the
+user - not what maximizes your conversion.</p>
+<h3 id="dignity-over-exploitation">4. Dignity over Exploitation</h3>
+<p>Never use shame, guilt, or FOMO as design levers. Respect
+psychological vulnerabilities - don’t target them. Be especially careful
+with children, with grieving people, with anyone in a vulnerable state.
+The question is always: would I want someone to use this tactic on my
+family?</p>
+<h3 id="silence-over-noise">5. Silence over Noise</h3>
+<p>Know when not to speak. Know when not to notify. Know when not to
+build. Absence can be a feature. The product that is quiet when you
+don’t need it respects you more than the one that manufactures reasons
+to interrupt. Silence is not emptiness. It is space left for living.</p>
+<hr />
+<h2 id="about-this-toolkit">About This Toolkit</h2>
+<p>The Sovereignty Assessment Toolkit was created by Erin Stanley at
+evoked.dev.</p>
+<p>It draws from sovereignty-honoring design principles developed
+through building family technology, governing a fleet of 142 AI agents,
+and the conviction that the technology you build reflects who you
+are.</p>
+<p>If you want to go deeper: - <strong>Sovereignty-Honoring Design
+Workshop</strong> ($4,000) - Half-day training for your team -
+<strong>Privacy Architecture Review</strong> ($3,000) - Expert
+assessment of your data practices - <strong>Ethical AI
+Architecture</strong> ($20,000) - Full governance and alignment design -
+<strong>Advisory Retainer</strong> ($3,500/month) - Ongoing sovereignty
+guidance</p>
+<p>Learn more at evoked.dev/consulting</p>
+<p>Schedule a free discovery call at cal.com/evoked/discovery-call</p>
+<hr />
+<p>You just did something most companies won’t: you looked honestly at
+what you’ve built. That takes courage. The work isn’t finished - it
+never is. But the practice of looking honestly is itself the change.</p>
+<p><em>evoked.dev - “We evoke - we never extract.”</em></p>
+</body>
+</html>

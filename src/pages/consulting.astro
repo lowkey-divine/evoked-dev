@@ -27,6 +27,18 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   </section>
 
   <section class="container">
+    <div class="toolkit-card">
+      <div class="toolkit-content">
+        <h2>Sovereignty Assessment Toolkit</h2>
+        <p class="toolkit-price">$49</p>
+        <p>A structured self-assessment framework for evaluating whether the technology you use or build honors human sovereignty. Includes 47-point checklist across 7 domains, scoring rubric, and action plan template.</p>
+        <p class="text-muted" style="font-size: 0.9rem;">Digital PDF download. Use it on your own product, a vendor's product, or before adopting new technology.</p>
+        <a href="https://buy.stripe.com/8x2cN5aRi0aV11yf4024001" class="btn btn-primary mt-md" target="_blank" rel="noopener">Buy Now</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="container">
     <h2>Services</h2>
 
     <div class="guarantee">
@@ -202,5 +214,24 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   .btn-primary:hover {
     background: var(--accent-glow);
     color: var(--bg-deep);
+  }
+
+  .toolkit-card {
+    background: var(--accent-subtle);
+    border: 2px solid var(--accent-warm);
+    border-radius: 12px;
+    padding: var(--space-lg);
+    margin-bottom: var(--space-lg);
+  }
+
+  .toolkit-content h2 {
+    margin-top: 0;
+  }
+
+  .toolkit-price {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--accent-warm);
+    margin: var(--space-sm) 0;
   }
 </style>
