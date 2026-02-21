@@ -65,9 +65,9 @@ export function sovereigntyToolkitEmail(downloadUrl: string, customerName?: stri
               <hr style="border: none; border-top: 1px solid #e0dcd6; margin: 24px 0;">
 
               <p style="color: #666666; font-size: 14px; line-height: 1.6; margin: 0;">
-                Questions or feedback? Reply to this email or reach out at
+                This is an automated message - please do not reply to this email.
+                Questions or feedback? Reach out at
                 <a href="mailto:evokesupports@icloud.com" style="color: #1a1a2e;">evokesupports@icloud.com</a>.
-                I read every message.
               </p>
             </td>
           </tr>
