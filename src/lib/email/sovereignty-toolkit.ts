@@ -66,7 +66,7 @@ export function sovereigntyToolkitEmail(downloadUrl: string, customerName?: stri
 
               <p style="color: #666666; font-size: 14px; line-height: 1.6; margin: 0;">
                 Questions or feedback? Reply to this email or reach out at
-                <a href="mailto:erin@evoked.dev" style="color: #1a1a2e;">erin@evoked.dev</a>.
+                <a href="mailto:evokesupports@icloud.com" style="color: #1a1a2e;">evokesupports@icloud.com</a>.
                 I read every message.
               </p>
             </td>
