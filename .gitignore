@@ -17,8 +17,8 @@ pnpm-debug.log*
 .env
 .env.production
 
-# product source files
-products/
+# product source files (top-level only, not src/lib/products/)
+/products/
 
 # macOS-specific files
 .DS_Store
