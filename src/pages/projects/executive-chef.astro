@@ -81,18 +81,55 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
   <section class="container text-center">
     <h2>Coming Soon</h2>
     <p>Join the waitlist to be notified when Executive Chef launches.</p>
-    <form
-      action="https://buttondown.email/api/emails/embed-subscribe/evoke"
-      method="post"
-      target="popupwindow"
-      class="waitlist-form mt-md"
-    >
-      <input type="email" name="email" placeholder="your@email.com" required />
-      <button type="submit" class="btn">Join Waitlist</button>
+    <form id="waitlist-form" class="waitlist-form mt-md">
+      <input type="email" id="waitlist-email" name="email" placeholder="your@email.com" required aria-label="Email address" />
+      <button type="submit" class="btn btn-primary">Join Waitlist</button>
     </form>
+    <p id="waitlist-status" class="waitlist-status" aria-live="polite"></p>
     <p class="form-note">No spam. Just launch updates.</p>
   </section>
 </BaseLayout>
+
+<script>
+  const form = document.getElementById('waitlist-form') as HTMLFormElement;
+  const status = document.getElementById('waitlist-status') as HTMLParagraphElement;
+  const emailInput = document.getElementById('waitlist-email') as HTMLInputElement;
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const email = emailInput.value.trim();
+    if (!email) return;
+
+    status.textContent = '';
+    const button = form.querySelector('button') as HTMLButtonElement;
+    button.disabled = true;
+    button.textContent = 'Joining...';
+
+    try {
+      const res = await fetch('/api/newsletter/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      });
+
+      if (res.ok) {
+        status.textContent = 'You are in. Welcome.';
+        status.className = 'waitlist-status success';
+        emailInput.value = '';
+      } else {
+        const data = await res.json();
+        status.textContent = data.error || 'Something went wrong. Try again.';
+        status.className = 'waitlist-status error';
+      }
+    } catch {
+      status.textContent = 'Something went wrong. Try again.';
+      status.className = 'waitlist-status error';
+    } finally {
+      button.disabled = false;
+      button.textContent = 'Join Waitlist';
+    }
+  });
+</script>
 
 <style>
   .principles {
@@ -173,6 +210,20 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 
   .waitlist-form input[type="email"]::placeholder {
     color: var(--text-muted);
+  }
+
+  .waitlist-status {
+    font-size: 0.85rem;
+    margin-top: var(--space-sm);
+    min-height: 1.2em;
+  }
+
+  .waitlist-status.success {
+    color: var(--accent-warm);
+  }
+
+  .waitlist-status.error {
+    color: #e57373;
   }
 
   .form-note {
