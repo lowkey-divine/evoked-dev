@@ -107,6 +107,23 @@ const products: Record<string, Product> = {
       'Run the Voice Quality Checks before deploying any agent voice',
     ],
   },
+  'agent-memory-architecture-guide': {
+    slug: 'agent-memory-architecture-guide',
+    name: 'Agent Memory Architecture Guide',
+    price: 49,
+    tagline: 'Design what your agents remember, what they forget, and who decides.',
+    description: 'A complete framework for memory types, memory governance, session protocols, the canonical rule for resolving memory conflicts, and retention policies including the right to be forgotten.',
+    emailSubject: 'Your Agent Memory Architecture Guide',
+    downloadPath: '/downloads/Agent-Memory-Architecture-Guide-v1.0.pdf',
+    thankYouPath: '/thank-you/agent-memory-architecture-guide',
+    stripePaymentLink: '', // Set after Stripe Payment Link creation
+    gettingStartedSteps: [
+      'Run the 10-Minute Memory Diagnostic to identify your biggest gap',
+      'Use Part 1 to separate your operational memory from identity memory',
+      'Build your Memory Governance Specification using the template in Part 2',
+      'Write your Canonical Rule - the one sentence that defines which memory source wins',
+    ],
+  },
   'trust-architecture-complete': {
     slug: 'trust-architecture-complete',
     name: 'Trust Architecture Complete',
