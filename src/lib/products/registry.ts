@@ -48,7 +48,7 @@ const products: Record<string, Product> = {
     emailSubject: 'Your Agent Governance Starter Kit',
     downloadPath: '/downloads/Agent-Governance-Starter-Kit-v1.0.pdf',
     thankYouPath: '/thank-you/agent-governance-starter-kit',
-    stripePaymentLink: '', // Set after Stripe Payment Link creation
+    stripePaymentLink: 'https://buy.stripe.com/5kQ14ngbC0aVh0wf4024004',
     gettingStartedSteps: [
       'Read the introduction to understand the five governance layers',
       'Start with the Charter Template - define your agents\' purpose and boundaries',
@@ -65,7 +65,7 @@ const products: Record<string, Product> = {
     emailSubject: 'Your Agent Restraint Specification Template',
     downloadPath: '/downloads/Agent-Restraint-Specification-v1.0.pdf',
     thankYouPath: '/thank-you/agent-restraint-specification',
-    stripePaymentLink: '', // Set after Stripe Payment Link creation
+    stripePaymentLink: 'https://buy.stripe.com/3cIaEX3oQcXHaC82he24005',
     gettingStartedSteps: [
       'Run the Boundary Audit on your current agent capabilities',
       'Map each capability against the authorization gap template',
@@ -82,7 +82,7 @@ const products: Record<string, Product> = {
     emailSubject: 'Your Trust Architecture Blueprint',
     downloadPath: '/downloads/Trust-Architecture-Blueprint-v1.0.pdf',
     thankYouPath: '/thank-you/trust-architecture-blueprint',
-    stripePaymentLink: '', // Set after Stripe Payment Link creation
+    stripePaymentLink: 'https://buy.stripe.com/5kQdR91gIg9TaC84pm24002',
     gettingStartedSteps: [
       'Read the four-pillar overview to understand the trust architecture model',
       'Start with Identity Architecture - create your first agent persona file',
@@ -99,7 +99,7 @@ const products: Record<string, Product> = {
     emailSubject: 'Your Agent Voice Architecture Guide',
     downloadPath: '/downloads/Agent-Voice-Architecture-Guide-v1.0.pdf',
     thankYouPath: '/thank-you/agent-voice-architecture-guide',
-    stripePaymentLink: '', // Set after Stripe Payment Link creation
+    stripePaymentLink: 'https://buy.stripe.com/bJe5kDgbC7Dn4dK7By24003',
     gettingStartedSteps: [
       'Read the Voice Problem section to understand extraction vs. sovereignty language',
       'Use the Voice Design Principles to establish your three-level framework',
@@ -116,7 +116,7 @@ const products: Record<string, Product> = {
     emailSubject: 'Your Agent Memory Architecture Guide',
     downloadPath: '/downloads/Agent-Memory-Architecture-Guide-v1.0.pdf',
     thankYouPath: '/thank-you/agent-memory-architecture-guide',
-    stripePaymentLink: '', // Set after Stripe Payment Link creation
+    stripePaymentLink: 'https://buy.stripe.com/14A9AT6B2bTDh0wcVS24006',
     gettingStartedSteps: [
       'Run the 10-Minute Memory Diagnostic to identify your biggest gap',
       'Use Part 1 to separate your operational memory from identity memory',
@@ -133,7 +133,7 @@ const products: Record<string, Product> = {
     emailSubject: 'Your Trust Architecture Complete Bundle',
     downloadPath: '/thank-you/trust-architecture-complete',
     thankYouPath: '/thank-you/trust-architecture-complete',
-    stripePaymentLink: '', // Set after Stripe Payment Link creation
+    stripePaymentLink: 'https://buy.stripe.com/aFacN5aRi3n7aC809624007',
     gettingStartedSteps: [
       'Start with the Trust Architecture Blueprint - it provides the four-pillar overview',
       'Build your first agent persona file using the Identity Architecture template',
