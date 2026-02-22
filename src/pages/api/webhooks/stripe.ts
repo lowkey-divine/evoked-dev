@@ -79,6 +79,24 @@ export const POST: APIRoute = async ({ request }) => {
         headers: { 'Content-Type': 'application/json' },
       });
     }
+
+    // Auto-subscribe buyer to newsletter
+    const audienceId = import.meta.env.RESEND_AUDIENCE_ID;
+    if (audienceId) {
+      try {
+        const resend = getResendClient();
+        const firstName = customerName?.split(' ')[0];
+        await resend.contacts.create({
+          email: customerEmail.toLowerCase().trim(),
+          firstName: firstName || undefined,
+          audienceId,
+        });
+        console.log('Newsletter subscriber added:', customerEmail);
+      } catch (err) {
+        // Don't fail the webhook if newsletter subscribe fails
+        console.error('Failed to add newsletter subscriber:', err);
+      }
+    }
   }
 
   // Acknowledge receipt — Stripe expects 200 for all handled events

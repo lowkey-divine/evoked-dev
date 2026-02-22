@@ -29,7 +29,62 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </div>
     </div>
   </section>
+
+  <section class="container">
+    <div class="newsletter-card">
+      <h2>Stay in the conversation.</h2>
+      <p>Sovereignty-honoring design, ethical AI, and building things that matter. Short, honest, no spam.</p>
+      <form id="newsletter-form" class="newsletter-form">
+        <div class="form-row">
+          <input type="email" id="newsletter-email" name="email" placeholder="Your email" required aria-label="Email address" />
+          <button type="submit" class="btn btn-primary">Subscribe</button>
+        </div>
+        <p id="newsletter-status" class="newsletter-status" aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
 </BaseLayout>
+
+<script>
+  const form = document.getElementById('newsletter-form') as HTMLFormElement;
+  const status = document.getElementById('newsletter-status') as HTMLParagraphElement;
+  const emailInput = document.getElementById('newsletter-email') as HTMLInputElement;
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const email = emailInput.value.trim();
+    if (!email) return;
+
+    status.textContent = '';
+    const button = form.querySelector('button') as HTMLButtonElement;
+    button.disabled = true;
+    button.textContent = 'Subscribing...';
+
+    try {
+      const res = await fetch('/api/newsletter/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      });
+
+      if (res.ok) {
+        status.textContent = 'You are in. Welcome.';
+        status.className = 'newsletter-status success';
+        emailInput.value = '';
+      } else {
+        const data = await res.json();
+        status.textContent = data.error || 'Something went wrong. Try again.';
+        status.className = 'newsletter-status error';
+      }
+    } catch {
+      status.textContent = 'Something went wrong. Try again.';
+      status.className = 'newsletter-status error';
+    } finally {
+      button.disabled = false;
+      button.textContent = 'Subscribe';
+    }
+  });
+</script>
 
 <style>
   .paths {
@@ -57,5 +112,84 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   .path-group p {
     margin-bottom: var(--space-md);
     font-size: 0.95rem;
+  }
+
+  .newsletter-card {
+    max-width: 540px;
+    margin: var(--space-lg) auto 0;
+    text-align: center;
+  }
+
+  .newsletter-card h2 {
+    margin-bottom: var(--space-xs);
+  }
+
+  .newsletter-card > p {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    margin-bottom: var(--space-md);
+  }
+
+  .form-row {
+    display: flex;
+    gap: var(--space-sm);
+    justify-content: center;
+  }
+
+  .form-row input[type="email"] {
+    flex: 1;
+    max-width: 300px;
+    padding: 0.6rem 1rem;
+    border: 1px solid var(--border-subtle);
+    border-radius: 6px;
+    background: transparent;
+    color: var(--text-primary);
+    font-family: inherit;
+    font-size: 0.95rem;
+  }
+
+  .form-row input[type="email"]:focus {
+    outline: none;
+    border-color: var(--accent-warm);
+  }
+
+  .form-row input[type="email"]::placeholder {
+    color: var(--text-muted);
+  }
+
+  .btn-primary {
+    background: var(--accent-warm);
+    color: var(--bg-deep);
+    white-space: nowrap;
+  }
+
+  .btn-primary:hover {
+    background: var(--accent-glow);
+    color: var(--bg-deep);
+  }
+
+  .newsletter-status {
+    font-size: 0.85rem;
+    margin-top: var(--space-sm);
+    min-height: 1.2em;
+  }
+
+  .newsletter-status.success {
+    color: var(--accent-warm);
+  }
+
+  .newsletter-status.error {
+    color: #e57373;
+  }
+
+  @media (max-width: 480px) {
+    .form-row {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    .form-row input[type="email"] {
+      max-width: none;
+    }
   }
 </style>
