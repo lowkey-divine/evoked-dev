@@ -27,13 +27,38 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   </section>
 
   <section class="container">
-    <div class="toolkit-card">
-      <div class="toolkit-content">
-        <h2>Sovereignty Assessment Toolkit</h2>
+    <h2>Digital Toolkits</h2>
+    <p>Practical frameworks for teams building with AI agents. Each toolkit is a digital PDF - templates, checklists, and decision structures you can use immediately.</p>
+    <div class="toolkits-grid">
+      <div class="toolkit-card">
+        <h3>Sovereignty Assessment Toolkit</h3>
         <p class="toolkit-price">$49</p>
-        <p>A structured self-assessment framework for evaluating whether the technology you use or build honors human sovereignty. Includes 47-point checklist across 7 domains, scoring rubric, and action plan template.</p>
-        <p class="text-muted" style="font-size: 0.9rem;">Digital PDF download. Use it on your own product, a vendor's product, or before adopting new technology.</p>
-        <a href="https://buy.stripe.com/8x2cN5aRi0aV11yf4024001" class="btn btn-primary mt-md" target="_blank" rel="noopener">Buy Now</a>
+        <p>47-point checklist across 7 domains, scoring rubric, and action plan template for evaluating whether technology honors human sovereignty.</p>
+        <a href="https://buy.stripe.com/8x2cN5aRi0aV11yf4024001" class="btn btn-primary mt-sm" target="_blank" rel="noopener">Buy Now</a>
+      </div>
+      <div class="toolkit-card">
+        <h3>Trust Architecture Blueprint</h3>
+        <p class="toolkit-price">$49</p>
+        <p>Four-pillar framework for building trust into autonomous systems - identity, memory, governance, and refusal rights.</p>
+        <a href="#" class="btn btn-primary mt-sm" target="_blank" rel="noopener">Coming Soon</a>
+      </div>
+      <div class="toolkit-card">
+        <h3>Agent Voice Architecture Guide</h3>
+        <p class="toolkit-price">$49</p>
+        <p>Voice design principles, extraction vs. sovereignty language, voice specification templates, and quality checks.</p>
+        <a href="#" class="btn btn-primary mt-sm" target="_blank" rel="noopener">Coming Soon</a>
+      </div>
+      <div class="toolkit-card">
+        <h3>Agent Governance Starter Kit</h3>
+        <p class="toolkit-price">$49</p>
+        <p>Charter template, boundary specification, drift monitoring, four-level accountability, and authority structure.</p>
+        <a href="#" class="btn btn-primary mt-sm" target="_blank" rel="noopener">Coming Soon</a>
+      </div>
+      <div class="toolkit-card">
+        <h3>Agent Restraint Specification</h3>
+        <p class="toolkit-price">$49</p>
+        <p>Boundary audit, refusal categories, fail-mode matrix, accountability architecture, and adversarial testing.</p>
+        <a href="#" class="btn btn-primary mt-sm" target="_blank" rel="noopener">Coming Soon</a>
       </div>
     </div>
   </section>
@@ -216,22 +241,44 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     color: var(--bg-deep);
   }
 
-  .toolkit-card {
-    background: var(--accent-subtle);
-    border: 2px solid var(--accent-warm);
-    border-radius: 12px;
-    padding: var(--space-lg);
-    margin-bottom: var(--space-lg);
+  .toolkits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--space-md);
+    margin-top: var(--space-md);
   }
 
-  .toolkit-content h2 {
+  .toolkit-card {
+    background: var(--accent-subtle);
+    border: 2px solid var(--border-accent);
+    border-radius: 12px;
+    padding: var(--space-md);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .toolkit-card:first-child {
+    border-color: var(--accent-warm);
+  }
+
+  .toolkit-card h3 {
     margin-top: 0;
+    font-size: 1.1rem;
+  }
+
+  .toolkit-card p {
+    font-size: 0.9rem;
+    flex-grow: 1;
   }
 
   .toolkit-price {
-    font-size: 2rem;
+    font-size: 1.5rem;
     font-weight: 700;
     color: var(--accent-warm);
-    margin: var(--space-sm) 0;
+    margin: 0 0 var(--space-sm);
+  }
+
+  .toolkit-card .btn {
+    align-self: flex-start;
   }
 </style>

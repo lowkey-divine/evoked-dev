@@ -1,0 +1,84 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Thank You" description="Your Agent Governance Starter Kit is ready to download.">
+  <div class="hero">
+    <h1>Thank you.</h1>
+    <p class="tagline">Your Agent Governance Starter Kit is ready.</p>
+  </div>
+
+  <section class="container thank-you-content">
+    <div class="download-card">
+      <h2>Download Your Kit</h2>
+      <p>The Agent Governance Starter Kit includes five governance layers: charter template, boundary specification, drift threshold framework, four-level accountability system, and authority structure template.</p>
+      <p>Start with the Charter Template in Part 1. Everything else depends on it.</p>
+      <a href="/downloads/Agent-Governance-Starter-Kit-v1.0.pdf" class="btn btn-primary mt-md" download>Download PDF</a>
+      <p class="text-muted mt-md" style="font-size: 0.85rem;">If you have any issues with your download, reach out at <a href="mailto:evokesupports@icloud.com">evokesupports@icloud.com</a>.</p>
+    </div>
+  </section>
+
+  <section class="container">
+    <h2>What's Next</h2>
+    <div class="next-steps">
+      <div class="card">
+        <h3>Write Your Charter</h3>
+        <p>Use the template to define your core beliefs and essential properties. Test each belief against the three criteria in Part 1.</p>
+      </div>
+      <div class="card">
+        <h3>Go Deeper</h3>
+        <p>Pair this with the <a href="/consulting">Trust Architecture Blueprint</a> for identity and memory architecture, or the <a href="/consulting">Agent Restraint Specification Template</a> for refusal boundaries.</p>
+      </div>
+      <div class="card">
+        <h3>Talk It Through</h3>
+        <p>Book a free <a href="https://cal.com/evoked/discovery-call" target="_blank" rel="noopener">discovery call</a> to discuss your governance architecture.</p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .thank-you-content {
+    max-width: 640px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .download-card {
+    background: var(--accent-subtle);
+    border: 2px solid var(--accent-warm);
+    border-radius: 12px;
+    padding: var(--space-lg);
+    text-align: center;
+  }
+
+  .download-card h2 {
+    margin-top: 0;
+  }
+
+  .next-steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--space-md);
+  }
+
+  .next-steps .card h3 {
+    font-size: 1.1rem;
+  }
+
+  .next-steps .card p {
+    font-size: 0.9rem;
+    margin-bottom: 0;
+  }
+
+  .btn-primary {
+    background: var(--accent-warm);
+    color: var(--bg-deep);
+    display: inline-block;
+  }
+
+  .btn-primary:hover {
+    background: var(--accent-glow);
+    color: var(--bg-deep);
+  }
+</style>

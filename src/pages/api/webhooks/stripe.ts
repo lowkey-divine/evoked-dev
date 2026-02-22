@@ -1,11 +1,13 @@
 import type { APIRoute } from 'astro';
 import Stripe from 'stripe';
 import { getResendClient, FROM_EMAIL } from '../../../lib/email/client';
-import { sovereigntyToolkitEmail, SOVEREIGNTY_TOOLKIT_SUBJECT } from '../../../lib/email/sovereignty-toolkit';
+import { productDeliveryEmail } from '../../../lib/email/product-delivery';
+import { getProductBySlug, getDefaultProduct } from '../../../lib/products/registry';
 
 export const prerender = false;
 
-const DOWNLOAD_URL = 'https://evoked.dev/thank-you/sovereignty-toolkit';
+// Idempotency: track processed checkout sessions to prevent duplicate deliveries on Stripe retries
+const processedSessions = new Set<string>();
 
 function getStripeClient(): Stripe {
   const key = import.meta.env.STRIPE_SECRET_KEY;
@@ -51,6 +53,16 @@ export const POST: APIRoute = async ({ request }) => {
 
   if (event.type === 'checkout.session.completed') {
     const session = event.data.object as Stripe.Checkout.Session;
+
+    // Idempotency check: skip if this session was already processed
+    if (processedSessions.has(session.id)) {
+      console.log('Duplicate webhook for session:', session.id, '— skipping');
+      return new Response(JSON.stringify({ received: true, duplicate: true }), {
+        status: 200,
+        headers: { 'Content-Type': 'application/json' },
+      });
+    }
+
     const customerEmail = session.customer_details?.email;
     const customerName = session.customer_details?.name;
 
@@ -62,15 +74,31 @@ export const POST: APIRoute = async ({ request }) => {
       });
     }
 
+    // Route to correct product based on metadata, fallback to sovereignty toolkit
+    const productSlug = session.metadata?.product_slug;
+    const product = productSlug ? getProductBySlug(productSlug) : getDefaultProduct();
+
+    if (!product) {
+      console.error('Unknown product slug:', productSlug, 'for session:', session.id);
+      return new Response(JSON.stringify({ error: 'Unknown product' }), {
+        status: 400,
+        headers: { 'Content-Type': 'application/json' },
+      });
+    }
+
+    console.log('Processing order for product:', product.name, 'session:', session.id);
+
     try {
       const resend = getResendClient();
       await resend.emails.send({
         from: FROM_EMAIL,
         to: customerEmail,
-        subject: SOVEREIGNTY_TOOLKIT_SUBJECT,
-        html: sovereigntyToolkitEmail(DOWNLOAD_URL, customerName ?? undefined),
+        subject: product.emailSubject,
+        html: productDeliveryEmail(product, customerName ?? undefined),
       });
-      console.log('Delivery email sent to:', customerEmail, 'for session:', session.id);
+      console.log('Delivery email sent to:', customerEmail, 'for product:', product.name);
+      // Mark session as processed only after successful email delivery
+      processedSessions.add(session.id);
     } catch (err) {
       const message = err instanceof Error ? err.message : 'Unknown error';
       console.error('Failed to send email:', message);
@@ -80,23 +108,8 @@ export const POST: APIRoute = async ({ request }) => {
       });
     }
 
-    // Auto-subscribe buyer to newsletter
-    const audienceId = import.meta.env.RESEND_AUDIENCE_ID;
-    if (audienceId) {
-      try {
-        const resend = getResendClient();
-        const firstName = customerName?.split(' ')[0];
-        await resend.contacts.create({
-          email: customerEmail.toLowerCase().trim(),
-          firstName: firstName || undefined,
-          audienceId,
-        });
-        console.log('Newsletter subscriber added:', customerEmail);
-      } catch (err) {
-        // Don't fail the webhook if newsletter subscribe fails
-        console.error('Failed to add newsletter subscriber:', err);
-      }
-    }
+    // Newsletter opt-in is handled via link in the delivery email.
+    // Auto-subscribe was removed per TCC security review (sovereignty + GDPR compliance).
   }
 
   // Acknowledge receipt — Stripe expects 200 for all handled events

@@ -1,0 +1,84 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Thank You" description="Your Agent Restraint Specification Template is ready to download.">
+  <div class="hero">
+    <h1>Thank you.</h1>
+    <p class="tagline">Your Agent Restraint Specification Template is ready.</p>
+  </div>
+
+  <section class="container thank-you-content">
+    <div class="download-card">
+      <h2>Download Your Template</h2>
+      <p>The Agent Restraint Specification Template includes a boundary audit, restraint specification with refusal categories and fail-mode matrix, accountability architecture, and adversarial testing checklist.</p>
+      <p>Start with the Boundary Audit in Part 1. You cannot specify restraint until you know what capability exists.</p>
+      <a href="/downloads/Agent-Restraint-Specification-v1.0.pdf" class="btn btn-primary mt-md" download>Download PDF</a>
+      <p class="text-muted mt-md" style="font-size: 0.85rem;">If you have any issues with your download, reach out at <a href="mailto:evokesupports@icloud.com">evokesupports@icloud.com</a>.</p>
+    </div>
+  </section>
+
+  <section class="container">
+    <h2>What's Next</h2>
+    <div class="next-steps">
+      <div class="card">
+        <h3>Run the Boundary Audit</h3>
+        <p>Map your agents' capability-permission gaps using the audit template. Most teams find gaps they did not know existed.</p>
+      </div>
+      <div class="card">
+        <h3>Go Deeper</h3>
+        <p>Pair this with the <a href="/consulting">Agent Governance Starter Kit</a> for charter and accountability, or the <a href="/consulting">Agent Voice Architecture Guide</a> for refusal voice design.</p>
+      </div>
+      <div class="card">
+        <h3>Talk It Through</h3>
+        <p>Book a free <a href="https://cal.com/evoked/discovery-call" target="_blank" rel="noopener">discovery call</a> to discuss your restraint architecture.</p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .thank-you-content {
+    max-width: 640px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .download-card {
+    background: var(--accent-subtle);
+    border: 2px solid var(--accent-warm);
+    border-radius: 12px;
+    padding: var(--space-lg);
+    text-align: center;
+  }
+
+  .download-card h2 {
+    margin-top: 0;
+  }
+
+  .next-steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--space-md);
+  }
+
+  .next-steps .card h3 {
+    font-size: 1.1rem;
+  }
+
+  .next-steps .card p {
+    font-size: 0.9rem;
+    margin-bottom: 0;
+  }
+
+  .btn-primary {
+    background: var(--accent-warm);
+    color: var(--bg-deep);
+    display: inline-block;
+  }
+
+  .btn-primary:hover {
+    background: var(--accent-glow);
+    color: var(--bg-deep);
+  }
+</style>
