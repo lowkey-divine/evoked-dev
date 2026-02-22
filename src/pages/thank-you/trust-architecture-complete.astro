@@ -1,0 +1,139 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Thank You" description="Your Trust Architecture Complete bundle is ready to download.">
+  <div class="hero">
+    <h1>Thank you.</h1>
+    <p class="tagline">Your complete trust architecture practice is ready.</p>
+  </div>
+
+  <section class="container thank-you-content">
+    <div class="download-card">
+      <h2>Download Your Bundle</h2>
+      <p>Four products, one architecture. Start with the Trust Architecture Blueprint for the overview, then go deeper with Voice, Governance, and Restraint.</p>
+
+      <div class="downloads-grid">
+        <div class="download-item">
+          <h3>Trust Architecture Blueprint</h3>
+          <p>Identity, memory, governance, and refusal rights.</p>
+          <a href="/downloads/Trust-Architecture-Blueprint-v1.0.pdf" class="btn btn-primary" download>Download PDF</a>
+        </div>
+        <div class="download-item">
+          <h3>Agent Voice Architecture Guide</h3>
+          <p>Voice design, sovereignty language, and quality checks.</p>
+          <a href="/downloads/Agent-Voice-Architecture-Guide-v1.0.pdf" class="btn btn-primary" download>Download PDF</a>
+        </div>
+        <div class="download-item">
+          <h3>Agent Governance Starter Kit</h3>
+          <p>Charter, boundaries, drift monitoring, and accountability.</p>
+          <a href="/downloads/Agent-Governance-Starter-Kit-v1.0.pdf" class="btn btn-primary" download>Download PDF</a>
+        </div>
+        <div class="download-item">
+          <h3>Agent Restraint Specification</h3>
+          <p>Boundary audit, refusal categories, and adversarial testing.</p>
+          <a href="/downloads/Agent-Restraint-Specification-v1.0.pdf" class="btn btn-primary" download>Download PDF</a>
+        </div>
+      </div>
+
+      <p class="text-muted mt-md" style="font-size: 0.85rem;">If you have any issues with your download, reach out at <a href="mailto:evokesupports@icloud.com">evokesupports@icloud.com</a>.</p>
+    </div>
+  </section>
+
+  <section class="container">
+    <h2>Getting Started</h2>
+    <div class="next-steps">
+      <div class="card">
+        <h3>1. Start with the Blueprint</h3>
+        <p>Read the Trust Architecture Blueprint first. It gives you the four-pillar overview that the other three products go deeper on.</p>
+      </div>
+      <div class="card">
+        <h3>2. Build Your First Agent</h3>
+        <p>Use the Identity Architecture template to create a persona file. Then design its voice with the Voice Architecture Guide.</p>
+      </div>
+      <div class="card">
+        <h3>3. Set Governance and Restraint</h3>
+        <p>Define what your agent believes (Charter) and what it refuses (Restraint Specification). Then run the adversarial tests.</p>
+      </div>
+      <div class="card">
+        <h3>4. Talk It Through</h3>
+        <p>Book a free <a href="https://cal.com/evoked/discovery-call" target="_blank" rel="noopener">discovery call</a> to discuss your trust architecture.</p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .thank-you-content {
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .download-card {
+    background: var(--accent-subtle);
+    border: 2px solid var(--accent-warm);
+    border-radius: 12px;
+    padding: var(--space-lg);
+    text-align: center;
+  }
+
+  .download-card h2 {
+    margin-top: 0;
+  }
+
+  .downloads-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: var(--space-md);
+    margin-top: var(--space-md);
+    text-align: left;
+  }
+
+  .download-item {
+    background: var(--bg-surface, #ffffff);
+    border: 1px solid var(--border-accent);
+    border-radius: 8px;
+    padding: var(--space-md);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .download-item h3 {
+    margin-top: 0;
+    font-size: 1rem;
+  }
+
+  .download-item p {
+    font-size: 0.85rem;
+    flex-grow: 1;
+  }
+
+  .next-steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--space-md);
+  }
+
+  .next-steps .card h3 {
+    font-size: 1.1rem;
+  }
+
+  .next-steps .card p {
+    font-size: 0.9rem;
+    margin-bottom: 0;
+  }
+
+  .btn-primary {
+    background: var(--accent-warm);
+    color: var(--bg-deep);
+    display: inline-block;
+    font-size: 0.85rem;
+    align-self: flex-start;
+  }
+
+  .btn-primary:hover {
+    background: var(--accent-glow);
+    color: var(--bg-deep);
+  }
+</style>

@@ -1,8 +1,24 @@
 import type { Product } from '../products/registry';
+import { BUNDLE_CONTENTS, getProductBySlug } from '../products/registry';
+
+function bundleDownloadSection(bundleSlug: string): string {
+  const slugs = BUNDLE_CONTENTS[bundleSlug];
+  if (!slugs) return '';
+  const items = slugs.map((s) => getProductBySlug(s)).filter(Boolean) as Product[];
+  return items.map((p) => `
+                <tr>
+                  <td style="padding: 12px 0; border-bottom: 1px solid #e0dcd6;">
+                    <strong style="color: #1a1a2e; font-size: 15px;">${p.name}</strong><br>
+                    <span style="color: #666666; font-size: 14px;">${p.tagline}</span><br>
+                    <a href="https://evoked.dev${p.downloadPath}" style="color: #1a1a2e; font-size: 14px; font-weight: bold;">Download PDF</a>
+                  </td>
+                </tr>`).join('\n');
+}
 
 export function productDeliveryEmail(product: Product, customerName?: string): string {
   const greeting = customerName ? `Thank you, ${customerName}.` : 'Thank you for your purchase.';
   const downloadUrl = `https://evoked.dev${product.thankYouPath}`;
+  const isBundle = !!BUNDLE_CONTENTS[product.slug];
 
   const stepsHtml = product.gettingStartedSteps
     .map((step) => `<li>${step}</li>`)
@@ -50,11 +66,21 @@ export function productDeliveryEmail(product: Product, customerName?: string): s
                 <tr>
                   <td style="background-color: #1a1a2e; border-radius: 6px;">
                     <a href="${downloadUrl}" target="_blank" style="display: inline-block; padding: 14px 32px; color: #ffffff; text-decoration: none; font-size: 16px; font-family: Georgia, 'Times New Roman', serif;">
-                      Download Your ${product.name.includes('Kit') ? 'Kit' : product.name.includes('Template') ? 'Template' : product.name.includes('Blueprint') ? 'Blueprint' : product.name.includes('Guide') ? 'Guide' : 'Toolkit'}
+                      ${isBundle ? 'Access Your Downloads' : `Download Your ${product.name.includes('Kit') ? 'Kit' : product.name.includes('Template') ? 'Template' : product.name.includes('Blueprint') ? 'Blueprint' : product.name.includes('Guide') ? 'Guide' : 'Toolkit'}`}
                     </a>
                   </td>
                 </tr>
               </table>
+
+              ${isBundle ? `
+              <!-- Bundle: Individual Downloads -->
+              <h3 style="color: #1a1a2e; margin: 0 0 12px; font-size: 18px; font-weight: normal;">
+                Your downloads
+              </h3>
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin: 0 0 24px;">
+                ${bundleDownloadSection(product.slug)}
+              </table>
+              ` : ''}
 
               <!-- Getting Started -->
               <h3 style="color: #1a1a2e; margin: 0 0 12px; font-size: 18px; font-weight: normal;">

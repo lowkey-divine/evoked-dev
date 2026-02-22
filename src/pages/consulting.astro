@@ -29,6 +29,19 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <section class="container">
     <h2>Digital Toolkits</h2>
     <p>Practical frameworks for teams building with AI agents. Each toolkit is a digital PDF - templates, checklists, and decision structures you can use immediately.</p>
+
+    <div class="bundle-card">
+      <div class="bundle-badge">The Complete Practice</div>
+      <h3>Trust Architecture Complete</h3>
+      <div class="bundle-pricing">
+        <span class="bundle-price">$149</span>
+        <span class="bundle-compare">$196 individually</span>
+      </div>
+      <p>All four trust architecture products in one package - identity, voice, governance, and restraint. Start with the Blueprint for the overview, then go deeper with each dimension.</p>
+      <p class="bundle-includes">Includes: Trust Architecture Blueprint + Agent Voice Architecture Guide + Agent Governance Starter Kit + Agent Restraint Specification</p>
+      <a href="#" class="btn btn-primary mt-sm" target="_blank" rel="noopener">Coming Soon</a>
+    </div>
+
     <div class="toolkits-grid">
       <div class="toolkit-card">
         <h3>Sovereignty Assessment Toolkit</h3>
@@ -280,5 +293,57 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
   .toolkit-card .btn {
     align-self: flex-start;
+  }
+
+  .bundle-card {
+    background: var(--accent-subtle);
+    border: 2px solid var(--accent-warm);
+    border-radius: 12px;
+    padding: var(--space-lg);
+    margin-bottom: var(--space-lg);
+    position: relative;
+  }
+
+  .bundle-badge {
+    display: inline-block;
+    background: var(--accent-warm);
+    color: var(--bg-deep);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 4px 12px;
+    border-radius: 4px;
+    margin-bottom: var(--space-sm);
+  }
+
+  .bundle-card h3 {
+    margin-top: var(--space-xs);
+    font-size: 1.3rem;
+  }
+
+  .bundle-pricing {
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-sm);
+  }
+
+  .bundle-price {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--accent-warm);
+  }
+
+  .bundle-compare {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    text-decoration: line-through;
+  }
+
+  .bundle-includes {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    font-style: italic;
   }
 </style>

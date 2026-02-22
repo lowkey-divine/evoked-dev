@@ -11,6 +11,16 @@ export interface Product {
   gettingStartedSteps: string[];
 }
 
+// Bundle: which individual product slugs are included
+export const BUNDLE_CONTENTS: Record<string, string[]> = {
+  'trust-architecture-complete': [
+    'trust-architecture-blueprint',
+    'agent-voice-architecture-guide',
+    'agent-governance-starter-kit',
+    'agent-restraint-specification',
+  ],
+};
+
 const products: Record<string, Product> = {
   'sovereignty-assessment-toolkit': {
     slug: 'sovereignty-assessment-toolkit',
@@ -97,6 +107,24 @@ const products: Record<string, Product> = {
       'Run the Voice Quality Checks before deploying any agent voice',
     ],
   },
+  'trust-architecture-complete': {
+    slug: 'trust-architecture-complete',
+    name: 'Trust Architecture Complete',
+    price: 149,
+    tagline: 'The complete practice - identity, voice, governance, and restraint in one package.',
+    description: 'All four trust architecture products: Trust Architecture Blueprint, Agent Voice Architecture Guide, Agent Governance Starter Kit, and Agent Restraint Specification Template.',
+    emailSubject: 'Your Trust Architecture Complete Bundle',
+    downloadPath: '/thank-you/trust-architecture-complete',
+    thankYouPath: '/thank-you/trust-architecture-complete',
+    stripePaymentLink: '', // Set after Stripe Payment Link creation
+    gettingStartedSteps: [
+      'Start with the Trust Architecture Blueprint - it provides the four-pillar overview',
+      'Build your first agent persona file using the Identity Architecture template',
+      'Design your agent\'s voice using the Voice Architecture Guide',
+      'Define governance boundaries with the Governance Starter Kit charter template',
+      'Specify restraint categories using the Restraint Specification boundary audit',
+    ],
+  },
 };
 
 export function getProductBySlug(slug: string): Product | undefined {
@@ -109,4 +137,10 @@ export function getAllProducts(): Product[] {
 
 export function getDefaultProduct(): Product {
   return products['sovereignty-assessment-toolkit'];
+}
+
+export function getBundleProducts(bundleSlug: string): Product[] {
+  const slugs = BUNDLE_CONTENTS[bundleSlug];
+  if (!slugs) return [];
+  return slugs.map((s) => products[s]).filter(Boolean);
 }
