@@ -15,8 +15,8 @@ export const POST: APIRoute = async ({ request }) => {
       });
     }
 
-    const audienceId = import.meta.env.RESEND_AUDIENCE_ID;
-    if (!audienceId) {
+    const segmentId = import.meta.env.RESEND_AUDIENCE_ID;
+    if (!segmentId) {
       console.error('RESEND_AUDIENCE_ID is not configured');
       return new Response(JSON.stringify({ error: 'Newsletter not configured' }), {
         status: 500,
@@ -28,7 +28,7 @@ export const POST: APIRoute = async ({ request }) => {
     await resend.contacts.create({
       email: email.toLowerCase().trim(),
       firstName: firstName || undefined,
-      audienceId,
+      segments: [{ id: segmentId }],
     });
 
     return new Response(JSON.stringify({ success: true }), {
