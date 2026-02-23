@@ -8,7 +8,7 @@ draft: true
 
 Let's skip the clinical definitions for a second.
 
-You're here because something in your life is asking for attention. Maybe it's been asking for a while. Maybe you've been telling it "not now" for months. Maybe you don't even know what *it* is yet — just that something feels off, or stuck, or like it's waiting for you to make a move.
+You're here because something in your life is asking for attention. Maybe it's been asking for a while. Maybe you've been telling it "not now" for months. Maybe you don't even know what it is yet - just that something feels off, or stuck, or like it's waiting for you to make a move.
 
 That's enough. That's the starting point. You don't need to have it figured out before you reach out.
 
@@ -28,7 +28,7 @@ That's not the whole picture — but it's the heartbeat of the distinction.
 
 A therapist is a licensed clinician. They are trained — and legally qualified — to diagnose mental health conditions, treat trauma, work with clinical depression, anxiety disorders, PTSD, grief that has become debilitating, relationship patterns rooted in attachment wounds. They work in the territory of *what happened to you* and *how it's living in your body and mind right now*. They have clinical tools. They have ethical obligations governed by licensing boards. They can hold space for the darkest rooms in the house.
 
-A coach walks beside you as you build. Not behind you, not ahead of you — *beside*. A coach is for the person who says, *"I know something needs to change, and I want to move toward it."* Direction. Goals. Relationships. The version of yourself you sense is possible but haven't met yet. A coach doesn't diagnose. A coach doesn't treat. A coach accompanies.
+A coach walks beside you as you build. Not behind you, not ahead of you - beside you. A coach is for the person who says, *"I know something needs to change, and I want to move toward it."* Direction. Goals. Relationships. The version of yourself you sense is possible but haven't met yet. A coach doesn't diagnose. A coach doesn't treat. A coach accompanies.
 
 Both are valuable. Both require courage to begin. **Neither one means something is wrong with you.**
 
@@ -49,7 +49,7 @@ Notice what's not there — no diagnosis. No assessment of pathology. No clinica
 
 My approach draws from psychodynamic and humanistic traditions. That's a fancy way of saying — I pay attention to patterns. The ones you see and the ones running underneath. I believe you already have what you need inside you. My job isn't to install something new. It's to help you find what's already there and build from it.
 
-*This isn't about fixing what's broken. It's about understanding what's there and building toward what's possible.*
+This isn't about fixing what's broken. It's about understanding what's there and building toward what's possible.
 
 ---
 
@@ -98,7 +98,7 @@ I operate from four commitments. They're not business rules — they're promises
 
 **I'm transparent.** If I don't know something, I'll say so. If I think you need more than I can offer, I'll say that too. You will never have to wonder what I'm thinking or what my angle is. There is no angle.
 
-**I'm building for your growth — not my retention.** I succeed when you don't need me anymore. That's not a marketing line. That's the actual goal. Every conversation should leave you more capable, more clear, more *yourself*. If it doesn't, we need to talk about that.
+**I'm building for your growth — not my retention.** I succeed when you don't need me anymore. That's not a marketing line. That's the actual goal. Every conversation should leave you more capable, more clear, more yourself. If it doesn't, we need to talk about that.
 
 ---
 
@@ -106,13 +106,13 @@ I operate from four commitments. They're not business rules — they're promises
 
 Here's something I need you to hear:
 
-**You are already whole.**
+**You are not broken.**
 
-You might not feel like it. You might feel fractured, or lost, or behind, or like everyone else got a manual you didn't. I get it. I've been there.
+You might not feel whole right now. You might feel fractured, or lost, or behind, or like everyone else got a manual you didn't. I get it. I've been there.
 
-But the truth underneath all of it is that you are not broken. You are not a project. You are a person in motion — sometimes that motion feels like progress and sometimes it feels like falling. Both are movement. Both count.
+But wherever you are right now is a starting point - not a diagnosis. You are not a project. You are a person in motion - sometimes that motion feels like progress and sometimes it feels like falling. Both are movement. Both count.
 
-Coaching doesn't start from the assumption that something is wrong with you. It starts from the assumption that something is *right* with you — and it wants room to grow.
+Coaching doesn't start from the assumption that something is wrong with you. It starts from the assumption that something in you is ready to grow.
 
 ---
 
@@ -154,7 +154,7 @@ I chose this work because I believe people flourish when they're accompanied, no
 
 I evoke — I never extract.
 
-That means if you walk through my door, the goal is *your* flourishing — even if that flourishing leads you somewhere I'm not. I'll hold the door open either way.
+That means if you walk through my door, the goal is your flourishing - even if that flourishing leads you somewhere I'm not. I'll hold the door open either way.
 
 The next step is yours. But you don't have to take it alone.
 

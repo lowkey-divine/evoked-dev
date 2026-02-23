@@ -105,13 +105,13 @@ Everything I build runs on four principles. They started as a set of values for 
 You are the authority on your own life. The technology should expand your choices, not narrow them.
 
 **2. Protect the Psyche.**
-Every interaction with a product is an interaction with a person's inner world. Build carefully.
+Every interaction with a product is an interaction with a person's inner world. Build carefully. Someone will open your product on the worst day of their life. What they find there is a decision you already made.
 
 **3. Uphold Ethical Transparency.**
 No hidden agendas. No obscured data practices. No manipulation. If you can't explain what your product does in plain language, you haven't built it well enough.
 
 **4. Build for Human Development.**
-The goal is flourishing - not engagement, not retention, not monthly active users. Flourishing. The person using the product should be more capable, more connected, more themselves because of it.
+The goal is flourishing - not engagement, not retention, not monthly active users. Flourishing. The person using the product should be more capable, more connected, more themselves because of it. If someone spent three hours with your product last night - are they more themselves this morning, or less?
 
 I call these the Prime Directive. And I hold myself to them first.
 
@@ -131,13 +131,13 @@ Sovereignty-honoring design isn't just the right thing. It's a durable thing. It
 
 ---
 
-## The Bigger Truth
+## Look at the Work
 
 I know how the tech industry sounds most of the time. Everyone claims to care about privacy. Everyone says they put users first. And then you read the privacy policy, and it's twelve pages of legal language that essentially says, *"We do whatever we want with your data, and by using this product, you've agreed."*
 
 I'm not going to ask you to trust my words. I'm going to ask you to look at the work.
 
-At Evoke, the products we build have real data export. Real deletion. Real consent flows. Real audits. Real Safe Harbor certification - not because a regulator forced us, but because the standard represents what protection should have looked like all along.
+At Evoke, the products we build have real data export. Real deletion. Real consent flows. Real audits. A pursuit of Safe Harbor certification - not because a regulator forced us, but because the standard represents what protection should have looked like all along.
 
 We build this way because I believe technology should leave people freer than it found them. That's it. That's the whole thing. Not more engaged. Not more retained. More free.
 

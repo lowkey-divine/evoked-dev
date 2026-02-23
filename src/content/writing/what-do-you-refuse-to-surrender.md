@@ -58,7 +58,7 @@ It's taste. The instinct that says "this is too complicated," or "this doesn't f
 
 I've watched this happen in my own work. An AI tool generates a solution that is technically correct - it compiles, it runs, it passes the tests. And something in me says: not that. Not because the code is broken. Because it's solving the wrong problem. Because it doesn't account for the family that's grieving, or the child who shouldn't see this screen, or the cultural context that makes a reasonable-sounding default quietly harmful. That knowing didn't come from a tutorial. It came from years of sitting with hard problems and learning what matters.
 
-Seventy percent of the time, a developer looks at what the machine produced and says: not that.
+GitHub Copilot's code suggestions are accepted about 30% of the time. Seventy percent of the time, a developer looks at what the machine produced and says: not that.
 
 A language model can generate code. It cannot tell you whether the code should exist. It can analyze data. It cannot sit with a grieving client and know that the data doesn't matter right now.
 
