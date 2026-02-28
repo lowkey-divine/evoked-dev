@@ -9,6 +9,8 @@ export interface Product {
   thankYouPath: string;
   stripePaymentLink: string;
   gettingStartedSteps: string[];
+  reciprocityPrompt: string;
+  discipline?: string;
 }
 
 // Bundle: which individual product slugs are included
@@ -38,6 +40,8 @@ const products: Record<string, Product> = {
       'Use the scoring rubric to identify your strongest and weakest areas',
       'Pick the top three findings and build them into your next sprint',
     ],
+    reciprocityPrompt: 'After running the audit, what surprised you most about your own system? We learn from every assessment - yours included.',
+    discipline: 'Evaluation Design',
   },
   'agent-governance-starter-kit': {
     slug: 'agent-governance-starter-kit',
@@ -55,6 +59,8 @@ const products: Record<string, Product> = {
       'Use the Drift Threshold Framework to set measurable guardrails',
       'Build your Accountability Framework using the four-level template',
     ],
+    reciprocityPrompt: 'What boundary did you define for your agents that you wish someone had defined for you earlier? Your governance decisions teach us too.',
+    discipline: 'Constraint Architecture',
   },
   'agent-restraint-specification': {
     slug: 'agent-restraint-specification',
@@ -72,6 +78,8 @@ const products: Record<string, Product> = {
       'Build your Restraint Specification using the refusal category matrix',
       'Test your specification with the adversarial checklist in Part 4',
     ],
+    reciprocityPrompt: 'What did your agents refuse to do before you wrote the spec - and what do they refuse now? The gap between those two answers is the story.',
+    discipline: 'Constraint Architecture',
   },
   'trust-architecture-blueprint': {
     slug: 'trust-architecture-blueprint',
@@ -89,6 +97,8 @@ const products: Record<string, Product> = {
       'Design your Memory Architecture using the session protocol template',
       'Set up Governance Architecture with the graduated trust stages',
     ],
+    reciprocityPrompt: 'Which pillar felt most natural to build - and which one made you uncomfortable? That discomfort usually points to the most important work.',
+    discipline: 'Specification Engineering',
   },
   'agent-voice-architecture-guide': {
     slug: 'agent-voice-architecture-guide',
@@ -106,6 +116,8 @@ const products: Record<string, Product> = {
       'Build your first voice specification using the persona file template',
       'Run the Voice Quality Checks before deploying any agent voice',
     ],
+    reciprocityPrompt: 'What extraction pattern did you find in your own agent voices that you hadn\'t noticed before? Naming it is the first step - and we\'d love to hear what you found.',
+    discipline: 'Intent Engineering',
   },
   'agent-memory-architecture-guide': {
     slug: 'agent-memory-architecture-guide',
@@ -123,6 +135,8 @@ const products: Record<string, Product> = {
       'Build your Memory Governance Specification using the template in Part 2',
       'Write your Canonical Rule - the one sentence that defines which memory source wins',
     ],
+    reciprocityPrompt: 'What did you write as your Canonical Rule? That single sentence often reveals more about your values than any mission statement.',
+    discipline: 'Context Engineering',
   },
   'trust-architecture-complete': {
     slug: 'trust-architecture-complete',
@@ -141,6 +155,8 @@ const products: Record<string, Product> = {
       'Define governance boundaries with the Governance Starter Kit charter template',
       'Specify restraint categories using the Restraint Specification boundary audit',
     ],
+    reciprocityPrompt: 'After working through all four pillars, which one changed how you think about your agents - not just how you build them? We are building this practice together.',
+    discipline: 'Full Practice',
   },
 };
 

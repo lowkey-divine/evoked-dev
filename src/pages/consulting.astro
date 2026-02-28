@@ -2,33 +2,89 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
-<BaseLayout title="Consulting" description="Technical consulting for ethical AI, privacy architecture, and child safety implementation.">
+<BaseLayout title="Consulting" description="Specification engineering, context engineering, and intent engineering for teams building with AI agents.">
   <div class="hero">
-    <h1>Building products families can trust.</h1>
-    <p class="tagline">Technical consulting for ethical AI, privacy, and child safety.</p>
+    <h1>Everyone is talking about how to run more agents faster.</h1>
+    <p class="tagline">Nobody is talking about how to run them well.</p>
   </div>
 
   <section class="container">
-    <h2>The Work</h2>
     <p>
-      I'm deep in the intersection of psychology and technical implementation —
-      building systems that respect user sovereignty, protect children, and
-      handle sensitive data with care.
+      AI capabilities are outpacing adoption. Most organizations can build agents
+      that work — fewer can build agents that work <em>well</em>, consistently, at scale,
+      under real constraints. The gap between what's possible and what's deployed is where
+      the real work lives. I help close that gap.
     </p>
-    <p>
-      Currently building a family app with comprehensive COPPA safeguards, parental
-      consent systems, and sovereignty-honoring design. I consult to help others
-      do the same.
-    </p>
-    <p class="text-muted" style="font-size: 0.9rem; margin-top: var(--space-md);">
-      I focus on technical implementation — not legal advice. For legal interpretation
-      of COPPA, GDPR, or other regulations, please consult a qualified attorney.
+  </section>
+
+  <section class="container">
+    <h2>Why Organizations Get Stuck</h2>
+    <p>Four forces keep capable teams from deploying AI well.</p>
+
+    <div class="inertia-grid">
+      <div class="card">
+        <h3>Regulatory</h3>
+        <p>COPPA, HIPAA, GDPR. Rules written for a world before agents. Procurement cycles measured in years, not sprints.</p>
+      </div>
+      <div class="card">
+        <h3>Organizational</h3>
+        <p>18 months from "this saves $10M/year" to saving it. Pilot programs, change management, internal politics.</p>
+      </div>
+      <div class="card">
+        <h3>Cultural</h3>
+        <p>Most teams treat AI as a tool, not a discipline. Adoption requires muscle memory, not just better models.</p>
+      </div>
+      <div class="card">
+        <h3>Trust</h3>
+        <p>Verification at scale is expensive. Moving from "I do the work" to "I verify AI work" requires guardrails and oversight infrastructure.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="container">
+    <h2>How We Work</h2>
+    <p>Four disciplines, each building on the last.</p>
+
+    <div class="discipline-stack">
+      <div class="level-card">
+        <div class="level-number">1</div>
+        <div class="level-content">
+          <h3>Prompt Craft</h3>
+          <p>Clear instructions, examples, guardrails. Table stakes. Necessary, not sufficient.</p>
+        </div>
+      </div>
+      <div class="level-card">
+        <div class="level-number">2</div>
+        <div class="level-content">
+          <h3>Context Engineering</h3>
+          <p>Curating the information environment agents operate within. System prompts, memory architecture, MCP servers, retrieval design.</p>
+        </div>
+      </div>
+      <div class="level-card">
+        <div class="level-number">3</div>
+        <div class="level-content">
+          <h3>Intent Engineering</h3>
+          <p>Encoding organizational purpose, values, and decision boundaries into agent infrastructure. Not what agents <em>can</em> do — what they <em>should</em> do.</p>
+        </div>
+      </div>
+      <div class="level-card">
+        <div class="level-number">4</div>
+        <div class="level-content">
+          <h3>Specification Engineering</h3>
+          <p>Writing documents autonomous agents can execute against over extended time horizons. The difference between a demo and a deployment.</p>
+        </div>
+      </div>
+    </div>
+
+    <p class="bridge-text">
+      Most organizations are strong at Level 1, aware of Level 2, and have never considered
+      Levels 3 or 4. We help you build the full stack.
     </p>
   </section>
 
   <section class="container">
     <h2>Digital Toolkits</h2>
-    <p>Practical frameworks for teams building with AI agents. Each toolkit is a digital PDF - templates, checklists, and decision structures you can use immediately.</p>
+    <p>Practical frameworks for teams building with AI agents. Each toolkit is a digital PDF — templates, checklists, and decision structures you can use immediately.</p>
 
     <div class="bundle-card">
       <div class="bundle-badge">The Complete Practice</div>
@@ -37,33 +93,37 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <span class="bundle-price">$149</span>
         <span class="bundle-compare">$196 individually</span>
       </div>
-      <p>All four trust architecture products in one package - identity, voice, governance, and restraint. Start with the Blueprint for the overview, then go deeper with each dimension.</p>
+      <p>All four trust architecture products in one package — identity, voice, governance, and restraint. Start with the Blueprint for the overview, then go deeper with each dimension.</p>
       <p class="bundle-includes">Includes: Trust Architecture Blueprint + Agent Voice Architecture Guide + Agent Governance Starter Kit + Agent Restraint Specification</p>
       <a href="https://buy.stripe.com/aFacN5aRi3n7aC809624007" class="btn btn-primary mt-sm" target="_blank" rel="noopener">Buy Now</a>
     </div>
 
     <div class="toolkits-grid">
       <div class="toolkit-card">
+        <span class="discipline-badge">Evaluation Design</span>
         <h3>Sovereignty Assessment Toolkit</h3>
         <p class="toolkit-price">$49</p>
         <p>47-point checklist across 7 domains, scoring rubric, and action plan template for evaluating whether technology honors human sovereignty.</p>
         <a href="https://buy.stripe.com/8x2cN5aRi0aV11yf4024001" class="btn btn-primary mt-sm" target="_blank" rel="noopener">Buy Now</a>
       </div>
       <div class="toolkit-card">
+        <span class="discipline-badge">Specification Engineering</span>
         <h3>Trust Architecture Blueprint</h3>
         <p class="toolkit-price">$49</p>
-        <p>Four-pillar framework for building trust into autonomous systems - identity, memory, governance, and refusal rights.</p>
+        <p>Four-pillar framework for building trust into autonomous systems — identity, memory, governance, and refusal rights.</p>
         <p class="toolkit-fit">This is for you if you are building agents and have never defined who they are, what they remember, or what they can refuse.</p>
         <a href="https://buy.stripe.com/5kQdR91gIg9TaC84pm24002" class="btn btn-primary mt-sm" target="_blank" rel="noopener">Buy Now</a>
       </div>
       <div class="toolkit-card">
+        <span class="discipline-badge">Intent Engineering</span>
         <h3>Agent Voice Architecture Guide</h3>
         <p class="toolkit-price">$49</p>
         <p>Voice design principles, extraction vs. sovereignty language, voice specification templates, and quality checks.</p>
-        <p class="toolkit-fit">This is for you if you have never made a deliberate decision about how your agents speak - and something about their tone has been bothering you.</p>
+        <p class="toolkit-fit">This is for you if you have never made a deliberate decision about how your agents speak — and something about their tone has been bothering you.</p>
         <a href="https://buy.stripe.com/bJe5kDgbC7Dn4dK7By24003" class="btn btn-primary mt-sm" target="_blank" rel="noopener">Buy Now</a>
       </div>
       <div class="toolkit-card">
+        <span class="discipline-badge">Constraint Architecture</span>
         <h3>Agent Governance Starter Kit</h3>
         <p class="toolkit-price">$49</p>
         <p>Charter template, boundary specification, drift monitoring, four-level accountability, and authority structure.</p>
@@ -71,142 +131,120 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <a href="https://buy.stripe.com/5kQ14ngbC0aVh0wf4024004" class="btn btn-primary mt-sm" target="_blank" rel="noopener">Buy Now</a>
       </div>
       <div class="toolkit-card">
+        <span class="discipline-badge">Constraint Architecture</span>
         <h3>Agent Restraint Specification</h3>
         <p class="toolkit-price">$49</p>
         <p>Boundary audit, refusal categories, fail-mode matrix, accountability architecture, and adversarial testing.</p>
-        <p class="toolkit-fit">This is for you if your agents can do more than they should - and you have been relying on good intentions instead of written boundaries.</p>
+        <p class="toolkit-fit">This is for you if your agents can do more than they should — and you have been relying on good intentions instead of written boundaries.</p>
         <a href="https://buy.stripe.com/3cIaEX3oQcXHaC82he24005" class="btn btn-primary mt-sm" target="_blank" rel="noopener">Buy Now</a>
       </div>
       <div class="toolkit-card">
+        <span class="discipline-badge">Context Engineering</span>
         <h3>Agent Memory Architecture Guide</h3>
         <p class="toolkit-price">$49</p>
         <p>Memory types, governance templates, session protocols, the canonical rule for resolving conflicts, and retention policies.</p>
-        <p class="toolkit-fit">This is for you if your agents remember everything by default and you have never decided what they should forget - or who controls that decision.</p>
+        <p class="toolkit-fit">This is for you if your agents remember everything by default and you have never decided what they should forget — or who controls that decision.</p>
         <a href="https://buy.stripe.com/14A9AT6B2bTDh0wcVS24006" class="btn btn-primary mt-sm" target="_blank" rel="noopener">Buy Now</a>
       </div>
     </div>
+
+    <p class="text-muted mt-md" style="font-size: 0.9rem;">
+      Each toolkit includes an interactive Claude Code skill. <a href="/skills">See all skills &rarr;</a>
+    </p>
   </section>
 
   <section class="container">
     <h2>Services</h2>
 
     <div class="guarantee">
-      <strong>The Guarantee:</strong> If an assessment doesn't surface at least 3 actionable findings, you pay nothing.
+      <strong>The Guarantee:</strong> If an assessment or audit doesn't surface at least 3 actionable findings, you pay nothing.
     </div>
 
-    <h3>Assessments</h3>
-    <table class="pricing-table">
-      <thead>
-        <tr>
-          <th>Service</th>
-          <th>Price</th>
-          <th>What You Get</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>COPPA Technical Review</td>
-          <td class="price">$3,500</td>
-          <td>Architecture assessment + implementation roadmap</td>
-        </tr>
-        <tr>
-          <td>Privacy Architecture Review</td>
-          <td class="price">$3,000</td>
-          <td>Data flow audit + recommendations</td>
-        </tr>
-        <tr>
-          <td>Security Code Review</td>
-          <td class="price">$3,500</td>
-          <td>Auth, sessions, encryption audit + fixes list</td>
-        </tr>
-      </tbody>
-    </table>
+    <h3>Assessments & Audits</h3>
+    <div class="services-list">
+      <div class="service-item">
+        <div class="service-name">Four-Discipline Audit <span class="discipline-badge">Full Practice</span></div>
+        <div class="service-desc">Evaluate your team's prompt craft, context engineering, intent engineering, and specification maturity.</div>
+        <div class="service-price">$3,500</div>
+      </div>
+      <div class="service-item">
+        <div class="service-name">Context Engineering Review <span class="discipline-badge">Context Engineering</span></div>
+        <div class="service-desc">Audit your agent memory, retrieval, system prompts, and information environment.</div>
+        <div class="service-price">$3,000</div>
+      </div>
+      <div class="service-item">
+        <div class="service-name">Privacy Architecture Review</div>
+        <div class="service-desc">Map your data flows, consent patterns, encryption coverage, and minimization gaps. Delivered as a prioritized findings report.</div>
+        <div class="service-price">$3,000</div>
+      </div>
+      <div class="service-item">
+        <div class="service-name">Security Code Review</div>
+        <div class="service-desc">Audit authentication, session management, encryption implementation, and rate limiting. Delivered as a fixes list ranked by severity.</div>
+        <div class="service-price">$3,500</div>
+      </div>
+      <div class="service-item">
+        <div class="service-name">COPPA Technical Review</div>
+        <div class="service-desc">Assess your age-gating, parental consent flows, data collection, and retention against current COPPA requirements. Delivered as an implementation roadmap.</div>
+        <div class="service-price">$3,500</div>
+      </div>
+    </div>
 
     <h3 class="mt-lg">Workshops</h3>
-    <table class="pricing-table">
-      <thead>
-        <tr>
-          <th>Service</th>
-          <th>Price</th>
-          <th>What You Get</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Sovereignty-Honoring Design</td>
-          <td class="price">$4,000</td>
-          <td>Half-day training + framework + recording</td>
-        </tr>
-        <tr>
-          <td>Child Safety Implementation</td>
-          <td class="price">$4,500</td>
-          <td>Half-day training + code templates + guide</td>
-        </tr>
-      </tbody>
-    </table>
-
-    <h3 class="mt-lg">Implementation</h3>
-    <table class="pricing-table">
-      <thead>
-        <tr>
-          <th>Service</th>
-          <th>Price</th>
-          <th>What You Get</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Child Safety Build Support</td>
-          <td class="price">$12,000</td>
-          <td>Age gates, consent flows, data protection — built with you</td>
-        </tr>
-        <tr>
-          <td>Ethical AI Architecture</td>
-          <td class="price">$20,000</td>
-          <td>Multi-agent design, governance, alignment</td>
-        </tr>
-      </tbody>
-    </table>
-
-    <h3 class="mt-lg">Retainer</h3>
-    <table class="pricing-table">
-      <thead>
-        <tr>
-          <th>Service</th>
-          <th>Price</th>
-          <th>What You Get</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Advisory</td>
-          <td class="price">$3,500/mo</td>
-          <td>8 hours/month + async support</td>
-        </tr>
-      </tbody>
-    </table>
-  </section>
-
-  <section class="container">
-    <h2>Areas of Focus</h2>
-    <div class="focus-grid">
-      <div class="card">
-        <h3>Child Safety</h3>
-        <p>Age-gating, parental consent flows, data minimization, route protection.</p>
+    <div class="services-list">
+      <div class="service-item">
+        <div class="service-name">Intent Engineering Workshop <span class="discipline-badge">Intent Engineering</span></div>
+        <div class="service-desc">Half-day workshop on encoding values and decision boundaries into agent systems.</div>
+        <div class="service-price">$4,000</div>
       </div>
-      <div class="card">
-        <h3>Privacy Architecture</h3>
-        <p>Data flow mapping, encryption, local-first design, zero-knowledge patterns.</p>
+      <div class="service-item">
+        <div class="service-name">Sovereignty Assessment Workshop <span class="discipline-badge">Evaluation Design</span></div>
+        <div class="service-desc">Half-day guided sovereignty assessment on your product with your team.</div>
+        <div class="service-price">$4,000</div>
       </div>
-      <div class="card">
-        <h3>Security Review</h3>
-        <p>JWT/OAuth hardening, session management, rate limiting, fail-closed systems.</p>
+      <div class="service-item">
+        <div class="service-name">Sovereignty-Honoring Design</div>
+        <div class="service-desc">Half-day training on building products that honor user autonomy. Includes framework, exercises, and recording.</div>
+        <div class="service-price">$4,000</div>
       </div>
-      <div class="card">
-        <h3>Ethical AI</h3>
-        <p>Multi-agent governance, alignment, drift monitoring, sovereignty-honoring design.</p>
+      <div class="service-item">
+        <div class="service-name">Child Safety Implementation</div>
+        <div class="service-desc">Half-day training on age-gating, consent flows, and data protection for products serving children. Includes code templates and implementation guide.</div>
+        <div class="service-price">$4,500</div>
       </div>
     </div>
+
+    <h3 class="mt-lg">Implementation</h3>
+    <div class="services-list">
+      <div class="service-item">
+        <div class="service-name">Specification Engineering Sprint <span class="discipline-badge">Specification Engineering</span></div>
+        <div class="service-desc">One-week sprint producing agent specifications your team can deploy against.</div>
+        <div class="service-price">$5,000</div>
+      </div>
+      <div class="service-item">
+        <div class="service-name">Child Safety Build Support</div>
+        <div class="service-desc">Hands-on implementation of age gates, parental consent flows, and data protection. Built alongside your engineering team over 2-4 weeks.</div>
+        <div class="service-price">$12,000</div>
+      </div>
+      <div class="service-item">
+        <div class="service-name">Ethical AI Architecture</div>
+        <div class="service-desc">Design and build multi-agent systems with governance, identity architecture, drift monitoring, and alignment verification.</div>
+        <div class="service-price">$20,000</div>
+      </div>
+    </div>
+
+    <h3 class="mt-lg">Retainer</h3>
+    <div class="services-list">
+      <div class="service-item">
+        <div class="service-name">Advisory</div>
+        <div class="service-desc">8 hours/month + async support.</div>
+        <div class="service-price">$3,500/mo</div>
+      </div>
+    </div>
+
+    <p class="text-muted mt-md" style="font-size: 0.9rem;">
+      I focus on technical implementation — not legal advice. For legal interpretation
+      of COPPA, GDPR, or other regulations, please consult a qualified attorney.
+    </p>
   </section>
 
   <section class="container text-center">
@@ -220,6 +258,127 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 </BaseLayout>
 
 <style>
+  /* Discipline badge — small pill on toolkit cards and service names */
+  .discipline-badge {
+    display: inline-block;
+    background: var(--accent-subtle);
+    color: var(--accent-warm);
+    font-size: 0.7rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 3px 10px;
+    border-radius: 100px;
+    vertical-align: middle;
+  }
+
+  /* Inertia forces grid — reuses focus-grid pattern */
+  .inertia-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: var(--space-md);
+  }
+
+  .inertia-grid .card h3 {
+    font-size: 1.1rem;
+  }
+
+  .inertia-grid .card p {
+    font-size: 0.9rem;
+    margin-bottom: 0;
+  }
+
+  /* Discipline stack — vertical cumulative cards */
+  .discipline-stack {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+    margin: var(--space-md) 0;
+  }
+
+  .level-card {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-md);
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: 8px;
+    padding: var(--space-md);
+    transition: border-color var(--transition-smooth);
+  }
+
+  .level-card:hover {
+    border-color: var(--border-accent);
+  }
+
+  .level-number {
+    font-family: var(--font-display);
+    font-size: 2.5rem;
+    font-weight: 400;
+    color: var(--accent-warm);
+    line-height: 1;
+    flex-shrink: 0;
+    width: 2rem;
+    text-align: center;
+  }
+
+  .level-content h3 {
+    margin-top: 0;
+    margin-bottom: var(--space-xs);
+    font-size: 1.1rem;
+  }
+
+  .level-content p {
+    margin: 0;
+    font-size: 0.9rem;
+  }
+
+  .bridge-text {
+    margin-top: var(--space-md);
+    font-style: italic;
+    color: var(--text-secondary);
+  }
+
+  /* Services list — card-style for mobile-friendliness */
+  .services-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+
+  .service-item {
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-sm);
+    padding: var(--space-sm) 0;
+    border-bottom: 1px solid var(--border-subtle);
+    flex-wrap: wrap;
+  }
+
+  .service-item:last-child {
+    border-bottom: none;
+  }
+
+  .service-name {
+    font-weight: 500;
+    flex-shrink: 0;
+  }
+
+  .service-desc {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    flex: 1;
+    min-width: 200px;
+  }
+
+  .service-price {
+    color: var(--accent-warm);
+    font-weight: 500;
+    flex-shrink: 0;
+    margin-left: auto;
+  }
+
+  /* Existing styles carried forward */
   .guarantee {
     background: var(--accent-subtle);
     border: 1px solid var(--border-accent);
@@ -231,21 +390,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
   .guarantee strong {
     color: var(--accent-warm);
-  }
-
-  .focus-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: var(--space-md);
-  }
-
-  .focus-grid .card h3 {
-    font-size: 1.1rem;
-  }
-
-  .focus-grid .card p {
-    font-size: 0.9rem;
-    margin-bottom: 0;
   }
 
   .cta-buttons {
@@ -286,7 +430,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   }
 
   .toolkit-card h3 {
-    margin-top: 0;
+    margin-top: var(--space-xs);
     font-size: 1.1rem;
   }
 
@@ -363,5 +507,25 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     font-size: 0.85rem;
     color: var(--text-muted);
     font-style: italic;
+  }
+
+  /* Responsive: services stack on mobile */
+  @media (max-width: 600px) {
+    .service-item {
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .service-price {
+      margin-left: 0;
+    }
+
+    .level-card {
+      gap: var(--space-sm);
+    }
+
+    .level-number {
+      font-size: 2rem;
+    }
   }
 </style>
