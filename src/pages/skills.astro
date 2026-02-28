@@ -63,6 +63,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
     <div class="skill-cards-paid">
       <div class="skill-card">
+        <span class="discipline-badge">Evaluation Design</span>
         <h3>/sovereignty-assess</h3>
         <p class="skill-subtitle">Full Sovereignty Assessment</p>
         <p>47 items across 7 domains — Transparency, Autonomy, Invitation, Dignity, Silence, Data Sovereignty, AI & Voice. Scoring rubric, domain health map, action plan generation.</p>
@@ -70,6 +71,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </div>
 
       <div class="skill-card">
+        <span class="discipline-badge">Specification Engineering</span>
         <h3>/trust-audit</h3>
         <p class="skill-subtitle">Trust Architecture Audit</p>
         <p>Four-pillar diagnostic — identity, memory, governance, refusal rights. 15-minute trust diagnostic, guided pillar walkthroughs, complete specification generation.</p>
@@ -77,6 +79,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </div>
 
       <div class="skill-card">
+        <span class="discipline-badge">Constraint Architecture</span>
         <h3>/governance-build</h3>
         <p class="skill-subtitle">Governance Framework Builder</p>
         <p>Five layers — charter, boundaries, drift thresholds, accountability, authority. Guided template completion, three-test belief validation, complete governance package generation.</p>
@@ -84,6 +87,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </div>
 
       <div class="skill-card">
+        <span class="discipline-badge">Constraint Architecture</span>
         <h3>/restraint-spec</h3>
         <p class="skill-subtitle">Restraint Specification Builder</p>
         <p>Boundary audit, refusal categories, failure modes, refusal voice design, adversarial test case generation. Produces a deployable restraint specification.</p>
@@ -91,6 +95,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </div>
 
       <div class="skill-card">
+        <span class="discipline-badge">Intent Engineering</span>
         <h3>/voice-design</h3>
         <p class="skill-subtitle">Voice Architecture Designer</p>
         <p>Three-level framework — protection, respect, nurturance. Voice diagnostic, extraction vs. sovereignty language audit, voice specification and refusal voice generation.</p>
@@ -98,6 +103,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </div>
 
       <div class="skill-card">
+        <span class="discipline-badge">Context Engineering</span>
         <h3>/memory-design</h3>
         <p class="skill-subtitle">Memory Architecture Designer</p>
         <p>Memory types, governance framework, the canonical rule, session protocols, retention policy, right to be forgotten. Produces a complete memory architecture specification.</p>
@@ -140,6 +146,19 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: var(--space-md);
     margin-top: var(--space-md);
+  }
+
+  .discipline-badge {
+    display: inline-block;
+    background: var(--accent-subtle);
+    color: var(--accent-warm);
+    font-size: 0.7rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 3px 10px;
+    border-radius: 100px;
+    margin-bottom: var(--space-xs);
   }
 
   .skill-card {
