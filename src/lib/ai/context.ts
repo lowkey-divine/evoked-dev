@@ -62,21 +62,26 @@ export const portfolioContext = {
   },
 
   consulting: {
-    focus: ['COPPA compliance', 'Privacy architecture', 'Security review', 'Ethical AI'],
-    guarantee: 'If an assessment doesn\'t surface at least 3 actionable findings, you pay nothing.',
+    focus: ['Specification engineering', 'Context engineering', 'Intent engineering', 'Agent governance', 'Child safety & COPPA', 'Privacy architecture', 'Security review'],
+    guarantee: 'If an assessment or audit doesn\'t surface at least 3 actionable findings, you pay nothing.',
     services: {
       assessments: [
-        { name: 'COPPA Technical Review', price: '$3,500', description: 'Architecture assessment + implementation roadmap' },
-        { name: 'Privacy Architecture Review', price: '$3,000', description: 'Data flow audit + recommendations' },
-        { name: 'Security Code Review', price: '$3,500', description: 'Auth, sessions, encryption audit + fixes list' },
+        { name: 'Four-Discipline Audit', price: '$3,500', description: 'Evaluate prompt craft, context engineering, intent engineering, and specification maturity' },
+        { name: 'Context Engineering Review', price: '$3,000', description: 'Audit agent memory, retrieval, system prompts, and information environment' },
+        { name: 'Privacy Architecture Review', price: '$3,000', description: 'Map data flows, consent patterns, encryption coverage, and minimization gaps' },
+        { name: 'Security Code Review', price: '$3,500', description: 'Audit authentication, session management, encryption, and rate limiting' },
+        { name: 'COPPA Technical Review', price: '$3,500', description: 'Assess age-gating, parental consent flows, data collection, and retention against COPPA requirements' },
       ],
       workshops: [
-        { name: 'Sovereignty-Honoring Design', price: '$4,000', description: 'Half-day training + framework + recording' },
-        { name: 'Child Safety Implementation', price: '$4,500', description: 'Half-day training + code templates + guide' },
+        { name: 'Intent Engineering Workshop', price: '$4,000', description: 'Half-day workshop on encoding values and decision boundaries into agent systems' },
+        { name: 'Sovereignty Assessment Workshop', price: '$4,000', description: 'Half-day guided sovereignty assessment on your product with your team' },
+        { name: 'Sovereignty-Honoring Design', price: '$4,000', description: 'Half-day training on building products that honor user autonomy, with framework and recording' },
+        { name: 'Child Safety Implementation', price: '$4,500', description: 'Half-day training on age-gating, consent flows, and data protection for products serving children' },
       ],
       implementation: [
-        { name: 'Child Safety Build Support', price: '$12,000', description: 'Age gates, consent flows, data protection — built with you' },
-        { name: 'Ethical AI Architecture', price: '$20,000', description: 'Multi-agent design, governance, alignment' },
+        { name: 'Specification Engineering Sprint', price: '$5,000', description: 'One-week sprint producing agent specifications your team can deploy against' },
+        { name: 'Child Safety Build Support', price: '$12,000', description: 'Hands-on implementation of age gates, consent flows, and data protection over 2-4 weeks' },
+        { name: 'Ethical AI Architecture', price: '$20,000', description: 'Design and build multi-agent systems with governance, identity architecture, and alignment verification' },
       ],
       retainer: { name: 'Advisory', price: '$3,500/mo', description: '8 hours/month + async support' },
     },
@@ -152,16 +157,17 @@ export const portfolioContext = {
 
   alignment: {
     strongFit: [
-      'Family-focused apps needing child safety',
-      'Products handling sensitive personal data',
-      'Teams building ethical AI systems',
+      'Teams building AI agents who need context engineering, intent engineering, or specification engineering',
+      'Organizations deploying agents at scale and struggling with governance, trust, or verification',
+      'Family-focused apps needing child safety and COPPA compliance',
+      'Products handling sensitive personal data with privacy architecture needs',
       'Companies wanting sovereignty-honoring design',
       'Apps dealing with heritage, identity, or grief',
     ],
     moderateFit: [
-      'General privacy reviews',
-      'Security audits for consumer apps',
-      'Teams needing security code review',
+      'Teams strong at prompt craft but unsure how to move to context or intent engineering',
+      'General privacy reviews for consumer apps',
+      'Security audits and code review',
     ],
     limitedFit: [
       'Growth hacking or engagement optimization',
