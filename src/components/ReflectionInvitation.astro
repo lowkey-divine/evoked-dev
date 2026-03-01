@@ -1,0 +1,54 @@
+---
+interface Props {
+  prompt: string;
+  productName: string;
+}
+
+const { prompt, productName } = Astro.props;
+const mailto = `mailto:evokesupports@icloud.com?subject=Re: ${encodeURIComponent(productName)}`;
+---
+
+<section class="container reflection-section">
+  <h2>One question, when you're ready</h2>
+  <div class="reflection-card">
+    <p class="reflection-prompt">{prompt}</p>
+    <p class="reflection-cta">
+      If something lands, <a href={mailto}>send it our way</a>.
+      No obligation. We read everything.
+    </p>
+  </div>
+</section>
+
+<style>
+  .reflection-section {
+    max-width: 640px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .reflection-card {
+    background: var(--bg-surface, #faf9f7);
+    border-left: 3px solid var(--accent-warm, #c4956a);
+    border-radius: 0 8px 8px 0;
+    padding: var(--space-md, 1.5rem);
+  }
+
+  .reflection-prompt {
+    font-style: italic;
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: var(--text-primary, #1a1a2e);
+    margin: 0 0 1rem;
+  }
+
+  .reflection-cta {
+    font-size: 0.9rem;
+    color: var(--text-muted, #666);
+    margin: 0;
+  }
+
+  .reflection-cta a {
+    color: var(--accent-warm, #c4956a);
+    font-weight: 600;
+  }
+</style>

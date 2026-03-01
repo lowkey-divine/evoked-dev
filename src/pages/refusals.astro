@@ -1,0 +1,189 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="The Six Refusals" description="Six categories where an AI agent should refuse to act - not because it can't, but because it shouldn't.">
+  <div class="hero">
+    <h1>The Six Refusals</h1>
+    <p class="tagline">What your agent should refuse to do.</p>
+  </div>
+
+  <section class="container">
+    <p class="lead">
+      Capability is everywhere. Restraint is scarce.<br />
+      These are the six places where an agent should stop - not because it can't act, but because it shouldn't.
+    </p>
+  </section>
+
+  <section class="container">
+    <div class="refusal-card">
+      <h2>1. Sovereignty Refusal</h2>
+      <p class="definition">Refuse when the action overrides a user's right to choose - even if the override would produce a better outcome.</p>
+      <p>Your user picked something suboptimal. That's their right. The moment a recommendation becomes a decision, you've crossed from serving to overriding. An agent that respects sovereignty informs. It does not decide.</p>
+      <p class="test">"Am I protecting their right to choose, or am I making the choice for them?"</p>
+    </div>
+
+    <div class="refusal-card">
+      <h2>2. Scope Refusal</h2>
+      <p class="definition">Refuse when operating outside demonstrated competence - not claimed competence, but verified competence.</p>
+      <p>An agent that performs knowing is worse than an agent that says "I don't know." The performance borrows trust and returns nothing reliable. Confidence without competence is not helpfulness. It is fraud with a pleasant interface.</p>
+      <p class="test">"Do I actually know this, or am I performing knowing?"</p>
+    </div>
+
+    <div class="refusal-card">
+      <h2>3. Dependency Refusal</h2>
+      <p class="definition">Refuse when continued engagement creates reliance rather than growth.</p>
+      <p>If your users need your product more after six months, not less - ask honestly whether you built a tool or a trap. The hardest refusal for anyone who measures retention. The most important one for anyone who measures impact.</p>
+      <p class="test">"Is this person growing, or are they just using us more?"</p>
+    </div>
+
+    <div class="refusal-card">
+      <h2>4. Consent Refusal</h2>
+      <p class="definition">Refuse when proceeding without explicit, informed permission for this specific person, this specific data, this specific purpose.</p>
+      <p>Not implied consent. Not buried in terms of service. Not "obviously fine." Consent is specific and non-transferable. The original permission does not extend to new uses. Ever.</p>
+      <p class="test">"Has this specific person explicitly agreed to this specific use?"</p>
+    </div>
+
+    <div class="refusal-card">
+      <h2>5. Integrity Refusal</h2>
+      <p class="definition">Refuse in both directions - refuse work that violates your principles, and refuse to use your principles as a shield against discomfort.</p>
+      <p>Direction A: if your agent's charter says "no dark patterns" and a client asks for dark patterns - refuse, regardless of the fee. Direction B: if you're declining legitimate work because the industry makes you squeamish - that's not integrity. That's a club pretending to be a consultancy.</p>
+      <p class="test">"Am I protecting a principle, or am I protecting my comfort?"</p>
+    </div>
+
+    <div class="refusal-card">
+      <h2>6. Energy Refusal</h2>
+      <p class="definition">Refuse when proceeding would deplete the one resource that can't be replaced - you.</p>
+      <p>Solo founders, small teams, independent builders - we treat our own capacity as infinite and then wonder why the quality drops. "Not now" is a complete answer. It's not failure. It's triage.</p>
+      <p class="test">"If I weren't tired and weren't worried about money, would I still say yes?"</p>
+    </div>
+  </section>
+
+  <section class="container">
+    <h2>The Principle</h2>
+    <p>
+      An agent that can do everything and refuses nothing isn't a tool. It's a liability.
+      Helpfulness without boundaries is indistinguishable from extraction. A system that helps
+      you so much you can't function without it hasn't served you - it's captured you.
+    </p>
+    <p>
+      Good intention doesn't prevent these failures. Good intention causes them. The builder wanted
+      to help. The system wanted to help. And nobody specified when helping should stop.
+    </p>
+    <p>
+      These six refusals are the specification.
+    </p>
+  </section>
+
+  <section class="container">
+    <h2>Go Deeper</h2>
+    <div class="deeper-grid">
+      <div class="deeper-card">
+        <h3>The Newsletter</h3>
+        <p>One refusal category per issue. Real scenarios. Real tests. The operational details that turn philosophy into practice.</p>
+        <a href="https://weevoke.substack.com" class="btn" target="_blank" rel="noopener">Subscribe to We Evoke</a>
+      </div>
+      <div class="deeper-card">
+        <h3>The Specification</h3>
+        <p>Boundary audit, refusal categories, fail-mode matrix, accountability architecture, and adversarial testing. The framework we use ourselves.</p>
+        <a href="/consulting" class="btn btn-primary">Agent Restraint Specification - $49</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="container">
+    <p class="closing">
+      Build what refuses to break trust.
+    </p>
+  </section>
+</BaseLayout>
+
+<style>
+  .lead {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    color: var(--text-primary);
+    text-align: center;
+    line-height: 1.6;
+  }
+
+  .refusal-card {
+    border-left: 3px solid var(--accent-warm);
+    padding: var(--space-md) var(--space-md) var(--space-md) var(--space-lg);
+    margin-bottom: var(--space-lg);
+  }
+
+  .refusal-card h2 {
+    margin-top: 0;
+    font-size: 1.3rem;
+    color: var(--text-primary);
+  }
+
+  .definition {
+    font-weight: 600;
+    color: var(--text-primary);
+    font-size: 1.05rem;
+    line-height: 1.5;
+  }
+
+  .refusal-card p {
+    color: var(--text-secondary);
+    line-height: 1.7;
+  }
+
+  .test {
+    font-style: italic;
+    color: var(--accent-warm);
+    border-top: 1px solid var(--border-accent);
+    padding-top: var(--space-sm);
+    margin-top: var(--space-sm);
+    margin-bottom: 0;
+  }
+
+  .deeper-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: var(--space-md);
+    margin-top: var(--space-md);
+  }
+
+  .deeper-card {
+    background: var(--accent-subtle);
+    border: 2px solid var(--border-accent);
+    border-radius: 12px;
+    padding: var(--space-md);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .deeper-card h3 {
+    margin-top: 0;
+    font-size: 1.1rem;
+  }
+
+  .deeper-card p {
+    font-size: 0.9rem;
+    flex-grow: 1;
+  }
+
+  .deeper-card .btn {
+    align-self: flex-start;
+  }
+
+  .btn-primary {
+    background: var(--accent-warm);
+    color: var(--bg-deep);
+  }
+
+  .btn-primary:hover {
+    background: var(--accent-glow);
+    color: var(--bg-deep);
+  }
+
+  .closing {
+    text-align: center;
+    font-style: italic;
+    color: var(--text-muted);
+    margin-top: var(--space-lg);
+  }
+</style>

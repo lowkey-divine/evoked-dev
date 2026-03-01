@@ -93,9 +93,25 @@ export function productDeliveryEmail(product: Product, customerName?: string): s
 
               <hr style="border: none; border-top: 1px solid #e0dcd6; margin: 24px 0;">
 
+              <!-- Reflection Invitation -->
+              <h3 style="color: #1a1a2e; margin: 0 0 12px; font-size: 18px; font-weight: normal;">
+                One question, when you're ready
+              </h3>
+
+              <p style="color: #333333; font-size: 15px; line-height: 1.6; margin: 0 0 16px; font-style: italic;">
+                ${product.reciprocityPrompt}
+              </p>
+
+              <p style="color: #666666; font-size: 14px; line-height: 1.6; margin: 0 0 24px;">
+                If something lands, reply to
+                <a href="mailto:evokesupports@icloud.com?subject=Re: ${encodeURIComponent(product.name)}" style="color: #1a1a2e;">evokesupports@icloud.com</a>.
+                No obligation. We read everything.
+              </p>
+
+              <hr style="border: none; border-top: 1px solid #e0dcd6; margin: 24px 0;">
+
               <p style="color: #666666; font-size: 14px; line-height: 1.6; margin: 0 0 16px;">
-                This is an automated message - please do not reply to this email.
-                Questions or feedback? Reach out at
+                Questions about your download? Reach out at
                 <a href="mailto:evokesupports@icloud.com" style="color: #1a1a2e;">evokesupports@icloud.com</a>.
               </p>
 

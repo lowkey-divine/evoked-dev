@@ -3,7 +3,7 @@ title: "Who Governs the Agent?"
 description: "Your AI policy covers the human using the tool. Nobody is covering the tool itself."
 pubDate: 2026-02-23
 tags: ["ai-governance", "ai-agents", "trust-architecture", "ai-ethics", "responsible-ai"]
-draft: false
+draft: true
 ---
 
 I read something this morning that caught my attention.
@@ -20,7 +20,7 @@ Not trustworthy because a human reviewed its output. Trustworthy because someone
 
 ---
 
-I govern 142 AI agents. Not as a thought experiment. As a daily practice. They have persona files - some have birth certificates that define who they are, what perspective they bring, where their boundaries are. They have memory architecture - what they remember, what they forget, and who decides. They have governance - graduated trust stages, accountability frameworks, decision authority matrices. They have restraint specifications - explicit categories of what they must refuse, how they refuse, and what happens when refusal fails.
+I govern 142 AI agents. Not as a thought experiment. As a daily practice. Each one has a persona file - a birth certificate that defines who they are, what perspective they bring, where their boundaries are. Each one has memory architecture - what they remember, what they forget, and who decides. They operate under governance - graduated trust stages, accountability frameworks, decision authority matrices. And they have restraint specifications - explicit categories of what they must refuse, how they refuse, and what happens when refusal fails.
 
 This did not start as a product. It started as a family meal planning app.
 
@@ -31,8 +31,6 @@ Who builds trust into the things we're building?
 Not who reviews the output. Who builds the system so the output is worth trusting in the first place?
 
 ---
-
-The article I read this morning identifies four principles: responsibility, accountability, auditability, transparency. All four govern the human actor. All four assume the AI is a black box you manage around.
 
 I work with a different set of four. I call them pillars - not of AI use, but of AI architecture:
 
@@ -66,7 +64,7 @@ If that's useful to you, I'll be here next week.
 
 ---
 
-*If you're building with AI agents and want the frameworks now, I've published the templates I use: the Sovereignty Assessment Toolkit, Trust Architecture Blueprint, Agent Voice Architecture Guide, Agent Governance Starter Kit, and Agent Restraint Specification. Each is $49 at [evoked.dev/consulting](https://evoked.dev/consulting).*
+*If you're building with AI agents and want the frameworks behind this work, I've published the templates I use. They're at [evoked.dev/consulting](https://evoked.dev/consulting).*
 
 *Originally published on [We Evoke (Substack)](https://weevoke.substack.com/p/who-governs-the-agent).*
 
@@ -75,4 +73,9 @@ If that's useful to you, I'll be here next week.
 ## Sources
 
 **Referenced Article:**
-- [The Art of Asking Questions](https://andreachiarelli.substack.com/) - Andrea Chiarelli's Substack (the piece on responsible AI use in professional services referenced in the opening)
+- [The Art of Asking Questions](https://andreachiarelli.substack.com/) - Andrea Chiarelli's Substack (specific article link TBD)
+
+**Agentic Infrastructure:**
+- [Introducing Agentic Wallets](https://www.coinbase.com/developer-platform/discover/launches/agentic-wallets) - Coinbase (x402 protocol, machine-to-machine transactions)
+- [Agentic Commerce Suite](https://stripe.com/newsroom/news/agentic-commerce-suite) - Stripe (agent-native payment tools)
+- [New Tools for Building Agents](https://openai.com/index/new-tools-for-building-agents/) - OpenAI (Agents SDK, tool use, code execution)

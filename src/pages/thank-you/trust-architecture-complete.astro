@@ -1,5 +1,9 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import ReflectionInvitation from '../../components/ReflectionInvitation.astro';
+import { getProductBySlug } from '../../lib/products/registry';
+
+const product = getProductBySlug('trust-architecture-complete')!;
 ---
 
 <BaseLayout title="Thank You" description="Your Trust Architecture Complete bundle is ready to download.">
@@ -61,6 +65,8 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
       </div>
     </div>
   </section>
+
+  <ReflectionInvitation prompt={product.reciprocityPrompt} productName={product.name} />
 </BaseLayout>
 
 <style>
