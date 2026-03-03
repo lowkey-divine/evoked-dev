@@ -36,11 +36,18 @@ export const POST: APIRoute = async ({ request }) => {
     });
 
     if (!res.ok) {
-      const data = await res.json();
-      // Buttondown returns 400 if already subscribed — treat as success
-      if (res.status === 400 && JSON.stringify(data).includes('already')) {
+      const data = await res.json() as { code?: string; detail?: string };
+      // Already subscribed — treat as success
+      if (res.status === 400 && (data.code === 'email_already_exists' || JSON.stringify(data).includes('already'))) {
         return new Response(JSON.stringify({ success: true }), {
           status: 200,
+          headers: { 'Content-Type': 'application/json' },
+        });
+      }
+      // Firewall blocked — don't expose internal details, give a helpful message
+      if (data.code === 'subscriber_blocked') {
+        return new Response(JSON.stringify({ error: 'Unable to subscribe with that email. Please try a different address or contact us directly.' }), {
+          status: 400,
           headers: { 'Content-Type': 'application/json' },
         });
       }
