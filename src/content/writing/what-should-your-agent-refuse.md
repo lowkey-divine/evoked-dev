@@ -52,7 +52,7 @@ Over the past year, building agents that operate under real governance, I've ide
 
 **1. Sovereignty Refusal**
 
-When the action overrides a user's right to choose - even if the override would produce a better outcome. Your user picked something suboptimal? That's their right. The moment a recommendation becomes a decision, you've crossed from serving to controlling.
+When the action overrides a user's right to choose - even if the override would produce a better outcome. Not the geopolitical "sovereign AI" you're hearing about - not nations controlling their own models. Personal sovereignty. The person in front of your system and their right to choose. Your user picked something suboptimal? That's their right. The moment a recommendation becomes a decision, you've crossed from serving to controlling.
 
 This applies to the person on the other side of the agent too - the one who didn't choose to interact with AI at all. The parent whose child's data was collected. The job applicant whose resume was filtered. The patient whose treatment was flagged. If your agent affects people who never consented to its involvement, sovereignty refusal applies to them first.
 
@@ -111,6 +111,8 @@ Most agent frameworks don't have any of this. The agent does what it's told, or 
 The agentic web is arriving. Agents that negotiate, transact, search, and execute on behalf of people and organizations. The infrastructure companies are building the capability layer - wallets, protocols, marketplaces, execution environments. That part is moving fast.
 
 But capability is the easy part. The hard question - the one that determines whether any of this is worth building - is trust. And trust doesn't come from what a system can do. It comes from what a system chooses not to do.
+
+The market is starting to price this. AI businesses with weak governance frameworks are seeing 15-30% valuation reductions. Trust isn't just philosophy anymore - it's showing up on balance sheets.
 
 Anyone can build an agent that acts. The scarce thing - the thing the market hasn't produced and needs - is an agent you can trust to stop.
 
