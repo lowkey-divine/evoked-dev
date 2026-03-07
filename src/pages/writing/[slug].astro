@@ -36,10 +36,60 @@ const { Content } = await post.render();
     </div>
 
     <footer class="article-footer">
+      <div class="newsletter-cta">
+        <h3>Keep reading</h3>
+        <p>Occasional updates on sovereignty, trust, and building something better.</p>
+        <form id="newsletter-form" class="newsletter-form">
+          <input type="email" id="newsletter-email" name="email" placeholder="your@email.com" required aria-label="Email address" />
+          <button type="submit" class="btn btn-primary">Subscribe</button>
+        </form>
+        <p id="newsletter-status" class="newsletter-status" aria-live="polite"></p>
+      </div>
       <a href="/writing" class="back-link">← Back to Writing</a>
     </footer>
   </article>
 </BaseLayout>
+
+<script>
+  const form = document.getElementById('newsletter-form') as HTMLFormElement;
+  const status = document.getElementById('newsletter-status') as HTMLParagraphElement;
+  const emailInput = document.getElementById('newsletter-email') as HTMLInputElement;
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const email = emailInput.value.trim();
+    if (!email) return;
+
+    status.textContent = '';
+    const button = form.querySelector('button') as HTMLButtonElement;
+    button.disabled = true;
+    button.textContent = 'Subscribing...';
+
+    try {
+      const res = await fetch('/api/newsletter/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      });
+
+      if (res.ok) {
+        status.textContent = 'You are in. Welcome.';
+        status.className = 'newsletter-status success';
+        emailInput.value = '';
+      } else {
+        const data = await res.json();
+        status.textContent = data.error || 'Something went wrong. Try again.';
+        status.className = 'newsletter-status error';
+      }
+    } catch {
+      status.textContent = 'Something went wrong. Try again.';
+      status.className = 'newsletter-status error';
+    } finally {
+      button.disabled = false;
+      button.textContent = 'Subscribe';
+    }
+  });
+</script>
 
 <style>
   .article {
@@ -161,6 +211,65 @@ const { Content } = await post.render();
     margin-top: var(--space-lg);
     padding-top: var(--space-md);
     border-top: 1px solid var(--border-subtle);
+  }
+
+  .newsletter-cta {
+    text-align: center;
+    margin-bottom: var(--space-lg);
+  }
+
+  .newsletter-cta h3 {
+    margin-bottom: var(--space-xs);
+  }
+
+  .newsletter-cta p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    margin-bottom: 0;
+  }
+
+  .newsletter-form {
+    display: flex;
+    gap: var(--space-xs);
+    justify-content: center;
+    flex-wrap: wrap;
+    max-width: 400px;
+    margin: var(--space-md) auto 0;
+  }
+
+  .newsletter-form input[type="email"] {
+    flex: 1;
+    min-width: 200px;
+    padding: var(--space-sm) var(--space-md);
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: 4px;
+    color: var(--text-primary);
+    font-size: 0.95rem;
+    font-family: var(--font-body);
+  }
+
+  .newsletter-form input[type="email"]:focus {
+    outline: none;
+    border-color: var(--border-accent);
+  }
+
+  .newsletter-form input[type="email"]::placeholder {
+    color: var(--text-muted);
+  }
+
+  .newsletter-status {
+    font-size: 0.85rem;
+    margin-top: var(--space-sm);
+    min-height: 1.2em;
+  }
+
+  .newsletter-status.success {
+    color: var(--accent-warm);
+  }
+
+  .newsletter-status.error {
+    color: #e57373;
   }
 
   .back-link {

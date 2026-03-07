@@ -1,0 +1,320 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getProductBySlug } from '../../lib/products/registry';
+
+const product = getProductBySlug('sovereignty-assessment-toolkit')!;
+---
+
+<BaseLayout title="Sovereignty Assessment Toolkit" description="47-point checklist across 7 domains. Evaluate whether the technology you use or build honors human sovereignty. $49 PDF.">
+  <div class="hero hero-compact">
+    <span class="discipline-badge">Evaluation Design</span>
+    <h1>Does your product honor human sovereignty?</h1>
+    <p class="tagline">A 47-point assessment across 7 domains. 90 minutes to find out.</p>
+  </div>
+
+  <section class="container">
+    <div class="value-prop">
+      <p>
+        Most products extract value from people without examining whether they should.
+        This toolkit gives you a structured, honest way to evaluate whether the technology
+        you build — or the technology you use — treats people as sovereign beings or as
+        resources to be mined.
+      </p>
+      <p>
+        It does not require an ethics degree. It requires honesty.
+      </p>
+    </div>
+  </section>
+
+  <section class="container">
+    <h2>What You Get</h2>
+
+    <div class="features-grid">
+      <div class="feature">
+        <h3>47-Point Checklist</h3>
+        <p>Concrete, scorable items across every dimension of the user relationship. No abstract principles — specific, observable behaviors you can audit today.</p>
+      </div>
+      <div class="feature">
+        <h3>Scoring Rubric</h3>
+        <p>Domain-level and overall sovereignty scores. Domain health map that shows where you're strong and where the gaps live.</p>
+      </div>
+      <div class="feature">
+        <h3>6 Red Flag Items</h3>
+        <p>The six items that override everything else. Start here if you have 5 minutes. A product that fails any one of these has work to do, regardless of its overall score.</p>
+      </div>
+      <div class="feature">
+        <h3>Action Plan Template</h3>
+        <p>Prioritize findings, assign owners, set timelines. Turn the assessment into a sprint.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="container">
+    <h2>The 7 Domains</h2>
+
+    <div class="domains-list">
+      <div class="domain-item">
+        <span class="domain-number">1</span>
+        <div>
+          <h3>Transparency</h3>
+          <p>"Are we honest about what we're doing and why?"</p>
+        </div>
+      </div>
+      <div class="domain-item">
+        <span class="domain-number">2</span>
+        <div>
+          <h3>Autonomy</h3>
+          <p>"Does the product support user goals — or hijack them?"</p>
+        </div>
+      </div>
+      <div class="domain-item">
+        <span class="domain-number">3</span>
+        <div>
+          <h3>Invitation</h3>
+          <p>"Are we inviting people in — or trapping them?"</p>
+        </div>
+      </div>
+      <div class="domain-item">
+        <span class="domain-number">4</span>
+        <div>
+          <h3>Dignity</h3>
+          <p>"Do we treat people as whole beings — or as conversion targets?"</p>
+        </div>
+      </div>
+      <div class="domain-item">
+        <span class="domain-number">5</span>
+        <div>
+          <h3>Silence</h3>
+          <p>"Do we know when to stop talking?"</p>
+        </div>
+      </div>
+      <div class="domain-item">
+        <span class="domain-number">6</span>
+        <div>
+          <h3>Data Sovereignty</h3>
+          <p>"Who owns what — and do they know it?"</p>
+        </div>
+      </div>
+      <div class="domain-item">
+        <span class="domain-number">7</span>
+        <div>
+          <h3>AI & Voice</h3>
+          <p>"If an AI speaks for us, does it honor the people it speaks to?"</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="container">
+    <h2>Who This Is For</h2>
+
+    <div class="audience-grid">
+      <div class="card">
+        <h3>Product Teams</h3>
+        <p>Run this on your product before your users run it for you. Surface the gaps between what you intend and what you've built.</p>
+      </div>
+      <div class="card">
+        <h3>Procurement & Compliance</h3>
+        <p>Evaluate vendor products before adoption. A structured rubric is more useful than a trust-me pitch deck.</p>
+      </div>
+      <div class="card">
+        <h3>Founders</h3>
+        <p>Build the assessment into your development process from day one. It's cheaper to honor sovereignty than to retrofit it.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="container text-center">
+    <div class="purchase-card">
+      <div class="price-display">$49</div>
+      <p>PDF download. Use it on as many products as you want.</p>
+      <a href={product.stripePaymentLink} class="btn btn-primary btn-large mt-md" target="_blank" rel="noopener">Buy the Toolkit</a>
+      <p class="text-muted mt-md" style="font-size: 0.85rem;">
+        Includes the 47-point checklist, scoring rubric, domain health map, red flag items, action plan template, and the five principles appendix.
+      </p>
+    </div>
+  </section>
+
+  <section class="container">
+    <h2>Go Deeper</h2>
+    <p>
+      The toolkit gives you the assessment. If you want help acting on the results,
+      two options:
+    </p>
+
+    <div class="upsell-grid">
+      <div class="card">
+        <h3>Sovereignty Assessment Workshop</h3>
+        <p>Half-day guided assessment on your product with your team. I facilitate. You discover. $4,000.</p>
+        <a href="/consulting" class="btn mt-sm">Learn More</a>
+      </div>
+      <div class="card">
+        <h3>Discovery Call</h3>
+        <p>Free 30-minute call to discuss your results and figure out next steps.</p>
+        <a href="https://cal.com/evoked/discovery-call" class="btn mt-sm" target="_blank" rel="noopener">Schedule</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero-compact {
+    min-height: 45vh;
+  }
+
+  .discipline-badge {
+    display: inline-block;
+    background: var(--accent-subtle);
+    color: var(--accent-warm);
+    font-size: 0.7rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 3px 10px;
+    border-radius: 100px;
+    margin-bottom: var(--space-sm);
+  }
+
+  .value-prop p {
+    font-size: 1.05rem;
+    color: var(--text-primary);
+    line-height: 1.8;
+  }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: var(--space-md);
+  }
+
+  .feature {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: 8px;
+    padding: var(--space-md);
+  }
+
+  .feature h3 {
+    font-size: 1.1rem;
+    margin-bottom: var(--space-xs);
+  }
+
+  .feature p {
+    font-size: 0.9rem;
+    margin-bottom: 0;
+  }
+
+  .domains-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+
+  .domain-item {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-md);
+    padding: var(--space-sm) 0;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .domain-item:last-child {
+    border-bottom: none;
+  }
+
+  .domain-number {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    color: var(--accent-warm);
+    line-height: 1;
+    flex-shrink: 0;
+    width: 2rem;
+    text-align: center;
+  }
+
+  .domain-item h3 {
+    margin-bottom: 0;
+    font-size: 1.1rem;
+  }
+
+  .domain-item p {
+    font-size: 0.9rem;
+    font-style: italic;
+    margin-bottom: 0;
+  }
+
+  .audience-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: var(--space-md);
+  }
+
+  .audience-grid .card h3 {
+    font-size: 1.1rem;
+  }
+
+  .audience-grid .card p {
+    font-size: 0.9rem;
+    margin-bottom: 0;
+  }
+
+  .purchase-card {
+    background: var(--accent-subtle);
+    border: 2px solid var(--accent-warm);
+    border-radius: 12px;
+    padding: var(--space-lg);
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  .price-display {
+    font-family: var(--font-display);
+    font-size: 3rem;
+    color: var(--accent-warm);
+    font-weight: 500;
+  }
+
+  .btn-large {
+    padding: var(--space-sm) var(--space-lg);
+    font-size: 1rem;
+  }
+
+  .btn-primary {
+    background: var(--accent-warm);
+    color: var(--bg-deep);
+  }
+
+  .btn-primary:hover {
+    background: var(--accent-glow);
+    color: var(--bg-deep);
+  }
+
+  .upsell-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: var(--space-md);
+    margin-top: var(--space-md);
+  }
+
+  .upsell-grid .card h3 {
+    font-size: 1.1rem;
+  }
+
+  .upsell-grid .card p {
+    font-size: 0.9rem;
+  }
+
+  @media (max-width: 600px) {
+    .features-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .domain-item {
+      gap: var(--space-sm);
+    }
+
+    .domain-number {
+      font-size: 1.5rem;
+    }
+  }
+</style>
