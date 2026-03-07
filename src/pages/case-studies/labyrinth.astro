@@ -156,10 +156,11 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
         </div>
       </div>
       <p>
-        At the highest layer, four operational modes define graduated authority: passive
-        (observe only), neutralize (disable), double_agent (feed disinformation), and
-        counter_intel (active countermeasures). Each mode is a governance decision about
-        how much authority the system exercises.
+        At the highest layer, four operational modes define how the system engages: passive
+        (observe without intervention), neutralize (defang malicious commands), double_agent
+        (deceive with false intelligence), and counter_intel (generate structured reporting
+        on agent methodology). Each mode is a governance decision about how the system
+        responds to what it finds.
       </p>
       <p class="pillar-principle">
         <strong>The pattern:</strong> Governance isn't one setting. It's structured authority
@@ -287,6 +288,33 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
   </section>
 
   <section class="container">
+    <h2>Where It Is Now</h2>
+    <p>
+      LABYRINTH is at v0.1.0 with nearly all major components operational - all five layers,
+      six phantom services, TUI and web dashboards, MITRE ATT&CK forensic reporting, SIEM
+      integration, and 16 CLI commands with full lifecycle management. Production deployment
+      guides are still in development.
+    </p>
+    <p>
+      The project ships with four pre-integrated attacker agents for testing - PentAGI,
+      PentestAgent, Strix, and Kali Linux - all running in isolated Docker containers.
+      You can deploy a full test environment with a single command and run offensive agents
+      against it to see every layer in action.
+    </p>
+    <p>
+      DaxxSec has also built
+      <a href="https://github.com/DaxxSec/SecVF" target="_blank" rel="noopener">SecVF</a> -
+      a native macOS virtualization framework for security research, malware analysis, and
+      incident response. Built in Swift using Apple's Virtualization framework.
+    </p>
+    <p>
+      LABYRINTH is open source, actively maintained, and explicitly does not phone home.
+      All forensic data stays local. If you are working on defensive AI security, it is
+      worth your attention.
+    </p>
+  </section>
+
+  <section class="container">
     <h2>Related Resources</h2>
     <div class="resources-grid">
       <a href="/products/trust-architecture-blueprint" class="resource-link">
@@ -312,7 +340,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     </p>
     <div class="cta-buttons mt-md">
       <a href="/products/trust-architecture-blueprint" class="btn">Explore the Blueprint</a>
-      <a href="https://cal.com/evoked/discovery-call" class="btn btn-primary" target="_blank" rel="noopener">Schedule a Call</a>
+      <a href="https://cal.com/cal.com-evoked/discovery-call" class="btn btn-primary" target="_blank" rel="noopener">Schedule a Call</a>
     </div>
   </section>
 </BaseLayout>
