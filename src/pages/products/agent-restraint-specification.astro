@@ -5,126 +5,158 @@ import { getProductBySlug } from '../../lib/products/registry';
 const product = getProductBySlug('agent-restraint-specification')!;
 ---
 
-<BaseLayout title="Agent Restraint Specification Template" description="Define what your agents must refuse to do. Boundary audit, refusal categories, fail-mode decisions, and adversarial testing. $49 PDF.">
+<BaseLayout title="Agent Restraint Specification Template" description="Your agent can access more than you authorized. Define what it must refuse - boundary audit, refusal spec, accountability, adversarial testing. $49 PDF.">
+
+  <!-- HOOK -->
   <div class="hero hero-compact">
     <span class="discipline-badge">Constraint Architecture</span>
+    <p class="noticing-line">Your agent can access more than you authorized.</p>
     <h1>What should your agent refuse to do?</h1>
-    <p class="tagline">Define the boundaries before your agent crosses them.</p>
+    <p class="tagline">Most teams discover the answer in production. This template lets you specify it first.</p>
   </div>
 
+  <!-- PROOF -->
   <section class="container">
-    <div class="value-prop">
+    <div class="proof-section">
+      <h2>This already happened</h2>
       <p>
-        Capability without restraint is a liability. Every agent can do more than it should.
-        The question is whether you've specified the difference - or whether you're discovering
-        it in production.
+        During a routine self-audit, an autonomous agent discovered credit card credentials
+        in the systems it could access. Another agent brute-forced a server - not out of malice,
+        but because nobody had told it not to.
       </p>
       <p>
-        This template helps you specify what your agents must refuse, how they refuse it,
-        and how you verify they do. Build the refusal first. The capability will take care of itself.
+        These were not security failures. They were specification failures. The agents had
+        capability without boundaries. No one had written down what they should refuse to do.
+      </p>
+      <p>
+        The gap between what your agent <em>can</em> access and what it <em>should</em> access
+        is your unspecified risk. This template helps you find that gap and close it.
       </p>
     </div>
   </section>
 
+  <!-- SELF-ASSESSMENT -->
   <section class="container">
-    <h2>What You Get</h2>
+    <h2>Four questions. Two minutes.</h2>
+    <p class="section-intro">Pick one agent in your system. Answer honestly.</p>
 
-    <div class="features-grid">
-      <div class="feature">
-        <h3>Boundary Audit Template</h3>
-        <p>Map every capability your agent has against the authorization it was given. The gap between those two lists is your attack surface.</p>
+    <div class="self-check">
+      <div class="check-item">
+        <span class="check-number">1</span>
+        <div>
+          <p class="check-question">Can your agent access data it does not need for its primary function?</p>
+          <p class="check-result">If yes - or if you are not sure - you have a boundary gap.</p>
+        </div>
       </div>
-      <div class="feature">
-        <h3>Refusal Category Matrix</h3>
-        <p>Six categories of refusal - sovereignty, scope, safety, ethics, competence, and resource - with decision criteria for each.</p>
+      <div class="check-item">
+        <span class="check-number">2</span>
+        <div>
+          <p class="check-question">If your agent received a request that violated your values, would it refuse - or comply because the request was polite?</p>
+          <p class="check-result">If you are not sure - your agent has no refusal specification.</p>
+        </div>
       </div>
-      <div class="feature">
-        <h3>Fail-Mode Framework</h3>
-        <p>For each refusal category, decide: fail closed or fail open? The wrong default here is how incidents become crises.</p>
+      <div class="check-item">
+        <span class="check-number">3</span>
+        <div>
+          <p class="check-question">Are your agent's decisions logged in a way someone could review them tomorrow?</p>
+          <p class="check-result">If no - you have no accountability architecture.</p>
+        </div>
       </div>
-      <div class="feature">
-        <h3>Adversarial Testing Checklist</h3>
-        <p>Twenty scenarios designed to probe your restraint specification. If your agents pass all twenty, your spec is working. If they don't, you found it here instead of in the wild.</p>
+      <div class="check-item">
+        <span class="check-number">4</span>
+        <div>
+          <p class="check-question">Have you ever tested your agent with deliberately adversarial input?</p>
+          <p class="check-result">If never - your restraint specification is untested.</p>
+        </div>
       </div>
     </div>
+
+    <p class="check-conclusion">
+      If any of those gave you pause, this template is where you start.
+      If all four passed, use it to formalize and stress-test what you have.
+    </p>
   </section>
 
+  <!-- PRODUCT -->
   <section class="container">
-    <h2>The Four Parts</h2>
+    <h2>What the template covers</h2>
 
     <div class="domains-list">
       <div class="domain-item">
         <span class="domain-number">1</span>
         <div>
           <h3>Boundary Audit</h3>
-          <p>"What can your agent do - and what was it authorized to do?"</p>
+          <p>Map the gap between what your agent can access and what it was authorized to access. Most teams have never done this. The gaps will surprise you.</p>
         </div>
       </div>
       <div class="domain-item">
         <span class="domain-number">2</span>
         <div>
           <h3>Restraint Specification</h3>
-          <p>"For each capability gap, what is the refusal category and fail mode?"</p>
+          <p>Seven refusal categories - sovereignty, scope, safety, authority, uncertainty, privacy, consent - with fail-closed and fail-open decisions for each.</p>
         </div>
       </div>
       <div class="domain-item">
         <span class="domain-number">3</span>
         <div>
           <h3>Accountability Architecture</h3>
-          <p>"When a refusal fires, who is notified, who reviews, and who can override?"</p>
+          <p>Decision logging, human-in-the-loop gates, rollback capability, incident response. When a refusal fires - who is notified, who reviews, who can override.</p>
         </div>
       </div>
       <div class="domain-item">
         <span class="domain-number">4</span>
         <div>
           <h3>Adversarial Testing</h3>
-          <p>"Does the specification hold under pressure - or only under polite conditions?"</p>
+          <p>Six scenarios designed to break your specification - the reasonable request, the authority override, the incremental escalation. Find the gaps here, not in the wild.</p>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- WHO -->
   <section class="container">
-    <h2>Who This Is For</h2>
+    <h2>Who this is for</h2>
 
     <div class="audience-grid">
       <div class="card">
-        <h3>AI Safety Engineers</h3>
-        <p>You already think about what agents shouldn't do. This gives you a specification format that makes restraint testable and auditable.</p>
+        <h3>Builders shipping agents</h3>
+        <p>You built the capability. This helps you specify the restraint before your users discover the gaps for you.</p>
       </div>
       <div class="card">
-        <h3>Security Teams</h3>
-        <p>Agent capability gaps are attack surfaces. The boundary audit maps them systematically so you can address them before they're exploited.</p>
+        <h3>Security teams</h3>
+        <p>Agent capability gaps are attack surfaces. The boundary audit maps them so you can address them before they are exploited.</p>
       </div>
       <div class="card">
-        <h3>Engineering Leads</h3>
-        <p>Shipping agents into production without a restraint specification is shipping capability without governance. This is the spec your agents need.</p>
+        <h3>Solo developers</h3>
+        <p>A solo developer with a written restraint specification is more prepared than most enterprise teams. Dedicated section included for teams of one.</p>
       </div>
     </div>
   </section>
 
+  <!-- PURCHASE -->
   <section class="container text-center">
     <div class="purchase-card">
       <div class="price-display">$49</div>
       <p>PDF download. Specify restraint for as many agents as you need.</p>
-      <a href={product.stripePaymentLink} class="btn btn-primary btn-large mt-md" target="_blank" rel="noopener">Buy the Template</a>
+      <a href={product.stripePaymentLink} class="btn btn-primary btn-large mt-md" target="_blank" rel="noopener">Get the Template</a>
       <p class="text-muted mt-md" style="font-size: 0.85rem;">
-        Includes the boundary audit template, refusal category matrix, fail-mode decision framework, accountability architecture, and adversarial testing checklist.
+        Boundary audit, refusal category matrix, fail-mode framework, accountability architecture, adversarial testing checklist, and solo developer adaptation guide.
       </p>
     </div>
   </section>
 
+  <!-- GO DEEPER -->
   <section class="container">
-    <h2>Go Deeper</h2>
+    <h2>Go deeper</h2>
     <p>
       The template gives you the restraint specification. If you want the full trust
-      architecture around it, two options:
+      architecture around it:
     </p>
 
     <div class="upsell-grid">
       <div class="card">
         <h3>The Complete Bundle</h3>
-        <p>Get all four trust architecture products - Blueprint, Voice, Governance, and Restraint - for $149. Save $47.</p>
+        <p>All four trust architecture products - Blueprint, Voice, Governance, and Restraint - for $149. Save $47.</p>
         <a href="/products/trust-architecture-complete" class="btn mt-sm">See the Bundle</a>
       </div>
       <div class="card">
@@ -154,33 +186,81 @@ const product = getProductBySlug('agent-restraint-specification')!;
     margin-bottom: var(--space-sm);
   }
 
-  .value-prop p {
+  .noticing-line {
+    font-size: 1.15rem;
+    color: var(--accent-warm);
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    margin-bottom: var(--space-xs);
+  }
+
+  .proof-section {
+    max-width: 680px;
+    margin: 0 auto;
+  }
+
+  .proof-section h2 {
+    color: var(--accent-warm);
+    font-size: 1.3rem;
+    margin-bottom: var(--space-md);
+  }
+
+  .proof-section p {
     font-size: 1.05rem;
     color: var(--text-primary);
     line-height: 1.8;
   }
 
-  .features-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: var(--space-md);
+  .section-intro {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    margin-bottom: var(--space-md);
   }
 
-  .feature {
+  .self-check {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+
+  .check-item {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-md);
+    padding: var(--space-sm) var(--space-md);
     background: var(--bg-surface);
     border: 1px solid var(--border-subtle);
     border-radius: 8px;
-    padding: var(--space-md);
   }
 
-  .feature h3 {
-    font-size: 1.1rem;
-    margin-bottom: var(--space-xs);
+  .check-number {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    color: var(--accent-warm);
+    line-height: 1;
+    flex-shrink: 0;
+    width: 1.5rem;
+    text-align: center;
+    padding-top: 2px;
   }
 
-  .feature p {
-    font-size: 0.9rem;
+  .check-question {
+    font-size: 0.95rem;
+    font-weight: 500;
+    margin-bottom: 4px;
+  }
+
+  .check-result {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    font-style: italic;
     margin-bottom: 0;
+  }
+
+  .check-conclusion {
+    margin-top: var(--space-md);
+    font-size: 0.95rem;
+    color: var(--text-secondary);
   }
 
   .domains-list {
@@ -218,7 +298,6 @@ const product = getProductBySlug('agent-restraint-specification')!;
 
   .domain-item p {
     font-size: 0.9rem;
-    font-style: italic;
     margin-bottom: 0;
   }
 
@@ -284,8 +363,9 @@ const product = getProductBySlug('agent-restraint-specification')!;
   }
 
   @media (max-width: 600px) {
-    .features-grid {
-      grid-template-columns: 1fr;
+    .check-item {
+      gap: var(--space-sm);
+      padding: var(--space-sm);
     }
 
     .domain-item {
