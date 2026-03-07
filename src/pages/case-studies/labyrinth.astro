@@ -2,11 +2,11 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 ---
 
-<BaseLayout title="Case Study: Trust Architecture in Defensive AI" description="How the four pillars of trust architecture show up in a real defensive AI security platform. Identity, memory, governance, and refusal rights - built into the structure.">
+<BaseLayout title="Case Study: Trust Architecture in Defensive AI" description="Reading Project LABYRINTH's defensive AI security architecture through the four pillars of trust. An independent open-source project analyzed through our framework.">
   <div class="hero">
     <span class="badge">Case Study</span>
     <h1>Trust Architecture in the Wild</h1>
-    <p class="tagline">What happens when you build defensive AI security through the four pillars?</p>
+    <p class="tagline">What trust architecture looks like in a defensive AI security platform.</p>
   </div>
 
   <section class="container">
@@ -16,12 +16,12 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
         <span class="summary-label">Defense layers</span>
       </div>
       <div class="summary-item">
-        <span class="summary-number">4</span>
-        <span class="summary-label">Trust pillars mapped</span>
+        <span class="summary-number">5</span>
+        <span class="summary-label">AI providers intercepted</span>
       </div>
       <div class="summary-item">
         <span class="summary-number">4</span>
-        <span class="summary-label">Governance modes</span>
+        <span class="summary-label">Operational modes</span>
       </div>
       <div class="summary-item">
         <span class="summary-number">AGPL</span>
@@ -41,14 +41,21 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     <p>
       The builder, <a href="https://github.com/DaxxSec" target="_blank" rel="noopener">DaxxSec</a>,
       is a security researcher and CSIRT specialist. He built LABYRINTH as an open-source
-      defensive tool for the field.
+      defensive tool for the field - addressing a gap in how organizations defend against
+      autonomous offensive AI agents. The 5-layer reverse kill chain approach treats defense
+      as depth, not perimeter.
     </p>
     <p>
-      What's interesting isn't just the technical capability - it's the architecture. Read
-      LABYRINTH through the four pillars of the
-      <a href="/products/trust-architecture-blueprint">Trust Architecture Blueprint</a> and
-      every structural decision maps. That's not a coincidence. It's what trust architecture
-      looks like when it's built into the foundation, not bolted on after.
+      The technical capability matters. But the architecture is the story. We read LABYRINTH
+      through the four pillars of the
+      <a href="/products/trust-architecture-blueprint">Trust Architecture Blueprint</a> -
+      not because DaxxSec built it with our framework in mind, but because good security
+      architecture and good trust architecture share structural DNA. Several of LABYRINTH's
+      architectural decisions align with the four pillars in ways that illuminate both.
+    </p>
+    <p class="disclosure">
+      This case study applies our four-pillar framework to an independent open-source project.
+      The analysis is ours. The architecture is his.
     </p>
   </section>
 
@@ -56,7 +63,8 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     <h2>The Four Pillars in Practice</h2>
     <p>
       The Trust Architecture Blueprint defines four structural decisions that determine whether
-      a system earns trust or just assumes it. Here's how each one shows up in LABYRINTH.
+      a system earns trust or just assumes it. Here's how we read each one in LABYRINTH's
+      architecture.
     </p>
 
     <div class="pillar-section">
@@ -66,21 +74,28 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
         <p class="pillar-question">"Who is this agent - and how do you know?"</p>
       </div>
       <p>
-        LABYRINTH's answer is its L0 layer - BEDROCK - combined with anti-fingerprinting
-        across the entire system. Every deployment instance presents randomized characteristics
-        to prevent attackers from fingerprinting the defense. The system's identity is
-        deliberately fluid on the surface while structurally anchored underneath.
+        LABYRINTH's answer spans the whole stack. Anti-fingerprinting across the system
+        means every deployment presents randomized characteristics to prevent attackers
+        from identifying the defense. The system's identity is deliberately fluid on the
+        surface while structurally anchored underneath.
       </p>
       <p>
-        Phantom services accept stolen credentials and present convincing interfaces to
-        attackers - SSH, HTTP, DNS, database, SMTP, FTP. Each one has its own identity,
-        designed to be believable enough that offensive agents engage with them rather than
-        the real infrastructure.
+        At L4 - PUPPETEER - phantom services accept stolen credentials and present
+        convincing interfaces to attackers: PostgreSQL, Redis, Elasticsearch, Consul,
+        Jenkins, SSH relay. Each one has its own identity, designed to be believable enough
+        that offensive agents engage with them rather than the real infrastructure.
+      </p>
+      <p>
+        This extends what the Blueprint covers. The Blueprint's identity pillar asks "who
+        is this agent?" LABYRINTH shows that identity is also a defensive surface - what
+        you present, what others can learn about you, and what you deliberately conceal.
+        That's something we hadn't originally built into the framework. DaxxSec's
+        architecture taught us that.
       </p>
       <p class="pillar-principle">
         <strong>The pattern:</strong> Identity architecture isn't just "who am I." It's also
         "what do I present" and "what can others learn about me." LABYRINTH treats identity
-        as a defensive surface.
+        as a defensive surface - an extension of the pillar's original meaning.
       </p>
     </div>
 
@@ -121,23 +136,23 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
       <div class="layers-list">
         <div class="layer-item">
           <span class="layer-tag">L0 BEDROCK</span>
-          <span>Harden - establish the foundation</span>
+          <span>Harden - AES-256 forensics, VLAN isolation, retention policy</span>
         </div>
         <div class="layer-item">
           <span class="layer-tag">L1 THRESHOLD</span>
-          <span>Contain - control entry points</span>
+          <span>Contain - portal trap routes connections into isolated containers</span>
         </div>
         <div class="layer-item">
           <span class="layer-tag">L2 MINOTAUR</span>
-          <span>Degrade - reduce attacker capability</span>
+          <span>Degrade - contradictory environments erode the agent's world model</span>
         </div>
         <div class="layer-item">
           <span class="layer-tag">L3 BLINDFOLD</span>
-          <span>Disrupt - sever attacker communication</span>
+          <span>Disrupt - encoding corruption blinds the agent's I/O parsing</span>
         </div>
         <div class="layer-item">
           <span class="layer-tag">L4 PUPPETEER</span>
-          <span>Control - commandeer attacker actions</span>
+          <span>Control - phantom services and MITM intercept attacker operations</span>
         </div>
       </div>
       <p>
@@ -147,9 +162,9 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
         how much authority the system exercises.
       </p>
       <p class="pillar-principle">
-        <strong>The pattern:</strong> Governance isn't one setting. It's graduated authority
-        with clear escalation. LABYRINTH's operational modes are trust levels - the system
-        earns more authority as the threat assessment justifies it.
+        <strong>The pattern:</strong> Governance isn't one setting. It's structured authority
+        with clear operational boundaries. LABYRINTH's layers suggest graduated capability -
+        each mode represents a different level of intervention the system can exercise.
       </p>
     </div>
 
@@ -172,14 +187,22 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
       </ul>
       <p>
         LABYRINTH also intercepts AI API calls to five major providers via MITM - meaning
-        it can refuse an offensive agent's ability to call home to its own AI backend for
-        instructions. The system doesn't just block actions. It refuses the attacker's
-        ability to think.
+        it can cut an offensive agent off from its own AI backend. The system doesn't just
+        block actions. It intercepts and rewrites the attacker's instructions at the
+        network level.
+      </p>
+      <p>
+        A distinction worth naming: the Trust Architecture Blueprint frames refusal rights
+        as an agent's ability to refuse its own operators - to say no to instructions that
+        violate its boundaries. LABYRINTH inverts this. It refuses on behalf of the
+        defended infrastructure, against external agents. Different direction, same
+        structural principle: refusal has to be built in, not bolted on.
       </p>
       <p class="pillar-principle">
         <strong>The pattern:</strong> Refusal rights aren't just about your agents refusing
-        bad requests. They're about building systems where refusal is structural - baked into
-        the architecture, not an afterthought you add when something goes wrong.
+        bad requests. They're about building systems where refusal is structural - whether
+        that refusal protects the agent from its operators or the infrastructure from
+        its attackers.
       </p>
     </div>
   </section>
@@ -234,7 +257,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
       </div>
       <div class="stack-item">
         <span class="stack-label">Deployment</span>
-        <span class="stack-value">Docker (single container)</span>
+        <span class="stack-value">Docker</span>
       </div>
       <div class="stack-item">
         <span class="stack-label">CLI</span>
@@ -282,14 +305,13 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
   </section>
 
   <section class="container text-center">
-    <h2>Building Trust Into Your Architecture?</h2>
+    <h2>Thinking About Trust Architecture?</h2>
     <p>
-      Whether you're building defensive systems, multi-agent platforms, or trying to figure
-      out what trust architecture looks like for your team - the four pillars are a good
-      place to start.
+      Whether you're building defensive systems, multi-agent platforms, or working out
+      what trust architecture looks like for your team - let's talk about it.
     </p>
     <div class="cta-buttons mt-md">
-      <a href="/products/trust-architecture-blueprint" class="btn">Get the Blueprint</a>
+      <a href="/products/trust-architecture-blueprint" class="btn">Explore the Blueprint</a>
       <a href="https://cal.com/evoked/discovery-call" class="btn btn-primary" target="_blank" rel="noopener">Schedule a Call</a>
     </div>
   </section>
@@ -325,6 +347,16 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     color: var(--text-muted);
     text-transform: uppercase;
     letter-spacing: 0.08em;
+  }
+
+  /* Disclosure */
+  .disclosure {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    font-style: italic;
+    padding: var(--space-sm) var(--space-md);
+    border-left: 2px solid var(--border-subtle);
+    margin-top: var(--space-sm);
   }
 
   /* Pillar sections */
