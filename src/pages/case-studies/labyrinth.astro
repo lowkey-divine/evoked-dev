@@ -1,0 +1,583 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Case Study: Trust Architecture in Defensive AI" description="How the four pillars of trust architecture show up in a real defensive AI security platform. Identity, memory, governance, and refusal rights - built into the structure.">
+  <div class="hero">
+    <span class="badge">Case Study</span>
+    <h1>Trust Architecture in the Wild</h1>
+    <p class="tagline">What happens when you build defensive AI security through the four pillars?</p>
+  </div>
+
+  <section class="container">
+    <div class="summary-grid">
+      <div class="summary-item">
+        <span class="summary-number">5</span>
+        <span class="summary-label">Defense layers</span>
+      </div>
+      <div class="summary-item">
+        <span class="summary-number">4</span>
+        <span class="summary-label">Trust pillars mapped</span>
+      </div>
+      <div class="summary-item">
+        <span class="summary-number">4</span>
+        <span class="summary-label">Governance modes</span>
+      </div>
+      <div class="summary-item">
+        <span class="summary-number">AGPL</span>
+        <span class="summary-label">Open source</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="container">
+    <h2>The Project</h2>
+    <p>
+      <a href="https://github.com/DaxxSec/Labyrinth" target="_blank" rel="noopener"><strong>Project LABYRINTH</strong></a>
+      is a defensive AI security platform - an adversarial cognitive portal trap architecture
+      built in Go. It's designed to contain, degrade, disrupt, and commandeer autonomous
+      offensive AI agents through a 5-layer reverse kill chain.
+    </p>
+    <p>
+      The builder, <a href="https://github.com/DaxxSec" target="_blank" rel="noopener">DaxxSec</a>,
+      is a security researcher and CSIRT specialist. He built LABYRINTH as an open-source
+      defensive tool for the field.
+    </p>
+    <p>
+      What's interesting isn't just the technical capability - it's the architecture. Read
+      LABYRINTH through the four pillars of the
+      <a href="/products/trust-architecture-blueprint">Trust Architecture Blueprint</a> and
+      every structural decision maps. That's not a coincidence. It's what trust architecture
+      looks like when it's built into the foundation, not bolted on after.
+    </p>
+  </section>
+
+  <section class="container">
+    <h2>The Four Pillars in Practice</h2>
+    <p>
+      The Trust Architecture Blueprint defines four structural decisions that determine whether
+      a system earns trust or just assumes it. Here's how each one shows up in LABYRINTH.
+    </p>
+
+    <div class="pillar-section">
+      <div class="pillar-header">
+        <span class="pillar-number">1</span>
+        <h3>Identity Architecture</h3>
+        <p class="pillar-question">"Who is this agent - and how do you know?"</p>
+      </div>
+      <p>
+        LABYRINTH's answer is its L0 layer - BEDROCK - combined with anti-fingerprinting
+        across the entire system. Every deployment instance presents randomized characteristics
+        to prevent attackers from fingerprinting the defense. The system's identity is
+        deliberately fluid on the surface while structurally anchored underneath.
+      </p>
+      <p>
+        Phantom services accept stolen credentials and present convincing interfaces to
+        attackers - SSH, HTTP, DNS, database, SMTP, FTP. Each one has its own identity,
+        designed to be believable enough that offensive agents engage with them rather than
+        the real infrastructure.
+      </p>
+      <p class="pillar-principle">
+        <strong>The pattern:</strong> Identity architecture isn't just "who am I." It's also
+        "what do I present" and "what can others learn about me." LABYRINTH treats identity
+        as a defensive surface.
+      </p>
+    </div>
+
+    <div class="pillar-section">
+      <div class="pillar-header">
+        <span class="pillar-number">2</span>
+        <h3>Memory Architecture</h3>
+        <p class="pillar-question">"What does it remember, what does it forget, and who decides?"</p>
+      </div>
+      <p>
+        Every interaction with an offensive agent is captured in JSONL format - complete
+        session state, API calls intercepted, behavioral patterns observed, escalation
+        decisions made. The forensic logging system remembers everything attackers do,
+        with encrypted storage and structured retention.
+      </p>
+      <p>
+        The system generates MITRE ATT&CK-mapped forensic reports - translating raw memory
+        into actionable intelligence. Memory doesn't just accumulate. It's governed, structured,
+        and directed toward a purpose.
+      </p>
+      <p class="pillar-principle">
+        <strong>The pattern:</strong> Memory architecture means deciding what to capture,
+        how to store it, and what to do with it. LABYRINTH's forensic system is memory with
+        governance - not a log dump.
+      </p>
+    </div>
+
+    <div class="pillar-section">
+      <div class="pillar-header">
+        <span class="pillar-number">3</span>
+        <h3>Governance Architecture</h3>
+        <p class="pillar-question">"Who sets the boundaries - and what happens when they're crossed?"</p>
+      </div>
+      <p>
+        The 5-layer kill chain IS governance. Each layer has clear authority, escalation
+        rules, and operational boundaries:
+      </p>
+      <div class="layers-list">
+        <div class="layer-item">
+          <span class="layer-tag">L0 BEDROCK</span>
+          <span>Harden - establish the foundation</span>
+        </div>
+        <div class="layer-item">
+          <span class="layer-tag">L1 THRESHOLD</span>
+          <span>Contain - control entry points</span>
+        </div>
+        <div class="layer-item">
+          <span class="layer-tag">L2 MINOTAUR</span>
+          <span>Degrade - reduce attacker capability</span>
+        </div>
+        <div class="layer-item">
+          <span class="layer-tag">L3 BLINDFOLD</span>
+          <span>Disrupt - sever attacker communication</span>
+        </div>
+        <div class="layer-item">
+          <span class="layer-tag">L4 PUPPETEER</span>
+          <span>Control - commandeer attacker actions</span>
+        </div>
+      </div>
+      <p>
+        At the highest layer, four operational modes define graduated authority: passive
+        (observe only), neutralize (disable), double_agent (feed disinformation), and
+        counter_intel (active countermeasures). Each mode is a governance decision about
+        how much authority the system exercises.
+      </p>
+      <p class="pillar-principle">
+        <strong>The pattern:</strong> Governance isn't one setting. It's graduated authority
+        with clear escalation. LABYRINTH's operational modes are trust levels - the system
+        earns more authority as the threat assessment justifies it.
+      </p>
+    </div>
+
+    <div class="pillar-section">
+      <div class="pillar-header">
+        <span class="pillar-number">4</span>
+        <h3>Refusal Rights</h3>
+        <p class="pillar-question">"Can the agent say no - and will the system listen?"</p>
+      </div>
+      <p>
+        The entire system IS refusal architecture. LABYRINTH's purpose is to refuse -
+        to say "no, you may not operate freely here" to offensive AI agents. Every layer
+        is a different form of refusal:
+      </p>
+      <ul class="refusal-list">
+        <li><strong>THRESHOLD refuses entry</strong> - containing agents at the perimeter</li>
+        <li><strong>MINOTAUR refuses capability</strong> - degrading what attackers can do</li>
+        <li><strong>BLINDFOLD refuses communication</strong> - severing attacker coordination</li>
+        <li><strong>PUPPETEER refuses autonomy</strong> - taking control of attacker actions</li>
+      </ul>
+      <p>
+        LABYRINTH also intercepts AI API calls to five major providers via MITM - meaning
+        it can refuse an offensive agent's ability to call home to its own AI backend for
+        instructions. The system doesn't just block actions. It refuses the attacker's
+        ability to think.
+      </p>
+      <p class="pillar-principle">
+        <strong>The pattern:</strong> Refusal rights aren't just about your agents refusing
+        bad requests. They're about building systems where refusal is structural - baked into
+        the architecture, not an afterthought you add when something goes wrong.
+      </p>
+    </div>
+  </section>
+
+  <section class="container">
+    <h2>What Builders Can Take From This</h2>
+    <p>
+      LABYRINTH is a security tool. But the architectural patterns apply to any agent system
+      that needs trust built into its structure.
+    </p>
+
+    <div class="takeaways">
+      <div class="takeaway">
+        <h3>Trust architecture shows up everywhere</h3>
+        <p>The four pillars aren't just for chatbots or customer-facing agents. They appear
+        in security systems, infrastructure tools, and defensive platforms. If your system
+        makes decisions, it has trust architecture - the question is whether you designed it.</p>
+      </div>
+      <div class="takeaway">
+        <h3>Graduated authority beats binary permissions</h3>
+        <p>LABYRINTH's four operational modes are more nuanced than on/off. Your agent
+        governance should be too. Not "can the agent do this" but "under what conditions
+        and with what oversight."</p>
+      </div>
+      <div class="takeaway">
+        <h3>Identity is a defensive surface</h3>
+        <p>What your system presents to the outside world is an architectural decision.
+        Anti-fingerprinting, phantom services, and randomized characteristics are identity
+        architecture applied defensively.</p>
+      </div>
+      <div class="takeaway">
+        <h3>Memory with governance beats memory without it</h3>
+        <p>Logging everything is not memory architecture. Deciding what to capture, how to
+        store it, who can access it, and what it produces - that's architecture. LABYRINTH's
+        forensic reporting is what memory looks like when it has a purpose.</p>
+      </div>
+      <div class="takeaway">
+        <h3>Refusal is the whole point</h3>
+        <p>The most interesting systems are the ones where refusal isn't a feature - it's the
+        architecture. LABYRINTH doesn't have refusal rights as a component. It IS refusal,
+        all the way down.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="container">
+    <h2>The Stack</h2>
+    <div class="stack-grid">
+      <div class="stack-item">
+        <span class="stack-label">Language</span>
+        <span class="stack-value">Go</span>
+      </div>
+      <div class="stack-item">
+        <span class="stack-label">Deployment</span>
+        <span class="stack-value">Docker (single container)</span>
+      </div>
+      <div class="stack-item">
+        <span class="stack-label">CLI</span>
+        <span class="stack-value">16 commands</span>
+      </div>
+      <div class="stack-item">
+        <span class="stack-label">AI Interception</span>
+        <span class="stack-value">5 providers (MITM)</span>
+      </div>
+      <div class="stack-item">
+        <span class="stack-label">Phantom Services</span>
+        <span class="stack-value">6 configurable</span>
+      </div>
+      <div class="stack-item">
+        <span class="stack-label">Dashboards</span>
+        <span class="stack-value">TUI + Web</span>
+      </div>
+      <div class="stack-item">
+        <span class="stack-label">Forensics</span>
+        <span class="stack-value">MITRE ATT&CK mapping</span>
+      </div>
+      <div class="stack-item">
+        <span class="stack-label">License</span>
+        <span class="stack-value">AGPL-3.0</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="container">
+    <h2>Related Resources</h2>
+    <div class="resources-grid">
+      <a href="/products/trust-architecture-blueprint" class="resource-link">
+        <strong>Trust Architecture Blueprint</strong>
+        <span>The four-pillar framework mapped in this case study</span>
+      </a>
+      <a href="/products/trust-architecture-complete" class="resource-link">
+        <strong>Trust Architecture Complete</strong>
+        <span>All four trust products - identity, voice, governance, restraint</span>
+      </a>
+      <a href="/writing/what-should-your-agent-refuse" class="resource-link">
+        <strong>"What Should Your Agent Refuse?"</strong>
+        <span>The article that started this conversation</span>
+      </a>
+    </div>
+  </section>
+
+  <section class="container text-center">
+    <h2>Building Trust Into Your Architecture?</h2>
+    <p>
+      Whether you're building defensive systems, multi-agent platforms, or trying to figure
+      out what trust architecture looks like for your team - the four pillars are a good
+      place to start.
+    </p>
+    <div class="cta-buttons mt-md">
+      <a href="/products/trust-architecture-blueprint" class="btn">Get the Blueprint</a>
+      <a href="https://cal.com/evoked/discovery-call" class="btn btn-primary" target="_blank" rel="noopener">Schedule a Call</a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero {
+    min-height: 50vh;
+  }
+
+  .hero .badge {
+    margin-bottom: var(--space-sm);
+  }
+
+  /* Summary stats */
+  .summary-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-md);
+    text-align: center;
+  }
+
+  .summary-number {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 2.5rem;
+    color: var(--accent-warm);
+    line-height: 1.2;
+  }
+
+  .summary-label {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  /* Pillar sections */
+  .pillar-section {
+    margin-bottom: var(--space-lg);
+    padding-bottom: var(--space-lg);
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .pillar-section:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+
+  .pillar-header {
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-sm);
+    flex-wrap: wrap;
+    margin-bottom: var(--space-sm);
+  }
+
+  .pillar-number {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    color: var(--accent-warm);
+    line-height: 1;
+    flex-shrink: 0;
+  }
+
+  .pillar-header h3 {
+    margin: 0;
+    font-size: 1.3rem;
+  }
+
+  .pillar-question {
+    width: 100%;
+    font-style: italic;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin: 0;
+    padding-left: 2.5rem;
+  }
+
+  .pillar-principle {
+    margin-top: var(--space-md);
+    padding: var(--space-sm) var(--space-md);
+    border-left: 2px solid var(--accent-warm);
+    color: var(--text-secondary);
+    font-style: italic;
+  }
+
+  .pillar-principle strong {
+    color: var(--accent-warm);
+    font-style: normal;
+  }
+
+  /* Kill chain layers */
+  .layers-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+    margin: var(--space-md) 0;
+  }
+
+  .layer-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-xs) var(--space-sm);
+    background: var(--bg-surface);
+    border-radius: 6px;
+    font-size: 0.9rem;
+  }
+
+  .layer-tag {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--accent-warm);
+    background: var(--accent-subtle);
+    padding: 3px 10px;
+    border-radius: 100px;
+    flex-shrink: 0;
+    min-width: 120px;
+    text-align: center;
+  }
+
+  .layer-item span:last-child {
+    color: var(--text-secondary);
+  }
+
+  /* Refusal list */
+  .refusal-list {
+    list-style: none;
+    padding: 0;
+    margin: var(--space-sm) 0;
+  }
+
+  .refusal-list li {
+    padding: var(--space-xs) 0;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .refusal-list li:last-child {
+    border-bottom: none;
+  }
+
+  .refusal-list strong {
+    color: var(--text-primary);
+  }
+
+  /* Takeaways */
+  .takeaways {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    margin-top: var(--space-md);
+  }
+
+  .takeaway {
+    padding: var(--space-md);
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: 8px;
+  }
+
+  .takeaway h3 {
+    margin-bottom: var(--space-xs);
+    font-size: 1.1rem;
+  }
+
+  .takeaway p {
+    margin: 0;
+    font-size: 0.9rem;
+  }
+
+  /* Stack grid */
+  .stack-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--space-xs);
+  }
+
+  .stack-item {
+    display: flex;
+    justify-content: space-between;
+    padding: var(--space-sm);
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .stack-label {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .stack-value {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    text-align: right;
+  }
+
+  /* Resources */
+  .resources-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--space-sm);
+    margin-top: var(--space-md);
+  }
+
+  .resource-link {
+    display: block;
+    padding: var(--space-md);
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: 8px;
+    transition: border-color var(--transition-smooth);
+    text-decoration: none;
+  }
+
+  .resource-link:hover {
+    border-color: var(--border-accent);
+  }
+
+  .resource-link strong {
+    display: block;
+    color: var(--accent-warm);
+    margin-bottom: var(--space-xs);
+    font-size: 0.95rem;
+  }
+
+  .resource-link span {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+  }
+
+  /* CTA */
+  .cta-buttons {
+    display: flex;
+    gap: var(--space-sm);
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    background: var(--accent-warm);
+    color: var(--bg-deep);
+  }
+
+  .btn-primary:hover {
+    background: var(--accent-glow);
+    color: var(--bg-deep);
+  }
+
+  /* Responsive */
+  @media (max-width: 600px) {
+    .summary-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-sm);
+    }
+
+    .summary-number {
+      font-size: 2rem;
+    }
+
+    .stack-item {
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .stack-value {
+      text-align: left;
+    }
+
+    .layer-item {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.25rem;
+    }
+
+    .layer-tag {
+      min-width: auto;
+    }
+
+    .pillar-question {
+      padding-left: 0;
+    }
+  }
+</style>
