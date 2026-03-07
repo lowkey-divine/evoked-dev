@@ -1,0 +1,316 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getProductBySlug } from '../../lib/products/registry';
+
+const product = getProductBySlug('trust-architecture-complete')!;
+---
+
+<BaseLayout title="Trust Architecture Complete" description="The complete trust practice: identity, voice, governance, and restraint. All four products, one price, the right build order. $149.">
+  <div class="hero hero-compact">
+    <span class="discipline-badge">Full Practice</span>
+    <h1>The complete trust practice.</h1>
+    <p class="tagline">Identity, voice, governance, and restraint - in the order they should be built.</p>
+  </div>
+
+  <section class="container">
+    <div class="value-prop">
+      <p>
+        Trust isn't one thing. It's four architectural decisions working together. Identity
+        without governance drifts. Governance without voice alienates. Voice without restraint
+        manipulates. Restraint without identity has nothing to protect.
+      </p>
+      <p>
+        The complete bundle gives you all four products in the order they should be built -
+        so each layer strengthens the one before it.
+      </p>
+    </div>
+  </section>
+
+  <section class="container">
+    <h2>What's Included</h2>
+
+    <div class="features-grid">
+      <div class="feature">
+        <h3>Trust Architecture Blueprint</h3>
+        <p>The four-pillar framework. Persona file templates, session protocols, graduated trust stages, and quarterly reviews. Start here.</p>
+        <a href="/products/trust-architecture-blueprint" class="feature-link">Learn more</a>
+      </div>
+      <div class="feature">
+        <h3>Agent Voice Architecture Guide</h3>
+        <p>Three-level voice framework - protection, respect, nurturance. Sovereignty language audit, voice specifications, and refusal voice patterns.</p>
+        <a href="/products/agent-voice-architecture-guide" class="feature-link">Learn more</a>
+      </div>
+      <div class="feature">
+        <h3>Agent Governance Starter Kit</h3>
+        <p>Charter template, boundary specifications, drift monitoring thresholds, and four-level accountability framework.</p>
+        <a href="/products/agent-governance-starter-kit" class="feature-link">Learn more</a>
+      </div>
+      <div class="feature">
+        <h3>Agent Restraint Specification</h3>
+        <p>Boundary audit, refusal category matrix, fail-mode decisions, accountability architecture, and adversarial testing checklist.</p>
+        <a href="/products/agent-restraint-specification" class="feature-link">Learn more</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="container">
+    <h2>The Build Order</h2>
+
+    <div class="domains-list">
+      <div class="domain-item">
+        <span class="domain-number">1</span>
+        <div>
+          <h3>Blueprint First</h3>
+          <p>"Understand the four pillars. Define your agent's identity. Everything else builds on this."</p>
+        </div>
+      </div>
+      <div class="domain-item">
+        <span class="domain-number">2</span>
+        <div>
+          <h3>Voice Second</h3>
+          <p>"Design how your agent speaks - and what it will never say. Voice is where identity meets the user."</p>
+        </div>
+      </div>
+      <div class="domain-item">
+        <span class="domain-number">3</span>
+        <div>
+          <h3>Governance Third</h3>
+          <p>"Set the boundaries, thresholds, and accountability chains. Structure that holds when you're not watching."</p>
+        </div>
+      </div>
+      <div class="domain-item">
+        <span class="domain-number">4</span>
+        <div>
+          <h3>Restraint Last</h3>
+          <p>"Specify what the agent must refuse. Restraint is the final layer - it protects everything you've built."</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="container">
+    <h2>Who This Is For</h2>
+
+    <div class="audience-grid">
+      <div class="card">
+        <h3>Teams Going All-In</h3>
+        <p>You've decided trust architecture matters. The bundle gives you the complete practice without piecemealing it together over months.</p>
+      </div>
+      <div class="card">
+        <h3>Agencies & Consultancies</h3>
+        <p>Building agent systems for clients. The four-product framework gives you a repeatable trust architecture process you can apply across engagements.</p>
+      </div>
+      <div class="card">
+        <h3>Organizations Scaling Agents</h3>
+        <p>Moving from one agent to many. The trust architecture that worked for a single agent needs structural reinforcement at scale. This is it.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="container text-center">
+    <div class="purchase-card">
+      <div class="price-display">$149</div>
+      <p class="savings">Save $47 vs. buying individually ($196)</p>
+      <p>Four PDFs. The complete trust architecture practice.</p>
+      <a href={product.stripePaymentLink} class="btn btn-primary btn-large mt-md" target="_blank" rel="noopener">Buy the Complete Bundle</a>
+      <p class="text-muted mt-md" style="font-size: 0.85rem;">
+        Includes Trust Architecture Blueprint, Agent Voice Architecture Guide, Agent Governance Starter Kit, and Agent Restraint Specification Template.
+      </p>
+    </div>
+  </section>
+
+  <section class="container">
+    <h2>Go Deeper</h2>
+    <p>
+      The bundle gives you the frameworks. If you want hands-on help implementing them,
+      two options:
+    </p>
+
+    <div class="upsell-grid">
+      <div class="card">
+        <h3>Trust Architecture Workshop</h3>
+        <p>Full-day guided implementation on your agent system with your team. I facilitate. You build. $8,000.</p>
+        <a href="/consulting" class="btn mt-sm">Learn More</a>
+      </div>
+      <div class="card">
+        <h3>Discovery Call</h3>
+        <p>Free 30-minute call to discuss your trust architecture and figure out next steps.</p>
+        <a href="https://cal.com/evoked/discovery-call" class="btn mt-sm" target="_blank" rel="noopener">Schedule</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero-compact {
+    min-height: 45vh;
+  }
+
+  .discipline-badge {
+    display: inline-block;
+    background: var(--accent-subtle);
+    color: var(--accent-warm);
+    font-size: 0.7rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 3px 10px;
+    border-radius: 100px;
+    margin-bottom: var(--space-sm);
+  }
+
+  .value-prop p {
+    font-size: 1.05rem;
+    color: var(--text-primary);
+    line-height: 1.8;
+  }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: var(--space-md);
+  }
+
+  .feature {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: 8px;
+    padding: var(--space-md);
+  }
+
+  .feature h3 {
+    font-size: 1.1rem;
+    margin-bottom: var(--space-xs);
+  }
+
+  .feature p {
+    font-size: 0.9rem;
+    margin-bottom: var(--space-xs);
+  }
+
+  .feature-link {
+    font-size: 0.85rem;
+    color: var(--accent-warm);
+  }
+
+  .domains-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+
+  .domain-item {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-md);
+    padding: var(--space-sm) 0;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .domain-item:last-child {
+    border-bottom: none;
+  }
+
+  .domain-number {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    color: var(--accent-warm);
+    line-height: 1;
+    flex-shrink: 0;
+    width: 2rem;
+    text-align: center;
+  }
+
+  .domain-item h3 {
+    margin-bottom: 0;
+    font-size: 1.1rem;
+  }
+
+  .domain-item p {
+    font-size: 0.9rem;
+    font-style: italic;
+    margin-bottom: 0;
+  }
+
+  .audience-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: var(--space-md);
+  }
+
+  .audience-grid .card h3 {
+    font-size: 1.1rem;
+  }
+
+  .audience-grid .card p {
+    font-size: 0.9rem;
+    margin-bottom: 0;
+  }
+
+  .purchase-card {
+    background: var(--accent-subtle);
+    border: 2px solid var(--accent-warm);
+    border-radius: 12px;
+    padding: var(--space-lg);
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  .price-display {
+    font-family: var(--font-display);
+    font-size: 3rem;
+    color: var(--accent-warm);
+    font-weight: 500;
+  }
+
+  .savings {
+    font-size: 0.95rem;
+    color: var(--accent-warm);
+    font-weight: 500;
+    margin-bottom: var(--space-xs);
+  }
+
+  .btn-large {
+    padding: var(--space-sm) var(--space-lg);
+    font-size: 1rem;
+  }
+
+  .btn-primary {
+    background: var(--accent-warm);
+    color: var(--bg-deep);
+  }
+
+  .btn-primary:hover {
+    background: var(--accent-glow);
+    color: var(--bg-deep);
+  }
+
+  .upsell-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: var(--space-md);
+    margin-top: var(--space-md);
+  }
+
+  .upsell-grid .card h3 {
+    font-size: 1.1rem;
+  }
+
+  .upsell-grid .card p {
+    font-size: 0.9rem;
+  }
+
+  @media (max-width: 600px) {
+    .features-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .domain-item {
+      gap: var(--space-sm);
+    }
+
+    .domain-number {
+      font-size: 1.5rem;
+    }
+  }
+</style>

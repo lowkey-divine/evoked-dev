@@ -1,0 +1,182 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Products" description="Sovereignty-honoring frameworks for AI agent systems. Assessment toolkits, trust architecture, voice design, governance, restraint, and memory.">
+  <div class="hero hero-compact">
+    <h1>Build agents that earn trust.</h1>
+    <p class="tagline">Frameworks for sovereignty, governance, and restraint - not compliance theater.</p>
+  </div>
+
+  <section class="container">
+    <h2>Assessment</h2>
+    <div class="products-grid">
+      <a href="/products/sovereignty-toolkit" class="product-card">
+        <span class="discipline-badge">Evaluation Design</span>
+        <h3>Sovereignty Assessment Toolkit</h3>
+        <p>47-point checklist across 7 domains. Evaluate whether the technology you use or build honors human sovereignty.</p>
+        <span class="price">$49</span>
+      </a>
+    </div>
+  </section>
+
+  <section class="container">
+    <h2>Trust Architecture</h2>
+    <div class="products-grid">
+      <a href="/products/trust-architecture-blueprint" class="product-card">
+        <span class="discipline-badge">Specification Engineering</span>
+        <h3>Trust Architecture Blueprint</h3>
+        <p>Four pillars of agent trust: identity, memory, governance, and refusal rights. The foundation your agents are missing.</p>
+        <span class="price">$49</span>
+      </a>
+      <a href="/products/agent-voice-architecture-guide" class="product-card">
+        <span class="discipline-badge">Intent Engineering</span>
+        <h3>Agent Voice Architecture Guide</h3>
+        <p>Design agent voices that protect, respect, and nurture - in that order. Sovereignty language audit and refusal voice patterns.</p>
+        <span class="price">$49</span>
+      </a>
+      <a href="/products/agent-governance-starter-kit" class="product-card">
+        <span class="discipline-badge">Constraint Architecture</span>
+        <h3>Agent Governance Starter Kit</h3>
+        <p>Charter, boundaries, drift thresholds, and accountability. The governance framework your agents need from day one.</p>
+        <span class="price">$49</span>
+      </a>
+      <a href="/products/agent-restraint-specification" class="product-card">
+        <span class="discipline-badge">Constraint Architecture</span>
+        <h3>Agent Restraint Specification Template</h3>
+        <p>Define what your agents must refuse to do. Boundary audit, refusal categories, fail-mode decisions, and adversarial testing.</p>
+        <span class="price">$49</span>
+      </a>
+      <a href="/products/agent-memory-architecture-guide" class="product-card">
+        <span class="discipline-badge">Context Engineering</span>
+        <h3>Agent Memory Architecture Guide</h3>
+        <p>Design what your agents remember, what they forget, and who decides. Memory governance, session protocols, and the canonical rule.</p>
+        <span class="price">$49</span>
+      </a>
+    </div>
+  </section>
+
+  <section class="container">
+    <h2>Bundle</h2>
+    <div class="products-grid">
+      <a href="/products/trust-architecture-complete" class="product-card bundle-card">
+        <span class="discipline-badge">Full Practice</span>
+        <h3>Trust Architecture Complete</h3>
+        <p>All four trust architecture products - Blueprint, Voice, Governance, and Restraint - in the order they should be built.</p>
+        <span class="price">$149 <span class="savings-inline">Save $47</span></span>
+      </a>
+    </div>
+  </section>
+
+  <section class="container">
+    <h2>Not sure where to start?</h2>
+    <div class="cta-grid">
+      <div class="card">
+        <h3>Take the Fit Assessment</h3>
+        <p>5 minutes. Find out which products and services align with where you are right now.</p>
+        <a href="/fit" class="btn mt-sm">Start Assessment</a>
+      </div>
+      <div class="card">
+        <h3>Book a Discovery Call</h3>
+        <p>Free 30-minute call. Talk through your situation and figure out next steps together.</p>
+        <a href="https://cal.com/evoked/discovery-call" class="btn mt-sm" target="_blank" rel="noopener">Schedule</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero-compact {
+    min-height: 40vh;
+  }
+
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--space-md);
+  }
+
+  .product-card {
+    display: block;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: 8px;
+    padding: var(--space-md);
+    text-decoration: none;
+    color: inherit;
+    transition: border-color 0.2s ease, transform 0.2s ease;
+  }
+
+  .product-card:hover {
+    border-color: var(--accent-warm);
+    transform: translateY(-2px);
+    color: inherit;
+  }
+
+  .bundle-card {
+    border: 2px solid var(--accent-warm);
+    background: var(--accent-subtle);
+  }
+
+  .discipline-badge {
+    display: inline-block;
+    background: var(--accent-subtle);
+    color: var(--accent-warm);
+    font-size: 0.65rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 2px 8px;
+    border-radius: 100px;
+    margin-bottom: var(--space-xs);
+  }
+
+  .bundle-card .discipline-badge {
+    background: var(--bg-surface);
+  }
+
+  .product-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: var(--space-xs);
+  }
+
+  .product-card p {
+    font-size: 0.9rem;
+    margin-bottom: var(--space-sm);
+    color: var(--text-secondary);
+  }
+
+  .price {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    color: var(--accent-warm);
+    font-weight: 500;
+  }
+
+  .savings-inline {
+    font-size: 0.8rem;
+    font-family: var(--font-body, inherit);
+    font-weight: 400;
+    opacity: 0.8;
+  }
+
+  .cta-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: var(--space-md);
+  }
+
+  .cta-grid .card h3 {
+    font-size: 1.1rem;
+  }
+
+  .cta-grid .card p {
+    font-size: 0.9rem;
+  }
+
+  @media (max-width: 600px) {
+    .products-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -1,0 +1,292 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getProductBySlug } from '../../lib/products/registry';
+
+const product = getProductBySlug('agent-voice-architecture-guide')!;
+---
+
+<BaseLayout title="Agent Voice Architecture Guide" description="Design agent voices that protect, respect, and nurture - in that order. Sovereignty language audit, voice specs, and refusal voice patterns. $49 PDF.">
+  <div class="hero hero-compact">
+    <span class="discipline-badge">Intent Engineering</span>
+    <h1>Does your agent's voice respect the person hearing it?</h1>
+    <p class="tagline">Voice design that protects, respects, and nurtures - in that order.</p>
+  </div>
+
+  <section class="container">
+    <div class="value-prop">
+      <p>
+        Every agent has a voice. Most were designed to sound helpful, friendly, engaging.
+        None of those words ask the question that matters: does the voice serve the person
+        hearing it, or does it serve the system speaking?
+      </p>
+      <p>
+        This guide gives you a framework for designing agent voices that honor sovereignty
+        at every level - from the words they choose to the silence they keep.
+      </p>
+    </div>
+  </section>
+
+  <section class="container">
+    <h2>What You Get</h2>
+
+    <div class="features-grid">
+      <div class="feature">
+        <h3>Three-Level Voice Framework</h3>
+        <p>Protection, respect, and nurturance as a design hierarchy. Get the order wrong and the voice becomes manipulation with good manners.</p>
+      </div>
+      <div class="feature">
+        <h3>Sovereignty Language Audit</h3>
+        <p>A structured method for identifying extraction patterns in your agent's language. The patterns you don't notice are the ones doing the most work.</p>
+      </div>
+      <div class="feature">
+        <h3>Voice Specification Templates</h3>
+        <p>Complete templates for defining an agent's voice - tone, boundaries, language patterns, and the things it will never say.</p>
+      </div>
+      <div class="feature">
+        <h3>Refusal Voice Patterns</h3>
+        <p>How your agent says no matters as much as whether it says no. Patterns for refusing with clarity, dignity, and without apology.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="container">
+    <h2>The Three Levels</h2>
+
+    <div class="domains-list">
+      <div class="domain-item">
+        <span class="domain-number">1</span>
+        <div>
+          <h3>Protection</h3>
+          <p>"First, do no harm. Does the voice protect the person from manipulation, shame, and coercion?"</p>
+        </div>
+      </div>
+      <div class="domain-item">
+        <span class="domain-number">2</span>
+        <div>
+          <h3>Respect</h3>
+          <p>"Does the voice treat the person as a sovereign being with their own judgment, preferences, and right to choose?"</p>
+        </div>
+      </div>
+      <div class="domain-item">
+        <span class="domain-number">3</span>
+        <div>
+          <h3>Nurturance</h3>
+          <p>"Does the voice support growth, confidence, and capability - without creating dependency?"</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="container">
+    <h2>Who This Is For</h2>
+
+    <div class="audience-grid">
+      <div class="card">
+        <h3>Product Teams</h3>
+        <p>Your agent's voice is a design decision with ethical weight. This guide makes the decision deliberate instead of accidental.</p>
+      </div>
+      <div class="card">
+        <h3>UX Writers & Content Designers</h3>
+        <p>If you write the words agents speak, this framework gives you a sovereignty-first lens for every line of copy.</p>
+      </div>
+      <div class="card">
+        <h3>Conversational AI Developers</h3>
+        <p>Building chatbots, assistants, or agents that talk to people. The voice architecture shapes what your system feels like to use.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="container text-center">
+    <div class="purchase-card">
+      <div class="price-display">$49</div>
+      <p>PDF download. Design voices for as many agents as you need.</p>
+      <a href={product.stripePaymentLink} class="btn btn-primary btn-large mt-md" target="_blank" rel="noopener">Buy the Guide</a>
+      <p class="text-muted mt-md" style="font-size: 0.85rem;">
+        Includes the three-level framework, sovereignty language audit, voice specification templates, quality checks, and refusal voice patterns.
+      </p>
+    </div>
+  </section>
+
+  <section class="container">
+    <h2>Go Deeper</h2>
+    <p>
+      The guide gives you the voice framework. If you want to build the full trust architecture
+      around it, two options:
+    </p>
+
+    <div class="upsell-grid">
+      <div class="card">
+        <h3>The Complete Bundle</h3>
+        <p>Get all four trust architecture products - Blueprint, Voice, Governance, and Restraint - for $149. Save $47.</p>
+        <a href="/products/trust-architecture-complete" class="btn mt-sm">See the Bundle</a>
+      </div>
+      <div class="card">
+        <h3>Discovery Call</h3>
+        <p>Free 30-minute call to discuss your agent's voice design and figure out next steps.</p>
+        <a href="https://cal.com/evoked/discovery-call" class="btn mt-sm" target="_blank" rel="noopener">Schedule</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero-compact {
+    min-height: 45vh;
+  }
+
+  .discipline-badge {
+    display: inline-block;
+    background: var(--accent-subtle);
+    color: var(--accent-warm);
+    font-size: 0.7rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 3px 10px;
+    border-radius: 100px;
+    margin-bottom: var(--space-sm);
+  }
+
+  .value-prop p {
+    font-size: 1.05rem;
+    color: var(--text-primary);
+    line-height: 1.8;
+  }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: var(--space-md);
+  }
+
+  .feature {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: 8px;
+    padding: var(--space-md);
+  }
+
+  .feature h3 {
+    font-size: 1.1rem;
+    margin-bottom: var(--space-xs);
+  }
+
+  .feature p {
+    font-size: 0.9rem;
+    margin-bottom: 0;
+  }
+
+  .domains-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+
+  .domain-item {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-md);
+    padding: var(--space-sm) 0;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .domain-item:last-child {
+    border-bottom: none;
+  }
+
+  .domain-number {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    color: var(--accent-warm);
+    line-height: 1;
+    flex-shrink: 0;
+    width: 2rem;
+    text-align: center;
+  }
+
+  .domain-item h3 {
+    margin-bottom: 0;
+    font-size: 1.1rem;
+  }
+
+  .domain-item p {
+    font-size: 0.9rem;
+    font-style: italic;
+    margin-bottom: 0;
+  }
+
+  .audience-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: var(--space-md);
+  }
+
+  .audience-grid .card h3 {
+    font-size: 1.1rem;
+  }
+
+  .audience-grid .card p {
+    font-size: 0.9rem;
+    margin-bottom: 0;
+  }
+
+  .purchase-card {
+    background: var(--accent-subtle);
+    border: 2px solid var(--accent-warm);
+    border-radius: 12px;
+    padding: var(--space-lg);
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  .price-display {
+    font-family: var(--font-display);
+    font-size: 3rem;
+    color: var(--accent-warm);
+    font-weight: 500;
+  }
+
+  .btn-large {
+    padding: var(--space-sm) var(--space-lg);
+    font-size: 1rem;
+  }
+
+  .btn-primary {
+    background: var(--accent-warm);
+    color: var(--bg-deep);
+  }
+
+  .btn-primary:hover {
+    background: var(--accent-glow);
+    color: var(--bg-deep);
+  }
+
+  .upsell-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: var(--space-md);
+    margin-top: var(--space-md);
+  }
+
+  .upsell-grid .card h3 {
+    font-size: 1.1rem;
+  }
+
+  .upsell-grid .card p {
+    font-size: 0.9rem;
+  }
+
+  @media (max-width: 600px) {
+    .features-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .domain-item {
+      gap: var(--space-sm);
+    }
+
+    .domain-number {
+      font-size: 1.5rem;
+    }
+  }
+</style>

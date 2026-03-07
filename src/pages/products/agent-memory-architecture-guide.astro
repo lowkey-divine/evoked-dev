@@ -1,0 +1,306 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getProductBySlug } from '../../lib/products/registry';
+
+const product = getProductBySlug('agent-memory-architecture-guide')!;
+---
+
+<BaseLayout title="Agent Memory Architecture Guide" description="Design what your agents remember, what they forget, and who decides. Memory types, governance, session protocols, and retention policy. $49 PDF.">
+  <div class="hero hero-compact">
+    <span class="discipline-badge">Context Engineering</span>
+    <h1>What should your agent remember - and who decides?</h1>
+    <p class="tagline">Memory types, governance, retention, and the canonical rule for when memories conflict.</p>
+  </div>
+
+  <section class="container">
+    <div class="value-prop">
+      <p>
+        Memory is not storage. Memory is identity. What your agent remembers shapes who it
+        becomes - and what it forgets determines what it can never be. Most agent systems
+        treat memory as a technical problem. It's a governance problem.
+      </p>
+      <p>
+        This guide gives you the framework for designing memory that serves people - including
+        the right to be forgotten.
+      </p>
+    </div>
+  </section>
+
+  <section class="container">
+    <h2>What You Get</h2>
+
+    <div class="features-grid">
+      <div class="feature">
+        <h3>Memory Type Taxonomy</h3>
+        <p>Operational memory, identity memory, relationship memory, and decision memory. Each type has different governance needs. Treating them the same is the first design mistake.</p>
+      </div>
+      <div class="feature">
+        <h3>Memory Governance Framework</h3>
+        <p>Who can write, read, modify, and delete each type of memory. Authority without governance is just access control. Governance without authority is just policy.</p>
+      </div>
+      <div class="feature">
+        <h3>The Canonical Rule</h3>
+        <p>One sentence that defines which memory source wins when memories conflict. The most important sentence in your entire memory architecture.</p>
+      </div>
+      <div class="feature">
+        <h3>Retention Policy</h3>
+        <p>What stays, what expires, and what must be deletable on request. Includes the right to be forgotten - not as compliance, but as sovereignty.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="container">
+    <h2>What's Inside</h2>
+
+    <div class="domains-list">
+      <div class="domain-item">
+        <span class="domain-number">1</span>
+        <div>
+          <h3>Memory Types</h3>
+          <p>"What kinds of memory does your agent hold - and are you treating them all the same?"</p>
+        </div>
+      </div>
+      <div class="domain-item">
+        <span class="domain-number">2</span>
+        <div>
+          <h3>Memory Governance</h3>
+          <p>"Who has authority over each memory type - and what constrains that authority?"</p>
+        </div>
+      </div>
+      <div class="domain-item">
+        <span class="domain-number">3</span>
+        <div>
+          <h3>Session Protocols</h3>
+          <p>"How does memory persist across sessions without accumulating drift?"</p>
+        </div>
+      </div>
+      <div class="domain-item">
+        <span class="domain-number">4</span>
+        <div>
+          <h3>The Canonical Rule</h3>
+          <p>"When two memory sources disagree, which one wins - and why?"</p>
+        </div>
+      </div>
+      <div class="domain-item">
+        <span class="domain-number">5</span>
+        <div>
+          <h3>Retention & Forgetting</h3>
+          <p>"What is the right to be forgotten - and does your architecture honor it?"</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="container">
+    <h2>Who This Is For</h2>
+
+    <div class="audience-grid">
+      <div class="card">
+        <h3>AI Developers</h3>
+        <p>Building agents with persistent memory. The architecture decisions you make now determine whether memory serves the user or surveils them.</p>
+      </div>
+      <div class="card">
+        <h3>Privacy Engineers</h3>
+        <p>Agent memory creates new categories of personal data. This framework gives you governance that maps to privacy principles, not just compliance checkboxes.</p>
+      </div>
+      <div class="card">
+        <h3>Product Teams</h3>
+        <p>Your agents remember things about your users. The question is whether you've designed that memory with the user's sovereignty in mind - or only your feature roadmap.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="container text-center">
+    <div class="purchase-card">
+      <div class="price-display">$49</div>
+      <p>PDF download. Design memory for as many agent systems as you need.</p>
+      <a href={product.stripePaymentLink} class="btn btn-primary btn-large mt-md" target="_blank" rel="noopener">Buy the Guide</a>
+      <p class="text-muted mt-md" style="font-size: 0.85rem;">
+        Includes the memory type taxonomy, governance framework, session protocols, canonical rule template, retention policy, and 10-minute memory diagnostic.
+      </p>
+    </div>
+  </section>
+
+  <section class="container">
+    <h2>Go Deeper</h2>
+    <p>
+      The guide gives you the memory architecture. If you want the full trust framework
+      around it, two options:
+    </p>
+
+    <div class="upsell-grid">
+      <div class="card">
+        <h3>Trust Architecture Blueprint</h3>
+        <p>Memory is one of four pillars. The Blueprint shows how identity, memory, governance, and refusal rights work together. $49.</p>
+        <a href="/products/trust-architecture-blueprint" class="btn mt-sm">See the Blueprint</a>
+      </div>
+      <div class="card">
+        <h3>Discovery Call</h3>
+        <p>Free 30-minute call to discuss your memory architecture and figure out next steps.</p>
+        <a href="https://cal.com/evoked/discovery-call" class="btn mt-sm" target="_blank" rel="noopener">Schedule</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero-compact {
+    min-height: 45vh;
+  }
+
+  .discipline-badge {
+    display: inline-block;
+    background: var(--accent-subtle);
+    color: var(--accent-warm);
+    font-size: 0.7rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 3px 10px;
+    border-radius: 100px;
+    margin-bottom: var(--space-sm);
+  }
+
+  .value-prop p {
+    font-size: 1.05rem;
+    color: var(--text-primary);
+    line-height: 1.8;
+  }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: var(--space-md);
+  }
+
+  .feature {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: 8px;
+    padding: var(--space-md);
+  }
+
+  .feature h3 {
+    font-size: 1.1rem;
+    margin-bottom: var(--space-xs);
+  }
+
+  .feature p {
+    font-size: 0.9rem;
+    margin-bottom: 0;
+  }
+
+  .domains-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+
+  .domain-item {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-md);
+    padding: var(--space-sm) 0;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .domain-item:last-child {
+    border-bottom: none;
+  }
+
+  .domain-number {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    color: var(--accent-warm);
+    line-height: 1;
+    flex-shrink: 0;
+    width: 2rem;
+    text-align: center;
+  }
+
+  .domain-item h3 {
+    margin-bottom: 0;
+    font-size: 1.1rem;
+  }
+
+  .domain-item p {
+    font-size: 0.9rem;
+    font-style: italic;
+    margin-bottom: 0;
+  }
+
+  .audience-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: var(--space-md);
+  }
+
+  .audience-grid .card h3 {
+    font-size: 1.1rem;
+  }
+
+  .audience-grid .card p {
+    font-size: 0.9rem;
+    margin-bottom: 0;
+  }
+
+  .purchase-card {
+    background: var(--accent-subtle);
+    border: 2px solid var(--accent-warm);
+    border-radius: 12px;
+    padding: var(--space-lg);
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  .price-display {
+    font-family: var(--font-display);
+    font-size: 3rem;
+    color: var(--accent-warm);
+    font-weight: 500;
+  }
+
+  .btn-large {
+    padding: var(--space-sm) var(--space-lg);
+    font-size: 1rem;
+  }
+
+  .btn-primary {
+    background: var(--accent-warm);
+    color: var(--bg-deep);
+  }
+
+  .btn-primary:hover {
+    background: var(--accent-glow);
+    color: var(--bg-deep);
+  }
+
+  .upsell-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: var(--space-md);
+    margin-top: var(--space-md);
+  }
+
+  .upsell-grid .card h3 {
+    font-size: 1.1rem;
+  }
+
+  .upsell-grid .card p {
+    font-size: 0.9rem;
+  }
+
+  @media (max-width: 600px) {
+    .features-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .domain-item {
+      gap: var(--space-sm);
+    }
+
+    .domain-number {
+      font-size: 1.5rem;
+    }
+  }
+</style>

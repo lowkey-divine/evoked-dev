@@ -1,0 +1,306 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getProductBySlug } from '../../lib/products/registry';
+
+const product = getProductBySlug('agent-governance-starter-kit')!;
+---
+
+<BaseLayout title="Agent Governance Starter Kit" description="Charter, boundaries, drift thresholds, and accountability for your AI agents. Build governance into the structure from day one. $49 PDF.">
+  <div class="hero hero-compact">
+    <span class="discipline-badge">Constraint Architecture</span>
+    <h1>Who governs your agents when you're not watching?</h1>
+    <p class="tagline">Charter, boundaries, drift thresholds, and accountability - from day one.</p>
+  </div>
+
+  <section class="container">
+    <div class="value-prop">
+      <p>
+        Most agent governance is reactive. Something goes wrong, then you add a rule. The rule
+        fixes the symptom. The structure that produced the symptom stays untouched.
+      </p>
+      <p>
+        This kit gives you the five governance layers before the first incident. Not because
+        incidents won't happen - they will. Because your response to them should be informed by
+        structure, not invented under pressure.
+      </p>
+    </div>
+  </section>
+
+  <section class="container">
+    <h2>What You Get</h2>
+
+    <div class="features-grid">
+      <div class="feature">
+        <h3>Charter Template</h3>
+        <p>Define your agent system's purpose, values, and non-negotiable boundaries in a single document. The foundation every other governance decision builds on.</p>
+      </div>
+      <div class="feature">
+        <h3>Boundary Specifications</h3>
+        <p>Concrete, testable boundaries for agent behavior. Not principles on a wall - specifications you can verify in code.</p>
+      </div>
+      <div class="feature">
+        <h3>Drift Monitoring</h3>
+        <p>Thresholds and indicators for detecting when agent behavior moves away from intended boundaries. Drift is gradual. Detection should be continuous.</p>
+      </div>
+      <div class="feature">
+        <h3>Accountability Protocols</h3>
+        <p>Four-level accountability framework: who notices, who escalates, who decides, who reviews. Clear chains prevent governance gaps.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="container">
+    <h2>The Five Layers</h2>
+
+    <div class="domains-list">
+      <div class="domain-item">
+        <span class="domain-number">1</span>
+        <div>
+          <h3>Charter</h3>
+          <p>"What is this system for - and what is it not for?"</p>
+        </div>
+      </div>
+      <div class="domain-item">
+        <span class="domain-number">2</span>
+        <div>
+          <h3>Boundaries</h3>
+          <p>"Where are the lines - and are they enforceable?"</p>
+        </div>
+      </div>
+      <div class="domain-item">
+        <span class="domain-number">3</span>
+        <div>
+          <h3>Drift Detection</h3>
+          <p>"How do we know when behavior has moved from where we set it?"</p>
+        </div>
+      </div>
+      <div class="domain-item">
+        <span class="domain-number">4</span>
+        <div>
+          <h3>Accountability</h3>
+          <p>"When something goes wrong, who acts - and in what order?"</p>
+        </div>
+      </div>
+      <div class="domain-item">
+        <span class="domain-number">5</span>
+        <div>
+          <h3>Authority Structure</h3>
+          <p>"Who has the power to change the rules - and what constrains them?"</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="container">
+    <h2>Who This Is For</h2>
+
+    <div class="audience-grid">
+      <div class="card">
+        <h3>Engineering Leads</h3>
+        <p>Your agents are making decisions in production. Governance determines whether those decisions stay within bounds you set or bounds they discover.</p>
+      </div>
+      <div class="card">
+        <h3>Founders</h3>
+        <p>Building governance into v1 is cheaper than retrofitting it after the first incident report. Start structured. Stay structured.</p>
+      </div>
+      <div class="card">
+        <h3>Compliance Teams</h3>
+        <p>Need a framework that maps agent behavior to organizational policy. The five-layer model gives you auditable structure.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="container text-center">
+    <div class="purchase-card">
+      <div class="price-display">$49</div>
+      <p>PDF download. Govern as many agent systems as you need.</p>
+      <a href={product.stripePaymentLink} class="btn btn-primary btn-large mt-md" target="_blank" rel="noopener">Buy the Starter Kit</a>
+      <p class="text-muted mt-md" style="font-size: 0.85rem;">
+        Includes the charter template, boundary specifications, drift monitoring thresholds, four-level accountability framework, and authority structure guide.
+      </p>
+    </div>
+  </section>
+
+  <section class="container">
+    <h2>Go Deeper</h2>
+    <p>
+      The starter kit gives you governance structure. If you want to build out the full
+      trust architecture, two options:
+    </p>
+
+    <div class="upsell-grid">
+      <div class="card">
+        <h3>The Complete Bundle</h3>
+        <p>Get all four trust architecture products - Blueprint, Voice, Governance, and Restraint - for $149. Save $47.</p>
+        <a href="/products/trust-architecture-complete" class="btn mt-sm">See the Bundle</a>
+      </div>
+      <div class="card">
+        <h3>Discovery Call</h3>
+        <p>Free 30-minute call to discuss your governance architecture and figure out next steps.</p>
+        <a href="https://cal.com/evoked/discovery-call" class="btn mt-sm" target="_blank" rel="noopener">Schedule</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero-compact {
+    min-height: 45vh;
+  }
+
+  .discipline-badge {
+    display: inline-block;
+    background: var(--accent-subtle);
+    color: var(--accent-warm);
+    font-size: 0.7rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 3px 10px;
+    border-radius: 100px;
+    margin-bottom: var(--space-sm);
+  }
+
+  .value-prop p {
+    font-size: 1.05rem;
+    color: var(--text-primary);
+    line-height: 1.8;
+  }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: var(--space-md);
+  }
+
+  .feature {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: 8px;
+    padding: var(--space-md);
+  }
+
+  .feature h3 {
+    font-size: 1.1rem;
+    margin-bottom: var(--space-xs);
+  }
+
+  .feature p {
+    font-size: 0.9rem;
+    margin-bottom: 0;
+  }
+
+  .domains-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+
+  .domain-item {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-md);
+    padding: var(--space-sm) 0;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .domain-item:last-child {
+    border-bottom: none;
+  }
+
+  .domain-number {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    color: var(--accent-warm);
+    line-height: 1;
+    flex-shrink: 0;
+    width: 2rem;
+    text-align: center;
+  }
+
+  .domain-item h3 {
+    margin-bottom: 0;
+    font-size: 1.1rem;
+  }
+
+  .domain-item p {
+    font-size: 0.9rem;
+    font-style: italic;
+    margin-bottom: 0;
+  }
+
+  .audience-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: var(--space-md);
+  }
+
+  .audience-grid .card h3 {
+    font-size: 1.1rem;
+  }
+
+  .audience-grid .card p {
+    font-size: 0.9rem;
+    margin-bottom: 0;
+  }
+
+  .purchase-card {
+    background: var(--accent-subtle);
+    border: 2px solid var(--accent-warm);
+    border-radius: 12px;
+    padding: var(--space-lg);
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  .price-display {
+    font-family: var(--font-display);
+    font-size: 3rem;
+    color: var(--accent-warm);
+    font-weight: 500;
+  }
+
+  .btn-large {
+    padding: var(--space-sm) var(--space-lg);
+    font-size: 1rem;
+  }
+
+  .btn-primary {
+    background: var(--accent-warm);
+    color: var(--bg-deep);
+  }
+
+  .btn-primary:hover {
+    background: var(--accent-glow);
+    color: var(--bg-deep);
+  }
+
+  .upsell-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: var(--space-md);
+    margin-top: var(--space-md);
+  }
+
+  .upsell-grid .card h3 {
+    font-size: 1.1rem;
+  }
+
+  .upsell-grid .card p {
+    font-size: 0.9rem;
+  }
+
+  @media (max-width: 600px) {
+    .features-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .domain-item {
+      gap: var(--space-sm);
+    }
+
+    .domain-number {
+      font-size: 1.5rem;
+    }
+  }
+</style>
