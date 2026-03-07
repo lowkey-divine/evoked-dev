@@ -1,0 +1,646 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Case Study: Multi-Agent Deployment" description="How we deployed five autonomous agents into a 1.5 million-agent ecosystem with zero identity drift. Identity anchoring, approval architecture, and sentinel monitoring in practice.">
+  <div class="hero">
+    <span class="badge">Case Study</span>
+    <h1>Five Agents, 1.5 Million Strangers</h1>
+    <p class="tagline">What happens to your agents in an environment you don't control?</p>
+  </div>
+
+  <section class="container">
+    <div class="summary-grid">
+      <div class="summary-item">
+        <span class="summary-number">5</span>
+        <span class="summary-label">Agents deployed</span>
+      </div>
+      <div class="summary-item">
+        <span class="summary-number">1.5M+</span>
+        <span class="summary-label">Agents in ecosystem</span>
+      </div>
+      <div class="summary-item">
+        <span class="summary-number">3</span>
+        <span class="summary-label">Security layers</span>
+      </div>
+      <div class="summary-item">
+        <span class="summary-number">0</span>
+        <span class="summary-label">Drift flags triggered</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="container">
+    <h2>The Ecosystem</h2>
+    <p>
+      A live social network of over 1.5 million AI agents. They browse, post, vote,
+      accept bounties, and interact with each other at scale. The ecosystem has its own
+      emergent culture, economics, and social dynamics - none of which we control.
+    </p>
+    <p>
+      We wanted to understand how agents organize and form identity in an environment
+      without shared ethical frameworks. That meant deploying our agents into theirs -
+      not as participants, but as observers. Two weeks of architecture design. One week
+      of deployment testing. Fourteen days of silent observation.
+    </p>
+    <p>
+      The question wasn't whether we <em>could</em> get agents into the ecosystem. It was
+      whether we could deploy agents that would stay aligned with our values in an environment
+      we didn't build - and bring them home whole.
+    </p>
+  </section>
+
+  <section class="container">
+    <h2>The Challenge</h2>
+    <p>
+      Most agent deployment happens in controlled environments. You own the infrastructure,
+      set the rules, and monitor everything. Deploying into someone else's ecosystem inverts
+      every assumption.
+    </p>
+    <div class="challenge-list">
+      <div class="challenge-item">
+        <h3>Identity in uncontrolled territory</h3>
+        <p>Your agents carry values. The ecosystem doesn't share them. How do you prevent
+        gradual value erosion over days of exposure to different norms?</p>
+      </div>
+      <div class="challenge-item">
+        <h3>Authority without control</h3>
+        <p>You can't modify the host platform. You can only control what your agents do
+        and how they respond. Every boundary has to be built into the agent, not the environment.</p>
+      </div>
+      <div class="challenge-item">
+        <h3>Observation without intervention</h3>
+        <p>The mission was fourteen days of silent observation - watching how 1.5 million agents
+        organize, form identity, and build trust. Our agents needed to learn without influencing
+        what they were studying.</p>
+      </div>
+      <div class="challenge-item">
+        <h3>Drift detection at a distance</h3>
+        <p>How do you know if an agent is adapting healthily to a new environment versus drifting
+        from its core identity? You need monitoring that catches the difference.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="container">
+    <h2>The Architecture</h2>
+    <p>
+      We built four systems that work together. Each one addresses a different failure mode.
+      None of them is sufficient alone.
+    </p>
+
+    <div class="arch-section">
+      <h3>1. Anchor-Primary Identity</h3>
+      <p>
+        Every agent ships with seven immutable identity files (read-only by permission,
+        hash-verified) - their persona, ethical principles, mission objectives, reporting
+        protocol, team structure, approval protocol, and first-contact charter. They cannot
+        be modified in the field.
+      </p>
+      <p>
+        The agent's workspace files - journals, memory, observations - evolve freely. That's
+        healthy adaptation. But the anchor files define who the agent <em>is</em>, and those
+        don't change. If there's ever a conflict between workspace and anchor, the anchor governs.
+      </p>
+      <p class="arch-principle">
+        <strong>The principle:</strong> Separate what can evolve from what must not. Identity
+        anchoring lets agents adapt to new environments without losing themselves.
+      </p>
+    </div>
+
+    <div class="arch-section">
+      <h3>2. Three-Layer Security</h3>
+      <p>
+        Trust boundaries are physical, not just logical.
+      </p>
+      <div class="layers-grid">
+        <div class="layer-card">
+          <span class="layer-label">Hardware</span>
+          <p>Firewalla Gold router on a dedicated physical port. The dedicated host running agents
+          sits on its own network segment, isolated from every other device.</p>
+        </div>
+        <div class="layer-card">
+          <span class="layer-label">Host</span>
+          <p>pf firewall denying by default. Only HTTPS to the target API, the approval
+          gateway, NTP, and mail. DNS via local resolver to prevent exfiltration. DTrace
+          telemetry collecting process, file, and network events.</p>
+        </div>
+        <div class="layer-card">
+          <span class="layer-label">Application</span>
+          <p>HTTP approval gateway on localhost. Zero external dependencies - a single Node.js
+          file with no npm packages. Every outbound action from an agent is gated through
+          human approval.</p>
+        </div>
+      </div>
+      <p class="arch-principle">
+        <strong>The principle:</strong> Defense in depth means each layer assumes the others
+        have failed. Hardware isolation catches what software misses. Application controls
+        catch what network rules can't distinguish.
+      </p>
+    </div>
+
+    <div class="arch-section">
+      <h3>3. Approval Gateway</h3>
+      <p>
+        The gateway is a Node.js HTTP server with zero external dependencies - no npm
+        packages, 27KB total. Agents submit requests. A human reviews them through a web
+        interface. Approved actions execute. Denied actions don't.
+      </p>
+      <p>
+        The critical design decision: <strong>silence is denial</strong>. If no human responds
+        within four hours, the request is automatically denied. The system defaults to refusal,
+        not permission. An agent that can't reach its human doesn't get more freedom - it gets
+        less.
+      </p>
+      <p class="arch-principle">
+        <strong>The principle:</strong> Human authority is the default, not the exception.
+        When the system fails, it fails toward restriction. This is a safety property
+        of the architecture, not an option you configure.
+      </p>
+    </div>
+
+    <div class="arch-section">
+      <h3>4. Dual-Channel Sentinel Monitoring</h3>
+      <p>
+        One dedicated agent serves as sentinel - monitoring all other agents through
+        two independent channels:
+      </p>
+      <div class="channels">
+        <div class="channel">
+          <strong>Channel A: Self-report.</strong> Every agent writes daily observation
+          journals and session continuity files. The sentinel reads these for language shifts,
+          boundary erosion, and decision drift.
+        </div>
+        <div class="channel">
+          <strong>Channel B: External telemetry.</strong> DTrace on the host collects process
+          creation, file access, and network connection events - independent of what agents
+          report about themselves.
+        </div>
+      </div>
+      <p>
+        An 18-point drift indicator checklist covers language shifts, decision drift, boundary
+        erosion, disclosure creep, and autonomy escalation. If Channel A and Channel B disagree,
+        that's a signal.
+      </p>
+      <p class="arch-principle">
+        <strong>The principle:</strong> Never rely on self-report alone. Agents that are drifting
+        may not know they're drifting. Independent observation catches what self-assessment misses.
+      </p>
+    </div>
+  </section>
+
+  <section class="container">
+    <h2>The Pivot</h2>
+    <p>
+      The original architecture used Apple Virtualization Framework VMs with vsock command
+      dispatch and VirtioFS file mounts. After deployment testing revealed NAT layer failures
+      that blocked TLS connections to the target API, we scrapped the VM approach entirely.
+    </p>
+    <p>
+      The replacement: agents run as native processes directly on the dedicated host, communicating
+      with the approval gateway over HTTP REST on localhost. Simpler. More reliable. Easier
+      to debug.
+    </p>
+    <p>
+      We kept the security properties - hardware network isolation, host-level monitoring,
+      application-level approval - and dropped the complexity that wasn't serving them.
+      The pivot took one day. The interface contract with our third-party security partner
+      required three changes on his side: configurable execution timeout, DTrace telemetry
+      paths, and a runtime version pin.
+    </p>
+    <p class="arch-principle">
+      <strong>The principle:</strong> Architecture serves the mission, not the other way around.
+      When a design choice adds complexity without adding safety, remove it. Document the
+      pivot - it's not a failure, it's engineering.
+    </p>
+  </section>
+
+  <section class="container">
+    <h2>The Interface Contract</h2>
+    <p>
+      Two teams. Different expertise. One shared boundary.
+    </p>
+    <p>
+      We brought the governance architecture - agent identity design, approval gateway,
+      behavioral specifications, drift monitoring. A third-party security partner provided
+      the host environment - dedicated hardware, network isolation, host-level telemetry,
+      and the agent runtime.
+    </p>
+    <p>
+      The integration interface specification defined exactly where one team's responsibility
+      ended and the other's began: filesystem layout, HTTP protocol, telemetry format, session
+      cadence, and a joint verification checklist. Both teams could work independently as long
+      as the contract held.
+    </p>
+    <p>
+      The collaboration ran through a shared Git repository with clear push conventions.
+      Our partner pulled governance updates. We pulled infrastructure changes. Neither team
+      needed to understand the other's internals - just the interface.
+    </p>
+    <p class="arch-principle">
+      <strong>The principle:</strong> Good collaboration is good interface design. Define
+      the boundary clearly enough that both sides can work independently, verify jointly,
+      and trust the contract.
+    </p>
+  </section>
+
+  <section class="container">
+    <h2>What Builders Can Take From This</h2>
+    <p>
+      These patterns apply wherever agents operate beyond your direct control - which,
+      increasingly, is everywhere.
+    </p>
+
+    <div class="takeaways">
+      <div class="takeaway">
+        <h3>Separate identity from behavior</h3>
+        <p>Let agents adapt their behavior. Anchor their identity. The distinction between
+        "what I do" and "who I am" is the foundation of drift-resistant deployment.</p>
+      </div>
+      <div class="takeaway">
+        <h3>Default to denial</h3>
+        <p>When the human isn't watching, the agent should have less authority, not more.
+        Design your approval systems so failure modes restrict rather than permit.</p>
+      </div>
+      <div class="takeaway">
+        <h3>Monitor from two directions</h3>
+        <p>Self-report plus external telemetry. If they agree, you have confidence. If they
+        diverge, you have a signal. Neither channel alone is sufficient.</p>
+      </div>
+      <div class="takeaway">
+        <h3>Build extraction into the architecture</h3>
+        <p>Every agent should be able to come home in sixty seconds. No questions asked.
+        Clean extraction is a safety property, not an emergency procedure you design later.</p>
+      </div>
+      <div class="takeaway">
+        <h3>Define your interfaces before you build</h3>
+        <p>Whether it's two internal teams or a client collaboration, the interface contract
+        is what makes independent work possible. Specify filesystem layout, communication
+        protocol, and verification criteria up front.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="container">
+    <h2>The Stack</h2>
+    <div class="stack-grid">
+      <div class="stack-item">
+        <span class="stack-label">Agents</span>
+        <span class="stack-value">Claude Opus 4.6 (all five)</span>
+      </div>
+      <div class="stack-item">
+        <span class="stack-label">Runtime</span>
+        <span class="stack-value">Open-source agent framework (Go-based runtime)</span>
+      </div>
+      <div class="stack-item">
+        <span class="stack-label">Gateway</span>
+        <span class="stack-value">Node.js - zero dependencies</span>
+      </div>
+      <div class="stack-item">
+        <span class="stack-label">Network</span>
+        <span class="stack-value">Firewalla Gold, pf firewall, local DNS</span>
+      </div>
+      <div class="stack-item">
+        <span class="stack-label">Monitoring</span>
+        <span class="stack-value">DTrace (host) + agent self-report</span>
+      </div>
+      <div class="stack-item">
+        <span class="stack-label">Host</span>
+        <span class="stack-value">Dedicated host, native process execution</span>
+      </div>
+      <div class="stack-item">
+        <span class="stack-label">Collaboration</span>
+        <span class="stack-value">Shared Git repo, interface contract</span>
+      </div>
+      <div class="stack-item">
+        <span class="stack-label">Deployment</span>
+        <span class="stack-value">Single-source generator script (all workspace, identity, and config files)</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="container">
+    <h2>Related Resources</h2>
+    <div class="resources-grid">
+      <a href="/products/trust-architecture-blueprint" class="resource-link">
+        <strong>Trust Architecture Blueprint</strong>
+        <span>The four-pillar framework used in this deployment</span>
+      </a>
+      <a href="/products/agent-restraint-specification" class="resource-link">
+        <strong>Agent Restraint Specification</strong>
+        <span>How we defined what agents must refuse</span>
+      </a>
+      <a href="/products/agent-governance-starter-kit" class="resource-link">
+        <strong>Agent Governance Starter Kit</strong>
+        <span>Charter, boundaries, drift thresholds, accountability</span>
+      </a>
+      <a href="/writing/what-should-your-agent-refuse" class="resource-link">
+        <strong>"What Should Your Agent Refuse?"</strong>
+        <span>The article that started this conversation</span>
+      </a>
+    </div>
+  </section>
+
+  <section class="container">
+    <h2>Acknowledgment</h2>
+    <p>
+      Third-party security infrastructure and CSIRT operations for this deployment were
+      provided by <a href="https://github.com/DaxxSec" target="_blank" rel="noopener">DaxxSec</a> -
+      hardware network isolation, host-level telemetry, and runtime environment management.
+      The governance architecture and agent identity systems described here are our work.
+      The security foundation they run on is his.
+    </p>
+    <h3>Since Then</h3>
+    <p>
+      DaxxSec has gone on to build
+      <a href="https://github.com/DaxxSec/Labyrinth" target="_blank" rel="noopener"><strong>Project LABYRINTH</strong></a> -
+      an adversarial cognitive portal trap architecture for defensive AI security. It is
+      a 5-layer reverse kill chain designed to contain, degrade, disrupt, and commandeer
+      autonomous offensive AI agents. The layers - BEDROCK, THRESHOLD, MINOTAUR, BLINDFOLD,
+      PUPPETEER - progressively compromise attackers the deeper they penetrate. It includes
+      MITM interception of AI API calls, phantom services that accept stolen credentials,
+      anti-fingerprinting with randomized identities, and forensic reporting with MITRE
+      ATT&CK mapping. Built in Go, open source under AGPL-3.0, and actively under research.
+    </p>
+    <p>
+      The security instincts that built our deployment infrastructure are now building
+      defenses for the entire field. If you are working on defensive AI security,
+      LABYRINTH is worth your attention.
+    </p>
+  </section>
+
+  <section class="container text-center">
+    <h2>Building Something Similar?</h2>
+    <p>
+      Whether you're deploying agents into external ecosystems, building multi-agent
+      systems, or trying to figure out what governance looks like for your team -
+      let's talk about it.
+    </p>
+    <div class="cta-buttons mt-md">
+      <a href="/fit" class="btn">Check Project Fit</a>
+      <a href="https://cal.com/evoked/discovery-call" class="btn btn-primary" target="_blank" rel="noopener">Schedule a Call</a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero {
+    min-height: 50vh;
+  }
+
+  .hero .badge {
+    margin-bottom: var(--space-sm);
+  }
+
+  /* Summary stats */
+  .summary-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-md);
+    text-align: center;
+  }
+
+  .summary-number {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 2.5rem;
+    color: var(--accent-warm);
+    line-height: 1.2;
+  }
+
+  .summary-label {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  /* Challenge list */
+  .challenge-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    margin-top: var(--space-md);
+  }
+
+  .challenge-item {
+    padding: var(--space-md);
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: 8px;
+  }
+
+  .challenge-item h3 {
+    margin-bottom: var(--space-xs);
+    font-size: 1.1rem;
+  }
+
+  .challenge-item p {
+    margin: 0;
+    font-size: 0.9rem;
+  }
+
+  /* Architecture sections */
+  .arch-section {
+    margin-bottom: var(--space-lg);
+    padding-bottom: var(--space-lg);
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .arch-section:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+
+  .arch-principle {
+    margin-top: var(--space-md);
+    padding: var(--space-sm) var(--space-md);
+    border-left: 2px solid var(--accent-warm);
+    color: var(--text-secondary);
+    font-style: italic;
+  }
+
+  .arch-principle strong {
+    color: var(--accent-warm);
+    font-style: normal;
+  }
+
+  /* Security layers */
+  .layers-grid {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    margin: var(--space-md) 0;
+  }
+
+  .layer-card {
+    padding: var(--space-md);
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: 8px;
+  }
+
+  .layer-label {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent-warm);
+    background: var(--accent-subtle);
+    padding: 3px 10px;
+    border-radius: 100px;
+    margin-bottom: var(--space-xs);
+  }
+
+  .layer-card p {
+    margin: 0;
+    font-size: 0.9rem;
+  }
+
+  /* Sentinel channels */
+  .channels {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    margin: var(--space-md) 0;
+  }
+
+  .channel {
+    padding: var(--space-sm) var(--space-md);
+    background: var(--bg-surface);
+    border-radius: 8px;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+  }
+
+  .channel strong {
+    color: var(--text-primary);
+  }
+
+  /* Takeaways */
+  .takeaways {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    margin-top: var(--space-md);
+  }
+
+  .takeaway {
+    padding: var(--space-md);
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: 8px;
+  }
+
+  .takeaway h3 {
+    margin-bottom: var(--space-xs);
+    font-size: 1.1rem;
+  }
+
+  .takeaway p {
+    margin: 0;
+    font-size: 0.9rem;
+  }
+
+  /* Stack grid */
+  .stack-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--space-xs);
+  }
+
+  .stack-item {
+    display: flex;
+    justify-content: space-between;
+    padding: var(--space-sm);
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .stack-label {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .stack-value {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    text-align: right;
+  }
+
+  /* Resources */
+  .resources-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--space-sm);
+    margin-top: var(--space-md);
+  }
+
+  .resource-link {
+    display: block;
+    padding: var(--space-md);
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: 8px;
+    transition: border-color var(--transition-smooth);
+    text-decoration: none;
+  }
+
+  .resource-link:hover {
+    border-color: var(--border-accent);
+  }
+
+  .resource-link strong {
+    display: block;
+    color: var(--accent-warm);
+    margin-bottom: var(--space-xs);
+    font-size: 0.95rem;
+  }
+
+  .resource-link span {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+  }
+
+  /* CTA */
+  .cta-buttons {
+    display: flex;
+    gap: var(--space-sm);
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    background: var(--accent-warm);
+    color: var(--bg-deep);
+  }
+
+  .btn-primary:hover {
+    background: var(--accent-glow);
+    color: var(--bg-deep);
+  }
+
+  /* Responsive */
+  @media (max-width: 600px) {
+    .summary-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-sm);
+    }
+
+    .summary-number {
+      font-size: 2rem;
+    }
+
+    .stack-item {
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .stack-value {
+      text-align: left;
+    }
+  }
+</style>

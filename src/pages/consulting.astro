@@ -86,6 +86,30 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   </section>
 
   <section class="container">
+    <h2>In Practice</h2>
+    <p>These frameworks come from live systems, not whiteboards.</p>
+
+    <a href="/case-studies/multi-agent-deployment" class="case-study-card">
+      <div class="case-study-header">
+        <span class="badge">Case Study</span>
+      </div>
+      <h3>Five Agents, 1.5 Million Strangers</h3>
+      <p>
+        We deployed five autonomous agents into a live ecosystem of over 1.5 million AI agents -
+        an environment we didn't build or control. Identity anchoring, three-layer security,
+        dual-channel drift monitoring, and a zero-dependency approval gateway. Zero drift flags
+        triggered.
+      </p>
+      <div class="case-study-stats">
+        <span>5 agents deployed</span>
+        <span>3 security layers</span>
+        <span>0 drift flags</span>
+      </div>
+      <span class="case-study-link">Read the full case study</span>
+    </a>
+  </section>
+
+  <section class="container">
     <h2>Start Here</h2>
     <p>Start where you are. Go as deep as you need.</p>
 
@@ -492,6 +516,69 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   .btn-primary:hover {
     background: var(--accent-glow);
     color: var(--bg-deep);
+  }
+
+  /* Case study card */
+  .case-study-card {
+    display: block;
+    padding: var(--space-md);
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all var(--transition-smooth);
+    margin-top: var(--space-md);
+  }
+
+  .case-study-card:hover {
+    border-color: var(--border-accent);
+    transform: translateY(-2px);
+  }
+
+  .case-study-header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-sm);
+  }
+
+  .case-study-collab {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+  }
+
+  .case-study-collab strong {
+    color: var(--text-secondary);
+  }
+
+  .case-study-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: var(--space-xs);
+  }
+
+  .case-study-card p {
+    font-size: 0.9rem;
+    margin-bottom: var(--space-sm);
+  }
+
+  .case-study-stats {
+    display: flex;
+    gap: var(--space-md);
+    margin-bottom: var(--space-sm);
+    flex-wrap: wrap;
+  }
+
+  .case-study-stats span {
+    font-size: 0.8rem;
+    color: var(--accent-warm);
+    background: var(--accent-subtle);
+    padding: 3px 10px;
+    border-radius: 100px;
+  }
+
+  .case-study-link {
+    font-size: 0.85rem;
+    color: var(--accent-warm);
   }
 
   @media (max-width: 600px) {
