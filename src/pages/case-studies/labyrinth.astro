@@ -54,8 +54,11 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
       architectural decisions align with the four pillars in ways that illuminate both.
     </p>
     <p class="disclosure">
-      This case study applies our four-pillar framework to an independent open-source project.
-      The analysis is ours. The architecture is his.
+      This is an architectural analysis - we read the project's public documentation through
+      our four-pillar framework. We have not yet deployed LABYRINTH, run attacker agents
+      against it, or tested whether the layers perform as designed. That deeper case study -
+      hands-on, with DaxxSec's collaboration - is coming. The analysis is ours. The
+      architecture is his.
     </p>
   </section>
 
@@ -311,6 +314,20 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
       LABYRINTH is open source, actively maintained, and explicitly does not phone home.
       All forensic data stays local. If you are working on defensive AI security, it is
       worth your attention.
+    </p>
+
+    <h3>What's Next</h3>
+    <p>
+      This analysis reads the architecture. The next step is testing it - deploying
+      LABYRINTH, running its pre-integrated attacker agents against the five layers, and
+      reporting what actually happens. Does MINOTAUR's contradiction engine erode an
+      agent's world model in practice? Do the phantom services hold under sustained
+      probing? How does the MITM interception perform against real AI API calls?
+    </p>
+    <p>
+      We're working with DaxxSec on a hands-on deployment review. When it's ready,
+      it will live here alongside this architectural analysis - what the system claims
+      to do, and what it actually does.
     </p>
   </section>
 
