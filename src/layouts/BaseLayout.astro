@@ -8,7 +8,7 @@ interface Props {
   image?: string;
 }
 
-const { title, description = "Space for what matters.", hideFloatingChat = false, image = "/images/evoke-lips-yellow.png" } = Astro.props;
+const { title, description = "Coaching, consulting, and sovereignty-honoring AI products by Erin Stanley. Space for what matters.", hideFloatingChat = false, image = "/images/evoke-lips-yellow.png" } = Astro.props;
 const showFloatingChat = !hideFloatingChat && Astro.url.pathname !== '/ask' && Astro.url.pathname !== '/ask/';
 const canonicalURL = new URL(Astro.url.pathname, "https://evoked.dev");
 ---
@@ -35,6 +35,39 @@ const canonicalURL = new URL(Astro.url.pathname, "https://evoked.dev");
     <meta name="twitter:title" content={`${title} — evoked.dev`} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={new URL(image, "https://evoked.dev").href} />
+
+    <!-- Structured Data -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Person",
+          "@id": "https://evoked.dev/#person",
+          "name": "Erin Stanley",
+          "url": "https://evoked.dev",
+          "description": "Founder of Evoke Passion. Coaching, consulting, and sovereignty-honoring AI products.",
+          "jobTitle": "Founder",
+          "knowsAbout": [
+            "ethical AI",
+            "agent governance",
+            "trust architecture",
+            "restraint specification",
+            "sovereignty-honoring design",
+            "life coaching",
+            "child safety",
+            "data privacy"
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://evoked.dev/#website",
+          "name": "evoked.dev",
+          "url": "https://evoked.dev",
+          "description": "Coaching, consulting, and sovereignty-honoring AI products by Erin Stanley.",
+          "author": { "@id": "https://evoked.dev/#person" }
+        }
+      ]
+    })} />
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />

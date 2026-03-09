@@ -1,11 +1,75 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const productSchemas = [
+  {
+    "@type": "Product",
+    "name": "Sovereignty Assessment Toolkit",
+    "description": "A structured self-assessment framework with a 47-point checklist across 7 domains, scoring rubric, and action plan template.",
+    "url": "https://evoked.dev/products/sovereignty-toolkit",
+    "brand": { "@type": "Organization", "name": "Evoke Passion" },
+    "offers": { "@type": "Offer", "price": "49.00", "priceCurrency": "USD", "availability": "https://schema.org/InStock" }
+  },
+  {
+    "@type": "Product",
+    "name": "Trust Architecture Blueprint",
+    "description": "A four-pillar blueprint for agent trust: identity architecture, memory architecture, governance architecture, and refusal rights.",
+    "url": "https://evoked.dev/products/trust-architecture-blueprint",
+    "brand": { "@type": "Organization", "name": "Evoke Passion" },
+    "offers": { "@type": "Offer", "price": "49.00", "priceCurrency": "USD", "availability": "https://schema.org/InStock" }
+  },
+  {
+    "@type": "Product",
+    "name": "Agent Voice Architecture Guide",
+    "description": "A complete guide to voice design principles, sovereignty language, voice specification templates, quality checks, and refusal voice patterns.",
+    "url": "https://evoked.dev/products/agent-voice-architecture-guide",
+    "brand": { "@type": "Organization", "name": "Evoke Passion" },
+    "offers": { "@type": "Offer", "price": "49.00", "priceCurrency": "USD", "availability": "https://schema.org/InStock" }
+  },
+  {
+    "@type": "Product",
+    "name": "Agent Governance Starter Kit",
+    "description": "Templates and frameworks for agent charters, boundary specifications, drift monitoring, accountability protocols, and authority structures.",
+    "url": "https://evoked.dev/products/agent-governance-starter-kit",
+    "brand": { "@type": "Organization", "name": "Evoke Passion" },
+    "offers": { "@type": "Offer", "price": "49.00", "priceCurrency": "USD", "availability": "https://schema.org/InStock" }
+  },
+  {
+    "@type": "Product",
+    "name": "Agent Restraint Specification Template",
+    "description": "A complete specification template for agent refusal categories, fail-closed/open decisions, accountability architecture, and adversarial testing.",
+    "url": "https://evoked.dev/products/agent-restraint-specification",
+    "brand": { "@type": "Organization", "name": "Evoke Passion" },
+    "offers": { "@type": "Offer", "price": "49.00", "priceCurrency": "USD", "availability": "https://schema.org/InStock" }
+  },
+  {
+    "@type": "Product",
+    "name": "Agent Memory Architecture Guide",
+    "description": "A complete framework for memory types, memory governance, session protocols, the canonical rule for resolving memory conflicts, and retention policies.",
+    "url": "https://evoked.dev/products/agent-memory-architecture-guide",
+    "brand": { "@type": "Organization", "name": "Evoke Passion" },
+    "offers": { "@type": "Offer", "price": "49.00", "priceCurrency": "USD", "availability": "https://schema.org/InStock" }
+  },
+  {
+    "@type": "Product",
+    "name": "Trust Architecture Complete",
+    "description": "All four trust architecture products: Trust Architecture Blueprint, Agent Voice Architecture Guide, Agent Governance Starter Kit, and Agent Restraint Specification Template.",
+    "url": "https://evoked.dev/products/trust-architecture-complete",
+    "brand": { "@type": "Organization", "name": "Evoke Passion" },
+    "offers": { "@type": "Offer", "price": "149.00", "priceCurrency": "USD", "availability": "https://schema.org/InStock" }
+  }
+];
 ---
 
-<BaseLayout title="Products" description="Sovereignty-honoring frameworks for AI agent systems. Assessment toolkits, trust architecture, voice design, governance, restraint, and memory.">
+<BaseLayout title="Products" description="Sovereignty-honoring frameworks for AI agent systems by Erin Stanley. Assessment toolkits, trust architecture, voice design, governance, restraint, and memory.">
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@graph": productSchemas
+  })} />
+
   <div class="hero hero-compact">
-    <h1>See what your agents are actually doing.</h1>
-    <p class="tagline">Frameworks for sovereignty, governance, and restraint - not compliance theater.</p>
+    <h1>Frameworks for the work your agents are already doing.</h1>
+    <p class="tagline">Sovereignty, governance, and restraint - built in practice, not in theory.</p>
   </div>
 
   <section class="container">

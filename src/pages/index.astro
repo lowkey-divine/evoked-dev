@@ -2,10 +2,11 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
-<BaseLayout title="Home" description="Space for what matters. Coaching, consulting, and projects by Erin Stanley.">
+<BaseLayout title="Home" description="Erin Stanley - coaching, consulting, and sovereignty-honoring AI products. Depth work for people, ethical governance for technology.">
   <div class="hero">
     <h1 class="fade-in">Space for what matters.</h1>
     <p class="tagline fade-in">Coaching. Consulting. Noticing what's already worth protecting.</p>
+    <p class="identity fade-in">I'm Erin Stanley. I work with people who are growing and technology that should be.</p>
   </div>
 
   <section class="container text-center">
@@ -33,7 +34,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <section class="container">
     <div class="newsletter-card">
       <h2>Stay in the conversation.</h2>
-      <p>Sovereignty-honoring design, ethical AI, and building things that matter. Short, honest, no spam.</p>
+      <p>Sovereignty-honoring design, ethical AI, and building things that matter.</p>
       <form id="newsletter-form" class="newsletter-form">
         <div class="form-row">
           <input type="email" id="newsletter-email" name="email" placeholder="Your email" required aria-label="Email address" />
@@ -87,6 +88,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 </script>
 
 <style>
+  .identity {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    margin-top: var(--space-sm);
+  }
+
   .paths {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
