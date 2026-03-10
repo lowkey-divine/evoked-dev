@@ -3,7 +3,7 @@ title: "Who Governs the Agent?"
 description: "Your agentic loop runs overnight. It makes a thousand decisions. Can it explain any of them?"
 pubDate: 2026-03-10
 tags: ["ai-agent-refusal", "ai-governance", "ai-agents", "agent-architecture", "trust-architecture", "responsible-ai"]
-draft: true
+draft: false
 ---
 
 I've been reading the conversation around responsible AI use in professional services. The argument shows up everywhere - four principles, responsibility, accountability, auditability, transparency. Most firms have an AI policy but no AI practice. That is where the damage happens.
