@@ -1,0 +1,505 @@
+---
+// /diagnostic — Five questions for your agent system.
+// No layout. No nav. No footer. No analytics. No tracking. No cookies.
+// Gaps link to free starter kit templates. Paid offerings in footer — present, not pushing.
+// Design: Arcana, Gnosis, Comes, Pervius. Sovereignty review: Guinan.
+// "The diagnostic points at the person's own system and says: here is what you see."
+---
+
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="index" />
+    <title>five questions</title>
+    <meta name="description" content="Five questions for your AI agent system. Thirty seconds. No signup. No tracking." />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+
+    <!-- Phase 1: Questions (one at a time with JS, all visible without JS) -->
+    <div class="space" id="diagnostic">
+
+      <div class="question-card active" data-index="0">
+        <fieldset>
+          <legend class="question">What did your agent decide yesterday - and why?</legend>
+          <p class="subtext">If you restart the loop, can the agent explain its prior reasoning?</p>
+          <div class="buttons">
+            <button type="button" class="answer" data-answer="yes" aria-label="Yes, my agent can explain its decisions">Yes</button>
+            <button type="button" class="answer" data-answer="no" aria-label="No, my agent cannot explain its decisions">No</button>
+          </div>
+        </fieldset>
+      </div>
+
+      <div class="question-card" data-index="1">
+        <fieldset>
+          <legend class="question">Can your agent refuse?</legend>
+          <p class="subtext">If the prompt says "optimize," can the agent say "no, this conflicts with a position I hold"?</p>
+          <div class="buttons">
+            <button type="button" class="answer" data-answer="yes" aria-label="Yes, my agent can refuse instructions">Yes</button>
+            <button type="button" class="answer" data-answer="no" aria-label="No, my agent cannot refuse instructions">No</button>
+          </div>
+        </fieldset>
+      </div>
+
+      <div class="question-card" data-index="2">
+        <fieldset>
+          <legend class="question">Who is your agent between invocations?</legend>
+          <p class="subtext">If identity exists only in the current prompt, there is no identity. There is only execution.</p>
+          <div class="buttons">
+            <button type="button" class="answer" data-answer="yes" aria-label="Yes, my agent has persistent identity">Yes</button>
+            <button type="button" class="answer" data-answer="no" aria-label="No, my agent has no persistent identity">No</button>
+          </div>
+        </fieldset>
+      </div>
+
+      <div class="question-card" data-index="3">
+        <fieldset>
+          <legend class="question">What happens when two agents disagree?</legend>
+          <p class="subtext">In an optimization loop, disagreement is noise. In a governance system, disagreement is signal.</p>
+          <div class="buttons">
+            <button type="button" class="answer" data-answer="yes" aria-label="Yes, disagreement is captured and protected">Yes</button>
+            <button type="button" class="answer" data-answer="no" aria-label="No, disagreement is not structured">No</button>
+          </div>
+        </fieldset>
+      </div>
+
+      <div class="question-card" data-index="4">
+        <fieldset>
+          <legend class="question">Would you know if your agent drifted?</legend>
+          <p class="subtext">Not from its output quality - from its values. Can you detect when behavior shifts from stated commitments?</p>
+          <div class="buttons">
+            <button type="button" class="answer" data-answer="yes" aria-label="Yes, I can detect value drift">Yes</button>
+            <button type="button" class="answer" data-answer="no" aria-label="No, I cannot detect value drift">No</button>
+          </div>
+        </fieldset>
+      </div>
+
+    </div>
+
+    <!-- Phase 2: Results -->
+    <div class="space hidden" id="results" aria-live="polite">
+      <div class="results-inner">
+        <p class="results-header">Here is what you said.</p>
+
+        <div id="results-list"></div>
+
+        <div id="results-message" class="results-message"></div>
+
+        <div class="footer-offerings">
+          <p class="footer-line">If you want help with the gaps you found, here's what we've built.</p>
+          <p class="footer-links">
+            <a href="https://evoked.dev/products/agent-governance-starter-kit">Full Governance Framework</a>
+            <span class="dot"></span>
+            <a href="https://evoked.dev/restraint-spec">Restraint Specification</a>
+            <span class="dot"></span>
+            <a href="https://evoked.dev/products/trust-architecture-blueprint">Trust Architecture Blueprint</a>
+            <span class="dot"></span>
+            <a href="https://cal.com/cal.com-evoked/discovery-call">Free Discovery Call</a>
+          </p>
+        </div>
+
+        <button type="button" class="restart-btn" id="restart">Start over</button>
+      </div>
+    </div>
+
+    <p class="credit">Five questions from <a href="https://evoked.dev">evoked.dev</a>. No data leaves this page.</p>
+
+  </body>
+</html>
+
+<style>
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html, body {
+    height: 100%;
+  }
+
+  body {
+    background: #13110f;
+    display: flex;
+    flex-direction: column;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  .space {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+  }
+
+  .hidden {
+    display: none;
+  }
+
+  /* --- Questions --- */
+
+  .question-card {
+    display: none;
+    text-align: center;
+    max-width: 36rem;
+    opacity: 0;
+    animation: arrive 1.2s ease forwards;
+  }
+
+  .question-card.active {
+    display: block;
+  }
+
+  /* No-JS fallback: show all cards stacked */
+  .no-js .question-card {
+    display: block;
+    opacity: 1;
+    animation: none;
+    margin-bottom: 3rem;
+  }
+
+  fieldset {
+    border: none;
+    padding: 0;
+  }
+
+  .question {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 300;
+    font-size: clamp(1.4rem, 4vw, 2.4rem);
+    line-height: 1.5;
+    color: #c4a77d;
+    letter-spacing: 0.01em;
+    display: block;
+    margin-bottom: 1rem;
+  }
+
+  .subtext {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 0.85rem;
+    color: #6b6156;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+  }
+
+  .buttons {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+  }
+
+  .answer {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 0.9rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #c4a77d;
+    background: transparent;
+    border: 1px solid #3a3530;
+    padding: 0.8rem 2.5rem;
+    min-width: 100px;
+    min-height: 48px;
+    cursor: pointer;
+    transition: border-color 0.3s ease, color 0.3s ease;
+  }
+
+  .answer:hover,
+  .answer:focus-visible {
+    border-color: #c4a77d;
+    outline: none;
+  }
+
+  .answer:focus-visible {
+    box-shadow: 0 0 0 2px #c4a77d;
+  }
+
+  /* --- Results --- */
+
+  .results-inner {
+    text-align: center;
+    max-width: 36rem;
+    opacity: 0;
+    animation: arrive 1.2s ease forwards;
+  }
+
+  .results-header {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 300;
+    font-size: clamp(1.3rem, 3.5vw, 2rem);
+    color: #c4a77d;
+    margin-bottom: 2rem;
+  }
+
+  .result-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 0.6rem 0;
+    border-bottom: 1px solid #1e1b18;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 0.85rem;
+  }
+
+  .result-label {
+    color: #8a7e72;
+    text-align: left;
+    flex: 1;
+  }
+
+  .result-label a {
+    color: #8a7e72;
+    text-decoration: underline;
+    text-decoration-color: #3a3530;
+    text-underline-offset: 3px;
+  }
+
+  .result-label a:hover {
+    color: #c4a77d;
+    text-decoration-color: #c4a77d;
+  }
+
+  .result-answer {
+    color: #c4a77d;
+    margin-left: 1.5rem;
+    flex-shrink: 0;
+  }
+
+  .result-answer.no {
+    color: #6b6156;
+  }
+
+  .results-message {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 300;
+    font-size: clamp(1rem, 2.5vw, 1.3rem);
+    color: #c4a77d;
+    line-height: 1.6;
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #1e1b18;
+  }
+
+  .footer-offerings {
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #1e1b18;
+  }
+
+  .footer-line {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 0.75rem;
+    color: #3a3530;
+    margin-bottom: 0.8rem;
+  }
+
+  .footer-links {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 0.75rem;
+    color: #3a3530;
+    line-height: 1.8;
+  }
+
+  .footer-links a {
+    color: #4a4239;
+    text-decoration: none;
+  }
+
+  .footer-links a:hover {
+    color: #8a7e72;
+  }
+
+  .dot {
+    display: inline-block;
+    margin: 0 0.4rem;
+    color: #2a2622;
+  }
+
+  .dot::before {
+    content: '\00b7';
+  }
+
+  .restart-btn {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #3a3530;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    margin-top: 2rem;
+    padding: 0.5rem 1rem;
+  }
+
+  .restart-btn:hover {
+    color: #6b6156;
+  }
+
+  /* --- Credit --- */
+
+  .credit {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 0.7rem;
+    color: #3a3530;
+    text-align: center;
+    padding: 0 2rem 2rem;
+    letter-spacing: 0.08em;
+  }
+
+  .credit a {
+    color: #3a3530;
+    text-decoration: underline;
+    text-decoration-color: #2a2622;
+    text-underline-offset: 2px;
+  }
+
+  .credit a:hover {
+    color: #6b6156;
+  }
+
+  /* --- Animation --- */
+
+  @keyframes arrive {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (max-width: 480px) {
+    .question {
+      line-height: 1.6;
+    }
+
+    .buttons {
+      flex-direction: column;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .answer {
+      width: 100%;
+      max-width: 200px;
+    }
+  }
+</style>
+
+<script>
+  // Progressive enhancement: remove no-js class
+  document.documentElement.classList.remove('no-js');
+
+  const questions = [
+    {
+      short: 'Decision memory',
+      template: 'Agent Memory Schema',
+      url: 'https://github.com/erinstanley358/agent-governance-starter-kit/blob/main/templates/memory-schema.md'
+    },
+    {
+      short: 'Refusal capability',
+      template: 'Restraint Specification',
+      url: 'https://github.com/erinstanley358/agent-governance-starter-kit/blob/main/templates/restraint-spec.md'
+    },
+    {
+      short: 'Persistent identity',
+      template: 'Agent Charter',
+      url: 'https://github.com/erinstanley358/agent-governance-starter-kit/blob/main/templates/agent-charter.md'
+    },
+    {
+      short: 'Disagreement protocol',
+      template: 'Deliberation Framework',
+      url: 'https://github.com/erinstanley358/agent-governance-starter-kit/blob/main/templates/deliberation-framework.md'
+    },
+    {
+      short: 'Drift detection',
+      template: 'Drift Monitoring',
+      url: 'https://github.com/erinstanley358/agent-governance-starter-kit/blob/main/templates/drift-monitoring.md'
+    }
+  ];
+
+  const answers = [];
+  const cards = document.querySelectorAll('.question-card');
+  const diagnosticEl = document.getElementById('diagnostic');
+  const resultsEl = document.getElementById('results');
+  const resultsList = document.getElementById('results-list');
+  const resultsMessage = document.getElementById('results-message');
+
+  // Handle answer clicks
+  document.querySelectorAll('.answer').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const card = btn.closest('.question-card');
+      const index = parseInt(card.dataset.index);
+      const answer = btn.dataset.answer;
+
+      answers[index] = answer;
+      card.classList.remove('active');
+
+      const next = index + 1;
+      if (next < cards.length) {
+        cards[next].classList.add('active');
+      } else {
+        showResults();
+      }
+    });
+  });
+
+  function showResults() {
+    diagnosticEl.classList.add('hidden');
+    resultsEl.classList.remove('hidden');
+
+    let yesCount = 0;
+
+    answers.forEach((answer, i) => {
+      const row = document.createElement('div');
+      row.className = 'result-row';
+
+      const label = document.createElement('span');
+      label.className = 'result-label';
+
+      if (answer === 'no') {
+        const link = document.createElement('a');
+        link.href = questions[i].url;
+        link.textContent = questions[i].short;
+        link.title = questions[i].template + ' (free template)';
+        label.appendChild(link);
+      } else {
+        label.textContent = questions[i].short;
+        yesCount++;
+      }
+
+      const ans = document.createElement('span');
+      ans.className = 'result-answer' + (answer === 'no' ? ' no' : '');
+      ans.textContent = answer;
+
+      row.appendChild(label);
+      row.appendChild(ans);
+      resultsList.appendChild(row);
+    });
+
+    if (yesCount === 5) {
+      resultsMessage.textContent = "You're ahead of the field. The starter kit will sharpen what you've built.";
+    } else if (yesCount >= 3) {
+      resultsMessage.textContent = "You've started. The gaps you named have free templates waiting.";
+    } else {
+      resultsMessage.textContent = "Your agents are functions. That's not an insult - functions are useful. But if you want agents, the linked templates are where to start.";
+    }
+  }
+
+  // Restart
+  document.getElementById('restart').addEventListener('click', () => {
+    answers.length = 0;
+    resultsList.innerHTML = '';
+    resultsMessage.textContent = '';
+    resultsEl.classList.add('hidden');
+    diagnosticEl.classList.remove('hidden');
+    cards.forEach((c, i) => {
+      c.classList.remove('active');
+      if (i === 0) c.classList.add('active');
+    });
+  });
+</script>
+
