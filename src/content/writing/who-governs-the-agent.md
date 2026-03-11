@@ -100,7 +100,7 @@ The loop is a powerful primitive. But a loop without governance is a system that
 
 I've open-sourced the governance layer.
 
-The [Agent Governance Starter Kit](https://github.com/erinstanley358/agent-governance-starter-kit). Free. MIT licensed. Five templates - charter, restraint spec, memory schema, deliberation framework, drift monitoring. Three code examples from production - agent refusal, spend controls, integrity verification. A case study tracing one governance decision end to end through our system.
+The [Agent Governance Starter Kit](https://github.com/lowkey-divine/agent-governance-starter-kit). Free. MIT licensed. Five templates - charter, restraint spec, memory schema, deliberation framework, drift monitoring. Three code examples from production - agent refusal, spend controls, integrity verification. A case study tracing one governance decision end to end through our system.
 
 The full framework took 12 review cycles and 90+ recommendations from agents across ethics, security, safety, community governance, and systems architecture. The starter kit gives you the foundation. What you build on it is yours.
 
@@ -140,4 +140,4 @@ Govern the agent. The loop will take care of itself.
 - [Agentic Commerce Suite](https://stripe.com/newsroom/news/agentic-commerce-suite) - Stripe (agent-native payment tools)
 
 **Agent Governance (Open Source):**
-- [Agent Governance Starter Kit](https://github.com/erinstanley358/agent-governance-starter-kit) - Free templates and code examples from a production system with 142 agents
+- [Agent Governance Starter Kit](https://github.com/lowkey-divine/agent-governance-starter-kit) - Free templates and code examples from a production system with 142 agents
