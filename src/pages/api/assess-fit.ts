@@ -1,6 +1,7 @@
 import type { APIRoute } from 'astro';
 import { getAnthropicClient, MODEL, MAX_TOKENS } from '../../lib/ai/client';
 import { FIT_ASSESSMENT_SYSTEM_PROMPT } from '../../lib/ai/prompts';
+import { validateOrigin, corsHeaders, rateLimit, safeError } from '../../lib/api/security';
 
 export const prerender = false;
 
@@ -22,6 +23,12 @@ function sanitizeInput(input: string): string {
 }
 
 export const POST: APIRoute = async ({ request }) => {
+  const originBlock = validateOrigin(request);
+  if (originBlock) return originBlock;
+
+  const rateLimitBlock = rateLimit(request, 'assessFit');
+  if (rateLimitBlock) return rateLimitBlock;
+
   try {
     const body = await request.json();
     const { projectDescription } = body as { projectDescription: string };
@@ -84,14 +91,9 @@ export const POST: APIRoute = async ({ request }) => {
 
     return new Response(JSON.stringify(assessment), {
       status: 200,
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 'Content-Type': 'application/json', ...corsHeaders(request) },
     });
   } catch (error) {
-    console.error('Fit assessment API error:', error);
-    const message = error instanceof Error ? error.message : 'Unknown error';
-    return new Response(JSON.stringify({ error: message }), {
-      status: 500,
-      headers: { 'Content-Type': 'application/json' },
-    });
+    return safeError(error, 'Fit assessment API error');
   }
 };

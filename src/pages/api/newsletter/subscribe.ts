@@ -1,8 +1,15 @@
 import type { APIRoute } from 'astro';
+import { validateOrigin, rateLimit, safeError } from '../../../lib/api/security';
 
 export const prerender = false;
 
 export const POST: APIRoute = async ({ request }) => {
+  const originBlock = validateOrigin(request);
+  if (originBlock) return originBlock;
+
+  const rateLimitBlock = rateLimit(request, 'newsletter');
+  if (rateLimitBlock) return rateLimitBlock;
+
   try {
     const body = await request.json();
     const { email } = body as { email: string };
@@ -63,11 +70,6 @@ export const POST: APIRoute = async ({ request }) => {
       headers: { 'Content-Type': 'application/json' },
     });
   } catch (error) {
-    console.error('Newsletter subscribe error:', error);
-    const message = error instanceof Error ? error.message : 'Unknown error';
-    return new Response(JSON.stringify({ error: message }), {
-      status: 500,
-      headers: { 'Content-Type': 'application/json' },
-    });
+    return safeError(error, 'Newsletter subscribe error');
   }
 };
