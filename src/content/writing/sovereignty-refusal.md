@@ -215,7 +215,7 @@ Build the refusal first. The capability will take care of itself.
 - STAT "Denied by AI" series was a Pulitzer Prize finalist for investigative reporting.
 
 **Executive Chef Source Code:**
-- SeasonDeclarationScreen.tsx - Journey Care Prompt implementation. Three equal options (pause, present mode, continue) with no default selection. Designed by Comes (Journey Voice).
+- SeasonDeclarationScreen.tsx - Journey Care Prompt implementation. Three equal options (pause, present mode, continue) with no default selection.
 
 **Links:**
 - https://www.reuters.com/article/us-amazon-com-jobs-automation-insight-idUSKCN1MK08G

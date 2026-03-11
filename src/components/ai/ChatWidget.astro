@@ -205,7 +205,7 @@ const { mode = 'embedded' } = Astro.props;
   async function sendMessage(message: string, isRetry = false) {
     if (!message.trim() || isLoading) return;
 
-    // Rate limit check (Chekov)
+    // Rate limit check
     const rateCheck = checkRateLimit();
     if (!rateCheck.allowed && !isRetry) {
       showRateLimitMessage(rateCheck.waitMs);

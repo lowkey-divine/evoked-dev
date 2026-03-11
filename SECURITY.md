@@ -47,12 +47,12 @@ All accounts in the deployment chain must have MFA enabled:
 
 | Account | Service | MFA Status | Last Verified |
 |---------|---------|------------|---------------|
-| GitHub (erinstanley358) | Code hosting, auto-deploy | [ ] Verify | — |
+| GitHub | Code hosting, auto-deploy | [ ] Verify | — |
 | Vercel | Hosting, env vars, serverless | [ ] Verify | — |
 | Stripe | Payments, webhook config | [ ] Verify | — |
 | Resend | Email delivery | [ ] Verify | — |
 
-Europa: check and fill in MFA status for each account before shipping.
+TODO: check and fill in MFA status for each account before shipping.
 
 ## Webhook Security
 
@@ -85,7 +85,7 @@ Europa: check and fill in MFA status for each account before shipping.
 4. Manually resend via Resend if customer was charged but not delivered
 
 ### Contacts
-- Primary: Europa (evokesupports@icloud.com)
+- Primary: Erin Stanley (evokesupports@icloud.com)
 - Stripe support: dashboard.stripe.com/support
 - Vercel support: vercel.com/support
 - Resend support: resend.com/support

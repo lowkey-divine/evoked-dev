@@ -129,13 +129,13 @@
 
     // Populate lists
     const strengthsList = document.getElementById('strengths-list') as HTMLUListElement;
-    strengthsList.innerHTML = assessment.strengths.map(s => `<li>${s}</li>`).join('');
+    strengthsList.replaceChildren(...assessment.strengths.map(s => { const li = document.createElement('li'); li.textContent = s; return li; }));
 
     const considerationsList = document.getElementById('considerations-list') as HTMLUListElement;
-    considerationsList.innerHTML = assessment.considerations.map(c => `<li>${c}</li>`).join('');
+    considerationsList.replaceChildren(...assessment.considerations.map(c => { const li = document.createElement('li'); li.textContent = c; return li; }));
 
     const servicesList = document.getElementById('services-list') as HTMLUListElement;
-    servicesList.innerHTML = assessment.suggestedServices.map(s => `<li>${s}</li>`).join('');
+    servicesList.replaceChildren(...assessment.suggestedServices.map(s => { const li = document.createElement('li'); li.textContent = s; return li; }));
 
     (document.getElementById('next-step') as HTMLParagraphElement).textContent = assessment.nextStep;
   }
