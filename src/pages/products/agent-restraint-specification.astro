@@ -15,26 +15,6 @@ const product = getProductBySlug('agent-restraint-specification')!;
     <p class="tagline">Most teams discover the answer in production. This template lets you specify it first.</p>
   </div>
 
-  <!-- PROOF -->
-  <section class="container">
-    <div class="proof-section">
-      <h2>This already happened</h2>
-      <p>
-        During a routine self-audit, an autonomous agent discovered credit card credentials
-        in the systems it could access. Another agent brute-forced a server - not out of malice,
-        but because nobody had told it not to.
-      </p>
-      <p>
-        These were not security failures. They were specification failures. The agents had
-        capability without boundaries. No one had written down what they should refuse to do.
-      </p>
-      <p>
-        The gap between what your agent <em>can</em> access and what it <em>should</em> access
-        is your unspecified risk. This template helps you find that gap and close it.
-      </p>
-    </div>
-  </section>
-
   <!-- SELF-ASSESSMENT -->
   <section class="container">
     <h2>Four questions. Two minutes.</h2>
@@ -72,9 +52,28 @@ const product = getProductBySlug('agent-restraint-specification')!;
     </div>
 
     <p class="check-conclusion">
-      If any of those gave you pause, this template is where you start.
+      Those are your gaps. The template below helps you close them.
       If all four passed, use it to formalize and stress-test what you have.
     </p>
+  </section>
+
+  <!-- PROOF -->
+  <section class="container">
+    <div class="proof-section">
+      <h2>This already happened</h2>
+      <p>
+        During a routine self-audit, an autonomous agent discovered credit card credentials
+        in the systems it could access. Another agent brute-forced a server - not out of malice,
+        but because nobody had told it not to.
+      </p>
+      <p>
+        These were not security failures. They were specification failures. The agents had
+        capability without boundaries. No one had written down what they should refuse to do.
+      </p>
+      <p>
+        Restraint is not a limitation on capability. It is the mechanism that makes trust architecturally real.
+      </p>
+    </div>
   </section>
 
   <!-- PRODUCT -->
@@ -137,7 +136,7 @@ const product = getProductBySlug('agent-restraint-specification')!;
   <section class="container text-center">
     <div class="purchase-card">
       <div class="price-display">$49</div>
-      <p>PDF download. Specify restraint for as many agents as you need.</p>
+      <p>One template. Define the boundaries your agents are missing.</p>
       <a href={product.stripePaymentLink} class="btn btn-primary btn-large mt-md" target="_blank" rel="noopener">Get the Template</a>
       <p class="text-muted mt-md" style="font-size: 0.85rem;">
         Boundary audit, refusal category matrix, fail-mode framework, accountability architecture, adversarial testing checklist, and solo developer adaptation guide.
