@@ -238,6 +238,7 @@ const circles = Object.keys(CIRCLE_NAMES);
       <summary><h2 class="inline-heading">Developer API</h2></summary>
       <div class="api-content">
         <p class="section-intro">Query governance status programmatically. Public. Free. No authentication.</p>
+        <p class="api-note"><a href="/openapi.yaml" class="api-link">OpenAPI 3.1 Specification</a></p>
 
         <h3>Verify an agent</h3>
         <code class="api-url">GET /api/verify-agent?id=cura</code>
@@ -1036,6 +1037,16 @@ const circles = Object.keys(CIRCLE_NAMES);
     color: var(--text-muted);
     margin-top: var(--space-sm);
     margin-bottom: var(--space-xs);
+  }
+
+  .api-link {
+    color: var(--accent-warm);
+    text-decoration: none;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .api-link:hover {
+    border-bottom-color: var(--accent-warm);
   }
 
   .badge-preview {

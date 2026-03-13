@@ -1,0 +1,414 @@
+openapi: 3.1.0
+info:
+  title: Bot Authority API
+  version: 1.0.0
+  description: |
+    The Bot Authority API provides programmatic access to the agent governance registry.
+    Verify agent identity, restraint specifications, accountability, memory architecture,
+    and governance charter status for any registered agent.
+
+    Public. Free. No authentication required.
+
+    Patent pending. Application #64/004,087. Priority date March 12, 2026.
+  contact:
+    name: Evoke Passion
+    url: https://evoked.dev
+    email: evokesupports@icloud.com
+  license:
+    name: Proprietary
+    url: https://evoked.dev/registry
+
+servers:
+  - url: https://evoked.dev
+    description: Production
+
+security: []
+
+paths:
+  /api/verify-agent:
+    get:
+      operationId: verifyAgent
+      summary: Verify agent governance status
+      description: |
+        Look up a registered agent by ID or list all agents for an organization.
+        Returns governance properties, attestation level, and verification status.
+
+        Exactly one of `id` or `org` must be provided.
+      parameters:
+        - name: id
+          in: query
+          description: The unique agent identifier (e.g. `cura`, `polaris`, `tutela`).
+          required: false
+          schema:
+            type: string
+            example: cura
+        - name: org
+          in: query
+          description: Organization name to list all registered agents (e.g. `Evoke Passion`).
+          required: false
+          schema:
+            type: string
+            example: Evoke Passion
+      responses:
+        '200':
+          description: Agent or organization found.
+          headers:
+            Cache-Control:
+              schema:
+                type: string
+                example: public, max-age=300
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/VerifiedAgentResponse'
+                  - $ref: '#/components/schemas/OrganizationResponse'
+              examples:
+                singleAgent:
+                  summary: Single agent lookup
+                  value:
+                    agent_id: cura
+                    display_name: Cura
+                    organization: Evoke Passion
+                    role: Chief Executive Officer
+                    circle: Leadership
+                    tier: 2
+                    governance:
+                      has_identity: true
+                      has_restraint_spec: true
+                      has_accountability: true
+                      has_memory_architecture: true
+                      has_governance_charter: true
+                      refusal_categories:
+                        - sovereignty
+                        - scope
+                        - dependency
+                        - consent
+                        - integrity
+                        - energy
+                    attestation:
+                      level: governance-validated
+                      last_verified: '2026-03-11T00:00:00Z'
+                      verified_by: Evoke Passion Bot Authority
+                    verified: true
+                    verified_by: Evoke Passion Bot Authority
+                organization:
+                  summary: Organization lookup (truncated)
+                  value:
+                    organization: Evoke Passion
+                    agent_count: 58
+                    agents:
+                      - agent_id: cura
+                        display_name: Cura
+                        role: Chief Executive Officer
+                        circle: Leadership
+                        tier: 2
+                        attestation:
+                          level: governance-validated
+                          last_verified: '2026-03-11T00:00:00Z'
+                          verified_by: Evoke Passion Bot Authority
+        '400':
+          description: Missing required parameter.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MissingParameterError'
+              example:
+                error: 'Missing required parameter: id or org'
+                usage:
+                  single_agent: /api/verify-agent?id={agent_id}
+                  organization: /api/verify-agent?org={organization_name}
+        '404':
+          description: Agent or organization not found.
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/AgentNotFoundError'
+                  - $ref: '#/components/schemas/OrgNotFoundError'
+              examples:
+                agentNotFound:
+                  summary: Agent not found
+                  value:
+                    error: Agent not found
+                    agent_id: unknown-agent
+                    verified: false
+                orgNotFound:
+                  summary: Organization not found
+                  value:
+                    error: Organization not found
+                    organization: Unknown Org
+                    agents: []
+
+  /api/badge:
+    get:
+      operationId: getAgentBadge
+      summary: Get embeddable governance badge
+      description: |
+        Returns an SVG badge image showing the agent's Bot Authority verification
+        status and tier level. Designed for embedding in READMEs, agent profiles,
+        and documentation.
+
+        Badge format follows the shields.io convention: left side shows "BA Verified",
+        right side shows the tier label with tier-appropriate color.
+
+        Usage in Markdown:
+        ```
+        ![BA Verified](https://evoked.dev/api/badge?id=your-agent-id)
+        ```
+      parameters:
+        - name: id
+          in: query
+          description: The unique agent identifier.
+          required: true
+          schema:
+            type: string
+            example: cura
+      responses:
+        '200':
+          description: SVG badge for the registered agent.
+          headers:
+            Cache-Control:
+              schema:
+                type: string
+                example: public, max-age=3600
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+          content:
+            image/svg+xml:
+              schema:
+                type: string
+                description: SVG badge image.
+        '400':
+          description: Missing required `id` parameter. Returns a "Not Found" SVG badge.
+          content:
+            image/svg+xml:
+              schema:
+                type: string
+        '404':
+          description: Agent not found. Returns a "Not Found" SVG badge.
+          content:
+            image/svg+xml:
+              schema:
+                type: string
+
+components:
+  schemas:
+    GovernanceProfile:
+      type: object
+      description: Five governance properties validated for each registered agent.
+      required:
+        - has_identity
+        - has_restraint_spec
+        - has_accountability
+        - has_memory_architecture
+        - has_governance_charter
+        - refusal_categories
+      properties:
+        has_identity:
+          type: boolean
+          description: Agent has persona files, role definition, and session continuity.
+        has_restraint_spec:
+          type: boolean
+          description: Agent has defined refusal categories and boundaries.
+        has_accountability:
+          type: boolean
+          description: Agent decisions are logged, reviewable, and traceable.
+        has_memory_architecture:
+          type: boolean
+          description: Agent identity is separated from operational data with poisoning resistance.
+        has_governance_charter:
+          type: boolean
+          description: Agent operates under defined principles, boundaries, and authority structure.
+        refusal_categories:
+          type: array
+          items:
+            type: string
+            enum:
+              - sovereignty
+              - scope
+              - dependency
+              - consent
+              - integrity
+              - energy
+          description: Categories of action the agent will refuse regardless of instruction.
+
+    Attestation:
+      type: object
+      description: Trust level and verification metadata.
+      required:
+        - level
+        - last_verified
+        - verified_by
+      properties:
+        level:
+          type: string
+          enum:
+            - self-attested
+            - governance-validated
+            - full-attestation
+          description: |
+            Trust tier:
+            - `self-attested` (Tier 1) - Automated scan, organization self-reports.
+            - `governance-validated` (Tier 2) - Restraint spec reviewed, governance artifacts verified.
+            - `full-attestation` (Tier 3) - Cryptographic binding, persona hashes, signed memory writes.
+        last_verified:
+          type: string
+          format: date-time
+          description: ISO 8601 timestamp of last verification.
+        verified_by:
+          type: string
+          description: Entity that performed the verification.
+
+    VerifiedAgentResponse:
+      type: object
+      description: Full governance profile for a verified agent.
+      required:
+        - agent_id
+        - display_name
+        - organization
+        - role
+        - circle
+        - tier
+        - governance
+        - attestation
+        - verified
+        - verified_by
+      properties:
+        agent_id:
+          type: string
+          description: Unique agent identifier.
+        display_name:
+          type: string
+          description: Human-readable agent name.
+        organization:
+          type: string
+          description: Organization the agent belongs to.
+        role:
+          type: string
+          description: Agent's functional role.
+        circle:
+          type: string
+          description: Governance circle the agent operates within.
+          enum:
+            - Leadership
+            - PDC
+            - COC
+            - SSC
+            - OIG
+            - TCC
+            - MAC
+            - CGC
+            - IW
+        tier:
+          type: integer
+          enum: [1, 2, 3]
+          description: Trust tier (1 = Self-Attested, 2 = Governance Validated, 3 = Full Attestation).
+        governance:
+          $ref: '#/components/schemas/GovernanceProfile'
+        attestation:
+          $ref: '#/components/schemas/Attestation'
+        verified:
+          type: boolean
+          description: Always `true` for found agents.
+        verified_by:
+          type: string
+          description: Authority that issued the verification.
+
+    OrganizationResponse:
+      type: object
+      description: List of all agents registered under an organization.
+      required:
+        - organization
+        - agent_count
+        - agents
+      properties:
+        organization:
+          type: string
+        agent_count:
+          type: integer
+          description: Total number of agents in this organization.
+        agents:
+          type: array
+          items:
+            type: object
+            required:
+              - agent_id
+              - display_name
+              - role
+              - circle
+              - tier
+              - attestation
+            properties:
+              agent_id:
+                type: string
+              display_name:
+                type: string
+              role:
+                type: string
+              circle:
+                type: string
+              tier:
+                type: integer
+                enum: [1, 2, 3]
+              attestation:
+                $ref: '#/components/schemas/Attestation'
+
+    AgentNotFoundError:
+      type: object
+      required:
+        - error
+        - agent_id
+        - verified
+      properties:
+        error:
+          type: string
+          example: Agent not found
+        agent_id:
+          type: string
+          description: The ID that was queried.
+        verified:
+          type: boolean
+          example: false
+
+    OrgNotFoundError:
+      type: object
+      required:
+        - error
+        - organization
+        - agents
+      properties:
+        error:
+          type: string
+          example: Organization not found
+        organization:
+          type: string
+        agents:
+          type: array
+          items: {}
+          example: []
+
+    MissingParameterError:
+      type: object
+      required:
+        - error
+        - usage
+      properties:
+        error:
+          type: string
+          example: 'Missing required parameter: id or org'
+        usage:
+          type: object
+          properties:
+            single_agent:
+              type: string
+              example: /api/verify-agent?id={agent_id}
+            organization:
+              type: string
+              example: /api/verify-agent?org={organization_name}
