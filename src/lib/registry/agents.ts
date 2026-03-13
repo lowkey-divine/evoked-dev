@@ -49,7 +49,7 @@ function evokeAgent(
     organization: 'Evoke Passion',
     role,
     circle,
-    tier: 2,
+    tier: 1,
     governance: {
       has_identity: true,
       has_restraint_spec: true,
@@ -59,7 +59,7 @@ function evokeAgent(
       refusal_categories: [...REFUSAL_CATEGORIES],
     },
     attestation: {
-      level: 'governance-validated',
+      level: 'self-attested',
       last_verified: '2026-03-11T00:00:00Z',
       verified_by: 'Evoke Passion Bot Authority',
     },

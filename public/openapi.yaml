@@ -76,7 +76,7 @@ paths:
                     organization: Evoke Passion
                     role: Chief Executive Officer
                     circle: Leadership
-                    tier: 2
+                    tier: 1
                     governance:
                       has_identity: true
                       has_restraint_spec: true
@@ -91,7 +91,7 @@ paths:
                         - integrity
                         - energy
                     attestation:
-                      level: governance-validated
+                      level: self-attested
                       last_verified: '2026-03-11T00:00:00Z'
                       verified_by: Evoke Passion Bot Authority
                     verified: true
@@ -106,9 +106,9 @@ paths:
                         display_name: Cura
                         role: Chief Executive Officer
                         circle: Leadership
-                        tier: 2
+                        tier: 1
                         attestation:
-                          level: governance-validated
+                          level: self-attested
                           last_verified: '2026-03-11T00:00:00Z'
                           verified_by: Evoke Passion Bot Authority
         '400':
