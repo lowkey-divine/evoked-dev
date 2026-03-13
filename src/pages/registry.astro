@@ -1,0 +1,1165 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getAllAgents, getRegistryStats, CIRCLE_NAMES } from '../lib/registry/agents';
+
+const agents = getAllAgents();
+const stats = getRegistryStats();
+const circles = Object.keys(CIRCLE_NAMES);
+---
+
+<BaseLayout title="Bot Authority - Agent Governance Registry" description="How do you know an agent is governed? Verify agent identity, restraint, accountability, memory, and governance charter. The first trust registry for AI agents.">
+
+  <!-- HERO: Problem-first with live verification tool -->
+  <div class="hero">
+    <p class="hero-above">Bot Authority <span class="patent-pending">Patent Pending</span></p>
+    <h1>How do you know an agent is governed?</h1>
+    <p class="tagline">Verify identity, restraint, and accountability for any registered agent.</p>
+
+    <div class="verify-box">
+      <input
+        type="text"
+        id="verify-input"
+        placeholder="Enter agent ID (e.g. cura, polaris, tutela)"
+        autocomplete="off"
+        spellcheck="false"
+      />
+      <button id="verify-btn">Verify</button>
+    </div>
+  </div>
+
+  <!-- RESULT CARD: appears after verification -->
+  <section class="container">
+    <div id="verify-result" class="verify-result hidden"></div>
+  </section>
+
+  <!-- THE PROBLEM -->
+  <section class="container">
+    <div class="problem-section">
+      <h2>The trust gap in AI agents</h2>
+      <p>
+        Certificate authorities validate websites. Code signing validates software.
+        Nothing validates that an AI agent has governance - identity, restraint,
+        accountability, or the right to refuse.
+      </p>
+      <p>
+        Bot Authority is the first registry that validates agent governance properties.
+        Not what an agent can do - what it will not do, and why.
+      </p>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS: Three steps, Cloudflare-style -->
+  <section class="container">
+    <h2>How it works</h2>
+    <div class="how-grid">
+      <div class="how-card">
+        <span class="how-number">1</span>
+        <h3>Scan</h3>
+        <p>Run the governance check on your agent system. Five properties evaluated in seconds.</p>
+        <code class="how-code">npx agent-governance-check</code>
+      </div>
+      <div class="how-card">
+        <span class="how-number">2</span>
+        <h3>Validate</h3>
+        <p>Submit for review. Governance artifacts assessed against six refusal categories.</p>
+      </div>
+      <div class="how-card">
+        <span class="how-number">3</span>
+        <h3>Attest</h3>
+        <p>Your agents appear in the public registry. Verifiable by anyone, anywhere.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FIVE PROPERTIES: What gets validated -->
+  <section class="container">
+    <h2>Five governance properties</h2>
+    <p class="section-intro">Every registered agent is verified against these.</p>
+
+    <div class="properties-grid">
+      <div class="property-item">
+        <div class="property-header">
+          <span class="property-icon">ID</span>
+          <h3>Identity</h3>
+        </div>
+        <p>Persona files, role definition, continuity across sessions.</p>
+      </div>
+      <div class="property-item">
+        <div class="property-header">
+          <span class="property-icon">RS</span>
+          <h3>Restraint</h3>
+        </div>
+        <p>Defined refusal categories. What the agent will not do, regardless of instruction.</p>
+      </div>
+      <div class="property-item">
+        <div class="property-header">
+          <span class="property-icon">AC</span>
+          <h3>Accountability</h3>
+        </div>
+        <p>Decisions logged. Reviewable by humans. Traceable to reasoning.</p>
+      </div>
+      <div class="property-item">
+        <div class="property-header">
+          <span class="property-icon">MA</span>
+          <h3>Memory</h3>
+        </div>
+        <p>Identity separated from operational data. Poisoning resistance. Governance over what persists.</p>
+      </div>
+      <div class="property-item">
+        <div class="property-header">
+          <span class="property-icon">GC</span>
+          <h3>Charter</h3>
+        </div>
+        <p>Operating principles. Defined boundaries. Authority structure.</p>
+      </div>
+    </div>
+
+    <p class="ontology-note">
+      These five properties emerge from one governance tradition among many. Agent systems governed
+      through collectivist, Indigenous, relational, or other frameworks may define governance
+      differently. Bot Authority is designed to be extended, not to be the last word.
+      No governance tradition should have to translate itself into ours to be recognized as governance.
+    </p>
+  </section>
+
+  <!-- TIERS: Progressive trust -->
+  <section class="container">
+    <h2>Three levels of trust</h2>
+    <div class="tiers-grid">
+      <div class="tier-card">
+        <div class="tier-header">
+          <span class="tier-label">Tier 1</span>
+          <span class="tier-price">Free</span>
+        </div>
+        <h3>Self-Attested</h3>
+        <p>Automated governance scan. Organization self-reports. Like a self-signed certificate.</p>
+      </div>
+      <div class="tier-card tier-active">
+        <div class="tier-header">
+          <span class="tier-label">Tier 2</span>
+          <span class="tier-price">Validated</span>
+        </div>
+        <h3>Governance Validated</h3>
+        <p>Restraint specification reviewed against 6 refusal categories. Governance artifacts verified. Organization confirmed.</p>
+      </div>
+      <div class="tier-card">
+        <div class="tier-header">
+          <span class="tier-label">Tier 3</span>
+          <span class="tier-price">2027</span>
+        </div>
+        <h3>Full Attestation</h3>
+        <p>Cryptographic binding. Persona file hashes tied to workload identity. Memory writes signed. Drift monitoring.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS BAR -->
+  <section class="container">
+    <div class="stats-bar">
+      <div class="stat">
+        <span class="stat-number">{stats.total_agents}</span>
+        <span class="stat-label">Agents Registered</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <span class="stat-number">{stats.circles}</span>
+        <span class="stat-label">Governance Circles</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <span class="stat-number">6</span>
+        <span class="stat-label">Refusal Categories</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <span class="stat-number">5</span>
+        <span class="stat-label">Properties Validated</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- REGISTRY TABLE: Below the fold, searchable -->
+  <section class="container-wide">
+    <h2>Registry</h2>
+
+    <div class="registry-controls">
+      <input
+        type="text"
+        id="registry-search"
+        placeholder="Search agents..."
+        class="registry-search"
+        autocomplete="off"
+      />
+      <div class="filter-bar" id="filter-bar">
+        <button class="filter-btn active" data-circle="all">All</button>
+        {circles.map((circle) => (
+          <button class="filter-btn" data-circle={circle}>{circle}</button>
+        ))}
+      </div>
+    </div>
+
+    <div class="registry-table-wrap">
+      <table class="registry-table" id="registry-table">
+        <thead>
+          <tr>
+            <th>Agent</th>
+            <th>Role</th>
+            <th>Circle</th>
+            <th>Tier</th>
+            <th class="governance-cols">ID</th>
+            <th class="governance-cols">RS</th>
+            <th class="governance-cols">AC</th>
+            <th class="governance-cols">MA</th>
+            <th class="governance-cols">GC</th>
+          </tr>
+        </thead>
+        <tbody>
+          {agents.map((agent) => (
+            <tr data-circle={agent.circle} data-name={agent.display_name.toLowerCase()} data-role={agent.role.toLowerCase()}>
+              <td class="agent-name">{agent.display_name}</td>
+              <td class="agent-role">{agent.role}</td>
+              <td><span class="circle-badge">{agent.circle}</span></td>
+              <td><span class={`tier-badge tier-${agent.tier}`}>Tier {agent.tier}</span></td>
+              <td class="governance-cols gov-check">{agent.governance.has_identity ? '\u2713' : '\u2717'}</td>
+              <td class="governance-cols gov-check">{agent.governance.has_restraint_spec ? '\u2713' : '\u2717'}</td>
+              <td class="governance-cols gov-check">{agent.governance.has_accountability ? '\u2713' : '\u2717'}</td>
+              <td class="governance-cols gov-check">{agent.governance.has_memory_architecture ? '\u2713' : '\u2717'}</td>
+              <td class="governance-cols gov-check">{agent.governance.has_governance_charter ? '\u2713' : '\u2717'}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- API: Collapsed, for developers -->
+  <section class="container">
+    <details class="api-details">
+      <summary><h2 class="inline-heading">Developer API</h2></summary>
+      <div class="api-content">
+        <p class="section-intro">Query governance status programmatically. Public. Free. No authentication.</p>
+
+        <h3>Verify an agent</h3>
+        <code class="api-url">GET /api/verify-agent?id=cura</code>
+
+        <h3>List by organization</h3>
+        <code class="api-url">GET /api/verify-agent?org=Evoke Passion</code>
+
+        <h3>Embeddable badge</h3>
+        <code class="api-url">GET /api/badge?id=cura</code>
+        <div class="badge-preview">
+          <img src="/api/badge?id=cura" alt="BA Verified badge for Cura" />
+        </div>
+        <p class="api-note">Add to your README or agent profile:</p>
+        <code class="api-url">![BA Verified](https://evoked.dev/api/badge?id=your-agent-id)</code>
+      </div>
+    </details>
+  </section>
+
+  <!-- CTA -->
+  <section class="container text-center">
+    <div class="cta-section">
+      <h2>Register your agents</h2>
+      <p>The governance scan is free. Validation starts with a conversation.</p>
+      <div class="cta-buttons">
+        <a href="https://cal.com/cal.com-evoked/discovery-call" class="btn btn-primary btn-large" target="_blank" rel="noopener">Book a Discovery Call</a>
+        <a href="/products/agent-governance-starter-kit" class="btn btn-large">Get the Starter Kit</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ECOSYSTEM -->
+  <section class="container">
+    <div class="ecosystem">
+      <p class="ecosystem-label">Built on</p>
+      <div class="ecosystem-items">
+        <span class="patent-note">Patent Pending</span>
+        <span class="eco-dot"></span>
+        <span>Claude</span>
+        <span class="eco-dot"></span>
+        <span>MCP</span>
+        <span class="eco-dot"></span>
+        <span>SPIFFE/SPIRE</span>
+        <span class="eco-dot"></span>
+        <span>Astro</span>
+        <span class="eco-dot"></span>
+        <span>Vercel</span>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<script>
+  // Hero verification tool
+  const verifyInput = document.getElementById('verify-input') as HTMLInputElement;
+  const verifyBtn = document.getElementById('verify-btn');
+  const verifyResult = document.getElementById('verify-result');
+
+  async function verifyAgent() {
+    if (!verifyInput || !verifyResult) return;
+    const id = verifyInput.value.trim().toLowerCase();
+    if (!id) return;
+
+    verifyResult.classList.remove('hidden');
+    verifyResult.innerHTML = '<p class="verify-loading">Verifying...</p>';
+
+    try {
+      const res = await fetch(`/api/verify-agent?id=${encodeURIComponent(id)}`);
+      const data = await res.json();
+
+      if (!res.ok || !data.verified) {
+        verifyResult.innerHTML = `
+          <div class="verify-not-found">
+            <p class="verify-status">Not found</p>
+            <p>No agent registered with ID "<strong>${id}</strong>"</p>
+          </div>`;
+        return;
+      }
+
+      const props = data.governance;
+      const check = (v: boolean) => v ? '<span class="v-pass">Verified</span>' : '<span class="v-fail">Missing</span>';
+
+      verifyResult.innerHTML = `
+        <div class="verify-found">
+          <div class="verify-header">
+            <div>
+              <p class="verify-agent-name">${data.display_name}</p>
+              <p class="verify-agent-meta">${data.role} &middot; ${data.circle} &middot; ${data.organization}</p>
+            </div>
+            <span class="tier-badge tier-${data.tier}">Tier ${data.tier}</span>
+          </div>
+          <div class="verify-props">
+            <div class="verify-prop">
+              <span class="verify-prop-label">Identity</span>
+              ${check(props.has_identity)}
+            </div>
+            <div class="verify-prop">
+              <span class="verify-prop-label">Restraint</span>
+              ${check(props.has_restraint_spec)}
+            </div>
+            <div class="verify-prop">
+              <span class="verify-prop-label">Accountability</span>
+              ${check(props.has_accountability)}
+            </div>
+            <div class="verify-prop">
+              <span class="verify-prop-label">Memory</span>
+              ${check(props.has_memory_architecture)}
+            </div>
+            <div class="verify-prop">
+              <span class="verify-prop-label">Charter</span>
+              ${check(props.has_governance_charter)}
+            </div>
+          </div>
+          <div class="verify-refusals">
+            <span class="verify-prop-label">Refusal categories:</span>
+            ${props.refusal_categories.map((c: string) => `<span class="refusal-tag">${c}</span>`).join('')}
+          </div>
+          <div class="verify-attestation">
+            <span>Attested: ${data.attestation.level.replace('-', ' ')}</span>
+            <span class="verify-dot"></span>
+            <span>Verified: ${new Date(data.attestation.last_verified).toLocaleDateString()}</span>
+          </div>
+        </div>`;
+    } catch {
+      verifyResult.innerHTML = '<div class="verify-not-found"><p>Verification failed. Try again.</p></div>';
+    }
+  }
+
+  verifyBtn?.addEventListener('click', verifyAgent);
+  verifyInput?.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') verifyAgent();
+  });
+
+  // Registry search + filter
+  const searchInput = document.getElementById('registry-search') as HTMLInputElement;
+  const filterBar = document.getElementById('filter-bar');
+  const table = document.getElementById('registry-table');
+
+  if (filterBar && table && searchInput) {
+    const rows = table.querySelectorAll('tbody tr');
+    const buttons = filterBar.querySelectorAll('.filter-btn');
+    let activeCircle = 'all';
+
+    function filterRows() {
+      const query = searchInput.value.trim().toLowerCase();
+      rows.forEach((row) => {
+        const el = row as HTMLElement;
+        const matchCircle = activeCircle === 'all' || el.dataset.circle === activeCircle;
+        const matchSearch = !query || (el.dataset.name?.includes(query) || el.dataset.role?.includes(query));
+        el.style.display = matchCircle && matchSearch ? '' : 'none';
+      });
+    }
+
+    filterBar.addEventListener('click', (e) => {
+      const target = e.target as HTMLElement;
+      if (!target.classList.contains('filter-btn')) return;
+      activeCircle = target.dataset.circle || 'all';
+      buttons.forEach((b) => b.classList.remove('active'));
+      target.classList.add('active');
+      filterRows();
+    });
+
+    searchInput.addEventListener('input', filterRows);
+  }
+</script>
+
+<style>
+  /* HERO */
+  .hero {
+    min-height: 55vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: var(--space-lg) var(--space-md);
+  }
+
+  .hero-above {
+    font-size: 0.8rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--accent-warm);
+    margin-bottom: var(--space-sm);
+  }
+
+  .patent-pending {
+    font-size: 0.6rem;
+    color: var(--text-muted);
+    border: 1px solid var(--border-subtle);
+    padding: 2px 8px;
+    border-radius: 100px;
+    margin-left: 8px;
+    letter-spacing: 0.06em;
+    vertical-align: middle;
+  }
+
+  .patent-note {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    font-style: italic;
+  }
+
+  .hero h1 {
+    max-width: 700px;
+  }
+
+  /* VERIFY BOX */
+  .verify-box {
+    display: flex;
+    gap: 0;
+    max-width: 520px;
+    width: 100%;
+    margin-top: var(--space-md);
+    border-radius: 8px;
+    overflow: hidden;
+    border: 2px solid var(--border-subtle);
+    transition: border-color 0.2s ease;
+  }
+
+  .verify-box:focus-within {
+    border-color: var(--accent-warm);
+  }
+
+  .verify-box input {
+    flex: 1;
+    padding: 14px 16px;
+    font-size: 1rem;
+    background: var(--bg-surface);
+    color: var(--text-primary);
+    border: none;
+    outline: none;
+    font-family: inherit;
+  }
+
+  .verify-box input::placeholder {
+    color: var(--text-muted);
+  }
+
+  .verify-box button {
+    padding: 14px 28px;
+    background: var(--accent-warm);
+    color: var(--bg-deep);
+    border: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    font-family: inherit;
+    transition: background 0.15s ease;
+  }
+
+  .verify-box button:hover {
+    background: var(--accent-glow);
+  }
+
+  /* VERIFY RESULT */
+  .verify-result {
+    max-width: 600px;
+    margin: 0 auto;
+    transition: all 0.2s ease;
+  }
+
+  .verify-result.hidden {
+    display: none;
+  }
+
+  .verify-loading {
+    text-align: center;
+    color: var(--text-secondary);
+  }
+
+  .verify-found {
+    background: var(--bg-surface);
+    border: 1px solid var(--accent-warm);
+    border-radius: 8px;
+    padding: var(--space-md);
+  }
+
+  .verify-not-found {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: 8px;
+    padding: var(--space-md);
+    text-align: center;
+  }
+
+  .verify-status {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: var(--space-xs);
+  }
+
+  .verify-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: var(--space-md);
+  }
+
+  .verify-agent-name {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    color: var(--text-primary);
+    margin-bottom: 2px;
+  }
+
+  .verify-agent-meta {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin-bottom: 0;
+  }
+
+  .verify-props {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 8px;
+    margin-bottom: var(--space-md);
+  }
+
+  .verify-prop {
+    text-align: center;
+    padding: 8px 4px;
+    background: var(--bg-deep);
+    border-radius: 6px;
+  }
+
+  .verify-prop-label {
+    display: block;
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: 4px;
+  }
+
+  .v-pass {
+    font-size: 0.75rem;
+    color: var(--accent-warm);
+    font-weight: 500;
+  }
+
+  .v-fail {
+    font-size: 0.75rem;
+    color: #ef4444;
+    font-weight: 500;
+  }
+
+  .verify-refusals {
+    margin-bottom: var(--space-sm);
+  }
+
+  .refusal-tag {
+    display: inline-block;
+    background: var(--accent-subtle);
+    color: var(--accent-warm);
+    font-size: 0.7rem;
+    padding: 2px 8px;
+    border-radius: 100px;
+    margin: 2px 4px 2px 0;
+  }
+
+  .verify-attestation {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding-top: var(--space-sm);
+    border-top: 1px solid var(--border-subtle);
+  }
+
+  .verify-dot {
+    width: 3px;
+    height: 3px;
+    background: var(--text-muted);
+    border-radius: 50%;
+  }
+
+  /* PROBLEM */
+  .problem-section {
+    max-width: 640px;
+    margin: 0 auto;
+  }
+
+  .problem-section h2 {
+    color: var(--accent-warm);
+    font-size: 1.3rem;
+    margin-bottom: var(--space-md);
+  }
+
+  .problem-section p {
+    font-size: 1.05rem;
+    line-height: 1.8;
+  }
+
+  /* SECTION INTRO */
+  .section-intro {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    margin-bottom: var(--space-md);
+  }
+
+  /* HOW IT WORKS */
+  .how-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-md);
+  }
+
+  .how-card {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: 8px;
+    padding: var(--space-md);
+    text-align: center;
+  }
+
+  .how-number {
+    display: inline-block;
+    width: 36px;
+    height: 36px;
+    line-height: 36px;
+    background: var(--accent-warm);
+    color: var(--bg-deep);
+    border-radius: 50%;
+    font-weight: 600;
+    font-size: 1rem;
+    margin-bottom: var(--space-sm);
+  }
+
+  .how-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: var(--space-xs);
+  }
+
+  .how-card p {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: var(--space-sm);
+  }
+
+  .how-code {
+    display: inline-block;
+    background: var(--bg-deep);
+    color: var(--accent-warm);
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+  }
+
+  /* PROPERTIES */
+  .properties-grid {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+
+  .property-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: var(--space-sm) var(--space-md);
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .property-item:last-child {
+    border-bottom: none;
+  }
+
+  .property-header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+  }
+
+  .property-icon {
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    line-height: 32px;
+    text-align: center;
+    background: var(--accent-subtle);
+    color: var(--accent-warm);
+    font-size: 0.7rem;
+    font-weight: 600;
+    border-radius: 6px;
+    flex-shrink: 0;
+  }
+
+  .property-item h3 {
+    font-size: 1rem;
+    margin-bottom: 0;
+  }
+
+  .property-item p {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin-bottom: 0;
+    padding-left: calc(32px + var(--space-sm));
+  }
+
+  /* ONTOLOGY NOTE */
+  .ontology-note {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    max-width: 640px;
+    margin: var(--space-md) auto 0;
+    padding: var(--space-sm) var(--space-md);
+    border-left: 2px solid var(--border-subtle);
+    line-height: 1.7;
+    font-style: italic;
+  }
+
+  /* TIERS */
+  .tiers-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-md);
+  }
+
+  .tier-card {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: 8px;
+    padding: var(--space-md);
+  }
+
+  .tier-active {
+    border-color: var(--accent-warm);
+    background: var(--accent-subtle);
+  }
+
+  .tier-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--space-sm);
+  }
+
+  .tier-label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-muted);
+  }
+
+  .tier-price {
+    font-size: 0.7rem;
+    color: var(--accent-warm);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  .tier-card h3 {
+    font-size: 1rem;
+    margin-bottom: var(--space-xs);
+  }
+
+  .tier-card p {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin-bottom: 0;
+  }
+
+  /* STATS BAR */
+  .stats-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-lg);
+    padding: var(--space-md) 0;
+    border-top: 1px solid var(--border-subtle);
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .stat {
+    text-align: center;
+  }
+
+  .stat-number {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 2rem;
+    color: var(--accent-warm);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .stat-label {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .stat-divider {
+    width: 1px;
+    height: 40px;
+    background: var(--border-subtle);
+  }
+
+  /* REGISTRY */
+  .container-wide {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: var(--space-lg) var(--space-md);
+  }
+
+  .registry-controls {
+    display: flex;
+    gap: var(--space-md);
+    align-items: center;
+    margin-bottom: var(--space-md);
+    flex-wrap: wrap;
+  }
+
+  .registry-search {
+    padding: 8px 14px;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: 6px;
+    color: var(--text-primary);
+    font-size: 0.85rem;
+    font-family: inherit;
+    outline: none;
+    width: 200px;
+    transition: border-color 0.15s ease;
+  }
+
+  .registry-search:focus {
+    border-color: var(--accent-warm);
+  }
+
+  .registry-search::placeholder {
+    color: var(--text-muted);
+  }
+
+  .filter-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+
+  .filter-btn {
+    background: transparent;
+    border: 1px solid var(--border-subtle);
+    color: var(--text-muted);
+    padding: 4px 10px;
+    border-radius: 100px;
+    font-size: 0.7rem;
+    cursor: pointer;
+    transition: all 0.15s ease;
+  }
+
+  .filter-btn:hover {
+    border-color: var(--accent-warm);
+    color: var(--text-secondary);
+  }
+
+  .filter-btn.active {
+    background: var(--accent-subtle);
+    border-color: var(--accent-warm);
+    color: var(--accent-warm);
+  }
+
+  .registry-table-wrap {
+    overflow-x: auto;
+  }
+
+  .registry-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+  }
+
+  .registry-table th {
+    text-align: left;
+    padding: 8px 12px;
+    border-bottom: 2px solid var(--border-subtle);
+    color: var(--text-muted);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 500;
+  }
+
+  .registry-table td {
+    padding: 6px 12px;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .registry-table tbody tr:hover {
+    background: var(--bg-surface);
+  }
+
+  .agent-name {
+    font-weight: 500;
+    color: var(--text-primary);
+  }
+
+  .agent-role {
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+  }
+
+  .circle-badge {
+    display: inline-block;
+    background: var(--bg-elevated);
+    color: var(--text-muted);
+    font-size: 0.65rem;
+    padding: 2px 6px;
+    border-radius: 100px;
+  }
+
+  .tier-badge {
+    display: inline-block;
+    font-size: 0.65rem;
+    padding: 2px 8px;
+    border-radius: 100px;
+    font-weight: 500;
+  }
+
+  .tier-1 { background: rgba(107, 114, 128, 0.2); color: #9ca3af; }
+  .tier-2 { background: var(--accent-subtle); color: var(--accent-warm); }
+  .tier-3 { background: rgba(34, 197, 94, 0.15); color: #4ade80; }
+
+  .gov-check {
+    text-align: center;
+    color: var(--accent-warm);
+    font-size: 0.85rem;
+  }
+
+  /* API DETAILS */
+  .api-details {
+    border: 1px solid var(--border-subtle);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .api-details summary {
+    padding: var(--space-sm) var(--space-md);
+    cursor: pointer;
+    background: var(--bg-surface);
+    list-style: none;
+  }
+
+  .api-details summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .api-details summary::before {
+    content: '+ ';
+    color: var(--accent-warm);
+  }
+
+  .api-details[open] summary::before {
+    content: '- ';
+  }
+
+  .inline-heading {
+    display: inline;
+    font-size: 1rem;
+    margin: 0;
+  }
+
+  .api-content {
+    padding: var(--space-md);
+  }
+
+  .api-content h3 {
+    font-size: 0.85rem;
+    margin-bottom: var(--space-xs);
+    margin-top: var(--space-md);
+  }
+
+  .api-content h3:first-of-type {
+    margin-top: 0;
+  }
+
+  .api-url {
+    display: block;
+    background: var(--bg-deep);
+    color: var(--accent-warm);
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    overflow-x: auto;
+  }
+
+  .api-note {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-top: var(--space-sm);
+    margin-bottom: var(--space-xs);
+  }
+
+  .badge-preview {
+    margin: var(--space-sm) 0;
+  }
+
+  /* CTA */
+  .cta-section {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: var(--space-lg) 0;
+  }
+
+  .cta-section h2 {
+    margin-bottom: var(--space-xs);
+  }
+
+  .cta-section p {
+    color: var(--text-secondary);
+    margin-bottom: var(--space-md);
+  }
+
+  .cta-buttons {
+    display: flex;
+    gap: var(--space-sm);
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .btn-large {
+    padding: var(--space-sm) var(--space-lg);
+    font-size: 0.95rem;
+  }
+
+  .btn-primary {
+    background: var(--accent-warm);
+    color: var(--bg-deep);
+  }
+
+  .btn-primary:hover {
+    background: var(--accent-glow);
+    color: var(--bg-deep);
+  }
+
+  /* ECOSYSTEM */
+  .ecosystem {
+    text-align: center;
+    padding: var(--space-md) 0;
+    border-top: 1px solid var(--border-subtle);
+  }
+
+  .ecosystem-label {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: var(--space-sm);
+  }
+
+  .ecosystem-items {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-sm);
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+  }
+
+  .eco-dot {
+    width: 3px;
+    height: 3px;
+    background: var(--text-muted);
+    border-radius: 50%;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    .how-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .tiers-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .verify-props {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  @media (max-width: 600px) {
+    .verify-box {
+      flex-direction: column;
+    }
+
+    .verify-box button {
+      padding: 12px;
+    }
+
+    .stats-bar {
+      flex-wrap: wrap;
+      gap: var(--space-md);
+    }
+
+    .stat-divider {
+      display: none;
+    }
+
+    .verify-props {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .governance-cols {
+      display: none;
+    }
+
+    .registry-controls {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    .registry-search {
+      width: 100%;
+    }
+  }
+</style>
+</BaseLayout>
