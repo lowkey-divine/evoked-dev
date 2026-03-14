@@ -13,11 +13,18 @@ export const POST: APIRoute = async ({ request }) => {
 
   try {
     const body = await request.json();
-    const { name, email, idea, audience } = body as {
+    const { name, email, type, description, audience, functions, data, integrations, heart, soul, look } = body as {
       name: string;
       email: string;
-      idea: string;
+      type: string;
+      description: string;
       audience: string;
+      functions: string;
+      data: string;
+      integrations: string;
+      heart: string;
+      soul: string;
+      look: string;
     };
 
     if (!name || typeof name !== 'string' || name.trim().length < 1) {
@@ -34,12 +41,15 @@ export const POST: APIRoute = async ({ request }) => {
       });
     }
 
-    if (!idea || typeof idea !== 'string' || idea.trim().length < 10) {
-      return new Response(JSON.stringify({ error: 'Please tell us more about your idea' }), {
+    if (!description || typeof description !== 'string' || description.trim().length < 10) {
+      return new Response(JSON.stringify({ error: 'Please tell us more about what you want to build' }), {
         status: 400,
         headers: { 'Content-Type': 'application/json' },
       });
     }
+
+    const section = (label: string, value: string) =>
+      value?.trim() ? `<h3>${escapeHtml(label)}</h3><p>${escapeHtml(value.trim())}</p>` : '';
 
     const resend = getResendClient();
 
@@ -51,10 +61,15 @@ export const POST: APIRoute = async ({ request }) => {
         <h2>New App Submission</h2>
         <p><strong>Name:</strong> ${escapeHtml(name.trim())}</p>
         <p><strong>Email:</strong> ${escapeHtml(email.trim())}</p>
-        <p><strong>What they want to build:</strong></p>
-        <p>${escapeHtml(idea.trim())}</p>
-        <p><strong>Who it serves:</strong></p>
-        <p>${escapeHtml((audience || '').trim()) || 'Not specified'}</p>
+        <p><strong>Type:</strong> ${escapeHtml((type || '').trim()) || 'Not specified'}</p>
+        ${section('The Bones — What is it?', description)}
+        ${section('The Eyes — Who will use it?', audience)}
+        ${section('The Muscles — What must it do?', functions)}
+        ${section('The Blood — What data flows through it?', data)}
+        ${section('The Nervous System — What does it connect to?', integrations)}
+        ${section('The Heart — Why it matters and what it refuses', heart)}
+        ${section('The Soul — What drives this?', soul)}
+        ${section('The Skin — Look and feel', look)}
       `,
     });
 
