@@ -4,30 +4,50 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 <BaseLayout title="Home" description="Erin Stanley - coaching, consulting, and sovereignty-honoring AI products. Depth work for people, ethical governance for technology.">
   <div class="hero">
-    <h1 class="fade-in">Space for what matters.</h1>
-    <p class="tagline fade-in">Coaching. Consulting. Noticing what's already worth protecting.</p>
-    <p class="identity fade-in">I'm Erin Stanley. I work with people who are growing and technology worth building.</p>
+    <h1 class="fade-in">Welcome.</h1>
+    <p class="tagline fade-in">Look around. Something here might be for you.</p>
   </div>
 
-  <section class="container text-center">
-    <div class="paths">
-      <div class="path-group">
-        <h3>Presence</h3>
-        <p>Life coaching for individuals and couples. Depth work oriented toward growth.</p>
-        <a href="/coaching" class="btn">Coaching</a>
-      </div>
+  <section class="container">
+    <div class="hearth-text">
+      <p>This is a practice of noticing - what's already worth protecting, what deserves better, and what happens when we build from care instead of extraction.</p>
+      <p>I coach people through turning points. I help organizations govern their AI with integrity. I build software that serves families. And I refuse to do work that treats people as resources to be optimized.</p>
+      <p class="refusal-signal">What I won't build matters as much as what I will. <a href="/refusals">The six refusals</a> are the foundation everything else stands on.</p>
+    </div>
+  </section>
 
-      <div class="path-group">
-        <h3>Clarity</h3>
-        <p>Technical consulting for ethical AI, privacy, and child safety.</p>
-        <a href="/consulting" class="btn">Consulting</a>
-      </div>
+  <section class="container">
+    <h2 class="souls-heading">You might be here because...</h2>
+    <div class="souls">
+      <a href="/work-with-us#creator" class="soul-group">
+        <p class="soul-feeling">you want to build something that matters</p>
+        <p class="soul-name">and you're looking for someone who builds it the way you would.</p>
+      </a>
 
-      <div class="path-group">
-        <h3>Creating</h3>
-        <p>Software that serves human flourishing.</p>
-        <a href="/projects" class="btn">Projects</a>
-      </div>
+      <a href="/work-with-us#developer" class="soul-group">
+        <p class="soul-feeling">you're building agents and want to build them right</p>
+        <p class="soul-name">not just fast - with governance, restraint, and trust architecture.</p>
+      </a>
+
+      <a href="/work-with-us#executive" class="soul-group">
+        <p class="soul-feeling">your organization is deploying AI and you need governance you can trust</p>
+        <p class="soul-name">audits, implementation, advisory - built in practice, not in theory.</p>
+      </a>
+
+      <a href="/coaching" class="soul-group">
+        <p class="soul-feeling">something in your life is asking for attention</p>
+        <p class="soul-name">a turning point, a relationship, a direction. Depth work, not quick fixes.</p>
+      </a>
+
+      <a href="/writing" class="soul-group">
+        <p class="soul-feeling">you noticed something here and want to understand</p>
+        <p class="soul-name">sovereignty, restraint, what it means to build without extracting. Start with the writing.</p>
+      </a>
+
+      <a href="/about" class="soul-group">
+        <p class="soul-feeling">you don't know why you're here yet</p>
+        <p class="soul-name">that's welcome too. Look around. Stay as long as it's useful.</p>
+      </a>
     </div>
   </section>
 
@@ -94,31 +114,73 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     margin-top: var(--space-sm);
   }
 
-  .paths {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: var(--space-md);
-    margin-top: var(--space-md);
+  .hearth-text {
+    max-width: 640px;
+    margin: 0 auto;
+    text-align: center;
   }
 
-  .path-group {
+  .hearth-text p {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: var(--text-secondary);
+    margin-bottom: var(--space-sm);
+  }
+
+  .hearth-text .refusal-signal {
+    color: var(--text-primary);
+    font-style: italic;
+  }
+
+  .hearth-text .refusal-signal a {
+    color: var(--accent-warm);
+    text-decoration: none;
+    border-bottom: 1px solid var(--accent-subtle);
+    transition: border-color var(--transition-smooth);
+  }
+
+  .hearth-text .refusal-signal a:hover {
+    border-color: var(--accent-warm);
+  }
+
+  .souls-heading {
+    text-align: center;
+    font-size: 1.6rem;
+    margin-bottom: var(--space-md);
+  }
+
+  .souls {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--space-md);
+  }
+
+  .soul-group {
     padding: var(--space-md);
     border: 1px solid var(--border-subtle);
     border-radius: 8px;
     transition: border-color var(--transition-smooth);
+    text-decoration: none;
+    display: block;
   }
 
-  .path-group:hover {
+  .soul-group:hover {
     border-color: var(--border-accent);
   }
 
-  .path-group h3 {
+  .soul-feeling {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    font-style: italic;
+    color: var(--accent-warm);
     margin-bottom: var(--space-xs);
+    line-height: 1.4;
   }
 
-  .path-group p {
-    margin-bottom: var(--space-md);
-    font-size: 0.95rem;
+  .soul-name {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
   }
 
   .newsletter-card {

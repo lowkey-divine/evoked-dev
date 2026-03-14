@@ -1,0 +1,180 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Work With Us" description="Coaching, consulting, products, and implementation - find the right path for where you are right now.">
+  <div class="hero">
+    <h1 class="fade-in">Find your path.</h1>
+    <p class="tagline fade-in">Different work for different needs. Same commitment to sovereignty, care, and building what matters.</p>
+  </div>
+
+  <section class="container">
+    <div class="recognition-paths">
+
+      <div class="recognition-group" id="creator">
+        <div class="recognition-moment">
+          <p class="recognition-feeling">You want to build something that honors the people who use it.</p>
+        </div>
+        <div class="recognition-path">
+          <h3>Build With Us</h3>
+          <p>We build sovereignty-honoring software for families, communities, and individuals. If you have an idea for an app that serves people rather than extracts from them, we want to hear about it.</p>
+          <div class="path-links">
+            <a href="/build-with-us" class="btn">Tell us your idea</a>
+            <a href="/products" class="btn btn-secondary">Browse frameworks</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="recognition-group" id="developer">
+        <div class="recognition-moment">
+          <p class="recognition-feeling">You're building agents and you need them governed - not just functional.</p>
+        </div>
+        <div class="recognition-path">
+          <h3>Consulting and Implementation</h3>
+          <p>The work has four disciplines - prompt craft, context engineering, intent engineering, and specification engineering. Governance audits, specification sprints, trust architecture builds, and advisory partnerships. The scope meets you where you are.</p>
+          <div class="path-links">
+            <a href="/consulting" class="btn">Consulting</a>
+            <a href="/diagnostic" class="btn btn-secondary">5-question diagnostic</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="recognition-group" id="executive">
+        <div class="recognition-moment">
+          <p class="recognition-feeling">Your organization is deploying AI and you need governance that holds.</p>
+        </div>
+        <div class="recognition-path">
+          <h3>Enterprise Governance</h3>
+          <p>Structured reviews of agent behavioral governance - identity, memory, restraint, voice, and drift. Findings come prioritized with implementation roadmaps. Your team gets workshops. Your system gets an advisory partnership that evolves alongside it.</p>
+          <div class="path-links">
+            <a href="/consulting" class="btn">Services and pricing</a>
+            <a href="https://cal.com/cal.com-evoked/discovery-call" class="btn btn-secondary">Discovery call</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="recognition-group" id="coaching">
+        <div class="recognition-moment">
+          <p class="recognition-feeling">Something in your life is asking for attention.</p>
+        </div>
+        <div class="recognition-path">
+          <h3>Coaching</h3>
+          <p>Life coaching for individuals and couples. Depth work that honors where you've been while orienting toward where you're going. Psychodynamic and humanistic traditions. Accompaniment, not optimization.</p>
+          <div class="path-links">
+            <a href="/coaching" class="btn">Learn more</a>
+            <a href="https://cal.com/evoked/coaching-conversation" class="btn btn-secondary">Start a conversation</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="recognition-group" id="open-source">
+        <div class="recognition-moment">
+          <p class="recognition-feeling">You believe AI agents should be able to prove they're governed.</p>
+        </div>
+        <div class="recognition-path">
+          <h3>Bot Authority - Open Standard</h3>
+          <p>A voluntary, open standard for AI agent behavioral governance. Registry, verification, and public accountability across five governance properties - identity, memory, restraint, voice, and drift. The standard is open. Registration is free.</p>
+          <div class="path-links">
+            <a href="/registry" class="btn">The registry</a>
+            <a href="/pledge" class="btn btn-secondary">The pledge</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="container">
+    <div class="not-sure">
+      <h2>Not sure which path?</h2>
+      <p>That's fine. Start here.</p>
+      <div class="not-sure-options">
+        <a href="/diagnostic" class="btn">5-question diagnostic</a>
+        <a href="/fit" class="btn btn-secondary">Fit assessment</a>
+        <a href="/writing" class="btn btn-secondary">Read first</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .recognition-paths {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+  }
+
+  .recognition-group {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: var(--space-md);
+    align-items: start;
+    padding: var(--space-md);
+    border: 1px solid var(--border-subtle);
+    border-radius: 8px;
+    transition: border-color var(--transition-smooth);
+  }
+
+  .recognition-group:hover {
+    border-color: var(--border-accent);
+  }
+
+  .recognition-feeling {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    font-style: italic;
+    color: var(--accent-warm);
+    line-height: 1.4;
+  }
+
+  .recognition-path h3 {
+    margin-bottom: var(--space-xs);
+  }
+
+  .recognition-path p {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: var(--space-sm);
+  }
+
+  .path-links {
+    display: flex;
+    gap: var(--space-sm);
+    flex-wrap: wrap;
+  }
+
+  .btn-secondary {
+    border: 1px solid var(--border-accent);
+    color: var(--text-secondary);
+  }
+
+  .btn-secondary:hover {
+    color: var(--text-primary);
+    border-color: var(--accent-warm);
+  }
+
+  .not-sure {
+    text-align: center;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  .not-sure p {
+    color: var(--text-secondary);
+    margin-bottom: var(--space-md);
+  }
+
+  .not-sure-options {
+    display: flex;
+    gap: var(--space-sm);
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  @media (max-width: 768px) {
+    .recognition-group {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
