@@ -20,6 +20,9 @@ pnpm-debug.log*
 # product source files (top-level only, not src/lib/products/)
 /products/
 
+# reference docs (not site content)
+PROVISIONAL_PATENT_GUIDE.md
+
 # macOS-specific files
 .DS_Store
 
