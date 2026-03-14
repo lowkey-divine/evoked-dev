@@ -8,7 +8,7 @@ const ALLOWED_ORIGINS = [
 
 // Allow localhost in development
 if (import.meta.env.DEV) {
-  ALLOWED_ORIGINS.push('http://localhost:4321', 'http://localhost:3000');
+  ALLOWED_ORIGINS.push('http://localhost:4321', 'http://localhost:4322', 'http://localhost:3000');
 }
 
 // --- Origin validation ---
