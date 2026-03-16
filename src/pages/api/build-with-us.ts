@@ -1,5 +1,6 @@
 import type { APIRoute } from 'astro';
 import { validateOrigin, rateLimit, safeError } from '../../lib/api/security';
+import { verifyFormToken } from '../../lib/api/form-token';
 import { getResendClient, FROM_EMAIL } from '../../lib/email/client';
 import { getAnthropicClient } from '../../lib/ai/client';
 
@@ -119,7 +120,7 @@ async function analyzeSubmission(submission: Submission): Promise<string> {
 }
 
 export const POST: APIRoute = async ({ request }) => {
-  const originBlock = validateOrigin(request);
+  const originBlock = validateOrigin(request, true);
   if (originBlock) return originBlock;
 
   const rateLimitBlock = rateLimit(request, 'buildWithUs');
@@ -127,8 +128,34 @@ export const POST: APIRoute = async ({ request }) => {
 
   try {
     const body = await request.json();
-    const submission = body as Submission;
+    const { token, ts, hp, ...rest } = body as Submission & { token?: string; ts?: number; hp?: string };
+    const submission = rest as Submission;
     const { name, email, description } = submission;
+
+    // Honeypot check — if filled, silently return success
+    if (hp) {
+      return new Response(JSON.stringify({ success: true }), {
+        status: 200,
+        headers: { 'Content-Type': 'application/json' },
+      });
+    }
+
+    // Verify challenge token
+    const secret = import.meta.env.FORM_SECRET;
+    if (!secret || !token || !ts) {
+      return new Response(JSON.stringify({ error: 'Invalid request' }), {
+        status: 400,
+        headers: { 'Content-Type': 'application/json' },
+      });
+    }
+
+    const validToken = await verifyFormToken(secret, token, ts);
+    if (!validToken) {
+      return new Response(JSON.stringify({ error: 'Invalid or expired form. Please refresh and try again.' }), {
+        status: 403,
+        headers: { 'Content-Type': 'application/json' },
+      });
+    }
 
     if (!name || typeof name !== 'string' || name.trim().length < 1) {
       return new Response(JSON.stringify({ error: 'Name is required' }), {

@@ -2,6 +2,7 @@ import type { APIRoute } from 'astro';
 import { getAnthropicClient, MODEL, MAX_TOKENS } from '../../lib/ai/client';
 import { CHAT_SYSTEM_PROMPT } from '../../lib/ai/prompts';
 import { validateOrigin, corsHeaders, rateLimit, safeError } from '../../lib/api/security';
+import { verifyFormToken } from '../../lib/api/form-token';
 
 export const prerender = false;
 
@@ -34,7 +35,7 @@ function validateHistory(history: unknown): Message[] {
 }
 
 export const POST: APIRoute = async ({ request }) => {
-  const originBlock = validateOrigin(request);
+  const originBlock = validateOrigin(request, true);
   if (originBlock) return originBlock;
 
   const rateLimitBlock = rateLimit(request, 'chat');
@@ -42,7 +43,30 @@ export const POST: APIRoute = async ({ request }) => {
 
   try {
     const body = await request.json();
-    const { message, history = [] } = body as { message: string; history?: Message[] };
+    const { message, history = [], token, ts } = body as {
+      message: string;
+      history?: Message[];
+      token?: string;
+      ts?: number;
+    };
+
+    // Verify challenge token
+    const secret = import.meta.env.FORM_SECRET;
+    if (!secret || !token || !ts) {
+      return new Response(JSON.stringify({ error: 'Invalid request' }), {
+        status: 400,
+        headers: { 'Content-Type': 'application/json' },
+      });
+    }
+
+    // Chat tokens get a longer window (30 min) since sessions are interactive
+    const validToken = await verifyFormToken(secret, token, ts, 1_800_000);
+    if (!validToken) {
+      return new Response(JSON.stringify({ error: 'Session expired. Please refresh the page.' }), {
+        status: 403,
+        headers: { 'Content-Type': 'application/json' },
+      });
+    }
 
     if (!message || typeof message !== 'string') {
       return new Response(JSON.stringify({ error: 'Message is required' }), {

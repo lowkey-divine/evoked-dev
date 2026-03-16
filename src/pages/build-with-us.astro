@@ -202,10 +202,15 @@ export const prerender = false;
     button.textContent = 'Sending...';
 
     try {
+      // Fetch challenge token
+      const c = await fetch('/api/form/challenge');
+      if (!c.ok) throw new Error('failed');
+      const { token, ts } = await c.json();
+
       const res = await fetch('/api/build-with-us', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, email, type, description, audience, functions, data, integrations, heart, soul, look }),
+        body: JSON.stringify({ name, email, type, description, audience, functions, data, integrations, heart, soul, look, token, ts, hp: '' }),
       });
 
       if (res.ok) {

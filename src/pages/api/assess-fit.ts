@@ -2,6 +2,7 @@ import type { APIRoute } from 'astro';
 import { getAnthropicClient, MODEL, MAX_TOKENS } from '../../lib/ai/client';
 import { FIT_ASSESSMENT_SYSTEM_PROMPT } from '../../lib/ai/prompts';
 import { validateOrigin, corsHeaders, rateLimit, safeError } from '../../lib/api/security';
+import { verifyFormToken } from '../../lib/api/form-token';
 
 export const prerender = false;
 
@@ -23,7 +24,7 @@ function sanitizeInput(input: string): string {
 }
 
 export const POST: APIRoute = async ({ request }) => {
-  const originBlock = validateOrigin(request);
+  const originBlock = validateOrigin(request, true);
   if (originBlock) return originBlock;
 
   const rateLimitBlock = rateLimit(request, 'assessFit');
@@ -31,7 +32,45 @@ export const POST: APIRoute = async ({ request }) => {
 
   try {
     const body = await request.json();
-    const { projectDescription } = body as { projectDescription: string };
+    const { projectDescription, token, ts, hp } = body as {
+      projectDescription: string;
+      token?: string;
+      ts?: number;
+      hp?: string;
+    };
+
+    // Honeypot check — if filled, silently return success
+    if (hp) {
+      return new Response(JSON.stringify({
+        fitLevel: 'moderate',
+        score: 50,
+        summary: 'Thank you for your submission.',
+        strengths: [],
+        considerations: [],
+        suggestedServices: [],
+        nextStep: 'We will review your submission.',
+      }), {
+        status: 200,
+        headers: { 'Content-Type': 'application/json' },
+      });
+    }
+
+    // Verify challenge token
+    const secret = import.meta.env.FORM_SECRET;
+    if (!secret || !token || !ts) {
+      return new Response(JSON.stringify({ error: 'Invalid request' }), {
+        status: 400,
+        headers: { 'Content-Type': 'application/json' },
+      });
+    }
+
+    const validToken = await verifyFormToken(secret, token, ts);
+    if (!validToken) {
+      return new Response(JSON.stringify({ error: 'Invalid or expired form. Please refresh and try again.' }), {
+        status: 403,
+        headers: { 'Content-Type': 'application/json' },
+      });
+    }
 
     if (!projectDescription || typeof projectDescription !== 'string') {
       return new Response(JSON.stringify({ error: 'Project description is required' }), {

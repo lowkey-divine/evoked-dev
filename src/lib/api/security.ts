@@ -79,6 +79,7 @@ const RATE_LIMITS: Record<string, RateLimitConfig> = {
   assessFit:  { windowMs: 60_000, maxRequests: 5 },    // 5 per minute
   newsletter:   { windowMs: 60_000, maxRequests: 3 },    // 3 per minute
   buildWithUs:  { windowMs: 60_000, maxRequests: 3 },    // 3 per minute
+  challenge:    { windowMs: 60_000, maxRequests: 10 },   // 10 per minute (serves all forms)
 };
 
 function getClientIP(request: Request): string {
