@@ -13,11 +13,20 @@ if (import.meta.env.DEV) {
 
 // --- Origin validation ---
 
-export function validateOrigin(request: Request): Response | null {
+export function validateOrigin(request: Request, requireOrigin: boolean = false): Response | null {
   const origin = request.headers.get('origin');
 
-  // Allow same-origin requests (no Origin header means same-origin or non-browser)
-  if (!origin) return null;
+  // When requireOrigin is true, block requests without an Origin header.
+  // This prevents direct curl/Postman calls to form endpoints.
+  if (!origin) {
+    if (requireOrigin) {
+      return new Response(JSON.stringify({ error: 'Forbidden' }), {
+        status: 403,
+        headers: { 'Content-Type': 'application/json' },
+      });
+    }
+    return null;
+  }
 
   if (!ALLOWED_ORIGINS.includes(origin)) {
     return new Response(JSON.stringify({ error: 'Forbidden' }), {
