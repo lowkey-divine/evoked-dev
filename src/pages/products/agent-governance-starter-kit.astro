@@ -7,7 +7,7 @@ const product = getProductBySlug('agent-governance-starter-kit')!;
 
 <BaseLayout title="Agent Governance Starter Kit" description="Charter, boundaries, drift thresholds, and accountability for your AI agents. Build governance into the structure from day one. $49 PDF.">
   <div class="hero hero-compact">
-    <span class="discipline-badge">Constraint Architecture</span>
+    <span class="discipline-badge">Governance Architecture</span>
     <h1>Who governs your agents when you're not watching?</h1>
     <p class="tagline">Charter, boundaries, drift thresholds, and accountability - from day one.</p>
   </div>
@@ -114,6 +114,9 @@ const product = getProductBySlug('agent-governance-starter-kit')!;
     <div class="purchase-card">
       <div class="price-display">$49</div>
       <p>PDF download. Govern as many agent systems as you need.</p>
+      <p class="text-muted" style="font-size: 0.85rem; margin-top: var(--space-xs);">
+        Looking for the free version? The <a href="https://github.com/lowkey-divine/agent-governance-starter-kit" target="_blank" rel="noopener" style="color: var(--accent-warm);">open-source starter kit on GitHub</a> covers the foundation. This paid version adds detailed implementation guidance, worked examples from a production system, and the full five-layer framework.
+      </p>
       <a href={product.stripePaymentLink} class="btn btn-primary btn-large mt-md" target="_blank" rel="noopener">Buy the Starter Kit</a>
       <p class="text-muted mt-md" style="font-size: 0.85rem;">
         Includes the charter template, boundary specifications, drift monitoring thresholds, four-level accountability framework, and authority structure guide.
