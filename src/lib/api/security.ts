@@ -78,7 +78,7 @@ const RATE_LIMITS: Record<string, RateLimitConfig> = {
   chat:       { windowMs: 60_000, maxRequests: 10 },   // 10 per minute
   assessFit:  { windowMs: 60_000, maxRequests: 5 },    // 5 per minute
   newsletter:   { windowMs: 60_000, maxRequests: 3 },    // 3 per minute
-  buildWithUs:  { windowMs: 60_000, maxRequests: 3 },    // 3 per minute
+  buildWithUs:  { windowMs: 300_000, maxRequests: 1 },   // 1 per 5 minutes
   challenge:    { windowMs: 60_000, maxRequests: 10 },   // 10 per minute (serves all forms)
 };
 

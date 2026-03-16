@@ -6,6 +6,37 @@ import { getAnthropicClient } from '../../lib/ai/client';
 
 export const prerender = false;
 
+// --- Email dedup: max 3 submissions per email per 24 hours ---
+const emailSubmissions = new Map<string, number[]>();
+
+// Clean up expired entries every 10 minutes
+setInterval(() => {
+  const cutoff = Date.now() - 86_400_000;
+  for (const [email, timestamps] of emailSubmissions) {
+    const valid = timestamps.filter(t => t > cutoff);
+    if (valid.length === 0) emailSubmissions.delete(email);
+    else emailSubmissions.set(email, valid);
+  }
+}, 600_000);
+
+function checkEmailDedup(email: string): { allowed: boolean; remaining: number } {
+  const key = email.toLowerCase().trim();
+  const now = Date.now();
+  const cutoff = now - 86_400_000; // 24 hours
+  const existing = (emailSubmissions.get(key) || []).filter(t => t > cutoff);
+
+  if (existing.length >= 3) {
+    return { allowed: false, remaining: 0 };
+  }
+
+  existing.push(now);
+  emailSubmissions.set(key, existing);
+  return { allowed: true, remaining: 3 - existing.length };
+}
+
+// --- Minimum form completion time: 45 seconds ---
+const MIN_FORM_TIME_MS = 45_000;
+
 const ANALYSIS_PROMPT = `You are an internal project analyst for Evoke Passion, a practice that builds sovereignty-honoring software for families, communities, and individuals. You are reviewing a new app submission from a potential client.
 
 ## Evoke Passion Values
@@ -128,7 +159,12 @@ export const POST: APIRoute = async ({ request }) => {
 
   try {
     const body = await request.json();
-    const { token, ts, hp, ...rest } = body as Submission & { token?: string; ts?: number; hp?: string };
+    const { token, ts, hp, formLoadedAt, ...rest } = body as Submission & {
+      token?: string;
+      ts?: number;
+      hp?: string;
+      formLoadedAt?: number;
+    };
     const submission = rest as Submission;
     const { name, email, description } = submission;
 
@@ -157,6 +193,17 @@ export const POST: APIRoute = async ({ request }) => {
       });
     }
 
+    // Minimum form completion time check (45 seconds)
+    if (formLoadedAt && typeof formLoadedAt === 'number') {
+      const elapsed = Date.now() - formLoadedAt;
+      if (elapsed < MIN_FORM_TIME_MS) {
+        return new Response(JSON.stringify({ error: 'Please take your time filling out the form.' }), {
+          status: 400,
+          headers: { 'Content-Type': 'application/json' },
+        });
+      }
+    }
+
     if (!name || typeof name !== 'string' || name.trim().length < 1) {
       return new Response(JSON.stringify({ error: 'Name is required' }), {
         status: 400,
@@ -167,6 +214,15 @@ export const POST: APIRoute = async ({ request }) => {
     if (!email || typeof email !== 'string' || !email.includes('@')) {
       return new Response(JSON.stringify({ error: 'Valid email is required' }), {
         status: 400,
+        headers: { 'Content-Type': 'application/json' },
+      });
+    }
+
+    // Email dedup: max 3 submissions per email per 24 hours
+    const dedup = checkEmailDedup(email);
+    if (!dedup.allowed) {
+      return new Response(JSON.stringify({ error: 'We already have your submission. We will be in touch.' }), {
+        status: 429,
         headers: { 'Content-Type': 'application/json' },
       });
     }

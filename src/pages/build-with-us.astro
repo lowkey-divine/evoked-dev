@@ -124,6 +124,7 @@ export const prerender = false;
   const dots = form.querySelectorAll('.progress-dot') as NodeListOf<HTMLElement>;
   const backBtn = document.getElementById('step-back') as HTMLButtonElement;
   let current = 1;
+  const formLoadedAt = Date.now();
 
   function showStep(n: number) {
     steps.forEach(s => s.classList.remove('active'));
@@ -210,7 +211,7 @@ export const prerender = false;
       const res = await fetch('/api/build-with-us', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, email, type, description, audience, functions, data, integrations, heart, soul, look, token, ts, hp: '' }),
+        body: JSON.stringify({ name, email, type, description, audience, functions, data, integrations, heart, soul, look, token, ts, hp: '', formLoadedAt }),
       });
 
       if (res.ok) {
