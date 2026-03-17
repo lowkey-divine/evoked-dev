@@ -105,6 +105,7 @@ export const prerender = false;
     <div class="what-happens">
       <h2>What happens next</h2>
       <p>I read every submission personally. If there is a fit, I will reach out within a few days with a scope conversation. We build your first working version — then we decide together what it needs next.</p>
+    <p class="ai-disclosure">Your submission is analyzed by Claude AI (<a href="https://www.anthropic.com" target="_blank" rel="noopener">Anthropic</a>) to help me assess fit and prepare for our conversation. I still read everything myself.</p>
     </div>
   </section>
 
@@ -443,6 +444,21 @@ export const prerender = false;
     font-size: 0.95rem;
     color: var(--text-secondary);
     line-height: 1.7;
+  }
+
+  .what-happens .ai-disclosure {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-top: var(--space-sm);
+  }
+
+  .what-happens .ai-disclosure a {
+    color: var(--text-muted);
+    text-decoration: underline;
+  }
+
+  .what-happens .ai-disclosure a:hover {
+    color: var(--accent-warm);
   }
 
   .already-built {

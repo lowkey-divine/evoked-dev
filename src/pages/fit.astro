@@ -9,6 +9,7 @@ export const prerender = false;
   <div class="hero-small">
     <h1>Is this a good fit?</h1>
     <p class="tagline">Honest assessment of project alignment.</p>
+    <p class="ai-disclosure">This assessment uses Claude AI by <a href="https://www.anthropic.com" target="_blank" rel="noopener">Anthropic</a> to evaluate project fit. Your description is sent to their API. Nothing is stored.</p>
   </div>
 
   <section class="container">
@@ -69,6 +70,21 @@ export const prerender = false;
     font-size: 1.1rem;
     color: var(--text-secondary);
     font-style: italic;
+  }
+
+  .ai-disclosure {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-top: var(--space-sm);
+  }
+
+  .ai-disclosure a {
+    color: var(--text-muted);
+    text-decoration: underline;
+  }
+
+  .ai-disclosure a:hover {
+    color: var(--accent-warm);
   }
 
   .explanation {

@@ -18,6 +18,26 @@ function sanitizeInput(input: string): string {
     .replace(/[\x00-\x08\x0B\x0C\x0E-\x1F\x7F]/g, ''); // Remove control characters
 }
 
+// Detect common prompt injection patterns
+function detectInjection(input: string): boolean {
+  const lower = input.toLowerCase();
+  const patterns = [
+    /ignore\s+(all\s+)?(previous|prior|above|your)\s+(instructions|rules|prompt)/,
+    /forget\s+(all\s+)?(your|previous)\s+(instructions|rules|prompt)/,
+    /you\s+are\s+now\s+(a|an|my)\b/,
+    /new\s+instructions?\s*:/,
+    /system\s*:\s*/,
+    /\bsystem\s+prompt\b/,
+    /reveal\s+(your|the)\s+(prompt|instructions|system)/,
+    /\bact\s+as\s+(if|though)\s+you\s+(have\s+)?no\s+(rules|instructions)/,
+    /\boverride\b.*\b(instructions|rules|prompt)\b/,
+    /\bdo\s+not\s+follow\b.*\b(instructions|rules|guidelines)\b/,
+    /\bjailbreak\b/,
+    /\bDAN\b.*\bmode\b/,
+  ];
+  return patterns.some(p => p.test(lower));
+}
+
 // Validate message array
 function validateHistory(history: unknown): Message[] {
   if (!Array.isArray(history)) return [];
@@ -28,6 +48,7 @@ function validateHistory(history: unknown): Message[] {
       (msg.role === 'user' || msg.role === 'assistant') &&
       typeof msg.content === 'string'
     )
+    .filter(msg => !detectInjection(msg.content))
     .map(msg => ({
       role: msg.role,
       content: sanitizeInput(msg.content),
@@ -80,6 +101,14 @@ export const POST: APIRoute = async ({ request }) => {
       return new Response(JSON.stringify({ error: 'Message is required' }), {
         status: 400,
         headers: { 'Content-Type': 'application/json' },
+      });
+    }
+
+    // Check for prompt injection patterns
+    if (detectInjection(sanitizedMessage)) {
+      return new Response(JSON.stringify({ error: 'I can only help with questions about Erin\'s work and services. Could you rephrase your question?' }), {
+        status: 400,
+        headers: { 'Content-Type': 'application/json', ...corsHeaders(request) },
       });
     }
 
