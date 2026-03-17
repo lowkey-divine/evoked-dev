@@ -46,7 +46,7 @@ function evokeAgent(
   return {
     agent_id: id,
     display_name: name,
-    organization: 'Evoke Passion',
+    organization: 'Evoked',
     role,
     circle,
     tier: 1,
@@ -61,7 +61,7 @@ function evokeAgent(
     attestation: {
       level: 'self-attested',
       last_verified: '2026-03-11T00:00:00Z',
-      verified_by: 'Evoke Passion Bot Authority',
+      verified_by: 'Evoked Bot Authority',
     },
   };
 }

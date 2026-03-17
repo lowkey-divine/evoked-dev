@@ -40,7 +40,7 @@ export const GET: APIRoute = async ({ request }) => {
         governance: agent.governance,
         attestation: agent.attestation,
         verified: true,
-        verified_by: 'Evoke Passion Bot Authority',
+        verified_by: 'Evoked Bot Authority',
       }),
       { status: 200, headers }
     );

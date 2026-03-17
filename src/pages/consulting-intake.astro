@@ -1,0 +1,377 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+export const prerender = false;
+---
+
+<BaseLayout title="Tell us about your system" description="Help us understand where you are so we can prepare for a real conversation. No pitch. No pressure.">
+  <div class="hero-small">
+    <h1>Tell us about your system.</h1>
+    <p class="tagline">We read every submission personally. This helps us prepare for a real conversation - not a pitch.</p>
+  </div>
+
+  <section class="container">
+    <form id="consulting-form" class="intake-form">
+
+      <div class="step active" data-step="1">
+        <p class="step-label">The foundation</p>
+        <label for="ci-foundation">What does your current AI or agent system look like?</label>
+        <textarea id="ci-foundation" name="foundation" rows="4" required placeholder="What are you running? How many agents, what do they do, how long have they been in production?"></textarea>
+        <button type="button" class="btn btn-primary step-next">Continue</button>
+      </div>
+
+      <div class="step" data-step="2">
+        <p class="step-label">The walls</p>
+        <label for="ci-walls">Where is it cracking?</label>
+        <textarea id="ci-walls" name="walls" rows="4" placeholder="What's breaking, drifting, or keeping you up at night? What prompted you to look for help now?"></textarea>
+        <button type="button" class="btn btn-primary step-next">Continue</button>
+      </div>
+
+      <div class="step" data-step="3">
+        <p class="step-label">The windows</p>
+        <label for="ci-windows">What do you need the outside world to see?</label>
+        <textarea id="ci-windows" name="windows" rows="4" placeholder="Compliance, trust signals, customer-facing transparency? What's the external pressure?"></textarea>
+        <button type="button" class="btn btn-primary step-next">Continue</button>
+      </div>
+
+      <div class="step" data-step="4">
+        <p class="step-label">The roof</p>
+        <label for="ci-roof">What would "solved" look like for you?</label>
+        <textarea id="ci-roof" name="roof" rows="4" placeholder="If this engagement went perfectly, what's different in six months?"></textarea>
+        <button type="button" class="btn btn-primary step-next">Continue</button>
+      </div>
+
+      <div class="step" data-step="5">
+        <p class="step-label">You</p>
+        <label for="ci-name">Your name</label>
+        <input type="text" id="ci-name" name="name" required />
+        <label for="ci-email" class="mt-md">Your email</label>
+        <input type="email" id="ci-email" name="email" required />
+        <label for="ci-org" class="mt-md">Organization <span class="optional">(optional)</span></label>
+        <input type="text" id="ci-org" name="org" />
+        <button type="submit" class="btn btn-primary mt-md">Send it over</button>
+        <p id="ci-status" class="form-status" aria-live="polite"></p>
+      </div>
+
+      <div class="step-progress">
+        <span class="progress-dot active" data-for="1"></span>
+        <span class="progress-dot" data-for="2"></span>
+        <span class="progress-dot" data-for="3"></span>
+        <span class="progress-dot" data-for="4"></span>
+        <span class="progress-dot" data-for="5"></span>
+      </div>
+
+      <button type="button" class="step-back" id="step-back" style="display:none;">Back</button>
+    </form>
+  </section>
+
+  <section class="container">
+    <div class="what-happens">
+      <h2>What happens next</h2>
+      <p>I read every submission personally. If there is a fit, I will reach out within a few days with a scope conversation. We start with what's real - not a sales deck.</p>
+      <p class="ai-disclosure">Your submission is analyzed by Claude AI (<a href="https://www.anthropic.com" target="_blank" rel="noopener">Anthropic</a>) to help me assess fit and prepare for our conversation. I still read everything myself.</p>
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  const form = document.getElementById('consulting-form') as HTMLFormElement;
+  const status = document.getElementById('ci-status') as HTMLParagraphElement;
+  const steps = form.querySelectorAll('.step') as NodeListOf<HTMLElement>;
+  const dots = form.querySelectorAll('.progress-dot') as NodeListOf<HTMLElement>;
+  const backBtn = document.getElementById('step-back') as HTMLButtonElement;
+  let current = 1;
+  const formLoadedAt = Date.now();
+
+  function showStep(n: number) {
+    steps.forEach(s => s.classList.remove('active'));
+    dots.forEach(d => d.classList.remove('active'));
+    const step = form.querySelector(`[data-step="${n}"]`) as HTMLElement;
+    const dot = form.querySelector(`.progress-dot[data-for="${n}"]`) as HTMLElement;
+    if (step) step.classList.add('active');
+    if (dot) dot.classList.add('active');
+
+    dots.forEach(d => {
+      const forStep = parseInt(d.getAttribute('data-for') || '0');
+      if (forStep < n) d.classList.add('completed');
+      else d.classList.remove('completed');
+    });
+
+    backBtn.style.display = n > 1 ? 'block' : 'none';
+    current = n;
+
+    const firstInput = step?.querySelector('input, textarea') as HTMLElement;
+    if (firstInput) setTimeout(() => firstInput.focus(), 100);
+  }
+
+  form.querySelectorAll('.step-next').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const step = (btn as HTMLElement).closest('.step') as HTMLElement;
+      const required = step.querySelectorAll('[required]') as NodeListOf<HTMLInputElement | HTMLTextAreaElement>;
+      let valid = true;
+
+      required.forEach(input => {
+        if (!input.value.trim()) valid = false;
+      });
+
+      if (valid) {
+        const stepNum = parseInt(step.getAttribute('data-step') || '1');
+        showStep(stepNum + 1);
+      }
+    });
+  });
+
+  backBtn.addEventListener('click', () => {
+    if (current > 1) showStep(current - 1);
+  });
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    status.textContent = '';
+
+    const name = (document.getElementById('ci-name') as HTMLInputElement).value.trim();
+    const email = (document.getElementById('ci-email') as HTMLInputElement).value.trim();
+    const org = (document.getElementById('ci-org') as HTMLInputElement).value.trim();
+    const foundation = (document.getElementById('ci-foundation') as HTMLTextAreaElement).value.trim();
+    const walls = (document.getElementById('ci-walls') as HTMLTextAreaElement).value.trim();
+    const windows = (document.getElementById('ci-windows') as HTMLTextAreaElement).value.trim();
+    const roof = (document.getElementById('ci-roof') as HTMLTextAreaElement).value.trim();
+
+    if (!name || !email || !foundation) return;
+
+    const button = form.querySelector('[type="submit"]') as HTMLButtonElement;
+    button.disabled = true;
+    button.textContent = 'Sending...';
+
+    try {
+      const c = await fetch('/api/form/challenge');
+      if (!c.ok) throw new Error('failed');
+      const { token, ts } = await c.json();
+
+      const res = await fetch('/api/consulting-intake', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email, org, foundation, walls, windows, roof, token, ts, hp: '', formLoadedAt }),
+      });
+
+      if (res.ok) {
+        status.textContent = 'Received. I will be in touch.';
+        status.className = 'form-status success';
+        form.reset();
+        steps.forEach(s => s.classList.remove('active'));
+        dots.forEach(d => { d.classList.add('completed'); d.classList.remove('active'); });
+        backBtn.style.display = 'none';
+        status.style.textAlign = 'center';
+        status.style.fontSize = '1.1rem';
+        status.style.marginTop = '2rem';
+      } else {
+        const resData = await res.json();
+        status.textContent = resData.error || 'Something went wrong. Try again.';
+        status.className = 'form-status error';
+      }
+    } catch {
+      status.textContent = 'Something went wrong. Try again.';
+      status.className = 'form-status error';
+    } finally {
+      button.disabled = false;
+      button.textContent = 'Send it over';
+    }
+  });
+</script>
+
+<style>
+  .hero-small {
+    text-align: center;
+    padding: var(--space-lg) var(--space-md);
+  }
+
+  .hero-small h1 {
+    font-size: clamp(2rem, 5vw, 3rem);
+    margin-bottom: var(--space-xs);
+  }
+
+  .hero-small .tagline {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    font-style: italic;
+  }
+
+  .intake-form {
+    max-width: 560px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  .step {
+    display: none;
+  }
+
+  .step.active {
+    display: block;
+    animation: fadeIn 0.3s ease;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .step-label {
+    font-family: var(--font-display);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--accent-warm);
+    margin-bottom: var(--space-sm);
+  }
+
+  .step label:not(.type-option) {
+    display: block;
+    font-size: 1.1rem;
+    color: var(--text-primary);
+    margin-bottom: var(--space-sm);
+    font-family: var(--font-display);
+    line-height: 1.4;
+  }
+
+  .optional {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    font-style: italic;
+  }
+
+  .step input[type="text"],
+  .step input[type="email"],
+  .step textarea {
+    width: 100%;
+    padding: 0.6rem 1rem;
+    border: 1px solid var(--border-subtle);
+    border-radius: 6px;
+    background: transparent;
+    color: var(--text-primary);
+    font-family: var(--font-body, inherit);
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  .step input:focus,
+  .step textarea:focus {
+    outline: none;
+    border-color: var(--accent-warm);
+  }
+
+  .step input::placeholder,
+  .step textarea::placeholder {
+    color: var(--text-muted);
+  }
+
+  .step textarea {
+    resize: vertical;
+  }
+
+  .step-next,
+  .step [type="submit"] {
+    margin-top: var(--space-md);
+  }
+
+  .btn-primary {
+    background: var(--accent-warm);
+    color: var(--bg-deep);
+    white-space: nowrap;
+  }
+
+  .btn-primary:hover {
+    background: var(--accent-glow);
+    color: var(--bg-deep);
+  }
+
+  .step-progress {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+    margin-top: var(--space-lg);
+  }
+
+  .progress-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--border-subtle);
+    transition: background var(--transition-smooth);
+  }
+
+  .progress-dot.active {
+    background: var(--accent-warm);
+  }
+
+  .progress-dot.completed {
+    background: var(--accent-warm);
+    opacity: 0.4;
+  }
+
+  .step-back {
+    display: block;
+    margin: var(--space-sm) auto 0;
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    font-family: inherit;
+  }
+
+  .step-back:hover {
+    color: var(--text-secondary);
+  }
+
+  .mt-md {
+    margin-top: var(--space-md);
+  }
+
+  .form-status {
+    font-size: 0.85rem;
+    margin-top: var(--space-sm);
+    min-height: 1.2em;
+  }
+
+  .form-status.success {
+    color: var(--accent-warm);
+  }
+
+  .form-status.error {
+    color: #e57373;
+  }
+
+  .what-happens {
+    max-width: 560px;
+    margin: var(--space-lg) auto 0;
+  }
+
+  .what-happens h2 {
+    font-size: 1.3rem;
+    margin-bottom: var(--space-sm);
+  }
+
+  .what-happens p {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+  }
+
+  .what-happens .ai-disclosure {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-top: var(--space-sm);
+  }
+
+  .what-happens .ai-disclosure a {
+    color: var(--text-muted);
+    text-decoration: underline;
+  }
+
+  .what-happens .ai-disclosure a:hover {
+    color: var(--accent-warm);
+  }
+</style>

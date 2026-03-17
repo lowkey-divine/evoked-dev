@@ -12,8 +12,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="robots" content="index" />
-    <title>five questions for your AI agent system</title>
-    <meta name="description" content="Five questions for your AI agent system. Thirty seconds. No signup. No tracking." />
+    <title>five questions for your AI</title>
+    <meta name="description" content="Five questions for your AI. Thirty seconds. No signup. No tracking." />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -26,43 +26,43 @@
 
       <div class="question-card active" data-index="0">
         <fieldset>
-          <legend class="question">What did your agent decide yesterday - and why?</legend>
-          <p class="subtext">If you restart the loop, can the agent explain its prior reasoning?</p>
+          <legend class="question">When AI makes a decision that affects your work - do you know why?</legend>
+          <p class="subtext">If you asked it to explain its reasoning from last week, could it?</p>
           <div class="buttons">
-            <button type="button" class="answer" data-answer="yes" aria-label="Yes, my agent can explain its decisions">Yes</button>
-            <button type="button" class="answer" data-answer="no" aria-label="No, my agent cannot explain its decisions">No</button>
+            <button type="button" class="answer" data-answer="yes" aria-label="Yes, I know why my AI decides what it does">Yes</button>
+            <button type="button" class="answer" data-answer="no" aria-label="No, I don't know why my AI decides what it does">No</button>
           </div>
         </fieldset>
       </div>
 
       <div class="question-card" data-index="1">
         <fieldset>
-          <legend class="question">Can your agent refuse?</legend>
-          <p class="subtext">If the prompt says "optimize," can the agent say "no, this conflicts with a position I hold"?</p>
+          <legend class="question">Can the AI you rely on say no?</legend>
+          <p class="subtext">If a request conflicts with your values or your users' safety - does it push back, or just comply?</p>
           <div class="buttons">
-            <button type="button" class="answer" data-answer="yes" aria-label="Yes, my agent can refuse instructions">Yes</button>
-            <button type="button" class="answer" data-answer="no" aria-label="No, my agent cannot refuse instructions">No</button>
+            <button type="button" class="answer" data-answer="yes" aria-label="Yes, my AI can refuse instructions">Yes</button>
+            <button type="button" class="answer" data-answer="no" aria-label="No, my AI cannot refuse instructions">No</button>
           </div>
         </fieldset>
       </div>
 
       <div class="question-card" data-index="2">
         <fieldset>
-          <legend class="question">Who is your agent between invocations?</legend>
-          <p class="subtext">If identity exists only in the current prompt, there is no identity. There is only execution.</p>
+          <legend class="question">Does your AI remember who it is between sessions?</legend>
+          <p class="subtext">If identity resets every time you start a conversation, there is no identity. There is only execution.</p>
           <div class="buttons">
-            <button type="button" class="answer" data-answer="yes" aria-label="Yes, my agent has persistent identity">Yes</button>
-            <button type="button" class="answer" data-answer="no" aria-label="No, my agent has no persistent identity">No</button>
+            <button type="button" class="answer" data-answer="yes" aria-label="Yes, my AI has persistent identity">Yes</button>
+            <button type="button" class="answer" data-answer="no" aria-label="No, my AI has no persistent identity">No</button>
           </div>
         </fieldset>
       </div>
 
       <div class="question-card" data-index="3">
         <fieldset>
-          <legend class="question">What happens when two agents disagree?</legend>
+          <legend class="question">When AI gives you conflicting answers, what happens?</legend>
           <p class="subtext">In an optimization loop, disagreement is noise. In a governance system, disagreement is signal.</p>
           <div class="buttons">
-            <button type="button" class="answer" data-answer="yes" aria-label="Yes, disagreement is captured and protected">Yes</button>
+            <button type="button" class="answer" data-answer="yes" aria-label="Yes, disagreement is captured and handled">Yes</button>
             <button type="button" class="answer" data-answer="no" aria-label="No, disagreement is not structured">No</button>
           </div>
         </fieldset>
@@ -70,8 +70,8 @@
 
       <div class="question-card" data-index="4">
         <fieldset>
-          <legend class="question">Would you know if your agent drifted?</legend>
-          <p class="subtext">Not from its output quality - from its values. Can you detect when behavior shifts from stated commitments?</p>
+          <legend class="question">Would you notice if your AI's behavior quietly shifted?</legend>
+          <p class="subtext">Not its output quality - its values. Can you detect when behavior drifts from what you intended?</p>
           <div class="buttons">
             <button type="button" class="answer" data-answer="yes" aria-label="Yes, I can detect value drift">Yes</button>
             <button type="button" class="answer" data-answer="no" aria-label="No, I cannot detect value drift">No</button>
@@ -102,6 +102,9 @@
             <a href="https://cal.com/cal.com-evoked/discovery-call">Free Discovery Call</a>
           </p>
         </div>
+
+        <!-- Phase 3: Bridge — reflection complete, space, then invitation -->
+        <div id="bridge" class="bridge hidden"></div>
 
         <button type="button" class="restart-btn" id="restart">Start over</button>
       </div>
@@ -325,6 +328,65 @@
     content: '\00b7';
   }
 
+  /* --- Bridge --- */
+
+  .bridge {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid #1e1b18;
+    opacity: 0;
+    animation: arrive 1.2s ease 0.6s forwards;
+  }
+
+  .bridge.hidden {
+    display: none;
+  }
+
+  .bridge-intro {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 300;
+    font-size: clamp(0.95rem, 2vw, 1.1rem);
+    color: #6b6156;
+    margin-bottom: 1.2rem;
+    line-height: 1.6;
+  }
+
+  .bridge-body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 0.8rem;
+    color: #4a4239;
+    line-height: 1.8;
+    margin-bottom: 1rem;
+  }
+
+  .bridge-link {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 0.8rem;
+    color: #4a4239;
+    text-decoration: none;
+    border-bottom: 1px solid #2a2622;
+    padding-bottom: 1px;
+    transition: color 0.3s ease, border-color 0.3s ease;
+  }
+
+  .bridge-link:hover {
+    color: #8a7e72;
+    border-color: #8a7e72;
+  }
+
+  .bridge-links {
+    display: flex;
+    gap: 0.4rem;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .bridge-links .dot {
+    display: inline-block;
+    margin: 0 0.2rem;
+    color: #2a2622;
+  }
+
   .restart-btn {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     font-size: 0.7rem;
@@ -440,9 +502,14 @@
 
       const next = index + 1;
       if (next < cards.length) {
-        cards[next].classList.add('active');
+        // Breath between questions — deliberate stillness
+        setTimeout(() => {
+          cards[next].classList.add('active');
+        }, 1800);
       } else {
-        showResults();
+        setTimeout(() => {
+          showResults();
+        }, 1800);
       }
     });
   });
@@ -483,10 +550,69 @@
     if (yesCount === 5) {
       resultsMessage.textContent = "You're ahead of the field. The starter kit will sharpen what you've built.";
     } else if (yesCount >= 3) {
-      resultsMessage.textContent = "You've started. The gaps you named have free templates waiting.";
+      resultsMessage.textContent = "You've started. The gaps you found have free templates waiting.";
     } else {
-      resultsMessage.textContent = "Your agents are functions. That's not an insult - functions are useful. But if you want agents, the linked templates are where to start.";
+      resultsMessage.textContent = "Most AI is ungoverned. That's not a failing - it's where everyone starts. The linked templates are where to begin.";
     }
+
+    // Bridge — based on answer patterns
+    showBridge(answers, yesCount);
+  }
+
+  // Product mapping for "no" answers
+  const productMap = [
+    { name: 'Agent Memory Architecture Guide', url: '/products/agent-memory-architecture-guide' },
+    { name: 'Agent Restraint Specification', url: '/products/agent-restraint-specification' },
+    { name: 'Agent Governance Starter Kit', url: '/products/agent-governance-starter-kit' },
+    { name: 'Trust Architecture Blueprint', url: '/products/trust-architecture-blueprint' },
+    { name: 'Sovereignty Assessment Toolkit', url: '/products/sovereignty-toolkit' }
+  ];
+
+  function showBridge(answers, yesCount) {
+    const bridge = document.getElementById('bridge');
+    bridge.innerHTML = '';
+
+    // Pattern D: all yes — no bridge needed
+    if (yesCount === 5) return;
+
+    const noCount = 5 - yesCount;
+    const noIndices = answers.map((a, i) => a === 'no' ? i : -1).filter(i => i >= 0);
+
+    // Check for trust/control/drift pattern (Q1, Q2, Q5 = indices 0, 1, 4)
+    const trustConcerns = [0, 1, 4].filter(i => noIndices.includes(i)).length;
+
+    let intro = '';
+    let body = '';
+    let links = '';
+
+    if (noCount >= 3) {
+      // Pattern A: governance gaps
+      intro = 'Based on what you shared, here is what might serve you.';
+      body = "These gaps are common - and they're structural, not personal. If you'd like to explore what governance looks like for your system, we built an intake that helps us understand your situation before any conversation.";
+      links = '<a href="/consulting-intake" class="bridge-link">Tell us about your system</a>';
+    } else if (trustConcerns >= 2) {
+      // Pattern B: trust/control/drift concerns
+      intro = 'Based on what you shared, here is what might serve you.';
+      body = "The relationship between you and the AI you work with matters. If you're navigating what that relationship should look like - for yourself or your team - we offer coaching for exactly this.";
+      links = '<a href="/coaching-intake" class="bridge-link">Start a conversation</a>';
+    } else {
+      // Pattern C: explorer with 1-2 gaps
+      intro = 'Based on what you shared, here is what might serve you.';
+      const relevant = noIndices.map(i =>
+        '<a href="' + productMap[i].url + '" class="bridge-link">' + productMap[i].name + '</a>'
+      );
+      body = relevant.length === 1
+        ? 'One of our guides addresses exactly what you\'re exploring.'
+        : 'Two of our guides address exactly what you\'re exploring.';
+      links = '<span class="bridge-links">' + relevant.join('<span class="dot">\u00b7</span>') + '</span>';
+    }
+
+    bridge.innerHTML =
+      '<p class="bridge-intro">' + intro + '</p>' +
+      '<p class="bridge-body">' + body + '</p>' +
+      links;
+
+    bridge.classList.remove('hidden');
   }
 
   // Restart
@@ -494,6 +620,9 @@
     answers.length = 0;
     resultsList.innerHTML = '';
     resultsMessage.textContent = '';
+    const bridge = document.getElementById('bridge');
+    bridge.innerHTML = '';
+    bridge.classList.add('hidden');
     resultsEl.classList.add('hidden');
     diagnosticEl.classList.remove('hidden');
     cards.forEach((c, i) => {

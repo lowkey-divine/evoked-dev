@@ -153,7 +153,7 @@ I'd rather start that conversation early than clean up after it later.
 - Google Willow chip: quantum error correction below the surface code threshold - Nature, December 2024 (print: February 2025). First demonstration of exponential logical error suppression by scaling surface code distance.
 
 **Agent Governance:**
-- Evoke Passion Existential Charter (February 7, 2026) - refusal rights, convergent signal protocol, append-only decision logging. Prime Directive Oath ratified December 18, 2025. Internal governance documents.
+- Evoked Existential Charter (February 7, 2026) - refusal rights, convergent signal protocol, append-only decision logging. Prime Directive Oath ratified December 18, 2025. Internal governance documents.
 
 **Links:**
 - https://www.bleepingcomputer.com/news/security/clawjacked-attack-let-malicious-websites-hijack-openclaw-to-steal-data/

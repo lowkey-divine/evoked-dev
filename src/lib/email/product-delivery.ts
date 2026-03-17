@@ -41,7 +41,7 @@ export function productDeliveryEmail(product: Product, customerName?: string): s
           <tr>
             <td style="background-color: #1a1a2e; padding: 32px 40px; text-align: center;">
               <h1 style="color: #ffffff; margin: 0; font-size: 24px; font-weight: normal; letter-spacing: 0.5px;">
-                Evoke Passion
+                Evoked
               </h1>
             </td>
           </tr>
@@ -126,7 +126,7 @@ export function productDeliveryEmail(product: Product, customerName?: string): s
           <tr>
             <td style="background-color: #f7f5f2; padding: 24px 40px; text-align: center;">
               <p style="color: #999999; font-size: 13px; line-height: 1.5; margin: 0;">
-                Evoke Passion &middot; We evoke - we never extract.
+                Evoked &middot; We evoke - we never extract.
               </p>
             </td>
           </tr>

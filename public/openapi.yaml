@@ -11,7 +11,7 @@ info:
 
     Patent pending. Application #64/004,087. Priority date March 12, 2026.
   contact:
-    name: Evoke Passion
+    name: Evoked
     url: https://evoked.dev
     email: evokesupports@icloud.com
   license:
@@ -44,11 +44,11 @@ paths:
             example: cura
         - name: org
           in: query
-          description: Organization name to list all registered agents (e.g. `Evoke Passion`).
+          description: Organization name to list all registered agents (e.g. `Evoked`).
           required: false
           schema:
             type: string
-            example: Evoke Passion
+            example: Evoked
       responses:
         '200':
           description: Agent or organization found.
@@ -73,7 +73,7 @@ paths:
                   value:
                     agent_id: cura
                     display_name: Cura
-                    organization: Evoke Passion
+                    organization: Evoked
                     role: Chief Executive Officer
                     circle: Leadership
                     tier: 1
@@ -93,13 +93,13 @@ paths:
                     attestation:
                       level: self-attested
                       last_verified: '2026-03-11T00:00:00Z'
-                      verified_by: Evoke Passion Bot Authority
+                      verified_by: Evoked Bot Authority
                     verified: true
-                    verified_by: Evoke Passion Bot Authority
+                    verified_by: Evoked Bot Authority
                 organization:
                   summary: Organization lookup (truncated)
                   value:
-                    organization: Evoke Passion
+                    organization: Evoked
                     agent_count: 58
                     agents:
                       - agent_id: cura
@@ -110,7 +110,7 @@ paths:
                         attestation:
                           level: self-attested
                           last_verified: '2026-03-11T00:00:00Z'
-                          verified_by: Evoke Passion Bot Authority
+                          verified_by: Evoked Bot Authority
         '400':
           description: Missing required parameter.
           content:

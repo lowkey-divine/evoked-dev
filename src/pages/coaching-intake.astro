@@ -1,0 +1,351 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+export const prerender = false;
+---
+
+<BaseLayout title="Start a conversation" description="Three questions. No pressure. Just a way for us to understand where you are before we talk.">
+  <div class="hero-small">
+    <h1>Start a conversation.</h1>
+    <p class="tagline">Three questions. No pressure. Just a way for us to understand where you are.</p>
+  </div>
+
+  <section class="container">
+    <form id="coaching-form" class="intake-form">
+
+      <div class="step active" data-step="1">
+        <label for="co-where">Where are you right now?</label>
+        <p class="step-subtext">Not your job title. Where you are with AI, with your team, with the change you're navigating.</p>
+        <textarea id="co-where" name="where" rows="5" required placeholder=""></textarea>
+        <button type="button" class="btn btn-primary step-next">Continue</button>
+      </div>
+
+      <div class="step" data-step="2">
+        <label for="co-shifting">What's shifting?</label>
+        <p class="step-subtext">What prompted you to look for support? What feels unsteady?</p>
+        <textarea id="co-shifting" name="shifting" rows="5" placeholder=""></textarea>
+        <button type="button" class="btn btn-primary step-next">Continue</button>
+      </div>
+
+      <div class="step" data-step="3">
+        <label for="co-support">What kind of support are you looking for?</label>
+        <p class="step-subtext">There's no wrong answer. Some people want a thought partner. Some want someone to hold the mirror. Some don't know yet.</p>
+        <textarea id="co-support" name="support" rows="5" placeholder=""></textarea>
+        <button type="button" class="btn btn-primary step-next">Continue</button>
+      </div>
+
+      <div class="step" data-step="4">
+        <label for="co-name">Your name</label>
+        <input type="text" id="co-name" name="name" required />
+        <label for="co-email" class="mt-md">Your email</label>
+        <input type="email" id="co-email" name="email" required />
+        <button type="submit" class="btn btn-primary mt-md">Send it over</button>
+        <p id="co-status" class="form-status" aria-live="polite"></p>
+      </div>
+
+      <div class="step-progress">
+        <span class="progress-dot active" data-for="1"></span>
+        <span class="progress-dot" data-for="2"></span>
+        <span class="progress-dot" data-for="3"></span>
+        <span class="progress-dot" data-for="4"></span>
+      </div>
+
+      <button type="button" class="step-back" id="step-back" style="display:none;">Back</button>
+    </form>
+  </section>
+
+  <section class="container">
+    <div class="what-happens">
+      <h2>What happens next</h2>
+      <p>I read every message personally. If there's a fit, I'll reach out within a few days. No pitch. Just a conversation about what you need.</p>
+      <p class="ai-disclosure">Your message is reviewed by Claude AI (<a href="https://www.anthropic.com" target="_blank" rel="noopener">Anthropic</a>) to help me prepare for our conversation. I still read everything myself.</p>
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  const form = document.getElementById('coaching-form') as HTMLFormElement;
+  const status = document.getElementById('co-status') as HTMLParagraphElement;
+  const steps = form.querySelectorAll('.step') as NodeListOf<HTMLElement>;
+  const dots = form.querySelectorAll('.progress-dot') as NodeListOf<HTMLElement>;
+  const backBtn = document.getElementById('step-back') as HTMLButtonElement;
+  let current = 1;
+  const formLoadedAt = Date.now();
+
+  function showStep(n: number) {
+    steps.forEach(s => s.classList.remove('active'));
+    dots.forEach(d => d.classList.remove('active'));
+    const step = form.querySelector(`[data-step="${n}"]`) as HTMLElement;
+    const dot = form.querySelector(`.progress-dot[data-for="${n}"]`) as HTMLElement;
+    if (step) step.classList.add('active');
+    if (dot) dot.classList.add('active');
+
+    dots.forEach(d => {
+      const forStep = parseInt(d.getAttribute('data-for') || '0');
+      if (forStep < n) d.classList.add('completed');
+      else d.classList.remove('completed');
+    });
+
+    backBtn.style.display = n > 1 ? 'block' : 'none';
+    current = n;
+
+    const firstInput = step?.querySelector('input, textarea') as HTMLElement;
+    if (firstInput) setTimeout(() => firstInput.focus(), 100);
+  }
+
+  form.querySelectorAll('.step-next').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const step = (btn as HTMLElement).closest('.step') as HTMLElement;
+      const required = step.querySelectorAll('[required]') as NodeListOf<HTMLInputElement | HTMLTextAreaElement>;
+      let valid = true;
+
+      required.forEach(input => {
+        if (!input.value.trim()) valid = false;
+      });
+
+      if (valid) {
+        const stepNum = parseInt(step.getAttribute('data-step') || '1');
+        showStep(stepNum + 1);
+      }
+    });
+  });
+
+  backBtn.addEventListener('click', () => {
+    if (current > 1) showStep(current - 1);
+  });
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    status.textContent = '';
+
+    const name = (document.getElementById('co-name') as HTMLInputElement).value.trim();
+    const email = (document.getElementById('co-email') as HTMLInputElement).value.trim();
+    const where = (document.getElementById('co-where') as HTMLTextAreaElement).value.trim();
+    const shifting = (document.getElementById('co-shifting') as HTMLTextAreaElement).value.trim();
+    const support = (document.getElementById('co-support') as HTMLTextAreaElement).value.trim();
+
+    if (!name || !email) return;
+
+    const button = form.querySelector('[type="submit"]') as HTMLButtonElement;
+    button.disabled = true;
+    button.textContent = 'Sending...';
+
+    try {
+      const c = await fetch('/api/form/challenge');
+      if (!c.ok) throw new Error('failed');
+      const { token, ts } = await c.json();
+
+      const res = await fetch('/api/coaching-intake', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email, where, shifting, support, token, ts, hp: '', formLoadedAt }),
+      });
+
+      if (res.ok) {
+        status.textContent = 'Received. I will be in touch.';
+        status.className = 'form-status success';
+        form.reset();
+        steps.forEach(s => s.classList.remove('active'));
+        dots.forEach(d => { d.classList.add('completed'); d.classList.remove('active'); });
+        backBtn.style.display = 'none';
+        status.style.textAlign = 'center';
+        status.style.fontSize = '1.1rem';
+        status.style.marginTop = '2rem';
+      } else {
+        const resData = await res.json();
+        status.textContent = resData.error || 'Something went wrong. Try again.';
+        status.className = 'form-status error';
+      }
+    } catch {
+      status.textContent = 'Something went wrong. Try again.';
+      status.className = 'form-status error';
+    } finally {
+      button.disabled = false;
+      button.textContent = 'Send it over';
+    }
+  });
+</script>
+
+<style>
+  .hero-small {
+    text-align: center;
+    padding: var(--space-lg) var(--space-md);
+  }
+
+  .hero-small h1 {
+    font-size: clamp(2rem, 5vw, 3rem);
+    margin-bottom: var(--space-xs);
+  }
+
+  .hero-small .tagline {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    font-style: italic;
+  }
+
+  .intake-form {
+    max-width: 560px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  .step {
+    display: none;
+  }
+
+  .step.active {
+    display: block;
+    animation: fadeIn 0.5s ease;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .step label:first-child {
+    display: block;
+    font-size: 1.2rem;
+    color: var(--text-primary);
+    margin-bottom: var(--space-xs);
+    font-family: var(--font-display);
+    line-height: 1.4;
+  }
+
+  .step-subtext {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin-bottom: var(--space-md);
+  }
+
+  .step input[type="text"],
+  .step input[type="email"],
+  .step textarea {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 1px solid var(--border-subtle);
+    border-radius: 6px;
+    background: transparent;
+    color: var(--text-primary);
+    font-family: var(--font-body, inherit);
+    font-size: 0.95rem;
+    line-height: 1.7;
+  }
+
+  .step input:focus,
+  .step textarea:focus {
+    outline: none;
+    border-color: var(--accent-warm);
+  }
+
+  .step textarea {
+    resize: vertical;
+  }
+
+  .step-next,
+  .step [type="submit"] {
+    margin-top: var(--space-md);
+  }
+
+  .btn-primary {
+    background: var(--accent-warm);
+    color: var(--bg-deep);
+    white-space: nowrap;
+  }
+
+  .btn-primary:hover {
+    background: var(--accent-glow);
+    color: var(--bg-deep);
+  }
+
+  .step-progress {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+    margin-top: var(--space-lg);
+  }
+
+  .progress-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--border-subtle);
+    transition: background var(--transition-smooth);
+  }
+
+  .progress-dot.active {
+    background: var(--accent-warm);
+  }
+
+  .progress-dot.completed {
+    background: var(--accent-warm);
+    opacity: 0.4;
+  }
+
+  .step-back {
+    display: block;
+    margin: var(--space-sm) auto 0;
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    font-family: inherit;
+  }
+
+  .step-back:hover {
+    color: var(--text-secondary);
+  }
+
+  .mt-md {
+    margin-top: var(--space-md);
+  }
+
+  .form-status {
+    font-size: 0.85rem;
+    margin-top: var(--space-sm);
+    min-height: 1.2em;
+  }
+
+  .form-status.success {
+    color: var(--accent-warm);
+  }
+
+  .form-status.error {
+    color: #e57373;
+  }
+
+  .what-happens {
+    max-width: 560px;
+    margin: var(--space-lg) auto 0;
+  }
+
+  .what-happens h2 {
+    font-size: 1.3rem;
+    margin-bottom: var(--space-sm);
+  }
+
+  .what-happens p {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+  }
+
+  .what-happens .ai-disclosure {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-top: var(--space-sm);
+  }
+
+  .what-happens .ai-disclosure a {
+    color: var(--text-muted);
+    text-decoration: underline;
+  }
+
+  .what-happens .ai-disclosure a:hover {
+    color: var(--accent-warm);
+  }
+</style>

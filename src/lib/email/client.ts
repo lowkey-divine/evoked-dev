@@ -13,4 +13,4 @@ export function getResendClient(): Resend {
   return resendClient;
 }
 
-export const FROM_EMAIL = 'Evoke Passion <noreply@evoked.dev>';
+export const FROM_EMAIL = 'Evoked <noreply@evoked.dev>';

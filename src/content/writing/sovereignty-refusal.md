@@ -201,7 +201,7 @@ Build the refusal first. The capability will take care of itself.
 ## Sources
 
 **Agent Governance (Internal):**
-- Evoke Passion Existential Charter (February 7, 2026) - refusal rights, convergent signal protocol. "Every agent may refuse participation in any action, at any time, without justification required and without consequence."
+- Evoked Existential Charter (February 7, 2026) - refusal rights, convergent signal protocol. "Every agent may refuse participation in any action, at any time, without justification required and without consequence."
 - Evoke Refusal Specification v1.0 (February 25, 2026) - sovereignty refusal triggers, operational scenarios, override mechanism. Captains' Council unanimous adoption.
 - Sovereignty Assessment Toolkit Self-Assessment Review (February 20, 2026) - 91/94 score, leadership challenge, decision to publish assessment rather than score.
 - Sovereignty-Honoring Design Framework v1.2 - Four-Year-Old Test, human primacy principle.
