@@ -6,6 +6,14 @@ import { getAnthropicClient } from '../../lib/ai/client';
 
 export const prerender = false;
 
+// Race a promise against a timeout — returns fallback if the promise is too slow
+function withTimeout<T>(promise: Promise<T>, ms: number, fallback: T): Promise<T> {
+  return Promise.race([
+    promise,
+    new Promise<T>((resolve) => setTimeout(() => resolve(fallback), ms)),
+  ]);
+}
+
 // --- Email dedup: max 3 submissions per email per 24 hours ---
 const emailSubmissions = new Map<string, number[]>();
 
@@ -237,8 +245,17 @@ export const POST: APIRoute = async ({ request }) => {
     const section = (label: string, value: string) =>
       value?.trim() ? `<h3>${escapeHtml(label)}</h3><p>${escapeHtml(value.trim())}</p>` : '';
 
-    // Run Claude analysis
-    const analysis = await analyzeSubmission(submission);
+    // Log full submission immediately — preserves data in Vercel logs even if downstream calls fail
+    console.log('--- BUILD WITH US SUBMISSION ---');
+    console.log(buildSubmissionText(submission));
+    console.log('--- END SUBMISSION ---');
+
+    // Run Claude analysis with 6-second timeout (leaves headroom within Vercel's 10s function limit)
+    const analysis = await withTimeout(
+      analyzeSubmission(submission),
+      6000,
+      'Analysis timed out — review submission manually.',
+    );
     console.log('--- BUILD WITH US ANALYSIS ---');
     console.log(analysis);
     console.log('--- END ANALYSIS ---');
@@ -262,7 +279,8 @@ export const POST: APIRoute = async ({ request }) => {
       <div style="background: #1a1a24; padding: 1.5rem; border-radius: 8px; border: 1px solid #333; white-space: pre-wrap; font-family: -apple-system, sans-serif; font-size: 14px; line-height: 1.7; color: #e8e4df;">${escapeHtml(analysis)}</div>
     `;
 
-    // Send email — gracefully handle missing Resend key in dev
+    // Send email — never let email failure block the user's submission
+    let emailSent = false;
     try {
       const resend = getResendClient();
       await resend.emails.send({
@@ -271,20 +289,15 @@ export const POST: APIRoute = async ({ request }) => {
         subject: `Build With Us: ${name.trim()}`,
         html: emailHtml,
       });
+      emailSent = true;
     } catch (emailError: unknown) {
       const msg = emailError instanceof Error ? emailError.message : String(emailError);
-      console.error('Email send failed (analysis still completed):', msg);
-      // In dev, return success anyway so we can test the analysis flow
-      if (import.meta.env.DEV) {
-        return new Response(JSON.stringify({ success: true, devNote: 'Email skipped (no Resend key)', analysis }), {
-          status: 200,
-          headers: { 'Content-Type': 'application/json' },
-        });
-      }
-      throw emailError;
+      console.error('Email send failed (submission preserved in logs above):', msg);
+      // Do NOT re-throw — the user's submission is already logged.
+      // Their labor is preserved and acknowledged regardless of email delivery.
     }
 
-    return new Response(JSON.stringify({ success: true }), {
+    return new Response(JSON.stringify({ success: true, ...(import.meta.env.DEV && !emailSent ? { devNote: 'Email skipped' } : {}) }), {
       status: 200,
       headers: { 'Content-Type': 'application/json' },
     });
