@@ -10,7 +10,7 @@
 
 ### Completed This Session
 - All 8 consulting playbooks complete
-- Rebranded "Evoke Passion" → "Evoke"
+- Rebranded "Evoke Passion" → "Evoked"
 - Footer tagline updated to "I Evoke."
 - Fixed Echo deployment (vercel.json functions error + Astro static output)
 - Rotated API key after accidental exposure

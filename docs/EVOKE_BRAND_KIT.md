@@ -5,7 +5,7 @@
 **Status:** In progress
 
 ### Decisions Made
-- [x] Brand name: **Evoke** (not "Evoke Passion")
+- [x] Brand name: **Evoked** (not "Evoke Passion")
 - [x] Primary color: **Golden Yellow** `#E5A818` (default)
 - [x] Accent color: **Coral Orange** `#E85D3B` (special/highlight use only)
 - [x] Stacked wordmark: Needs update — crop/remove "Passion" from existing asset
@@ -17,7 +17,7 @@
 
 **Name:** Evoke
 **Type:** Parent brand
-**Previous name:** Evoke Passion (retired)
+**Previous name:** Evoke Passion (retired, now operating as Evoked)
 **Tagline:** "We evoke — we never extract."
 **Personal form:** "I Evoke."
 
@@ -214,7 +214,7 @@ The geometric line work overlaying organic lip shapes represents the intersectio
 
 ### On Disk
 
-**Stacked (lips + "EVOKE PASSION" wordmark) — wordmark needs "PASSION" removed:**
+**Stacked (lips + "EVOKE PASSION" wordmark) — wordmark needs updating to "EVOKED":**
 
 | File | Fill | Line/Text | Background |
 |------|------|-----------|------------|
@@ -237,7 +237,7 @@ All files located in `~/Downloads/`.
 
 ### Needed
 
-- [ ] **Wordmark update: crop/remove "Passion"** — stacked version currently reads "Evoke Passion", needs to say just "Evoke"
+- [ ] **Wordmark update** — stacked version currently reads "Evoke Passion", needs to say "Evoked"
 - [ ] Horizontal lockup (logo + "Evoke" wordmark side by side)
 - [ ] Orange stacked variant (for special use)
 - [ ] Orange reversed variant (for special use on dark)

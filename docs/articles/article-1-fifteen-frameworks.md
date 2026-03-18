@@ -37,7 +37,7 @@
 
 - The six refusal categories (already in "What Should Your Agent Refuse?")
 - The four pillars in detail (already in "Who Governs the Agent?")
-- The Evoke Passion fleet, 142 agents, births, or governance architecture
+- The Evoked fleet, 142 agents, births, or governance architecture
 - The sovereignty-honoring design philosophy (already its own article)
 - The Anthropic constitution comparison (that's Article 3)
 - Any mention of the patent, NIST paper, or Bot Authority registry
@@ -92,7 +92,7 @@ Four-act structure applied:
 Before Article 1 enters Phase 4 (Draft), verify:
 - No paragraph could be cut and pasted into "Who Governs the Agent?" and fit
 - No paragraph restates the six refusal categories
-- No paragraph describes the Evoke Passion internal system
+- No paragraph describes the Evoked internal system
 - The article's substance is 100% outward-facing landscape
 - Internal work is referenced only via links, never restated
 

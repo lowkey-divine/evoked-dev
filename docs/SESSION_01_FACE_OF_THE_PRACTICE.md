@@ -78,7 +78,7 @@ Erin's background (from the context data) tells a story:
 | 2017-2020 | Nespresso — People operations, 75% promotion rate |
 | 2020-2023 | Amy's Drive Thru — Training, trust-based relationships |
 | 2023-2025 | RealtyCom — Account management, 108% revenue through non-extractive approach |
-| 2024-Present | Evoke Passion — Founder, building human-AI flourishing |
+| 2024-Present | Evoked — Founder, building human-AI flourishing |
 | 2025-Present | Vibrant Life — Hero's Journey Guide |
 | In Progress | Master's in Marriage & Family Therapy |
 

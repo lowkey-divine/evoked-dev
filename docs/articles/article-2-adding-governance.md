@@ -41,7 +41,7 @@
 
 - The landscape gap (that's Article 1 -- link to it)
 - Philosophy of sovereignty or refusal (link to existing articles)
-- The Evoke Passion fleet or how our system works internally
+- The Evoked fleet or how our system works internally
 - The Anthropic comparison (Article 3)
 - Enterprise governance platforms or compliance frameworks
 - Pricing or consulting services
