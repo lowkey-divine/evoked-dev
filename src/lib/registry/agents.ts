@@ -49,7 +49,7 @@ function evokeAgent(
     organization: 'Evoked',
     role,
     circle,
-    tier: 1,
+    tier: 2,
     governance: {
       has_identity: true,
       has_restraint_spec: true,
@@ -59,9 +59,9 @@ function evokeAgent(
       refusal_categories: [...REFUSAL_CATEGORIES],
     },
     attestation: {
-      level: 'self-attested',
-      last_verified: '2026-03-11T00:00:00Z',
-      verified_by: 'Evoked Bot Authority',
+      level: 'governance-validated',
+      last_verified: '2026-03-19T00:00:00Z',
+      verified_by: 'Evoked Bot Authority — Governance Validation Audit',
     },
   };
 }
