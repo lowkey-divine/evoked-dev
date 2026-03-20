@@ -83,7 +83,7 @@ async function analyzeSubmission(submission: CoachingSubmission): Promise<string
   try {
     const client = getAnthropicClient();
     const response = await client.messages.create({
-      model: 'claude-sonnet-4-6-20250514',
+      model: 'claude-sonnet-4-6',
       max_tokens: 1200,
       system: ANALYSIS_PROMPT,
       messages: [
