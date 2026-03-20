@@ -206,7 +206,11 @@ export const prerender = false;
     try {
       // Fetch challenge token
       const c = await fetch('/api/form/challenge');
-      if (!c.ok) throw new Error('failed');
+      if (!c.ok) {
+        const ct = await c.text();
+        console.error('Challenge failed:', c.status, ct);
+        throw new Error(`Challenge failed (${c.status})`);
+      }
       const { token, ts } = await c.json();
 
       const res = await fetch('/api/build-with-us', {
@@ -227,12 +231,22 @@ export const prerender = false;
         status.style.fontSize = '1.1rem';
         status.style.marginTop = '2rem';
       } else {
-        const resData = await res.json();
-        status.textContent = resData.error || 'Something went wrong. Try again.';
+        let errorMsg = 'Something went wrong. Try again.';
+        try {
+          const resData = await res.json();
+          errorMsg = resData.error || errorMsg;
+        } catch {
+          const text = await res.text().catch(() => '');
+          console.error('Non-JSON error response:', res.status, text);
+        }
+        status.textContent = errorMsg;
         status.className = 'build-status error';
       }
-    } catch {
-      status.textContent = 'Something went wrong. Try again.';
+    } catch (err) {
+      console.error('Form submission error:', err);
+      status.textContent = err instanceof Error && err.message !== 'failed'
+        ? `Something went wrong: ${err.message}`
+        : 'Something went wrong. Try again.';
       status.className = 'build-status error';
     } finally {
       button.disabled = false;
