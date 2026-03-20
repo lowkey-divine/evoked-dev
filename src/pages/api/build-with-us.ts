@@ -138,7 +138,7 @@ async function analyzeSubmission(submission: Submission): Promise<string> {
   try {
     const client = getAnthropicClient();
     const response = await client.messages.create({
-      model: 'claude-sonnet-4-20250514',
+      model: 'claude-sonnet-4-6-20250514',
       max_tokens: 1500,
       system: ANALYSIS_PROMPT,
       messages: [
@@ -250,10 +250,10 @@ export const POST: APIRoute = async ({ request }) => {
     console.log(buildSubmissionText(submission));
     console.log('--- END SUBMISSION ---');
 
-    // Run Claude analysis with 6-second timeout (leaves headroom within Vercel's 10s function limit)
+    // Run Claude analysis with 4-second timeout (leaves headroom within Vercel's 10s function limit)
     const analysis = await withTimeout(
       analyzeSubmission(submission),
-      6000,
+      4000,
       'Analysis timed out — review submission manually.',
     );
     console.log('--- BUILD WITH US ANALYSIS ---');
