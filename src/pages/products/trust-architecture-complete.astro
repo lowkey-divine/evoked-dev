@@ -1,11 +1,13 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getProductBySlug } from '../../lib/products/registry';
+import { productJsonLd } from '../../lib/structured-data';
 
 const product = getProductBySlug('trust-architecture-complete')!;
+const jsonLd = productJsonLd(product, 'https://evoked.dev/products/trust-architecture-complete');
 ---
 
-<BaseLayout title="Trust Architecture Complete" description="The complete trust practice: identity, voice, governance, and restraint. All four products, one price, the right build order. $149.">
+<BaseLayout title="Trust Architecture Complete" description="The complete trust practice: identity, voice, governance, and restraint. All four products, one price, the right build order. $149." structuredData={jsonLd}>
   <div class="hero hero-compact">
     <span class="discipline-badge">Full Practice</span>
     <h1>The complete trust practice.</h1>

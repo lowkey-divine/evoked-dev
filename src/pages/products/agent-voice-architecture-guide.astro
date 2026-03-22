@@ -1,11 +1,13 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getProductBySlug } from '../../lib/products/registry';
+import { productJsonLd } from '../../lib/structured-data';
 
 const product = getProductBySlug('agent-voice-architecture-guide')!;
+const jsonLd = productJsonLd(product, 'https://evoked.dev/products/agent-voice-architecture-guide');
 ---
 
-<BaseLayout title="Agent Voice Architecture Guide" description="Design agent voices that protect, respect, and nurture - in that order. Sovereignty language audit, voice specs, and refusal voice patterns. $49 PDF.">
+<BaseLayout title="Agent Voice Architecture Guide" description="Design agent voices that protect, respect, and nurture - in that order. Sovereignty language audit, voice specs, and refusal voice patterns. $49 PDF." structuredData={jsonLd}>
   <div class="hero hero-compact">
     <span class="discipline-badge">Intent Engineering</span>
     <h1>Does your agent's voice respect the person hearing it?</h1>

@@ -1,11 +1,13 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getProductBySlug } from '../../lib/products/registry';
+import { productJsonLd } from '../../lib/structured-data';
 
 const product = getProductBySlug('trust-architecture-blueprint')!;
+const jsonLd = productJsonLd(product, 'https://evoked.dev/products/trust-architecture-blueprint');
 ---
 
-<BaseLayout title="Trust Architecture Blueprint" description="Four pillars of agent trust: identity, memory, governance, and refusal rights. Build trust into the structure, not onto it. $49 PDF.">
+<BaseLayout title="Trust Architecture Blueprint" description="Four pillars of agent trust: identity, memory, governance, and refusal rights. Build trust into the structure, not onto it. $49 PDF." structuredData={jsonLd}>
   <div class="hero hero-compact">
     <span class="discipline-badge">Specification Engineering</span>
     <h1>What does your agent system actually trust?</h1>

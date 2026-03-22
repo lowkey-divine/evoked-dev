@@ -1,11 +1,18 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import FitAssessment from '../components/ai/FitAssessment.astro';
+import { webApplicationJsonLd } from '../lib/structured-data';
 
 export const prerender = false;
+
+const fitJsonLd = webApplicationJsonLd(
+  "AI Governance Fit Assessment",
+  "AI-powered assessment that evaluates whether your project aligns with sovereignty-honoring governance consulting. Honest read, no commitment, no data stored.",
+  "https://evoked.dev/fit"
+);
 ---
 
-<BaseLayout title="Fit Assessment" description="See if your project is a good fit for my consulting services.">
+<BaseLayout title="Fit Assessment" description="See if your project is a good fit for my consulting services." structuredData={fitJsonLd}>
   <div class="hero-small">
     <h1>Is this a good fit?</h1>
     <p class="tagline">Honest assessment of project alignment.</p>

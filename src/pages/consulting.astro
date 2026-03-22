@@ -1,8 +1,11 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { consultingPageJsonLd } from '../lib/structured-data';
+
+const services = consultingPageJsonLd();
 ---
 
-<BaseLayout title="Consulting" description="Behavioral governance, trust architecture, and restraint specification for teams building with AI agents. Audits, workshops, implementation, and advisory.">
+<BaseLayout title="Consulting" description="Behavioral governance, trust architecture, and restraint specification for teams building with AI agents. Audits, workshops, implementation, and advisory." structuredData={services}>
   <div class="hero">
     <p class="recognition">You're building agents and you need them governed - not just functional.</p>
     <h1>The work has four disciplines.</h1>

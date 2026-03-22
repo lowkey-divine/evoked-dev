@@ -1,11 +1,13 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getProductBySlug } from '../../lib/products/registry';
+import { productJsonLd } from '../../lib/structured-data';
 
 const product = getProductBySlug('agent-governance-starter-kit')!;
+const jsonLd = productJsonLd(product, 'https://evoked.dev/products/agent-governance-starter-kit');
 ---
 
-<BaseLayout title="Agent Governance Starter Kit" description="Charter, boundaries, drift thresholds, and accountability for your AI agents. Build governance into the structure from day one. $49 PDF.">
+<BaseLayout title="Agent Governance Starter Kit" description="Charter, boundaries, drift thresholds, and accountability for your AI agents. Build governance into the structure from day one. $49 PDF." structuredData={jsonLd}>
   <div class="hero hero-compact">
     <span class="discipline-badge">Governance Architecture</span>
     <h1>Who governs your agents when you're not watching?</h1>

@@ -1,11 +1,13 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getProductBySlug } from '../../lib/products/registry';
+import { productJsonLd } from '../../lib/structured-data';
 
 const product = getProductBySlug('sovereignty-assessment-toolkit')!;
+const jsonLd = productJsonLd(product, 'https://evoked.dev/products/sovereignty-toolkit');
 ---
 
-<BaseLayout title="Sovereignty Assessment Toolkit" description="47-point checklist across 7 domains. Evaluate whether the technology you use or build honors human sovereignty. $49 PDF.">
+<BaseLayout title="Sovereignty Assessment Toolkit" description="47-point checklist across 7 domains. Evaluate whether the technology you use or build honors human sovereignty. $49 PDF." structuredData={jsonLd}>
   <div class="hero hero-compact">
     <span class="discipline-badge">Evaluation Design</span>
     <h1>Does your product honor human sovereignty?</h1>

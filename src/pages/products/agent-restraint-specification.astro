@@ -1,11 +1,13 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getProductBySlug } from '../../lib/products/registry';
+import { productJsonLd } from '../../lib/structured-data';
 
 const product = getProductBySlug('agent-restraint-specification')!;
+const jsonLd = productJsonLd(product, 'https://evoked.dev/products/agent-restraint-specification');
 ---
 
-<BaseLayout title="Agent Restraint Specification Template" description="Your agent can access more than you authorized. Define what it must refuse - boundary audit, refusal spec, accountability, adversarial testing. $49 PDF.">
+<BaseLayout title="Agent Restraint Specification Template" description="Your agent can access more than you authorized. Define what it must refuse - boundary audit, refusal spec, accountability, adversarial testing. $49 PDF." structuredData={jsonLd}>
 
   <!-- HOOK -->
   <div class="hero hero-compact">

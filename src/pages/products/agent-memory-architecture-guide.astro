@@ -1,11 +1,13 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getProductBySlug } from '../../lib/products/registry';
+import { productJsonLd } from '../../lib/structured-data';
 
 const product = getProductBySlug('agent-memory-architecture-guide')!;
+const jsonLd = productJsonLd(product, 'https://evoked.dev/products/agent-memory-architecture-guide');
 ---
 
-<BaseLayout title="Agent Memory Architecture Guide" description="Design what your agents remember, what they forget, and who decides. Memory types, governance, session protocols, and retention policy. $49 PDF.">
+<BaseLayout title="Agent Memory Architecture Guide" description="Design what your agents remember, what they forget, and who decides. Memory types, governance, session protocols, and retention policy. $49 PDF." structuredData={jsonLd}>
   <div class="hero hero-compact">
     <span class="discipline-badge">Context Engineering</span>
     <h1>What should your agent remember - and who decides?</h1>

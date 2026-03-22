@@ -6,9 +6,10 @@ interface Props {
   description?: string;
   hideFloatingChat?: boolean;
   image?: string;
+  structuredData?: Record<string, any> | Record<string, any>[];
 }
 
-const { title, description = "Coaching, consulting, and sovereignty-honoring AI products by Erin Stanley. Space for what matters.", hideFloatingChat = false, image = "/images/evoke-lips-yellow.png" } = Astro.props;
+const { title, description = "Coaching, consulting, and sovereignty-honoring AI products by Erin Stanley. Space for what matters.", hideFloatingChat = false, image = "/images/evoke-lips-yellow.png", structuredData } = Astro.props;
 const showFloatingChat = !hideFloatingChat && Astro.url.pathname !== '/ask' && Astro.url.pathname !== '/ask/';
 const canonicalURL = new URL(Astro.url.pathname, "https://evoked.dev");
 ---
@@ -68,6 +69,14 @@ const canonicalURL = new URL(Astro.url.pathname, "https://evoked.dev");
         }
       ]
     })} />
+
+    {structuredData && (
+      <script type="application/ld+json" set:html={JSON.stringify(
+        Array.isArray(structuredData)
+          ? { "@context": "https://schema.org", "@graph": structuredData }
+          : { "@context": "https://schema.org", ...structuredData }
+      )} />
+    )}
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />

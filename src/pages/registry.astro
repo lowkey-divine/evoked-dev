@@ -1,13 +1,20 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { getAllAgents, getRegistryStats, CIRCLE_NAMES } from '../lib/registry/agents';
+import { webApplicationJsonLd } from '../lib/structured-data';
 
 const agents = getAllAgents();
 const stats = getRegistryStats();
 const circles = Object.keys(CIRCLE_NAMES);
+
+const registryJsonLd = webApplicationJsonLd(
+  "Bot Authority - Agent Governance Registry",
+  "Verify that AI agents have governance - identity, restraint, accountability, memory, and governance charter. The first trust registry for AI agents. Open standard with verification API.",
+  "https://evoked.dev/registry"
+);
 ---
 
-<BaseLayout title="Bot Authority - Agent Governance Registry" description="How do you know an agent is governed? Verify agent identity, restraint, accountability, memory, and governance charter. The first trust registry for AI agents.">
+<BaseLayout title="Bot Authority - Agent Governance Registry" description="How do you know an agent is governed? Verify agent identity, restraint, accountability, memory, and governance charter. The first trust registry for AI agents." structuredData={registryJsonLd}>
 
   <!-- HERO: Problem-first with live verification tool -->
   <div class="hero">
