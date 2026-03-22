@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 
-export const prerender = false;
+export const prerender = true;
 ---
 
 <BaseLayout title="Build With Us" description="Tell us about the app you want to build. Sovereignty-honoring software starts with a conversation.">
@@ -11,101 +11,9 @@ export const prerender = false;
   </div>
 
   <section class="container">
-    <form id="build-form" class="build-form">
-
-      <div class="step active" data-step="1">
-        <p class="step-label">The bones</p>
-        <label for="build-type">Is this an app, a website, or both?</label>
-        <div class="type-options">
-          <label class="type-option"><input type="radio" name="type" value="app" required /> App</label>
-          <label class="type-option"><input type="radio" name="type" value="website" /> Website</label>
-          <label class="type-option"><input type="radio" name="type" value="both" /> Both</label>
-        </div>
-        <label for="build-description" class="mt-md">Tell us about it in a few sentences.</label>
-        <textarea id="build-description" name="description" rows="3" required placeholder="What is it? What problem does it solve? Why does it matter to you?"></textarea>
-        <button type="button" class="btn btn-primary step-next">Continue</button>
-      </div>
-
-      <div class="step" data-step="2">
-        <p class="step-label">The eyes</p>
-        <label for="build-audience">Who will use this?</label>
-        <textarea id="build-audience" name="audience" rows="3" required placeholder="Describe the person, family, or community this is for. What does their day look like?"></textarea>
-        <button type="button" class="btn btn-primary step-next">Continue</button>
-      </div>
-
-      <div class="step" data-step="3">
-        <p class="step-label">The muscles</p>
-        <label for="build-functions">What are the 3-5 things it must do?</label>
-        <textarea id="build-functions" name="functions" rows="4" required placeholder="The core actions. Not the wish list - the essentials. What does it DO?"></textarea>
-        <button type="button" class="btn btn-primary step-next">Continue</button>
-      </div>
-
-      <div class="step" data-step="4">
-        <p class="step-label">The blood</p>
-        <label for="build-data">What information flows through it?</label>
-        <textarea id="build-data" name="data" rows="3" placeholder="User accounts? Content? Transactions? Recipes? Locations? What does it hold and who owns it?"></textarea>
-        <button type="button" class="btn btn-primary step-next">Continue</button>
-      </div>
-
-      <div class="step" data-step="5">
-        <p class="step-label">The nervous system</p>
-        <label for="build-integrations">What does it need to talk to?</label>
-        <textarea id="build-integrations" name="integrations" rows="3" placeholder="Payments, email, calendars, maps, social media, nothing? What existing systems should it connect to?"></textarea>
-        <button type="button" class="btn btn-primary step-next">Continue</button>
-      </div>
-
-      <div class="step" data-step="6">
-        <p class="step-label">The heart</p>
-        <label for="build-heart">Why does this matter to you? And what should it refuse to do?</label>
-        <textarea id="build-heart" name="heart" rows="4" placeholder="The passion behind it. The values it carries. And the lines it should never cross."></textarea>
-        <button type="button" class="btn btn-primary step-next">Continue</button>
-      </div>
-
-      <div class="step" data-step="7">
-        <p class="step-label">The soul</p>
-        <label for="build-soul">What is driving you to build this?</label>
-        <textarea id="build-soul" name="soul" rows="4" placeholder="The fire behind it. What keeps you thinking about this? What would it mean to you if it existed?"></textarea>
-        <button type="button" class="btn btn-primary step-next">Continue</button>
-      </div>
-
-      <div class="step" data-step="8">
-        <p class="step-label">The skin</p>
-        <label for="build-look">What should it look like and feel like?</label>
-        <textarea id="build-look" name="look" rows="3" placeholder="Dark and warm? Bright and playful? Minimal? Have a reference site or brand? Tell us anything."></textarea>
-        <button type="button" class="btn btn-primary step-next">Continue</button>
-      </div>
-
-      <div class="step" data-step="9">
-        <p class="step-label">You</p>
-        <label for="build-name">Your name</label>
-        <input type="text" id="build-name" name="name" required />
-        <label for="build-email" class="mt-md">Your email</label>
-        <input type="email" id="build-email" name="email" required />
-        <button type="submit" class="btn btn-primary mt-md">Send it over</button>
-        <p id="build-status" class="build-status" aria-live="polite"></p>
-      </div>
-
-      <div class="step-progress">
-        <span class="progress-dot active" data-for="1"></span>
-        <span class="progress-dot" data-for="2"></span>
-        <span class="progress-dot" data-for="3"></span>
-        <span class="progress-dot" data-for="4"></span>
-        <span class="progress-dot" data-for="5"></span>
-        <span class="progress-dot" data-for="6"></span>
-        <span class="progress-dot" data-for="7"></span>
-        <span class="progress-dot" data-for="8"></span>
-        <span class="progress-dot" data-for="9"></span>
-      </div>
-
-      <button type="button" class="step-back" id="step-back" style="display:none;">Back</button>
-    </form>
-  </section>
-
-  <section class="container">
-    <div class="what-happens">
-      <h2>What happens next</h2>
-      <p>I read every submission personally. If there is a fit, I will reach out within a few days with a scope conversation. We build your first working version — then we decide together what it needs next.</p>
-    <p class="ai-disclosure">Your submission is analyzed by Claude AI (<a href="https://www.anthropic.com" target="_blank" rel="noopener">Anthropic</a>) to help me assess fit and prepare for our conversation. I still read everything myself.</p>
+    <div class="coming-soon">
+      <p class="coming-soon-label">Coming soon</p>
+      <p>Our intake form is being rebuilt. In the meantime, reach out directly at <a href="mailto:evokesupports@icloud.com">evokesupports@icloud.com</a> and tell us what you want to build.</p>
     </div>
   </section>
 
@@ -117,143 +25,6 @@ export const prerender = false;
     </div>
   </section>
 </BaseLayout>
-
-<script>
-  const form = document.getElementById('build-form') as HTMLFormElement;
-  const status = document.getElementById('build-status') as HTMLParagraphElement;
-  const steps = form.querySelectorAll('.step') as NodeListOf<HTMLElement>;
-  const dots = form.querySelectorAll('.progress-dot') as NodeListOf<HTMLElement>;
-  const backBtn = document.getElementById('step-back') as HTMLButtonElement;
-  let current = 1;
-  const formLoadedAt = Date.now();
-
-  function showStep(n: number) {
-    steps.forEach(s => s.classList.remove('active'));
-    dots.forEach(d => d.classList.remove('active'));
-    const step = form.querySelector(`[data-step="${n}"]`) as HTMLElement;
-    const dot = form.querySelector(`.progress-dot[data-for="${n}"]`) as HTMLElement;
-    if (step) step.classList.add('active');
-    if (dot) dot.classList.add('active');
-
-    // Mark completed dots
-    dots.forEach(d => {
-      const forStep = parseInt(d.getAttribute('data-for') || '0');
-      if (forStep < n) d.classList.add('completed');
-      else d.classList.remove('completed');
-    });
-
-    backBtn.style.display = n > 1 ? 'block' : 'none';
-    current = n;
-
-    // Focus first input in new step
-    const firstInput = step?.querySelector('input, textarea') as HTMLElement;
-    if (firstInput) setTimeout(() => firstInput.focus(), 100);
-  }
-
-  // Next buttons
-  form.querySelectorAll('.step-next').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const step = (btn as HTMLElement).closest('.step') as HTMLElement;
-      const required = step.querySelectorAll('[required]') as NodeListOf<HTMLInputElement | HTMLTextAreaElement>;
-      let valid = true;
-
-      required.forEach(input => {
-        if (input.type === 'radio') {
-          const name = input.name;
-          const checked = step.querySelector(`input[name="${name}"]:checked`);
-          if (!checked) valid = false;
-        } else if (!input.value.trim()) {
-          valid = false;
-        }
-      });
-
-      if (valid) {
-        const stepNum = parseInt(step.getAttribute('data-step') || '1');
-        showStep(stepNum + 1);
-      }
-    });
-  });
-
-  // Back button
-  backBtn.addEventListener('click', () => {
-    if (current > 1) showStep(current - 1);
-  });
-
-  // Submit
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    status.textContent = '';
-
-    const name = (document.getElementById('build-name') as HTMLInputElement).value.trim();
-    const email = (document.getElementById('build-email') as HTMLInputElement).value.trim();
-    const typeEl = form.querySelector('input[name="type"]:checked') as HTMLInputElement;
-    const type = typeEl ? typeEl.value : '';
-    const description = (document.getElementById('build-description') as HTMLTextAreaElement).value.trim();
-    const audience = (document.getElementById('build-audience') as HTMLTextAreaElement).value.trim();
-    const functions = (document.getElementById('build-functions') as HTMLTextAreaElement).value.trim();
-    const data = (document.getElementById('build-data') as HTMLTextAreaElement).value.trim();
-    const integrations = (document.getElementById('build-integrations') as HTMLTextAreaElement).value.trim();
-    const heart = (document.getElementById('build-heart') as HTMLTextAreaElement).value.trim();
-    const soul = (document.getElementById('build-soul') as HTMLTextAreaElement).value.trim();
-    const look = (document.getElementById('build-look') as HTMLTextAreaElement).value.trim();
-
-    if (!name || !email || !description) return;
-
-    const button = form.querySelector('[type="submit"]') as HTMLButtonElement;
-    button.disabled = true;
-    button.textContent = 'Sending...';
-
-    try {
-      // Fetch challenge token
-      const c = await fetch('/api/form/challenge');
-      if (!c.ok) {
-        const ct = await c.text();
-        console.error('Challenge failed:', c.status, ct);
-        throw new Error(`Challenge failed (${c.status})`);
-      }
-      const { token, ts } = await c.json();
-
-      const res = await fetch('/api/build-with-us', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, email, type, description, audience, functions, data, integrations, heart, soul, look, token, ts, hp: '', formLoadedAt }),
-      });
-
-      if (res.ok) {
-        status.textContent = 'Received. I will be in touch.';
-        status.className = 'build-status success';
-        form.reset();
-        // Show a completion state
-        steps.forEach(s => s.classList.remove('active'));
-        dots.forEach(d => { d.classList.add('completed'); d.classList.remove('active'); });
-        backBtn.style.display = 'none';
-        status.style.textAlign = 'center';
-        status.style.fontSize = '1.1rem';
-        status.style.marginTop = '2rem';
-      } else {
-        let errorMsg = 'Something went wrong. Try again.';
-        try {
-          const resData = await res.json();
-          errorMsg = resData.error || errorMsg;
-        } catch {
-          const text = await res.text().catch(() => '');
-          console.error('Non-JSON error response:', res.status, text);
-        }
-        status.textContent = errorMsg;
-        status.className = 'build-status error';
-      }
-    } catch (err) {
-      console.error('Form submission error:', err);
-      status.textContent = err instanceof Error && err.message !== 'failed'
-        ? `Something went wrong: ${err.message}`
-        : 'Something went wrong. Try again.';
-      status.className = 'build-status error';
-    } finally {
-      button.disabled = false;
-      button.textContent = 'Send it over';
-    }
-  });
-</script>
 
 <style>
   .hero-small {
@@ -273,27 +44,14 @@ export const prerender = false;
     font-style: italic;
   }
 
-  .build-form {
+  .coming-soon {
     max-width: 560px;
     margin: 0 auto;
-    position: relative;
+    text-align: center;
+    padding: var(--space-lg) var(--space-md);
   }
 
-  .step {
-    display: none;
-  }
-
-  .step.active {
-    display: block;
-    animation: fadeIn 0.3s ease;
-  }
-
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(8px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  .step-label {
+  .coming-soon-label {
     font-family: var(--font-display);
     font-size: 0.85rem;
     text-transform: uppercase;
@@ -302,177 +60,19 @@ export const prerender = false;
     margin-bottom: var(--space-sm);
   }
 
-  .step label:not(.type-option) {
-    display: block;
-    font-size: 1.1rem;
-    color: var(--text-primary);
-    margin-bottom: var(--space-sm);
-    font-family: var(--font-display);
-    line-height: 1.4;
-  }
-
-  .step input[type="text"],
-  .step input[type="email"],
-  .step textarea {
-    width: 100%;
-    padding: 0.6rem 1rem;
-    border: 1px solid var(--border-subtle);
-    border-radius: 6px;
-    background: transparent;
-    color: var(--text-primary);
-    font-family: var(--font-body, inherit);
-    font-size: 0.95rem;
-    line-height: 1.6;
-  }
-
-  .step input:focus,
-  .step textarea:focus {
-    outline: none;
-    border-color: var(--accent-warm);
-  }
-
-  .step input::placeholder,
-  .step textarea::placeholder {
-    color: var(--text-muted);
-  }
-
-  .step textarea {
-    resize: vertical;
-  }
-
-  .type-options {
-    display: flex;
-    gap: var(--space-sm);
-    margin-bottom: var(--space-md);
-  }
-
-  .type-option {
-    display: flex !important;
-    align-items: center;
-    gap: 0.4rem;
-    font-size: 0.95rem !important;
-    font-family: var(--font-body, inherit) !important;
-    color: var(--text-secondary) !important;
-    cursor: pointer;
-    padding: 0.5rem 1rem;
-    border: 1px solid var(--border-subtle);
-    border-radius: 6px;
-    transition: border-color var(--transition-smooth);
-  }
-
-  .type-option:has(input:checked) {
-    border-color: var(--accent-warm);
-    color: var(--text-primary) !important;
-  }
-
-  .type-option input[type="radio"] {
-    width: auto;
-    accent-color: var(--accent-warm);
-  }
-
-  .step-next,
-  .step [type="submit"] {
-    margin-top: var(--space-md);
-  }
-
-  .btn-primary {
-    background: var(--accent-warm);
-    color: var(--bg-deep);
-    white-space: nowrap;
-  }
-
-  .btn-primary:hover {
-    background: var(--accent-glow);
-    color: var(--bg-deep);
-  }
-
-  .step-progress {
-    display: flex;
-    gap: 0.5rem;
-    justify-content: center;
-    margin-top: var(--space-lg);
-  }
-
-  .progress-dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: var(--border-subtle);
-    transition: background var(--transition-smooth);
-  }
-
-  .progress-dot.active {
-    background: var(--accent-warm);
-  }
-
-  .progress-dot.completed {
-    background: var(--accent-warm);
-    opacity: 0.4;
-  }
-
-  .step-back {
-    display: block;
-    margin: var(--space-sm) auto 0;
-    background: none;
-    border: none;
-    color: var(--text-muted);
-    font-size: 0.85rem;
-    cursor: pointer;
-    padding: 0.5rem 1rem;
-    font-family: inherit;
-  }
-
-  .step-back:hover {
-    color: var(--text-secondary);
-  }
-
-  .mt-md {
-    margin-top: var(--space-md);
-  }
-
-  .build-status {
-    font-size: 0.85rem;
-    margin-top: var(--space-sm);
-    min-height: 1.2em;
-  }
-
-  .build-status.success {
-    color: var(--accent-warm);
-  }
-
-  .build-status.error {
-    color: #e57373;
-  }
-
-  .what-happens {
-    max-width: 560px;
-    margin: var(--space-lg) auto 0;
-  }
-
-  .what-happens h2 {
-    font-size: 1.3rem;
-    margin-bottom: var(--space-sm);
-  }
-
-  .what-happens p {
+  .coming-soon p {
     font-size: 0.95rem;
     color: var(--text-secondary);
     line-height: 1.7;
   }
 
-  .what-happens .ai-disclosure {
-    font-size: 0.8rem;
-    color: var(--text-muted);
-    margin-top: var(--space-sm);
-  }
-
-  .what-happens .ai-disclosure a {
-    color: var(--text-muted);
+  .coming-soon a {
+    color: var(--accent-warm);
     text-decoration: underline;
   }
 
-  .what-happens .ai-disclosure a:hover {
-    color: var(--accent-warm);
+  .coming-soon a:hover {
+    color: var(--accent-glow);
   }
 
   .already-built {
