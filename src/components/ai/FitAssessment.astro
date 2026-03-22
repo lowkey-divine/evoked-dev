@@ -54,6 +54,43 @@
       <button type="button" class="btn" id="reset-btn">Assess Another Project</button>
       <a href="mailto:passionevoked@icloud.com?subject=Consulting Inquiry" class="btn btn-primary">Get in Touch</a>
     </div>
+
+    <div id="fit-email-capture" class="fit-email-capture">
+      <hr class="capture-divider" />
+
+      <div id="email-form-area">
+        <p class="email-capture-lead">Want a copy of your assessment with relevant next steps? Enter your email — nothing else happens unless you want it to.</p>
+        <form id="email-form" class="email-form" novalidate>
+          <input type="text" id="email-hp" name="hp" style="display: none;" tabindex="-1" autocomplete="off" />
+          <div class="email-form-row">
+            <input
+              type="email"
+              id="email-input"
+              placeholder="your@email.com"
+              autocomplete="email"
+            />
+            <button type="submit" id="email-submit-btn" class="btn">[CTA TEXT]</button>
+          </div>
+          <label class="newsletter-opt-in">
+            <input type="checkbox" id="newsletter-checkbox" />
+            <span>Also hear from us occasionally about sovereignty-honoring AI design</span>
+          </label>
+        </form>
+      </div>
+
+      <div id="email-success" class="email-feedback hidden">
+        <p>[NEEDS FLEET REVIEW — success message]</p>
+      </div>
+
+      <div id="email-error" class="email-feedback email-feedback-error hidden">
+        <p id="email-error-msg"></p>
+        <button type="button" id="email-retry" class="btn-link">Try again</button>
+      </div>
+
+      <div id="email-sending" class="email-feedback hidden">
+        <p>[NEEDS FLEET REVIEW — sending state]</p>
+      </div>
+    </div>
   </div>
 
   <div id="fit-loading" class="fit-loading hidden">
@@ -88,6 +125,21 @@
   const resetBtn = document.getElementById('reset-btn') as HTMLButtonElement;
   const retryBtn = document.getElementById('retry-btn') as HTMLButtonElement;
 
+  // Email capture elements
+  const emailFormArea = document.getElementById('email-form-area') as HTMLDivElement;
+  const emailForm = document.getElementById('email-form') as HTMLFormElement;
+  const emailInput = document.getElementById('email-input') as HTMLInputElement;
+  const emailHp = document.getElementById('email-hp') as HTMLInputElement;
+  const newsletterCheckbox = document.getElementById('newsletter-checkbox') as HTMLInputElement;
+  const emailSuccess = document.getElementById('email-success') as HTMLDivElement;
+  const emailErrorDiv = document.getElementById('email-error') as HTMLDivElement;
+  const emailErrorMsg = document.getElementById('email-error-msg') as HTMLParagraphElement;
+  const emailRetry = document.getElementById('email-retry') as HTMLButtonElement;
+  const emailSending = document.getElementById('email-sending') as HTMLDivElement;
+
+  // Holds the last completed assessment for the email form to reference
+  let currentAssessment: FitAssessment | null = null;
+
   // Character count
   textarea.addEventListener('input', () => {
     charCount.textContent = String(textarea.value.length);
@@ -98,6 +150,14 @@
     resultDiv.classList.add('hidden');
     loadingDiv.classList.add('hidden');
     errorDiv.classList.add('hidden');
+    currentAssessment = null;
+    // Reset email capture
+    emailFormArea.classList.remove('hidden');
+    emailSuccess.classList.add('hidden');
+    emailErrorDiv.classList.add('hidden');
+    emailSending.classList.add('hidden');
+    emailInput.value = '';
+    newsletterCheckbox.checked = false;
   }
 
   function showLoading() {
@@ -108,6 +168,7 @@
   }
 
   function showResult(assessment: FitAssessment) {
+    currentAssessment = assessment;
     form.classList.add('hidden');
     loadingDiv.classList.add('hidden');
     errorDiv.classList.add('hidden');
@@ -191,6 +252,70 @@
 
   retryBtn.addEventListener('click', () => {
     showForm();
+  });
+
+  // --- Email capture ---
+
+  function setEmailState(state: 'form' | 'sending' | 'success' | 'error') {
+    emailFormArea.classList.toggle('hidden', state !== 'form');
+    emailSending.classList.toggle('hidden', state !== 'sending');
+    emailSuccess.classList.toggle('hidden', state !== 'success');
+    emailErrorDiv.classList.toggle('hidden', state !== 'error');
+  }
+
+  async function submitEmailCapture(email: string, subscribeNewsletter: boolean) {
+    if (!currentAssessment) return;
+
+    setEmailState('sending');
+
+    try {
+      const c = await fetch('/api/form/challenge');
+      if (!c.ok) throw new Error('failed');
+      const { token, ts } = await c.json();
+
+      const response = await fetch('/api/fit-followup', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email,
+          fitLevel: currentAssessment.fitLevel,
+          score: currentAssessment.score,
+          strengths: currentAssessment.strengths,
+          considerations: currentAssessment.considerations,
+          suggestedServices: currentAssessment.suggestedServices,
+          subscribeNewsletter,
+          token,
+          ts,
+          hp: emailHp.value,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Something went wrong. Please try again.');
+      }
+
+      setEmailState('success');
+    } catch (err) {
+      emailErrorMsg.textContent = err instanceof Error ? err.message : 'Something went wrong. Please try again.';
+      setEmailState('error');
+    }
+  }
+
+  emailForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const email = emailInput.value.trim();
+    if (!email || !email.includes('@')) {
+      emailErrorMsg.textContent = 'Please enter a valid email address.';
+      setEmailState('error');
+      return;
+    }
+    submitEmailCapture(email, newsletterCheckbox.checked);
+  });
+
+  emailRetry.addEventListener('click', () => {
+    setEmailState('form');
   });
 </script>
 
@@ -390,6 +515,84 @@
 
   .fit-loading p {
     color: var(--text-muted);
+  }
+
+  /* Email capture */
+  .fit-email-capture {
+    margin-top: var(--space-md);
+  }
+
+  .capture-divider {
+    border: none;
+    border-top: 1px solid var(--border-subtle);
+    margin: 0 0 var(--space-md);
+  }
+
+  .email-capture-lead {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    margin-bottom: var(--space-sm);
+  }
+
+  .email-form-row {
+    display: flex;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-sm);
+  }
+
+  .email-form-row input[type="email"] {
+    flex: 1;
+    padding: var(--space-sm) var(--space-md);
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: 8px;
+    color: var(--text-primary);
+    font-size: 1rem;
+    font-family: var(--font-body);
+  }
+
+  .email-form-row input[type="email"]:focus {
+    outline: none;
+    border-color: var(--border-accent);
+  }
+
+  .newsletter-opt-in {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-xs);
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    cursor: pointer;
+  }
+
+  .newsletter-opt-in input[type="checkbox"] {
+    margin-top: 2px;
+    flex-shrink: 0;
+  }
+
+  .email-feedback {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    padding: var(--space-sm) 0;
+  }
+
+  .email-feedback-error {
+    color: #ef4444;
+  }
+
+  .btn-link {
+    background: none;
+    border: none;
+    padding: 0;
+    color: var(--text-muted);
+    font-size: 0.875rem;
+    cursor: pointer;
+    text-decoration: underline;
+    font-family: var(--font-body);
+  }
+
+  .btn-link:hover {
+    color: var(--text-primary);
   }
 
   /* Error */
