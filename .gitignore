@@ -29,3 +29,6 @@ PROVISIONAL_PATENT_GUIDE.md
 # jetbrains setting folder
 .idea/
 .vercel/
+
+# Claude Code worktrees
+.claude/
