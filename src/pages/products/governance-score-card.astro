@@ -1,0 +1,161 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getProductBySlug } from '../../lib/products/registry';
+import { productJsonLd } from '../../lib/structured-data';
+
+const product = getProductBySlug('governance-score-card')!;
+const jsonLd = productJsonLd(product, 'https://evoked.dev/products/governance-score-card');
+---
+
+<BaseLayout title="Governance Score Card" description="Run the scan. Read the card. Know what your score means. $1 PDF." structuredData={jsonLd}>
+  <div class="hero hero-compact">
+    <span class="discipline-badge">Quick Assessment</span>
+    <h1>What does your governance score mean?</h1>
+    <p class="tagline">Run the scan. Read the card. Know what to fix first.</p>
+  </div>
+
+  <section class="container">
+    <div class="value-prop">
+      <p>
+        You ran <code>npx agent-governance-check</code> on your project and got a score.
+        Maybe 1 out of 5. Maybe 3. Now what?
+      </p>
+      <p>
+        This card tells you what each gap means, what risk it carries, and one concrete
+        action per finding. No theory. No fluff. Just the interpretation and the next step.
+      </p>
+    </div>
+  </section>
+
+  <section class="container">
+    <h2>What You Get</h2>
+
+    <div class="features-grid">
+      <div class="feature">
+        <h3>Score Interpretation Grid</h3>
+        <p>Each of the five governance properties mapped to FOUND, PARTIAL, or MISSING - with what each status actually means for your system.</p>
+      </div>
+      <div class="feature">
+        <h3>Risk Assessment Per Gap</h3>
+        <p>What happens when decision memory is missing? When refusal capability is absent? The risk isn't abstract - it's operational.</p>
+      </div>
+      <div class="feature">
+        <h3>One Action Per Finding</h3>
+        <p>Not a roadmap. Not a consulting pitch. One concrete next step per gap, completable in an afternoon.</p>
+      </div>
+      <div class="feature">
+        <h3>EU AI Act Context</h3>
+        <p>Which governance gaps map to EU AI Act requirements taking effect August 2026. The regulatory clock is ticking.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="container">
+    <h2>How It Works</h2>
+
+    <div class="domains-list">
+      <div class="domain-item">
+        <span class="domain-number">1</span>
+        <div>
+          <h3>Run the free scan</h3>
+          <p><code>npx agent-governance-check</code> in your project directory. 30 seconds.</p>
+        </div>
+      </div>
+      <div class="domain-item">
+        <span class="domain-number">2</span>
+        <div>
+          <h3>Get your score</h3>
+          <p>Five questions. Each answered FOUND, PARTIAL, or MISSING. Your governance posture in one screen.</p>
+        </div>
+      </div>
+      <div class="domain-item">
+        <span class="domain-number">3</span>
+        <div>
+          <h3>Read the card</h3>
+          <p>Match each result to the interpretation grid. Know the risk, know the fix, know the priority.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="container">
+    <h2>Who This Is For</h2>
+
+    <div class="audience-grid">
+      <div class="card">
+        <h3>Developers Building Agents</h3>
+        <p>You shipped the agent. Now you want to know what governance looks like. Start with the scan and the card.</p>
+      </div>
+      <div class="card">
+        <h3>Team Leads Evaluating Risk</h3>
+        <p>Run the scan on your team's agent projects. The card tells you which gaps to bring to the next standup.</p>
+      </div>
+      <div class="card">
+        <h3>Anyone Curious About Governance</h3>
+        <p>A dollar. A scan. A card. Five minutes of your time and you'll know more about agent governance than most conference talks teach.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="container text-center">
+    <div class="purchase-card">
+      <div class="price-display">$1</div>
+      <p>PDF download. The interpretation guide for your governance scan.</p>
+      <a href={product.stripePaymentLink} class="btn btn-primary btn-large mt-md" target="_blank" rel="noopener">Get the Score Card</a>
+      <p class="text-muted mt-md" style="font-size: 0.85rem;">
+        Haven't run the scan yet? <code>npx agent-governance-check</code> - it's free and takes 30 seconds.
+      </p>
+    </div>
+  </section>
+
+  <section class="container">
+    <h2>Go Deeper</h2>
+    <p>
+      The score card tells you what's missing. If you want to build what's missing:
+    </p>
+
+    <div class="upsell-grid">
+      <div class="card">
+        <h3>Governance Templates ($5)</h3>
+        <p>The five templates with filled-in examples from a real system. Charter, restraint, memory, deliberation, drift.</p>
+        <a href="/products/governance-templates-guided" class="btn mt-sm">View Templates</a>
+      </div>
+      <div class="card">
+        <h3>Implementation Guide ($9.99)</h3>
+        <p>Step-by-step for CrewAI, LangGraph, and Pydantic AI. From scan results to working governance.</p>
+        <a href="/products/governance-implementation-guide" class="btn mt-sm">View Guide</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero-compact { min-height: 45vh; }
+  .discipline-badge { display: inline-block; background: var(--accent-subtle); color: var(--accent-warm); font-size: 0.7rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; padding: 3px 10px; border-radius: 100px; margin-bottom: var(--space-sm); }
+  .value-prop p { font-size: 1.05rem; color: var(--text-primary); line-height: 1.8; }
+  .value-prop code { background: var(--bg-surface); padding: 2px 6px; border-radius: 4px; font-size: 0.9rem; }
+  .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: var(--space-md); }
+  .feature { background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: 8px; padding: var(--space-md); }
+  .feature h3 { font-size: 1.1rem; margin-bottom: var(--space-xs); }
+  .feature p { font-size: 0.9rem; margin-bottom: 0; }
+  .domains-list { display: flex; flex-direction: column; gap: var(--space-sm); }
+  .domain-item { display: flex; align-items: flex-start; gap: var(--space-md); padding: var(--space-sm) 0; border-bottom: 1px solid var(--border-subtle); }
+  .domain-item:last-child { border-bottom: none; }
+  .domain-number { font-family: var(--font-display); font-size: 2rem; color: var(--accent-warm); line-height: 1; flex-shrink: 0; width: 2rem; text-align: center; }
+  .domain-item h3 { margin-bottom: 0; font-size: 1.1rem; }
+  .domain-item p { font-size: 0.9rem; font-style: italic; margin-bottom: 0; }
+  .domain-item code { background: var(--bg-surface); padding: 2px 6px; border-radius: 4px; font-size: 0.85rem; }
+  .audience-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: var(--space-md); }
+  .audience-grid .card h3 { font-size: 1.1rem; }
+  .audience-grid .card p { font-size: 0.9rem; margin-bottom: 0; }
+  .purchase-card { background: var(--accent-subtle); border: 2px solid var(--accent-warm); border-radius: 12px; padding: var(--space-lg); max-width: 500px; margin: 0 auto; }
+  .purchase-card code { background: var(--bg-surface); padding: 2px 6px; border-radius: 4px; font-size: 0.85rem; }
+  .price-display { font-family: var(--font-display); font-size: 3rem; color: var(--accent-warm); font-weight: 500; }
+  .btn-large { padding: var(--space-sm) var(--space-lg); font-size: 1rem; }
+  .btn-primary { background: var(--accent-warm); color: var(--bg-deep); }
+  .btn-primary:hover { background: var(--accent-glow); color: var(--bg-deep); }
+  .upsell-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: var(--space-md); margin-top: var(--space-md); }
+  .upsell-grid .card h3 { font-size: 1.1rem; }
+  .upsell-grid .card p { font-size: 0.9rem; }
+  @media (max-width: 600px) { .features-grid { grid-template-columns: 1fr; } .domain-item { gap: var(--space-sm); } .domain-number { font-size: 1.5rem; } }
+</style>

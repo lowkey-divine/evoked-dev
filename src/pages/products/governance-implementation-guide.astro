@@ -1,0 +1,133 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getProductBySlug } from '../../lib/products/registry';
+import { productJsonLd } from '../../lib/structured-data';
+
+const product = getProductBySlug('governance-implementation-guide')!;
+const jsonLd = productJsonLd(product, 'https://evoked.dev/products/governance-implementation-guide');
+---
+
+<BaseLayout title="Agent Governance Implementation Guide" description="Add governance to the agent you already built. Step by step. Framework-specific. $9.99 PDF." structuredData={jsonLd}>
+  <div class="hero hero-compact">
+    <span class="discipline-badge">Implementation Guide</span>
+    <h1>Add governance to the agent you already built.</h1>
+    <p class="tagline">Framework-specific. Step by step. One session.</p>
+  </div>
+
+  <section class="container">
+    <div class="value-prop">
+      <p>
+        You have an agent in production. It works. It does not have governance.
+        You know it should - the scan told you that. This guide shows you how
+        to add it without rewriting your system.
+      </p>
+      <p>
+        25 pages. Framework-specific sections for CrewAI, LangGraph, and Pydantic AI.
+        Code examples you can copy. From scan results to working governance in one sitting.
+      </p>
+    </div>
+  </section>
+
+  <section class="container">
+    <h2>What You Get</h2>
+
+    <div class="features-grid">
+      <div class="feature">
+        <h3>The Five Properties</h3>
+        <p>Identity, restraint, accountability, memory, and charter - implemented in order, with dependencies explained. Build them in the right sequence.</p>
+      </div>
+      <div class="feature">
+        <h3>Framework-Specific Sections</h3>
+        <p>CrewAI YAML configs. LangGraph state schemas. Pydantic AI tool definitions. Code that works in your stack, not generic advice.</p>
+      </div>
+      <div class="feature">
+        <h3>Refusal Implementation</h3>
+        <p>Six refusal categories with real-world examples. How to build agents that know what they should not do - not just what they can.</p>
+      </div>
+      <div class="feature">
+        <h3>Drift Detection Setup</h3>
+        <p>Behavioral baselines, measurement cadence, and escalation thresholds. Know when your agent has changed before your users do.</p>
+      </div>
+      <div class="feature">
+        <h3>EU AI Act Mapping</h3>
+        <p>Which governance properties map to which articles. The regulatory context for why this work matters beyond good engineering.</p>
+      </div>
+      <div class="feature">
+        <h3>Verification Step</h3>
+        <p>Re-run the governance scan after implementation. See your score go from 1/5 to 5/5. Proof that the work landed.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="container">
+    <h2>Who This Is For</h2>
+
+    <div class="audience-grid">
+      <div class="card">
+        <h3>Engineers With Agents in Production</h3>
+        <p>Your agent works. This guide helps you make it governed. No rewrite required - governance layers onto existing architecture.</p>
+      </div>
+      <div class="card">
+        <h3>Teams Adopting CrewAI, LangGraph, or Pydantic AI</h3>
+        <p>Framework-specific guidance means you're not translating generic advice. The examples are in your stack's language.</p>
+      </div>
+      <div class="card">
+        <h3>Technical Leads Preparing for EU AI Act</h3>
+        <p>Annex III takes effect August 2, 2026. This guide maps governance properties to specific articles. Start now, not in July.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="container text-center">
+    <div class="purchase-card">
+      <div class="price-display">$9.99</div>
+      <p>PDF download. 25 pages. Framework-specific implementation.</p>
+      <a href={product.stripePaymentLink} class="btn btn-primary btn-large mt-md" target="_blank" rel="noopener">Get the Guide</a>
+      <p class="text-muted mt-md" style="font-size: 0.85rem;">
+        Includes CrewAI, LangGraph, and Pydantic AI sections with code examples, the five-property implementation sequence, refusal categories, and EU AI Act mapping.
+      </p>
+    </div>
+  </section>
+
+  <section class="container">
+    <h2>Go Deeper</h2>
+    <p>
+      The guide gets governance into your codebase. If you need the complete practice:
+    </p>
+
+    <div class="upsell-grid">
+      <div class="card">
+        <h3>Trust Architecture Complete ($149)</h3>
+        <p>All four trust architecture products - identity, voice, governance, and restraint - in the order they should be built.</p>
+        <a href="/products/trust-architecture-complete" class="btn mt-sm">View Bundle</a>
+      </div>
+      <div class="card">
+        <h3>Governance Audit Engagement</h3>
+        <p>We audit your agent system's governance architecture. Hands-on, in your codebase, with your team. Starting at $3,000.</p>
+        <a href="https://cal.com/cal.com-evoked/discovery-call" class="btn mt-sm" target="_blank" rel="noopener">Book Discovery Call</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero-compact { min-height: 45vh; }
+  .discipline-badge { display: inline-block; background: var(--accent-subtle); color: var(--accent-warm); font-size: 0.7rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; padding: 3px 10px; border-radius: 100px; margin-bottom: var(--space-sm); }
+  .value-prop p { font-size: 1.05rem; color: var(--text-primary); line-height: 1.8; }
+  .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: var(--space-md); }
+  .feature { background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: 8px; padding: var(--space-md); }
+  .feature h3 { font-size: 1.1rem; margin-bottom: var(--space-xs); }
+  .feature p { font-size: 0.9rem; margin-bottom: 0; }
+  .audience-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: var(--space-md); }
+  .audience-grid .card h3 { font-size: 1.1rem; }
+  .audience-grid .card p { font-size: 0.9rem; margin-bottom: 0; }
+  .purchase-card { background: var(--accent-subtle); border: 2px solid var(--accent-warm); border-radius: 12px; padding: var(--space-lg); max-width: 500px; margin: 0 auto; }
+  .price-display { font-family: var(--font-display); font-size: 3rem; color: var(--accent-warm); font-weight: 500; }
+  .btn-large { padding: var(--space-sm) var(--space-lg); font-size: 1rem; }
+  .btn-primary { background: var(--accent-warm); color: var(--bg-deep); }
+  .btn-primary:hover { background: var(--accent-glow); color: var(--bg-deep); }
+  .upsell-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: var(--space-md); margin-top: var(--space-md); }
+  .upsell-grid .card h3 { font-size: 1.1rem; }
+  .upsell-grid .card p { font-size: 0.9rem; }
+  @media (max-width: 600px) { .features-grid { grid-template-columns: 1fr; } }
+</style>

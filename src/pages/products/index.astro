@@ -4,6 +4,30 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 const productSchemas = [
   {
     "@type": "Product",
+    "name": "Governance Score Card",
+    "description": "A one-page interpretation guide for your agent governance scan results. What each gap means, the risk it carries, and one concrete next step per finding.",
+    "url": "https://evoked.dev/products/governance-score-card",
+    "brand": { "@type": "Organization", "name": "Evoked" },
+    "offers": { "@type": "Offer", "price": "1.00", "priceCurrency": "USD", "availability": "https://schema.org/InStock" }
+  },
+  {
+    "@type": "Product",
+    "name": "Agent Governance Templates (Guided)",
+    "description": "Five governance templates with worked examples, common mistakes, and completion checklists.",
+    "url": "https://evoked.dev/products/governance-templates-guided",
+    "brand": { "@type": "Organization", "name": "Evoked" },
+    "offers": { "@type": "Offer", "price": "5.00", "priceCurrency": "USD", "availability": "https://schema.org/InStock" }
+  },
+  {
+    "@type": "Product",
+    "name": "Agent Governance Implementation Guide",
+    "description": "A 25-page implementation guide with framework-specific examples for CrewAI, LangGraph, and Pydantic AI.",
+    "url": "https://evoked.dev/products/governance-implementation-guide",
+    "brand": { "@type": "Organization", "name": "Evoked" },
+    "offers": { "@type": "Offer", "price": "9.99", "priceCurrency": "USD", "availability": "https://schema.org/InStock" }
+  },
+  {
+    "@type": "Product",
     "name": "Sovereignty Assessment Toolkit",
     "description": "A structured self-assessment framework with a 47-point checklist across 7 domains, scoring rubric, and action plan template.",
     "url": "https://evoked.dev/products/sovereignty-toolkit",
@@ -72,6 +96,31 @@ const productSchemas = [
     <h1>Frameworks for the work your agents are already doing.</h1>
     <p class="tagline">Sovereignty, governance, and restraint - built in practice, not in theory.</p>
   </div>
+
+  <section class="container">
+    <h2>Start Here</h2>
+    <p class="section-intro">Run the free scan. Read the results. Build from there.</p>
+    <div class="products-grid">
+      <a href="/products/governance-score-card" class="product-card">
+        <span class="discipline-badge">Quick Assessment</span>
+        <h3>Governance Score Card</h3>
+        <p>Run <code>npx agent-governance-check</code> on your project. This card tells you what the score means and what to fix first.</p>
+        <span class="price">$1</span>
+      </a>
+      <a href="/products/governance-templates-guided" class="product-card">
+        <span class="discipline-badge">Implementation Kit</span>
+        <h3>Agent Governance Templates (Guided)</h3>
+        <p>The five governance templates with filled-in examples from a real system. Charter, restraint, memory, deliberation, drift.</p>
+        <span class="price">$5</span>
+      </a>
+      <a href="/products/governance-implementation-guide" class="product-card">
+        <span class="discipline-badge">Implementation Guide</span>
+        <h3>Agent Governance Implementation Guide</h3>
+        <p>Add governance to the agent you already built. Framework-specific for CrewAI, LangGraph, and Pydantic AI. 25 pages.</p>
+        <span class="price">$9.99</span>
+      </a>
+    </div>
+  </section>
 
   <section class="container">
     <h2>Assessment</h2>
@@ -156,6 +205,19 @@ const productSchemas = [
 </BaseLayout>
 
 <style>
+  .section-intro {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    margin-bottom: var(--space-md);
+  }
+
+  .section-intro code {
+    background: var(--bg-surface);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.85rem;
+  }
+
   .hero-compact {
     min-height: 40vh;
   }

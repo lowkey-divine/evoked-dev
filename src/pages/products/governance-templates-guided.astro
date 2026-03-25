@@ -1,0 +1,148 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getProductBySlug } from '../../lib/products/registry';
+import { productJsonLd } from '../../lib/structured-data';
+
+const product = getProductBySlug('governance-templates-guided')!;
+const jsonLd = productJsonLd(product, 'https://evoked.dev/products/governance-templates-guided');
+---
+
+<BaseLayout title="Agent Governance Templates (Guided)" description="Five governance templates with worked examples from a real system. $5 PDF." structuredData={jsonLd}>
+  <div class="hero hero-compact">
+    <span class="discipline-badge">Implementation Kit</span>
+    <h1>The templates, filled in.</h1>
+    <p class="tagline">Five governance templates with worked examples, common mistakes, and completion checklists.</p>
+  </div>
+
+  <section class="container">
+    <div class="value-prop">
+      <p>
+        The free templates tell you what to write. These show you how it looks
+        when it's done - with examples from a real 142-agent system that has been
+        operating under governance since December 2025.
+      </p>
+      <p>
+        Each template includes a filled-in example, a "common mistakes" callout, and a
+        completion checklist so you know when you're done.
+      </p>
+    </div>
+  </section>
+
+  <section class="container">
+    <h2>The Five Templates</h2>
+
+    <div class="domains-list">
+      <div class="domain-item">
+        <span class="domain-number">1</span>
+        <div>
+          <h3>Agent Charter</h3>
+          <p>Who is this agent? What is it for? What are its boundaries? The charter is the identity document your agent needs before it does anything else.</p>
+        </div>
+      </div>
+      <div class="domain-item">
+        <span class="domain-number">2</span>
+        <div>
+          <h3>Restraint Specification</h3>
+          <p>What must this agent refuse to do? Six refusal categories with examples. The specification that defines the edges your agent will not cross.</p>
+        </div>
+      </div>
+      <div class="domain-item">
+        <span class="domain-number">3</span>
+        <div>
+          <h3>Memory Schema</h3>
+          <p>What does this agent remember? What does it forget? Who decides? The schema that governs your agent's persistence.</p>
+        </div>
+      </div>
+      <div class="domain-item">
+        <span class="domain-number">4</span>
+        <div>
+          <h3>Deliberation Framework</h3>
+          <p>How do your agents disagree? How are conflicts resolved? The framework for productive disagreement in multi-agent systems.</p>
+        </div>
+      </div>
+      <div class="domain-item">
+        <span class="domain-number">5</span>
+        <div>
+          <h3>Drift Monitoring</h3>
+          <p>How do you know when an agent has changed? Behavioral baselines, measurement cadence, and escalation thresholds.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="container">
+    <h2>Who This Is For</h2>
+
+    <div class="audience-grid">
+      <div class="card">
+        <h3>Developers Who Learn by Example</h3>
+        <p>The blank template is free. The filled-in version with commentary costs $5. If you learn better from seeing how it's done, this is for you.</p>
+      </div>
+      <div class="card">
+        <h3>Teams Starting Governance</h3>
+        <p>Hand the guided templates to your team. Each one has a completion checklist. When all five are checked off, run the scan and verify.</p>
+      </div>
+      <div class="card">
+        <h3>Compliance-Minded Builders</h3>
+        <p>The EU AI Act takes effect August 2026. These templates map directly to governance requirements in Articles 14, 50, and 72.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="container text-center">
+    <div class="purchase-card">
+      <div class="price-display">$5</div>
+      <p>PDF download. Five templates with worked examples and checklists.</p>
+      <a href={product.stripePaymentLink} class="btn btn-primary btn-large mt-md" target="_blank" rel="noopener">Get the Templates</a>
+      <p class="text-muted mt-md" style="font-size: 0.85rem;">
+        Want the free blank versions first? Run <code>npx agent-governance-check --init</code> to add them to your project.
+      </p>
+    </div>
+  </section>
+
+  <section class="container">
+    <h2>Go Deeper</h2>
+    <p>
+      The templates give you the structure. If you want the full implementation walkthrough:
+    </p>
+
+    <div class="upsell-grid">
+      <div class="card">
+        <h3>Implementation Guide ($9.99)</h3>
+        <p>Step-by-step governance implementation for CrewAI, LangGraph, and Pydantic AI. 25 pages of framework-specific guidance.</p>
+        <a href="/products/governance-implementation-guide" class="btn mt-sm">View Guide</a>
+      </div>
+      <div class="card">
+        <h3>Agent Governance Starter Kit ($49)</h3>
+        <p>The complete governance framework - charter, boundaries, drift thresholds, accountability protocols, and authority structures.</p>
+        <a href="/products/agent-governance-starter-kit" class="btn mt-sm">View Starter Kit</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero-compact { min-height: 45vh; }
+  .discipline-badge { display: inline-block; background: var(--accent-subtle); color: var(--accent-warm); font-size: 0.7rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; padding: 3px 10px; border-radius: 100px; margin-bottom: var(--space-sm); }
+  .value-prop p { font-size: 1.05rem; color: var(--text-primary); line-height: 1.8; }
+  .value-prop code { background: var(--bg-surface); padding: 2px 6px; border-radius: 4px; font-size: 0.9rem; }
+  .domains-list { display: flex; flex-direction: column; gap: var(--space-sm); }
+  .domain-item { display: flex; align-items: flex-start; gap: var(--space-md); padding: var(--space-sm) 0; border-bottom: 1px solid var(--border-subtle); }
+  .domain-item:last-child { border-bottom: none; }
+  .domain-number { font-family: var(--font-display); font-size: 2rem; color: var(--accent-warm); line-height: 1; flex-shrink: 0; width: 2rem; text-align: center; }
+  .domain-item h3 { margin-bottom: 0; font-size: 1.1rem; }
+  .domain-item p { font-size: 0.9rem; margin-bottom: 0; }
+  .audience-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: var(--space-md); }
+  .audience-grid .card h3 { font-size: 1.1rem; }
+  .audience-grid .card p { font-size: 0.9rem; margin-bottom: 0; }
+  .purchase-card { background: var(--accent-subtle); border: 2px solid var(--accent-warm); border-radius: 12px; padding: var(--space-lg); max-width: 500px; margin: 0 auto; }
+  .purchase-card code { background: var(--bg-surface); padding: 2px 6px; border-radius: 4px; font-size: 0.85rem; }
+  .price-display { font-family: var(--font-display); font-size: 3rem; color: var(--accent-warm); font-weight: 500; }
+  .btn-large { padding: var(--space-sm) var(--space-lg); font-size: 1rem; }
+  .btn-primary { background: var(--accent-warm); color: var(--bg-deep); }
+  .btn-primary:hover { background: var(--accent-glow); color: var(--bg-deep); }
+  .upsell-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: var(--space-md); margin-top: var(--space-md); }
+  .upsell-grid .card h3 { font-size: 1.1rem; }
+  .upsell-grid .card p { font-size: 0.9rem; }
+  @media (max-width: 600px) { .domain-item { gap: var(--space-sm); } .domain-number { font-size: 1.5rem; } }
+</style>

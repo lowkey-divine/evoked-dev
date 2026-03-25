@@ -1,0 +1,60 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ReflectionInvitation from '../../components/ReflectionInvitation.astro';
+import { getProductBySlug } from '../../lib/products/registry';
+
+const product = getProductBySlug('governance-templates-guided')!;
+---
+
+<BaseLayout title="Thank You" description="Your Agent Governance Templates are ready to download.">
+  <div class="hero">
+    <h1>Thank you.</h1>
+    <p class="tagline">Your governance templates are ready.</p>
+  </div>
+
+  <section class="container thank-you-content">
+    <div class="download-card">
+      <h2>Download Your Templates</h2>
+      <p>Five governance templates with filled-in examples from a real system: charter, restraint, memory, deliberation, and drift monitoring. Each includes a completion checklist.</p>
+      <p>Start with the Agent Charter - it frames everything else.</p>
+      <a href="/downloads/Agent-Governance-Templates-Guided-v1.0.pdf" class="btn btn-primary mt-md" download>Download PDF</a>
+      <p class="text-muted mt-md" style="font-size: 0.85rem;">If you have any issues with your download, reach out at <a href="mailto:evokesupports@icloud.com">evokesupports@icloud.com</a>.</p>
+    </div>
+  </section>
+
+  <section class="container">
+    <h2>What's Next</h2>
+    <div class="next-steps">
+      <div class="card">
+        <h3>Implement Step by Step</h3>
+        <p>The <a href="/products/governance-implementation-guide">Implementation Guide ($9.99)</a> walks you through adding governance to CrewAI, LangGraph, or Pydantic AI.</p>
+      </div>
+      <div class="card">
+        <h3>Verify Your Work</h3>
+        <p>After filling in the templates, run <code>npx agent-governance-check</code> to verify the scanner detects your governance.</p>
+      </div>
+      <div class="card">
+        <h3>Go Full Framework</h3>
+        <p>The <a href="/products/agent-governance-starter-kit">Governance Starter Kit ($49)</a> adds accountability protocols, authority structures, and drift thresholds.</p>
+      </div>
+      <div class="card">
+        <h3>Talk It Through</h3>
+        <p>Book a free <a href="https://cal.com/cal.com-evoked/discovery-call" target="_blank" rel="noopener">discovery call</a> to discuss your governance implementation.</p>
+      </div>
+    </div>
+  </section>
+
+  <ReflectionInvitation prompt={product.reciprocityPrompt} productName={product.name} />
+</BaseLayout>
+
+<style>
+  .thank-you-content { max-width: 640px; margin-left: auto; margin-right: auto; }
+  .download-card { background: var(--accent-subtle); border: 2px solid var(--accent-warm); border-radius: 12px; padding: var(--space-lg); text-align: center; }
+  .download-card h2 { margin-top: 0; }
+  .download-card code { background: var(--bg-surface); padding: 2px 6px; border-radius: 4px; font-size: 0.85rem; }
+  .next-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--space-md); }
+  .next-steps .card h3 { font-size: 1.1rem; }
+  .next-steps .card p { font-size: 0.9rem; margin-bottom: 0; }
+  .btn-primary { background: var(--accent-warm); color: var(--bg-deep); display: inline-block; }
+  .btn-primary:hover { background: var(--accent-glow); color: var(--bg-deep); }
+</style>
