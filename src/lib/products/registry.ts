@@ -33,7 +33,7 @@ const products: Record<string, Product> = {
     emailSubject: 'Your Governance Score Card',
     downloadPath: '/downloads/Governance-Score-Card-v1.0.pdf',
     thankYouPath: '/thank-you/governance-score-card',
-    stripePaymentLink: 'PLACEHOLDER',
+    stripePaymentLink: 'https://buy.stripe.com/5kQ28rbVm0aV11ybRO24008',
     gettingStartedSteps: [
       'Run npx agent-governance-check on your project',
       'Match each result (FOUND/PARTIAL/MISSING) to the card',
@@ -52,7 +52,7 @@ const products: Record<string, Product> = {
     emailSubject: 'Your Agent Governance Templates',
     downloadPath: '/downloads/Agent-Governance-Templates-Guided-v1.0.pdf',
     thankYouPath: '/thank-you/governance-templates-guided',
-    stripePaymentLink: 'PLACEHOLDER',
+    stripePaymentLink: 'https://buy.stripe.com/9B6bJ14sU5vfcKg5tq24009',
     gettingStartedSteps: [
       'Start with the Agent Charter template - it frames everything else',
       'Read the filled-in example before writing your own',
@@ -71,7 +71,7 @@ const products: Record<string, Product> = {
     emailSubject: 'Your Agent Governance Implementation Guide',
     downloadPath: '/downloads/Agent-Governance-Implementation-Guide-v1.0.pdf',
     thankYouPath: '/thank-you/governance-implementation-guide',
-    stripePaymentLink: 'PLACEHOLDER',
+    stripePaymentLink: 'https://buy.stripe.com/3cI5kD9Ne9Lv25C8FC2400a',
     gettingStartedSteps: [
       'Run the governance scan on your project first (Chapter 1)',
       'Read the framework-specific section for your stack',
