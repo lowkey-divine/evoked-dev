@@ -2,7 +2,7 @@ import type { APIRoute } from 'astro';
 import Stripe from 'stripe';
 import { getResendClient, FROM_EMAIL } from '../../../lib/email/client';
 import { productDeliveryEmail } from '../../../lib/email/product-delivery';
-import { getProductBySlug, getDefaultProduct } from '../../../lib/products/registry';
+import { getProductBySlug, getProductByName, getDefaultProduct } from '../../../lib/products/registry';
 
 export const prerender = false;
 
@@ -74,9 +74,31 @@ export const POST: APIRoute = async ({ request }) => {
       });
     }
 
-    // Route to correct product based on metadata, fallback to sovereignty toolkit
-    const productSlug = session.metadata?.product_slug;
-    const product = productSlug ? getProductBySlug(productSlug) : getDefaultProduct();
+    // Route to correct product based on metadata first, then line item name, then default
+    let productSlug = session.metadata?.product_slug;
+    let product = productSlug ? getProductBySlug(productSlug) : null;
+
+    // Fallback: match by Stripe product name if no metadata
+    if (!product && session.id) {
+      try {
+        const stripe = getStripeClient();
+        const lineItems = await stripe.checkout.sessions.listLineItems(session.id, { limit: 1 });
+        const itemName = lineItems.data[0]?.description;
+        if (itemName) {
+          product = getProductByName(itemName);
+          if (product) {
+            console.log('Matched product by name:', itemName, '->', product.slug);
+          }
+        }
+      } catch (err) {
+        console.error('Failed to retrieve line items for name matching:', err);
+      }
+    }
+
+    // Final fallback: default product
+    if (!product) {
+      product = getDefaultProduct();
+    }
 
     if (!product) {
       console.error('Unknown product slug:', productSlug, 'for session:', session.id);

@@ -221,6 +221,13 @@ export function getProductBySlug(slug: string): Product | undefined {
   return products[slug];
 }
 
+export function getProductByName(name: string): Product | undefined {
+  const normalized = name.toLowerCase().trim();
+  return Object.values(products).find(
+    (p) => p.name.toLowerCase().trim() === normalized
+  );
+}
+
 export function getAllProducts(): Product[] {
   return Object.values(products);
 }
