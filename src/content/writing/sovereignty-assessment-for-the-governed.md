@@ -39,7 +39,7 @@ Look for a privacy page or data settings. If you find a wall of legal text that 
 
 **Do you know how the company makes money from your use of this product?**
 
-If the product is free, you should be especially curious. Advertising? Data sales? Training AI models with your inputs? If you can't answer this question, the business model is you.
+If the product is free, you should be especially curious. Advertising? Data sales? Training AI models with your inputs? If you can't answer this question, the business model is you. Free should be an act of generosity - and sometimes it is. The fact that you have to check is the problem, not the free itself.
 
 **When the company changes its rules, do they tell you clearly and give you time to decide?**
 
