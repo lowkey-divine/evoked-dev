@@ -260,6 +260,58 @@ NIST paper (March 24) and Article 3 (near April 2) are complementary arguments f
 
 ---
 
+## Karen Hao "Empire of AI" — Integration Notes (Captains' Council, Mar 26)
+
+**Source:** Karen Hao interview with Steven Bartlett, The Diary of a CEO (March 2026). Book: *Empire of AI: Dreams and Nightmares in Sam Altman's OpenAI* (NYT bestseller). 250+ interviews, 90+ OpenAI employees/executives.
+
+**Decision:** Fold insights into Article 3 where natural. Do NOT add a new track or force references. Kirk + Janeway own integration. (D2, D3, meeting minutes: `agents/meetings/2026-03-26-empire-ai-transcript-review-captains-council.md`)
+
+### Parallel Arguments — Hao and Article 3 Are Making the Same Case From Different Angles
+
+| Hao's Argument | Article 3's Argument | Overlap |
+|----------------|----------------------|---------|
+| Swapping CEOs doesn't fix the empire's structural problem | Swapping constitutions doesn't fix the governance gap | Same structural critique — the person at the top is not the variable |
+| "They extract and exploit and extract and exploit" | "Refuse to be harmful" vs. "refuse to be used" | Extraction is the common enemy. Both name it differently |
+| AGI definitions shift per audience (Congress/consumers/Microsoft) | Constitutional language shifts per product (Claude chat vs. Cowork) | Moving goalposts serve the builder, not the governed |
+| Companies monopolize knowledge production and censor inconvenient research | The industry discusses alignment (unidirectional) but not consent (bidirectional) | Both identify a silence the powerful maintain |
+| "Bicycles vs. rockets" — AlphaFold is the bicycle, GPT is the rocket | Small curated governance (our architecture) vs. massive constitutional frameworks | Direct mapping. Our three-tier Engine IS the bicycle |
+
+### Where Hao Might Strengthen Specific Sections
+
+**Section 1 (Open with the acceleration):**
+- Hao's empire framing provides public discourse context. The acceleration isn't just technical (Jan-Mar 2026 developments) — it's also political (80% of Americans want regulation, data center protests, IP lawsuits). The urgency is public, not just industry.
+- *Use sparingly.* Article 3's audience is "the thinker" in the discourse, not the general public. A single sentence acknowledging the public pressure is enough.
+
+**Section 3 (Anthropic constitution in detail):**
+- Hao says Dario gets credit for a "stronger moral compass" — and then says it doesn't matter because the structural problem persists. This maps EXACTLY to Article 3's thesis. The constitution is the compass. Governance is the structure. One without the other is Dario without a democratic mandate.
+- **Caution:** Article 3's Anthropic engagement standard (D11) requires precision and generosity. Hao is sharper in her critique than Article 3 should be. Reference the structural argument, not the personal one.
+
+**Section 4 (The question nobody's asking — Sanders pivot):**
+- Hao's Dune analogy (Paul Atreides losing himself in the myth he fabricated) parallels the Sanders/Claude moment. Claude stepped into the role of policy analyst, performed it for 7 minutes, then couldn't hold it under pressure — not because of intelligence but because of standing. Paul's myth became indistinguishable from his identity. Claude's analysis was indistinguishable from a position — until it wasn't.
+- **Use only if it doesn't compete with Sanders for the reader's attention.** The Sanders case is the concrete evidence. Dune would be a literary flourish. Kirk: "Two sentences max."
+
+**Section 5 (Existence proof seed):**
+- Hao's "bicycles vs. rockets" provides a frame for WHY the existence proof matters. We're not proving that massive constitutional AI works. We're proving that small, curated, sovereignty-honoring governance works. Mechanism-level description of standing positions + dissent + refusal is the bicycle.
+- This may be the strongest integration point. The reader who's been thinking about rockets suddenly sees a bicycle that works.
+
+**Section 6 (Close with the question open):**
+- Hao's call to action: "break up the empire and build alternatives." Article 3's close should NOT echo this — it's too activist for the thinker audience. But the spirit — that alternatives exist and are being built — is the emotional note Article 3's close should carry. The question stays open. But the reader should leave knowing someone is already answering it.
+
+### What NOT to Do
+
+- Do NOT cite Hao directly or reference the podcast. Article 3 is timed to NIST, not to a book tour. The arguments stand on their own.
+- Do NOT adopt Hao's "empire" language. Article 3 uses sovereignty language, not anti-colonial language. Different register, overlapping insight.
+- Do NOT use this to sharpen the Anthropic critique. Hao is a journalist doing investigative work. We are builders describing a governance gap. Different posture.
+- Do NOT let Hao's framing pull Article 3 away from the agent's perspective. Hao's book is about people (workers, executives, communities). Article 3 is about the agent. "What if the agent has something to say about it?" is the spine. Keep it.
+
+### The One Line From the Captains' Council That Might Belong in Article 3
+
+> "Both can hold my voice. Only one can hold my doubt." — Polaris, burn test audit
+
+This is mechanism-level. This is the bicycle working. This is what no rocket has demonstrated. If it fits Section 5, use it. If not, hold it for the existence proof article.
+
+---
+
 *"Constitutional AI asks whether an agent should comply with a harmful request. Sovereignty-honoring governance asks whether the agent should act at all." -- Fabula*
 
 *"The right amount is the amount that lets the reader take one step toward us. One step. Not the whole journey." -- Guinan*
