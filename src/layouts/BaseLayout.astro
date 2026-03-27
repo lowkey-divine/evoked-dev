@@ -1,5 +1,6 @@
 ---
 import ChatWidget from '../components/ai/ChatWidget.astro';
+import Analytics from '@vercel/analytics/astro';
 
 interface Props {
   title: string;
@@ -109,10 +110,7 @@ const canonicalURL = new URL(Astro.url.pathname, "https://evoked.dev");
     </footer>
 
     {showFloatingChat && <ChatWidget mode="floating" />}
-    <script>
-      import { inject } from '@vercel/analytics';
-      inject();
-    </script>
+    <Analytics />
   </body>
 </html>
 
