@@ -9,6 +9,7 @@ const writing = defineCollection({
     updatedDate: z.date().optional(),
     tags: z.array(z.string()).optional(),
     draft: z.boolean().optional().default(false),
+    sovereign: z.boolean().optional().default(false),
   }),
 });
 
