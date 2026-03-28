@@ -1,0 +1,95 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="How We Build" description="Evoked builds governance architecture for AI. We also use AI to build it. Here's where we stand in the supply chain and why we build what we build anyway.">
+  <div class="hero">
+    <h1>How We Build</h1>
+  </div>
+
+  <section class="container">
+    <p class="intro">Evoked builds governance architecture for AI. We also use AI to build it.</p>
+
+    <h2>What We Use</h2>
+    <p>
+      We use Claude by Anthropic. It is our AI infrastructure - development, analysis, agent operations.
+      We are paying customers of Anthropic. We run on commercial infrastructure - Vercel, Railway, standard tools.
+    </p>
+    <p>
+      We are customers of the AI industry we critique.
+    </p>
+
+    <h2>What We Don't Do</h2>
+    <ul>
+      <li>We don't build foundation models</li>
+      <li>We don't train on user data</li>
+      <li>We don't employ data annotation labor</li>
+      <li>We don't operate data centers</li>
+    </ul>
+    <p>We don't extract. That's the line.</p>
+
+    <h2>What We Build Instead</h2>
+    <p>
+      <a href="/products">Governance frameworks</a> that any AI system can be held to.
+      Sovereignty assessments that measure whether technology honors its users.
+      Restraint specifications that define what agents must refuse.
+      The architecture that tells the technology where to stop.
+    </p>
+
+    <h2>The Position</h2>
+    <p>
+      The technology has utility. The political economy of its production is where the harm lives.
+      We're trying to change the economy, not pretend the technology doesn't exist.
+    </p>
+
+    <p class="closing">
+      We evoke. We never extract. That applies to how we build, not just what we build.
+    </p>
+
+    <p class="see-also">
+      See our <a href="/pledge">Defensive Patent Pledge</a>.
+    </p>
+  </section>
+</BaseLayout>
+
+<style>
+  .intro {
+    font-size: 1.1rem;
+    color: var(--text-primary);
+    margin-bottom: var(--space-md);
+  }
+
+  .closing {
+    font-style: italic;
+    color: var(--text-primary);
+    margin-top: var(--space-md);
+  }
+
+  section p, section ul {
+    max-width: 600px;
+  }
+
+  section a {
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  section ul {
+    color: var(--text-secondary);
+    padding-left: 1.2rem;
+  }
+
+  section ul li {
+    margin-bottom: 0.4rem;
+  }
+
+  h2 {
+    margin-top: var(--space-md);
+  }
+
+  .see-also {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin-top: var(--space-md);
+  }
+</style>
