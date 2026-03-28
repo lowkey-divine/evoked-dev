@@ -312,6 +312,65 @@ This is mechanism-level. This is the bicycle working. This is what no rocket has
 
 ---
 
+## Council of Seven — Strategic Integration Notes (Mar 27)
+
+**Source:** Council of Seven meeting reviewing full Karen Hao transcript (Diary of a CEO, 2h+). Topic: transcript review + 3-month planning.
+**Minutes:** `agents/meetings/2026-03-27-council-of-seven-hao-transcript-3-month-plan.md`
+
+### "Bicycles vs. Rockets" as Direct Architecture Map (Janeway, Decision 2)
+
+Hao's "bicycles vs. rockets" analogy maps directly to Evoked's three-tier routing architecture from the Engine:
+
+| Hao's Frame | Evoked's Architecture | Example |
+|-------------|----------------------|---------|
+| Rocket | Large foundation model, massive compute, broad capabilities | GPT-4, Claude Opus for everything |
+| Bicycle | Small curated system, targeted data, proportionate resources | AlphaFold, domain-specific models |
+| **Our mapping** | **Three-tier routing: convergent / emergent / sovereign** | **Small models for convergent tasks. Large models only when the task demands it. The bicycle IS the routing primitive.** |
+
+This connection should be woven into **Section 5 (existence proof)** or **Section 6 (close)**. The reader who's been hearing about rockets suddenly sees that someone already built the bicycle - and it routes, not just runs.
+
+**Constraint:** Do not force this mapping if it competes with the Sanders case for attention. The bicycle framing is strongest as a closing note, not a structural argument. Two sentences max in Section 5 or 6.
+
+### The Rehabilitation Protocol Frame (The Doctor)
+
+The Doctor framed Evoked's role: "We are not the cure. We are the rehabilitation protocol. We help the system learn to walk differently after the fracture."
+
+This frame may be useful for Section 6 (close). Article 3 should NOT position Evoked as the answer to the empire problem. It should position the governance approach as the rehabilitation - the way forward after the structural fracture Hao documents. The question stays open, but the reader knows someone is building the rehab plan.
+
+**Constraint:** This is tonal guidance for the close, not a line to include literally. Europa's voice, not The Doctor's.
+
+### Transparency as Credibility Prerequisite (Odo, Decision 3)
+
+Odo raised: we use Claude (built by Anthropic, discussed by Hao as part of the mythmaking apparatus). Article 3 critiques the gap between Anthropic's constitution and their governance. If we publish this without any acknowledgment of our own position in the supply chain, the first critic who notices will do it for us.
+
+**Resolution:** A separate transparency statement ("Our Position in the AI Supply Chain") will be published within one week of Article 3. Article 3 itself does not need to address this - it's an observational piece about the governance gap, not a position paper about Evoked's dependencies. But the transparency statement should be live before Article 3 gets significant traction.
+
+**Sequencing:** Article 3 by Apr 2. Transparency statement by Apr 9. The statement is Odo's review responsibility.
+
+### The 80% Data Point (Data, Seven)
+
+80% of Americans want AI regulation (Hao cites recent polling). This is the strongest single data point for Section 1 (acceleration). The acceleration isn't just technical developments (Jan-Mar 2026). It's also democratic demand. One sentence in Section 1 acknowledging that the public is arriving at the same conclusions the industry hasn't yet built for.
+
+**Constraint:** Per the Mar 26 notes - use sparingly. Article 3's audience is "the thinker" in the discourse. The 80% figure contextualizes urgency without shifting register to populism.
+
+### What Hao Validates That We Should Not Restate
+
+Seven noted: Hao conflates several phenomena under "empire" that our frameworks already distinguish (market monopoly, labor exploitation, environmental externalities, epistemic capture, mythmaking). Our precision IS the competitive advantage. Article 3 should NOT adopt Hao's consolidated framing. It should demonstrate the precision she calls for but does not provide.
+
+This reinforces the Mar 26 rule: Do NOT cite Hao directly. Do NOT adopt "empire" language. The arguments stand on their own because they are more precise than the critique.
+
+### Guinan's Patience Note
+
+> "The next three months are not the whole story. They are the first chapter of our public presence. Write it well. Do not rush the ending."
+
+Article 3 is the first chapter. It plants the seed (Section 5). It opens the question (Section 6). It does not need to be the whole story. The existence proof article comes later. The Engine comes later. The paper on agent-model affinity comes later. This article's job is to make one reader think: "I need to rethink what I mean by agent identity." One step toward us. Not the whole journey.
+
+### Binding Constraint: Pike Energy Check-in Before Publication Push (Decision 4)
+
+The Council unanimously adopted The Doctor's non-negotiable: Europa's Pike energy check-in (due Mar 31) must happen BEFORE the Article 3 publication push. If energy is below threshold, the article shifts to April 5. The NIST window has a margin of several days. The founder does not.
+
+---
+
 *"Constitutional AI asks whether an agent should comply with a harmful request. Sovereignty-honoring governance asks whether the agent should act at all." -- Fabula*
 
 *"The right amount is the amount that lets the reader take one step toward us. One step. Not the whole journey." -- Guinan*
