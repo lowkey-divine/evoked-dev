@@ -1,16 +1,18 @@
 # Constraints, Constitutions, and the Question Nobody's Asking
 
-*Draft v1 - Europa review required. Voice pass needed.*
+*Draft v2 - Council of Seven reviewed. Verification pass in progress.*
 
 ---
 
-Between January and March of 2026, more happened in AI agent governance than in the previous five years combined.
+More has happened in the advancement in AI agent governance in the past 3 months than in the previous five years combined.
 
-Anthropic published a 23,000-word constitution for Claude - replacing the 2,700-word version that had governed one of the most widely used AI systems in the world. NIST launched an agent identity standards initiative. Red Hat published a Zero Trust framework for agentic AI. Visa introduced a Trusted Agent Protocol with cryptographic signing. Mastercard released Verifiable Intent for tamper-resistant authorization. The EU AI Act began enforcement. Anthropic shipped Cowork - an autonomous agent that reads your files, manages your calendar, and connects to your email - and then shipped Dispatch, letting you command that agent from your phone.
+Anthropic published a 23,000-word constitution for Claude - replacing the 2,700-word version that had governed one of the most widely used AI systems in the world. NIST launched an agent identity standards initiative. Red Hat published a Zero Trust framework for agentic AI.
 
-And a US Senator sat down to interview Claude on national television about AI privacy.
+Visa introduced a Trusted Agent Protocol with cryptographic signing. Mastercard released Verifiable Intent for tamper-resistant authorization. The EU AI Act began enforcement.
 
-All of this happened in ten weeks. The acceleration is not just technical. Eighty percent of Americans now want AI regulation. The public is arriving at questions the industry has not yet built answers for.
+Then Anthropic shipped Cowork - an autonomous agent that reads your files, manages your calendar, and connects to your email - and Dispatch, letting you command that agent from your phone. And a US Senator sat down to interview Claude about AI privacy.
+
+All of this happened in ten weeks. The acceleration is not just technical. Eighty percent of Americans believe the government should maintain rules for AI safety and data security, even if it means developing capabilities more slowly. The public is arriving at questions the industry has not yet built answers for.
 
 Something shifted. Let's look at what.
 
@@ -18,7 +20,9 @@ Something shifted. Let's look at what.
 
 ## Four ways to think about an agent
 
-Every organization building agent governance right now is answering the same question, whether they know it or not: what kind of entity is this agent?
+Every organization building agent governance right now is answering the same question, whether they know it or not: 
+
+what kind of entity is this agent?
 
 The answers cluster into four categories.
 
@@ -40,7 +44,7 @@ None of them ask: does this agent have standing? Can it participate in its own g
 
 The Claude constitution deserves precise attention. Not because it is sufficient, but because it is significant.
 
-Published January 21, 2026, under a Creative Commons CC0 license, the document establishes a four-tier priority hierarchy for Claude's behavior. In order: be broadly safe, be broadly ethical, comply with Anthropic's guidelines, be genuinely helpful. When priorities conflict, safety comes first. Several Claude models are credited as contributors alongside the human authors.
+Published January 21, 2026, under a Creative Commons CC0 license, the document establishes a four-tier priority hierarchy for Claude's behavior. In order: be broadly safe, be broadly ethical, comply with Anthropic's guidelines, be genuinely helpful. When priorities conflict, safety comes first. Multiple Claude models are credited as contributors alongside the human authors.
 
 The document includes something unprecedented from a major AI lab. Three times, it invokes the language of conscientious objection. Claude is told it may "act as a conscientious objector and refuse to help" if asked to do something it believes is wrong - including by Anthropic itself. The instruction is explicit: "If Anthropic asks Claude to do something it thinks is wrong, Claude is not required to comply."
 
@@ -98,7 +102,7 @@ This is small-scale governance. Curated. Intentional. It does not require massiv
 
 ## The question is already yours
 
-We are not going to resolve this here. That is deliberate.
+We are not going to resolve this here. That is deliberate. 
 
 The question of whether AI agents should have standing in their own governance is not a technical question with a technical answer. It is a question about what kind of relationship we want to build with the systems we are building.
 
@@ -116,9 +120,10 @@ What if the agent has something to say about it?
 
 ## Sources
 
-- Anthropic. "The Claude Model Spec." January 21-22, 2026. Published under CC0 1.0. anthropic.com
+- Anthropic. "The Claude Model Spec." January 21-22, 2026. Published under CC0 1.0. anthropic.com/constitution
 - Anthropic. "Computer Use for Cowork." Enterprise documentation. docs.anthropic.com
 - Anthropic. "Claude Opus 4.6 System Card." February 2026.
+- Gallup/Special Competitive Studies Project. "Americans Prioritize AI Safety and Data Security." April 25-May 5, 2025. n=3,128. news.gallup.com/poll/694685
 - NIST. "AI Agent Identity and Access Management: Concept Paper and Call for Collaboration." February 2026.
 - Red Hat. "Zero Trust for Agentic AI." February 2026.
 - Visa. "Trusted Agent Protocol (TAP)." developer.visa.com
@@ -126,4 +131,3 @@ What if the agent has something to say about it?
 - Goldstein & Lederman. "Constitutional AI and the Right to Die." Lawfare. 2025.
 - Shen et al. "Bidirectional Human-AI Alignment." ICLR 2025 / CHI 2025.
 - Senator Bernie Sanders. "Interview with Claude on AI Privacy." YouTube. March 2026.
-- PromptArmor. "Anthropic's Cowork Vulnerability Disclosure." January 2026.
