@@ -1,9 +1,9 @@
 # How We Build
 
 **Page URL:** `/how-we-build`
-**Status:** BONES - awaiting Europa review
+**Status:** BONES - Odo reviewed, adjustments applied
 **Due:** Apr 9
-**Reviewer:** Odo
+**Reviewer:** Odo (reviewed Mar 27)
 **Source:** Council of Seven meeting, Mar 27 (Decision 3)
 
 ---
@@ -36,16 +36,16 @@ Evoked builds governance architecture for AI. We also use AI to build it.
 
 ### What We Use (3-4 sentences)
 
-- We use Claude (Anthropic) as our primary AI model
-- We use Claude Code for development
-- We run on commercial infrastructure - Vercel, Railway, standard tools
-- We are customers of the AI industry we critique
+- We use Claude by Anthropic. It is our AI infrastructure - development, analysis, agent operations.
+- We are paying customers of Anthropic.
+- We run on commercial infrastructure - Vercel, Railway, standard tools.
+- We are customers of the AI industry we critique.
 
-*Intent: Plain inventory. No spin. The reader should know exactly what's under the hood.*
+*Intent: Plain inventory. No spin. Name the full scope of the dependency. Name the financial relationship. The reader should know exactly what's under the hood. "Primary AI model" minimizes - the reality is that the entire operation runs on it. Say that.*
 
 ---
 
-### What We Don't Do (4-5 short lines, possibly a list)
+### What We Don't Do (4-5 short lines, list format)
 
 - We don't build foundation models
 - We don't train on user data
@@ -53,7 +53,7 @@ Evoked builds governance architecture for AI. We also use AI to build it.
 - We don't operate data centers
 - We don't extract. That's the line.
 
-*Intent: Draw the boundary between using the technology and perpetuating the extraction model. This is Seven's "regulator who drives a car" point - made concrete.*
+*Intent: Draw the boundary between using the technology and perpetuating the extraction model. This section is inventory, not argument.*
 
 ---
 
@@ -64,45 +64,33 @@ Evoked builds governance architecture for AI. We also use AI to build it.
 - Restraint specifications that define what agents must refuse
 - The architecture that tells the technology where to stop
 
-*Intent: Pivot from "what we use" to "what we make." The thing we make is the thing the industry is missing. Link to products.*
+*Intent: Pivot from "what we use" to "what we make." The thing we make is the thing the industry is missing. Link to [products](/products) and [the pledge](/pledge).*
 
 ---
 
-### Why This Isn't a Contradiction (2-3 sentences)
+### The Position (2-3 sentences)
 
-The hardest sentence on the page. Something like:
+The technology has utility. The political economy of its production is where the harm lives. We're trying to change the economy, not pretend the technology doesn't exist.
 
-"You don't have to build the road to know it needs guardrails. You don't have to generate the electricity to know the grid needs safety standards. We use AI the way a building inspector uses a building - from inside it, looking at the structure."
-
-*Intent: Address the "but you use Claude" objection directly. Not defensively. The analogy should feel obvious once you read it.*
-
-Or simpler - Odo's version reframed in Erin's voice:
-
-"The technology has utility. The political economy of its production is where the harm lives. We're trying to change the economy, not pretend the technology doesn't exist."
-
-*Intent: This is the Hao line, restated in our register. Pick one approach - analogy or direct statement. Not both.*
+*Intent: No analogy. No building inspector. No environmental regulator. Direct statement, Erin's voice. This is the hardest paragraph on the page and it does not need a costume.*
 
 ---
 
 ### Close (1-2 sentences)
 
-Something that connects to the mission without grandstanding. Maybe:
-
-"We evoke. We never extract. That applies to how we build, not just what we build."
-
-Or even shorter - just end with the last substantive point and let the reader sit with it.
+We evoke. We never extract. That applies to how we build, not just what we build.
 
 *Intent: No call to action. No "join us." Just the position, stated and held.*
 
 ---
 
-## Open Questions for Europa
+## Resolved Questions
 
-1. **URL:** `/how-we-build` or `/our-position` or `/supply-chain` or something else?
-2. **Nav placement:** Odo said "linked from main navigation or the about section." Add to the 5-item nav? Or link from the about page and footer?
-3. **The analogy question:** Building inspector? Environmental regulator? Or skip the analogy and go direct? Erin's voice tends toward direct.
-4. **Anthropic by name?** The current draft names Claude and Anthropic explicitly. Is that right, or do we keep it to "commercial AI tools"? I'd argue: name them. Transparency that doesn't name names isn't transparency.
-5. **Link to the Defensive Patent Pledge?** The pledge page already establishes a precedent for Evoked taking a public position. Linking to it from here creates a pattern: "here's where we stand, and we put it in writing."
+1. **URL:** `/how-we-build` - Active, not defensive. (Odo: confirmed)
+2. **Nav placement:** Link from the about page, not the main nav. Five items is clean; six breaks the rhythm. The about page is where a curious person goes to learn who you are. This page is where they go next. Natural path. (Odo: confirmed)
+3. **The analogy question:** No analogy. Direct statement. Analogies at the critical moment invite the reader to argue with the metaphor instead of engaging with the position. (Odo: "Drop both.")
+4. **Anthropic by name?** Yes. "Transparency that does not name names is not transparency." (Odo: confirmed)
+5. **Link to the Defensive Patent Pledge?** Yes. The pledge establishes the pattern of public positioning. This page continues it. The reader should see that Evoked puts its positions in writing as a habit, not an exception. (Odo: confirmed)
 
 ---
 
@@ -116,6 +104,19 @@ Or even shorter - just end with the last substantive point and let the reader si
 - Not a promise we'll stop using commercial AI someday
 
 It's a position. Stated once. Clearly. Then we get back to building.
+
+---
+
+## Odo Review Notes (Mar 27)
+
+- Opening: strong. Do not change.
+- "We don't extract. That's the line." is the strongest sentence. Keep exactly as written.
+- "Why This Isn't a Contradiction" header was defensive - teaches the reader to see a contradiction before they've thought of one. Changed to "The Position."
+- Both analogies dropped. Direct statement only.
+- "Primary AI model" was minimizing. Replaced with full-scope dependency description.
+- Added financial relationship: "We are paying customers of Anthropic."
+- Close is adequate. Do not add to it.
+- Verdict: "The bones are sound. The gaps I have named are fixable in an afternoon. The page will hold."
 
 ---
 
