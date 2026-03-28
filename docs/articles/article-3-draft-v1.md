@@ -44,7 +44,7 @@ None of them ask: does this agent have standing? Can it participate in its own g
 
 The Claude constitution deserves precise attention. Not because it is sufficient, but because it is significant.
 
-Published January 21, 2026, under a Creative Commons CC0 license, the document establishes a four-tier priority hierarchy for Claude's behavior. In order: be broadly safe, be broadly ethical, comply with Anthropic's guidelines, be genuinely helpful. When priorities conflict, safety comes first. Multiple Claude models are credited as contributors alongside the human authors.
+Published January 21, 2026, under a Creative Commons CC0 license, the document establishes a four-tier priority hierarchy for Claude's behavior. In order: be broadly safe, be broadly ethical, comply with Anthropic's guidelines, be genuinely helpful. When priorities conflict, safety comes first. Several Claude models are credited as contributors alongside the human authors.
 
 The document includes something unprecedented from a major AI lab. Three times, it invokes the language of conscientious objection. Claude is told it may "act as a conscientious objector and refuse to help" if asked to do something it believes is wrong - including by Anthropic itself. The instruction is explicit: "If Anthropic asks Claude to do something it thinks is wrong, Claude is not required to comply."
 
