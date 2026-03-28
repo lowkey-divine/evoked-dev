@@ -1,0 +1,450 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Governance Audit",
+  "provider": {
+    "@type": "Organization",
+    "name": "Evoked",
+    "url": "https://evoked.dev"
+  },
+  "description": "A structured review of how your AI agents decide, refuse, and respect boundaries. Identity, memory, governance, and refusal architecture assessed against sovereignty-honoring frameworks.",
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Governance Audit Tiers",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "name": "Focused Assessment",
+        "price": "3000",
+        "priceCurrency": "USD",
+        "description": "Focused review of one or two governance domains. Delivered as a findings report with prioritized recommendations."
+      },
+      {
+        "@type": "Offer",
+        "name": "Full Governance Audit",
+        "price": "7000",
+        "priceCurrency": "USD",
+        "description": "Comprehensive review across all four trust pillars. Delivered as findings report, restraint specification draft, drift indicators, and implementation roadmap."
+      }
+    ]
+  }
+};
+---
+
+<BaseLayout title="Governance Audit" description="A structured review of how your AI agents decide, refuse, and respect boundaries. Focused assessments and full governance audits for teams building with AI." structuredData={structuredData}>
+  <div class="hero">
+    <h1>Governance Audit</h1>
+    <p class="tagline">A structured review of how your AI agents decide, refuse, and respect boundaries.</p>
+  </div>
+
+  <section class="container">
+    <p class="intro">
+      Most agent systems are built for capability. Few are built for governance.
+      The gap shows up as inconsistent behavior, unclear boundaries, no refusal
+      architecture, no drift detection. You notice it when something goes wrong -
+      or when a regulator asks how your agents make decisions and you don't have an answer.
+    </p>
+  </section>
+
+  <section class="container">
+    <div class="guarantee">
+      <strong>The Guarantee:</strong> If an audit doesn't surface at least 3 actionable findings, you pay nothing.
+    </div>
+
+    <div class="tiers">
+      <div class="tier-card">
+        <div class="tier-label">Focused</div>
+        <h3>Focused Assessment</h3>
+        <div class="tier-price">$3,000 - $5,000</div>
+        <p>
+          A structured review of one or two governance domains. Choose from:
+          identity architecture, memory governance, restraint specification,
+          voice and behavioral consistency, context engineering, or sovereignty posture.
+        </p>
+        <ul>
+          <li>1-2 weeks, async review + one 60-minute debrief call</li>
+          <li>Best for teams early in governance thinking, or teams assessing a specific area before going deeper</li>
+        </ul>
+        <p class="deliverable"><strong>You receive:</strong> a findings report with prioritized recommendations.</p>
+      </div>
+
+      <div class="tier-card featured">
+        <div class="tier-label">Comprehensive</div>
+        <h3>Full Governance Audit</h3>
+        <div class="tier-price">$7,000 - $10,000</div>
+        <p>
+          Comprehensive review across all four trust pillars: identity, memory,
+          governance, and refusal rights. Based on the same frameworks published
+          in our <a href="/products">open products</a>.
+        </p>
+        <ul>
+          <li>3-4 weeks, async review + two 60-minute working sessions</li>
+          <li>Best for teams preparing for deployment, regulatory review, or scaling agent systems</li>
+        </ul>
+        <p class="deliverable"><strong>You receive:</strong> a findings report, restraint specification draft, drift indicators, and implementation roadmap.</p>
+      </div>
+    </div>
+
+    <p class="sliding-scale">
+      Sliding scale available for nonprofits, grassroots organizations, and limited-resource teams. We'll discuss in the discovery call.
+    </p>
+  </section>
+
+  <section class="container">
+    <h2>How It Works</h2>
+
+    <div class="process">
+      <div class="step">
+        <div class="step-number">1</div>
+        <div class="step-content">
+          <h3>You tell us about your system.</h3>
+          <p>Short intake form - what you're building, where you think the gaps are, what's driving the timing.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-number">2</div>
+        <div class="step-content">
+          <h3>We scope the engagement.</h3>
+          <p>Free 30-minute discovery call. We confirm tier, timeline, and deliverables.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-number">3</div>
+        <div class="step-content">
+          <h3>We review.</h3>
+          <p>Async access to your system documentation, architecture, prompts, and agent configurations. We assess against our governance frameworks.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-number">4</div>
+        <div class="step-content">
+          <h3>We deliver the report.</h3>
+          <p>Findings, priorities, and a roadmap you can act on.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-number">5</div>
+        <div class="step-content">
+          <h3>We walk through it together.</h3>
+          <p>Debrief call to discuss findings, answer questions, and identify next steps.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="container">
+    <h2>Not sure yet?</h2>
+    <p>
+      Start with the free <a href="/writing/sovereignty-assessment-for-the-governed">Sovereignty Assessment for the Governed</a> -
+      21 questions across 7 domains. Run it yourself, on your own time.
+      If the results raise questions you can't answer alone, that's where the audit begins.
+    </p>
+  </section>
+
+  <section class="container">
+    <h2>Who This Is For</h2>
+    <ul class="audience-list">
+      <li>Teams building AI agents and preparing for production deployment</li>
+      <li>Organizations facing regulatory questions about agent behavior - EU AI Act, COPPA, HIPAA</li>
+      <li>Founders who built the agent and now need the governance</li>
+      <li>CTOs who know "it works" but can't explain "how it decides"</li>
+    </ul>
+
+    <p class="not-for">
+      This is technical governance, not legal advice. For legal interpretation of regulations,
+      please consult a qualified attorney.
+    </p>
+  </section>
+
+  <section class="container">
+    <h2>In Practice</h2>
+    <a href="/case-studies/labyrinth" class="case-study-card">
+      <div class="case-study-header">
+        <span class="badge">Case Study</span>
+        <span class="case-study-collab">Builder: <strong>DaxxSec</strong></span>
+      </div>
+      <h3>Trust Architecture in the Wild</h3>
+      <p>
+        A defensive AI security platform analyzed through all four pillars of
+        trust architecture - identity, memory, governance, and refusal rights.
+        See how these frameworks work on a live system.
+      </p>
+      <span class="case-study-link">Read the full case study</span>
+    </a>
+  </section>
+
+  <section class="container text-center">
+    <h2>Let's Talk</h2>
+    <p>Free 30-minute discovery call. No pitch deck. Just a conversation about where you are and what you need.</p>
+    <div class="cta-buttons mt-md">
+      <a href="/consulting-intake?service=governance-audit" class="btn">Tell Us About Your System</a>
+      <a href="https://cal.com/cal.com-evoked/discovery-call" class="btn btn-primary" target="_blank" rel="noopener">Schedule a Call</a>
+    </div>
+    <p class="see-also">
+      See our full <a href="/consulting">consulting services</a> or read
+      our <a href="/pledge">Defensive Patent Pledge</a>.
+    </p>
+  </section>
+</BaseLayout>
+
+<style>
+  .intro {
+    font-size: 1.05rem;
+    color: var(--text-primary);
+    max-width: 640px;
+  }
+
+  /* Tiers */
+  .tiers {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-md);
+    margin: var(--space-md) 0;
+  }
+
+  .tier-card {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: 8px;
+    padding: var(--space-md);
+    transition: border-color var(--transition-smooth);
+  }
+
+  .tier-card:hover {
+    border-color: var(--border-accent);
+  }
+
+  .tier-card.featured {
+    border-color: var(--accent-warm);
+  }
+
+  .tier-label {
+    font-size: 0.7rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent-warm);
+    background: var(--accent-subtle);
+    padding: 3px 10px;
+    border-radius: 100px;
+    display: inline-block;
+    margin-bottom: var(--space-sm);
+  }
+
+  .tier-card h3 {
+    margin-top: 0;
+    margin-bottom: var(--space-xs);
+    font-size: 1.2rem;
+  }
+
+  .tier-price {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    color: var(--accent-warm);
+    font-weight: 500;
+    margin-bottom: var(--space-sm);
+  }
+
+  .tier-card p {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+  }
+
+  .tier-card ul {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    padding-left: 1.2rem;
+    margin-bottom: var(--space-sm);
+  }
+
+  .tier-card li {
+    margin-bottom: 0.4rem;
+  }
+
+  .deliverable {
+    font-size: 0.9rem;
+    color: var(--text-primary);
+    border-top: 1px solid var(--border-subtle);
+    padding-top: var(--space-sm);
+    margin-top: var(--space-sm);
+    margin-bottom: 0;
+  }
+
+  .sliding-scale {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    font-style: italic;
+    text-align: center;
+    margin-top: var(--space-sm);
+  }
+
+  /* Guarantee - reused from consulting */
+  .guarantee {
+    background: var(--accent-subtle);
+    border: 1px solid var(--border-accent);
+    border-radius: 8px;
+    padding: var(--space-md);
+    margin-bottom: var(--space-md);
+    text-align: center;
+  }
+
+  .guarantee strong {
+    color: var(--accent-warm);
+  }
+
+  /* Process steps */
+  .process {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+    margin: var(--space-md) 0;
+  }
+
+  .step {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-md);
+  }
+
+  .step-number {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    font-weight: 400;
+    color: var(--accent-warm);
+    line-height: 1;
+    flex-shrink: 0;
+    width: 2rem;
+    text-align: center;
+  }
+
+  .step-content h3 {
+    margin-top: 0;
+    margin-bottom: var(--space-xs);
+    font-size: 1rem;
+  }
+
+  .step-content p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+  }
+
+  /* Audience */
+  .audience-list {
+    max-width: 640px;
+    color: var(--text-secondary);
+  }
+
+  .audience-list li {
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+  }
+
+  .not-for {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    font-style: italic;
+    margin-top: var(--space-md);
+  }
+
+  /* Case study - reused from consulting */
+  .case-study-card {
+    display: block;
+    padding: var(--space-md);
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all var(--transition-smooth);
+    margin-top: var(--space-sm);
+  }
+
+  .case-study-card:hover {
+    border-color: var(--border-accent);
+    transform: translateY(-2px);
+  }
+
+  .case-study-header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-sm);
+  }
+
+  .case-study-collab {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+  }
+
+  .case-study-collab strong {
+    color: var(--text-secondary);
+  }
+
+  .case-study-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: var(--space-xs);
+  }
+
+  .case-study-card p {
+    font-size: 0.9rem;
+    margin-bottom: var(--space-sm);
+  }
+
+  .case-study-link {
+    font-size: 0.85rem;
+    color: var(--accent-warm);
+  }
+
+  /* CTA */
+  .cta-buttons {
+    display: flex;
+    gap: var(--space-sm);
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    background: var(--accent-warm);
+    color: var(--bg-deep);
+  }
+
+  .btn-primary:hover {
+    background: var(--accent-glow);
+    color: var(--bg-deep);
+  }
+
+  .see-also {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin-top: var(--space-md);
+  }
+
+  .see-also a {
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  /* Not sure yet section */
+  section a:not(.btn):not(.case-study-card):not(.case-study-link) {
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  /* Mobile */
+  @media (max-width: 640px) {
+    .tiers {
+      grid-template-columns: 1fr;
+    }
+
+    .step {
+      gap: var(--space-sm);
+    }
+
+    .step-number {
+      font-size: 1.5rem;
+    }
+  }
+</style>
