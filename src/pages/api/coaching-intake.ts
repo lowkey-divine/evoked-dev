@@ -2,7 +2,6 @@ import type { APIRoute } from 'astro';
 import { validateOrigin, rateLimit, safeError } from '../../lib/api/security';
 import { verifyFormToken } from '../../lib/api/form-token';
 import { getResendClient, FROM_EMAIL } from '../../lib/email/client';
-import { getAnthropicClient } from '../../lib/ai/client';
 
 export const prerender = false;
 
@@ -35,26 +34,6 @@ function checkEmailDedup(email: string): { allowed: boolean } {
 
 const MIN_FORM_TIME_MS = 20_000;
 
-const ANALYSIS_PROMPT = `You are an internal coaching intake analyst for Evoked. Someone has reached out about coaching - navigating their relationship with AI, leading through AI change, or finding their footing in a shifting landscape. Your job is to help Erin understand this person before the first conversation.
-
-## What Coaching Looks Like at Evoke
-- One-on-one sessions for individuals, couples, or small teams
-- Navigating what AI means for identity, work, and relationships
-- Structured accompaniment - not advice, not therapy, not consulting
-- Helping people find their own clarity about technology in their lives
-- Grounded in sovereignty principles: the person's autonomy comes first
-
-## Your Task
-Read what this person shared and provide:
-
-1. **What you hear** - Not what they said, but what you hear underneath it. What's the emotional texture? What are they carrying? Read between the lines with care.
-2. **Readiness** - Are they in crisis, in transition, in exploration, or in growth? This shapes how Erin approaches the first session.
-3. **What kind of support they might need** - Thought partner, mirror holder, accountability companion, or something they haven't named yet?
-4. **What to be gentle about** - Anything in their words that suggests vulnerability, fear, or past difficulty. Erin should know where to tread carefully.
-5. **Draft follow-up email** - A warm, personal email from Erin. Short. No jargon. No coaching frameworks. Just one human acknowledging another. Use Erin's voice: dashes instead of em dashes, direct questions, warmth without softness. The email should make this person feel heard - not assessed.
-
-This is the most personal intake on the site. Handle it accordingly. Be candid with Erin but gentle about the person.`;
-
 interface CoachingSubmission {
   name: string;
   email: string;
@@ -77,30 +56,6 @@ function buildSubmissionText(s: CoachingSubmission): string {
     `WHAT KIND OF SUPPORT ARE YOU LOOKING FOR?`,
     s.support || 'Not provided',
   ].join('\n');
-}
-
-async function analyzeSubmission(submission: CoachingSubmission): Promise<string> {
-  try {
-    const client = getAnthropicClient();
-    const response = await client.messages.create({
-      model: 'claude-sonnet-4-6',
-      max_tokens: 1200,
-      system: ANALYSIS_PROMPT,
-      messages: [
-        {
-          role: 'user',
-          content: `Please read this coaching intake with care:\n\n${buildSubmissionText(submission)}`,
-        },
-      ],
-    });
-
-    const textBlock = response.content.find((b) => b.type === 'text');
-    return textBlock ? textBlock.text : 'Analysis unavailable.';
-  } catch (error: unknown) {
-    const msg = error instanceof Error ? error.message : String(error);
-    console.error('Claude analysis error:', msg);
-    return `Analysis unavailable — ${msg}. Review submission manually.`;
-  }
 }
 
 export const POST: APIRoute = async ({ request }) => {
@@ -182,11 +137,6 @@ export const POST: APIRoute = async ({ request }) => {
     const section = (label: string, value: string) =>
       value?.trim() ? `<h3>${escapeHtml(label)}</h3><p>${escapeHtml(value.trim())}</p>` : '';
 
-    const analysis = await analyzeSubmission(submission);
-    console.log('--- COACHING INTAKE ANALYSIS ---');
-    console.log(analysis);
-    console.log('--- END ANALYSIS ---');
-
     const emailHtml = `
       <h2>Coaching Intake</h2>
       <p><strong>Name:</strong> ${escapeHtml(name.trim())}</p>
@@ -194,16 +144,13 @@ export const POST: APIRoute = async ({ request }) => {
       ${section('Where are you right now?', submission.where)}
       ${section("What's shifting?", submission.shifting)}
       ${section('What kind of support are you looking for?', submission.support)}
-      <hr style="margin: 2rem 0; border: none; border-top: 1px solid #333;" />
-      <h2>Analysis</h2>
-      <div style="background: #1a1a24; padding: 1.5rem; border-radius: 8px; border: 1px solid #333; white-space: pre-wrap; font-family: -apple-system, sans-serif; font-size: 14px; line-height: 1.7; color: #e8e4df;">${escapeHtml(analysis)}</div>
     `;
 
     try {
       const resend = getResendClient();
       await resend.emails.send({
         from: FROM_EMAIL,
-        to: 'evokesupports@icloud.com',
+        to: 'passionevoked@icloud.com',
         subject: `Coaching Intake: ${name.trim()}`,
         html: emailHtml,
       });
