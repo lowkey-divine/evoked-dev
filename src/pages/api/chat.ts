@@ -64,12 +64,21 @@ export const POST: APIRoute = async ({ request }) => {
 
   try {
     const body = await request.json();
-    const { message, history = [], token, ts } = body as {
+    const { message, history = [], token, ts, hp } = body as {
       message: string;
       history?: Message[];
       token?: string;
       ts?: number;
+      hp?: string;
     };
+
+    // Honeypot check — if filled, silently return success
+    if (hp) {
+      return new Response(JSON.stringify({ success: true }), {
+        status: 200,
+        headers: { 'Content-Type': 'application/json' },
+      });
+    }
 
     // Verify challenge token
     const secret = import.meta.env.FORM_SECRET;
