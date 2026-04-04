@@ -85,7 +85,7 @@ const services = consultingPageJsonLd();
       Levels 3 and 4. We help you see the full stack.
     </p>
     <p class="bridge-text">
-      Built in practice, not in theory. These frameworks come from a live multi-agent system we operate daily.
+      Built in practice, not in theory. These frameworks come from a live 142-agent governance system we operate daily - 30 days of governance reviews, a published <a href="/writing/relational-fidelity-metrics">relational fidelity metrics</a> framework independently adopted into external enforcement infrastructure, and active policy engagement with NIST on AI agent identity standards.
     </p>
   </section>
 
@@ -124,9 +124,31 @@ const services = consultingPageJsonLd();
         </div>
         <div class="ladder-content">
           <h3>Digital Products</h3>
-          <p>Sovereignty assessment, trust architecture, voice design, governance, restraint, and memory frameworks. Use them on your own schedule.</p>
-          <span class="ladder-price">$49 - $149</span>
-          <a href="/products" class="ladder-link">Browse products</a>
+          <p>Score your agent governance yourself. Three Level 6 assessment instruments - each with a diagnostic rubric, industry baseline data, and scoring guide.</p>
+          <div class="instrument-grid">
+            <div class="instrument">
+              <strong>Ostrom Score</strong>
+              <span class="instrument-desc">8-principle governance rubric. 32 diagnostic questions. Industry baseline: 2-4 out of 24.</span>
+              <span class="ladder-price">$49</span>
+            </div>
+            <div class="instrument">
+              <strong>Identity Violation Assessment</strong>
+              <span class="instrument-desc">8-domain diagnostic. 16 violation types across 4 categories. Most agent systems score 0.</span>
+              <span class="ladder-price">$49</span>
+            </div>
+            <div class="instrument">
+              <strong>Agent Consent Architecture</strong>
+              <span class="instrument-desc">Position paper + 12-question consent gap analysis. Regulatory mapping included.</span>
+              <span class="ladder-price">$49</span>
+            </div>
+            <div class="instrument">
+              <strong>Level 6 Governance Toolkit</strong>
+              <span class="instrument-desc">All three instruments + synthesis guide + combined 60-point scorecard.</span>
+              <span class="ladder-price">$99</span>
+            </div>
+          </div>
+          <p class="instrument-note">Also available: sovereignty assessment, trust architecture, voice design, restraint, and memory frameworks.</p>
+          <a href="/products" class="ladder-link">Browse all products</a>
         </div>
       </div>
 
@@ -148,9 +170,9 @@ const services = consultingPageJsonLd();
         </div>
         <div class="ladder-content">
           <h3>Governance Audit</h3>
-          <p>A structured review of your agent system's behavioral governance - identity, memory, restraint, voice, and drift. Two tiers: focused assessment or full audit. This is where most engagements start.</p>
-          <span class="ladder-price">$3,000 - $10,000</span>
-          <a href="/governance-audit" class="ladder-link">Learn more</a>
+          <p>We evaluate your agent system against five governance properties - identity, restraint, accountability, memory, and charter - and test agent-model affinity across substrates. Three tiers from diagnostic to enterprise architecture.</p>
+          <span class="ladder-price">$5,000 - $35,000</span>
+          <a href="#services" class="ladder-link">See audit options</a>
         </div>
       </div>
 
@@ -178,7 +200,7 @@ const services = consultingPageJsonLd();
     </div>
   </section>
 
-  <section class="container">
+  <section class="container" id="services">
     <h2>Services</h2>
 
     <div class="guarantee">
@@ -188,9 +210,19 @@ const services = consultingPageJsonLd();
     <h3>Governance Audits</h3>
     <div class="services-list">
       <div class="service-item">
-        <div class="service-name">Agent Governance Audit <span class="discipline-badge">Full Practice</span></div>
-        <div class="service-desc">Comprehensive review of behavioral governance - how agents decide, refuse, and respect boundaries across identity, memory, restraint, and voice. Delivered as findings report + implementation roadmap.</div>
-        <div class="service-price">$7,500</div>
+        <div class="service-name">Governance Diagnostic <span class="discipline-badge">Tier 1</span></div>
+        <div class="service-desc">Ostrom Score + Identity Violation Assessment + Agent Consent gap analysis. Combined scorecard with industry comparison. 90-minute findings presentation + written report. Up to 10 agents.</div>
+        <div class="service-price">$5,000</div>
+      </div>
+      <div class="service-item">
+        <div class="service-name">Governance Audit + Affinity Map <span class="discipline-badge">Tier 2</span></div>
+        <div class="service-desc">Everything in Tier 1 plus agent-model affinity testing across 2-3 models, relational fidelity evaluation (4 categories, 9 indicators), refusal reliability testing under adversarial conditions, and routing recommendations. Up to 25 agents.</div>
+        <div class="service-price">$15,000</div>
+      </div>
+      <div class="service-item">
+        <div class="service-name">Enterprise Governance Architecture <span class="discipline-badge">Tier 3</span></div>
+        <div class="service-desc">Everything in Tier 2 plus custom governance architecture design, agent identity architecture, consent mechanism design, implementation roadmap, and 2 follow-up reviews (30 and 90 days). 25+ agents.</div>
+        <div class="service-price">$35,000+</div>
       </div>
       <div class="service-item">
         <div class="service-name">Four-Discipline Audit</div>
@@ -295,6 +327,9 @@ const services = consultingPageJsonLd();
       I focus on technical implementation - not legal advice. For legal interpretation
       of COPPA, GDPR, or other regulations, please consult a qualified attorney.
     </p>
+    <p class="text-muted" style="font-size: 0.8rem;">
+      Governance verification methodology protected under U.S. Patent Application 64/004,087 (Patent Pending).
+    </p>
   </section>
 
   <section class="container text-center">
@@ -319,6 +354,44 @@ const services = consultingPageJsonLd();
     padding: 3px 10px;
     border-radius: 100px;
     vertical-align: middle;
+  }
+
+  .instrument-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: var(--space-sm);
+    margin: var(--space-sm) 0;
+  }
+
+  .instrument {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: var(--space-sm);
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: 6px;
+  }
+
+  .instrument strong {
+    font-size: 0.95rem;
+  }
+
+  .instrument-desc {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    line-height: 1.4;
+  }
+
+  .instrument .ladder-price {
+    font-size: 0.95rem;
+  }
+
+  .instrument-note {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-top: var(--space-xs);
+    margin-bottom: var(--space-xs);
   }
 
   .inertia-grid {
