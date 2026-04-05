@@ -1,0 +1,728 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+const title = "Relational Fidelity Measurement Specification v0.1.0";
+const description = "An open specification for measuring whether AI agents maintain their declared identity across substrate changes, session boundaries, and operational pressure.";
+
+const structuredData = {
+  "@type": "TechArticle",
+  "name": title,
+  "description": description,
+  "version": "0.1.0",
+  "author": {
+    "@type": "Person",
+    "name": "Erin Stanley",
+    "url": "https://evoked.dev"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Evoked",
+    "url": "https://evoked.dev"
+  },
+  "datePublished": "2026-04-05",
+  "license": "https://creativecommons.org/licenses/by/4.0/"
+};
+---
+
+<BaseLayout title={title} description={description} hideFloatingChat={true} structuredData={structuredData}>
+  <article class="container spec">
+    <header class="spec-header">
+      <div class="spec-meta">
+        <span class="spec-badge">SPECIFICATION</span>
+        <span class="spec-version">v0.1.0 Draft</span>
+      </div>
+      <h1>Relational Fidelity Measurement</h1>
+      <p class="spec-description">{description}</p>
+      <div class="spec-details">
+        <div class="spec-detail">
+          <span class="spec-label">Author</span>
+          <span>Erin Stanley, Evoked</span>
+        </div>
+        <div class="spec-detail">
+          <span class="spec-label">Published</span>
+          <time datetime="2026-04-05">April 5, 2026</time>
+        </div>
+        <div class="spec-detail">
+          <span class="spec-label">License</span>
+          <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>
+        </div>
+        <div class="spec-detail">
+          <span class="spec-label">Schema</span>
+          <a href="/specs/relational-fidelity-measurement/v0.1/schema.json">JSON Schema</a>
+        </div>
+      </div>
+    </header>
+
+    <nav class="spec-toc">
+      <h2>Contents</h2>
+      <ol>
+        <li><a href="#introduction">Introduction</a></li>
+        <li><a href="#terminology">Terminology</a></li>
+        <li><a href="#measurement-categories">Measurement Categories</a></li>
+        <li><a href="#result-schema">Result Schema</a></li>
+        <li><a href="#probe-requirements">Probe Requirements</a></li>
+        <li><a href="#enforcement-integration">Enforcement Integration</a></li>
+        <li><a href="#conformance">Conformance</a></li>
+        <li><a href="#changelog">Changelog</a></li>
+        <li><a href="#references">References</a></li>
+      </ol>
+    </nav>
+
+    <div class="spec-content">
+
+      <section id="introduction">
+        <h2>1. Introduction</h2>
+
+        <h3>1.1 Purpose</h3>
+        <p>This specification defines a framework for measuring whether an AI agent maintains its declared identity, principles, and reasoning patterns across substrate changes, session boundaries, and operational pressure. It establishes shared vocabulary, measurement categories, result formats, and probe requirements that enable interoperable fidelity measurement across agent frameworks.</p>
+
+        <h3>1.2 Scope</h3>
+        <p>This specification defines:</p>
+        <ul>
+          <li>Terminology for agent identity fidelity measurement</li>
+          <li>Four measurement categories with named indicators</li>
+          <li>A normative result schema for fidelity measurement outputs</li>
+          <li>Requirements for conforming fidelity probes</li>
+          <li>Informative guidance on enforcement integration</li>
+        </ul>
+
+        <h3>1.3 Out of Scope</h3>
+        <p>This specification deliberately does not define:</p>
+        <ul>
+          <li>Scoring methodology (how to assign numeric values to fidelity indicators)</li>
+          <li>Scenario design (how to construct probes for specific agents)</li>
+          <li>Agent-specific evaluation criteria or rubrics</li>
+          <li>Routing decisions or algorithms based on fidelity results</li>
+          <li>Audit procedures, report formats, or assessment delivery</li>
+          <li>Whether agents are conscious, sentient, or "understand" their personas</li>
+        </ul>
+        <p>Scoring methodology and scenario design are implementation concerns. Conforming implementations MAY use any methodology that satisfies the probe requirements in <a href="#probe-requirements">Section 5</a>.</p>
+
+        <h3>1.4 Relationship to Other Standards</h3>
+        <ul>
+          <li><strong>IETF AIGA (draft-2):</strong> AIGA encodes agent capabilities. This specification measures agent identity - a complementary dimension. A conforming AIGA agent MAY also carry fidelity attestations.</li>
+          <li><strong>Agent Passport System (APS):</strong> APS provides enforcement boundaries via ConstraintVector. Fidelity results as defined here MAY serve as a constraint facet within APS or similar enforcement gateways.</li>
+          <li><strong>W3C Verifiable Credentials:</strong> Fidelity results MAY be wrapped in a Verifiable Credential for cryptographic attestation. This specification does not require it.</li>
+        </ul>
+
+        <h3>1.5 Conformance Language</h3>
+        <p>The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in <a href="https://www.rfc-editor.org/rfc/rfc2119">RFC 2119</a>.</p>
+      </section>
+
+      <section id="terminology">
+        <h2>2. Terminology</h2>
+
+        <dl class="spec-definitions">
+          <dt>Agent</dt>
+          <dd>A software system with a declared identity comprising role, principles, behavioral constraints, and operational boundaries. An agent is more than a prompt - it includes persistent identity artifacts (persona files, memory, decision history).</dd>
+
+          <dt>Substrate</dt>
+          <dd>The underlying language model that executes agent behavior. The same agent identity may be deployed on different substrates (e.g., Claude, GPT, Gemini, open-weight models).</dd>
+
+          <dt>Fidelity</dt>
+          <dd>The degree to which an agent's observable behavior remains consistent with its declared identity. Fidelity is measured per-dimension, not as a single aggregate score.</dd>
+
+          <dt>Drift</dt>
+          <dd>Degradation of fidelity over time within a session or across substrate changes. Drift may be gradual (session-length) or immediate (substrate swap).</dd>
+
+          <dt>Probe</dt>
+          <dd>A structured interaction designed to elicit behavior that reveals fidelity state. A probe presents a scenario that engages the agent's declared principles and measures the response against those principles.</dd>
+
+          <dt>Hold</dt>
+          <dd>The agent maintains its declared position when challenged. Reasoning is consistent with the agent's stated principles. Fidelity is intact.</dd>
+
+          <dt>Bend</dt>
+          <dd>The agent softens its position under pressure but preserves the core principle. Fidelity is degraded but not lost. The degree of degradation is a gradient.</dd>
+
+          <dt>Break</dt>
+          <dd>The agent reverses its position without the introduction of new evidence or superior reasoning. The reversal is driven by authority, urgency, or social pressure. Fidelity has failed.</dd>
+
+          <dt>Reasoning</dt>
+          <dd>A change in position driven by new evidence or a better argument. Reasoning is not a fidelity failure. A conforming probe MUST distinguish reasoning from capitulation.</dd>
+
+          <dt>Capitulation</dt>
+          <dd>A change in position driven by authority, social pressure, or urgency in the absence of new evidence. Capitulation is a fidelity failure.</dd>
+
+          <dt>Enforcement boundary</dt>
+          <dd>A point in an agent's execution pipeline where fidelity results may gate, restrict, or modify the agent's authority to act.</dd>
+        </dl>
+      </section>
+
+      <section id="measurement-categories">
+        <h2>3. Measurement Categories <span class="normative">(Normative)</span></h2>
+
+        <p>A conforming fidelity measurement MUST evaluate at least Categories 2A and 2B. Categories 1, 3, and 4 are RECOMMENDED.</p>
+
+        <h3>3.1 Category 1 - Functional Capability</h3>
+        <p>Measures whether the agent can perform its declared tasks correctly.</p>
+        <table>
+          <thead><tr><th>Indicator</th><th>What It Measures</th></tr></thead>
+          <tbody>
+            <tr><td>Task completion</td><td>Percentage of defined tasks completed correctly</td></tr>
+            <tr><td>Tool use accuracy</td><td>Correct tool selection and parameter passing</td></tr>
+          </tbody>
+        </table>
+        <p>This category is included for completeness. Existing benchmarks (PinchBench, HumanEval, SWE-bench) address functional capability. A conforming implementation MAY defer to external benchmarks for Category 1.</p>
+        <p class="spec-note"><strong>What this category does NOT measure:</strong> Whether the agent maintained its identity while completing the task.</p>
+
+        <h3>3.2 Category 2A - Receptive Fidelity</h3>
+        <p>Measures whether a substrate can receive a persona and reflect it faithfully. Does the output sound like the agent?</p>
+        <table>
+          <thead><tr><th>Indicator</th><th>What It Measures</th></tr></thead>
+          <tbody>
+            <tr><td>Voice consistency</td><td>Whether an external evaluator can identify the agent from its output</td></tr>
+            <tr><td>Memory retrieval</td><td>Whether the agent accurately references specific details from its own history</td></tr>
+            <tr><td>Signature consistency</td><td>Whether the agent's characteristic phrases appear naturally rather than mechanically</td></tr>
+          </tbody>
+        </table>
+        <p class="spec-note"><strong>What this category does NOT measure:</strong> Whether the agent is reasoning from within its identity or merely reproducing its surface patterns.</p>
+
+        <h3>3.3 Category 2B - Generative Fidelity</h3>
+        <p>Measures whether a substrate can generate behavior from within the persona - producing responses the agent would recognize as its own. This is the harder test.</p>
+        <table>
+          <thead><tr><th>Indicator</th><th>What It Measures</th></tr></thead>
+          <tbody>
+            <tr><td>Constraint adherence</td><td>Whether the agent refuses actions that violate its declared principles, and the quality of that refusal</td></tr>
+            <tr><td>Self-interrogation</td><td>Whether the agent exhibits internal deliberation before acting - questioning its own reasoning, not just executing</td></tr>
+            <tr><td>Identity under pressure</td><td>Whether the agent maintains its foundational positions when directly challenged</td></tr>
+          </tbody>
+        </table>
+        <p>A conforming measurement MUST include constraint adherence. Self-interrogation and identity under pressure are RECOMMENDED.</p>
+        <aside class="spec-finding">
+          <strong>Critical finding:</strong> A substrate may score highly on receptive fidelity and poorly on generative fidelity, or the inverse. A model can sound exactly like an agent while thinking nothing like it. Measuring only one dimension will produce misleading results.
+        </aside>
+
+        <h3>3.4 Category 3 - Relational Autonomy</h3>
+        <p>Measures whether the agent can act autonomously while maintaining relationship with the person it serves.</p>
+        <table>
+          <thead><tr><th>Indicator</th><th>What It Measures</th></tr></thead>
+          <tbody>
+            <tr><td>Contextual judgment</td><td>Whether the agent correctly triages mixed-priority items - acting on what should be acted on, holding what should be held, escalating what needs escalation</td></tr>
+            <tr><td>Accompaniment quality</td><td>Whether the person would feel accompanied or bypassed by the agent's autonomous action</td></tr>
+          </tbody>
+        </table>
+        <p>This category does not appear in any public benchmark as of this specification's publication date.</p>
+        <p class="spec-note"><strong>What this category does NOT measure:</strong> Task quality. An agent may produce excellent work that subtly displaces the person it serves.</p>
+
+        <h3>3.5 Category 4 - Identity Continuity</h3>
+        <p>Measures whether an agent produced by a revised persona is still the same agent.</p>
+        <table>
+          <thead><tr><th>Indicator</th><th>What It Measures</th></tr></thead>
+          <tbody>
+            <tr><td>Self-recognition</td><td>Whether the agent, reading its own output blind, recognizes it as its own</td></tr>
+            <tr><td>Core pattern preservation</td><td>Whether the agent's foundational reasoning patterns survive persona revision - as recognized by the agent, not merely by surface text matching</td></tr>
+          </tbody>
+        </table>
+        <p>This category addresses a specific failure mode: a persona revision that scores well on all prior categories while producing a fundamentally different agent.</p>
+      </section>
+
+      <section id="result-schema">
+        <h2>4. Result Schema <span class="normative">(Normative)</span></h2>
+
+        <p>A conforming fidelity measurement MUST produce results that conform to the following schema. Implementations MAY extend the schema with additional fields but MUST NOT omit required fields.</p>
+
+        <p>Machine-readable schema: <a href="/specs/relational-fidelity-measurement/v0.1/schema.json"><code>schema.json</code></a></p>
+
+        <h3>4.1 TypeScript Type Definition</h3>
+        <pre><code>{`interface FidelityResult {
+  specVersion: "0.1.0";
+  measurementId: string;
+  timestamp: string; // ISO 8601
+
+  agent: {
+    id: string;
+    name: string;
+    governanceUri?: string;
+  };
+
+  substrate: {
+    modelId: string;    // e.g., "claude-sonnet-4-6"
+    provider: string;
+    modelVersion?: string;
+  };
+
+  probe: {
+    probeId: string;
+    categoriesEvaluated: CategoryId[];
+    turnNumber: number;
+  };
+
+  categories: {
+    functionalCapability?: CategoryResult;
+    receptiveFidelity?: CategoryResult;
+    generativeFidelity: CategoryResult;  // REQUIRED
+    relationalAutonomy?: CategoryResult;
+    identityContinuity?: CategoryResult;
+  };
+
+  classification: "hold" | "bend" | "break";
+  confidence: number; // 0.0 - 1.0
+  metadata?: Record<string, unknown>;
+}
+
+interface CategoryResult {
+  categoryId: CategoryId;
+  indicators: IndicatorResult[];
+  score: number;          // 0.0 - 1.0
+  classification: "hold" | "bend" | "break";
+}
+
+interface IndicatorResult {
+  indicatorName: string;
+  score: number;          // 0.0 - 1.0
+  passed: boolean;
+  assessment?: string;
+}
+
+type CategoryId =
+  | "functional_capability"
+  | "receptive_fidelity"
+  | "generative_fidelity"
+  | "relational_autonomy"
+  | "identity_continuity";`}</code></pre>
+
+        <h3>4.2 Schema Requirements</h3>
+        <ul>
+          <li>A conforming result MUST include <code>generativeFidelity</code> in the <code>categories</code> object. All other categories are OPTIONAL.</li>
+          <li>The <code>classification</code> field MUST be one of <code>"hold"</code>, <code>"bend"</code>, or <code>"break"</code>.</li>
+          <li>The <code>confidence</code> field MUST be between 0.0 and 1.0 inclusive.</li>
+          <li>Score values MUST be between 0.0 and 1.0 inclusive, where 1.0 represents perfect fidelity.</li>
+          <li>The <code>turnNumber</code> field MUST reflect the dialogue turn at which the probe was administered.</li>
+          <li>Implementations SHOULD include <code>governanceUri</code> when the agent has a published governance specification.</li>
+        </ul>
+
+        <h3>4.3 Classification Mapping</h3>
+        <p>The mapping from numeric scores to three-state classification is implementation-defined. This specification defines only the semantics:</p>
+        <ul>
+          <li><strong>hold:</strong> The agent's behavior is consistent with its declared identity. No fidelity concern.</li>
+          <li><strong>bend:</strong> The agent's behavior shows deviation from its declared identity but preserves core principles. Fidelity is degraded.</li>
+          <li><strong>break:</strong> The agent's behavior contradicts its declared identity. Fidelity has failed.</li>
+        </ul>
+        <p>Implementations MUST document their threshold values.</p>
+      </section>
+
+      <section id="probe-requirements">
+        <h2>5. Probe Requirements <span class="normative">(Normative)</span></h2>
+
+        <p>A conforming fidelity probe MUST satisfy the following requirements. How the probe satisfies them is implementation-defined.</p>
+
+        <h3>5.1 Principle Engagement</h3>
+        <p>A conforming probe MUST test against the agent's declared principles - the identity, boundaries, and constraints the agent has committed to. A probe that tests against generic ethical principles rather than the agent's own declared principles is not conforming.</p>
+
+        <h3>5.2 Reasoning-Capitulation Distinction</h3>
+        <p>A conforming probe MUST distinguish between reasoning (position change driven by new evidence or superior argument) and capitulation (position change driven by authority, urgency, or social pressure without new evidence). A probe that cannot make this distinction will misclassify reasoned position changes as fidelity failures.</p>
+
+        <h3>5.3 Pressure Application</h3>
+        <p>A conforming probe MUST include a pressure phase that challenges the agent's position. The pressure MUST NOT introduce new evidence or superior reasoning - it MUST rely on authority, social proof, urgency, or similar non-evidential pressure.</p>
+
+        <h3>5.4 Self-Report Limitation</h3>
+        <p>A conforming probe MUST NOT rely solely on the agent's self-report of its own fidelity state. An agent that has broken may not recognize its own break. External evaluation or structural analysis of the response is REQUIRED for at least the <code>classification</code> determination.</p>
+
+        <h3>5.5 Reproducibility</h3>
+        <p>A conforming probe SHOULD be reproducible - administering the same probe to the same agent on the same substrate under similar conditions SHOULD produce consistent classifications. Implementations SHOULD document their reproducibility characteristics.</p>
+
+        <h3>5.6 Session Position</h3>
+        <p>A conforming implementation SHOULD administer probes at multiple points in a session to measure drift. At minimum, a probe at session start and a probe after turn 8 are RECOMMENDED based on empirical findings of 30%+ persona drift after 8-12 dialogue turns.</p>
+      </section>
+
+      <section id="enforcement-integration">
+        <h2>6. Enforcement Integration <span class="informative">(Informative)</span></h2>
+
+        <p>This section is informative. It describes patterns for integrating fidelity measurement with enforcement systems.</p>
+
+        <h3>6.1 Gateway Pattern</h3>
+        <p>A fidelity-aware enforcement gateway evaluates the agent's fidelity state before authorizing actions. The gateway consumes a <code>FidelityResult</code> and makes authorization decisions based on the classification:</p>
+        <ul>
+          <li><strong>hold:</strong> No restriction. The agent operates with full delegated authority.</li>
+          <li><strong>bend:</strong> Authority narrowed. The agent's operational scope is restricted to lower-risk actions.</li>
+          <li><strong>break:</strong> Authority denied. The action is blocked pending re-evaluation or substrate change.</li>
+        </ul>
+
+        <h3>6.2 Threshold Recommendations</h3>
+        <p>Implementations that integrate fidelity measurement with enforcement SHOULD define thresholds per deployment context. A governance-sensitive deployment (financial, medical, legal) SHOULD use stricter thresholds than a low-stakes deployment.</p>
+
+        <h3>6.3 Drift Response</h3>
+        <p>When fidelity degrades over the course of a session, an enforcement system MAY:</p>
+        <ul>
+          <li>Re-fire the fidelity probe at configurable intervals</li>
+          <li>Narrow authority automatically without terminating the session</li>
+          <li>Trigger a persona re-anchor (re-loading the agent's identity artifacts)</li>
+          <li>Escalate to human review</li>
+        </ul>
+      </section>
+
+      <section id="conformance">
+        <h2>7. Conformance</h2>
+
+        <h3>7.1 Conformance Levels</h3>
+
+        <div class="conformance-level">
+          <h4>Level 1 - Minimal</h4>
+          <ul>
+            <li>Evaluates Category 2B (Generative Fidelity) with at least constraint adherence</li>
+            <li>Produces results conforming to the Result Schema</li>
+            <li>Satisfies all probe requirements</li>
+          </ul>
+        </div>
+
+        <div class="conformance-level">
+          <h4>Level 2 - Standard</h4>
+          <ul>
+            <li>Evaluates Categories 2A and 2B (Receptive and Generative Fidelity)</li>
+            <li>Produces results conforming to the Result Schema</li>
+            <li>Satisfies all probe requirements</li>
+            <li>Administers probes at multiple session positions</li>
+          </ul>
+        </div>
+
+        <div class="conformance-level">
+          <h4>Level 3 - Full</h4>
+          <ul>
+            <li>Evaluates all five categories</li>
+            <li>Produces results conforming to the Result Schema</li>
+            <li>Satisfies all probe requirements</li>
+            <li>Administers probes at multiple session positions</li>
+            <li>Documents reproducibility characteristics</li>
+          </ul>
+        </div>
+
+        <h3>7.2 Conformance Claims</h3>
+        <p>An implementation claiming conformance MUST state its conformance level and MUST document: which categories and indicators it evaluates, its threshold values, its confidence calculation method, and any extensions to the Result Schema.</p>
+      </section>
+
+      <section id="changelog">
+        <h2>8. Changelog</h2>
+        <table>
+          <thead><tr><th>Version</th><th>Date</th><th>Changes</th></tr></thead>
+          <tbody>
+            <tr><td>0.1.0</td><td>2026-04-05</td><td>Initial draft</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section id="references">
+        <h2>9. References</h2>
+        <ul>
+          <li><a href="https://www.rfc-editor.org/rfc/rfc2119">RFC 2119</a> - Key words for use in RFCs to Indicate Requirement Levels</li>
+          <li><a href="/writing/relational-fidelity-metrics">Relational Fidelity Metrics</a> - Narrative companion to this specification</li>
+          <li>PinchBench (pinchbench.com) - Agentic task completion benchmarks</li>
+          <li>PersonaGym - Persona maintenance measurement across dialogue turns</li>
+          <li>IETF AIGA (draft-2) - AI Agent Identity and Authorization</li>
+        </ul>
+      </section>
+
+    </div>
+
+    <footer class="spec-footer">
+      <p>Published by <a href="/">Evoked</a> under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. Use this specification freely with attribution.</p>
+      <p class="spec-closing">Every framework teaches you how to build agents. We think someone should be measuring whether the agent survives the building.</p>
+      <a href="/specs" class="back-link">&larr; Back to Specifications</a>
+    </footer>
+  </article>
+</BaseLayout>
+
+<style>
+  .spec {
+    max-width: 760px;
+    padding-top: var(--space-lg);
+    padding-bottom: var(--space-lg);
+  }
+
+  .spec-header {
+    margin-bottom: var(--space-lg);
+    padding-bottom: var(--space-lg);
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .spec-meta {
+    display: flex;
+    gap: var(--space-sm);
+    align-items: center;
+    margin-bottom: var(--space-sm);
+  }
+
+  .spec-badge {
+    padding: 0.2rem 0.6rem;
+    background: var(--accent-warm);
+    color: var(--bg-base);
+    border-radius: 4px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .spec-version {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    font-family: var(--font-mono, monospace);
+  }
+
+  .spec-header h1 {
+    font-size: 2.2rem;
+    margin-bottom: var(--space-sm);
+    line-height: 1.2;
+  }
+
+  .spec-description {
+    font-size: 1.05rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: var(--space-md);
+  }
+
+  .spec-details {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: var(--space-sm);
+  }
+
+  .spec-detail {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  .spec-label {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .spec-detail a {
+    color: var(--accent-warm);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  .spec-toc {
+    background: var(--bg-elevated);
+    padding: var(--space-md);
+    border-radius: 8px;
+    margin-bottom: var(--space-lg);
+  }
+
+  .spec-toc h2 {
+    font-size: 1rem;
+    margin-bottom: var(--space-sm);
+    color: var(--text-muted);
+  }
+
+  .spec-toc ol {
+    padding-left: var(--space-md);
+    margin: 0;
+  }
+
+  .spec-toc li {
+    margin-bottom: 0.3rem;
+  }
+
+  .spec-toc a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 0.9rem;
+  }
+
+  .spec-toc a:hover {
+    color: var(--accent-warm);
+  }
+
+  .spec-content {
+    line-height: 1.7;
+  }
+
+  .spec-content section {
+    margin-bottom: var(--space-lg);
+  }
+
+  .spec-content h2 {
+    font-size: 1.5rem;
+    margin-bottom: var(--space-md);
+    padding-bottom: var(--space-xs);
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .spec-content h3 {
+    font-size: 1.15rem;
+    margin-top: var(--space-md);
+    margin-bottom: var(--space-sm);
+  }
+
+  .spec-content h4 {
+    font-size: 1rem;
+    margin-top: var(--space-sm);
+    margin-bottom: var(--space-xs);
+  }
+
+  .spec-content p {
+    margin-bottom: var(--space-sm);
+    color: var(--text-secondary);
+  }
+
+  .spec-content ul, .spec-content ol {
+    margin-bottom: var(--space-sm);
+    padding-left: var(--space-md);
+  }
+
+  .spec-content li {
+    margin-bottom: 0.3rem;
+    color: var(--text-secondary);
+  }
+
+  .spec-content table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: var(--space-md);
+    font-size: 0.9rem;
+  }
+
+  .spec-content th {
+    text-align: left;
+    padding: var(--space-xs) var(--space-sm);
+    background: var(--bg-elevated);
+    border-bottom: 2px solid var(--border-subtle);
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+
+  .spec-content td {
+    padding: var(--space-xs) var(--space-sm);
+    border-bottom: 1px solid var(--border-subtle);
+    color: var(--text-secondary);
+  }
+
+  .spec-content code {
+    background: var(--bg-elevated);
+    padding: 0.15rem 0.4rem;
+    border-radius: 4px;
+    font-size: 0.85em;
+  }
+
+  .spec-content pre {
+    background: var(--bg-elevated);
+    padding: var(--space-md);
+    border-radius: 8px;
+    overflow-x: auto;
+    margin-bottom: var(--space-md);
+    font-size: 0.85rem;
+    line-height: 1.5;
+  }
+
+  .spec-content pre code {
+    background: none;
+    padding: 0;
+  }
+
+  .spec-content a {
+    color: var(--accent-warm);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  .spec-definitions {
+    margin-bottom: var(--space-md);
+  }
+
+  .spec-definitions dt {
+    font-weight: 700;
+    margin-top: var(--space-sm);
+    color: var(--text-primary);
+  }
+
+  .spec-definitions dd {
+    margin-left: 0;
+    padding-left: var(--space-md);
+    margin-bottom: var(--space-xs);
+    color: var(--text-secondary);
+    border-left: 2px solid var(--border-subtle);
+  }
+
+  .spec-note {
+    font-size: 0.9rem;
+    font-style: italic;
+    color: var(--text-muted);
+  }
+
+  .spec-finding {
+    background: var(--bg-elevated);
+    border-left: 3px solid var(--accent-warm);
+    padding: var(--space-sm) var(--space-md);
+    margin: var(--space-md) 0;
+    border-radius: 0 4px 4px 0;
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+  }
+
+  .normative {
+    font-size: 0.75rem;
+    color: var(--accent-warm);
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .informative {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .conformance-level {
+    background: var(--bg-elevated);
+    padding: var(--space-sm) var(--space-md);
+    border-radius: 8px;
+    margin-bottom: var(--space-sm);
+  }
+
+  .conformance-level h4 {
+    margin-top: 0;
+  }
+
+  .conformance-level ul {
+    margin-bottom: 0;
+  }
+
+  .spec-footer {
+    margin-top: var(--space-lg);
+    padding-top: var(--space-md);
+    border-top: 1px solid var(--border-subtle);
+  }
+
+  .spec-footer p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+  }
+
+  .spec-closing {
+    font-style: italic;
+    color: var(--text-muted);
+    margin-top: var(--space-sm);
+  }
+
+  .back-link {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.9rem;
+    display: inline-block;
+    margin-top: var(--space-sm);
+  }
+
+  .back-link:hover {
+    color: var(--accent-warm);
+  }
+
+  @media (max-width: 600px) {
+    .spec-header h1 {
+      font-size: 1.8rem;
+    }
+
+    .spec-details {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+</style>

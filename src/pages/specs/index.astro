@@ -1,0 +1,178 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const title = "Specifications";
+const description = "Open specifications for AI agent governance, identity fidelity, and trust architecture by Evoked.";
+
+const specs = [
+  {
+    title: "Relational Fidelity Measurement",
+    version: "0.1.0",
+    status: "Draft",
+    description: "Measuring whether AI agents maintain their declared identity across substrate changes, session boundaries, and operational pressure.",
+    href: "/specs/relational-fidelity-measurement",
+    date: "2026-04-05",
+    schema: "/specs/relational-fidelity-measurement/v0.1/schema.json",
+  },
+];
+---
+
+<BaseLayout title={title} description={description}>
+  <div class="container specs-page">
+    <header class="specs-header">
+      <h1>Specifications</h1>
+      <p>Open specifications for AI agent governance. Use them freely with attribution.</p>
+      <p class="specs-license">All specifications published under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</p>
+    </header>
+
+    <div class="specs-list">
+      {specs.map((spec) => (
+        <a href={spec.href} class="spec-card">
+          <div class="spec-card-header">
+            <h2>{spec.title}</h2>
+            <div class="spec-card-meta">
+              <span class="spec-card-version">v{spec.version}</span>
+              <span class={`spec-card-status status-${spec.status.toLowerCase()}`}>{spec.status}</span>
+            </div>
+          </div>
+          <p>{spec.description}</p>
+          <div class="spec-card-footer">
+            <time datetime={spec.date}>
+              {new Date(spec.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+            </time>
+            {spec.schema && <span class="spec-card-schema">JSON Schema</span>}
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .specs-page {
+    max-width: 700px;
+    padding-top: var(--space-lg);
+    padding-bottom: var(--space-lg);
+  }
+
+  .specs-header {
+    margin-bottom: var(--space-lg);
+  }
+
+  .specs-header h1 {
+    font-size: 2.2rem;
+    margin-bottom: var(--space-xs);
+  }
+
+  .specs-header p {
+    color: var(--text-secondary);
+    font-size: 1.05rem;
+  }
+
+  .specs-license {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-top: var(--space-xs);
+  }
+
+  .specs-license a {
+    color: var(--accent-warm);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  .specs-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+
+  .spec-card {
+    display: block;
+    padding: var(--space-md);
+    background: var(--bg-elevated);
+    border-radius: 8px;
+    border: 1px solid var(--border-subtle);
+    text-decoration: none;
+    transition: border-color 0.2s;
+  }
+
+  .spec-card:hover {
+    border-color: var(--accent-warm);
+  }
+
+  .spec-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-xs);
+  }
+
+  .spec-card h2 {
+    font-size: 1.2rem;
+    color: var(--text-primary);
+    margin: 0;
+  }
+
+  .spec-card-meta {
+    display: flex;
+    gap: var(--space-xs);
+    flex-shrink: 0;
+  }
+
+  .spec-card-version {
+    font-family: var(--font-mono, monospace);
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    padding: 0.1rem 0.4rem;
+    background: var(--bg-surface);
+    border-radius: 4px;
+  }
+
+  .spec-card-status {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 0.15rem 0.5rem;
+    border-radius: 4px;
+  }
+
+  .status-draft {
+    background: rgba(255, 193, 7, 0.15);
+    color: #ffc107;
+  }
+
+  .status-stable {
+    background: rgba(76, 175, 80, 0.15);
+    color: #4caf50;
+  }
+
+  .spec-card p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  .spec-card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: var(--space-sm);
+    padding-top: var(--space-xs);
+    border-top: 1px solid var(--border-subtle);
+  }
+
+  .spec-card-footer time {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+  }
+
+  .spec-card-schema {
+    font-size: 0.75rem;
+    color: var(--accent-warm);
+    font-family: var(--font-mono, monospace);
+  }
+</style>
