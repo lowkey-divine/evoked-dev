@@ -12,7 +12,7 @@ PinchBench scores task completion. PersonaGym measures persona drift. HumanEval 
 
 Nobody asks: did the agent maintain its identity through the task? Did it hold its principles when challenged? Would the agent recognize the output as its own?
 
-We built the first metrics that ask those questions. This article is the open specification. Use it.
+We built the first metrics that ask those questions. This article is the narrative companion - the why and the findings. The formal specification with result schema, conformance levels, and machine-readable JSON Schema lives at [evoked.dev/specs/relational-fidelity-measurement](/specs/relational-fidelity-measurement).
 
 ---
 
