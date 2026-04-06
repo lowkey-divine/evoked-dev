@@ -7,22 +7,23 @@ const product = getProductBySlug('governance-score-card')!;
 const jsonLd = productJsonLd(product, 'https://evoked.dev/products/governance-score-card');
 ---
 
-<BaseLayout title="Governance Score Card" description="Run the scan. Read the card. Know what your score means. $1 PDF." structuredData={jsonLd}>
+<BaseLayout title="Governance Score Card" description="Five questions. Five governance properties. Know what your score means and what to fix first. $1 PDF." structuredData={jsonLd}>
   <div class="hero hero-compact">
     <span class="discipline-badge">Quick Assessment</span>
     <h1>What does your governance score mean?</h1>
-    <p class="tagline">Run the scan. Read the card. Know what to fix first.</p>
+    <p class="tagline">Five questions. Five properties. Know what to fix first.</p>
   </div>
 
   <section class="container">
     <div class="value-prop">
       <p>
-        You ran <code>npx agent-governance-check</code> on your project and got a score.
-        Maybe 1 out of 5. Maybe 3. Now what?
+        Your agent system has five governance properties: Identity, Restraint, Accountability,
+        Memory, and Charter. Each one is either present, partial, or missing. Do you know which?
       </p>
       <p>
-        This card tells you what each gap means, what risk it carries, and one concrete
-        action per finding. No theory. No fluff. Just the interpretation and the next step.
+        This card walks you through a quick self-assessment of all five properties, tells you
+        what each gap means, what risk it carries, and one concrete action per finding.
+        No theory. No fluff. Just the interpretation and the next step.
       </p>
     </div>
   </section>
@@ -57,15 +58,15 @@ const jsonLd = productJsonLd(product, 'https://evoked.dev/products/governance-sc
       <div class="domain-item">
         <span class="domain-number">1</span>
         <div>
-          <h3>Run the free scan</h3>
-          <p><code>npx agent-governance-check</code> in your project directory. 30 seconds.</p>
+          <h3>Answer five questions</h3>
+          <p>Does your agent have identity? Restraint? Accountability? Memory? A charter? Five yes-or-no questions. Two minutes.</p>
         </div>
       </div>
       <div class="domain-item">
         <span class="domain-number">2</span>
         <div>
-          <h3>Get your score</h3>
-          <p>Five questions. Each answered FOUND, PARTIAL, or MISSING. Your governance posture in one screen.</p>
+          <h3>Score your system</h3>
+          <p>Each property scores as FOUND, PARTIAL, or MISSING. Your governance posture in one page.</p>
         </div>
       </div>
       <div class="domain-item">
@@ -84,7 +85,7 @@ const jsonLd = productJsonLd(product, 'https://evoked.dev/products/governance-sc
     <div class="audience-grid">
       <div class="card">
         <h3>Developers Building Agents</h3>
-        <p>You shipped the agent. Now you want to know what governance looks like. Start with the scan and the card.</p>
+        <p>You shipped the agent. Now you want to know what governance looks like. Start with the five questions and the card.</p>
       </div>
       <div class="card">
         <h3>Team Leads Evaluating Risk</h3>
@@ -92,7 +93,7 @@ const jsonLd = productJsonLd(product, 'https://evoked.dev/products/governance-sc
       </div>
       <div class="card">
         <h3>Anyone Curious About Governance</h3>
-        <p>A dollar. A scan. A card. Five minutes of your time and you'll know more about agent governance than most conference talks teach.</p>
+        <p>A dollar. Five questions. A card. Five minutes of your time and you'll know more about agent governance than most conference talks teach.</p>
       </div>
     </div>
   </section>
@@ -103,7 +104,7 @@ const jsonLd = productJsonLd(product, 'https://evoked.dev/products/governance-sc
       <p>PDF download. The interpretation guide for your governance scan.</p>
       <a href={product.stripePaymentLink} class="btn btn-primary btn-large mt-md" target="_blank" rel="noopener">Get the Score Card</a>
       <p class="text-muted mt-md" style="font-size: 0.85rem;">
-        Haven't run the scan yet? <code>npx agent-governance-check</code> - it's free and takes 30 seconds.
+        The card includes the five-question self-assessment and the full interpretation guide. Two minutes to score, five minutes to understand.
       </p>
     </div>
   </section>
