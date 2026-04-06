@@ -12,8 +12,38 @@ const sortedPosts = allPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pu
     <p class="tagline">On psychology, families, and building something better.</p>
   </div>
 
+  <section class="container">
+    <div class="start-here">
+      <h2>New to agent governance? Start here.</h2>
+      <div class="start-here-list">
+        <a href="/writing/fifteen-frameworks" class="start-here-item">
+          <span class="start-here-step">1</span>
+          <div>
+            <h3>Fifteen Frameworks, One Missing Layer</h3>
+            <p>The landscape - what exists, what's missing, and why it matters.</p>
+          </div>
+        </a>
+        <a href="/writing/what-should-your-agent-refuse" class="start-here-item">
+          <span class="start-here-step">2</span>
+          <div>
+            <h3>What Should Your Agent Refuse?</h3>
+            <p>The question nobody's asking - and why the answer changes everything.</p>
+          </div>
+        </a>
+        <a href="/writing/relational-fidelity-metrics" class="start-here-item">
+          <span class="start-here-step">3</span>
+          <div>
+            <h3>Relational Fidelity Metrics</h3>
+            <p>How to measure whether your agent is still itself. Four categories, nine indicators.</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
   {sortedPosts.length > 0 ? (
     <section class="container">
+      <h2>All Writing</h2>
       <div class="article-list">
         {sortedPosts.map((post) => (
           <a href={`/writing/${post.slug}`} class="article-card">
@@ -114,6 +144,61 @@ const sortedPosts = allPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pu
 </BaseLayout>
 
 <style>
+  .start-here {
+    max-width: 640px;
+    margin: 0 auto;
+  }
+
+  .start-here h2 {
+    font-size: 1.3rem;
+    margin-bottom: var(--space-md);
+  }
+
+  .start-here-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-lg);
+  }
+
+  .start-here-item {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-md);
+    padding: var(--space-sm) var(--space-md);
+    border: 1px solid var(--border-subtle);
+    border-radius: 8px;
+    text-decoration: none;
+    transition: border-color var(--transition-smooth);
+  }
+
+  .start-here-item:hover {
+    border-color: var(--accent-warm);
+  }
+
+  .start-here-step {
+    font-family: var(--font-display);
+    font-size: 1.8rem;
+    color: var(--accent-warm);
+    line-height: 1;
+    flex-shrink: 0;
+    width: 2rem;
+    text-align: center;
+  }
+
+  .start-here-item h3 {
+    font-size: 1rem;
+    margin: 0 0 var(--space-xs) 0;
+    color: var(--text-primary);
+  }
+
+  .start-here-item p {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin: 0;
+    line-height: 1.5;
+  }
+
   .article-list {
     display: flex;
     flex-direction: column;

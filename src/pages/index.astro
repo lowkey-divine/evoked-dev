@@ -28,12 +28,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
       <a href="/work-with-us#developer" class="soul-group">
         <p class="soul-feeling">you're building agents and want to build them right</p>
-        <p class="soul-name">Governance, restraint, and trust architecture - not just speed.</p>
+        <p class="soul-name">Free governance patterns, open specs, and implementation guides. <span class="quick-link">Start free on GitHub &rarr;</span></p>
       </a>
 
       <a href="/work-with-us#executive" class="soul-group">
         <p class="soul-feeling">your organization is deploying AI and you need governance you can trust</p>
-        <p class="soul-name">Audits, implementation, and advisory partnerships built in practice.</p>
+        <p class="soul-name">Assessment tools, EU AI Act mapping, and governance audits. <span class="quick-link">Take the free diagnostic &rarr;</span></p>
       </a>
 
       <a href="/coaching" class="soul-group">
@@ -50,6 +50,24 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <p class="soul-feeling">you don't know why you're here yet</p>
         <p class="soul-name">that's welcome too. Look around. Stay as long as it's useful.</p>
       </a>
+    </div>
+  </section>
+
+  <section class="container">
+    <div class="quick-starts">
+      <h2 class="quick-starts-heading">Start here. Free.</h2>
+      <div class="quick-starts-grid">
+        <a href="https://github.com/lowkey-divine/agent-governance-starter-kit" target="_blank" rel="noopener" class="quick-start-card">
+          <span class="quick-start-label">Developer</span>
+          <p class="quick-start-title">Free governance patterns for AI agents</p>
+          <p class="quick-start-desc">Templates and code examples from a 142-agent production system. CrewAI, LangGraph, Pydantic AI.</p>
+        </a>
+        <a href="/diagnostic" class="quick-start-card">
+          <span class="quick-start-label">Executive</span>
+          <p class="quick-start-title">Is your AI governance real? Find out in 5 minutes.</p>
+          <p class="quick-start-desc">Five questions about your agent system. Scored assessment with concrete next steps.</p>
+        </a>
+      </div>
     </div>
   </section>
 
@@ -196,6 +214,73 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     font-size: 0.9rem;
     color: var(--text-secondary);
     line-height: 1.6;
+  }
+
+  .quick-link {
+    display: block;
+    margin-top: var(--space-xs);
+    color: var(--accent-warm);
+    font-size: 0.85rem;
+    font-style: normal;
+  }
+
+  .quick-starts {
+    text-align: center;
+  }
+
+  .quick-starts-heading {
+    font-size: 1.4rem;
+    margin-bottom: var(--space-md);
+  }
+
+  .quick-starts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--space-md);
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .quick-start-card {
+    padding: var(--space-md);
+    border: 2px solid var(--accent-subtle);
+    border-radius: 8px;
+    transition: border-color var(--transition-smooth);
+    text-decoration: none;
+    display: block;
+    text-align: left;
+  }
+
+  .quick-start-card:hover {
+    border-color: var(--accent-warm);
+  }
+
+  .quick-start-label {
+    display: inline-block;
+    background: var(--accent-subtle);
+    color: var(--accent-warm);
+    font-size: 0.7rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 3px 10px;
+    border-radius: 100px;
+    margin-bottom: var(--space-xs);
+  }
+
+  .quick-start-title {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    color: var(--text-primary);
+    margin-bottom: var(--space-xs);
+    line-height: 1.4;
+  }
+
+  .quick-start-desc {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 0;
   }
 
   .newsletter-card {
