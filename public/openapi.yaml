@@ -1,9 +1,9 @@
 openapi: 3.1.0
 info:
-  title: Bot Authority API
+  title: Evoked Verification API
   version: 1.0.0
   description: |
-    The Bot Authority API provides programmatic access to the agent governance registry.
+    The Evoked Verification API provides programmatic access to the agent governance registry.
     Verify agent identity, restraint specifications, accountability, memory architecture,
     and governance charter status for any registered agent.
 
@@ -93,9 +93,9 @@ paths:
                     attestation:
                       level: self-attested
                       last_verified: '2026-03-11T00:00:00Z'
-                      verified_by: Evoked Bot Authority
+                      verified_by: Evoked Verification
                     verified: true
-                    verified_by: Evoked Bot Authority
+                    verified_by: Evoked Verification
                 organization:
                   summary: Organization lookup (truncated)
                   value:
@@ -110,7 +110,7 @@ paths:
                         attestation:
                           level: self-attested
                           last_verified: '2026-03-11T00:00:00Z'
-                          verified_by: Evoked Bot Authority
+                          verified_by: Evoked Verification
         '400':
           description: Missing required parameter.
           content:
@@ -149,7 +149,7 @@ paths:
       operationId: getAgentBadge
       summary: Get embeddable governance badge
       description: |
-        Returns an SVG badge image showing the agent's Bot Authority verification
+        Returns an SVG badge image showing the agent's Evoked Verification
         status and tier level. Designed for embedding in READMEs, agent profiles,
         and documentation.
 

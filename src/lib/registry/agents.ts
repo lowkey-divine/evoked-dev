@@ -1,4 +1,4 @@
-// Bot Authority (BA) — Agent Governance Registry
+// Evoked Verification — Agent Governance Registry
 // All USS Evoke agents registered with governance properties.
 // Enterprise names (Star Trek IP) are internal only — per fleet decision D8, March 9, 2026.
 
@@ -61,7 +61,7 @@ function evokeAgent(
     attestation: {
       level: 'governance-validated',
       last_verified: '2026-03-19T00:00:00Z',
-      verified_by: 'Evoked Bot Authority — Governance Validation Audit',
+      verified_by: 'Evoked Verification — Governance Validation Audit',
     },
   };
 }
