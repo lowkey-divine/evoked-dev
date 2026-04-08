@@ -13,6 +13,7 @@
     "@astrojs/rss": "^4.0.15",
     "@astrojs/sitemap": "^3.7.0",
     "@astrojs/vercel": "^9.0.4",
+    "@neondatabase/serverless": "^1.0.2",
     "@vercel/analytics": "^2.0.1",
     "astro": "^5.17.1",
     "puppeteer-core": "^24.37.5",

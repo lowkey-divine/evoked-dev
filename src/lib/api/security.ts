@@ -81,6 +81,7 @@ const RATE_LIMITS: Record<string, RateLimitConfig> = {
   buildWithUs:   { windowMs: 300_000, maxRequests: 1 },   // 1 per 5 minutes
   fitFollowup:   { windowMs: 60_000, maxRequests: 5 },    // 5 per minute
   challenge:     { windowMs: 60_000, maxRequests: 10 },   // 10 per minute (serves all forms)
+  sovereignty:   { windowMs: 300_000, maxRequests: 3 },   // 3 per 5 minutes
 };
 
 function getClientIP(request: Request): string {
