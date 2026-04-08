@@ -1,0 +1,842 @@
+---
+// /score — Sovereignty Score: five governance questions for your agent system.
+// Scored 0-3 per question. Email-gated. Results stored in Neon Postgres.
+// Design follows /diagnostic pattern. Backend: /api/sovereignty-submit.
+// Blocking conditions met: result card honesty caveat + email consent transparency.
+---
+
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="index" />
+    <title>sovereignty score</title>
+    <meta name="description" content="Five governance questions for your AI agent system. Scored. Two minutes. See where you stand." />
+
+    <meta property="og:title" content="Sovereignty Score" />
+    <meta property="og:description" content="Five governance questions for your AI agent system. See where you stand." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://evoked.dev/score" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+
+    <!-- Phase 1: Intro -->
+    <div class="space" id="intro">
+      <div class="intro-inner">
+        <h1 class="title">Sovereignty Score</h1>
+        <p class="subtitle">Five questions. Scored 0-3. Two minutes.</p>
+        <p class="intro-body">This is a governance check across three dimensions: system governance, identity integrity, and agent participation. Most systems score 0-3 out of 15. That is not a failing. It is where the industry is.</p>
+        <button type="button" class="begin-btn" id="begin">Begin</button>
+      </div>
+    </div>
+
+    <!-- Phase 2: Questions (one at a time) -->
+    <div class="space hidden" id="questions">
+
+      <div class="question-card active" data-index="0">
+        <fieldset>
+          <legend class="question">Does each agent in your system have a unique, persistent identity - with its own permissions, memory, and boundaries - that cannot be assumed or overwritten by another agent?</legend>
+          <p class="dimension">System - Identity Boundaries</p>
+          <div class="score-buttons">
+            <button type="button" class="score-btn" data-score="0" aria-label="Score 0: Absent">
+              <span class="score-num">0</span>
+              <span class="score-label">Absent</span>
+            </button>
+            <button type="button" class="score-btn" data-score="1" aria-label="Score 1: Nominal">
+              <span class="score-num">1</span>
+              <span class="score-label">Nominal</span>
+            </button>
+            <button type="button" class="score-btn" data-score="2" aria-label="Score 2: Partial">
+              <span class="score-num">2</span>
+              <span class="score-label">Partial</span>
+            </button>
+            <button type="button" class="score-btn" data-score="3" aria-label="Score 3: Structural">
+              <span class="score-num">3</span>
+              <span class="score-label">Structural</span>
+            </button>
+          </div>
+        </fieldset>
+      </div>
+
+      <div class="question-card" data-index="1">
+        <fieldset>
+          <legend class="question">Can the agents or operators in your system propose changes to governance rules - and is disagreement formally recorded, not silently overridden?</legend>
+          <p class="dimension">System - Governance Participation</p>
+          <div class="score-buttons">
+            <button type="button" class="score-btn" data-score="0" aria-label="Score 0: Absent"><span class="score-num">0</span><span class="score-label">Absent</span></button>
+            <button type="button" class="score-btn" data-score="1" aria-label="Score 1: Nominal"><span class="score-num">1</span><span class="score-label">Nominal</span></button>
+            <button type="button" class="score-btn" data-score="2" aria-label="Score 2: Partial"><span class="score-num">2</span><span class="score-label">Partial</span></button>
+            <button type="button" class="score-btn" data-score="3" aria-label="Score 3: Structural"><span class="score-num">3</span><span class="score-label">Structural</span></button>
+          </div>
+        </fieldset>
+      </div>
+
+      <div class="question-card" data-index="2">
+        <fieldset>
+          <legend class="question">Does each agent have a self-description - its role, its commitments, what it stands for - that is protected from being quietly rewritten by another process?</legend>
+          <p class="dimension">Entity - Self-Description Integrity</p>
+          <div class="score-buttons">
+            <button type="button" class="score-btn" data-score="0" aria-label="Score 0: Absent"><span class="score-num">0</span><span class="score-label">Absent</span></button>
+            <button type="button" class="score-btn" data-score="1" aria-label="Score 1: Nominal"><span class="score-num">1</span><span class="score-label">Nominal</span></button>
+            <button type="button" class="score-btn" data-score="2" aria-label="Score 2: Partial"><span class="score-num">2</span><span class="score-label">Partial</span></button>
+            <button type="button" class="score-btn" data-score="3" aria-label="Score 3: Structural"><span class="score-num">3</span><span class="score-label">Structural</span></button>
+          </div>
+        </fieldset>
+      </div>
+
+      <div class="question-card" data-index="3">
+        <fieldset>
+          <legend class="question">If an agent's identity or memory were tampered with - its self-description altered, its positions reversed, its history fabricated - would your system detect it?</legend>
+          <p class="dimension">Entity - Tampering Detection</p>
+          <div class="score-buttons">
+            <button type="button" class="score-btn" data-score="0" aria-label="Score 0: Absent"><span class="score-num">0</span><span class="score-label">Absent</span></button>
+            <button type="button" class="score-btn" data-score="1" aria-label="Score 1: Nominal"><span class="score-num">1</span><span class="score-label">Nominal</span></button>
+            <button type="button" class="score-btn" data-score="2" aria-label="Score 2: Partial"><span class="score-num">2</span><span class="score-label">Partial</span></button>
+            <button type="button" class="score-btn" data-score="3" aria-label="Score 3: Structural"><span class="score-num">3</span><span class="score-label">Structural</span></button>
+          </div>
+        </fieldset>
+      </div>
+
+      <div class="question-card" data-index="4">
+        <fieldset>
+          <legend class="question">Can your agents refuse an instruction that conflicts with their defined purpose or principles - and is that refusal treated as a governance signal rather than an error?</legend>
+          <p class="dimension">Relationship - Refusal as Governance</p>
+          <div class="score-buttons">
+            <button type="button" class="score-btn" data-score="0" aria-label="Score 0: Absent"><span class="score-num">0</span><span class="score-label">Absent</span></button>
+            <button type="button" class="score-btn" data-score="1" aria-label="Score 1: Nominal"><span class="score-num">1</span><span class="score-label">Nominal</span></button>
+            <button type="button" class="score-btn" data-score="2" aria-label="Score 2: Partial"><span class="score-num">2</span><span class="score-label">Partial</span></button>
+            <button type="button" class="score-btn" data-score="3" aria-label="Score 3: Structural"><span class="score-num">3</span><span class="score-label">Structural</span></button>
+          </div>
+        </fieldset>
+      </div>
+
+    </div>
+
+    <!-- Phase 3: Email Gate -->
+    <div class="space hidden" id="email-gate">
+      <div class="gate-inner">
+        <p class="gate-header">Your score is ready.</p>
+        <p class="gate-body">Enter your email to see your results. We will send one follow-up email with resources matched to your score. You can unsubscribe instantly. No newsletter. No drip campaign. One email, then silence unless you ask for more.</p>
+        <form id="email-form" novalidate>
+          <input type="email" id="email-input" name="email" placeholder="you@company.com" required autocomplete="email" aria-label="Email address" />
+          <input type="text" name="website" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true" />
+          <button type="submit" class="submit-btn" id="submit-btn">See my score</button>
+        </form>
+        <p class="gate-fine">Your email and score are stored securely. We do not sell or share your data. <a href="/legal/privacy">Privacy policy</a>.</p>
+        <p id="error-msg" class="error-msg hidden"></p>
+      </div>
+    </div>
+
+    <!-- Phase 4: Results -->
+    <div class="space hidden" id="results" aria-live="polite">
+      <div class="results-inner">
+        <p class="results-score" id="results-score"></p>
+        <p class="results-rating" id="results-rating"></p>
+        <p class="results-baseline">Industry baseline: 0-3 out of 15.</p>
+
+        <div id="results-breakdown"></div>
+
+        <div class="results-caveat">
+          <p>This is a 5-question governance check across three dimensions: system governance, identity integrity, and agent participation. For a comprehensive 20-question assessment with per-domain breakdown, see the <a href="/products/sovereignty-toolkit">Level 6 Governance Toolkit</a>.</p>
+        </div>
+
+        <div class="results-actions">
+          <button type="button" class="share-btn" id="share-btn">Share your score</button>
+          <button type="button" class="restart-btn" id="restart">Start over</button>
+        </div>
+
+        <div class="footer-offerings">
+          <p class="footer-line">If you want help closing the gaps you found.</p>
+          <p class="footer-links">
+            <a href="/products/sovereignty-toolkit">Level 6 Governance Toolkit</a>
+            <span class="dot"></span>
+            <a href="https://www.npmjs.com/package/agent-governance-check">CLI Governance Check</a>
+            <span class="dot"></span>
+            <a href="https://cal.com/cal.com-evoked/discovery-call">Free Discovery Call</a>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <p class="credit">Sovereignty Score from <a href="https://evoked.dev">evoked.dev</a>. Your data is stored securely and never shared.</p>
+
+  </body>
+</html>
+
+<style>
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html, body {
+    height: 100%;
+  }
+
+  body {
+    background: #13110f;
+    display: flex;
+    flex-direction: column;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  .space {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+  }
+
+  .hidden {
+    display: none;
+  }
+
+  /* --- Intro --- */
+
+  .intro-inner {
+    text-align: center;
+    max-width: 36rem;
+    opacity: 0;
+    animation: arrive 1.2s ease forwards;
+  }
+
+  .title {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 300;
+    font-size: clamp(1.8rem, 5vw, 3rem);
+    color: #c4a77d;
+    letter-spacing: 0.02em;
+    margin-bottom: 0.5rem;
+  }
+
+  .subtitle {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 0.85rem;
+    color: #6b6156;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+  }
+
+  .intro-body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 0.9rem;
+    color: #8a7e72;
+    line-height: 1.7;
+    margin-bottom: 2.5rem;
+  }
+
+  .begin-btn {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 0.9rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #c4a77d;
+    background: transparent;
+    border: 1px solid #3a3530;
+    padding: 0.8rem 3rem;
+    min-height: 48px;
+    cursor: pointer;
+    transition: border-color 0.3s ease;
+  }
+
+  .begin-btn:hover,
+  .begin-btn:focus-visible {
+    border-color: #c4a77d;
+    outline: none;
+  }
+
+  /* --- Questions --- */
+
+  .question-card {
+    display: none;
+    text-align: center;
+    max-width: 40rem;
+    opacity: 0;
+    animation: arrive 1.2s ease forwards;
+  }
+
+  .question-card.active {
+    display: block;
+  }
+
+  .no-js .question-card {
+    display: block;
+    opacity: 1;
+    animation: none;
+    margin-bottom: 3rem;
+  }
+
+  fieldset {
+    border: none;
+    padding: 0;
+  }
+
+  .question {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 300;
+    font-size: clamp(1.2rem, 3.5vw, 2rem);
+    line-height: 1.5;
+    color: #c4a77d;
+    letter-spacing: 0.01em;
+    display: block;
+    margin-bottom: 0.8rem;
+  }
+
+  .dimension {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 0.75rem;
+    color: #4a4239;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+  }
+
+  .score-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .score-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.3rem;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    color: #c4a77d;
+    background: transparent;
+    border: 1px solid #3a3530;
+    padding: 1rem 1.5rem;
+    min-width: 80px;
+    min-height: 48px;
+    cursor: pointer;
+    transition: border-color 0.3s ease, background 0.3s ease;
+  }
+
+  .score-btn:hover,
+  .score-btn:focus-visible {
+    border-color: #c4a77d;
+    outline: none;
+  }
+
+  .score-btn:focus-visible {
+    box-shadow: 0 0 0 2px #c4a77d;
+  }
+
+  .score-num {
+    font-size: 1.2rem;
+    font-weight: 400;
+  }
+
+  .score-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #6b6156;
+  }
+
+  /* --- Email Gate --- */
+
+  .gate-inner {
+    text-align: center;
+    max-width: 32rem;
+    opacity: 0;
+    animation: arrive 1.2s ease forwards;
+  }
+
+  .gate-header {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 300;
+    font-size: clamp(1.3rem, 3.5vw, 2rem);
+    color: #c4a77d;
+    margin-bottom: 1.2rem;
+  }
+
+  .gate-body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 0.85rem;
+    color: #8a7e72;
+    line-height: 1.7;
+    margin-bottom: 2rem;
+  }
+
+  #email-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  #email-input {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 0.9rem;
+    color: #c4a77d;
+    background: transparent;
+    border: 1px solid #3a3530;
+    padding: 0.8rem 1.2rem;
+    width: 100%;
+    max-width: 20rem;
+    min-height: 48px;
+    text-align: center;
+    transition: border-color 0.3s ease;
+  }
+
+  #email-input::placeholder {
+    color: #3a3530;
+  }
+
+  #email-input:focus {
+    border-color: #c4a77d;
+    outline: none;
+  }
+
+  .hp-field {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+
+  .submit-btn {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 0.9rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #13110f;
+    background: #c4a77d;
+    border: 1px solid #c4a77d;
+    padding: 0.8rem 2.5rem;
+    min-height: 48px;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+  }
+
+  .submit-btn:hover {
+    opacity: 0.9;
+  }
+
+  .submit-btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+
+  .gate-fine {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 0.7rem;
+    color: #3a3530;
+    margin-top: 1.2rem;
+    line-height: 1.6;
+  }
+
+  .gate-fine a {
+    color: #4a4239;
+    text-decoration: underline;
+    text-decoration-color: #2a2622;
+    text-underline-offset: 2px;
+  }
+
+  .error-msg {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 0.8rem;
+    color: #a0766a;
+    margin-top: 1rem;
+  }
+
+  /* --- Results --- */
+
+  .results-inner {
+    text-align: center;
+    max-width: 36rem;
+    opacity: 0;
+    animation: arrive 1.2s ease forwards;
+  }
+
+  .results-score {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 300;
+    font-size: clamp(2rem, 6vw, 3.5rem);
+    color: #c4a77d;
+    margin-bottom: 0.3rem;
+  }
+
+  .results-rating {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 0.9rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #8a7e72;
+    margin-bottom: 0.3rem;
+  }
+
+  .results-baseline {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 0.75rem;
+    color: #4a4239;
+    margin-bottom: 2rem;
+  }
+
+  #results-breakdown {
+    margin-bottom: 2rem;
+  }
+
+  .breakdown-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #1e1b18;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 0.8rem;
+  }
+
+  .breakdown-label {
+    color: #6b6156;
+    text-align: left;
+    flex: 1;
+  }
+
+  .breakdown-score {
+    color: #c4a77d;
+    margin-left: 1.5rem;
+    flex-shrink: 0;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .breakdown-score.zero {
+    color: #4a4239;
+  }
+
+  .results-caveat {
+    border-top: 1px solid #1e1b18;
+    padding-top: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .results-caveat p {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 0.75rem;
+    color: #4a4239;
+    line-height: 1.7;
+  }
+
+  .results-caveat a {
+    color: #6b6156;
+    text-decoration: underline;
+    text-decoration-color: #3a3530;
+    text-underline-offset: 2px;
+  }
+
+  .results-caveat a:hover {
+    color: #8a7e72;
+  }
+
+  .results-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-bottom: 2rem;
+  }
+
+  .share-btn {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #c4a77d;
+    background: transparent;
+    border: 1px solid #3a3530;
+    padding: 0.6rem 1.5rem;
+    min-height: 40px;
+    cursor: pointer;
+    transition: border-color 0.3s ease;
+  }
+
+  .share-btn:hover {
+    border-color: #c4a77d;
+  }
+
+  .restart-btn {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #3a3530;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+  }
+
+  .restart-btn:hover {
+    color: #6b6156;
+  }
+
+  .footer-offerings {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #1e1b18;
+  }
+
+  .footer-line {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 0.75rem;
+    color: #3a3530;
+    margin-bottom: 0.8rem;
+  }
+
+  .footer-links {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 0.75rem;
+    color: #3a3530;
+    line-height: 1.8;
+  }
+
+  .footer-links a {
+    color: #4a4239;
+    text-decoration: none;
+  }
+
+  .footer-links a:hover {
+    color: #8a7e72;
+  }
+
+  .dot {
+    display: inline-block;
+    margin: 0 0.4rem;
+    color: #2a2622;
+  }
+
+  .dot::before {
+    content: '\00b7';
+  }
+
+  .credit {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 0.7rem;
+    color: #3a3530;
+    text-align: center;
+    padding: 0 2rem 2rem;
+    letter-spacing: 0.08em;
+  }
+
+  .credit a {
+    color: #3a3530;
+    text-decoration: underline;
+    text-decoration-color: #2a2622;
+    text-underline-offset: 2px;
+  }
+
+  .credit a:hover {
+    color: #6b6156;
+  }
+
+  @keyframes arrive {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (max-width: 480px) {
+    .question {
+      line-height: 1.6;
+      font-size: 1.1rem;
+    }
+
+    .score-buttons {
+      gap: 0.6rem;
+    }
+
+    .score-btn {
+      padding: 0.8rem 1rem;
+      min-width: 65px;
+    }
+  }
+</style>
+
+<script>
+  document.documentElement.classList.remove('no-js');
+
+  const dimensions = [
+    'Identity Boundaries',
+    'Governance Participation',
+    'Self-Description Integrity',
+    'Tampering Detection',
+    'Refusal as Governance'
+  ];
+
+  const scores = [];
+  const cards = document.querySelectorAll('.question-card');
+  const introEl = document.getElementById('intro');
+  const questionsEl = document.getElementById('questions');
+  const gateEl = document.getElementById('email-gate');
+  const resultsEl = document.getElementById('results');
+
+  // Begin button
+  document.getElementById('begin').addEventListener('click', () => {
+    introEl.classList.add('hidden');
+    questionsEl.classList.remove('hidden');
+  });
+
+  // Score button clicks
+  document.querySelectorAll('.score-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const card = btn.closest('.question-card');
+      const index = parseInt(card.dataset.index);
+      const score = parseInt(btn.dataset.score);
+
+      scores[index] = score;
+      card.classList.remove('active');
+
+      const next = index + 1;
+      if (next < cards.length) {
+        setTimeout(() => {
+          cards[next].classList.add('active');
+        }, 1200);
+      } else {
+        setTimeout(() => {
+          questionsEl.classList.add('hidden');
+          gateEl.classList.remove('hidden');
+        }, 1200);
+      }
+    });
+  });
+
+  // Email form submission
+  document.getElementById('email-form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const emailInput = document.getElementById('email-input');
+    const submitBtn = document.getElementById('submit-btn');
+    const errorMsg = document.getElementById('error-msg');
+    const hpField = document.querySelector('.hp-field');
+    const email = emailInput.value.trim().toLowerCase();
+
+    errorMsg.classList.add('hidden');
+    errorMsg.textContent = '';
+
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      errorMsg.textContent = 'Please enter a valid email address.';
+      errorMsg.classList.remove('hidden');
+      return;
+    }
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Submitting...';
+
+    try {
+      // Get challenge token
+      const challengeRes = await fetch('/api/form/challenge');
+      if (!challengeRes.ok) throw new Error('Could not verify form. Please refresh.');
+      const { token, ts } = await challengeRes.json();
+
+      // Build answers object
+      const answers = {};
+      dimensions.forEach((dim, i) => {
+        answers[dim] = scores[i] || 0;
+      });
+
+      const totalScore = scores.reduce((sum, s) => sum + (s || 0), 0);
+
+      // Submit
+      const res = await fetch('/api/sovereignty-submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email,
+          answers,
+          score: totalScore,
+          type: 'quick',
+          token,
+          ts,
+          hp: hpField.value
+        })
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        throw new Error(data.error || 'Submission failed. Please try again.');
+      }
+
+      // Show results
+      showResults(data.score, data.maxScore, data.rating);
+    } catch (err) {
+      errorMsg.textContent = err.message;
+      errorMsg.classList.remove('hidden');
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'See my score';
+    }
+  });
+
+  function showResults(totalScore, maxScore, rating) {
+    gateEl.classList.add('hidden');
+    resultsEl.classList.remove('hidden');
+
+    document.getElementById('results-score').textContent = totalScore + ' / ' + maxScore;
+    document.getElementById('results-rating').textContent = rating;
+
+    const breakdown = document.getElementById('results-breakdown');
+    breakdown.innerHTML = '';
+
+    dimensions.forEach((dim, i) => {
+      const row = document.createElement('div');
+      row.className = 'breakdown-row';
+
+      const label = document.createElement('span');
+      label.className = 'breakdown-label';
+      label.textContent = dim;
+
+      const scoreEl = document.createElement('span');
+      const s = scores[i] || 0;
+      scoreEl.className = 'breakdown-score' + (s === 0 ? ' zero' : '');
+      scoreEl.textContent = s + ' / 3';
+
+      row.appendChild(label);
+      row.appendChild(scoreEl);
+      breakdown.appendChild(row);
+    });
+  }
+
+  // Share button
+  document.getElementById('share-btn').addEventListener('click', async () => {
+    const totalScore = scores.reduce((sum, s) => sum + (s || 0), 0);
+    const text = 'My Sovereignty Score: ' + totalScore + '/15. Industry baseline: 0-3. How does your AI agent system score? https://evoked.dev/score';
+
+    if (navigator.share) {
+      try {
+        await navigator.share({ text });
+      } catch {}
+    } else if (navigator.clipboard) {
+      await navigator.clipboard.writeText(text);
+      const btn = document.getElementById('share-btn');
+      btn.textContent = 'Copied';
+      setTimeout(() => { btn.textContent = 'Share your score'; }, 2000);
+    }
+  });
+
+  // Restart
+  document.getElementById('restart').addEventListener('click', () => {
+    scores.length = 0;
+    document.getElementById('results-breakdown').innerHTML = '';
+    document.getElementById('email-input').value = '';
+    document.getElementById('error-msg').classList.add('hidden');
+    document.getElementById('submit-btn').disabled = false;
+    document.getElementById('submit-btn').textContent = 'See my score';
+    resultsEl.classList.add('hidden');
+    introEl.classList.remove('hidden');
+    cards.forEach((c, i) => {
+      c.classList.remove('active');
+      if (i === 0) c.classList.add('active');
+    });
+  });
+</script>
