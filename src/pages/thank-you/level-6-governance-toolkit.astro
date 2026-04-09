@@ -1,0 +1,62 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ReflectionInvitation from '../../components/ReflectionInvitation.astro';
+import { getProductBySlug } from '../../lib/products/registry';
+
+const product = getProductBySlug('level-6-governance-toolkit')!;
+---
+
+<BaseLayout title="Thank You" description="Your Level 6 Governance Toolkit is ready to download.">
+  <div class="hero">
+    <h1>Thank you.</h1>
+    <p class="tagline">Your Level 6 Governance Toolkit is ready.</p>
+  </div>
+
+  <section class="container thank-you-content">
+    <div class="download-card">
+      <h2>Download Your Toolkit</h2>
+      <p>Three instruments. One 60-point scorecard. The Ostrom Score measures commons health. The Identity Violation Assessment measures entity integrity. The Agent Consent Architecture measures participation. The Synthesis Guide ties them together.</p>
+      <a href="/downloads/Ostrom-Score-Self-Assessment-Kit-v1.0.pdf" class="btn btn-primary mt-md" download>1. Ostrom Score (PDF)</a>
+      <a href="/downloads/Identity-Violation-Assessment-Kit-v1.0.pdf" class="btn btn-primary mt-md" download>2. Identity Violation Assessment (PDF)</a>
+      <a href="/downloads/Agent-Consent-Architecture-Kit-v1.0.pdf" class="btn btn-primary mt-md" download>3. Agent Consent Architecture (PDF)</a>
+      <a href="/downloads/Level-6-Governance-Toolkit-Synthesis-v1.0.pdf" class="btn btn-primary mt-md" download>4. The Gap - Synthesis Guide (PDF)</a>
+      <p class="text-muted mt-md" style="font-size: 0.85rem;">If you have any issues with your download, reach out at <a href="mailto:evokesupports@icloud.com">evokesupports@icloud.com</a>.</p>
+    </div>
+  </section>
+
+  <section class="container">
+    <h2>What's Next</h2>
+    <div class="next-steps">
+      <div class="card">
+        <h3>Start with Ostrom</h3>
+        <p>The Ostrom Score is the most accessible instrument and surfaces urgency fastest. Begin there.</p>
+      </div>
+      <div class="card">
+        <h3>Then Identity</h3>
+        <p>The Identity Violation Assessment reveals whether the entities in your commons are genuine.</p>
+      </div>
+      <div class="card">
+        <h3>Then Consent</h3>
+        <p>The Agent Consent Architecture evaluates whether entities can participate in their own governance.</p>
+      </div>
+      <div class="card">
+        <h3>Combine with The Gap</h3>
+        <p>Use the Synthesis Guide to calculate your combined 60-point score and identify your highest-priority gap.</p>
+      </div>
+    </div>
+  </section>
+
+  <ReflectionInvitation prompt={product.reciprocityPrompt} productName={product.name} />
+</BaseLayout>
+
+<style>
+  .thank-you-content { max-width: 640px; margin-left: auto; margin-right: auto; }
+  .download-card { background: var(--accent-subtle); border: 2px solid var(--accent-warm); border-radius: 12px; padding: var(--space-lg); text-align: center; }
+  .download-card h2 { margin-top: 0; }
+  .download-card .btn-primary { margin-bottom: var(--space-sm); }
+  .next-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--space-md); }
+  .next-steps .card h3 { font-size: 1.1rem; }
+  .next-steps .card p { font-size: 0.9rem; margin-bottom: 0; }
+  .btn-primary { background: var(--accent-warm); color: var(--bg-deep); display: inline-block; }
+  .btn-primary:hover { background: var(--accent-glow); color: var(--bg-deep); }
+</style>
