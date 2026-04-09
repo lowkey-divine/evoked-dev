@@ -151,13 +151,30 @@
         </div>
 
         <div class="footer-offerings">
-          <p class="footer-line">If you want help closing the gaps you found.</p>
+          <p class="footer-line">Close the gaps you found.</p>
+          <div class="offering-tiers">
+            <a href="/products/governance-templates-guided" class="offering-tier">
+              <span class="offering-price">$5</span>
+              <span class="offering-name">Guided Templates</span>
+              <span class="offering-desc">Five governance templates with worked examples. Start fixing gaps now.</span>
+            </a>
+            <a href="/products/governance-implementation-guide" class="offering-tier">
+              <span class="offering-price">$9.99</span>
+              <span class="offering-name">Implementation Guide</span>
+              <span class="offering-desc">Add governance to the agent you already built. CrewAI, LangGraph, Pydantic AI.</span>
+            </a>
+            <a href="/products/sovereignty-toolkit" class="offering-tier">
+              <span class="offering-price">$49</span>
+              <span class="offering-name">Level 6 Toolkit</span>
+              <span class="offering-desc">Full 20-question assessment with per-domain breakdown and 60-point scorecard.</span>
+            </a>
+          </div>
           <p class="footer-links">
-            <a href="/products/sovereignty-toolkit">Level 6 Governance Toolkit</a>
+            <a href="https://www.npmjs.com/package/agent-governance-check">Free CLI scan</a>
             <span class="dot"></span>
-            <a href="https://www.npmjs.com/package/agent-governance-check">CLI Governance Check</a>
+            <a href="https://github.com/lowkey-divine/agent-governance-patterns">Free code patterns</a>
             <span class="dot"></span>
-            <a href="https://cal.com/cal.com-evoked/discovery-call">Free Discovery Call</a>
+            <a href="https://cal.com/cal.com-evoked/discovery-call">Free discovery call</a>
           </p>
         </div>
       </div>
@@ -591,8 +608,57 @@
   .footer-line {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     font-size: 0.75rem;
-    color: #3a3530;
-    margin-bottom: 0.8rem;
+    color: #6b6156;
+    margin-bottom: 1rem;
+  }
+
+  .offering-tiers {
+    display: flex;
+    gap: 0.8rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .offering-tier {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.2rem;
+    padding: 0.8rem 1rem;
+    border: 1px solid #2a2622;
+    text-decoration: none;
+    min-width: 140px;
+    flex: 1;
+    max-width: 180px;
+    transition: border-color 0.3s ease;
+  }
+
+  .offering-tier:hover {
+    border-color: #c4a77d;
+  }
+
+  .offering-price {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 1.3rem;
+    color: #c4a77d;
+  }
+
+  .offering-name {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #8a7e72;
+  }
+
+  .offering-desc {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 0.65rem;
+    color: #4a4239;
+    text-align: center;
+    line-height: 1.5;
+    margin-top: 0.3rem;
   }
 
   .footer-links {
