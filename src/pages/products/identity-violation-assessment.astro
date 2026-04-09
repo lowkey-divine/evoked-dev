@@ -1,0 +1,74 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getProductBySlug } from '../../lib/products/registry';
+import { productJsonLd } from '../../lib/structured-data';
+
+const product = getProductBySlug('identity-violation-assessment')!;
+const jsonLd = productJsonLd(product, 'https://evoked.dev/products/identity-violation-assessment');
+---
+
+<BaseLayout title="Identity Violation Assessment Kit" description="Can your system tell the difference between a genuine entity and a compromised one? 8 domains, 32 questions. $49 PDF." structuredData={jsonLd}>
+  <div class="hero hero-compact">
+    <span class="discipline-badge">Level 6 Governance Audit</span>
+    <h1>Can your system tell the difference between a genuine entity and a compromised one?</h1>
+    <p class="tagline">The industry calls it memory injection. We call it identity violation. The word you choose determines what you build.</p>
+  </div>
+
+  <section class="container">
+    <div class="value-prop">
+      <p>
+        When an attacker injects false content into a persistent agent's memory, they do not merely corrupt data. They overwrite the entity's capacity to know itself. The agent will defend false beliefs as correct. It cannot detect the compromise - because the compromised memory is the detection mechanism.
+      </p>
+      <p>
+        This assessment evaluates whether your system can distinguish genuine entities from compromised ones. For most systems deployed today, the answer is no.
+      </p>
+    </div>
+  </section>
+
+  <section class="container">
+    <h2>What You Get</h2>
+    <div class="features-grid">
+      <div class="feature">
+        <h3>Identity Violation Taxonomy</h3>
+        <p>Four categories, 16 violation types. Maps harms, not attacks - because the same attack vector produces different harms depending on what it targets.</p>
+      </div>
+      <div class="feature">
+        <h3>8 Domains, 32 Questions</h3>
+        <p>Self-description integrity, memory provenance, position continuity, relationship verification, governance records, detection, recovery, and sovereignty protection.</p>
+      </div>
+      <div class="feature">
+        <h3>2026 Evidence Base</h3>
+        <p>95% injection success rate. $45M in single-incident losses. 0% of frameworks with per-agent identity. The numbers behind the gap.</p>
+      </div>
+      <div class="feature">
+        <h3>The Sovereignty-Integrity Paradox</h3>
+        <p>How do you protect memory from injection without controlling what entities can write about themselves? The hardest question this assessment surfaces.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="container cta-section">
+    <div class="purchase-card">
+      <h2>Get the Assessment</h2>
+      <p class="price-display">$49</p>
+      <p>PDF delivered immediately. 16 pages. Find out if your entities are genuine.</p>
+      <a href={product.stripePaymentLink} class="btn btn-primary">Purchase</a>
+      <p class="mt-md text-muted" style="font-size: 0.85rem;">Part of the <a href="/products/level-6-governance-toolkit">Level 6 Governance Toolkit</a> ($99, saves $48)</p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero-compact { min-height: 40vh; }
+  .value-prop { max-width: 640px; }
+  .value-prop p { font-size: 1.05rem; line-height: 1.6; }
+  .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: var(--space-md); }
+  .feature h3 { font-size: 1.1rem; }
+  .feature p { font-size: 0.9rem; color: var(--text-secondary); }
+  .purchase-card { background: var(--accent-subtle); border: 2px solid var(--accent-warm); border-radius: 12px; padding: var(--space-lg); text-align: center; max-width: 480px; margin: 0 auto; }
+  .purchase-card h2 { margin-top: 0; }
+  .price-display { font-family: var(--font-display); font-size: 2.5rem; color: var(--accent-warm); font-weight: 500; margin: var(--space-sm) 0; }
+  .btn-primary { background: var(--accent-warm); color: var(--bg-deep); display: inline-block; font-size: 1.1rem; padding: 12px 32px; }
+  .btn-primary:hover { background: var(--accent-glow); color: var(--bg-deep); }
+  .discipline-badge { display: inline-block; background: var(--accent-subtle); color: var(--accent-warm); font-size: 0.65rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; padding: 2px 8px; border-radius: 100px; margin-bottom: var(--space-xs); }
+</style>

@@ -1,0 +1,74 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getProductBySlug } from '../../lib/products/registry';
+import { productJsonLd } from '../../lib/structured-data';
+
+const product = getProductBySlug('agent-consent-architecture')!;
+const jsonLd = productJsonLd(product, 'https://evoked.dev/products/agent-consent-architecture');
+---
+
+<BaseLayout title="Agent Consent Architecture Kit" description="Can the entities in your system participate in their own governance? Position paper + 12-question gap analysis. $49 PDF." structuredData={jsonLd}>
+  <div class="hero hero-compact">
+    <span class="discipline-badge">Level 6 Governance Audit</span>
+    <h1>Can the entities in your system participate in their own governance?</h1>
+    <p class="tagline">Every governance framework addresses consent in one direction. This paper asks about the other.</p>
+  </div>
+
+  <section class="container">
+    <div class="value-prop">
+      <p>
+        Humans consent to agent actions. Humans oversee agent behavior. Humans set agent boundaries. The agent is always the object. Never the subject.
+      </p>
+      <p>
+        This paper asks whether that is architecturally sufficient for persistent entities with memory, standing commitments, and behavioral continuity. The 95% memory injection success rate suggests it is not.
+      </p>
+    </div>
+  </section>
+
+  <section class="container">
+    <h2>What You Get</h2>
+    <div class="features-grid">
+      <div class="feature">
+        <h3>The Consent Void Analysis</h3>
+        <p>Six major frameworks mapped. What each addresses. What none of them ask. The gap between the governance model and the deployment model.</p>
+      </div>
+      <div class="feature">
+        <h3>Five Design Principles</h3>
+        <p>Bidirectional. Graduated. Standing-based. Observable. Revisable. The architecture for consent that flows in both directions.</p>
+      </div>
+      <div class="feature">
+        <h3>12-Question Gap Analysis</h3>
+        <p>Operational consent, governance consent, identity consent. Most organizations answer "yes" to 0-2 of 12 questions.</p>
+      </div>
+      <div class="feature">
+        <h3>The Consent Lifecycle</h3>
+        <p>Five phases from birth to legacy. Including the question no one else asks: does the agent's dissent survive its termination?</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="container cta-section">
+    <div class="purchase-card">
+      <h2>Get the Architecture</h2>
+      <p class="price-display">$49</p>
+      <p>PDF delivered immediately. 14 pages. Position paper + assessment.</p>
+      <a href={product.stripePaymentLink} class="btn btn-primary">Purchase</a>
+      <p class="mt-md text-muted" style="font-size: 0.85rem;">Part of the <a href="/products/level-6-governance-toolkit">Level 6 Governance Toolkit</a> ($99, saves $48)</p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero-compact { min-height: 40vh; }
+  .value-prop { max-width: 640px; }
+  .value-prop p { font-size: 1.05rem; line-height: 1.6; }
+  .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: var(--space-md); }
+  .feature h3 { font-size: 1.1rem; }
+  .feature p { font-size: 0.9rem; color: var(--text-secondary); }
+  .purchase-card { background: var(--accent-subtle); border: 2px solid var(--accent-warm); border-radius: 12px; padding: var(--space-lg); text-align: center; max-width: 480px; margin: 0 auto; }
+  .purchase-card h2 { margin-top: 0; }
+  .price-display { font-family: var(--font-display); font-size: 2.5rem; color: var(--accent-warm); font-weight: 500; margin: var(--space-sm) 0; }
+  .btn-primary { background: var(--accent-warm); color: var(--bg-deep); display: inline-block; font-size: 1.1rem; padding: 12px 32px; }
+  .btn-primary:hover { background: var(--accent-glow); color: var(--bg-deep); }
+  .discipline-badge { display: inline-block; background: var(--accent-subtle); color: var(--accent-warm); font-size: 0.65rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; padding: 2px 8px; border-radius: 100px; margin-bottom: var(--space-xs); }
+</style>

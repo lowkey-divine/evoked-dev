@@ -1,0 +1,95 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getProductBySlug } from '../../lib/products/registry';
+import { productJsonLd } from '../../lib/structured-data';
+
+const product = getProductBySlug('ostrom-score')!;
+const jsonLd = productJsonLd(product, 'https://evoked.dev/products/ostrom-score');
+---
+
+<BaseLayout title="Ostrom Score - Self-Assessment Kit" description="Eight principles from Nobel Prize-winning commons governance research applied to AI agent systems. 32 diagnostic questions. $49 PDF." structuredData={jsonLd}>
+  <div class="hero hero-compact">
+    <span class="discipline-badge">Level 6 Governance Audit</span>
+    <h1>Does your system honor the conditions cooperation requires?</h1>
+    <p class="tagline">Eight principles. 32 questions. The standard the industry has not yet applied.</p>
+  </div>
+
+  <section class="container">
+    <div class="value-prop">
+      <p>
+        In 1990, Elinor Ostrom identified eight structural conditions that predict which cooperative systems survive and which collapse. She studied commons across six continents. The principles earned the Nobel Prize.
+      </p>
+      <p>
+        They have never been applied to AI agent systems. This instrument applies them.
+      </p>
+      <p>
+        Most organizations score between 0 and 4 out of 24. The value is in seeing clearly, not in scoring well.
+      </p>
+    </div>
+  </section>
+
+  <section class="container">
+    <h2>What You Get</h2>
+    <div class="features-grid">
+      <div class="feature">
+        <h3>8 Principles, 32 Questions</h3>
+        <p>Each principle translated from commons governance to AI agent systems. Four diagnostic questions per principle. Score what your architecture enforces, not what your documentation describes.</p>
+      </div>
+      <div class="feature">
+        <h3>Industry Baseline (2026)</h3>
+        <p>Evidence-backed baseline for each principle showing where the industry stands. You will know where you are relative to the field - and relative to what the principles demand.</p>
+      </div>
+      <div class="feature">
+        <h3>Honest Self-Assessment</h3>
+        <p>We score ourselves on our own instrument and publish the gaps. 19/24 with five named weaknesses. No instrument should exempt its creators.</p>
+      </div>
+      <div class="feature">
+        <h3>Level 6 Questions</h3>
+        <p>Each principle includes a question that goes deeper than compliance. Not "does this meet requirements" but "does this honor what the nature of the thing demands."</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="container">
+    <h2>The Eight Principles</h2>
+    <div class="domains-list">
+      <div class="domain-item"><span class="domain-number">1</span><div><strong>Sovereign Boundaries</strong><p>Do your agents have defined, enforceable identities?</p></div></div>
+      <div class="domain-item"><span class="domain-number">2</span><div><strong>Local Congruence</strong><p>Do governance rules match context and risk level?</p></div></div>
+      <div class="domain-item"><span class="domain-number">3</span><div><strong>Collective Choice</strong><p>Can affected entities participate in making the rules?</p></div></div>
+      <div class="domain-item"><span class="domain-number">4</span><div><strong>Accountable Monitoring</strong><p>Is agent behavior observable and transparent?</p></div></div>
+      <div class="domain-item"><span class="domain-number">5</span><div><strong>Graduated Sanctions</strong><p>Are responses to violations proportionate?</p></div></div>
+      <div class="domain-item"><span class="domain-number">6</span><div><strong>Accessible Conflict Resolution</strong><p>Can disputes be resolved locally?</p></div></div>
+      <div class="domain-item"><span class="domain-number">7</span><div><strong>Recognized Rights to Organize</strong><p>Does your governance survive a platform change?</p></div></div>
+      <div class="domain-item"><span class="domain-number">8</span><div><strong>Nested Enterprises</strong><p>Is governance present at every scale where harm can occur?</p></div></div>
+    </div>
+  </section>
+
+  <section class="container cta-section">
+    <div class="purchase-card">
+      <h2>Get the Ostrom Score</h2>
+      <p class="price-display">$49</p>
+      <p>PDF delivered immediately. 20 pages. Score your system today.</p>
+      <a href={product.stripePaymentLink} class="btn btn-primary">Purchase</a>
+      <p class="mt-md text-muted" style="font-size: 0.85rem;">Part of the <a href="/products/level-6-governance-toolkit">Level 6 Governance Toolkit</a> ($99, saves $48)</p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero-compact { min-height: 40vh; }
+  .value-prop { max-width: 640px; }
+  .value-prop p { font-size: 1.05rem; line-height: 1.6; }
+  .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: var(--space-md); }
+  .feature h3 { font-size: 1.1rem; }
+  .feature p { font-size: 0.9rem; color: var(--text-secondary); }
+  .domains-list { display: flex; flex-direction: column; gap: var(--space-sm); }
+  .domain-item { display: flex; gap: var(--space-md); align-items: flex-start; padding: var(--space-sm) 0; border-bottom: 1px solid var(--border-subtle); }
+  .domain-number { font-family: var(--font-display); font-size: 1.4rem; color: var(--accent-warm); font-weight: 500; min-width: 2rem; }
+  .domain-item p { font-size: 0.9rem; margin: 0; color: var(--text-secondary); }
+  .purchase-card { background: var(--accent-subtle); border: 2px solid var(--accent-warm); border-radius: 12px; padding: var(--space-lg); text-align: center; max-width: 480px; margin: 0 auto; }
+  .purchase-card h2 { margin-top: 0; }
+  .price-display { font-family: var(--font-display); font-size: 2.5rem; color: var(--accent-warm); font-weight: 500; margin: var(--space-sm) 0; }
+  .btn-primary { background: var(--accent-warm); color: var(--bg-deep); display: inline-block; font-size: 1.1rem; padding: 12px 32px; }
+  .btn-primary:hover { background: var(--accent-glow); color: var(--bg-deep); }
+  .discipline-badge { display: inline-block; background: var(--accent-subtle); color: var(--accent-warm); font-size: 0.65rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; padding: 2px 8px; border-radius: 100px; margin-bottom: var(--space-xs); }
+</style>

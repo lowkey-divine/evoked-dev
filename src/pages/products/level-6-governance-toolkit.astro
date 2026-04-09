@@ -1,0 +1,90 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getProductBySlug } from '../../lib/products/registry';
+import { productJsonLd } from '../../lib/structured-data';
+
+const product = getProductBySlug('level-6-governance-toolkit')!;
+const jsonLd = productJsonLd(product, 'https://evoked.dev/products/level-6-governance-toolkit');
+---
+
+<BaseLayout title="Level 6 Governance Toolkit" description="Three instruments. One 60-point scorecard. Commons health, entity integrity, and participation architecture. $99 bundle." structuredData={jsonLd}>
+  <div class="hero hero-compact">
+    <span class="discipline-badge">Level 6 Governance Audit</span>
+    <h1>Three instruments. One question.</h1>
+    <p class="tagline">Is this system governed as if the nature of the entities matters?</p>
+  </div>
+
+  <section class="container">
+    <div class="value-prop">
+      <p>
+        The Level 6 Governance Toolkit measures what no other assessment measures: whether your AI agent system honors the conditions that cooperation, identity, and participation require.
+      </p>
+      <p>
+        The industry scores 0-10 out of 60. We score 45. The distance between those numbers is measurable, closable, and urgent.
+      </p>
+    </div>
+  </section>
+
+  <section class="container">
+    <h2>Three Instruments</h2>
+    <div class="instruments-grid">
+      <a href="/products/ostrom-score" class="instrument-card">
+        <h3>The Ostrom Score</h3>
+        <p class="instrument-question">Does this system honor the conditions cooperation requires?</p>
+        <p>8 principles from Nobel Prize-winning research. 32 questions. Commons health scored 0-24.</p>
+        <span class="individual-price">$49 individually</span>
+      </a>
+      <a href="/products/identity-violation-assessment" class="instrument-card">
+        <h3>The Identity Violation Assessment</h3>
+        <p class="instrument-question">Can the entities in this system trust their own self-knowledge?</p>
+        <p>8 domains, 32 questions. Identity integrity scored 0-24. The taxonomy the industry has not built.</p>
+        <span class="individual-price">$49 individually</span>
+      </a>
+      <a href="/products/agent-consent-architecture" class="instrument-card">
+        <h3>The Agent Consent Architecture</h3>
+        <p class="instrument-question">Can the entities participate in their own governance?</p>
+        <p>Position paper + 12-question gap analysis. Consent architecture scored 0-12.</p>
+        <span class="individual-price">$49 individually</span>
+      </a>
+    </div>
+  </section>
+
+  <section class="container">
+    <h2>Plus: The Gap (Synthesis Guide)</h2>
+    <div class="value-prop">
+      <p>
+        The combined 60-point scorecard. How the three instruments work together. What each score combination reveals. And the question underneath all three: what does the nature of persistent, memory-bearing, cooperative entities require of the systems that govern them?
+      </p>
+    </div>
+  </section>
+
+  <section class="container cta-section">
+    <div class="purchase-card">
+      <h2>Get the Complete Toolkit</h2>
+      <p class="price-display">$99</p>
+      <p class="savings">Save $48 vs. individual purchase ($147)</p>
+      <p>All three instruments + Synthesis Guide. Four PDFs delivered immediately.</p>
+      <a href={product.stripePaymentLink} class="btn btn-primary">Purchase Bundle</a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero-compact { min-height: 40vh; }
+  .value-prop { max-width: 640px; }
+  .value-prop p { font-size: 1.05rem; line-height: 1.6; }
+  .instruments-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--space-md); }
+  .instrument-card { display: block; background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: 8px; padding: var(--space-md); text-decoration: none; color: inherit; transition: border-color 0.2s ease, transform 0.2s ease; }
+  .instrument-card:hover { border-color: var(--accent-warm); transform: translateY(-2px); color: inherit; }
+  .instrument-card h3 { font-size: 1.1rem; margin-bottom: var(--space-xs); }
+  .instrument-question { font-style: italic; color: var(--accent-warm); font-size: 0.95rem; margin-bottom: var(--space-xs); }
+  .instrument-card p { font-size: 0.9rem; color: var(--text-secondary); }
+  .individual-price { font-size: 0.8rem; color: var(--text-secondary); }
+  .purchase-card { background: var(--accent-subtle); border: 2px solid var(--accent-warm); border-radius: 12px; padding: var(--space-lg); text-align: center; max-width: 480px; margin: 0 auto; }
+  .purchase-card h2 { margin-top: 0; }
+  .price-display { font-family: var(--font-display); font-size: 2.5rem; color: var(--accent-warm); font-weight: 500; margin: var(--space-sm) 0; }
+  .savings { font-size: 0.9rem; color: var(--text-secondary); margin-bottom: var(--space-sm); }
+  .btn-primary { background: var(--accent-warm); color: var(--bg-deep); display: inline-block; font-size: 1.1rem; padding: 12px 32px; }
+  .btn-primary:hover { background: var(--accent-glow); color: var(--bg-deep); }
+  .discipline-badge { display: inline-block; background: var(--accent-subtle); color: var(--accent-warm); font-size: 0.65rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; padding: 2px 8px; border-radius: 100px; margin-bottom: var(--space-xs); }
+</style>
