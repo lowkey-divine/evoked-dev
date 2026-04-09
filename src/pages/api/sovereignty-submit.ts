@@ -84,13 +84,7 @@ export const POST: APIRoute = async ({ request }) => {
 
     const sanitizedEmail = sanitizeEmail(email);
 
-    // Store submission
-    await sql`
-      INSERT INTO sovereignty_submissions (email, answers, score, type, version, submitted_at)
-      VALUES (${sanitizedEmail}, ${JSON.stringify(answers)}, ${score}, ${assessmentType}, '1.0', NOW())
-    `;
-
-    // Compute rating
+    // Compute rating before storage (needed for Buttondown metadata)
     const ratings = assessmentType === 'quick'
       ? ['Governance Absent', 'Governance Emerging', 'Governance Developing', 'Governance Structural']
       : ['Commons Failure', 'Nominal Governance', 'Partial Commons', 'Functional Commons', 'Sovereign Commons'];
@@ -100,6 +94,39 @@ export const POST: APIRoute = async ({ request }) => {
       if (score >= t) ratingIndex++;
     }
     const rating = ratings[ratingIndex];
+
+    // Store submission in Postgres
+    await sql`
+      INSERT INTO sovereignty_submissions (email, answers, score, type, version, submitted_at)
+      VALUES (${sanitizedEmail}, ${JSON.stringify(answers)}, ${score}, ${assessmentType}, '1.0', NOW())
+    `;
+
+    // Also add to Buttondown for email management (non-blocking — don't fail if this errors)
+    const buttondownKey = import.meta.env.BUTTONDOWN_API_KEY;
+    if (buttondownKey) {
+      try {
+        await fetch('https://api.buttondown.com/v1/subscribers', {
+          method: 'POST',
+          headers: {
+            'Authorization': `Token ${buttondownKey}`,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            email_address: sanitizedEmail,
+            tags: ['sovereignty-score'],
+            metadata: {
+              score: score,
+              rating: rating,
+              assessment_type: assessmentType,
+            },
+            type: 'regular',
+          }),
+        });
+      } catch (e) {
+        // Non-blocking — Postgres is the source of truth, Buttondown is for email management
+        console.error('Buttondown sync failed (non-blocking):', e);
+      }
+    }
 
     return new Response(JSON.stringify({ success: true, score, maxScore, rating, type: assessmentType }), {
       status: 200,

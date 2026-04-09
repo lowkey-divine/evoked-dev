@@ -5,7 +5,9 @@ import { validateOrigin, rateLimit, safeError } from '../../../lib/api/security'
 export const prerender = false;
 
 export const GET: APIRoute = async ({ request }) => {
-  const originBlock = validateOrigin(request, true);
+  // Origin check is lenient on GET — the real security is HMAC verification on POST.
+  // Some browsers omit Origin on same-origin GET fetch requests.
+  const originBlock = validateOrigin(request, false);
   if (originBlock) return originBlock;
 
   const rateLimitBlock = rateLimit(request, 'challenge');
