@@ -30,7 +30,7 @@
       <div class="intro-inner">
         <h1 class="title">Sovereignty Score</h1>
         <p class="subtitle">Five questions. Scored 0-3. Two minutes.</p>
-        <p class="intro-body">This is a governance check across three dimensions: system governance, identity integrity, and agent participation. Most systems score 0-3 out of 15. That is not a failing. It is where the industry is.</p>
+        <p class="intro-body">This is a governance check across three dimensions: system governance, identity integrity, and agent participation. Most systems score 0-3 out of 15. We scored the five most popular agent frameworks - none scored above 9 out of 24 on structural governance. Two-thirds of commercial codebases have license conflicts. That is not a failing. It is where the industry is.</p>
         <button type="button" class="begin-btn" id="begin">Begin</button>
       </div>
     </div>
@@ -117,32 +117,31 @@
 
     </div>
 
-    <!-- Phase 3: Email Gate -->
-    <div class="space hidden" id="email-gate">
-      <div class="gate-inner">
-        <p class="gate-header">Your score is ready.</p>
-        <p class="gate-body">Enter your email to see your results. We will send one follow-up email with resources matched to your score. You can unsubscribe instantly. No newsletter. No drip campaign. One email, then silence unless you ask for more.</p>
-        <form id="email-form" novalidate>
-          <input type="email" id="email-input" name="email" placeholder="you@company.com" required autocomplete="email" aria-label="Email address" />
-          <input type="text" name="website" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true" />
-          <button type="submit" class="submit-btn" id="submit-btn">See my score</button>
-        </form>
-        <p class="gate-fine">Your email and score are stored securely. We do not sell or share your data. <a href="/legal/privacy">Privacy policy</a>.</p>
-        <p id="error-msg" class="error-msg hidden"></p>
-      </div>
-    </div>
-
-    <!-- Phase 4: Results -->
+    <!-- Phase 3: Results (shown immediately — no email gate) -->
     <div class="space hidden" id="results" aria-live="polite">
       <div class="results-inner">
         <p class="results-score" id="results-score"></p>
         <p class="results-rating" id="results-rating"></p>
-        <p class="results-baseline">Industry baseline: 0-3 out of 15.</p>
+        <p class="results-baseline">Industry baseline: 0-3 out of 15. Five major frameworks scored 2-9 out of 24 on full governance assessment.</p>
 
         <div id="results-breakdown"></div>
 
         <div class="results-caveat">
           <p>This is a 5-question governance check across three dimensions: system governance, identity integrity, and agent participation. For a comprehensive 20-question assessment with per-domain breakdown, see the <a href="/products/sovereignty-toolkit">Level 6 Governance Toolkit</a>.</p>
+        </div>
+
+        <!-- Email capture — optional, on the results page -->
+        <div id="email-section" class="email-section">
+          <p class="email-prompt">Get resources matched to your score.</p>
+          <form id="email-form" novalidate>
+            <div class="email-row">
+              <input type="email" id="email-input" name="email" placeholder="you@company.com" required autocomplete="email" aria-label="Email address" />
+              <input type="text" name="website" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true" />
+              <button type="submit" class="email-btn" id="submit-btn">Send</button>
+            </div>
+          </form>
+          <p class="email-fine">One follow-up email with resources for your gaps. No newsletter. No drip. <a href="/legal/privacy">Privacy</a>.</p>
+          <p id="email-status" class="email-status hidden"></p>
         </div>
 
         <div class="results-actions">
@@ -364,47 +363,44 @@
 
   /* --- Email Gate --- */
 
-  .gate-inner {
-    text-align: center;
-    max-width: 32rem;
-    opacity: 0;
-    animation: arrive 1.2s ease forwards;
+  .hp-field {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
   }
 
-  .gate-header {
-    font-family: 'Cormorant Garamond', Georgia, serif;
-    font-weight: 300;
-    font-size: clamp(1.3rem, 3.5vw, 2rem);
-    color: #c4a77d;
-    margin-bottom: 1.2rem;
+  .email-section {
+    border-top: 1px solid #1e1b18;
+    padding-top: 1.5rem;
+    margin-bottom: 1.5rem;
   }
 
-  .gate-body {
+  .email-prompt {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     color: #8a7e72;
-    line-height: 1.7;
-    margin-bottom: 2rem;
+    margin-bottom: 0.8rem;
   }
 
-  #email-form {
+  .email-row {
     display: flex;
-    flex-direction: column;
+    gap: 0.5rem;
+    justify-content: center;
     align-items: center;
-    gap: 1rem;
+    flex-wrap: wrap;
   }
 
   #email-input {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     color: #c4a77d;
     background: transparent;
     border: 1px solid #3a3530;
-    padding: 0.8rem 1.2rem;
-    width: 100%;
-    max-width: 20rem;
-    min-height: 48px;
-    text-align: center;
+    padding: 0.6rem 1rem;
+    width: 14rem;
+    min-height: 40px;
     transition: border-color 0.3s ease;
   }
 
@@ -417,57 +413,56 @@
     outline: none;
   }
 
-  .hp-field {
-    position: absolute;
-    left: -9999px;
-    width: 1px;
-    height: 1px;
-    overflow: hidden;
-  }
-
-  .submit-btn {
+  .email-btn {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    font-size: 0.9rem;
-    letter-spacing: 0.1em;
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
     color: #13110f;
     background: #c4a77d;
     border: 1px solid #c4a77d;
-    padding: 0.8rem 2.5rem;
-    min-height: 48px;
+    padding: 0.6rem 1.2rem;
+    min-height: 40px;
     cursor: pointer;
     transition: opacity 0.3s ease;
   }
 
-  .submit-btn:hover {
+  .email-btn:hover {
     opacity: 0.9;
   }
 
-  .submit-btn:disabled {
+  .email-btn:disabled {
     opacity: 0.4;
     cursor: not-allowed;
   }
 
-  .gate-fine {
+  .email-fine {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    font-size: 0.7rem;
+    font-size: 0.65rem;
     color: #3a3530;
-    margin-top: 1.2rem;
-    line-height: 1.6;
+    margin-top: 0.6rem;
+    line-height: 1.5;
   }
 
-  .gate-fine a {
+  .email-fine a {
     color: #4a4239;
     text-decoration: underline;
     text-decoration-color: #2a2622;
     text-underline-offset: 2px;
   }
 
-  .error-msg {
+  .email-status {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     font-size: 0.8rem;
+    margin-top: 0.5rem;
+  }
+
+  .email-status.success {
+    color: #7a9a6d;
+  }
+
+  .email-status.error {
     color: #a0766a;
-    margin-top: 1rem;
   }
 
   /* --- Results --- */
@@ -740,12 +735,21 @@
     'Refusal as Governance'
   ];
 
+  const RATINGS = ['Governance Absent', 'Governance Emerging', 'Governance Developing', 'Governance Structural'];
+  const THRESHOLDS = [4, 8, 12];
+
   const scores = [];
   const cards = document.querySelectorAll('.question-card');
   const introEl = document.getElementById('intro');
   const questionsEl = document.getElementById('questions');
-  const gateEl = document.getElementById('email-gate');
   const resultsEl = document.getElementById('results');
+
+  // Compute rating client-side (no server dependency for display)
+  function computeRating(total) {
+    let idx = 0;
+    for (const t of THRESHOLDS) { if (total >= t) idx++; }
+    return RATINGS[idx];
+  }
 
   // Begin button
   document.getElementById('begin').addEventListener('click', () => {
@@ -769,83 +773,17 @@
           cards[next].classList.add('active');
         }, 1200);
       } else {
+        // Show results immediately — no email gate
         setTimeout(() => {
+          const total = scores.reduce((sum, s) => sum + (s || 0), 0);
+          showResults(total, 15, computeRating(total));
           questionsEl.classList.add('hidden');
-          gateEl.classList.remove('hidden');
         }, 1200);
       }
     });
   });
 
-  // Email form submission
-  document.getElementById('email-form').addEventListener('submit', async (e) => {
-    e.preventDefault();
-
-    const emailInput = document.getElementById('email-input');
-    const submitBtn = document.getElementById('submit-btn');
-    const errorMsg = document.getElementById('error-msg');
-    const hpField = document.querySelector('.hp-field');
-    const email = emailInput.value.trim().toLowerCase();
-
-    errorMsg.classList.add('hidden');
-    errorMsg.textContent = '';
-
-    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      errorMsg.textContent = 'Please enter a valid email address.';
-      errorMsg.classList.remove('hidden');
-      return;
-    }
-
-    submitBtn.disabled = true;
-    submitBtn.textContent = 'Submitting...';
-
-    try {
-      // Get challenge token
-      const challengeRes = await fetch('/api/form/challenge');
-      if (!challengeRes.ok) throw new Error('Could not verify form. Please refresh.');
-      const { token, ts } = await challengeRes.json();
-
-      // Build answers object
-      const answers = {};
-      dimensions.forEach((dim, i) => {
-        answers[dim] = scores[i] || 0;
-      });
-
-      const totalScore = scores.reduce((sum, s) => sum + (s || 0), 0);
-
-      // Submit
-      const res = await fetch('/api/sovereignty-submit', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          email,
-          answers,
-          score: totalScore,
-          type: 'quick',
-          token,
-          ts,
-          hp: hpField.value
-        })
-      });
-
-      const data = await res.json();
-
-      if (!res.ok) {
-        throw new Error(data.error || 'Submission failed. Please try again.');
-      }
-
-      // Show results
-      showResults(data.score, data.maxScore, data.rating);
-    } catch (err) {
-      errorMsg.textContent = err.message;
-      errorMsg.classList.remove('hidden');
-      submitBtn.disabled = false;
-      submitBtn.textContent = 'See my score';
-    }
-  });
-
   function showResults(totalScore, maxScore, rating) {
-    gateEl.classList.add('hidden');
     resultsEl.classList.remove('hidden');
 
     document.getElementById('results-score').textContent = totalScore + ' / ' + maxScore;
@@ -873,15 +811,71 @@
     });
   }
 
+  // Email form — optional, submits score + email in background
+  document.getElementById('email-form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const emailInput = document.getElementById('email-input');
+    const submitBtn = document.getElementById('submit-btn');
+    const statusEl = document.getElementById('email-status');
+    const hpField = document.querySelector('.hp-field');
+    const email = emailInput.value.trim().toLowerCase();
+
+    statusEl.classList.add('hidden');
+    statusEl.textContent = '';
+    statusEl.className = 'email-status hidden';
+
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      statusEl.textContent = 'Please enter a valid email address.';
+      statusEl.className = 'email-status error';
+      statusEl.classList.remove('hidden');
+      return;
+    }
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending...';
+
+    try {
+      const challengeRes = await fetch('/api/form/challenge');
+      if (!challengeRes.ok) throw new Error('Could not verify form.');
+      const { token, ts } = await challengeRes.json();
+
+      const answers = {};
+      dimensions.forEach((dim, i) => { answers[dim] = scores[i] || 0; });
+      const totalScore = scores.reduce((sum, s) => sum + (s || 0), 0);
+
+      const res = await fetch('/api/sovereignty-submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email, answers, score: totalScore, type: 'quick', token, ts, hp: hpField.value
+        })
+      });
+
+      if (!res.ok) {
+        const data = await res.json();
+        throw new Error(data.error || 'Could not save. Try again.');
+      }
+
+      // Success — hide the email form, show confirmation
+      document.getElementById('email-section').innerHTML =
+        '<p class="email-prompt" style="color: #7a9a6d;">Sent. Check your inbox for resources matched to your score.</p>';
+    } catch (err) {
+      statusEl.textContent = err.message;
+      statusEl.className = 'email-status error';
+      statusEl.classList.remove('hidden');
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Send';
+    }
+  });
+
   // Share button
   document.getElementById('share-btn').addEventListener('click', async () => {
     const totalScore = scores.reduce((sum, s) => sum + (s || 0), 0);
     const text = 'My Sovereignty Score: ' + totalScore + '/15. Industry baseline: 0-3. How does your AI agent system score? https://evoked.dev/score';
 
     if (navigator.share) {
-      try {
-        await navigator.share({ text });
-      } catch {}
+      try { await navigator.share({ text }); } catch {}
     } else if (navigator.clipboard) {
       await navigator.clipboard.writeText(text);
       const btn = document.getElementById('share-btn');
@@ -894,10 +888,6 @@
   document.getElementById('restart').addEventListener('click', () => {
     scores.length = 0;
     document.getElementById('results-breakdown').innerHTML = '';
-    document.getElementById('email-input').value = '';
-    document.getElementById('error-msg').classList.add('hidden');
-    document.getElementById('submit-btn').disabled = false;
-    document.getElementById('submit-btn').textContent = 'See my score';
     resultsEl.classList.add('hidden');
     introEl.classList.remove('hidden');
     cards.forEach((c, i) => {
