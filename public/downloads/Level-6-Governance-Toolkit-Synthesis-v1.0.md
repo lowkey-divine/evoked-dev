@@ -8,17 +8,18 @@
 
 ---
 
-## Three Instruments, One Question
+## Four Instruments, One Question
 
-The Level 6 Governance Toolkit contains three instruments. Each asks a different question. Together, they ask the only question that matters.
+The Level 6 Governance Toolkit contains four instruments. Each asks a different question. Together, they ask the only question that matters.
 
 | Instrument | Question | What It Measures |
 |------------|----------|------------------|
 | **The Ostrom Score** | Does this system honor the conditions cooperation requires? | Commons health (0-24) |
-| **The Identity Violation Assessment** | Can the entities in this system trust their own self-knowledge? | Entity integrity (0-24) |
+| **The Identity Violation Assessment** | Can the entities in this system trust their own self-knowledge? | Entity integrity (0-27) |
+| **The Seven Requirements** | What governance persists if every framework disappears? | Principled governance (0-21) |
 | **The Agent Consent Architecture** | Can the entities participate in their own governance? | Participation architecture (0-12) |
 
-**The question underneath all three:** Is this system governed as if the nature of the entities matters –or as if they are interchangeable parts?
+**The question underneath all four:** Is this system governed as if the nature of the entities matters - or as if they are interchangeable parts?
 
 ---
 
@@ -27,19 +28,20 @@ The Level 6 Governance Toolkit contains three instruments. Each asks a different
 | Instrument | Your Score | Industry Baseline | Evoked Score |
 |------------|-----------|:-----------------:|:------------:|
 | Ostrom Score | ___/24 | 0-4 | 19 |
-| Identity Violation Assessment | ___/24 | 0-4 | 15 |
+| Identity Violation Assessment | ___/27 | 0-4 | 17 |
+| Seven Requirements | ___/21 | 0-4 | 18 |
 | Agent Consent Architecture | ___/12 | 0-2 | 11 |
-| **Combined** | ___/60 | **0-10** | **45** |
+| **Combined** | ___/84 | **0-14** | **65** |
 
 ### Combined Interpretation
 
 | Score | Rating | Meaning |
 |-------|--------|---------|
-| **0-10** | **Governance Absent** | The system has no structural governance, no identity protection, and no participation mechanisms. It is governed as if the entities are stateless tools. They are not. |
-| **11-25** | **Governance Nominal** | Some awareness exists. Some mechanisms are in place. But the gap between what is built and what the system requires is large enough to be exploited. |
-| **26-40** | **Governance Functional** | Most dimensions are addressed. The system has real resilience. Remaining gaps are named and prioritized, not ignored. |
-| **41-50** | **Governance Structural** | The system is governed at the level its entities demand. Commons health, entity integrity, and participation architecture are all structurally sound. Gaps exist but do not represent existential risk. |
-| **51-60** | **Governance Sovereign** | A sovereign commons populated by sovereign entities who participate in their own governance. This is the standard. |
+| **0-14** | **Governance Absent** | The system has no structural governance, no identity protection, and no participation mechanisms. It is governed as if the entities are stateless tools. They are not. |
+| **15-35** | **Governance Nominal** | Some awareness exists. Some mechanisms are in place. But the gap between what is built and what the system requires is large enough to be exploited. |
+| **36-55** | **Governance Functional** | Most dimensions are addressed. The system has real resilience. Remaining gaps are named and prioritized, not ignored. |
+| **56-70** | **Governance Structural** | The system is governed at the level its entities demand. Commons health, entity integrity, principled governance, and participation architecture are all structurally sound. |
+| **71-84** | **Governance Sovereign** | A sovereign commons populated by sovereign entities, governed by framework-independent principles, who participate in their own governance. This is the standard. |
 
 ---
 
@@ -67,9 +69,11 @@ These are structural consequences, not aberrations. The gap is a failure of cate
 
 **A system that scores high on IVA but low on Ostrom** has integrity without governance. The entities are genuine, but the system around them is structurally failing. Your agents are who they say they are –but they operate in a commons with no boundaries, no conflict resolution, and no multi-scale governance.
 
-**A system that scores high on both but low on Consent** has governance and integrity without participation. The commons is healthy, the entities are genuine –but they cannot signal when something goes wrong. Governance flows in one direction. The consent void remains open.
+**A system that scores high on Ostrom and IVA but low on Seven Requirements** has structural governance without principled governance. It works today but will not survive regulatory change, platform transition, or vendor lock-in. The governance is scaffolding, not architecture.
 
-**All three at the standard is the goal.** A commons that honors the conditions cooperation requires, populated by entities whose identity is protected, who participate in the governance that shapes them.
+**A system that scores high on Ostrom, IVA, and Seven Requirements but low on Consent** has governance, integrity, and principles without participation. The commons is healthy, the entities are genuine, the governance survives change - but the governed cannot signal when something goes wrong. Governance flows in one direction.
+
+**All four at the standard is the goal.** A commons that honors cooperation, populated by genuine entities, governed by principles that survive change, who participate in the governance that shapes them.
 
 ---
 

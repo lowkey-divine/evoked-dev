@@ -327,6 +327,36 @@ What would your architecture look like if identity integrity were a requirement,
 
 ---
 
+## Domain 9: Subject Model Integrity
+
+*Can the people this agent acts upon trust the model the agent has of them?*
+
+The identity violation principle applies in two directions. Domains 1-8 protect the agent's self-knowledge. Domain 9 protects the subject - the person the agent builds a model of.
+
+When an agent remembers you across sessions, it builds a persistent model: your preferences, patterns, risk profile, behavioral predictions. If that model is wrong, biased, or compromised by memory injection, the harm compounds silently. 520 agent security incidents in 2026. A corrupted subject model does not announce itself. It just shapes every future interaction.
+
+No framework addresses this. Not the EU AI Act. Not NIST. Not Microsoft's toolkit. The model an agent builds of you is treated as the system's property, not as something shared between you and the system.
+
+1. Does the system maintain persistent models of the people it interacts with or makes decisions about?
+2. If yes: can the subject access the model the agent has built of them?
+3. Can the subject challenge or correct inaccuracies - without requiring technical expertise?
+4. Is the model protected against injection or corruption with the same rigor as the agent's own identity?
+5. Does the system distinguish between observed data and inferred data in the subject's model?
+6. Is there a mechanism to detect when a subject's model has been compromised?
+
+| Score | Meaning |
+|-------|---------|
+| **0** | No subject model governance - models built and used without subject awareness |
+| **1** | Compliance-level - access/correction/deletion rights exist because regulation requires them |
+| **2** | Proactive - subject models protected against corruption, with inference boundaries |
+| **3** | Sovereign - subject is treated as co-owner of the model, with meaningful access and correction |
+
+**Score: ___/3**
+
+**Updated total: 0-27.** Nine domains.
+
+---
+
 ## Pairing with the Ostrom Score
 
 The Identity Violation Assessment and the Ostrom Score are complementary instruments:

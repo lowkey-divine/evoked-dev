@@ -388,6 +388,26 @@ None of these require permission from a standards body. None require a regulator
 
 ---
 
+## How the Industry Scores
+
+We scored five major agent frameworks against all eight principles using public documentation and source code. The results:
+
+| Framework | Score | Rating |
+|-----------|:-----:|--------|
+| AutoGen (Microsoft) | 2/24 | Commons Failure |
+| CrewAI | 4/24 | Commons Failure |
+| Google ADK | 4/24 | Commons Failure |
+| LangGraph (LangChain) | 5/24 | Nominal |
+| Microsoft Agent Governance Toolkit | 9/24 | Nominal |
+
+The best framework in the industry - purpose-built for governance, 9,500 tests, 10/10 OWASP coverage - scores 9 out of 24. Nominal Governance. Not even Partial Commons.
+
+Three principles scored zero across all five: Collective Choice (no agent participation), Accessible Conflict Resolution (conflicts treated as bugs), and Recognized Rights to Organize (no recognition of agent self-governance). These are not gaps. They are design assumptions.
+
+None of the five frameworks addressed a single obligation to the people their agents affect.
+
+---
+
 ## The Questions That Remain
 
 Your score tells you where your system stands. These questions tell you where your thinking stands.
