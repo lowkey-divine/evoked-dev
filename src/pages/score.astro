@@ -500,33 +500,86 @@
 
   #results-breakdown {
     margin-bottom: 2rem;
+    background: #1a1714;
+    border: 1px solid #2a2622;
+    border-radius: 8px;
+    padding: 1.2rem 1.5rem;
+  }
+
+  .breakdown-heading {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #4a4239;
+    margin-bottom: 0.8rem;
   }
 
   .breakdown-row {
     display: flex;
     justify-content: space-between;
-    align-items: baseline;
-    padding: 0.5rem 0;
+    align-items: center;
+    padding: 0.7rem 0;
     border-bottom: 1px solid #1e1b18;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    font-size: 0.8rem;
+    font-size: 0.9rem;
   }
 
-  .breakdown-label {
-    color: #6b6156;
+  .breakdown-row:last-child {
+    border-bottom: none;
+  }
+
+  .breakdown-left {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
     text-align: left;
     flex: 1;
   }
 
-  .breakdown-score {
+  .breakdown-label {
     color: #c4a77d;
+    font-size: 0.9rem;
+  }
+
+  .breakdown-gap {
+    font-size: 0.7rem;
+    color: #6b6156;
+  }
+
+  .breakdown-gap a {
+    color: #8a7e72;
+    text-decoration: underline;
+    text-decoration-color: #3a3530;
+    text-underline-offset: 2px;
+  }
+
+  .breakdown-gap a:hover {
+    color: #c4a77d;
+  }
+
+  .breakdown-score {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 1.3rem;
     margin-left: 1.5rem;
     flex-shrink: 0;
     font-variant-numeric: tabular-nums;
   }
 
-  .breakdown-score.zero {
-    color: #4a4239;
+  .breakdown-score.score-3 {
+    color: #7a9a6d;
+  }
+
+  .breakdown-score.score-2 {
+    color: #c4a77d;
+  }
+
+  .breakdown-score.score-1 {
+    color: #c49a5e;
+  }
+
+  .breakdown-score.score-0 {
+    color: #a0766a;
   }
 
   .results-caveat {
@@ -783,6 +836,15 @@
     });
   });
 
+  // Map each dimension to a gap-closing resource
+  const gapResources = {
+    'Identity Boundaries': { text: 'Agent Charter template', url: '/products/governance-templates-guided' },
+    'Governance Participation': { text: 'Deliberation Framework', url: '/products/governance-templates-guided' },
+    'Self-Description Integrity': { text: 'Trust Architecture Blueprint', url: '/products/trust-architecture-blueprint' },
+    'Tampering Detection': { text: 'Drift Monitoring template', url: '/products/governance-templates-guided' },
+    'Refusal as Governance': { text: 'Restraint Specification', url: '/products/agent-restraint-specification' }
+  };
+
   function showResults(totalScore, maxScore, rating) {
     resultsEl.classList.remove('hidden');
 
@@ -792,20 +854,44 @@
     const breakdown = document.getElementById('results-breakdown');
     breakdown.innerHTML = '';
 
-    dimensions.forEach((dim, i) => {
+    // Heading
+    const heading = document.createElement('p');
+    heading.className = 'breakdown-heading';
+    heading.textContent = 'Per-dimension breakdown';
+    breakdown.appendChild(heading);
+
+    // Sort by score ascending (lowest gaps first)
+    const sorted = dimensions.map((dim, i) => ({ dim, score: scores[i] || 0, index: i }));
+    sorted.sort((a, b) => a.score - b.score);
+
+    sorted.forEach(({ dim, score }) => {
       const row = document.createElement('div');
       row.className = 'breakdown-row';
+
+      const left = document.createElement('div');
+      left.className = 'breakdown-left';
 
       const label = document.createElement('span');
       label.className = 'breakdown-label';
       label.textContent = dim;
+      left.appendChild(label);
+
+      // If score < 3, show gap-closing resource
+      if (score < 3) {
+        const gap = document.createElement('span');
+        gap.className = 'breakdown-gap';
+        const resource = gapResources[dim];
+        if (resource) {
+          gap.innerHTML = 'Close this gap: <a href="' + resource.url + '">' + resource.text + '</a>';
+        }
+        left.appendChild(gap);
+      }
 
       const scoreEl = document.createElement('span');
-      const s = scores[i] || 0;
-      scoreEl.className = 'breakdown-score' + (s === 0 ? ' zero' : '');
-      scoreEl.textContent = s + ' / 3';
+      scoreEl.className = 'breakdown-score score-' + score;
+      scoreEl.textContent = score + ' / 3';
 
-      row.appendChild(label);
+      row.appendChild(left);
       row.appendChild(scoreEl);
       breakdown.appendChild(row);
     });
