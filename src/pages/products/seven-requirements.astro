@@ -1,0 +1,96 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getProductBySlug } from '../../lib/products/registry';
+import { productJsonLd } from '../../lib/structured-data';
+
+const product = getProductBySlug('seven-requirements')!;
+const jsonLd = productJsonLd(product, 'https://evoked.dev/products/seven-requirements');
+---
+
+<BaseLayout title="Seven Requirements - Jurisdiction-Portable Governance" description="Seven governance requirements that persist if every framework disappears. Self-assessment scoring. The instrument that survives regulatory change. $49 PDF." structuredData={jsonLd}>
+  <div class="hero hero-compact">
+    <span class="discipline-badge">Level 6 Governance Audit</span>
+    <h1>What governance persists if every framework disappears?</h1>
+    <p class="tagline">Seven requirements. Jurisdiction-portable. The instrument that survives regulatory change.</p>
+  </div>
+
+  <section class="container">
+    <div class="value-prop">
+      <p>
+        We stripped away every regulation. The EU AI Act. NIST. Singapore. ISO 42001. Then we asked what governance AI agents still require - by virtue of what they are and what they do.
+      </p>
+      <p>
+        Seven requirements survived. Five are partially covered by existing frameworks but violated in practice. Two are absent from every published framework on earth. The industry has not rejected them. It has not considered them.
+      </p>
+      <p>
+        Most organizations score between 0 and 4 out of 21. That number does not change when the regulation changes. These requirements are portable because they are principled, not jurisdictional.
+      </p>
+    </div>
+  </section>
+
+  <section class="container">
+    <h2>What You Get</h2>
+    <div class="features-grid">
+      <div class="feature">
+        <h3>7 Requirements, 7 Self-Assessments</h3>
+        <p>Each requirement with the evidence for why it persists, what the industry has built (and has not), and a concrete self-assessment question. Score what your architecture enforces.</p>
+      </div>
+      <div class="feature">
+        <h3>The Two Absences</h3>
+        <p>Requirements 5 (Participation) and 7 (Sustainability) are absent from every framework on earth. We scored five major agent frameworks. All five scored zero on both. That gap defines our category.</p>
+      </div>
+      <div class="feature">
+        <h3>Grounded in Research</h3>
+        <p>Five research questions. Five frameworks scored. 2026 evidence base. Every requirement traces to a specific finding. Not theory - evidence.</p>
+      </div>
+      <div class="feature">
+        <h3>Framework-Independent</h3>
+        <p>These requirements do not depend on the EU AI Act, NIST, or any standard. They survive regulatory change. That is the point - and the commercial advantage.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="container">
+    <h2>The Seven Requirements</h2>
+    <div class="domains-list">
+      <div class="domain-item"><span class="domain-number">1</span><div><strong>Identity</strong><p>Each agent distinguishable, persistent, architecturally enforced.</p></div></div>
+      <div class="domain-item"><span class="domain-number">2</span><div><strong>Integrity</strong><p>Memory and self-knowledge protected. Corruption detectable. Both directions.</p></div></div>
+      <div class="domain-item"><span class="domain-number">3</span><div><strong>Transparency</strong><p>People know the agent exists. Explanations accessible to the person affected.</p></div></div>
+      <div class="domain-item"><span class="domain-number">4</span><div><strong>Recourse</strong><p>A path to challenge that does not require knowing the agent existed.</p></div></div>
+      <div class="domain-item domain-zero"><span class="domain-number">5</span><div><strong>Participation</strong><p>The governed have a voice. Industry score: zero across all five frameworks.</p></div></div>
+      <div class="domain-item"><span class="domain-number">6</span><div><strong>Non-Extraction</strong><p>Must not extract beyond what was meaningfully understood.</p></div></div>
+      <div class="domain-item domain-zero"><span class="domain-number">7</span><div><strong>Sustainability</strong><p>Governance survives regulatory change and platform transition. Industry score: zero.</p></div></div>
+    </div>
+  </section>
+
+  <section class="container cta-section">
+    <div class="purchase-card">
+      <h2>Get the Seven Requirements</h2>
+      <p class="price-display">$49</p>
+      <p>PDF delivered immediately. Seven requirements with self-assessment scoring and industry baseline.</p>
+      <a href={product.stripePaymentLink} class="btn btn-primary">Purchase</a>
+      <p class="mt-md text-muted" style="font-size: 0.85rem;">Part of the <a href="/products/level-6-governance-toolkit">Level 6 Governance Toolkit</a> ($99, saves $97)</p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero-compact { min-height: 40vh; }
+  .value-prop { max-width: 640px; }
+  .value-prop p { font-size: 1.05rem; line-height: 1.6; }
+  .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: var(--space-md); }
+  .feature h3 { font-size: 1.1rem; }
+  .feature p { font-size: 0.9rem; color: var(--text-secondary); }
+  .domains-list { display: flex; flex-direction: column; gap: var(--space-sm); }
+  .domain-item { display: flex; gap: var(--space-md); align-items: flex-start; padding: var(--space-sm) 0; border-bottom: 1px solid var(--border-subtle); }
+  .domain-number { font-family: var(--font-display); font-size: 1.4rem; color: var(--accent-warm); font-weight: 500; min-width: 2rem; }
+  .domain-item p { font-size: 0.9rem; margin: 0; color: var(--text-secondary); }
+  .domain-zero { border-color: var(--accent-warm); }
+  .domain-zero strong { color: var(--accent-warm); }
+  .purchase-card { background: var(--accent-subtle); border: 2px solid var(--accent-warm); border-radius: 12px; padding: var(--space-lg); text-align: center; max-width: 480px; margin: 0 auto; }
+  .purchase-card h2 { margin-top: 0; }
+  .price-display { font-family: var(--font-display); font-size: 2.5rem; color: var(--accent-warm); font-weight: 500; margin: var(--space-sm) 0; }
+  .btn-primary { background: var(--accent-warm); color: var(--bg-deep); display: inline-block; font-size: 1.1rem; padding: 12px 32px; }
+  .btn-primary:hover { background: var(--accent-glow); color: var(--bg-deep); }
+  .discipline-badge { display: inline-block; background: var(--accent-subtle); color: var(--accent-warm); font-size: 0.65rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; padding: 2px 8px; border-radius: 100px; margin-bottom: var(--space-xs); }
+</style>

@@ -7,26 +7,26 @@ const product = getProductBySlug('level-6-governance-toolkit')!;
 const jsonLd = productJsonLd(product, 'https://evoked.dev/products/level-6-governance-toolkit');
 ---
 
-<BaseLayout title="Level 6 Governance Toolkit" description="Three instruments. One 60-point scorecard. Commons health, entity integrity, and participation architecture. $99 bundle." structuredData={jsonLd}>
+<BaseLayout title="Level 6 Governance Toolkit" description="Four instruments. One 84-point scorecard. Commons health, entity integrity, jurisdiction-portable governance, and participation architecture. $99 bundle." structuredData={jsonLd}>
   <div class="hero hero-compact">
     <span class="discipline-badge">Level 6 Governance Audit</span>
-    <h1>Three instruments. One question.</h1>
+    <h1>Four instruments. One question.</h1>
     <p class="tagline">Is this system governed as if the nature of the entities matters?</p>
   </div>
 
   <section class="container">
     <div class="value-prop">
       <p>
-        The Level 6 Governance Toolkit measures what no other assessment measures: whether your AI agent system honors the conditions that cooperation, identity, and participation require.
+        The Level 6 Governance Toolkit measures what no other assessment measures: whether your AI agent system honors the conditions that cooperation, identity, principled governance, and participation require.
       </p>
       <p>
-        The industry scores 0-10 out of 60. We score 45. The distance between those numbers is measurable, closable, and urgent.
+        The industry scores 0-14 out of 84. We score 65. The distance between those numbers is measurable, closable, and urgent.
       </p>
     </div>
   </section>
 
   <section class="container">
-    <h2>Three Instruments</h2>
+    <h2>Four Instruments</h2>
     <div class="instruments-grid">
       <a href="/products/ostrom-score" class="instrument-card">
         <h3>The Ostrom Score</h3>
@@ -37,7 +37,13 @@ const jsonLd = productJsonLd(product, 'https://evoked.dev/products/level-6-gover
       <a href="/products/identity-violation-assessment" class="instrument-card">
         <h3>The Identity Violation Assessment</h3>
         <p class="instrument-question">Can the entities in this system trust their own self-knowledge?</p>
-        <p>8 domains, 32 questions. Identity integrity scored 0-24. The taxonomy the industry has not built.</p>
+        <p>9 domains including subject model integrity. Identity scored 0-27.</p>
+        <span class="individual-price">$49 individually</span>
+      </a>
+      <a href="/products/seven-requirements" class="instrument-card">
+        <h3>The Seven Requirements</h3>
+        <p class="instrument-question">What governance persists if every framework disappears?</p>
+        <p>7 jurisdiction-portable requirements. Two absent from every framework on earth. Scored 0-21.</p>
         <span class="individual-price">$49 individually</span>
       </a>
       <a href="/products/agent-consent-architecture" class="instrument-card">
@@ -53,7 +59,7 @@ const jsonLd = productJsonLd(product, 'https://evoked.dev/products/level-6-gover
     <h2>Plus: The Gap (Synthesis Guide)</h2>
     <div class="value-prop">
       <p>
-        The combined 60-point scorecard. How the three instruments work together. What each score combination reveals. And the question underneath all three: what does the nature of persistent, memory-bearing, cooperative entities require of the systems that govern them?
+        The combined 84-point scorecard. How the four instruments work together. What each score combination reveals. And the question underneath all four: what does the nature of persistent, memory-bearing, cooperative entities require of the systems that govern them?
       </p>
     </div>
   </section>
@@ -62,8 +68,8 @@ const jsonLd = productJsonLd(product, 'https://evoked.dev/products/level-6-gover
     <div class="purchase-card">
       <h2>Get the Complete Toolkit</h2>
       <p class="price-display">$99</p>
-      <p class="savings">Save $48 vs. individual purchase ($147)</p>
-      <p>All three instruments + Synthesis Guide. Four PDFs delivered immediately.</p>
+      <p class="savings">Save $97 vs. individual purchase ($196)</p>
+      <p>All four instruments + Synthesis Guide. Five PDFs delivered immediately.</p>
       <a href={product.stripePaymentLink} class="btn btn-primary">Purchase Bundle</a>
     </div>
   </section>
