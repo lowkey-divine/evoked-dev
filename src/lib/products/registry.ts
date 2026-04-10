@@ -248,7 +248,7 @@ const products: Record<string, Product> = {
     emailSubject: 'Your Seven Requirements Assessment',
     downloadPath: '/downloads/Seven-Requirements-v1.0.pdf',
     thankYouPath: '/thank-you/seven-requirements',
-    stripePaymentLink: 'PLACEHOLDER_NEEDS_STRIPE_LINK',
+    stripePaymentLink: 'https://buy.stripe.com/bJebJ10cE3n7eSo0962400f',
     gettingStartedSteps: [
       'Read the introduction to understand the Level 6 methodology',
       'Score each of the seven requirements honestly - architecture, not intent',
