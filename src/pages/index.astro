@@ -81,6 +81,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   </section>
 
   <section class="container">
+    <div class="two-absence">
+      <p class="two-absence-text">Can your agents participate in their own governance? Can your governance survive a platform change? The industry scores zero on both. We don't.</p>
+      <p class="two-absence-source">Five frameworks scored. Three principles at zero across all of them. <a href="/score">See where you stand.</a></p>
+    </div>
+  </section>
+
+  <section class="container">
     <div class="start-reading">
       <h2>Start reading.</h2>
       <div class="reading-grid">
@@ -298,6 +305,40 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     color: var(--text-secondary);
     line-height: 1.5;
     text-align: center;
+  }
+
+  /* --- Two Absence --- */
+
+  .two-absence {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: var(--space-md) 0;
+    border-top: 1px solid var(--border-subtle);
+  }
+
+  .two-absence-text {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    color: var(--text-primary);
+    line-height: 1.6;
+    margin-bottom: var(--space-xs);
+    font-style: italic;
+  }
+
+  .two-absence-source {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+
+  .two-absence-source a {
+    color: var(--accent-warm);
+    text-decoration: none;
+  }
+
+  .two-absence-source a:hover {
+    text-decoration: underline;
   }
 
   /* --- Start Reading --- */
