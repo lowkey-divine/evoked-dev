@@ -134,6 +134,13 @@ Govern the agent. The loop will take care of itself.
 
 ---
 
+**Related reading:**
+- [What Should Your Agent Refuse?](/writing/what-should-your-agent-refuse/)
+- [Fifteen Frameworks, One Missing Layer](/writing/fifteen-frameworks/)
+- [Adding Governance to an Agent You Already Built](/writing/adding-governance-to-an-agent-you-already-built/)
+
+---
+
 ## Sources
 
 **Agentic Infrastructure:**

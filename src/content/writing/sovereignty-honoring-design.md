@@ -170,3 +170,10 @@ There are people building differently. I'm one of them.
 - [FTC - Epic Games $520 Million Settlement](https://www.ftc.gov/news-events/news/press-releases/2022/12/fortnite-video-game-maker-epic-games-pay-more-half-billion-dollars-over-ftc-allegations) - Federal Trade Commission, December 2022
 - [FTC COPPA Rule Amendments - Final Rule](https://www.federalregister.gov/documents/2025/04/22/2025-05904/childrens-online-privacy-protection-rule) - Federal Register, April 2025
 - [EU Digital Services Act](https://digital-strategy.ec.europa.eu/en/policies/digital-services-act) - European Commission (dark pattern prohibitions, platform design obligations)
+
+---
+
+**Related reading:**
+- [Is This AI Honoring Your Sovereignty? A 21-Point Check](/writing/sovereignty-assessment-for-the-governed/)
+- [Sovereignty Refusal](/writing/sovereignty-refusal/)
+- [What Do You Refuse to Surrender?](/writing/what-do-you-refuse-to-surrender/)

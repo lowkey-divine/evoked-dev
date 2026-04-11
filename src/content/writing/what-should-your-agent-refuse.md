@@ -165,3 +165,10 @@ I'd rather start that conversation early than clean up after it later.
 - https://www.selc.org/news/xai-built-an-illegal-power-plant-to-power-its-data-center/
 - https://capitalbnews.org/musk-xai-memphis-black-neighborhood-pollution/
 - https://www.nature.com/articles/s41586-024-08449-y
+
+---
+
+**Related reading:**
+- [Sovereignty Refusal](/writing/sovereignty-refusal/)
+- [Scope Refusal](/writing/scope-refusal/)
+- [Fifteen Frameworks, One Missing Layer](/writing/fifteen-frameworks/)

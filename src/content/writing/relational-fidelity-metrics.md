@@ -200,3 +200,10 @@ Sources:
 - PersonaGym - persona maintenance measurement across dialogue turns
 - Anthropic harness design blog (2026) - context anxiety and self-evaluation findings
 - Learning to Self-Evolve (Quebec AI Institute / Snowflake, March 2026) - dual-system prompt optimization
+
+---
+
+**Related reading:**
+- [Fifteen Frameworks, One Missing Layer](/writing/fifteen-frameworks/)
+- [The Governance Question Just Got Answered](/writing/the-governance-question-just-got-answered/)
+- [Governance Frontmatter: What Goes in the Fields Your Platform Already Has](/writing/governance-frontmatter-specification/)

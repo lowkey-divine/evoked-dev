@@ -187,3 +187,10 @@ Most systems - most people - never check the process when the results are good. 
 Write both questions on the sticky note. "Do I actually know this, or am I performing knowing?" And underneath it: "How would I know the difference?" The first question is the practice. The second is what keeps the practice honest.
 
 Put them next to the sovereignty one - if you read the last deep dive in this series, you'll know the set. Sovereignty protects the user's right to choose. Scope protects the user's right to trust. Without sovereignty, the system decides for you. Without scope, the system lies to you. Both feel like help. Neither is.
+
+---
+
+**Related reading:**
+- [What Should Your Agent Refuse?](/writing/what-should-your-agent-refuse/)
+- [Who Governs the Agent?](/writing/who-governs-the-agent/)
+- [Adding Governance to an Agent You Already Built](/writing/adding-governance-to-an-agent-you-already-built/)

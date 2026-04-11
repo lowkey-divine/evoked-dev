@@ -161,3 +161,10 @@ None of these patterns require new libraries or rearchitecting your stack. They 
 - Pydantic AI Documentation - ai.pydantic.dev (agents, tools, toolsets, dependencies)
 - LangGraph Documentation - docs.langchain.com (interrupts, persistence, guardrails)
 - OpenAI Agents SDK - openai.github.io/openai-agents-python/guardrails
+
+---
+
+**Related reading:**
+- [Governance Frontmatter: What Goes in the Fields Your Platform Already Has](/writing/governance-frontmatter-specification/)
+- [The Governance Question Just Got Answered](/writing/the-governance-question-just-got-answered/)
+- [Who Governs the Agent?](/writing/who-governs-the-agent/)

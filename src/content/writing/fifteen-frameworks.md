@@ -160,3 +160,10 @@ Start with the restraint spec. Start with the charter. The foundation matters mo
 - [Who Governs the Agent?](/writing/who-governs-the-agent) - Identity, memory, governance, restraint as first-class design.
 - [Agent Governance Starter Kit](https://github.com/lowkey-divine/agent-governance-starter-kit) - Free. MIT licensed. Five templates.
 - [Five Questions for Your Agent System](/diagnostic) - 30 seconds. No signup. No tracking.
+
+---
+
+**Related reading:**
+- [Adding Governance to an Agent You Already Built](/writing/adding-governance-to-an-agent-you-already-built/)
+- [The Governance Question Just Got Answered](/writing/the-governance-question-just-got-answered/)
+- [We Scored Five Agent Frameworks on Governance. None Passed.](/writing/the-compliance-cooperation-gap/)

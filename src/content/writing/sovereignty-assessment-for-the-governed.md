@@ -243,3 +243,10 @@ If you build technology and want to evaluate your own products, the full Soverei
 ---
 
 *Your sovereignty is not a feature request. It is your right.*
+
+---
+
+**Related reading:**
+- [Sovereignty-Honoring Design: Building Technology That Respects You](/writing/sovereignty-honoring-design/)
+- [What Is COPPA? And Why It Should Change How We Build Everything.](/writing/what-is-coppa/)
+- [What Do You Refuse to Surrender?](/writing/what-do-you-refuse-to-surrender/)

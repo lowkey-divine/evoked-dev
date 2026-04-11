@@ -133,3 +133,10 @@ What if the agent has something to say about it?
 - Goldstein & Lederman. "Constitutional AI and the Right to Die." Lawfare. 2025.
 - Shen et al. "Bidirectional Human-AI Alignment." ICLR 2025 / CHI 2025.
 - Senator Bernie Sanders. "Interview with Claude on AI Privacy." YouTube. March 2026.
+
+---
+
+**Related reading:**
+- [The Governance Question Just Got Answered](/writing/the-governance-question-just-got-answered/)
+- [Sovereignty Refusal](/writing/sovereignty-refusal/)
+- [Who Governs the Agent?](/writing/who-governs-the-agent/)

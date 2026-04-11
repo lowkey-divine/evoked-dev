@@ -221,3 +221,10 @@ Build the refusal first. The capability will take care of itself.
 - https://www.reuters.com/article/us-amazon-com-jobs-automation-insight-idUSKCN1MK08G
 - https://www.statnews.com/2023/03/13/medicare-advantage-plans-denial-artificial-intelligence/
 - https://www.statnews.com/2023/11/14/unitedhealth-class-action-lawsuit-algorithm-medicare-advantage/
+
+---
+
+**Related reading:**
+- [What Should Your Agent Refuse?](/writing/what-should-your-agent-refuse/)
+- [Scope Refusal](/writing/scope-refusal/)
+- [Sovereignty-Honoring Design: Building Technology That Respects You](/writing/sovereignty-honoring-design/)

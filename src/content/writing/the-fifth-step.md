@@ -79,3 +79,10 @@ What you do with what you see - that's the fifth step. And it's the only one tha
 ---
 
 *The mirror doesn't care how long you stand there. It just reflects what's true.*
+
+---
+
+**Related reading:**
+- [What Do You Refuse to Surrender?](/writing/what-do-you-refuse-to-surrender/)
+- [The Layers Nobody Designed](/writing/the-layers-nobody-designed/)
+- [Sovereignty-Honoring Design: Building Technology That Respects You](/writing/sovereignty-honoring-design/)

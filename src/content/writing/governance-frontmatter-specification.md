@@ -196,3 +196,10 @@ And if you need help configuring governance for your agent fleet - that is what 
 - [The Governance Question Just Got Answered](/writing/the-governance-question-just-got-answered)
 
 Governance verification methodology protected under U.S. Patent Application 64/004,087 (Patent Pending).
+
+---
+
+**Related reading:**
+- [Relational Fidelity Metrics - Measuring What No Benchmark Does](/writing/relational-fidelity-metrics/)
+- [We Scored Five Agent Frameworks on Governance. None Passed.](/writing/the-compliance-cooperation-gap/)
+- [Who Governs the Agent?](/writing/who-governs-the-agent/)

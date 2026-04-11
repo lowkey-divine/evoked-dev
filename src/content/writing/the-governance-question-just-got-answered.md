@@ -164,3 +164,10 @@ And if you're building something and the question of agent participation matters
 ### Further Reading
 - [Fifteen Frameworks, One Missing Layer](/writing/fifteen-frameworks)
 - [Adding Governance to an Agent You Already Built](/writing/adding-governance-to-an-agent-you-already-built)
+
+---
+
+**Related reading:**
+- [We Scored Five Agent Frameworks on Governance. None Passed.](/writing/the-compliance-cooperation-gap/)
+- [Governance Frontmatter: What Goes in the Fields Your Platform Already Has](/writing/governance-frontmatter-specification/)
+- [Constraints, Constitutions, and the Question Nobody's Asking](/writing/constraints-constitutions/)

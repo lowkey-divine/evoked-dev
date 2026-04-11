@@ -138,3 +138,10 @@ Sources:
 - SD Times - OSSRA 2026: License Conflicts All-Time High
 - Partnership on AI - Six Governance Priorities 2026
 - Ostrom, E. (1990). Governing the Commons. Cambridge University Press.
+
+---
+
+**Related reading:**
+- [Fifteen Frameworks, One Missing Layer](/writing/fifteen-frameworks/)
+- [The Governance Question Just Got Answered](/writing/the-governance-question-just-got-answered/)
+- [Is This AI Honoring Your Sovereignty? A 21-Point Check](/writing/sovereignty-assessment-for-the-governed/)

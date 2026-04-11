@@ -152,3 +152,10 @@ That's our part. That's what we build toward. Let's get there - together.
 - [2025 FTC Rule Amendments](https://www.federalregister.gov/documents/2025/04/22/2025-05904/childrens-online-privacy-protection-rule) - Federal Register, April 2025
 - [COPPA 2.0 Reintroduction](https://www.markey.senate.gov/news/press-releases/senators-markey-and-cassidy-reintroduce-coppa-20-bipartisan-legislation-to-protect-online-privacy-of-children-and-teens) - Senator Markey, March 2025
 - [FTC: Make sure you're all complying with COPPA](https://www.ftc.gov/business-guidance/blog/2025/09/using-third-partys-software-your-app-make-sure-youre-all-complying-coppa) - FTC Business Blog, September 2025
+
+---
+
+**Related reading:**
+- [Sovereignty-Honoring Design: Building Technology That Respects You](/writing/sovereignty-honoring-design/)
+- [Is This AI Honoring Your Sovereignty? A 21-Point Check](/writing/sovereignty-assessment-for-the-governed/)
+- [What Do You Refuse to Surrender?](/writing/what-do-you-refuse-to-surrender/)

@@ -133,3 +133,10 @@ If they're not, build better ones. Or find the people who are building them diff
 **Reskilling Access:**
 - [Coding Bootcamp Cost Analysis](https://www.nucamp.co/blog/is-a-coding-bootcamp-worth-it-in-2026-roi-analysis-success-rates) - Nucamp, 2026 (average bootcamp cost $13,500-$14,000)
 - [AI Job Displacement Statistics](https://click-vision.com/ai-job-displacement-statistics) - Click Vision, 2026 (demographic disparities in displacement risk)
+
+---
+
+**Related reading:**
+- [The Fifth Step](/writing/the-fifth-step/)
+- [Sovereignty Refusal](/writing/sovereignty-refusal/)
+- [The Layers Nobody Designed](/writing/the-layers-nobody-designed/)

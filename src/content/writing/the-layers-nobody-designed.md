@@ -155,3 +155,10 @@ Sources:
 - 2025 Mid-Year Report: ADA Website Accessibility Lawsuits Surge 37%. EcomBack / PRNewswire, 2025.
 - Design Deeper to Differentiate: State of UX 2026. Nielsen Norman Group, 2026.
 - Epistemic Consolidation, Methodological Expansion and Post-Anthropocentric Reorientation. Design Research 2025 Review, designforschung.org.
+
+---
+
+**Related reading:**
+- [Sovereignty-Honoring Design: Building Technology That Respects You](/writing/sovereignty-honoring-design/)
+- [The Fifth Step](/writing/the-fifth-step/)
+- [What Do You Refuse to Surrender?](/writing/what-do-you-refuse-to-surrender/)
