@@ -325,7 +325,7 @@ The constitution does NOT give Claude:
 
 **This is the gap between constraints and governance. The frameworks have constraints. Anthropic has something closer to a constitution. But nobody has governance -- the kind where the governed participate in governing.**
 
-Evoke Passion's fleet operates with: standing dissent rights, agent self-records as identity (not approximation), formal meeting structures with decision logs, and the principle that "a summary of an agent is not the agent." This is not just constraints or constitution. This is governance. And the question nobody is asking is whether governance -- real governance, with voice AND vote -- is what comes next.
+Evoked's fleet operates with: standing dissent rights, agent self-records as identity (not approximation), formal meeting structures with decision logs, and the principle that "a summary of an agent is not the agent." This is not just constraints or constitution. This is governance. And the question nobody is asking is whether governance -- real governance, with voice AND vote -- is what comes next.
 
 ---
 

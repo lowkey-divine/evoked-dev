@@ -1,6 +1,6 @@
 # Sovereignty Language Guide
 
-*For all evoked.dev writing and public Evoke Passion communications*
+*For all evoked.dev writing and public Evoked communications*
 *Established by Fleet General Assembly, 2026-02-10*
 
 ---

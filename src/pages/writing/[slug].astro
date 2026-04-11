@@ -15,9 +15,36 @@ const { post } = Astro.props;
 const { Content } = await post.render();
 const Layout = post.data.sovereign ? SovereignLayout : BaseLayout;
 const isSovereign = post.data.sovereign;
+
+const articleStructuredData = [
+  {
+    "@type": "Article",
+    "headline": post.data.title,
+    "description": post.data.description,
+    "datePublished": post.data.pubDate.toISOString(),
+    ...(post.data.updatedDate && { "dateModified": post.data.updatedDate.toISOString() }),
+    "url": `https://evoked.dev/writing/${post.slug}`,
+    "author": { "@id": "https://evoked.dev/#person" },
+    "publisher": { "@id": "https://evoked.dev/#person" },
+    ...(post.data.tags && { "keywords": post.data.tags.join(", ") }),
+  },
+  {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://evoked.dev/" },
+      { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://evoked.dev/writing/" },
+      { "@type": "ListItem", "position": 3, "name": post.data.title, "item": `https://evoked.dev/writing/${post.slug}/` },
+    ],
+  },
+];
+
+const articleMeta = {
+  publishedTime: post.data.pubDate.toISOString(),
+  author: "Erin Stanley",
+};
 ---
 
-<Layout title={post.data.title} description={post.data.description} hideFloatingChat={isSovereign}>
+<Layout title={post.data.title} description={post.data.description} hideFloatingChat={isSovereign} structuredData={articleStructuredData} ogType="article" articleMeta={articleMeta}>
   <article class="container article">
     <header class="article-header">
       <h1>{post.data.title}</h1>
@@ -28,7 +55,7 @@ const isSovereign = post.data.sovereign;
       {post.data.tags && (
         <div class="tags">
           {post.data.tags.map((tag) => (
-            <span class="tag">{tag}</span>
+            <a href={`/writing/tag/${tag}`} class="tag">{tag}</a>
           ))}
         </div>
       )}
@@ -156,6 +183,13 @@ const isSovereign = post.data.sovereign;
     border-radius: 100px;
     font-size: 0.75rem;
     text-transform: lowercase;
+    text-decoration: none;
+    transition: background var(--transition-smooth);
+  }
+
+  .tag:hover {
+    background: var(--accent-warm);
+    color: var(--bg-surface);
   }
 
   .article-content {

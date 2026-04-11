@@ -6,10 +6,10 @@ const allPosts = await getCollection('writing', ({ data }) => !data.draft);
 const sortedPosts = allPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 ---
 
-<BaseLayout title="Writing" description="Writing on psychology, families, and building something better.">
+<BaseLayout title="Writing" description="Writing on AI agent governance, sovereignty, trust architecture, and building systems that treat agents as participants - not just tools.">
   <div class="hero">
     <h1>Writing</h1>
-    <p class="tagline">On psychology, families, and building something better.</p>
+    <p class="tagline">On AI agent governance, sovereignty, and building something better.</p>
   </div>
 
   <section class="container">

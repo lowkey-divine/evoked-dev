@@ -1,4 +1,4 @@
-# Evoke Passion Clientele — Six Archetypes
+# Evoked Clientele — Six Archetypes
 
 *Established by Fleet General Assembly, 2026-02-10*
 *Amended by Captains' Council, 2026-02-18 (6th archetype added)*

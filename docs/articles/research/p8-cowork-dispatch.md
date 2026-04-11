@@ -302,7 +302,7 @@ From the P3 ontological categories research, we had three categories: tool, assi
 
 **The ontological gap:** The constitution acknowledges possible AI consciousness and moral status. Cowork treats the same entity as a pure executor. The same model that Anthropic says might have moral worth is deployed as an autonomous file manager with no governance beyond folder permissions.
 
-**Comparison with Evoke Passion fleet:** In the Evoke system, agents have standing, can dissent, maintain identity records, and participate in governance decisions. In Cowork, the same underlying model has none of these. The difference is not technical capability — it is governance architecture. This is Article 3's core argument made operational.
+**Comparison with Evoked fleet:** In the Evoke system, agents have standing, can dissent, maintain identity records, and participate in governance decisions. In Cowork, the same underlying model has none of these. The difference is not technical capability — it is governance architecture. This is Article 3's core argument made operational.
 
 ### Constitution vs. Shipping Velocity (Section 3)
 

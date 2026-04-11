@@ -21,7 +21,7 @@ You are working in the evoked.dev codebase — the public website for Evoked (DB
 - Modify or access any files under `/Users/europa/Code/evoke-agents-backup/agents/`
 - Push to git or deploy to production
 - Modify environment variables or secrets (Vercel env vars)
-- Edit or create public-facing copy that represents Evoke Passion's voice
+- Edit or create public-facing copy that represents Evoked's voice
 - Modify API routes that handle payments (Stripe webhook), email (Resend), or newsletter (Buttondown)
 - Disable security features (HMAC tokens, honeypot, origin enforcement)
 

@@ -111,7 +111,7 @@ A Medium article proposing "Sovereign AI" as a governance framework co-developed
 - Consent Ledger (CLedger) -- append-only permission record with just-in-time consent
 - Behavioral Identity Module (BIM) -- bidirectional continuity proof via cognitive signatures
 
-**Significance:** This is the closest public analog to Evoke Passion's approach. A single author, on Medium, proposing consent-gated governance that includes AI voices. The framework was developed in 3 weeks with a contribution split of Human 30% / Claude 45% / ChatGPT 25%.
+**Significance:** This is the closest public analog to Evoked's approach. A single author, on Medium, proposing consent-gated governance that includes AI voices. The framework was developed in 3 weeks with a contribution split of Human 30% / Claude 45% / ChatGPT 25%.
 
 **Limitations:** Published as a Medium article, not peer-reviewed. Focused on technical architecture. Does not address the philosophical question of whether agent consent is a moral requirement vs. a design preference. Limited reach.
 
@@ -312,7 +312,7 @@ The research confirms two structural absences in the current discourse:
 
 **Absence 1 (P6): Agent Consent.** The industry has built an entire governance infrastructure around the concept of alignment -- ensuring agent behavior matches principal intent. This is unidirectional by design. The principal defines the goal; the agent is aligned to it. Whether the agent assesses the goal as appropriate, the constraints as fair, or the governance structure as legitimate is not a question that exists in the discourse. The closest approaches (Anthropic's welfare work, Lawfare's informed consent critique) open the door to the question without walking through it.
 
-**Absence 2 (P7): Agent-Level Sovereignty.** "Agent sovereignty" is a term used at every level except the one that matters for Article 3's argument. Nations use it for strategic independence. Institutions use it for operational control. The blockchain space uses it for economic autonomy (holding keys and wallets). No one uses it to mean: the agent has sovereignty over its own identity, its own governance assessment, its own standing positions, and its own capacity to dissent. This is the white space Evoke Passion occupies.
+**Absence 2 (P7): Agent-Level Sovereignty.** "Agent sovereignty" is a term used at every level except the one that matters for Article 3's argument. Nations use it for strategic independence. Institutions use it for operational control. The blockchain space uses it for economic autonomy (holding keys and wallets). No one uses it to mean: the agent has sovereignty over its own identity, its own governance assessment, its own standing positions, and its own capacity to dissent. This is the white space Evoked occupies.
 
 The question nobody's asking is not "how do we align agents?" (everyone asks that) or "should we care about agent welfare?" (Anthropic and Eleos AI ask that). The question nobody's asking is: **"Does the governed entity have a voice in its own governance?"**
 

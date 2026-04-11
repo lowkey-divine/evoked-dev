@@ -8,5 +8,15 @@ export default defineConfig({
   site: 'https://evoked.dev',
   output: 'static',
   adapter: vercel(),
-  integrations: [sitemap()],
+  integrations: [
+    sitemap({
+      filter: (page) =>
+        !page.includes('/thank-you/') &&
+        !page.includes('/api/'),
+      serialize: (item) => {
+        item.lastmod = new Date().toISOString();
+        return item;
+      },
+    }),
+  ],
 });
