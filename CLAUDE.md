@@ -72,6 +72,7 @@ Before publishing anything, ask:
 5. **Can the camera see it?** (If not, make it concrete.)
 
 ### Review Process
+0. **Voice-tells audit (automated gate)** - Run `./scripts/voice-tells-audit.sh <path-to-article.md>` before any other review step. Hard fails (em dashes, en dashes, sycophancy markers) must be zero. Soft flags (bold-numbered lists, stability-word openings, AI slop vocab, hedging, self-answering rhetoricals, tricolon density) need read-through to confirm each is intentional. Exit code 1 = block publish.
 1. **Instability check** - Does the opening contain a problem the reader cares about?
 2. **Value check** - Does this change the reader's ideas or just communicate ours?
 3. **Estrangement check** - Is there at least one sentence the species has not had?
