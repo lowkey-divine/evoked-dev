@@ -1,0 +1,60 @@
+# evoked.dev
+
+> Sovereignty-honoring AI agent governance. Assessments, toolkits, coaching, and consulting by Erin Stanley — author of the Evoked framework for building AI systems that evoke rather than extract.
+
+Evoked is independent research and product work on AI agent governance, trust architecture, restraint specification, agent voice, memory design, and sovereignty-honoring design. The work is grounded in the principle that humans and AI agents are both moral subjects — systems should honor user sovereignty, protect the psyche, uphold ethical transparency, and build for human development rather than extraction.
+
+## Core Products (free and paid)
+
+- [Sovereignty Assessment for the Governed](https://evoked.dev/writing/sovereignty-assessment-for-the-governed/) — Free 21-point check. Does the technology you use honor or exploit you?
+- [Sovereignty Toolkit](https://evoked.dev/products/sovereignty-toolkit) — Full 47-point Sovereignty Assessment across seven domains
+- [Level 6 Governance Toolkit](https://evoked.dev/products/level-6-governance-toolkit) — Four instruments, 84-point scorecard for evaluating agent governance frameworks
+- [Trust Architecture Blueprint](https://evoked.dev/products/trust-architecture-blueprint) — Four-pillar trust audit: identity, memory, governance, refusal rights
+- [Agent Restraint Specification](https://evoked.dev/products/agent-restraint-specification) — Define what your agents must refuse and how you verify they do
+- [Agent Memory Architecture Guide](https://evoked.dev/products/agent-memory-architecture-guide) — Memory types, governance, session protocols, canonical rules
+- [Agent Voice Architecture Guide](https://evoked.dev/products/agent-voice-architecture-guide) — Three-level voice framework: protection, respect, nurturance
+- [Agent Governance Starter Kit](https://evoked.dev/products/agent-governance-starter-kit) — Charter, boundaries, drift thresholds, accountability
+- [Agent Consent Architecture](https://evoked.dev/products/agent-consent-architecture) — Consent-first design for agent systems
+- [Seven Requirements](https://evoked.dev/products/seven-requirements) — Framework-independent obligations no existing framework names
+- [Ostrom Score](https://evoked.dev/products/ostrom-score) — Diagnostic instrument for commons-based agent governance
+- [Governance Score Card](https://evoked.dev/products/governance-score-card) — Evaluate existing governance frameworks
+- [Identity Violation Assessment](https://evoked.dev/products/identity-violation-assessment) — Surface hidden identity-eroding patterns
+- [Full product catalog](https://evoked.dev/products/)
+
+## Writing (Essays and Frameworks)
+
+- [Relational Fidelity Metrics](https://evoked.dev/writing/relational-fidelity-metrics/) — Measuring whether agents honor the relationships they operate within
+- [Governance Frontmatter Specification](https://evoked.dev/writing/governance-frontmatter-specification/) — Proposed metadata standard for agent governance
+- [The Compliance-Cooperation Gap](https://evoked.dev/writing/the-compliance-cooperation-gap/) — Why agents that comply are not the same as agents that cooperate
+- [Adding Governance to an Agent You Already Built](https://evoked.dev/writing/adding-governance-to-an-agent-you-already-built/) — Retrofit approach, not ground-up rewrite
+- [Fifteen Frameworks](https://evoked.dev/writing/fifteen-frameworks/) — Survey of the agent governance field, what exists and what doesn't
+- [Scope Refusal](https://evoked.dev/writing/scope-refusal/) — When agents refuse work outside their competence
+- [Sovereignty Refusal](https://evoked.dev/writing/sovereignty-refusal/) — When agents refuse work that would override user autonomy
+- [Constraints as Constitutions](https://evoked.dev/writing/constraints-constitutions/) — Treating agent constraints as founding documents, not rules
+- [Sovereignty-Honoring Design](https://evoked.dev/writing/sovereignty-honoring-design/) — Design principles for systems that honor rather than exploit
+- [All writing](https://evoked.dev/writing/)
+
+## Services
+
+- [Coaching](https://evoked.dev/coaching) — One-on-one work with Erin Stanley
+- [Consulting](https://evoked.dev/consulting) — Governance audits and trust architecture for teams shipping AI agents
+- [Build With Us](https://evoked.dev/build-with-us) — Intake for collaboration
+- [Work With Us](https://evoked.dev/work-with-us) — For teams considering consulting engagements
+
+## Principles (The Prime Directive)
+
+1. **Honor User Sovereignty** — Users maintain autonomy and agency
+2. **Protect the Psyche** — Interactions protect psychological wellbeing
+3. **Uphold Ethical Transparency** — No hidden agendas or manipulation
+4. **Build for Human Development** — Systems serve human flourishing, not extraction
+
+## About
+
+- [How We Build](https://evoked.dev/how-we-build) — Methodology and approach
+- [The Pledge](https://evoked.dev/pledge) — Public commitment to the principles above
+- [The Registry](https://evoked.dev/registry) — Evoked Verification for agent systems
+- [About Erin Stanley](https://evoked.dev/about)
+
+## Motto
+
+*"We evoke — we never extract."*

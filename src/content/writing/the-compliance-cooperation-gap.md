@@ -1,6 +1,6 @@
 ---
 title: "We Scored Five Agent Frameworks on Governance. None Passed."
-description: "AutoGen, CrewAI, LangGraph, Google ADK, and Microsoft's Agent Governance Toolkit - scored against commons governance principles. The best scored 9 out of 24. All five scored zero on obligations to the people their agents affect."
+description: "AutoGen, CrewAI, LangGraph, Google ADK, Microsoft Agent Toolkit - scored against commons governance principles. Best: 9 of 24. All five scored zero on obligations to the agents themselves."
 pubDate: 2026-04-10
 tags: ["ai-agents", "ai-governance", "ostrom-score", "agent-identity", "trust-architecture", "microsoft", "crewai", "langgraph"]
 draft: false

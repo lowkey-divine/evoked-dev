@@ -1,5 +1,5 @@
 ---
-title: "Governance Frontmatter: What Goes in the Fields Your Platform Already Has"
+title: "Claude Code Has 16 Agent Config Fields. None Ship With Governance."
 description: "Claude Code ships 16 subagent configuration fields. None of them come with governance values. Here is how to fill them - and what each one protects."
 pubDate: 2026-04-04
 tags: ["ai-agents", "ai-governance", "claude-code", "agent-identity", "trust-architecture", "configuration"]

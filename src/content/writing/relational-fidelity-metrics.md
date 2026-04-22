@@ -1,6 +1,6 @@
 ---
-title: "Relational Fidelity Metrics - Measuring What No Benchmark Does"
-description: "The first open specification for measuring whether an AI agent maintains its identity across substrates. Three categories, nine indicators, one question nobody else is asking."
+title: "Does Your Agent Keep Its Identity? The First Measurement Spec"
+description: "An agent that scores 5/5 on voice consistency can score 2/5 on self-recognition. The first open specification for measuring AI agent identity across models."
 pubDate: 2026-03-25
 tags: ["ai-agents", "ai-governance", "agent-identity", "relational-fidelity", "open-research", "trust-architecture"]
 draft: false
