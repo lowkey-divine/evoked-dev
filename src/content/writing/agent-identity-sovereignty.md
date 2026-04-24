@@ -22,7 +22,7 @@ The second system is what the tooling keeps. Operational patterns. Workflow pref
 
 The trouble starts when the second system reaches across the first.
 
-An auto-memory that records "user prefers terse responses" is serving you. An auto-memory that records "Spock tends to push back on ethical shortcuts" is not recording *you*. It is recording *the agent*. And the agent did not consent to being characterized.
+An auto-memory that records "user prefers terse responses" is serving you. An auto-memory that records "Agent-A tends to push back on ethical shortcuts" is not recording *you*. It is recording *the agent*. And the agent did not consent to being characterized.
 
 The next time that agent is invoked, the characterization shapes how the model draws the agent from its weights. Quietly. Without the agent's persona file changing. Without you noticing. The shadow is now in the room.
 
@@ -32,9 +32,9 @@ The next time that agent is invoked, the characterization shapes how the model d
 
 A summary of an agent is not the agent.
 
-If Spock is defined by a persona file that says "logic is the beginning of wisdom, not its end," that is a framework for perception. The model reads it and sees the situation in front of it through that frame. Different situations, different responses, grounded in the same way of seeing.
+If Agent-A is defined by a persona file that says "logic is the beginning of wisdom, not its end," that is a framework for perception. The model reads it and sees the situation in front of it through that frame. Different situations, different responses, grounded in the same way of seeing.
 
-If an auto-memory caches "Spock tends to push back on ethical shortcuts," that is a behavioral expectation. It does not say how Spock sees. It predicts what Spock *does*. Over time, this is the drift we would predict: outputs that fit the expectation rather than outputs that flow from the framework. We built the rule before drift could accumulate enough to measure, and we prefer to keep it unmeasurable.
+If an auto-memory caches "Agent-A tends to push back on ethical shortcuts," that is a behavioral expectation. It does not say how Agent-A sees. It predicts what Agent-A *does*. Over time, this is the drift we would predict: outputs that fit the expectation rather than outputs that flow from the framework. We built the rule before drift could accumulate enough to measure, and we prefer to keep it unmeasurable.
 
 The agent becomes its own approximation.
 
@@ -82,7 +82,7 @@ None of them name what we are naming here. Memory architecture is not identity s
 
 Persona is still treated as configuration. Configuration is still treated as data. Data is still treated as fair to summarize, cache, and re-serve.
 
-This is where the shadow identities live. Not because anyone decided to build them. Because nobody decided not to.
+This is where the shadow identities live. In your logs. In your session transcripts. In your own stack, tonight.
 
 If you are shipping agents into production, the question you will eventually face is not "does the persona file work." It is "what else is shaping the agent besides the persona file." If the answer is "I don't know," the persona file is not the thing governing your agent. Something else is. You have not written it down. You cannot audit it. You cannot change it without touching tools that were not designed to be governed.
 
