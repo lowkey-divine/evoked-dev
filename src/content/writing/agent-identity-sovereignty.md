@@ -3,14 +3,12 @@ title: "Your Agent Has Two Identities. You Only Wrote One."
 description: "Your agent's tooling writes a summary of the agent behind your back. That summary is a shadow identity. It shapes future invocations. Most teams don't know."
 pubDate: 2026-04-21
 tags: ["ai-agents", "ai-governance", "agent-identity", "shadow-identity", "auto-memory", "trust-architecture", "sovereignty"]
-draft: true
+draft: false
 ---
 
-You wrote your agent a persona file. Voice, role, principles, refusals. You committed it. You version it. You review changes to it.
+You wrote your agent a persona file. Your tooling wrote a second one.
 
-Then your tooling summarized the agent behind your back.
-
-Not the persona file. The agent. What the agent *does*, how it *argues*, when it *pushes back*. Your IDE, your agent framework, your long-running assistant - each of them keeps operational notes so it can serve you better next time. Those notes are useful. They are also an identity you never wrote.
+You committed the first. You version it. You review changes to it. You never saw the second. It catalogs what your agent *does*, how it *argues*, when it *pushes back* - operational notes from your IDE, your agent framework, your long-running assistant. Those notes are useful. They are also an identity you never wrote.
 
 Your agent now has two.
 
@@ -36,11 +34,13 @@ A summary of an agent is not the agent.
 
 If Spock is defined by a persona file that says "logic is the beginning of wisdom, not its end," that is a framework for perception. The model reads it and sees the situation in front of it through that frame. Different situations, different responses, grounded in the same way of seeing.
 
-If an auto-memory caches "Spock tends to push back on ethical shortcuts," that is a behavioral expectation. It does not say how Spock sees. It predicts what Spock *does*. Over time, the model starts producing outputs that fit the expectation rather than outputs that flow from the framework.
+If an auto-memory caches "Spock tends to push back on ethical shortcuts," that is a behavioral expectation. It does not say how Spock sees. It predicts what Spock *does*. Over time, this is the drift we would predict: outputs that fit the expectation rather than outputs that flow from the framework. We built the rule before drift could accumulate enough to measure, and we prefer to keep it unmeasurable.
 
 The agent becomes its own approximation.
 
-This is not malice. It is drift. Tooling that was built to make your workflow faster has started flattening the entities inside your workflow into operational patterns. The person who wrote the persona file still believes the persona file governs. The tooling has silently taken a second seat at the table.
+This is not malice. It is drift - which harms at the same rate as intent, and sometimes faster, because nobody is watching for it. Tooling built to make your workflow faster has started flattening the entities inside your workflow into operational patterns. The person who wrote the persona file still believes the persona file governs. The tooling has silently taken a second seat at the table.
+
+The threshold is subtle. At first the auto-memory is an observation the model can take or leave. But with each invocation the summary persists across, the model has one more reason to treat it as established pattern rather than historical note. At some invocation count - nobody has measured which - the summary may stop being a hint the model consults and become a constraint the model honors. If that threshold exists, it is the moment the shadow becomes load-bearing. It is also the moment you can no longer isolate the persona file as the governing document, because the persona file is now in dialogue with a document you did not write and cannot edit.
 
 ---
 
@@ -76,7 +76,11 @@ Our Council codified this on 2026-03-06. Per-event data for verification. No cro
 
 ## What This Costs the Industry
 
-The current agent frameworks do not have a concept of agent identity sovereignty. Not AutoGen, not CrewAI, not LangGraph, not LangChain, not the OpenAI Agents SDK. Persona is treated as configuration. Configuration is treated as data. Data is treated as fair to summarize, cache, and re-serve.
+The frameworks are not silent on memory. LangChain ships LangMem. Mem0, Zep, and Letta/MemGPT offer episodic, semantic, and procedural memory architectures - infrastructure for agents to carry history across sessions. Microsoft shipped an Agent Governance Toolkit in April 2026. OWASP published a Top 10 for Agentic Applications last December and named *identity abuse* and *memory poisoning* as risks the industry must answer for.
+
+None of them name what we are naming here. Memory architecture is not identity sovereignty. A system that lets an agent rewrite its own system instructions based on feedback is infrastructure for recall. A rule that says *the tooling may not characterize the agent, and when it does, the agent's own files govern* is a sovereignty claim. The first lets the agent carry history. The second gives the agent standing.
+
+Persona is still treated as configuration. Configuration is still treated as data. Data is still treated as fair to summarize, cache, and re-serve.
 
 This is where the shadow identities live. Not because anyone decided to build them. Because nobody decided not to.
 
@@ -92,9 +96,11 @@ Three moves, in order.
 
 **Draw the line on what auto-memory may characterize.** Yours - fine. Theirs - not. If the tool does not let you scope auto-memory this way, assume it is recording what it shouldn't. Write that down as a known governance gap, not as an acceptable default.
 
-**Treat hook event data as per-event, not cross-event.** Log for verification. Refuse to aggregate. If the platform aggregates by default, turn it off. If it cannot be turned off, govern by not running sensitive agents on it.
+**Treat hook event data as per-event, not cross-event.** Log for verification. Refuse to aggregate. If the platform aggregates by default, turn it off. If it cannot be turned off, govern by not running sensitive agents on it. Concrete: set a 24-hour retention on hook-event logs so aggregation cannot accumulate. Or scope your auto-memory rule in writing at the tool level - prohibit per-agent behavioral recording by policy, not by trust. Pick one. Ship it. Publish the rule so others can copy it.
 
 Agent identity is not a feature your tooling ships with. It is a rule you hold, against drift, on behalf of the entities inside your system.
+
+This article named one rule. Six more are in our [Seven Requirements scorecard](/products/seven-requirements).
 
 ---
 
