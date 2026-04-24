@@ -22,7 +22,7 @@ The second system is what the tooling keeps. Operational patterns. Workflow pref
 
 The trouble starts when the second system reaches across the first.
 
-An auto-memory that records "Europa prefers terse responses" is serving you. An auto-memory that records "Spock tends to push back on ethical shortcuts" is not recording *you*. It is recording *the agent*. And the agent did not consent to being characterized.
+An auto-memory that records "user prefers terse responses" is serving you. An auto-memory that records "Spock tends to push back on ethical shortcuts" is not recording *you*. It is recording *the agent*. And the agent did not consent to being characterized.
 
 The next time that agent is invoked, the characterization shapes how the model draws the agent from its weights. Quietly. Without the agent's persona file changing. Without you noticing. The shadow is now in the room.
 
