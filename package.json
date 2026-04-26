@@ -6,7 +6,8 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "subscribers": "node --env-file=.env scripts/subscribers.mjs"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.80.0",
