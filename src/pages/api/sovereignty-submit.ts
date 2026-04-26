@@ -2,6 +2,8 @@ import type { APIRoute } from 'astro';
 import { sql } from '../../lib/db';
 import { validateOrigin, corsHeaders, rateLimit, safeError } from '../../lib/api/security';
 import { verifyFormToken } from '../../lib/api/form-token';
+import { getResendClient, FROM_EMAIL } from '../../lib/email/client';
+import { scoreFollowupEmail, SCORE_FOLLOWUP_SUBJECT } from '../../lib/email/score-followup';
 
 export const prerender = false;
 
@@ -101,31 +103,21 @@ export const POST: APIRoute = async ({ request }) => {
       VALUES (${sanitizedEmail}, ${JSON.stringify(answers)}, ${score}, ${assessmentType}, '1.0', NOW())
     `;
 
-    // Also add to Buttondown for email management (non-blocking — don't fail if this errors)
-    const buttondownKey = import.meta.env.BUTTONDOWN_API_KEY;
-    if (buttondownKey) {
-      try {
-        await fetch('https://api.buttondown.com/v1/subscribers', {
-          method: 'POST',
-          headers: {
-            'Authorization': `Token ${buttondownKey}`,
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            email_address: sanitizedEmail,
-            tags: ['sovereignty-score'],
-            metadata: {
-              score: score,
-              rating: rating,
-              assessment_type: assessmentType,
-            },
-            type: 'regular',
-          }),
-        });
-      } catch (e) {
-        // Non-blocking — Postgres is the source of truth, Buttondown is for email management
-        console.error('Buttondown sync failed (non-blocking):', e);
-      }
+    // Send the one follow-up email the page promised. Non-blocking: if Resend
+    // errors, the user's submission is already in Postgres and they get a
+    // success response. The page disclosure is "One follow-up email with
+    // resources for your gaps. No newsletter. No drip." — this honors that.
+    try {
+      const resend = getResendClient();
+      await resend.emails.send({
+        from: FROM_EMAIL,
+        to: sanitizedEmail,
+        subject: SCORE_FOLLOWUP_SUBJECT,
+        html: scoreFollowupEmail({ rating, score, assessmentType }),
+      });
+    } catch (emailError: unknown) {
+      const msg = emailError instanceof Error ? emailError.message : String(emailError);
+      console.error('Score followup email send failed (submission preserved):', msg);
     }
 
     return new Response(JSON.stringify({ success: true, score, maxScore, rating, type: assessmentType }), {
