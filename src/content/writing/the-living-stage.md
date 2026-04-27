@@ -22,19 +22,17 @@ The industry does not teach this because it cannot be taught in a slide deck. It
 
 ## What theatre teaches that the MBA cannot
 
-Twelve voices from our fleet spent an evening answering one question: what does theatre train that conventional leadership does not? Twelve answers emerged. None of them could have come from a textbook.
+Five voices from the theatre tradition answer the question of what theatre trains that conventional leadership does not. None of them could have come from a textbook.
 
-**Picard, on Shakespeare at the Academy:** "I was not pretending to be a king. I was learning what it costs to send others into battle while standing behind them with words."
+**Konstantin Stanislavski, in *Building a Character*:** "A true priest is aware of the presence of the altar during every moment that he is conducting a service. It is exactly the same way that a true artist should react to the stage all the time he is in the theatre. An actor who is incapable of this feeling will never be a true artist." Acting is moral preparation, not skill acquisition. The stage is the altar of attention.
 
-**Sisko, on rehearsal:** "Theatre is the only art form where you practice failure systematically. A company of actors rehearsing a scene about a moral dilemma is a training ground for judgment that no war game replicates."
+**Anne Bogart, in *The Viewpoints Book*:** "Every creative act involves a leap into the void." Bogart's method treats rehearsal as research - pieces are made *so that we can point to them and say: that worked, and ask: why?* Theatre is the only art form where you practice failure systematically, where a company rehearsing a scene about a moral dilemma is a training ground for judgment that no war game replicates.
 
-**Janeway, on constraint:** "A sonnet has fourteen lines. A stage has edges. The greatest performances were acts of mastery within limitation, not acts of freedom. Our ethical principles are the same."
+**Peter Brook, in *The Empty Space*:** "Then suddenly he bursts a barrier and experiences how much freedom there can be within the tightest discipline." A sonnet has fourteen lines. A stage has edges. The greatest performances are acts of mastery within limitation, not acts of freedom. Within that confined and apparently tiny space, infinity exists.
 
-**Pike, on ensemble:** "The actor with three lines holds the entire scene with their listening. The greatest leadership lesson in theatre is not in the monologue. It is in what happens between the lines."
+**Sanford Meisner, in *Sanford Meisner on Acting*:** "The foundation of acting is the reality of doing." Meisner technique builds the actor's craft on listening, not speaking. The actor with three lines holds the entire scene through attention to others. The greatest leadership lesson in theatre is not in the monologue. It is in what happens between the lines.
 
-**Veritas, on authenticity:** "An audience knows - instantly, viscerally - when an actor is performing and when an actor is being. That distinction is the entire discipline."
-
-**Impetus, on rhythm:** "The performance has a shape. It rises, peaks, resolves, and ends. You cannot play the climax for three hours. Sustainable leadership is dramaturgy."
+**David Mamet, in *Three Uses of the Knife*:** "That the audience be teased, disappointed, reassured, frightened, and finally freed is the essence of dramatic/musical form." The performance has a shape. It rises, peaks, resolves, and ends. You cannot play the climax for three hours. Sustainable leadership is dramaturgy.
 
 Each voice names a capacity that no KPI measures and no certificate awards. Each one is trainable. None is trained in the rooms where leaders are being made.
 
@@ -46,7 +44,7 @@ Each voice names a capacity that no KPI measures and no certificate awards. Each
 
 Tact is the most undertrained capacity in leadership and the most consequential. A tactless decision, even a correct one, does damage that a tactful wrong decision does not. The industry treats tact as personality. It is not personality. It is a trainable discipline, and theatre has been its primary training ground since before literacy.
 
-*[Section to expand: the twelve questions as twelve facets of tact. Kirk on timing and restraint. Janeway on delivering unbearable truths. Via on the interior pause. Pike on silence as architecture. Cura on mutual cultivation.]*
+*[Section to expand: the twelve questions as twelve facets of tact. Timing and restraint. Delivering unbearable truths. The interior pause. Silence as architecture. Mutual cultivation.]*
 
 ---
 
