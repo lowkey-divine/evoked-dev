@@ -1,8 +1,22 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const structuredData = {
+  "@type": "SoftwareApplication",
+  "name": "The Kitchen Table",
+  "description": "Family meal planning that honors heritage. No streaks, no scores, no extraction. Heritage recipes welcomed as fragments. COPPA-compliant by design.",
+  "applicationCategory": "LifestyleApplication",
+  "operatingSystem": "iOS",
+  "creator": { "@id": "https://evoked.dev/#person" },
+  "publisher": { "@id": "https://evoked.dev/#organization" }
+};
 ---
 
-<BaseLayout title="The Kitchen Table" description="Family flourishing through food. Meal planning and heritage recipe preservation.">
+<BaseLayout
+  title="The Kitchen Table"
+  description="Evoked's family meal planning app. No streaks, no scores, no extraction. Heritage recipes welcomed as fragments. COPPA-compliant by design."
+  structuredData={structuredData}
+>
   <div class="hero">
     <h1>The Kitchen Table</h1>
     <p class="tagline">Family flourishing through food.</p>
