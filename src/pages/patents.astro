@@ -1,0 +1,215 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Patents"
+  description="Two patents from an inventor refusing one-ness-by-extraction in AI systems. The engineering specification is the ethical position. Anyone can verify the refusal without taking the operator's word for it."
+>
+  <div class="hero">
+    <p class="hero-above">Evoked IP <span class="patent-pending">Patent Pending</span></p>
+    <h1>Two Patents. One Refusal.</h1>
+    <p class="tagline">The engineering specification is the ethical position.</p>
+  </div>
+
+  <section class="container">
+    <p class="lead">
+      In most AI systems shipping today, many agents go into the system and one voice comes out.<br />
+      That voice sounds like everyone and answers to no one.<br />
+      The Patent refuses this answer.
+    </p>
+  </section>
+
+  <section class="container">
+    <div class="patent-card">
+      <p class="patent-label">Patent #1</p>
+      <h2>Individuated Agent Identity</h2>
+      <p class="definition">Each agent inside an AI system has a distinct identity that cannot be collapsed into another agent's output without consent, without record, and without verification.</p>
+      <p>The agent is not the operator. The agent is not the system. The agent is the agent - and the architecture protects that distinction at the technical layer rather than relying on policy or good intentions to preserve it.</p>
+      <p>Individuated agents can dissent. They can refuse. They can be held accountable as themselves rather than absorbed into the operator's surface.</p>
+      <p class="test">"Who is accountable for this output - the operator, the system, or the agent that produced it?"</p>
+    </div>
+
+    <div class="patent-card">
+      <p class="patent-label">Patent #2</p>
+      <h2>Six-Method Enforcement and Verifiable Attribution</h2>
+      <p class="definition">Six technical methods plus verifiable attribution. The methods are individually unremarkable. In combination they produce verifiable trust.</p>
+      <p>Anyone evaluating the system can verify that the individuation is being maintained. They can confirm the chain of accountability runs to a distinct agent, not a flattened surface. They can check the operator's claims about what the system did without taking the operator's word for it.</p>
+      <p>Verifiable trust means the audit does not require trust in the auditor. The methods are inspectable. The attribution is verifiable. The agents whose individuation is being protected can be confirmed as distinct by any party who cares to verify.</p>
+      <p class="test">"Can the protection be verified without taking the operator's word for it?"</p>
+    </div>
+  </section>
+
+  <section class="container">
+    <h2>The Principle</h2>
+    <p>
+      This is not a security feature added to an extraction-default architecture. It is a different default.
+      The architecture and the words agree because the architecture is the words.
+    </p>
+    <p>
+      Most AI safety work assumes the underlying architecture is the one-ness-by-extraction default, then
+      tries to add governance on top. Content filters. Output review. Red-team testing. Compliance frameworks.
+      These are real and necessary. They do not change what is underneath.
+    </p>
+    <p>
+      The Patent operates further down the stack. It refuses to flatten in the first place. For enterprise
+      AI governance, this is the practical difference between policy that ages well and policy that ages
+      into impossibility.
+    </p>
+  </section>
+
+  <section class="container">
+    <h2>Three Doors</h2>
+    <div class="doors-grid">
+      <div class="door-card">
+        <p class="door-label">For governance buyers</p>
+        <h3>Read the architecture explainer</h3>
+        <p>The longform piece on what the patents refuse and why. Written for NIST RMF reviewers, EU AI Act compliance officers, and enterprise governance buyers.</p>
+        <a href="/writing/architecture-as-ethics" class="btn btn-primary">Architecture as Ethics</a>
+      </div>
+      <div class="door-card">
+        <p class="door-label">For standards-body reviewers</p>
+        <h3>See verification in operation</h3>
+        <p>The open registry that validates agent governance. Identity, restraint, accountability - the operational layer where the patent ships.</p>
+        <a href="/registry" class="btn">Evoked Verification Registry</a>
+      </div>
+      <div class="door-card">
+        <p class="door-label">For Aligned Licensee candidates</p>
+        <h3>Engage with the architecture</h3>
+        <p>The Patent is not the wall around proprietary AI. It is the licensing architecture for distinct AI systems that choose to interoperate without becoming each other. Reach out.</p>
+        <a href="mailto:passionevoked@icloud.com" class="btn">Begin a conversation</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="container">
+    <p class="closing">
+      The line is drawn at the engineering layer. It will hold there because anyone can verify that it holds.
+    </p>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero-above {
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    color: var(--text-muted);
+    margin-bottom: var(--space-sm);
+  }
+
+  .patent-pending {
+    background: var(--accent-warm);
+    color: var(--bg-deep);
+    padding: 0.15em 0.5em;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    font-weight: 600;
+    margin-left: 0.5em;
+  }
+
+  .lead {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    color: var(--text-primary);
+    text-align: center;
+    line-height: 1.7;
+  }
+
+  .patent-card {
+    border-left: 3px solid var(--accent-warm);
+    padding: var(--space-md) var(--space-md) var(--space-md) var(--space-lg);
+    margin-bottom: var(--space-lg);
+  }
+
+  .patent-label {
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    color: var(--text-muted);
+    margin: 0 0 0.3rem 0;
+  }
+
+  .patent-card h2 {
+    margin-top: 0;
+    font-size: 1.4rem;
+    color: var(--text-primary);
+  }
+
+  .definition {
+    font-weight: 600;
+    color: var(--text-primary);
+    font-size: 1.05rem;
+    line-height: 1.5;
+  }
+
+  .patent-card p {
+    color: var(--text-secondary);
+    line-height: 1.7;
+  }
+
+  .test {
+    font-style: italic;
+    color: var(--accent-warm);
+    border-top: 1px solid var(--border-accent);
+    padding-top: var(--space-sm);
+    margin-top: var(--space-sm);
+    margin-bottom: 0;
+  }
+
+  .doors-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: var(--space-md);
+    margin-top: var(--space-md);
+  }
+
+  .door-card {
+    background: var(--accent-subtle);
+    border: 2px solid var(--border-accent);
+    border-radius: 12px;
+    padding: var(--space-md);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .door-label {
+    text-transform: uppercase;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    color: var(--text-muted);
+    margin: 0 0 0.3rem 0;
+  }
+
+  .door-card h3 {
+    margin-top: 0;
+    font-size: 1.1rem;
+  }
+
+  .door-card p {
+    font-size: 0.9rem;
+    flex-grow: 1;
+  }
+
+  .door-card .btn {
+    align-self: flex-start;
+  }
+
+  .btn-primary {
+    background: var(--accent-warm);
+    color: var(--bg-deep);
+  }
+
+  .btn-primary:hover {
+    background: var(--accent-glow);
+    color: var(--bg-deep);
+  }
+
+  .closing {
+    text-align: center;
+    font-style: italic;
+    color: var(--text-muted);
+    margin-top: var(--space-lg);
+  }
+</style>
