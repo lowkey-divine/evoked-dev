@@ -275,6 +275,16 @@ const registryJsonLd = webApplicationJsonLd(
     </div>
   </section>
 
+  <!-- PATENT CONTEXT -->
+  <section class="container">
+    <div class="patent-context">
+      <p>
+        This registry operationalizes the architecture in <a href="/patents">Patent #1 and Patent #2</a>.
+        Read why the engineering specification is the ethical position.
+      </p>
+    </div>
+  </section>
+
   <!-- ECOSYSTEM -->
   <section class="container">
     <div class="ecosystem">
@@ -1095,6 +1105,20 @@ const registryJsonLd = webApplicationJsonLd(
   .btn-primary:hover {
     background: var(--accent-glow);
     color: var(--bg-deep);
+  }
+
+  /* PATENT CONTEXT */
+  .patent-context {
+    text-align: center;
+    padding: var(--space-md) 0;
+    max-width: 640px;
+    margin: 0 auto;
+  }
+
+  .patent-context p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.6;
   }
 
   /* ECOSYSTEM */
