@@ -282,6 +282,9 @@ const registryJsonLd = webApplicationJsonLd(
         This registry operationalizes the architecture in <a href="/patents">Patent #1 and Patent #2</a>.
         Read why the engineering specification is the ethical position.
       </p>
+      <p class="patent-context-verification">
+        Public verification API in development. Ships 2026-06-14 at <a href="/verify">evoked.dev/verify</a>. Until then, the registry surface here returns governance profiles; full cryptographic verification follows on the named schedule.
+      </p>
     </div>
   </section>
 
@@ -1119,6 +1122,13 @@ const registryJsonLd = webApplicationJsonLd(
     color: var(--text-secondary);
     font-size: 0.95rem;
     line-height: 1.6;
+  }
+
+  .patent-context-verification {
+    margin-top: var(--space-sm);
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    font-style: italic;
   }
 
   /* ECOSYSTEM */

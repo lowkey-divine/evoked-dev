@@ -59,6 +59,23 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   </section>
 
   <section class="container">
+    <h2>Verifiable, operationally</h2>
+    <p>
+      The patent claim is that this architecture is verifiable. An external party can confirm an Evoked agent's individuation without trusting Evoked. We are building the public verification surface that makes that claim operationally true, on a named schedule.
+    </p>
+    <div class="verification-status">
+      <p class="status-label">Verification API milestones</p>
+      <ul class="status-list">
+        <li><span class="status-date">2026-05-31</span> Public key infrastructure live at <code>/.well-known/</code></li>
+        <li><span class="status-date">2026-06-07</span> API endpoints and documentation in staging</li>
+        <li><span class="status-date">2026-06-13</span> External-party verification proof confirmed</li>
+        <li><span class="status-date">2026-06-14</span> Verification API production deploy at <a href="/verify">/verify</a></li>
+      </ul>
+      <p class="status-footer">Until then, the verification surface is in development. The architecture exists; the open public-facing surface is being built. We do not let the words run ahead of the architecture.</p>
+    </div>
+  </section>
+
+  <section class="container">
     <h2>Three Doors</h2>
     <div class="doors-grid">
       <div class="door-card">
@@ -204,6 +221,56 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   .btn-primary:hover {
     background: var(--accent-glow);
     color: var(--bg-deep);
+  }
+
+  .verification-status {
+    background: var(--accent-subtle);
+    border: 2px solid var(--border-accent);
+    border-radius: 12px;
+    padding: var(--space-md);
+    margin-top: var(--space-md);
+  }
+
+  .status-label {
+    text-transform: uppercase;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    color: var(--text-muted);
+    margin: 0 0 var(--space-sm) 0;
+  }
+
+  .status-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 var(--space-md) 0;
+  }
+
+  .status-list li {
+    padding: 0.4rem 0;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.5;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .status-list li:last-child {
+    border-bottom: none;
+  }
+
+  .status-date {
+    display: inline-block;
+    min-width: 7rem;
+    color: var(--accent-warm);
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .status-footer {
+    font-style: italic;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin: 0;
+    line-height: 1.6;
   }
 
   .closing {
