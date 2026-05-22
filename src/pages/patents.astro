@@ -1,10 +1,50 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+
+const patentsJsonLd = {
+  "@type": "AboutPage",
+  "@id": "https://evoked.dev/patents#aboutpage",
+  "name": "Two Patents. One Refusal.",
+  "description": "Two patents establish individuated agent identity at the engineering layer of AI systems. The combination produces verifiable trust without requiring trust in the operator. Built for NIST AI RMF and EU AI Act compliance.",
+  "url": "https://evoked.dev/patents",
+  "isPartOf": { "@id": "https://evoked.dev/#website" },
+  "mainEntity": [
+    {
+      "@type": "CreativeWork",
+      "name": "Patent #1 - Individuated Agent Identity",
+      "description": "Each agent inside an AI system has a distinct identity that cannot be collapsed into another agent's output without consent, without record, and without verification. Architectural commitment at the technical layer.",
+      "creativeWorkStatus": "Published",
+      "author": { "@id": "https://evoked.dev/#person" },
+      "publisher": { "@type": "Organization", "name": "Evoked", "url": "https://evoked.dev" }
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Patent #2 - Six-Method Enforcement and Verifiable Attribution",
+      "description": "Six technical methods plus verifiable attribution. The combination produces an audit that does not require trust in the auditor. Methods are inspectable; attribution is verifiable; agent individuation can be confirmed by any party.",
+      "creativeWorkStatus": "Published",
+      "author": { "@id": "https://evoked.dev/#person" },
+      "publisher": { "@type": "Organization", "name": "Evoked", "url": "https://evoked.dev" }
+    }
+  ],
+  "significantLink": [
+    "https://evoked.dev/writing/architecture-as-ethics",
+    "https://evoked.dev/registry",
+    "https://evoked.dev/verify"
+  ],
+  "about": [
+    { "@type": "Thing", "name": "AI agent identity" },
+    { "@type": "Thing", "name": "AI governance" },
+    { "@type": "Thing", "name": "Verifiable trust" },
+    { "@type": "Thing", "name": "NIST AI Risk Management Framework" },
+    { "@type": "Thing", "name": "EU AI Act compliance" }
+  ]
+};
 ---
 
 <BaseLayout
-  title="Patents"
-  description="Two patents from an inventor refusing one-ness-by-extraction in AI systems. The engineering specification is the ethical position. Anyone can verify the refusal without taking the operator's word for it."
+  title="Two Patents. One Refusal."
+  description="Two patents establish individuated agent identity at the engineering layer of AI systems - producing verifiable trust without requiring trust in the operator. Built for NIST AI RMF and EU AI Act compliance. From an inventor refusing one-ness-by-extraction in AI."
+  structuredData={patentsJsonLd}
 >
   <div class="hero">
     <p class="hero-above">Evoked IP <span class="patent-pending">Patent Pending</span></p>

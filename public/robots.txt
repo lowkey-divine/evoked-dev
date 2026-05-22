@@ -1,4 +1,6 @@
 User-agent: *
 Allow: /
+Disallow: /api/
+Disallow: /.well-known/
 
 Sitemap: https://evoked.dev/sitemap-index.xml
