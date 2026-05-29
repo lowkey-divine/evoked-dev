@@ -1,0 +1,278 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const structuredData = {
+  "@type": "WebPage",
+  "name": "For the keeper of the warmth",
+  "description": "A page for the parent who tends the warmth around which the family forms. The Kitchen Table is a quiet meal-planning app for families. iOS beta on TestFlight.",
+  "isPartOf": { "@id": "https://evoked.dev/#website" }
+};
+---
+
+{/*
+  Hearth Keeper archetype door - first of six per-archetype landing pages
+  (Operating Plan May 2026 Task 2.2). Voice register: intimate-domestic per
+  evoked-dev/CLAUDE.md "Voice Discipline Scope" addendum (Hoshi, D6.5c, 2026-05-03).
+
+  Symbol discipline (Ishka, 2026-05-15): the archetype name "Hearth Keeper" is
+  held internal-first. The page recognizes the person without first labeling
+  them. The symbol surfaces lower in the page, as a name that may be offered
+  back rather than imposed forward.
+
+  Em-dashes are permitted on this surface per the addendum - they signal
+  breath, hesitation, gentleness. A reviewer in founder-public discipline-mode
+  should read the addendum before flagging.
+
+  Acknowledgment-first opening per the addendum. Instability-first opening
+  would feel hostile in this register.
+
+  Voice review pending: Hoshi Sato (Voice & Tone Archetype Author, USS Enterprise).
+  Build review pending: Wesley Crusher (Frontend Renderer, USS Enterprise).
+  Draft author: Codex (Document Voice, USS Evoke), 2026-05-28.
+*/}
+
+<BaseLayout
+  title="For the keeper of the warmth"
+  description="A page for the parent who tends the warmth around which the family forms. The Kitchen Table is a quiet meal-planning app for families. iOS beta on TestFlight."
+  structuredData={structuredData}
+>
+  <div class="hero">
+    <p class="hero-eyebrow">if you've found your way here</p>
+    <h1>For the keeper of the warmth</h1>
+    <p class="tagline">You tend the place that holds them.</p>
+  </div>
+
+  <section class="container">
+    <p class="lede">
+      You are not the cook. You are not the manager. You are the keeper
+      of the place that holds them &mdash; the warmth around which the
+      family forms.
+    </p>
+    <p>
+      That is a kind of work the world does not have good words for.
+      It is mostly invisible. It rarely has a job title. And it lives
+      under the hands of one person, most weeks.
+    </p>
+    <p>
+      We see you.
+    </p>
+  </section>
+
+  <section class="container">
+    <h2>What's true</h2>
+    <p>
+      You are feeding people across more than one story.
+    </p>
+    <p>
+      There is heritage in some of what you cook &mdash; recipes from
+      a grandmother, a country, a tradition, a memory. There is what
+      one child will eat and what another won't. There is what a partner
+      can have and what your body needs. There are nights when someone
+      is sick. There are days that are simply hard.
+    </p>
+    <p>
+      You hold all of it. You move between it. You make decisions about
+      it at five o'clock with one hand on a phone and one hand on the
+      refrigerator door.
+    </p>
+    <p>
+      Most meal-planning apps treat this as a logistics problem. We
+      don't. The logistics are real, and they're not the whole thing.
+    </p>
+  </section>
+
+  <section class="container">
+    <h2>What we made</h2>
+    <p>
+      The Kitchen Table is a meal-planning app built for a family table,
+      not a meal-tracking system. It holds heritage recipes as fragments,
+      not as data. It lets a four-year-old be at the table. It lets a
+      grandparent who only remembers <em>some kind of dumpling</em> be at
+      the table.
+    </p>
+    <p>
+      It knows when to be quiet. Grief, busy seasons, the days that are
+      simply hard &mdash; the system steps back. No notifications pulling
+      you toward streaks you didn't ask for. No scores. No leaderboards.
+    </p>
+    <p>
+      No advertising. Ever. Not now, not when we're bigger.
+    </p>
+    <p>
+      And children's profiles are unreachable to anyone outside the family.
+      By architecture, not by promise.
+    </p>
+  </section>
+
+  <section class="container">
+    <h2>What we won't ask you to do</h2>
+    <ul class="principles">
+      <li>Earn a streak.</li>
+      <li>Hit a calorie target.</li>
+      <li>Optimize anything.</li>
+      <li>Justify a heritage recipe to a database.</li>
+      <li>Perform progress when the week was hard.</li>
+      <li>Pretend the work you do is smaller than it is.</li>
+    </ul>
+  </section>
+
+  <section class="container">
+    <h2>The name we use, when we use one</h2>
+    <p>
+      Inside our team, we have a name for the work you do. We call it
+      <em>keeping the hearth</em>. The hearth is the warmth around which
+      the family forms. The keeper is the person who tends it.
+    </p>
+    <p>
+      You don't have to take the name. It's a name we hold for ourselves,
+      to remind us who we are building for. We are building for you.
+    </p>
+  </section>
+
+  <section class="container text-center">
+    <h2>Come to the table</h2>
+    <p>The Kitchen Table is in iOS beta on TestFlight. We'll write when there's something real to share.</p>
+    <p class="cta-row">
+      <a href="/kitchen-table/" class="btn btn-primary">See The Kitchen Table</a>
+    </p>
+    <form id="hearth-waitlist-form" class="waitlist-form mt-md" aria-label="Join the waitlist">
+      <input type="email" id="hearth-waitlist-email" name="email" placeholder="your@email.com" required aria-label="Email address" />
+      <button type="submit" class="btn btn-secondary">Join waitlist</button>
+    </form>
+    <p id="hearth-waitlist-status" class="waitlist-status" aria-live="polite"></p>
+    <p class="form-note">No spam. No selling. Just one email when we open the door wider.</p>
+  </section>
+</BaseLayout>
+
+<script>
+  const form = document.getElementById('hearth-waitlist-form') as HTMLFormElement;
+  const status = document.getElementById('hearth-waitlist-status') as HTMLParagraphElement;
+  const emailInput = document.getElementById('hearth-waitlist-email') as HTMLInputElement;
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const email = emailInput.value.trim();
+    if (!email) return;
+
+    status.textContent = '';
+    const button = form.querySelector('button') as HTMLButtonElement;
+    button.disabled = true;
+    button.textContent = 'Joining...';
+
+    try {
+      const res = await fetch('/api/newsletter/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, source: 'who/hearth-keeper' }),
+      });
+
+      if (res.ok) {
+        status.textContent = 'You are in. Welcome.';
+        status.className = 'waitlist-status success';
+        emailInput.value = '';
+      } else {
+        const data = await res.json();
+        status.textContent = data.error || 'Something went wrong. Try again.';
+        status.className = 'waitlist-status error';
+      }
+    } catch {
+      status.textContent = 'Something went wrong. Try again.';
+      status.className = 'waitlist-status error';
+    } finally {
+      button.disabled = false;
+      button.textContent = 'Join waitlist';
+    }
+  });
+</script>
+
+<style>
+  .hero-eyebrow {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    text-transform: lowercase;
+    letter-spacing: 0.04em;
+    margin-bottom: var(--space-sm);
+  }
+
+  .tagline {
+    margin-top: var(--space-sm);
+    color: var(--text-secondary);
+    font-style: italic;
+  }
+
+  .lede {
+    font-size: 1.1rem;
+    color: var(--text-primary);
+    line-height: 1.6;
+  }
+
+  .principles {
+    list-style: none;
+    padding: 0;
+  }
+
+  .principles li {
+    padding: var(--space-sm) 0;
+    border-bottom: 1px solid var(--border-subtle);
+    color: var(--text-secondary);
+  }
+
+  .principles li:last-child {
+    border-bottom: none;
+  }
+
+  .cta-row {
+    margin: var(--space-md) 0;
+  }
+
+  .waitlist-form {
+    display: flex;
+    gap: var(--space-xs);
+    justify-content: center;
+    flex-wrap: wrap;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .waitlist-form input[type="email"] {
+    flex: 1;
+    min-width: 200px;
+    padding: var(--space-sm) var(--space-md);
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: 4px;
+    color: var(--text-primary);
+    font-size: 0.95rem;
+    font-family: var(--font-body);
+  }
+
+  .waitlist-form input[type="email"]:focus {
+    outline: none;
+    border-color: var(--border-accent);
+  }
+
+  .waitlist-form input[type="email"]::placeholder {
+    color: var(--text-muted);
+  }
+
+  .waitlist-status {
+    font-size: 0.85rem;
+    margin-top: var(--space-sm);
+    min-height: 1.2em;
+  }
+
+  .waitlist-status.success {
+    color: var(--accent-warm);
+  }
+
+  .waitlist-status.error {
+    color: #e57373;
+  }
+
+  .form-note {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-top: var(--space-sm);
+  }
+</style>
