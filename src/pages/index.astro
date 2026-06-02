@@ -43,6 +43,14 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   </section>
 
   <section class="container">
+    <div class="we-build">
+      <p class="we-build-lead">Every governance company writes about the principles. Almost none ship products that test them.</p>
+      <p class="we-build-detail">The Kitchen Table is the product we live by. A family meal-planning app on iOS, in TestFlight beta. Built under our own 142-agent governance framework. No streaks. No scores. No surveillance. COPPA-compliant by architecture, not by retrofit.</p>
+      <a href="/kitchen-table/" class="we-build-cta">See The Kitchen Table &rarr;</a>
+    </div>
+  </section>
+
+  <section class="container">
     <div class="ladder">
       <h2 class="ladder-heading">Start where you are.</h2>
       <div class="ladder-grid">
@@ -251,6 +259,42 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     font-size: 0.85rem;
     color: var(--text-secondary);
     line-height: 1.7;
+  }
+
+  /* --- We Build What We Believe (Kitchen Table proof-of-life) --- */
+
+  .we-build {
+    text-align: center;
+    max-width: 640px;
+    margin: 0 auto;
+    padding: var(--space-md) 0;
+  }
+
+  .we-build-lead {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    color: var(--text-primary);
+    line-height: 1.5;
+    margin-bottom: var(--space-sm);
+  }
+
+  .we-build-detail {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: var(--space-sm);
+  }
+
+  .we-build-cta {
+    display: inline-block;
+    font-size: 0.9rem;
+    color: var(--accent-warm);
+    text-decoration: none;
+    margin-top: var(--space-xs);
+  }
+
+  .we-build-cta:hover {
+    text-decoration: underline;
   }
 
   /* --- Price Ladder --- */

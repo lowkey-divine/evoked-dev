@@ -53,6 +53,14 @@ report "HARD" "Em dashes (—) — use hyphen-space-hyphen ( - ) instead" "—"
 report "HARD" "En dashes (–) — use hyphen-space-hyphen ( - ) instead" "–"
 report "HARD" "Sycophancy markers" "([Ii]t's worth noting|[Ii]t's important to (note|remember|understand)|[Nn]eedless to say|[Oo]f course)"
 
+# HARD FAILS — Register 3 social-media astrology slop (Apr 25, 2026 fleet meeting)
+# Source: Apr 25 meeting on astrology adoption, Hoshi register-restriction commitment.
+# Register 1 (Hellenistic/Vedic/traditional) and Register 2 (Jungian-depth) only.
+# These three are categorically forbidden — no legitimate use in evoked.dev published voice.
+report "HARD" "Parasocial intimacy opener ('hello love', 'hi love')" "\b[Hh](ello|i|ey),?\s+love\b"
+report "HARD" "Parasocial intimacy closer ('all right (my) love', 'see you (in the) next one')" "\b([Aa]ll right,?\s+(my\s+)?love\b|[Ss]ee you in the next one\b|[Yy]'all already know what to do\b)"
+report "HARD" "Astrology-slop nouns ('chaos gremlin', 'baby air sign')" "\b([Cc]haos gremlin|[Bb]aby (air|fire|earth|water) sign)\b"
+
 # SOFT FLAGS — rhythmic/structural AI fingerprints
 report "SOFT" "'Not X - Y' construction (Hoshi tell #2, use sparingly)" "[Nn]ot [A-Za-z][^.!?]{2,40} ([-–—]|:) [A-Za-z]"
 report "SOFT" "Bold-numbered list items (Hoshi tell #3)" '\*\*[0-9]+\.'
@@ -60,6 +68,13 @@ report "SOFT" "Paragraph-opening stability words (kill reader engagement)" "^(An
 report "SOFT" "AI slop vocabulary (delve/landscape/ecosystem/tapestry/realm)" "\b([Dd]elve|[Dd]elving|[Dd]elved|[Ll]andscape|[Ee]cosystem|[Tt]apestry|[Rr]ealm|[Mm]yriad|[Pp]lethora|[Uu]tilize)\b"
 report "SOFT" "Hedging language" "\b([Ii]n some ways|[Aa]rguably|[Pp]erhaps|[Oo]ne could argue|[Ss]omewhat|[Rr]ather|[Qq]uite)\b"
 report "SOFT" "Self-answering rhetoricals (question followed by definitive Yes/No)" "\?[[:space:]]+(Yes|No|Absolutely|Certainly|Indeed)\."
+
+# SOFT FLAGS — Register 3 social-media astrology patterns (read-through to confirm intent)
+# Hoshi: these can appear in legitimate critique of Register 3, but should not be voice in our copy.
+report "SOFT" "Anthropomorphic celestial slop ('she's spicy', 'she's gonna be stinging')" "\b(she|he|it)'?s\s+([a-z]+\s+){0,4}(spicy|stinging|sassy|fierce)\b"
+report "SOFT" "Performative direct address to Sign ('come on Scorpio')" "\b[Cc]ome on,?\s+(Aries|Taurus|Gemini|Cancer|Leo|Virgo|Libra|Scorpio|Sagittarius|Capricorn|Aquarius|Pisces)\b"
+report "SOFT" "Vocative intimacy markers (',\\s+(babe|honey|sweetie|darling|love)[.,!?]')" ",[[:space:]]+(babe|honey|sweetie|darling|love)[.,!?]"
+report "SOFT" "Rhetorical reversal pattern ('Not because X. Because Y.', Apr 23 feedback)" "\b[Nn]ot because [^.!?]{3,80}[.!?]\s+[Bb]ecause\b"
 
 # Heuristic: AI-style tricolons ("X, Y, and Z" triples in dense runs)
 tricolon_density=$(grep -cE ', [a-zA-Z]+, and [a-zA-Z]+' "$FILE" || true)

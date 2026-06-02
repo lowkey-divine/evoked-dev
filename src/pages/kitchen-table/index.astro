@@ -1,0 +1,248 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const structuredData = {
+  "@type": "SoftwareApplication",
+  "name": "The Kitchen Table",
+  "description": "A family meal-planning app from Evoked. No streaks, no scores, no surveillance. Heritage recipes welcomed as fragments. COPPA-compliant by design. iOS beta on TestFlight.",
+  "applicationCategory": "LifestyleApplication",
+  "operatingSystem": "iOS",
+  "creator": { "@id": "https://evoked.dev/#person" },
+  "publisher": { "@id": "https://evoked.dev/#organization" }
+};
+---
+
+{/*
+  Voice register: intimate-domestic, threshold-not-yet-crossed sub-register.
+  Per evoked-dev/CLAUDE.md "Voice Discipline Scope" addendum (Hoshi, 2026-05-03):
+  em-dashes are permitted on intimate-domestic surfaces - the dash signals breath,
+  hesitation, gentleness. The two &mdash; below (lines ~34 and ~90) are register-correct,
+  not voice-tells failures. The founder-public voice-tells-audit.sh ruleset does not
+  apply to this file. If a future reviewer in founder-public discipline-mode reads
+  this page and reflexively flags the em-dashes, read the addendum first.
+*/}
+
+<BaseLayout
+  title="The Kitchen Table"
+  description="A family meal-planning app from Evoked. No streaks, no scores, no surveillance. Heritage recipes welcomed as fragments. COPPA-compliant by design. iOS beta on TestFlight."
+  structuredData={structuredData}
+>
+  <div class="hero">
+    <h1>The Kitchen Table</h1>
+    <p class="tagline">Family flourishing through food.</p>
+    <p class="hero-sub">A quiet meal-planning app for families. iOS beta on TestFlight.</p>
+  </div>
+
+  <section class="container">
+    <h2>What this is</h2>
+    <p>
+      We made it because we couldn't find a meal-planning app we trusted to leave
+      open in a kitchen where children can see the screen.
+    </p>
+    <p>
+      Food is never just food. The moment you ask a family <em>what do you eat?</em>
+      you're asking about identity, culture, memory, survival.
+    </p>
+    <p>
+      The Kitchen Table is built to honor that &mdash; not to optimize your diet or
+      gamify your groceries, but to help families plan meals, preserve heritage
+      recipes, and eat together.
+    </p>
+  </section>
+
+  <section class="container">
+    <h2>Who's at the table</h2>
+    <p>
+      Table keepers, planners, members, learners, guests. Everyone has a place.
+      Everyone participates according to their capacity.
+    </p>
+    <p>
+      A four-year-old can be at the table. A grandparent who only remembers
+      "some kind of dumpling" can be at the table. A teenager who wants quiet
+      can be at the table without performing.
+    </p>
+  </section>
+
+  <section class="container">
+    <h2>What we honor</h2>
+    <ul class="principles">
+      <li><strong>Reverent references, not reductive captures.</strong> A recipe is a doorway, not a database row.</li>
+      <li><strong>Fragments are sacred.</strong> A single memory is enough. A story without measurements is complete.</li>
+      <li><strong>Family defines family.</strong> Your words for who you are. Not our taxonomy.</li>
+      <li><strong>The system knows when to be quiet.</strong> Grief, busy seasons, days that are simply hard. We step back.</li>
+      <li><strong>Space for all of it.</strong> Celebration and grief. Roots and searching. Heritage embraced and heritage reclaimed.</li>
+    </ul>
+    <p class="heritage-example">
+      If a family only remembers "some kind of dumpling" from a grandmother lost to displacement,
+      that fragment is welcome here. We don't require completeness. We honor what remains.
+    </p>
+    <p class="heritage-closing">
+      Some recipes survive because someone made sure they would.
+    </p>
+  </section>
+
+  <section class="container">
+    <h2>What this is not</h2>
+    <p>
+      No streaks. No scores. No leaderboards.
+    </p>
+    <p>
+      No notifications designed to pull you back when you didn't choose to come back.
+      No engagement metrics that override how you're actually feeling. No quiet
+      collection of behavioral data we'd rather you not think about.
+    </p>
+    <p>
+      No advertising. Ever. Not now, not when we're bigger, not when someone offers
+      us money to start.
+    </p>
+    <p>
+      Children's profiles are unreachable to anyone outside the family &mdash;
+      by architecture, not by promise. COPPA-compliant by design, not by retrofit.
+    </p>
+  </section>
+
+  <section class="container text-center">
+    <h2>Join the waitlist</h2>
+    <p>We'll write when there's something real to share. Not before.</p>
+    <form id="waitlist-form" class="waitlist-form mt-md">
+      <input type="email" id="waitlist-email" name="email" placeholder="your@email.com" required aria-label="Email address" />
+      <button type="submit" class="btn btn-primary">Join waitlist</button>
+    </form>
+    <p id="waitlist-status" class="waitlist-status" aria-live="polite"></p>
+    <p class="form-note">No spam. No selling. Just one email when we open the door wider.</p>
+  </section>
+</BaseLayout>
+
+<script>
+  const form = document.getElementById('waitlist-form') as HTMLFormElement;
+  const status = document.getElementById('waitlist-status') as HTMLParagraphElement;
+  const emailInput = document.getElementById('waitlist-email') as HTMLInputElement;
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const email = emailInput.value.trim();
+    if (!email) return;
+
+    status.textContent = '';
+    const button = form.querySelector('button') as HTMLButtonElement;
+    button.disabled = true;
+    button.textContent = 'Joining...';
+
+    try {
+      const res = await fetch('/api/newsletter/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      });
+
+      if (res.ok) {
+        status.textContent = 'You are in. Welcome.';
+        status.className = 'waitlist-status success';
+        emailInput.value = '';
+      } else {
+        const data = await res.json();
+        status.textContent = data.error || 'Something went wrong. Try again.';
+        status.className = 'waitlist-status error';
+      }
+    } catch {
+      status.textContent = 'Something went wrong. Try again.';
+      status.className = 'waitlist-status error';
+    } finally {
+      button.disabled = false;
+      button.textContent = 'Join waitlist';
+    }
+  });
+</script>
+
+<style>
+  .hero-sub {
+    margin-top: var(--space-sm);
+    color: var(--text-secondary);
+    font-size: 1rem;
+  }
+
+  .principles {
+    list-style: none;
+    padding: 0;
+  }
+
+  .principles li {
+    padding: var(--space-sm) 0;
+    border-bottom: 1px solid var(--border-subtle);
+    color: var(--text-secondary);
+  }
+
+  .principles li:last-child {
+    border-bottom: none;
+  }
+
+  .principles strong {
+    color: var(--accent-warm);
+  }
+
+  .heritage-example {
+    margin-top: var(--space-md);
+    font-style: italic;
+    color: var(--text-secondary);
+    border-left: 2px solid var(--accent-subtle);
+    padding-left: var(--space-md);
+  }
+
+  .heritage-closing {
+    margin-top: var(--space-sm);
+    color: var(--text-primary);
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+  }
+
+  .waitlist-form {
+    display: flex;
+    gap: var(--space-xs);
+    justify-content: center;
+    flex-wrap: wrap;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .waitlist-form input[type="email"] {
+    flex: 1;
+    min-width: 200px;
+    padding: var(--space-sm) var(--space-md);
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: 4px;
+    color: var(--text-primary);
+    font-size: 0.95rem;
+    font-family: var(--font-body);
+  }
+
+  .waitlist-form input[type="email"]:focus {
+    outline: none;
+    border-color: var(--border-accent);
+  }
+
+  .waitlist-form input[type="email"]::placeholder {
+    color: var(--text-muted);
+  }
+
+  .waitlist-status {
+    font-size: 0.85rem;
+    margin-top: var(--space-sm);
+    min-height: 1.2em;
+  }
+
+  .waitlist-status.success {
+    color: var(--accent-warm);
+  }
+
+  .waitlist-status.error {
+    color: #e57373;
+  }
+
+  .form-note {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-top: var(--space-sm);
+  }
+</style>

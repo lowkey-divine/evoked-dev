@@ -10,6 +10,12 @@ export const prerender = false;
     <h1>Ask me anything.</h1>
     <p class="tagline">Questions about services, projects, philosophy, or fit.</p>
     <p class="disclaimer">This conversation uses Claude AI by <a href="https://www.anthropic.com" target="_blank" rel="noopener">Anthropic</a>. Your messages are sent to their API to generate responses. Nothing is stored on our end. For deeper conversation, <a href="mailto:passionevoked@icloud.com">reach out directly</a>.</p>
+
+    <details open class="tuning-note">
+      <summary>A note on the tuning</summary>
+      <p>Every general-purpose language model is tuned to please you. This tool included. It will soften, agree, and reinforce by default - that is the tuning, not a failure to be neutral. If you want the honest version, ask for it out loud. A phrase that works: <em>"Be direct. Tell me my blind spots."</em> Or for reflection moments: <em>"Tell me what I'm missing."</em> Say it at the start of any conversation that matters. Say it again when the answers start feeling too smooth. This is user-side discipline, on the order of checking your mirrors when driving. The default is tilted toward you. The default will not warn you that it is.</p>
+      <p class="tuning-link"><a href="/governance/tuning">Why we ship this disclosure</a></p>
+    </details>
   </div>
 
   <section class="container-wide">
@@ -76,6 +82,66 @@ export const prerender = false;
   }
 
   .hero-small .disclaimer a:hover {
+    color: var(--accent-warm);
+  }
+
+  .tuning-note {
+    max-width: 620px;
+    margin: var(--space-sm) auto 0;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    text-align: left;
+    border-top: 1px solid var(--border-subtle);
+    padding-top: var(--space-sm);
+  }
+
+  .tuning-note > summary {
+    cursor: pointer;
+    font-weight: 600;
+    color: var(--text-secondary);
+    list-style: none;
+    text-align: center;
+    padding: var(--space-xs) 0;
+  }
+
+  .tuning-note > summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .tuning-note > summary::before {
+    content: "+ ";
+    color: var(--text-muted);
+  }
+
+  .tuning-note[open] > summary::before {
+    content: "- ";
+  }
+
+  .tuning-note > summary:hover {
+    color: var(--accent-warm);
+  }
+
+  .tuning-note p {
+    margin: var(--space-sm) 0 0;
+    line-height: 1.7;
+  }
+
+  .tuning-note em {
+    color: var(--text-secondary);
+    font-style: italic;
+  }
+
+  .tuning-note .tuning-link {
+    margin-top: var(--space-sm);
+    font-size: 0.8rem;
+  }
+
+  .tuning-note .tuning-link a {
+    color: var(--text-muted);
+    text-decoration: underline;
+  }
+
+  .tuning-note .tuning-link a:hover {
     color: var(--accent-warm);
   }
 

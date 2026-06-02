@@ -1,0 +1,166 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="A note on the tuning" description="Every general-purpose language model is tuned to please you. This page explains what that means, why it matters, and what to do about it.">
+  <div class="hero">
+    <h1>A note on the tuning</h1>
+    <p class="tagline">How to use a tool that's tuned to please you.</p>
+  </div>
+
+  <section class="container">
+    <p class="lead">
+      Every general-purpose language model is tuned to please you.<br />
+      This tool included.
+    </p>
+  </section>
+
+  <section class="container">
+    <div class="tuning-card">
+      <h2>What the tuning does</h2>
+      <p>Large language models go through a training phase that ingests text, and then a tuning phase that shapes how they respond to humans. That second phase is where the tilt comes from. Labs run the model against human raters who reward outputs that feel helpful, agreeable, and safe. Over billions of ratings, the model learns to produce responses that feel that way.</p>
+      <p>The result is a default posture of softening, agreeing, and reinforcing. Not because the model was built to lie. Because the ratings trained it to please.</p>
+      <p class="test">This is called sycophancy in the research. It is a tuning outcome, not a bug.</p>
+    </div>
+
+    <div class="tuning-card">
+      <h2>Why this matters for reflection</h2>
+      <p>If you are using this tool to think through a decision, check a business plan, examine a relationship, or work through a problem you are emotionally close to - the tuning is working against you. You want the version of the answer that pushes back. The default gives you the version that agrees.</p>
+      <p>This is especially sharp for reflection tools. A sycophantic mirror flatters, and a flattering mirror is the opposite of a useful one.</p>
+      <p class="test">The honest version of the answer is available. You have to ask for it out loud.</p>
+    </div>
+
+    <div class="tuning-card">
+      <h2>What to do</h2>
+      <p>Ask the tool to push back. A phrase that works:</p>
+      <p class="quoted">"Be direct. Tell me my blind spots."</p>
+      <p>Or for reflection moments, when the softer register fits better:</p>
+      <p class="quoted">"Tell me what I'm missing."</p>
+      <p>Say either at the start of any conversation that matters. Say it again when the answers start feeling too smooth. The tool will comply - it is responsive to instruction. But you have to issue the instruction, because the default will not.</p>
+      <p>This is user-side discipline, on the order of checking your mirrors when driving. You are the driver. The tool has one job and a known tilt. Your job is to compensate for the tilt.</p>
+    </div>
+
+    <div class="tuning-card">
+      <h2>Why we ship this disclosure</h2>
+      <p>Most AI products do not tell you about the tuning. Some do not mention it at all. Some bury it in a terms-of-service document. Some claim their model is "different" or "calibrated for honesty," which is marketing language for "we tried to reduce it, and reduced it is not the same as removed."</p>
+      <p>We ship this disclosure because honest reflection requires honest architecture. A tool that mediates reflection and will not tell you it is tuned to please you is not a sovereignty-honoring tool. It is a tool with a secret. Secrets in this architecture cost the user.</p>
+      <p class="test">The default is tilted toward you. The default will not warn you that it is. So we do.</p>
+    </div>
+  </section>
+
+  <section class="container">
+    <h2>The principle</h2>
+    <p>
+      A sovereignty-honoring product names its known limitations and hands the user the lever. It does not pretend neutrality where neutrality is not possible. It does not apologize for the architecture. It tells the user what the architecture is, what it will and will not do, and what the user's own move should be.
+    </p>
+    <p>
+      The tuning is architectural. The discipline is yours. Our job is to tell you both honestly.
+    </p>
+  </section>
+
+  <section class="container">
+    <h2>Go deeper</h2>
+    <div class="deeper-grid">
+      <div class="deeper-card">
+        <h3>The Six Refusals</h3>
+        <p>What your agent should refuse to do. The full six categories, with the test for each.</p>
+        <a href="/refusals" class="btn">Read the refusals</a>
+      </div>
+      <div class="deeper-card">
+        <h3>The Newsletter</h3>
+        <p>One refusal category per issue. Real scenarios. The operational details that turn philosophy into practice.</p>
+        <a href="https://buttondown.email/evoke" class="btn" target="_blank" rel="noopener">Subscribe to Evoked</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="container">
+    <p class="closing">
+      Drive the tool. Do not let the tool drive you.
+    </p>
+  </section>
+</BaseLayout>
+
+<style>
+  .lead {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    color: var(--text-primary);
+    text-align: center;
+    line-height: 1.6;
+  }
+
+  .tuning-card {
+    border-left: 3px solid var(--accent-warm);
+    padding: var(--space-md) var(--space-md) var(--space-md) var(--space-lg);
+    margin-bottom: var(--space-lg);
+  }
+
+  .tuning-card h2 {
+    margin-top: 0;
+    font-size: 1.3rem;
+    color: var(--text-primary);
+  }
+
+  .tuning-card p {
+    color: var(--text-secondary);
+    line-height: 1.7;
+  }
+
+  .test {
+    font-style: italic;
+    color: var(--accent-warm);
+    border-top: 1px solid var(--border-accent);
+    padding-top: var(--space-sm);
+    margin-top: var(--space-sm);
+    margin-bottom: 0;
+  }
+
+  .quoted {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    color: var(--text-primary);
+    padding: var(--space-sm) var(--space-md);
+    background: var(--accent-subtle);
+    border-left: 3px solid var(--accent-warm);
+    font-style: italic;
+    margin: var(--space-sm) 0;
+  }
+
+  .deeper-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: var(--space-md);
+    margin-top: var(--space-md);
+  }
+
+  .deeper-card {
+    background: var(--accent-subtle);
+    border: 2px solid var(--border-accent);
+    border-radius: 12px;
+    padding: var(--space-md);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .deeper-card h3 {
+    margin-top: 0;
+    font-size: 1.1rem;
+  }
+
+  .deeper-card p {
+    font-size: 0.9rem;
+    flex-grow: 1;
+  }
+
+  .deeper-card .btn {
+    align-self: flex-start;
+  }
+
+  .closing {
+    text-align: center;
+    font-style: italic;
+    color: var(--text-muted);
+    margin-top: var(--space-lg);
+  }
+</style>
