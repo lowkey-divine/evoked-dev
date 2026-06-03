@@ -60,7 +60,7 @@ export function buildInfoGuideHtml(): string {
 
   const body = `
 ${p('Thank you for reaching out to Evoked.')}
-${p('This message is automatic. A personal reply from me with scoping call options will follow within one business day. While we coordinate that, here is what I recommend you read.')}
+${p('This message is automatic. A personal reply from me with scoping call options will follow within three business days. While we coordinate that, here is what I recommend you read.')}
 ${p('You are sixty days from the EU AI Act high-risk obligations taking effect on August 2, 2026. Articles 6, 16, 26, and 50 enter force on that date. Article 99 sets administrative fines up to 15 million euros or 3 percent of global annual turnover for violations of those articles. Article 2 establishes extraterritorial scope. If your agents serve users in the European Union regardless of where your company is incorporated, the obligations attach to you.')}
 
 ${h('Four questions are coming')}
@@ -91,7 +91,7 @@ ${p('The summer window is bounded by design. Three productized engagements prepa
 ${p('Full descriptions, deliverables, and intake: ' + link('https://evoked.dev/engage') + '.')}
 
 ${h('What happens next')}
-${p('I will reply to your message within one business day with two or three options for a thirty-minute scoping call. On the call we will walk through your specific system against the four questions and figure out which engagement (if any) fits. Public rates apply. No proposal cycle.')}
+${p('I will reply to your message within three business days with two or three options for a thirty-minute scoping call. On the call we will walk through your specific system against the four questions and figure out which engagement (if any) fits. Public rates apply. No proposal cycle.')}
 ${p('Before the call, I recommend reading two pieces:')}
 ${ul([
   li(link('https://evoked.dev/writing/the-august-2-question', 'The August 2 Question Your Agents Cannot Answer Yet')),
@@ -130,7 +130,7 @@ ${p('<strong>Erin Stanley</strong><br/>Founder, Evoked&reg;<br/>' + link('https:
 export function buildInfoGuideText(): string {
   return `Thank you for reaching out to Evoked.
 
-This message is automatic. A personal reply from me with scoping call options will follow within one business day. While we coordinate that, here is what I recommend you read.
+This message is automatic. A personal reply from me with scoping call options will follow within three business days. While we coordinate that, here is what I recommend you read.
 
 You are sixty days from the EU AI Act high-risk obligations taking effect on August 2, 2026. Articles 6, 16, 26, and 50 enter force on that date. Article 99 sets administrative fines up to 15 million euros or 3 percent of global annual turnover for violations of those articles. Article 2 establishes extraterritorial scope. If your agents serve users in the European Union regardless of where your company is incorporated, the obligations attach to you.
 
@@ -170,7 +170,7 @@ Full descriptions, deliverables, and intake: https://evoked.dev/engage.
 
 WHAT HAPPENS NEXT
 
-I will reply to your message within one business day with two or three options for a thirty-minute scoping call. On the call we will walk through your specific system against the four questions and figure out which engagement (if any) fits. Public rates apply. No proposal cycle.
+I will reply to your message within three business days with two or three options for a thirty-minute scoping call. On the call we will walk through your specific system against the four questions and figure out which engagement (if any) fits. Public rates apply. No proposal cycle.
 
 Before the call, I recommend reading two pieces:
 
