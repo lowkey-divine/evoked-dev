@@ -4,7 +4,9 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import SovereignLayout from '../../layouts/SovereignLayout.astro';
 
 export async function getStaticPaths() {
-  const posts = await getCollection('writing');
+  const posts = await getCollection('writing', ({ data }) => {
+    return data.draft !== true;
+  });
   return posts.map((post) => ({
     params: { slug: post.slug },
     props: { post },
