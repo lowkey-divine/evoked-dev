@@ -17,6 +17,11 @@
 
 import type { APIRoute } from 'astro';
 
+// Server-rendered route: opt out of static prerendering so the build can
+// handle this dynamic API endpoint under `output: 'static'` astro config.
+// Required by Astro for dynamic routes without getStaticPaths().
+export const prerender = false;
+
 export const GET: APIRoute = async ({ params }) => {
   const agentId = params.agent_id;
 
