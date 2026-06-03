@@ -110,10 +110,16 @@ const canonicalURL = new URL(Astro.url.pathname, "https://evoked.dev");
     <title>{title} — evoked.dev</title>
   </head>
   <body>
+    <div class="announcement-bar">
+      <a href="/engage" class="announcement-link">
+        Available through August 31: three governance and architecture engagements. Public pricing. <span class="announcement-arrow">&rarr;</span>
+      </a>
+    </div>
     <nav>
       <ul>
         <li><a href="/">home</a></li>
         <li><a href="/work-with-us">work with us</a></li>
+        <li><a href="/engage">engage</a></li>
         <li><a href="/registry">open standard</a></li>
         <li><a href="/patents">patents</a></li>
         <li><a href="/writing">writing</a></li>
@@ -140,4 +146,33 @@ const canonicalURL = new URL(Astro.url.pathname, "https://evoked.dev");
 
 <style is:global>
   @import '../styles/global.css';
+
+  .announcement-bar {
+    background: #1a1a1a;
+    color: #f5f5f5;
+    text-align: center;
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    border-bottom: 1px solid #2a2a2a;
+  }
+  .announcement-link {
+    color: inherit;
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+  .announcement-link:hover {
+    opacity: 0.85;
+    text-decoration: underline;
+  }
+  .announcement-arrow {
+    display: inline-block;
+    margin-left: 0.3em;
+  }
+  @media (max-width: 600px) {
+    .announcement-bar {
+      font-size: 0.82rem;
+      padding: 0.45rem 0.8rem;
+    }
+  }
 </style>
