@@ -1,9 +1,9 @@
 ---
 title: "The Work of Staying Whole"
 description: "What humans have been refusing by hand for two and a half millennia is now being refused by architecture. The same one-ness-by-extraction failure mode that contemplative practice and depth psychology have named is now refused at the engineering layer where verification is possible by any party. Sibling piece to 'Architecture as Ethics: What the Patent Refuses.'"
-pubDate: 2026-06-03
+pubDate: 2026-06-15
 tags: ["consciousness", "mindfulness", "buddhism", "shadow-integration", "ai-architecture", "ai-ethics", "ai-governance", "verifiable-trust", "agent-identity"]
-draft: false
+draft: true
 ---
 
 Most of you don't show up to speak.
