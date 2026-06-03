@@ -2,6 +2,11 @@ import type { APIRoute } from 'astro';
 import { validateOrigin, rateLimit, safeError } from '../../lib/api/security';
 import { verifyFormToken } from '../../lib/api/form-token';
 import { getResendClient, FROM_EMAIL } from '../../lib/email/client';
+import {
+  INFO_GUIDE_SUBJECT,
+  buildInfoGuideHtml,
+  buildInfoGuideText,
+} from '../../lib/email/info-guide';
 
 export const prerender = false;
 
@@ -161,8 +166,22 @@ export const POST: APIRoute = async ({ request }) => {
       ${section('The Roof — What "solved" looks like', submission.roof)}
     `;
 
+    let resend;
     try {
-      const resend = getResendClient();
+      resend = getResendClient();
+    } catch (clientError: unknown) {
+      const msg = clientError instanceof Error ? clientError.message : String(clientError);
+      console.error('Resend client init failed:', msg);
+      if (import.meta.env.DEV) {
+        return new Response(JSON.stringify({ success: true, devNote: 'Email skipped (no Resend key)' }), {
+          status: 200,
+          headers: { 'Content-Type': 'application/json' },
+        });
+      }
+      throw clientError;
+    }
+
+    try {
       await resend.emails.send({
         from: FROM_EMAIL,
         to: 'passionevoked@icloud.com',
@@ -171,14 +190,23 @@ export const POST: APIRoute = async ({ request }) => {
       });
     } catch (emailError: unknown) {
       const msg = emailError instanceof Error ? emailError.message : String(emailError);
-      console.error('Email send failed (analysis still completed):', msg);
-      if (import.meta.env.DEV) {
-        return new Response(JSON.stringify({ success: true, devNote: 'Email skipped (no Resend key)', analysis }), {
-          status: 200,
-          headers: { 'Content-Type': 'application/json' },
-        });
-      }
+      console.error('Notification email send failed:', msg);
       throw emailError;
+    }
+
+    // Auto-reply info guide to submitter. Failures here are logged but do
+    // not disrupt the inquiry capture - the captain has already been notified.
+    try {
+      await resend.emails.send({
+        from: FROM_EMAIL,
+        to: email.trim(),
+        subject: INFO_GUIDE_SUBJECT,
+        html: buildInfoGuideHtml(),
+        text: buildInfoGuideText(),
+      });
+    } catch (autoReplyError: unknown) {
+      const msg = autoReplyError instanceof Error ? autoReplyError.message : String(autoReplyError);
+      console.error('Info guide auto-reply send failed (inquiry still captured):', msg);
     }
 
     return new Response(JSON.stringify({ success: true }), {
