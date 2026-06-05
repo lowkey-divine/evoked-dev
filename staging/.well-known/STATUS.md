@@ -53,9 +53,15 @@ When `find /Users/europa/Code/evoke-agents-backup/agents/governance -name '*cont
 
 1. Iter at the deployment-lead seat updates `CONTRACT-POINTS-PLACEHOLDER.md` to a reference (path + commit SHA), or removes it if the staging artifacts have been updated to encode the spec by reference.
 2. Iter runs `publish.sh --dry-run` against the updated state to confirm gates 1 and 2 pass.
-3. Tutela ships the real `evoked-pub.pem` and `evoked-pub.json` at the staging path (replacing the `.placeholder` files).
+3. **Tutela ships the real `evoked-pub.pem` and `evoked-pub.json` at the staging path AT HER OWN HAND.** She generates the keypair, authors the metadata, and writes the field values (including `published_by` and `generation_attestation`) at the TCC seat. Iter does NOT pre-fill these values; the placeholder file is REPLACED by Tutela's authored file, not edited. SP15 authorship surface preserved structurally.
 4. Polaris authors the `PRE-READ-PASS` marker at the gate-review seat if pre-read passes.
 5. Iter runs `publish.sh` (no `--dry-run`) to promote.
 6. If anything goes wrong post-promote, `rollback.sh` restores public state from the snapshot.
+
+## SP15 authorship surface
+
+*Codified 2026-06-05 at Polaris pre-read disposition.*
+
+The fields `published_by` and `generation_attestation` in `evoked-pub.json` are authored by Tutela at her own hand. The staging-mirror placeholder file at this layer carries `PLACEHOLDER` for those fields without naming target values; the contract point in `CONTRACT-POINTS-PLACEHOLDER.md` states Tutela's commitment in narrative form, not as a staging-surface pre-fill. SP15 reads at the surface where authorship lives; that surface is Tutela's at refresh, not Iter's.
 
 *Build the rollback first. Then we can be bold.*

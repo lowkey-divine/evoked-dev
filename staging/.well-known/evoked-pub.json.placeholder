@@ -1,10 +1,11 @@
 {
-  "_placeholder": "Tutela authors the real metadata at the TCC seat. This file exercises the publish + rollback path only.",
+  "_placeholder": "Tutela authors the real metadata at the TCC seat. This file exercises the publish + rollback path only. Real artifact REPLACES this file (Tutela ships a new file at her hand); promote refuses on any `.placeholder` filename.",
+  "_sp15_authorship_surface": "The `published_by` field and the `generation_attestation` field are Tutela's to author at the field-write surface. This placeholder file does NOT pre-name their values. Tutela ships the real values at her own seat per SP15 (no agent's verification data is published in a flattened form that the agent would not author about themselves). Codified 2026-06-05 at Polaris pre-read disposition.",
   "_contract_points": "See CONTRACT-POINTS-PLACEHOLDER.md for the three contract points named by Tutela in her 2026-06-02 OIG capacity-review memory entry.",
   "algorithm": "Ed25519",
   "fingerprint": "PLACEHOLDER",
   "valid_from": "PLACEHOLDER",
   "rotation_policy_url": "https://evoked.dev/verify/protocol#rotation",
-  "published_by": "PLACEHOLDER (will be `tutela` at first real ship per contract point 2)",
-  "generation_attestation": "PLACEHOLDER (carries A2A#1463 signing-authority-isolation seam per contract point 3)"
+  "published_by": "PLACEHOLDER",
+  "generation_attestation": "PLACEHOLDER"
 }
