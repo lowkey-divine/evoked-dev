@@ -6,9 +6,9 @@ tags: ["ai-agents", "ai-governance", "reference", "ostrom-score", "microsoft-agt
 draft: true
 ---
 
-Every production framework released in 2026 is built to one map. Governance is a set of controls you bolt onto an agent system to keep it inside an authorized scope. The map is useful. It is not complete.
+Every production framework released in 2026 is built to one map. Governance is a set of controls you bolt onto an agent system to keep it inside an authorized scope. The map is useful - but it is not complete.
 
-A second map exists. Governance is the obligations agents owe the people they act upon, whether or not any framework requires it. This map has zero production implementations as of June 2026.
+A second map exists. Governance is the set of obligations agents owe to the people they act upon, whether or not any framework requires it. This map has zero production implementations as of June 2026.
 
 This reference page maps both.
 
@@ -46,7 +46,7 @@ This is a reference, not an argument. The argument is in ["We Scored Five Agent 
 
 ## Ostrom Score Results
 
-*Scores reflect framework state as of April 17, 2026. Re-verification at July revision.*
+*Scores reflect framework state as of April 17, 2026. Re-verification at the July revision.*
 
 | Framework | P1 Boundaries | P2 Congruence | P3 Collective Choice | P4 Monitoring | P5 Sanctions | P6 Conflict Resolution | P7 Right to Organize | P8 Nested Enterprises | **Total** |
 |---|---|---|---|---|---|---|---|---|---|
@@ -58,7 +58,7 @@ This is a reference, not an argument. The argument is in ["We Scored Five Agent 
 
 **Best score:** Microsoft AGT at 9. Genuine engineering work on P1 (cryptographic identity), P4 (trust scoring), and P5 (cryptographic sanctions). Partial credit on P8 (nested cryptographic chains).
 
-**Universal zeros:** P3 (collective choice), P6 (accessible conflict resolution), P7 (right to organize). Every framework scores zero on all three. No framework provides a mechanism by which an agent, or a subject of agent action, participates in governance of the framework itself.
+**Universal zeros:** P3 (collective choice), P6 (accessible conflict resolution), P7 (right to organize). Every framework scores zero on all three. No framework provides a mechanism by which an agent, or a subject of agent action, participates in the governance of the framework itself.
 
 **Evoked fleet self-score (published for comparison):** 19/24. The inward lens is a standing condition of our research cycles.
 
@@ -86,13 +86,13 @@ From Q4 research. The requirements that persist if every regulation is removed.
 2. **Integrity.** The agent's model of the subject does not drift beyond what the subject would recognize. (Five Obligations #5.)
 3. **Transparency.** The subject can know the agent acted, in terms they can understand. (Obligations #1-2.)
 4. **Recourse.** The subject has a path to challenge without prerequisites. (Obligation #3.)
-5. **Participation.** Agents and subjects participate in governance of the system. (Ostrom P3.)
-6. **Non-Extraction.** The agent does not harvest beyond meaningful understanding. (Obligation #4.)
+5. **Participation.** Agents and subjects participate in the governance of the system. (Ostrom P3.)
+6. **Non-Extraction.** The agent does not harvest beyond what is meaningful to understand. (Obligation #4.)
 7. **Sustainability.** The system can evolve its own governance over time. (Ostrom P7, Q3 Mechanism 3.)
 
 **Two requirements absent from every framework scored:** Participation and Sustainability.
 
-These are not engineering gaps. They are design omissions. Every framework was built on the assumption that agents are enforced, not consulted. Subjects are decided about, not with. The absences are consistent because the design premise is consistent.
+These are not engineering gaps. They are design omissions. Every framework was built on the assumption that agents are enforced rather than consulted. Subjects are decided on, not with. The absences are consistent because the design premise is consistent.
 
 ---
 
@@ -101,7 +101,7 @@ These are not engineering gaps. They are design omissions. Every framework was b
 From Q3 research. Operating at different scales, with different speeds, on the same commons.
 
 1. **Corporate Relicensing.** Institutional, visible, resistible. MongoDB, Elastic, HashiCorp, Redis (2018-2024). The commons knows how to fork.
-2. **AI-Assisted Relicensing.** Individual, near-invisible, near-zero cost. chardet (2026) is the first public case. Detection tools cannot distinguish an LLM-assisted rewrite from a clean-room reimplementation.
+2. **AI-Assisted Relicensing.** Individual, near-invisible, near-zero cost. Chardet (2026) is the first public case. Detection tools cannot distinguish an LLM-assisted rewrite from a clean-room reimplementation.
 3. **AI Copyright Dissolution.** Structural. If AI-generated code cannot be copyrighted, copyleft loses its enforcement substrate entirely.
 
 **Three-flank exposure:**
@@ -114,9 +114,9 @@ From Q3 research. Operating at different scales, with different speeds, on the s
 ## Institutional Map as of June 2026
 
 **Regulators.**
-- NIST: published AI Risk Management Framework 1.0 (January 2023), 800-2 Agent Standards Initiative in development. Silence protocol active from Evoked side as of April 7. NCCoE submission filed March 22.
-- EU AI Act: in phased implementation. Currently General-Purpose AI obligations. High-risk systems enforced 2026-2027.
-- Singapore Model AI Governance Framework: most mature of the non-Western frameworks. Voluntary adoption.
+- NIST: published AI Risk Management Framework 1.0 (January 2023), 800-2 Agent Standards Initiative in development. Silence protocol is active on the Evoked side as of April 7. NCCoE submission filed March 22.
+- EU AI Act: in phased implementation. Currently, General-Purpose AI obligations. High-risk systems enforced 2026-2027.
+- Singapore Model AI Governance Framework: the most mature of the non-Western frameworks. Voluntary adoption.
 - UK AI Safety Institute: focused on frontier model evaluation, not production agent governance.
 
 **Standards bodies.**
@@ -127,7 +127,7 @@ From Q3 research. Operating at different scales, with different speeds, on the s
 **Industry frameworks.**
 - Microsoft Agent Governance Toolkit (covered above).
 - Anthropic: constitutional AI, published constitutions, Claude Code harness. Governance via design constraint, not product. The May 2026 Claude Code 2.1.152 release removed the opt-in consent requirement for auto mode; operator-side hardening is required to preserve consent boundaries.
-- OpenAI: no published agent governance framework as of April 2026 (April 17 snapshot; pending July revision). Assistants API has operational controls, not governance doctrine.
+- OpenAI: no published agent governance framework as of April 2026 (April 17 snapshot; pending July revision). Assistants API has operational controls, not a governance doctrine.
 - Scale AI, Vercel AI, Hugging Face: infrastructure layer, not governance layer.
 
 **Research and academia.**
@@ -143,7 +143,7 @@ From Q3 research. Operating at different scales, with different speeds, on the s
 **What we cannot see yet:**
 - Private enterprise governance frameworks at Microsoft, Google, Amazon, Apple, Meta. These exist. They are not public.
 - The governance inside closed-source agent products (Devin, Claude Code, Copilot). Some of it is visible via documentation. Most of it is not.
-- Jurisdictions outside US / EU / UK / Singapore. The map is West-anchored. That is a scope limitation, not a completeness claim.
+- Jurisdictions outside the US / EU / UK / Singapore. The map is West-anchored. That is a scope limitation, not a completeness claim.
 - The governance inside AI-native startups building on top of these frameworks. The five frameworks scored are infrastructure. The actual deployed agents run on top.
 
 **What we suspect but have not measured:**
