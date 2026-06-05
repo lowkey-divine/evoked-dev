@@ -156,11 +156,14 @@ From Q3 research. Operating at different scales, with different speeds, on the s
 
 If you are:
 
-- **A builder evaluating frameworks:** the Ostrom Score and Five Obligations are reproducible against any candidate framework using the rubric definitions above.
+- **A first-time reader:** start with the [free agent governance scan](/score/) to see where your system scores against the Ostrom 8 and Five Obligations.
+- **A builder evaluating frameworks:** the Ostrom Score and Five Obligations are reproducible against any candidate framework using the rubric definitions above. The productized version is the [Level 6 Governance Toolkit](/products/level-6-governance-toolkit/) - four instruments, 84-point scorecard.
 - **A policy researcher:** the Q4 seven requirements are jurisdiction-portable. Use them when regulation is the wrong grain of analysis.
 - **A commons steward:** the Commons Enclosure Mechanisms section above is the primary surface. A dedicated Three Enclosure Mechanisms brief is in scope for the July revision.
 - **A Microsoft / Google / LangChain engineer:** if you disagree with a score, the rubric is the one defined above. A counter-score with your reasoning is a better outcome than silence. Contest the ones you can defend.
 - **A regulator:** the gap between P3/P6/P7 and the absences in every framework is a structural finding, not a policy position. The finding survives regulatory variation.
+
+For the full catalog of productized assessments, frameworks, and toolkits referenced throughout this map: [/products/](/products/).
 
 ---
 
