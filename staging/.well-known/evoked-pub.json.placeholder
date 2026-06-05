@@ -1,0 +1,10 @@
+{
+  "_placeholder": "Tutela authors the real metadata at the TCC seat. This file exercises the publish + rollback path only.",
+  "_contract_points": "See CONTRACT-POINTS-PLACEHOLDER.md for the three contract points named by Tutela in her 2026-06-02 OIG capacity-review memory entry.",
+  "algorithm": "Ed25519",
+  "fingerprint": "PLACEHOLDER",
+  "valid_from": "PLACEHOLDER",
+  "rotation_policy_url": "https://evoked.dev/verify/protocol#rotation",
+  "published_by": "PLACEHOLDER (will be `tutela` at first real ship per contract point 2)",
+  "generation_attestation": "PLACEHOLDER (carries A2A#1463 signing-authority-isolation seam per contract point 3)"
+}
