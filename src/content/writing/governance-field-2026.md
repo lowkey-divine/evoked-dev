@@ -3,7 +3,7 @@ title: "Governance Field 2026: What Exists, What Doesn't, What Scores Zero"
 description: "A reference map of the agent governance field as of June 2026. Frameworks, scoring, gaps, and the two requirements no one has built."
 pubDate: 2026-06-05
 tags: ["ai-agents", "ai-governance", "reference", "ostrom-score", "microsoft-agt", "crewai", "autogen", "langgraph", "google-adk"]
-draft: true
+draft: false
 ---
 
 Every production framework released in 2026 is built to one map. Governance is a set of controls you bolt onto an agent system to keep it inside an authorized scope. The map is useful - but it is not complete.
