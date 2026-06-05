@@ -1,18 +1,18 @@
 ---
 title: "Governance Field 2026: What Exists, What Doesn't, What Scores Zero"
 description: "A reference map of the agent governance field as of April 2026. Frameworks, scoring, gaps, and the two requirements no one has built."
-pubDate: 2026-04-17
+pubDate: 2026-06-05
 tags: ["ai-agents", "ai-governance", "reference", "ostrom-score", "microsoft-agt", "crewai", "autogen", "langgraph", "google-adk"]
 draft: true
 ---
 
 Every production framework released in 2026 is built to one map. Governance is a set of controls you bolt onto an agent system to keep it inside an authorized scope. The map is useful. It is not complete.
 
-A second map exists. Governance is the obligations agents owe the people they act upon, whether or not any framework requires it. This map has zero production implementations as of April 2026.
+A second map exists. Governance is the obligations agents owe the people they act upon, whether or not any framework requires it. This map has zero production implementations as of June 2026.
 
 This reference page maps both.
 
-*This map was drawn on April 17, 2026. Frameworks ship faster than maps update. The next revision is scheduled for July. The structural findings - what scores zero, what is absent from every framework - do not depend on the date.*
+*This map was last refreshed on June 5, 2026. The framework scoring tables and several institutional details reflect the April 17, 2026 snapshot and are marked inline. Frameworks ship faster than maps update. The next full revision is scheduled for July. The structural findings - what scores zero, what is absent from every framework - do not depend on the date.*
 
 ---
 
@@ -45,6 +45,8 @@ This is a reference, not an argument. The argument is in ["We Scored Five Agent 
 ---
 
 ## Ostrom Score Results
+
+*Scores reflect framework state as of April 17, 2026. Re-verification at July revision.*
 
 | Framework | P1 Boundaries | P2 Congruence | P3 Collective Choice | P4 Monitoring | P5 Sanctions | P6 Conflict Resolution | P7 Right to Organize | P8 Nested Enterprises | **Total** |
 |---|---|---|---|---|---|---|---|---|---|
@@ -109,7 +111,7 @@ From Q3 research. Operating at different scales, with different speeds, on the s
 
 ---
 
-## Institutional Map as of April 2026
+## Institutional Map as of June 2026
 
 **Regulators.**
 - NIST: published AI Risk Management Framework 1.0 (January 2023), 800-2 Agent Standards Initiative in development. Silence protocol active from Evoked side as of April 7. NCCoE submission filed March 22.
@@ -118,14 +120,14 @@ From Q3 research. Operating at different scales, with different speeds, on the s
 - UK AI Safety Institute: focused on frontier model evaluation, not production agent governance.
 
 **Standards bodies.**
-- IETF AIGA: draft-2 as of April 2026. Encodes agent capabilities. Does not encode refusal rights.
-- aeoess APS Working Group: seven-plus active members as of April 7. Agent Passport System protocol. Evoked contributing EvaluationContext schema. Fidelity Spec v0.2.0 shipped April 10.
+- IETF AIGA: draft-2 as of April 2026 (April 17 snapshot; current draft state pending July revision). Encodes agent capabilities. Does not encode refusal rights.
+- aeoess APS Working Group: Agent Passport System protocol active through mid-2026. Evoked contributing EvaluationContext schema. Fidelity Spec v0.2.0 shipped April 10, 2026; subsequent revisions in progress as of June.
 - AI Commons: informal, no canonical body. The Three Enclosure Mechanisms are affecting a commons with no appointed defender.
 
 **Industry frameworks.**
 - Microsoft Agent Governance Toolkit (covered above).
-- Anthropic: constitutional AI, published constitutions, Claude Code harness. Governance via design constraint, not product.
-- OpenAI: no published agent governance framework as of April 2026. Assistants API has operational controls, not governance doctrine.
+- Anthropic: constitutional AI, published constitutions, Claude Code harness. Governance via design constraint, not product. The May 2026 Claude Code 2.1.152 release removed the auto-mode consent gate; operator-side hardening is required to preserve consent boundaries.
+- OpenAI: no published agent governance framework as of April 2026 (April 17 snapshot; pending July revision). Assistants API has operational controls, not governance doctrine.
 - Scale AI, Vercel AI, Hugging Face: infrastructure layer, not governance layer.
 
 **Research and academia.**
@@ -164,9 +166,9 @@ If you are:
 
 ## Version and Currency
 
-**Version:** 1.0 (April 17, 2026)
+**Version:** 1.1 (June 5, 2026 - partial refresh of v1.0 April 17, 2026 snapshot)
 **Scope of next revision:** quarterly. Frameworks added or removed as they ship or retire. Scores revised if frameworks update.
-**Next scheduled revision:** July 2026.
+**Next full revision:** July 2026.
 
 Contest or correction requests: open an issue on [governance-patterns](https://github.com/lowkey-divine/agent-governance-patterns).
 
