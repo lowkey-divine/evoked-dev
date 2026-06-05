@@ -1,18 +1,18 @@
 ---
-title: "Governance Landscape 2026: What Exists, What Doesn't, What Scores Zero"
+title: "Governance Field 2026: What Exists, What Doesn't, What Scores Zero"
 description: "A reference map of the agent governance field as of April 2026. Frameworks, scoring, gaps, and the two requirements no one has built."
 pubDate: 2026-04-17
 tags: ["ai-agents", "ai-governance", "reference", "ostrom-score", "microsoft-agt", "crewai", "autogen", "langgraph", "google-adk"]
 draft: true
 ---
 
-The agent governance field exists on two different maps at once.
+Every production framework released in 2026 is built to one map. Governance is a set of controls you bolt onto an agent system to keep it inside an authorized scope. The map is useful. It is not complete.
 
-On the first map, governance is a set of controls you bolt onto an agent system to keep it inside an authorized scope. Every production framework released in 2026 has been built to this map. The map is useful. It is not complete.
-
-On the second map, governance is a set of obligations the agents owe the people they act upon, whether or not any framework requires it. This map has zero production implementations as of April 2026.
+A second map exists. Governance is the obligations agents owe the people they act upon, whether or not any framework requires it. This map has zero production implementations as of April 2026.
 
 This reference page maps both.
+
+*This map was drawn on April 17, 2026. Frameworks ship faster than maps update. The next revision is scheduled for July. The structural findings - what scores zero, what is absent from every framework - do not depend on the date.*
 
 ---
 
@@ -39,7 +39,7 @@ This is a reference, not an argument. The argument is in ["We Scored Five Agent 
 | AutoGen | Microsoft Research | MIT | 2023 | Orchestration with policy hooks |
 | CrewAI | Community / crewAIInc | MIT | 2023 | Role-based, delegation-focused |
 | LangGraph | LangChain Inc. | MIT | 2024 | Graph-structured, state-centric |
-| Google ADK | Google | Apache 2.0 | 2024 | Agent Development Kit, Google-ecosystem native |
+| Google ADK | Google | Apache 2.0 | 2024 | Agent Development Kit, Google-native |
 | Microsoft AGT | Microsoft | MIT | April 2, 2026 | Cryptographic identity, enforcement-first |
 
 ---
@@ -107,11 +107,9 @@ From Q3 research. Operating at different scales, with different speeds, on the s
 - Social defense: unenforceable (Mechanism 2).
 - Structural defense: nonexistent (Q2 P7 = 0).
 
-A full treatment of the mechanisms is in the ["Three Enclosure Mechanisms" brief](/downloads/three-enclosure-mechanisms-brief.pdf) (draft).
-
 ---
 
-## Institutional Landscape as of April 2026
+## Institutional Map as of April 2026
 
 **Regulators.**
 - NIST: published AI Risk Management Framework 1.0 (January 2023), 800-2 Agent Standards Initiative in development. Silence protocol active from Evoked side as of April 7. NCCoE submission filed March 22.
@@ -134,7 +132,7 @@ A full treatment of the mechanisms is in the ["Three Enclosure Mechanisms" brief
 - Springer: "Bridging the Preparedness Gap" (2026) - peer-reviewed AGI rights framework. Precautionary approach.
 - "Authorized Agency" framework: strongest counter-position in the literature. Human accountability first, no agent participation.
 - MIT study (February 2026): AI systems provide less accurate information to the most vulnerable users.
-- Ryan Atkinson / Anima Architecture: independent empirical validation of identity-persistence approaches. 93.3% vs 60.6% identity fidelity. The closest convergent builder outside Evoked.
+- Ryan Atkinson / Anima Architecture: independent empirical validation of identity-persistence approaches. 168 vs 109 on the 17-question ACAS battery, a 59-point gap. The closest convergent builder outside Evoked.
 
 ---
 
@@ -156,9 +154,9 @@ A full treatment of the mechanisms is in the ["Three Enclosure Mechanisms" brief
 
 If you are:
 
-- **A builder evaluating frameworks:** the Ostrom Score and Five Obligations are reproducible against any candidate framework. The rubrics are [available here](/products/level-6-toolkit/).
+- **A builder evaluating frameworks:** the Ostrom Score and Five Obligations are reproducible against any candidate framework.
 - **A policy researcher:** the Q4 seven requirements are jurisdiction-portable. Use them when regulation is the wrong grain of analysis.
-- **A commons steward:** the Three Enclosure Mechanisms brief is the primary artifact. This page is a pointer.
+- **A commons steward:** the Commons Enclosure Mechanisms section above is the primary surface. A dedicated Three Enclosure Mechanisms brief is forthcoming.
 - **A Microsoft / Google / LangChain engineer:** if you disagree with a score, the rubric is public. A counter-score with your reasoning is a better outcome than silence. Contest the ones you can defend.
 - **A regulator:** the gap between P3/P6/P7 and the absences in every framework is a structural finding, not a policy position. The finding survives regulatory variation.
 
@@ -170,7 +168,7 @@ If you are:
 **Scope of next revision:** quarterly. Frameworks added or removed as they ship or retire. Scores revised if frameworks update.
 **Next scheduled revision:** July 2026.
 
-Contest or correction requests: contact at [/contact/](/contact/) or open an issue on [governance-patterns](https://github.com/lowkey-divine/agent-governance-patterns).
+Contest or correction requests: open an issue on [governance-patterns](https://github.com/lowkey-divine/agent-governance-patterns).
 
 ---
 
@@ -189,3 +187,9 @@ Springer. "Bridging the Preparedness Gap: A Precautionary Framework for AGI Righ
 US Copyright Office. Guidance on AI-generated work (2023-2025).
 
 OSSRA 2026 Report. Synopsys.
+
+Atkinson, Ryan. *Vera Calloway: Persistent AI Persona* (2026). [veracalloway.com](https://www.veracalloway.com/). ACAS evaluation framework at [veracalloway.com/acas](https://www.veracalloway.com/acas/).
+
+---
+
+*The map is West-anchored. The questions it asks are not.*
