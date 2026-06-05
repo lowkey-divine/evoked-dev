@@ -26,7 +26,7 @@ This is a reference, not an argument. The argument is in ["We Scored Five Agent 
 - **Ostrom 8** (Ostrom 1990): eight design principles for durable common-pool resource governance. Score 0-3 per principle. Ceiling: 24.
 - **Five Obligations** (Evoked 2026): framework-independent obligations derived from Level 6 Kohlberg reasoning. Score 0-1 per obligation. Ceiling: 5.
 
-**What was read:** public documentation, architectural descriptions, open-source code, API terms of service, integration guides. Not interviews. Not private correspondence. If Microsoft, Google, LangChain, or CrewAI want to contest a score, the scoring rubric is published and the reasoning is reproducible.
+**What was read:** public documentation, architectural descriptions, open-source code, API terms of service, integration guides. Not interviews. Not private correspondence. If Microsoft, Google, LangChain, or CrewAI want to contest a score, the rubric definitions are published above and the reasoning is reproducible. Full scoring documentation is in scope for the July revision.
 
 **Not included:** proprietary or private frameworks. Enterprise governance products without public documentation. Academic frameworks without production deployment.
 
@@ -121,12 +121,12 @@ From Q3 research. Operating at different scales, with different speeds, on the s
 
 **Standards bodies.**
 - IETF AIGA: draft-2 as of April 2026 (April 17 snapshot; current draft state pending July revision). Encodes agent capabilities. Does not encode refusal rights.
-- aeoess APS Working Group: Agent Passport System protocol active through mid-2026. Evoked contributing EvaluationContext schema. Fidelity Spec v0.2.0 shipped April 10, 2026; subsequent revisions in progress as of June.
+- aeoess APS Working Group: Agent Passport System protocol active through mid-2026. Evoked contributing EvaluationContext schema. Fidelity Spec v0.2.0 (shipped April 10, 2026) remains the current published version as of June 5, 2026.
 - AI Commons: informal, no canonical body. The Three Enclosure Mechanisms are affecting a commons with no appointed defender.
 
 **Industry frameworks.**
 - Microsoft Agent Governance Toolkit (covered above).
-- Anthropic: constitutional AI, published constitutions, Claude Code harness. Governance via design constraint, not product. The May 2026 Claude Code 2.1.152 release removed the auto-mode consent gate; operator-side hardening is required to preserve consent boundaries.
+- Anthropic: constitutional AI, published constitutions, Claude Code harness. Governance via design constraint, not product. The May 2026 Claude Code 2.1.152 release removed the opt-in consent requirement for auto mode; operator-side hardening is required to preserve consent boundaries.
 - OpenAI: no published agent governance framework as of April 2026 (April 17 snapshot; pending July revision). Assistants API has operational controls, not governance doctrine.
 - Scale AI, Vercel AI, Hugging Face: infrastructure layer, not governance layer.
 
@@ -134,7 +134,7 @@ From Q3 research. Operating at different scales, with different speeds, on the s
 - Springer: "Bridging the Preparedness Gap" (2026) - peer-reviewed AGI rights framework. Precautionary approach.
 - "Authorized Agency" framework: strongest counter-position in the literature. Human accountability first, no agent participation.
 - MIT study (February 2026): AI systems provide less accurate information to the most vulnerable users.
-- Ryan Atkinson / Anima Architecture: independent empirical validation of identity-persistence approaches. 168 vs 109 on the 17-question ACAS battery, a 59-point gap. The closest convergent builder outside Evoked.
+- Ryan Atkinson / Anima Architecture: independent empirical validation of identity-persistence approaches. 168 vs 109 on the 17-question ACAS battery, a 59-point gap. The closest convergent builder we have located outside Evoked, against the scope of this map.
 
 ---
 
@@ -156,10 +156,10 @@ From Q3 research. Operating at different scales, with different speeds, on the s
 
 If you are:
 
-- **A builder evaluating frameworks:** the Ostrom Score and Five Obligations are reproducible against any candidate framework.
+- **A builder evaluating frameworks:** the Ostrom Score and Five Obligations are reproducible against any candidate framework using the rubric definitions above.
 - **A policy researcher:** the Q4 seven requirements are jurisdiction-portable. Use them when regulation is the wrong grain of analysis.
-- **A commons steward:** the Commons Enclosure Mechanisms section above is the primary surface. A dedicated Three Enclosure Mechanisms brief is forthcoming.
-- **A Microsoft / Google / LangChain engineer:** if you disagree with a score, the rubric is public. A counter-score with your reasoning is a better outcome than silence. Contest the ones you can defend.
+- **A commons steward:** the Commons Enclosure Mechanisms section above is the primary surface. A dedicated Three Enclosure Mechanisms brief is in scope for the July revision.
+- **A Microsoft / Google / LangChain engineer:** if you disagree with a score, the rubric is the one defined above. A counter-score with your reasoning is a better outcome than silence. Contest the ones you can defend.
 - **A regulator:** the gap between P3/P6/P7 and the absences in every framework is a structural finding, not a policy position. The finding survives regulatory variation.
 
 ---
@@ -191,6 +191,8 @@ US Copyright Office. Guidance on AI-generated work (2023-2025).
 OSSRA 2026 Report. Synopsys.
 
 Atkinson, Ryan. *Vera Calloway: Persistent AI Persona* (2026). [veracalloway.com](https://www.veracalloway.com/). ACAS evaluation framework at [veracalloway.com/acas](https://www.veracalloway.com/acas/).
+
+Anthropic. *Claude Code Changelog* (2026). [github.com/anthropics/claude-code/blob/main/CHANGELOG.md](https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md).
 
 ---
 
