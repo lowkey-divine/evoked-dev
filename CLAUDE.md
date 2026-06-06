@@ -111,7 +111,7 @@ The two registers are siblings, not competitors. Each is correct for its surface
 
 ### Intimate-domestic surfaces (sibling discipline applies)
 
-- The Kitchen Table marketing surface (current `/projects/executive-chef.astro`, future `kitchentable.app/*` if built)
+- The Kitchen Table marketing surface (current `/projects/kitchen-table.astro` — renamed from `executive-chef.astro` 2026-06-05, 301 redirect retained — and future `kitchentable.app/*` if built)
 - App Store listing prose (currently the only marketing-shaped surface families encounter pre-install)
 - In-app prose: welcome screen, heritage flows, grief pathways, family seasons, quiet exit
 - Support email replies (`support@kitchentable.app`) and help center prose (`help.kitchentable.app`)

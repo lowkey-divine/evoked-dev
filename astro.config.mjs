@@ -8,6 +8,9 @@ export default defineConfig({
   site: 'https://evoked.dev',
   output: 'static',
   adapter: vercel(),
+  redirects: {
+    '/projects/executive-chef': '/projects/kitchen-table',
+  },
   integrations: [
     sitemap({
       filter: (page) =>
