@@ -82,6 +82,8 @@ const RATE_LIMITS: Record<string, RateLimitConfig> = {
   fitFollowup:   { windowMs: 60_000, maxRequests: 5 },    // 5 per minute
   challenge:     { windowMs: 60_000, maxRequests: 10 },   // 10 per minute (serves all forms)
   sovereignty:   { windowMs: 300_000, maxRequests: 3 },   // 3 per 5 minutes
+  auditIntake:   { windowMs: 600_000, maxRequests: 2 },   // 2 per 10 minutes (high-intent, low-volume)
+  consultingIntake: { windowMs: 600_000, maxRequests: 2 }, // 2 per 10 minutes (referenced by consulting-intake.ts; was missing)
 };
 
 function getClientIP(request: Request): string {
