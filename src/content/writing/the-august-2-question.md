@@ -1,10 +1,22 @@
 ---
 title: "The August 2 Question Your Agents Cannot Answer Yet"
-description: "Sixty days until EU AI Act high-risk obligations take effect. Most agent systems shipped before they could answer the four questions the audit room will ask. What those questions are, why they are new, and what we built instead."
+description: "Sixty days until EU AI Act high-risk obligations take effect. Most agent systems shipped before they could answer the four questions the audit room will ask. What those questions are, why they are new, and what we built instead. [Updated 2026-06-06: the use-based high-risk deadline moved to 2 December 2027 under the May 2026 Digital Omnibus. See preamble.]"
 pubDate: 2026-06-02
 tags: ["eu-ai-act", "agent-governance", "sovereignty-certification", "refusal-architecture", "compliance", "trust-architecture"]
 draft: false
 ---
+
+> **Update, 2026-06-06.** This article was written on 2 June 2026, sixty days before the original 2 August 2026 enforcement deadline for the EU AI Act's use-based high-risk obligations. On 7 May 2026, the EU Council and Parliament agreed targeted amendments to the AI Act under the Digital Omnibus initiative. The use-based high-risk deadline moved to 2 December 2027. The synthetic-content marking deadline moved to 2 December 2026. The product-regulated high-risk deadline moved to 2 August 2028.
+>
+> Three things in this article still hold. **The four questions still hold.** What does your AI refuse to do, who decided what it refuses, where is that decision written, how does that decision survive a model change. The Digital Omnibus did not move the questions. It moved the date by which the answers have to be defensible to a regulator. **The architecture argument still holds.** The compliance vendor's voice still tells you that templates will close the gap, and templates still do not close the four-question gap. **The patent architecture still holds.** Both filings (64/004,087 and 64/029,611) are unaffected by the Omnibus.
+>
+> What does not hold: **the sixty-day urgency framing.** The use-based deadline is now eighteen months out, not sixty days. The summer 2026 engagement window described in this article is also superseded by the current [evoked.dev/engage](https://evoked.dev/engage) page.
+>
+> The current canonical analysis is [The August 2 Deadline Moved. The Architecture Question Did Not.](/writing/the-deadline-moved-the-question-did-not/). This article is preserved as the operator's voice from before the shift.
+>
+> ---
+>
+> *Original article follows.*
 
 In 60 days, the [EU AI Act's](https://eur-lex.europa.eu/eli/reg/2024/1689/oj) high-risk obligations enter into force. Most AI agent systems shipped before they could answer the four questions the audit room will ask. The teams that shipped them know it. The customers who depend on them do not. The regulators arriving on August 2 will not care which group you are in.
 

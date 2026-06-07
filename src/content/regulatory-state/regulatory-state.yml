@@ -1,0 +1,139 @@
+# Regulatory State - Canonical Source of Truth
+# See README.md in this directory for purpose, use, and verification cadence.
+
+last_verified: "2026-06-06"
+verified_by: "Claude Code session with Captain Europa + WebSearch (Latham Watkins, Council of EU press release, Pinsent Masons, Inside Privacy, White Case, Gibson Dunn, Morrison Foerster)"
+next_verification_due: "2026-06-13"  # weekly cadence for EU AI Act during active amendment
+
+# ---------------------------------------------------------------------------
+# EU AI Act (Regulation (EU) 2024/1689)
+# ---------------------------------------------------------------------------
+
+eu_ai_act:
+  name: "EU AI Act (Regulation (EU) 2024/1689)"
+  status_summary: "In force; provisional Digital Omnibus amendments pending Official Journal publication"
+  entry_into_force: "2024-08-01"
+  consolidated_text_url: "https://eur-lex.europa.eu/eli/reg/2024/1689/oj"
+  ai_office_page: "https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai"
+
+  # Publication state matters as much as the dates themselves.
+  # in_force = published, adopted, currently binding
+  # provisional = political agreement reached, awaiting formal adoption + OJ publication
+  # proposed = published Commission proposal, not yet politically agreed
+  # rumoured = discussed publicly, no formal proposal yet
+  deadlines:
+    - id: prohibitions_and_ai_literacy
+      date: "2025-02-02"
+      status: in_force
+      description: "Chapter I (general provisions), Chapter II Article 5 prohibitions (original 8), Article 4 AI literacy"
+
+    - id: gpai_and_governance
+      date: "2025-08-02"
+      status: in_force
+      description: "Chapter V GPAI obligations (Articles 53, 55), Chapter VII governance, penalties for GPAI"
+
+    - id: synthetic_content_marking_pre_existing
+      date: "2026-12-02"
+      original_date: "2026-08-02"
+      status: provisional
+      description: "Article 50 synthetic-content marking obligation for systems placed on market before 2 August 2026"
+      source: "Digital Omnibus political agreement 7 May 2026"
+
+    - id: new_article_5_prohibitions
+      date: "2026-12-02"
+      status: provisional
+      description: "Two new Article 5 prohibitions: (1) AI generation/manipulation of non-consensual intimate material; (2) AI generation/manipulation of child sexual abuse material (CSAM)"
+      source: "Digital Omnibus political agreement 7 May 2026"
+
+    - id: annex_iii_high_risk_use_based
+      date: "2027-12-02"
+      original_date: "2026-08-02"
+      status: provisional
+      description: "Use-based high-risk obligations (Annex III: credit scoring, recruitment, education, essential services, law enforcement, migration, justice)"
+      source: "Digital Omnibus political agreement 7 May 2026"
+      deferral_months: 16
+
+    - id: annex_i_high_risk_product_regulated
+      date: "2028-08-02"
+      original_date: "2027-08-02"
+      status: provisional
+      description: "Product-regulated high-risk obligations (Annex I: medical devices, lifts, radio equipment, vehicles)"
+      source: "Digital Omnibus political agreement 7 May 2026"
+      deferral_months: 12
+
+    - id: member_state_sandbox_establishment
+      date: "2026-08-02"
+      status: in_force_unless_amended
+      description: "Each Member State must establish at least one AI regulatory sandbox (Article 57)"
+      notes: "Not addressed in Omnibus coverage; verify before next republish"
+
+  penalties:
+    article_5_violations:
+      ceiling_eur: 35_000_000
+      ceiling_percent_global_turnover: 7
+      basis: "whichever is higher"
+    most_other_obligations:
+      ceiling_eur: 15_000_000
+      ceiling_percent_global_turnover: 3
+      basis: "whichever is higher"
+      applies_to: "high-risk obligations, transparency obligations, GPAI obligations"
+    misleading_info_to_authorities:
+      ceiling_eur: 7_500_000
+      ceiling_percent_global_turnover: 1
+      basis: "whichever is higher"
+    sme_and_startup_carveout: "lower of the two applies"
+
+  thresholds:
+    gpai_systemic_risk_compute_flops: 1e25
+    notes: "Currently captures a handful of frontier models. Threshold subject to Commission review."
+
+  pending_actions:
+    - "Parliament plenary vote on Digital Omnibus"
+    - "Council formal adoption"
+    - "Official Journal publication of consolidated Omnibus text"
+    - "Expected completion: before 2 August 2026 (specifically to prevent original use-based deadline from triggering during adoption window)"
+
+  scope:
+    roles_bound:
+      - provider
+      - deployer
+      - importer
+      - distributor
+      - product_manufacturer
+    extraterritorial: true
+    extraterritorial_basis: "Article 2: applies if AI output is used in the EU regardless of where the company is incorporated"
+    carve_outs:
+      - "Pure military, defense, and national-security AI"
+      - "Scientific research"
+      - "Personal non-professional use"
+
+# ---------------------------------------------------------------------------
+# GDPR (Regulation (EU) 2016/679)
+# ---------------------------------------------------------------------------
+
+gdpr:
+  name: "GDPR (Regulation (EU) 2016/679)"
+  status_summary: "In force since 25 May 2018; no current amendments tracked"
+  last_verified: "2026-06-06"
+  penalties:
+    standard_tier:
+      ceiling_eur: 10_000_000
+      ceiling_percent_global_turnover: 2
+    severe_tier:
+      ceiling_eur: 20_000_000
+      ceiling_percent_global_turnover: 4
+  interaction_with_ai_act: |
+    Both regulations apply simultaneously to anyone processing personal data with AI.
+    Overlap heaviest on high-risk obligations, transparency, and data governance.
+    Where they conflict, the stricter one wins.
+
+# ---------------------------------------------------------------------------
+# Other regulations - add as they become relevant
+# ---------------------------------------------------------------------------
+
+# nist_ai_rmf:
+#   status: "framework, voluntary adoption"
+# uk_ai_safety_institute:
+#   status: "focused on frontier model evaluation"
+# singapore_ai_governance_framework:
+#   status: "voluntary adoption"

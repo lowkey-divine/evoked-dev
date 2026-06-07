@@ -59,11 +59,11 @@
 
       <div class="question-card" data-index="3">
         <fieldset>
-          <legend class="question">When AI gives you conflicting answers, what happens?</legend>
+          <legend class="question">Can the AI agents you rely on formally disagree?</legend>
           <p class="subtext">In an optimization loop, disagreement is noise. In a governance system, disagreement is signal.</p>
           <div class="buttons">
-            <button type="button" class="answer" data-answer="yes" aria-label="Yes, disagreement is captured and handled">Yes</button>
-            <button type="button" class="answer" data-answer="no" aria-label="No, disagreement is not structured">No</button>
+            <button type="button" class="answer" data-answer="yes" aria-label="Yes, my AI agents can formally disagree">Yes</button>
+            <button type="button" class="answer" data-answer="no" aria-label="No, my AI agents cannot formally disagree">No</button>
           </div>
         </fieldset>
       </div>
@@ -549,7 +549,7 @@
     });
 
     if (yesCount === 5) {
-      resultsMessage.textContent = "You're ahead of the field. The starter kit will sharpen what you've built.";
+      resultsMessage.textContent = "Your system is well-grounded. The starter kit will deepen what you've already built.";
     } else if (yesCount >= 3) {
       resultsMessage.textContent = "You've started. The gaps you found have free templates waiting.";
     } else {
@@ -603,8 +603,8 @@
         '<a href="' + productMap[i].url + '" class="bridge-link">' + productMap[i].name + '</a>'
       );
       body = relevant.length === 1
-        ? 'One of our guides addresses exactly what you\'re exploring.'
-        : 'Two of our guides address exactly what you\'re exploring.';
+        ? 'One of our guides addresses this directly.'
+        : 'Two of our guides address these directly.';
       links = '<span class="bridge-links">' + relevant.join('<span class="dot">\u00b7</span>') + '</span>';
     }
 

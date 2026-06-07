@@ -1,13 +1,25 @@
-// Info Guide auto-reply email — sent to anyone who submits the consulting
-// intake form. Comprehensive educational content for buyers 60 days from
-// the EU AI Act high-risk enforcement on 2026-08-02.
+// Info Guide auto-reply email - sent to anyone who submits the consulting
+// intake form. Comprehensive educational content for buyers facing the
+// EU AI Act post-Omnibus timeline.
 //
 // All copy is fleet-approved. Do not edit body copy without fleet review.
 // Authored per captain decision 2026-06-03 (commit a4ff1b2, evoke-ideas).
+// Updated 2026-06-06 per captain authorization: dynamic day-count to
+// the synthetic-content marking deadline + recalibrated EU AI Act framing
+// after the May 2026 Digital Omnibus moved deadlines.
 // Voice-tells discipline: no em-dashes, no AI slop, no sycophancy.
 // HTML structure matches src/lib/email/fit-followup.ts conventions.
 
-export const INFO_GUIDE_SUBJECT = 'Your AI agents and the August 2 deadline. Before we talk.';
+export const INFO_GUIDE_SUBJECT = 'Your AI agents and the runway the EU just opened. Before we talk.';
+
+const WATERMARK_TARGET = new Date('2026-12-02T00:00:00Z');
+
+function getDaysUntilWatermark(): { count: number; text: string } {
+  const days = Math.max(0, Math.ceil((WATERMARK_TARGET.getTime() - Date.now()) / 86400000));
+  if (days === 0) return { count: 0, text: 'Today is the day' };
+  if (days === 1) return { count: 1, text: 'One day' };
+  return { count: days, text: `${days} days` };
+}
 
 function escapeHtml(str: string): string {
   return str
@@ -51,6 +63,8 @@ function tableRow(cells: string[], header = false): string {
 }
 
 export function buildInfoGuideHtml(): string {
+  const { text: daysUntilText } = getDaysUntilWatermark();
+
   const offerRows = [
     tableRow(['Engagement', 'Investment', 'Timeline'], true),
     tableRow(['Sovereignty Assessment with prioritized remediation roadmap', '$25,000', '4 weeks']),
@@ -61,7 +75,12 @@ export function buildInfoGuideHtml(): string {
   const body = `
 ${p('Thank you for reaching out to Evoked.')}
 ${p('This message is automatic. A personal reply from me with scoping call options will follow within three business days. While we coordinate that, here is what I recommend you read.')}
-${p('You are sixty days from the EU AI Act high-risk obligations taking effect on August 2, 2026. Articles 6, 16, 26, and 50 enter force on that date. Article 99 sets administrative fines up to 15 million euros or 3 percent of global annual turnover for violations of those articles. Article 2 establishes extraterritorial scope. If your agents serve users in the European Union regardless of where your company is incorporated, the obligations attach to you.')}
+${p('The EU AI Act timeline moved on 7 May 2026. The Digital Omnibus pushed the use-based high-risk deadline from 2 August 2026 to 2 December 2027. The synthetic-content marking obligation moved from 2 August 2026 to 2 December 2026.')}
+${p(`<strong>${daysUntilText} from today until the watermarking deadline.</strong>`)}
+${p('What did not move: Article 5 prohibitions are live today. General-Purpose AI obligations under Articles 53 and 55 are live today. Article 99 sets penalty ceilings of up to 35 million euros or 7% of global annual turnover for Article 5 violations, and 15 million euros or 3% for most other obligations. Article 2 establishes extraterritorial scope, which is regulatory English for <em>we do not care where your company is incorporated.</em>')}
+${p('If your agents touch a user in the European Union, the obligations attach to you. Sixteen months of runway on the December 2027 cliff is real. The pause is not.')}
+${p('Please let that land.')}
+${p('Most teams I talk to have not read the new timeline carefully. The teams that engage during the runway will help shape the standards that the regulators eventually apply. The teams that wait until the cliff arrives will inherit them.')}
 
 ${h('Four questions are coming')}
 ${p('Your audit room is about to ask:')}
@@ -94,10 +113,10 @@ ${h('What happens next')}
 ${p('I will reply to your message within three business days with two or three options for a thirty-minute scoping call. On the call we will walk through your specific system against the four questions and figure out which engagement (if any) fits. Public rates apply. No proposal cycle.')}
 ${p('Before the call, I recommend reading two pieces:')}
 ${ul([
-  li(link('https://evoked.dev/writing/the-august-2-question', 'The August 2 Question Your Agents Cannot Answer Yet')),
+  li(link('https://evoked.dev/writing/the-deadline-moved-the-question-did-not', 'The August 2 Deadline Moved. The Architecture Question Did Not.')),
   li(link('https://evoked.dev/writing/architecture-as-ethics', 'Architecture as Ethics: What the Patent Refuses')),
 ])}
-${p('Both are short. Together they explain why the architecture I built is different from anything else being sold for August 2.')}
+${p('Both are short. Together they explain why the architecture I built is different from anything else being sold for compliance.')}
 ${p('Talk soon.')}
 ${p('<strong>Erin Stanley</strong><br/>Founder, Evoked&reg;<br/>' + link('https://evoked.dev/engage'))}
   `.trim();
@@ -128,11 +147,23 @@ ${p('<strong>Erin Stanley</strong><br/>Founder, Evoked&reg;<br/>' + link('https:
 }
 
 export function buildInfoGuideText(): string {
+  const { text: daysUntilText } = getDaysUntilWatermark();
+
   return `Thank you for reaching out to Evoked.
 
 This message is automatic. A personal reply from me with scoping call options will follow within three business days. While we coordinate that, here is what I recommend you read.
 
-You are sixty days from the EU AI Act high-risk obligations taking effect on August 2, 2026. Articles 6, 16, 26, and 50 enter force on that date. Article 99 sets administrative fines up to 15 million euros or 3 percent of global annual turnover for violations of those articles. Article 2 establishes extraterritorial scope. If your agents serve users in the European Union regardless of where your company is incorporated, the obligations attach to you.
+The EU AI Act timeline moved on 7 May 2026. The Digital Omnibus pushed the use-based high-risk deadline from 2 August 2026 to 2 December 2027. The synthetic-content marking obligation moved from 2 August 2026 to 2 December 2026.
+
+${daysUntilText} from today until the watermarking deadline.
+
+What did not move: Article 5 prohibitions are live today. General-Purpose AI obligations under Articles 53 and 55 are live today. Article 99 sets penalty ceilings of up to 35 million euros or 7% of global annual turnover for Article 5 violations, and 15 million euros or 3% for most other obligations. Article 2 establishes extraterritorial scope, which is regulatory English for "we do not care where your company is incorporated."
+
+If your agents touch a user in the European Union, the obligations attach to you. Sixteen months of runway on the December 2027 cliff is real. The pause is not.
+
+Please let that land.
+
+Most teams I talk to have not read the new timeline carefully. The teams that engage during the runway will help shape the standards that the regulators eventually apply. The teams that wait until the cliff arrives will inherit them.
 
 FOUR QUESTIONS ARE COMING
 
@@ -174,12 +205,12 @@ I will reply to your message within three business days with two or three option
 
 Before the call, I recommend reading two pieces:
 
-  - The August 2 Question Your Agents Cannot Answer Yet:
-    https://evoked.dev/writing/the-august-2-question
+  - The August 2 Deadline Moved. The Architecture Question Did Not.:
+    https://evoked.dev/writing/the-deadline-moved-the-question-did-not
   - Architecture as Ethics: What the Patent Refuses:
     https://evoked.dev/writing/architecture-as-ethics
 
-Both are short. Together they explain why the architecture I built is different from anything else being sold for August 2.
+Both are short. Together they explain why the architecture I built is different from anything else being sold for compliance.
 
 Talk soon.
 

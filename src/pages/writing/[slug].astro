@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import SovereignLayout from '../../layouts/SovereignLayout.astro';
+import August2Countdown from '../../components/August2Countdown.astro';
 
 export async function getStaticPaths() {
   const posts = await getCollection('writing', ({ data }) => {
@@ -62,6 +63,10 @@ const articleMeta = {
         </div>
       )}
     </header>
+
+    {post.slug === 'the-august-2-question' && (
+      <August2Countdown activateAtDays={8} />
+    )}
 
     <div class="article-content">
       <Content />

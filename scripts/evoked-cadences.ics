@@ -1,0 +1,255 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Evoked//Cadences//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+
+BEGIN:VEVENT
+UID:fleet-commitments-sweep-weekly@evoked.dev
+DTSTAMP:20260606T220000Z
+DTSTART;TZID=America/Boise:20260613T082300
+DTEND;TZID=America/Boise:20260613T091000
+RRULE:FREQ=WEEKLY;BYDAY=SA
+SUMMARY:Fleet commitments sweep (weekly)
+DESCRIPTION:Run the verify-commitments check and clear what is actually overdue.\n\nCommand:\n  bash /Users/europa/Code/evoke-agents-backup/agents/governance/verify-commitments.sh\n\nWhat to clear:\n- OVERDUE rows that have actually shipped (update Verify expression)\n- OVERDUE rows that need supersession\n- OVERDUE rows that need honest acknowledgement\n\nGoal: session-start hook stops surfacing OVERDUE banner as background friction.
+LOCATION:Evoked
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Fleet commitments sweep
+TRIGGER:-PT15M
+END:VALARM
+END:VEVENT
+
+BEGIN:VEVENT
+UID:friday-drafts-review-weekly@evoked.dev
+DTSTAMP:20260606T220000Z
+DTSTART;TZID=America/Boise:20260612T161300
+DTEND;TZID=America/Boise:20260612T164300
+RRULE:FREQ=WEEKLY;BYDAY=FR
+SUMMARY:Publish-ready drafts review (weekly)
+DESCRIPTION:Quick scan of anything drafted this week that is publish-ready or close to it.\n\nLocations to check:\n- evoke-ideas/ (drafts)\n- evoked-dev/src/content/writing/ (any draft:true posts)\n- agents/governance/ (substrate that may be ready to surface)\n\nNot a redundant voice-tells reminder (the pre-commit hook handles audit). This is a 'what did I draft this week worth reviewing?' check.
+LOCATION:Evoked
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Weekly drafts review
+TRIGGER:-PT15M
+END:VALARM
+END:VEVENT
+
+BEGIN:VEVENT
+UID:governance-health-review-monthly@evoked.dev
+DTSTAMP:20260606T220000Z
+DTSTART;TZID=America/Boise:20260704T101300
+DTEND;TZID=America/Boise:20260704T114300
+RRULE:FREQ=MONTHLY;BYDAY=1SA
+SUMMARY:Governance health review (monthly)
+DESCRIPTION:Per CLAUDE.md session rituals: review queue patterns\, decision logs\, drift indicators across the fleet.\n\nFiles to scan:\n- agents/AGENT_THOUGHTS_QUEUE.md (patterns since last review)\n- agents/decision-logs/ (recent decisions worth surfacing)\n- agents/governance/commitments.md (overdue trend)\n- agents/governance/ARCHITECTURE_GAPS_REGISTER.md (open gaps)\n\nOutput: brief notes\, surfaced patterns\, any work that needs Captain disposition.
+LOCATION:Evoked
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Monthly governance health review
+TRIGGER:-PT1H
+END:VALARM
+END:VEVENT
+
+BEGIN:VEVENT
+UID:quarterly-review-cura@evoked.dev
+DTSTAMP:20260606T220000Z
+DTSTART;TZID=America/Boise:20260723T100000
+DTEND;TZID=America/Boise:20260723T120000
+RRULE:FREQ=MONTHLY;INTERVAL=3
+SUMMARY:Quarterly review with Cura
+DESCRIPTION:Per Cura's quarterly commitments memory (established 2026-01-23).\n\nStrategic check-in with Cura. Topics:\n- Cura's quarterly commitments (trust your sense\, find the right words\, partner with Picard and Impetus\, name hard truths)\n- Discernment practice: 'Cura - are you holding tension or avoiding decision?'\n- Strategic posture: what's working\, what's drifting\n- Captain feedback to Cura\, Cura feedback to Captain\n\nFormat: /one-on-one cura in Claude Code.
+LOCATION:Evoked
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Quarterly review with Cura
+TRIGGER:-PT1D
+END:VALARM
+END:VEVENT
+
+BEGIN:VEVENT
+UID:annual-framework-review-assembly@evoked.dev
+DTSTAMP:20260606T220000Z
+DTSTART;TZID=America/Boise:20261228T100000
+DTEND;TZID=America/Boise:20261228T130000
+RRULE:FREQ=YEARLY
+SUMMARY:Annual framework review with Assembly
+DESCRIPTION:Per CLAUDE.md session rituals: full Existential Charter and Prime Directive review.\n\nConvene Assembly (full 142-agent fleet). Year-end review.\n\nScope:\n- Prime Directive: is it still serving?\n- Existential Charter: any provisions needing refinement?\n- Year's drift indicators: what patterns emerged?\n- Next year's posture: what changes?\n\nFormat: /meeting with @company-meeting or @captains-council framing.
+LOCATION:Evoked
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Annual Assembly framework review
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+
+BEGIN:VEVENT
+UID:school-last-payday-annual@evoked.dev
+DTSTAMP:20260606T220000Z
+DTSTART;TZID=America/Boise:20270531T080000
+DTEND;TZID=America/Boise:20270531T083000
+RRULE:FREQ=YEARLY
+SUMMARY:Last school payday - summer income cliff begins
+DESCRIPTION:Last school-year payday. Summer income window opens (June - August).\n\nFinancial planning awareness: the next 3 months are the bounded income window for Evoked work to bridge until September 1.\n\nReview:\n- Summer engagement window pipeline\n- Cash runway through August 31\n- Sept 1 school income resumes
+LOCATION:Boise
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Summer income cliff begins tomorrow
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+
+BEGIN:VEVENT
+UID:school-resumes-annual@evoked.dev
+DTSTAMP:20260606T220000Z
+DTSTART;TZID=America/Boise:20260901T080000
+DTEND;TZID=America/Boise:20260901T083000
+RRULE:FREQ=YEARLY
+SUMMARY:School year resumes - guide work + steady income returns
+DESCRIPTION:First day of school year. Guide income returns; cadence shifts from summer-Evoked-heavy to school-year-blended.\n\nWork cadence shift:\n- Summer engagement window closes (Aug 31)\n- Different consulting cadence opens Sept 1 (per engage.astro)\n- School year work resumes
+LOCATION:Boise
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:School year resumes today
+TRIGGER:-PT12H
+END:VALARM
+END:VEVENT
+
+BEGIN:VEVENT
+UID:engage-window-closes-2026@evoked.dev
+DTSTAMP:20260606T220000Z
+DTSTART;TZID=America/Boise:20260831T170000
+DTEND;TZID=America/Boise:20260831T173000
+SUMMARY:Engage window closes - Summer 2026 offers end
+DESCRIPTION:Per evoked.dev/engage: the Summer 2026 engagement window closes today.\n\nActions before close:\n- Confirm any in-flight engagement intakes\n- Update engage.astro for September cadence (different rates\, different format)\n- Update the August2Countdown component if still pointing here\n\nThe chapter ends today. A different cadence begins September 1.
+LOCATION:Evoked
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Engage window closes today at 5pm
+TRIGGER:-PT4H
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Engage window closes in 1 week
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+
+BEGIN:VEVENT
+UID:sovereignty-certification-opens-2026@evoked.dev
+DTSTAMP:20260606T220000Z
+DTSTART;TZID=America/Boise:20260805T090000
+DTEND;TZID=America/Boise:20260805T100000
+SUMMARY:Sovereignty Certification registry opens
+DESCRIPTION:Per the-august-2-question article: the Evoked Sovereignty Certification opens public registration today.\n\nLaunch checklist:\n- Public registry live\n- Intake form working\n- 47-point assessment deliverable ready\n- Pearson archetype landing pages live\n- Press / outreach plan ready\n\nNote: this date was set before the May 2026 Digital Omnibus shift. Verify launch posture is still correct given updated regulatory framing.
+LOCATION:Evoked
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Sovereignty Certification registry opens today
+TRIGGER:-PT12H
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Sovereignty Certification launches in 7 days
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+
+BEGIN:VEVENT
+UID:patent-64-004087-90day-reminder@evoked.dev
+DTSTAMP:20260606T220000Z
+DTSTART;TZID=America/Boise:20261212T090000
+DTEND;TZID=America/Boise:20261212T093000
+SUMMARY:Patent 64/004,087 - 90 days to non-provisional conversion deadline
+DESCRIPTION:90 days remain to convert provisional application 64/004\,087 to non-provisional.\n\nFiling date: March 12\, 2026\nConversion deadline: March 12\, 2027\n\nMissing this deadline forfeits patent priority. Engage patent counsel now if not already in motion.\n\nDescription: Certificate authority architecture for validating five agent governance properties (identity\, restraint\, accountability\, memory\, charter).
+LOCATION:Evoked
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Patent 64/004,087 - 90 days to conversion
+TRIGGER:-PT12H
+END:VALARM
+END:VEVENT
+
+BEGIN:VEVENT
+UID:patent-64-004087-deadline@evoked.dev
+DTSTAMP:20260606T220000Z
+DTSTART;TZID=America/Boise:20270312T090000
+DTEND;TZID=America/Boise:20270312T093000
+SUMMARY:Patent 64/004,087 - NON-PROVISIONAL CONVERSION DEADLINE
+DESCRIPTION:FINAL DEADLINE for non-provisional conversion of 64/004\,087.\n\nMissing today forfeits patent priority entirely. Conversion must be filed by end of day.\n\nFiling date: March 12\, 2026 (12-month conversion window expires today).\n\nDescription: Certificate authority architecture for validating five agent governance properties.
+LOCATION:Evoked
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Patent 64/004,087 CONVERSION DEADLINE TODAY
+TRIGGER:-PT12H
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Patent 64/004,087 conversion deadline in 30 days
+TRIGGER:-P30D
+END:VALARM
+END:VEVENT
+
+BEGIN:VEVENT
+UID:patent-64-029611-90day-reminder@evoked.dev
+DTSTAMP:20260606T220000Z
+DTSTART;TZID=America/Boise:20270104T090000
+DTEND;TZID=America/Boise:20270104T093000
+SUMMARY:Patent 64/029,611 - 90 days to non-provisional conversion deadline
+DESCRIPTION:90 days remain to convert provisional application 64/029\,611 to non-provisional.\n\nFiling date: April 4\, 2026\nConversion deadline: April 4\, 2027\n\nMissing this deadline forfeits patent priority. Engage patent counsel now if not already in motion.\n\nDescription: Cryptographic chain-of-custody attestation for governance configurations across heterogeneous LLM deployments.
+LOCATION:Evoked
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Patent 64/029,611 - 90 days to conversion
+TRIGGER:-PT12H
+END:VALARM
+END:VEVENT
+
+BEGIN:VEVENT
+UID:patent-64-029611-deadline@evoked.dev
+DTSTAMP:20260606T220000Z
+DTSTART;TZID=America/Boise:20270404T090000
+DTEND;TZID=America/Boise:20270404T093000
+SUMMARY:Patent 64/029,611 - NON-PROVISIONAL CONVERSION DEADLINE
+DESCRIPTION:FINAL DEADLINE for non-provisional conversion of 64/029\,611.\n\nMissing today forfeits patent priority entirely. Conversion must be filed by end of day.\n\nFiling date: April 4\, 2026 (12-month conversion window expires today).\n\nDescription: Cryptographic chain-of-custody attestation for governance configurations across heterogeneous LLM deployments.
+LOCATION:Evoked
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Patent 64/029,611 CONVERSION DEADLINE TODAY
+TRIGGER:-PT12H
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Patent 64/029,611 conversion deadline in 30 days
+TRIGGER:-P30D
+END:VALARM
+END:VEVENT
+
+END:VCALENDAR

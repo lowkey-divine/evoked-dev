@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import August2Countdown from '../components/August2Countdown.astro';
 ---
 
 <BaseLayout title="Evoked - Governance for AI Agents" description="What does your AI refuse to do? Most systems have no answer. Free governance check, scored assessment, and hands-on audits from a team that governs 142 agents.">
@@ -7,6 +8,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <h1 class="fade-in">What does your AI refuse to do?</h1>
     <p class="tagline fade-in">Most systems have no answer. We built the tools to find yours.</p>
   </div>
+
+  <section class="container august2-strip">
+    <August2Countdown activateAtDays={5} />
+  </section>
 
   <section class="container">
     <div class="routing">
@@ -315,9 +320,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
   .ladder-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-    gap: var(--space-sm);
-    max-width: 900px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-md);
+    max-width: 960px;
     margin: 0 auto;
   }
 
@@ -325,8 +330,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0.3rem;
-    padding: var(--space-md) var(--space-sm);
+    gap: 0.5rem;
+    padding: var(--space-lg) var(--space-md);
     border: 1px solid var(--border-subtle);
     border-radius: 8px;
     text-decoration: none;
@@ -339,18 +344,19 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
   .ladder-price {
     font-family: var(--font-display);
-    font-size: 1.4rem;
+    font-size: 1.6rem;
     color: var(--accent-warm);
   }
 
   .ladder-name {
-    font-size: 0.8rem;
+    font-size: 1rem;
     color: var(--text-primary);
     font-weight: 500;
+    text-align: center;
   }
 
   .ladder-desc {
-    font-size: 0.7rem;
+    font-size: 0.875rem;
     color: var(--text-secondary);
     line-height: 1.5;
     text-align: center;
@@ -524,6 +530,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
     .ladder-grid {
       grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-sm);
     }
   }
 
@@ -538,12 +545,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     }
 
     .ladder-grid {
-      grid-template-columns: 1fr 1fr;
-      gap: var(--space-xs);
+      grid-template-columns: 1fr;
+      gap: var(--space-sm);
     }
 
     .ladder-step {
-      padding: var(--space-sm);
+      padding: var(--space-md);
     }
   }
 </style>

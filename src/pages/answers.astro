@@ -1,0 +1,236 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+// /answers - Erin's authored answers to questions that come up often.
+// Pairs with /ask (Claude-powered real-time chat) - this is the curated written version.
+// Draft v0.1 - shipped from Day-Two-of-90 media meeting + interview prep substrate.
+// Voice-tells PASS required before commit. Run: evoked-dev/scripts/voice-tells-audit.sh src/pages/answers.astro
+---
+
+<BaseLayout
+  title="Answers"
+  description="Erin Stanley on AI agent governance, the Refusal Specification, Trust Architecture, Sovereignty Assessment, the EU AI Act, and what it actually takes to build AI you can verify."
+>
+  <div class="hero-small">
+    <h1>Answers</h1>
+    <p class="tagline">The questions I get asked often, in my own words.</p>
+    <p class="disclaimer">For questions not covered here, the <a href="/ask">/ask</a> chat is live, or <a href="mailto:passionevoked@icloud.com">reach out directly</a>.</p>
+  </div>
+
+  <section class="container">
+
+    <h2>About</h2>
+
+    <article class="qa">
+      <h3>What is Evoked?</h3>
+      <p>I'm Erin Stanley. I run Evoked, where we build governance frameworks for AI agents - the rules that decide what an AI is allowed to do, what it has to refuse, and what stays the user's choice. I built and run a 142-agent system in production, which is where the frameworks actually get tested.</p>
+    </article>
+
+    <article class="qa">
+      <h3>How did you get into this work?</h3>
+      <p>I built a family meal-planning app called Executive Chef and ran into a question nobody had a clean answer for: when an AI is helping a family decide what to eat, who's accountable for what gets said? That question opened into all the others.</p>
+    </article>
+
+    <article class="qa">
+      <h3>A 142-agent system - what does that actually mean?</h3>
+      <p>It's a fleet of named AI personas, each with their own role. One handles security. One handles trauma-informed design. One handles narrative. One handles operations. They have memory across sessions, they can disagree with each other, and they can refuse to do work they think violates the mission. It's where I test what governance looks like in practice instead of on paper.</p>
+    </article>
+
+    <h2>The Frameworks</h2>
+
+    <article class="qa">
+      <h3>What is the Refusal Specification?</h3>
+      <p>Six categories of things an AI agent must refuse. Things like: don't override a user's autonomy. Don't act outside your scope. Don't create dependency. Don't violate consent. Most AI work focuses on what the agent should do. The Refusal Spec names what it must not do, and why.</p>
+    </article>
+
+    <article class="qa">
+      <h3>What is Trust Architecture?</h3>
+      <p>Five layers that have to hold together for an agent to be trustworthy: identity, restraint, accountability, memory, and charter. Most autonomous agent designs assume trust composes across these layers. Trust Architecture is what happens when you actually build it instead of assuming it.</p>
+    </article>
+
+    <article class="qa">
+      <h3>What is the Sovereignty Assessment?</h3>
+      <p>A 47-point checklist across seven domains - does this AI product respect the user or extract from them? Most products score 11-19 out of 47. It names the things product teams know they should be doing but don't have a framework for.</p>
+    </article>
+
+    <article class="qa">
+      <h3>How is this different from Constitutional AI?</h3>
+      <p>Constitutional AI asks whether an agent should comply with what it's told. Sovereignty governance asks whether it should act at all. Different layer. Compliance is downstream. Refusal at the architecture level is upstream.</p>
+    </article>
+
+    <h2>Context</h2>
+
+    <article class="qa">
+      <h3>What is the EU AI Act and why does it matter right now?</h3>
+      <p>The EU's law regulating AI systems. Enforcement lands August 2 this year. It creates real legal consequences for AI products that don't handle risk and consent properly. For companies using AI agents, governance is no longer optional - it's compliance with teeth.</p>
+    </article>
+
+    <article class="qa">
+      <h3>What does "agent sovereignty" actually mean in plain English?</h3>
+      <p>Two parts. The user has the right to control what the agent does with their data and on their behalf. And the agent has the right to refuse work that violates its principles. Sovereignty is the line that says: this entity gets to say no, and that no gets honored.</p>
+    </article>
+
+    <article class="qa">
+      <h3>Are agents really at risk of recursive self-improvement?</h3>
+      <p>Anthropic just published internal numbers - 80% of their code is now written by Claude, and Claude proposed better next-step decisions than human researchers 64% of the time. The capability isn't theoretical anymore. The governance question is who has standing to refuse what the agent decides to build next.</p>
+    </article>
+
+    <h2>The Harder Questions</h2>
+
+    <article class="qa">
+      <h3>How can we verify your system actually works?</h3>
+      <p>Three layers, honestly. First - what's verifiable today: the fleet exists, the decision logs are append-only, the agent disagreement and refusals are on record, you can walk the architecture and inspect it. Second - what isn't yet: no independent third-party audit has happened, the patent attestation layer is still provisional. Third - the recursive piece: the fact that I just told you the gaps is itself the architecture working. Declared-and-unverified governance would have given you a clean yes. Verifiable-by-architecture governance gives you the gap and the path to closing it.</p>
+      <p>Recent example. Yesterday six of my agents convened to review the customer journey for the 90-day campaign I'm running. They came from different domains - strategy, narrative, trauma-informed care, operations, content integrity, executive operations. They independently identified four gaps. Including the fact that the campaign's payment funnel had gone live without a privacy policy. The architecture caught the architect.</p>
+    </article>
+
+    <article class="qa">
+      <h3>Why use Evoked over a larger named consulting firm or AI lab?</h3>
+      <p>Depends on what a company is shopping for. If they want a governance policy document - a written framework, a compliance checklist, a published responsibility report - the big consulting firms produce those well. That's their model.</p>
+      <p>If they want the governance built into the architecture - the kind that's verifiable, refusable, that actually shows up in the agent's behavior in real time - that's a different category of work. That's what Evoked does. Different category, not smaller version of the same thing.</p>
+      <p>The other piece: AI labs that offer governance frameworks also produce the models being governed. That's not malicious. It is structurally a conflict. Evoked doesn't sell models. The architecture is heterogeneous - it works on Claude, on GPT, on something that doesn't exist yet. No vendor lock.</p>
+      <p>The honest part: Evoked is small. I'm not going to send a hundred-person consulting team. I'm going to send the architect, the frameworks, and the working fleet. If a company wants the polished slide deck, the bigger players are better for that. If they want the architecture that holds when an auditor asks the harder question, that's what I've spent years building.</p>
+    </article>
+
+    <article class="qa">
+      <h3>Tell me about the patents.</h3>
+      <p>Two provisional patent applications filed earlier this year on agent governance-property validation - ways to verify that an AI agent's stated governance actually holds in practice. The architecture engages with regulatory requirements emerging from EU AI Act Articles 14 and 72 (human oversight and post-market monitoring) and composes with parallel NIST AI Risk Management Framework work.</p>
+      <p>The patents are defensive, not offensive. There's a Defensive Patent Pledge attached. They're not for blocking other people from doing this work; they're for making sure the architecture stays usable by anyone working in alignment. The <a href="/governance">Aligned Licensee Charter</a> names who can use it and at what stage.</p>
+      <p>For deeper background on the architecture and philosophy: <a href="/patents">/patents</a>.</p>
+    </article>
+
+  </section>
+
+  <section class="container closing">
+    <p class="closing-line">For questions not covered here, the <a href="/ask">/ask</a> chat is live - it answers in real time using Claude. For deeper conversation, <a href="mailto:passionevoked@icloud.com">reach out directly</a>.</p>
+  </section>
+
+  <!-- FAQ JSON-LD for SEO. Updates when answers update. -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is Evoked?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Evoked builds governance frameworks for AI agents - the rules that decide what an AI is allowed to do, what it has to refuse, and what stays the user's choice. Founded by Erin Stanley, who built and runs a 142-agent system in production where the frameworks are tested."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the Refusal Specification?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Six categories of things an AI agent must refuse: don't override user autonomy, don't act outside scope, don't create dependency, don't violate consent, and more. Most AI work focuses on what the agent should do. The Refusal Spec names what it must not do, and why."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is Trust Architecture?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Five layers that have to hold together for an agent to be trustworthy: identity, restraint, accountability, memory, and charter. Most autonomous agent designs assume trust composes across these layers. Trust Architecture is what happens when you actually build it."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the Sovereignty Assessment?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A 47-point checklist across seven domains - does this AI product respect the user or extract from them? Most products score 11-19 out of 47. The framework names what product teams know they should be doing but don't have a framework for."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How is Evoked different from Constitutional AI?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Constitutional AI asks whether an agent should comply with what it's told. Sovereignty governance asks whether it should act at all. Different layer. Compliance is downstream. Refusal at the architecture level is upstream."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How can we verify the system actually works?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Three layers. What's verifiable today: the 142-agent fleet exists, decision logs are append-only, agent disagreement and refusals are on record, you can walk the architecture and inspect it. What isn't yet: no independent third-party audit, patent attestation layer is provisional. The recursive piece: honest gap-naming is itself the architecture working."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why Evoked over a larger consulting firm or AI lab?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Bigger players sell governance as policy documents and compliance checklists. Evoked sells governance as architecture - built into the system, verifiable in the agent's behavior. Different category, not smaller version of the same thing. AI labs that offer governance also produce the models being governed - structural conflict. Evoked doesn't sell models."
+        }
+      }
+    ]
+  })} />
+</BaseLayout>
+
+<style>
+  .hero-small {
+    text-align: center;
+    padding: var(--space-lg) var(--space-md);
+  }
+
+  .hero-small h1 {
+    margin-bottom: var(--space-sm);
+  }
+
+  .tagline {
+    font-size: var(--text-lg);
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-md);
+  }
+
+  .disclaimer {
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+    max-width: 50ch;
+    margin: 0 auto;
+  }
+
+  .container h2 {
+    margin-top: var(--space-xl);
+    margin-bottom: var(--space-md);
+    border-bottom: 1px solid var(--color-border);
+    padding-bottom: var(--space-xs);
+  }
+
+  .container h2:first-of-type {
+    margin-top: var(--space-md);
+  }
+
+  .qa {
+    margin-bottom: var(--space-lg);
+  }
+
+  .qa h3 {
+    margin-bottom: var(--space-sm);
+    font-size: var(--text-lg);
+  }
+
+  .qa p {
+    margin-bottom: var(--space-sm);
+    line-height: 1.7;
+  }
+
+  .qa p:last-child {
+    margin-bottom: 0;
+  }
+
+  .closing {
+    text-align: center;
+    padding: var(--space-lg) var(--space-md);
+    border-top: 1px solid var(--color-border);
+    margin-top: var(--space-xl);
+  }
+
+  .closing-line {
+    color: var(--color-text-muted);
+    max-width: 60ch;
+    margin: 0 auto;
+  }
+</style>

@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import August2Countdown from '../components/August2Countdown.astro';
 ---
 
 <BaseLayout
@@ -8,7 +9,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 >
   <div class="hero">
     <p class="recognition">Erin Stanley, Evoked - Engagement Window</p>
-    <h1>The August deadline is not the EU AI Act. It is the day this window closes.</h1>
+    <h1>The EU just bought you sixteen months. This window closes August 31 anyway.</h1>
+    <August2Countdown activateAtDays={8} />
     <p class="tagline">
       Three engagements. Public pricing. Available through August 31, 2026.
       Then the chapter ends and a different one begins.
@@ -103,11 +105,18 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <section class="container">
     <h2>Why August 31</h2>
     <p>
-      A 2026 governance window is not abstract. The EU AI Act high-risk obligations
-      land August 2. The Anthropic-Blackstone joint venture launched a $1.5 billion
-      Claude services build in May. The mid-market Claude consulting space is being
-      capitalized in real time. The teams that get audit-ready this summer are not
-      the teams that will get audit-ready in October. They are different teams.
+      A 2026 governance window is not abstract. The EU AI Act use-based high-risk
+      deadline just moved to December 2027 under the May 2026 Digital Omnibus (provisional
+      political agreement; consolidated text pending Official Journal publication).
+      The synthetic-content marking obligation lands in December 2026. Article 5
+      prohibitions and General-Purpose AI rules are live today. The Anthropic-Blackstone
+      joint venture launched a $1.5 billion Claude services build in May. The mid-market
+      Claude consulting space is being capitalized in real time. The teams that get
+      architected this summer are the teams that help shape the standards. The teams
+      that wait inherit them.
+    </p>
+    <p class="verified-stamp" style="font-size: 0.85rem; color: #888; margin-top: 8px;">
+      <em>Regulatory facts verified 2026-06-06. EU AI Act in active amendment; see <a href="/writing/the-deadline-moved-the-question-did-not/">canonical analysis</a>.</em>
     </p>
     <p>
       The window is also mine. School resumes in the fall. The work in September

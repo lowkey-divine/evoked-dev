@@ -1,0 +1,23 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Evoked//Regulatory Verification//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:regulatory-verification-evoked-2026-06-13@evoked.dev
+DTSTAMP:20260606T220000Z
+DTSTART;TZID=America/Boise:20260613T091300
+DTEND;TZID=America/Boise:20260613T100000
+RRULE:FREQ=WEEKLY;BYDAY=SA
+SUMMARY:EU AI Act regulatory verification (weekly)
+DESCRIPTION:Run the regulatory verification cadence:\n\n1. Staleness check:\n   bash /Users/europa/Code/evoked-dev/scripts/verify-regulatory-state.sh --staleness\n\n2. If stale\, copy the verification prompt to clipboard:\n   bash /Users/europa/Code/evoked-dev/scripts/verify-regulatory-state.sh --prompt | pbcopy\n\n3. Paste into a fresh Claude Code session. Claude runs WebSearch + WebFetch and surfaces deltas.\n\n4. Review deltas; update regulatory-state.yml; sweep affected artifacts within 7 days.\n\nSource of truth: src/content/regulatory-state/regulatory-state.yml\nProtocol: src/content/regulatory-state/README.md\n\nFirst occurrence: 2026-06-13 (next_verification_due per state file).\nCadence: weekly during EU AI Act active amendment. Switch to monthly once Official Journal publishes the Digital Omnibus consolidated text.
+LOCATION:Evoked
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Regulatory verification cadence - EU AI Act
+TRIGGER:-PT30M
+END:VALARM
+END:VEVENT
+END:VCALENDAR

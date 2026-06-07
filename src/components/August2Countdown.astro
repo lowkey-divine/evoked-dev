@@ -1,0 +1,100 @@
+---
+// Sovereignty-honest countdown to EU AI Act synthetic-content marking
+// obligation (2026-12-02). Originally targeted 2026-08-02 (use-based
+// high-risk enforcement); retargeted 2026-06-06 after the May 2026
+// Digital Omnibus moved the use-based deadline to 2027-12-02 and
+// the synthetic-content marking deadline to 2026-12-02.
+//
+// Activation gate: the ticker is hidden until `activateAtDays` days remain.
+// Before the window opens, the component renders nothing. After the
+// deadline passes, the component renders nothing. The ticker only
+// appears when the deadline is genuinely close.
+//
+// No third-party services. No tracking. Vanilla JS. SSR-safe placeholder.
+// Original authorship 2026-06-06 (Pons). Retarget 2026-06-06 (post-Omnibus).
+// Voice-tells: clean.
+
+interface Props {
+  activateAtDays?: number;
+  targetIso?: string;
+  framingCopy?: string;
+}
+
+const {
+  activateAtDays = 8,
+  targetIso = '2026-12-02T00:00:00Z',
+  framingCopy = 'December 2 deadline - EU AI Act synthetic-content marking:',
+} = Astro.props;
+---
+
+<div
+  class="august2-countdown"
+  data-target={targetIso}
+  data-activate-at-days={activateAtDays}
+  data-framing={framingCopy}
+  hidden
+></div>
+
+<style>
+  .august2-countdown {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    margin: 1.5rem 0;
+    color: inherit;
+    font-variant-numeric: tabular-nums;
+  }
+  .august2-countdown .label {
+    font-weight: 500;
+  }
+  .august2-countdown[hidden] {
+    display: none;
+  }
+</style>
+
+<script>
+  (function () {
+    const els = document.querySelectorAll<HTMLElement>('.august2-countdown');
+    if (els.length === 0) return;
+
+    function pluralize(n: number, single: string, plural: string): string {
+      return n === 1 ? single : plural;
+    }
+
+    function update(el: HTMLElement): void {
+      const targetIso = el.getAttribute('data-target') || '';
+      const activateAtDays = parseInt(el.getAttribute('data-activate-at-days') || '8', 10);
+      const framing = el.getAttribute('data-framing') || '';
+
+      const targetMs = new Date(targetIso).getTime();
+      const ms = targetMs - Date.now();
+
+      if (ms < 0) {
+        el.setAttribute('hidden', '');
+        return;
+      }
+
+      const totalSeconds = Math.floor(ms / 1000);
+      const days = Math.floor(totalSeconds / 86400);
+      const hours = Math.floor((totalSeconds % 86400) / 3600);
+      const minutes = Math.floor((totalSeconds % 3600) / 60);
+      const seconds = totalSeconds % 60;
+
+      if (days >= activateAtDays) {
+        el.setAttribute('hidden', '');
+        return;
+      }
+
+      el.removeAttribute('hidden');
+
+      const ticker =
+        days === 0 && hours === 0 && minutes === 0 && seconds === 0
+          ? 'Today is the day.'
+          : `${days} ${pluralize(days, 'day', 'days')}, ${hours} ${pluralize(hours, 'hour', 'hours')}, ${minutes} ${pluralize(minutes, 'minute', 'minutes')}, ${seconds} ${pluralize(seconds, 'second', 'seconds')}.`;
+
+      el.innerHTML = `<span class="label">${framing}</span> <span class="ticker">${ticker}</span>`;
+    }
+
+    els.forEach(update);
+    setInterval(() => els.forEach(update), 1000);
+  })();
+</script>
