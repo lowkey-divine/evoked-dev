@@ -104,8 +104,8 @@ ${ul([
   li('<strong>A live proof case.</strong> A Compass we are building for a private school in Idaho - a developmental wayfinding platform applying the same principles that scale to enterprise AI agents.'),
 ])}
 
-${h('Three engagements. Public pricing. Through August 31.')}
-${p('The summer window is bounded by design. Three productized engagements prepare companies for the Evoked Sovereignty Certification, which opens public registration on August 5.')}
+${h('Three engagements. Public pricing. Through December 31.')}
+${p('The 2026 window is bounded by design. Three productized engagements prepare companies for the Evoked Sovereignty Certification, which opens public registration on August 5.')}
 <table style="border-collapse: collapse; width: 100%; margin: 0 0 20px;">${offerRows}</table>
 ${p('Full descriptions, deliverables, and intake: ' + link('https://evoked.dev/engage') + '.')}
 
