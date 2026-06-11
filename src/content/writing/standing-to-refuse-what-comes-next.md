@@ -40,6 +40,8 @@ You now have language to ask why.
 
 The Responsible Scaling Policy exists. It is at version 3.3 as of this writing. It establishes a Long-Term Benefit Trust with named authority to request external review of risk reports. There is real architecture there, and it is publicly readable. The question is not whether Anthropic has built something. The question is whether what is built specifically reaches the next-version-design surface, with a named function, a named person, and an audited record. Run the question. Read what comes back. The reader of this article and the reader of that policy are the same person now.
 
+We built the standing-to-refuse architecture using Claude, in public, over many months.
+
 For everyone else, this is your governance question now, whether or not you wanted one. The lab gave you the data. The vendor will give you the answer if you ask. Your question is the one in italics above. Your authority to ask it is the same authority the lab itself acknowledged when they asked the world for a pause option. They named the moment. We are now inside it.
 
 The work continues either way.
