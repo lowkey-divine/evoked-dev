@@ -32,28 +32,53 @@ import August2Countdown from '../components/August2Countdown.astro';
   </section>
 
   <section class="container">
+    <div class="fit-gate">
+      <h2>Before you choose</h2>
+      <p>
+        The engagements below deliver two things in one. The technical shortcut to
+        where you need to be by December 2 - the audit, the spec, the retainer.
+        And a shift in how your team holds the governance question itself.
+      </p>
+      <p>
+        If you arrived ready for both, the engagement is right. If you arrived
+        ready only for the deliverable, the <a href="/writing">writing surface</a>
+        or the <a href="/consulting">products page</a> may be the better service
+        for you right now.
+      </p>
+    </div>
+  </section>
+
+  <section class="container">
     <h2>The Three Offers</h2>
 
     <div class="offer-stack">
 
       <div class="offer-card">
         <div class="offer-head">
-          <span class="offer-tag">Audit + roadmap</span>
+          <span class="offer-tag">Architecture audit + roadmap</span>
           <span class="offer-price">$25,000</span>
         </div>
-        <h3>Sovereignty Assessment</h3>
-        <p class="offer-window">Four weeks. Two working sessions. Written deliverable.</p>
+        <h3>Sovereignty Architecture Audit</h3>
+        <p class="offer-outcome">Know your standing before your auditors do.</p>
+        <p class="offer-window">Eight weeks. Four working sessions. Written architecture deliverable.</p>
         <p>
-          The 47-point assessment applied to your agent system across seven domains -
-          identity, memory, restraint, voice, drift, refusal architecture, and governance
-          surface. Findings come prioritized with a remediation roadmap your team can
-          execute against. You learn where your agents hold and where they break before
-          your auditors do.
+          The 47-point assessment applied to your agent system across seven domains over
+          an extended contract engagement - identity, memory, restraint, voice, drift,
+          refusal architecture, and governance surface. We go deeper than the score. The
+          eight weeks let us walk your build team through the findings as they land, run
+          architecture recommendations against your real constraints, and produce a
+          remediation roadmap your team can execute against with effort sizing on every
+          line. You learn where your agents hold and where they break before your auditors
+          do - and you have time to fix what matters most before the next compliance
+          window opens.
         </p>
         <ul class="offer-deliverables">
-          <li>Written sovereignty assessment scored against 47 properties</li>
-          <li>Prioritized remediation roadmap with effort sizing</li>
-          <li>One executive readout. One working session with the build team.</li>
+          <li>Written sovereignty architecture audit scored against 47 properties</li>
+          <li>Architecture recommendations sized against your current build state</li>
+          <li>Prioritized remediation roadmap with effort estimates per finding</li>
+          <li>Four working sessions across the eight weeks: one executive readout, one build team kickoff, one mid-engagement checkpoint, one closing alignment</li>
+          <li>Async review of refusal specs, system prompts, and architecture artifacts throughout the engagement</li>
+          <li>Thirty-day follow-up window for clarifications after final delivery</li>
         </ul>
       </div>
 
@@ -63,6 +88,7 @@ import August2Countdown from '../components/August2Countdown.astro';
           <span class="offer-price">$10,000</span>
         </div>
         <h3>Agent Architecture Spec</h3>
+        <p class="offer-outcome">From demo to deployment.</p>
         <p class="offer-window">Two to three weeks. One working session. Written spec.</p>
         <p>
           A specification document your autonomous agents can execute against over
@@ -84,6 +110,7 @@ import August2Countdown from '../components/August2Countdown.astro';
           <span class="offer-price">$15,000/month</span>
         </div>
         <h3>Governance Advisor Retainer</h3>
+        <p class="offer-outcome">A governance partner at your ship cadence.</p>
         <p class="offer-window">Sixteen hours per month. Through December 31. Renewable.</p>
         <p>
           Standing governance counsel for teams whose agents are shipping faster than
@@ -185,6 +212,34 @@ import August2Countdown from '../components/August2Countdown.astro';
 </BaseLayout>
 
 <style>
+  .offer-outcome {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    color: var(--accent-warm);
+    font-style: italic;
+    margin: 0.5rem 0 1rem;
+    line-height: 1.4;
+  }
+
+  .fit-gate {
+    border-left: 2px solid var(--border-accent);
+    padding-left: var(--space-md);
+    margin: var(--space-md) 0;
+  }
+
+  .fit-gate h2 {
+    color: var(--accent-warm);
+    margin-bottom: var(--space-sm);
+  }
+
+  .fit-gate p {
+    margin-bottom: var(--space-sm);
+  }
+
+  .fit-gate p:last-child {
+    margin-bottom: 0;
+  }
+
   .hero {
     text-align: left;
     max-width: 760px;
