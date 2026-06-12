@@ -19,6 +19,14 @@ import August2Countdown from '../components/August2Countdown.astro';
   </section>
 
   <section class="container">
+    <div class="outcome-block">
+      <p class="outcome-lead">Free Sovereignty Score.</p>
+      <p class="outcome-detail">Five questions. Two minutes. No signup. See your score the moment you finish.</p>
+      <a href="/score" class="outcome-cta">Begin &rarr;</a>
+    </div>
+  </section>
+
+  <section class="container">
     <div class="routing">
       <h2 class="ladder-heading">Find your doorway.</h2>
       <div class="routing-grid">
@@ -229,6 +237,47 @@ import August2Countdown from '../components/August2Countdown.astro';
 </script>
 
 <style>
+  /* --- Outcome block (specific delivery promise; bridges to /score) --- */
+
+  .outcome-block {
+    text-align: center;
+    padding: var(--space-md) 0;
+    max-width: 36rem;
+    margin: 0 auto;
+  }
+
+  .outcome-lead {
+    font-family: var(--font-display);
+    font-size: clamp(1.5rem, 4vw, 2.2rem);
+    color: var(--accent-warm);
+    margin-bottom: var(--space-sm);
+    line-height: 1.2;
+  }
+
+  .outcome-detail {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    margin-bottom: var(--space-md);
+    line-height: 1.5;
+  }
+
+  .outcome-cta {
+    display: inline-block;
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent-warm);
+    background: transparent;
+    border: 1px solid var(--border-accent);
+    padding: 0.8rem 2.5rem;
+    text-decoration: none;
+    transition: border-color 0.3s ease;
+  }
+
+  .outcome-cta:hover {
+    border-color: var(--accent-warm);
+  }
+
   /* --- Hero breath (Salus: parasympathetic landing for first-time visitor) --- */
 
   .hero-breath {
