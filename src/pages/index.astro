@@ -4,6 +4,10 @@ import August2Countdown from '../components/August2Countdown.astro';
 ---
 
 <BaseLayout title="Evoked - Governance for AI Agents" description="What does your AI refuse to do? Most systems have no answer. Free governance check, scored assessment, and hands-on audits from a team that governs 142 agents.">
+  <div class="welcome-back" id="welcome-back" hidden aria-live="polite">
+    <p>Welcome back. Take your time. <button type="button" id="welcome-back-forget" class="welcome-back-forget" aria-label="Forget that I have visited before">Forget me</button></p>
+  </div>
+
   <div class="hero">
     <h1 class="fade-in">What does your AI refuse to do?</h1>
     <p class="tagline fade-in">Most systems have no answer. We built the tools to find yours.</p>
@@ -143,6 +147,34 @@ import August2Countdown from '../components/August2Countdown.astro';
 </BaseLayout>
 
 <script>
+  // Memory-as-Care: returning-reader welcome.
+  // Stores only "have you been here before" in the visitor's own browser.
+  // No server call. No behavioral data. The visitor remembers themselves;
+  // we honor it by saying welcome back. They can clear it any time.
+  const VISIT_KEY = 'evoked_visited';
+  const welcomeBackEl = document.getElementById('welcome-back') as HTMLDivElement | null;
+  const forgetBtn = document.getElementById('welcome-back-forget') as HTMLButtonElement | null;
+
+  try {
+    const hasVisited = localStorage.getItem(VISIT_KEY);
+    if (hasVisited && welcomeBackEl) {
+      welcomeBackEl.hidden = false;
+    } else {
+      localStorage.setItem(VISIT_KEY, 'true');
+    }
+  } catch {
+    // localStorage unavailable (private browsing, disabled). Do nothing.
+  }
+
+  if (forgetBtn) {
+    forgetBtn.addEventListener('click', () => {
+      try {
+        localStorage.removeItem(VISIT_KEY);
+      } catch {}
+      if (welcomeBackEl) welcomeBackEl.hidden = true;
+    });
+  }
+
   const form = document.getElementById('newsletter-form') as HTMLFormElement;
   const status = document.getElementById('newsletter-status') as HTMLParagraphElement;
   const emailInput = document.getElementById('newsletter-email') as HTMLInputElement;
@@ -196,6 +228,37 @@ import August2Countdown from '../components/August2Countdown.astro';
 </script>
 
 <style>
+  /* --- Welcome Back (Memory-as-Care: returning-reader, localStorage only) --- */
+
+  .welcome-back {
+    text-align: center;
+    padding: var(--space-sm) var(--space-md);
+    background: var(--bg-surface);
+    border-bottom: 1px solid var(--border-subtle);
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+  }
+
+  .welcome-back p {
+    margin: 0;
+  }
+
+  .welcome-back-forget {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    text-decoration: underline;
+    cursor: pointer;
+    padding: 0;
+    margin-left: var(--space-xs);
+    font-family: inherit;
+  }
+
+  .welcome-back-forget:hover {
+    color: var(--accent-warm);
+  }
+
   /* --- Routing Cards --- */
 
   .routing-grid {
