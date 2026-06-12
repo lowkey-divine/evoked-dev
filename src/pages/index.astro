@@ -5,12 +5,13 @@ import August2Countdown from '../components/August2Countdown.astro';
 
 <BaseLayout title="Evoked - Governance for AI Agents" description="What does your AI refuse to do? Most systems have no answer. Free governance check, scored assessment, and hands-on audits from a team that governs 142 agents.">
   <div class="welcome-back" id="welcome-back" hidden aria-live="polite">
-    <p>Welcome back. Take your time. <button type="button" id="welcome-back-forget" class="welcome-back-forget" aria-label="Forget that I have visited before">Forget me</button></p>
+    <p>Welcome back. <button type="button" id="welcome-back-forget" class="welcome-back-forget" aria-label="Forget that I have visited before">Forget me</button></p>
   </div>
 
   <div class="hero">
     <h1 class="fade-in">What does your AI refuse to do?</h1>
     <p class="tagline fade-in">Most systems have no answer. We built the tools to find yours.</p>
+    <p class="hero-breath fade-in">Take your time.</p>
   </div>
 
   <section class="container august2-strip">
@@ -228,6 +229,16 @@ import August2Countdown from '../components/August2Countdown.astro';
 </script>
 
 <style>
+  /* --- Hero breath (Salus: parasympathetic landing for first-time visitor) --- */
+
+  .hero-breath {
+    margin-top: var(--space-sm);
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    font-style: italic;
+    letter-spacing: 0.02em;
+  }
+
   /* --- Welcome Back (Memory-as-Care: returning-reader, localStorage only) --- */
 
   .welcome-back {
