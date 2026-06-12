@@ -1,0 +1,277 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Privacy Policy" description="Evoked Sovereignty Audit privacy policy. What we collect, what we do not collect, what you can refuse, and how to ask us to forget you completely." hideFloatingChat={true}>
+  <div class="hero">
+    <p class="hero-above">Evoked</p>
+    <h1>Privacy Policy</h1>
+    <p class="tagline">Sovereignty Audit</p>
+    <p class="version-note">Version 0.3 - Effective June 12, 2026</p>
+  </div>
+
+  <section class="container legal-body">
+
+    <p class="lead">
+      Your business is yours. What you share with us during this engagement is held with the same care we ask you to hold for the people you serve. This document names what we collect, what we do with it, what we do not do with it, what we will never do with it, and what you can ask of us at any time.
+    </p>
+
+    <p class="lead">
+      We wrote this in the voice we wanted to read when we have been on the other side of policies like this. If anything here is unclear, ask us directly and we will answer in the same voice.
+    </p>
+
+    <div class="legal-section">
+      <h2>1. What We Collect</h2>
+      <p>We collect three categories of information, and only these three:</p>
+
+      <p><strong>Billing information</strong> (required by Stripe to process payment):</p>
+      <ul>
+        <li>Your name as it appears on your billing method</li>
+        <li>Your billing address</li>
+        <li>Your email address for receipts and engagement correspondence</li>
+        <li>Payment method details, which Stripe holds and we never see in raw form</li>
+      </ul>
+
+      <p><strong>Engagement substrate</strong> (what you choose to share during the audit):</p>
+      <ul>
+        <li>The artifacts you provide for the audit (architecture documents, code surfaces you choose to share, policy documents, prior audit findings, anything else you author into the engagement)</li>
+        <li>Notes from our working sessions, which you receive copies of</li>
+        <li>Correspondence during the engagement</li>
+      </ul>
+
+      <p><strong>Correspondence</strong> necessary to deliver the work:</p>
+      <ul>
+        <li>Email exchanges related to scheduling, scope clarification, and deliverable delivery</li>
+      </ul>
+
+      <p>That is the complete list. We do not collect anything else.</p>
+    </div>
+
+    <div class="legal-section">
+      <h2>2. How You Share Substrate With Us</h2>
+      <p>The channel through which you share your engagement substrate matters as much as what you share. We use channels with appropriate security properties for the sensitivity of the material, and you choose which channel works for you.</p>
+
+      <p><strong>You have two channel options for the engagement substrate:</strong></p>
+
+      <p><strong>Option 1: Private GitHub repository.</strong> You can invite us as a read-only collaborator on your existing private repository, or we can create a private repository for the engagement and invite you. Either shape works; you choose. GitHub provides encryption in transit and at rest, granular access control, a built-in audit log of every access event, and the ability to revoke our access with a single click at the close of the engagement.</p>
+
+      <p><strong>Option 2: Proton Drive.</strong> Proton Drive is a Swiss-based end-to-end encrypted file-sharing service with a free tier (5 GB) sufficient for most engagement substrate. Files are encrypted client-side before upload; Proton's servers cannot read your substrate. You sign up at proton.me, share a folder with us using the email address we provide, and revoke our access at engagement close.</p>
+
+      <p><em>You choose between these two options based on what fits your team and your artifacts. If you have a different end-to-end encrypted channel you already trust and prefer (for example, your organization's existing secure file-sharing tool), name it and we use it instead.</em></p>
+
+      <p><strong>Email is acceptable for logistical correspondence only:</strong> scheduling, scope clarification, deliverable delivery. We do not send or receive code, architecture documents, security findings, or audit deliverables via email attachments.</p>
+
+      <p><strong>What you can refuse:</strong> any specific channel, at any time, for any reason. If neither of our two default options works for you and you do not have a preferred alternative, we work with you to find a channel that does. The substrate is yours; the channel that carries it should be one you trust.</p>
+
+      <p><strong>What we never do:</strong> transmit substrate over unencrypted channels, share substrate with any third party including the platforms above beyond what is required to transmit it, or retain access to the substrate after the engagement closes plus the ninety-day clarification tail.</p>
+    </div>
+
+    <div class="legal-section">
+      <h2>3. What We Do Not Collect</h2>
+      <p>We name this explicitly because the absence of a thing is sometimes more important than its presence:</p>
+      <ul>
+        <li>We do not collect behavioral telemetry on your interactions with us</li>
+        <li>We do not run analytics tools on our correspondence or working sessions</li>
+        <li>We do not build cross-engagement profiles of customers</li>
+        <li>We do not inject third-party trackers into confirmation pages, receipt emails, or deliverables</li>
+        <li>We do not collect data that would let us infer anything about you beyond what you have chosen to share</li>
+        <li>We do not enrich your record with data from data brokers or other third-party sources</li>
+        <li>We do not assume incompleteness; we assume sovereignty. The scope you author is the scope of the engagement.</li>
+      </ul>
+    </div>
+
+    <div class="legal-section">
+      <h2>4. How We Use What We Collect</h2>
+      <p>Engagement substrate is used only to deliver the engagement you paid for. We do not use it for any other purpose, including but not limited to:</p>
+      <ul>
+        <li>Marketing or sales outreach</li>
+        <li>Training AI models, ours or anyone else's</li>
+        <li>Building generalized methodologies or frameworks based on your specific situation</li>
+        <li>Sharing as case-study material without your explicit written per-use consent</li>
+        <li>Any other purpose that you did not author the substrate to serve</li>
+      </ul>
+      <p>Billing information is used only for payment processing and engagement correspondence.</p>
+      <p>Correspondence is used only to communicate with you about the engagement.</p>
+    </div>
+
+    <div class="legal-section">
+      <h2>5. Third-Party Sharing Limits</h2>
+      <p>We use a small number of third parties because we have to, and we keep that number small on purpose. The complete list:</p>
+
+      <p><strong>Stripe</strong> processes payments and receives the billing information required to do so. Stripe's privacy practices are governed by Stripe's policy at stripe.com/privacy.</p>
+
+      <p><strong>Email provider</strong> (currently Resend) processes outbound transactional email. Your email address is shared with the provider for the limited purpose of delivering the message.</p>
+
+      <p><strong>Substrate transfer channels</strong> (GitHub or Proton Drive, per Section 2): These platforms receive the engagement substrate you choose to share, for the limited purpose of transmitting it between you and us. Their privacy practices are governed by their own policies at github.com/privacy and proton.me/legal/privacy.</p>
+
+      <p>That is the complete list of third parties that receive any engagement-related information. We do not share engagement substrate with any third party beyond what is required to transmit it via the channel you choose.</p>
+
+      <p>If we ever need to add a third party for any operational reason, this policy is amended before the addition takes effect, you are notified at the email address on file, and the addition is recorded in the document's amendment history.</p>
+    </div>
+
+    <div class="legal-section">
+      <h2>6. Retention</h2>
+      <p>Engagement substrate is held for the duration of the engagement plus a ninety-day tail for you to return with clarification questions at no additional charge. After the ninety-day tail closes, the substrate is deleted, not anonymized. True deletion. The records do not persist in a shape we could later re-identify.</p>
+      <p>Billing records are retained as long as legally required for tax and accounting purposes (typically seven years under United States federal requirements), then deleted.</p>
+      <p>Correspondence is retained alongside engagement substrate and follows the same ninety-day tail policy.</p>
+      <p>You can ask for earlier deletion at any time. See section 8.</p>
+    </div>
+
+    <div class="legal-section">
+      <h2>7. Security Baseline</h2>
+      <p>Engagement substrate is held with encryption at rest and encryption in transit. Working sessions are conducted via tools you and we agree on; we default to options that do not record content beyond what you authorize.</p>
+      <p>Access to engagement substrate is limited to the named primary point of contact (Erin Stanley) and any team members you explicitly approve. We do not grant access to any other party without your explicit written permission.</p>
+      <p>If we ever become aware of an unauthorized access event affecting your engagement substrate, you are notified within seventy-two hours at the email address on file, with the facts as we know them at the time of notification and any updates as we learn more.</p>
+    </div>
+
+    <div class="legal-section">
+      <h2>8. Your Right to Refuse</h2>
+      <p>This section matters most. Read it carefully.</p>
+      <p>You may refuse, decline, or withdraw at any layer of this relationship:</p>
+      <ul>
+        <li>You may decline to share any artifact at any time during the engagement</li>
+        <li>You may revoke prior consent to share an artifact you already shared; we delete the artifact from our records</li>
+        <li>You may ask us to delete all engagement substrate at any time, including before the ninety-day tail expires</li>
+        <li>You may ask us to delete all correspondence</li>
+        <li>You may ask us to delete all records of you that we are not legally required to retain (billing records may be subject to tax-law retention)</li>
+        <li>You may refuse any future contact from us, for any reason, or for no reason</li>
+        <li>You may decline any specific channel for substrate transfer and name an alternative you prefer</li>
+      </ul>
+      <p>None of these choices require you to justify them to us. We do not retain shape we could later use to re-identify you. We do not interrogate the request. We honor it, confirm it in writing, and complete it within a reasonable timeframe (typically within ten business days, often faster).</p>
+      <p>The wall holds. It requires nothing from you.</p>
+    </div>
+
+    <div class="legal-section">
+      <h2>9. Your Verification and Deletion Rights</h2>
+      <p>You can ask at any time:</p>
+      <ul>
+        <li>What information about you we currently hold</li>
+        <li>Where we hold it</li>
+        <li>Who at our end has had access to it</li>
+        <li>When we expect to delete it under the retention schedule</li>
+      </ul>
+      <p>We respond within ten business days with the complete answer, in plain language, without friction or surveys.</p>
+      <p>You can also ask us to:</p>
+      <ul>
+        <li>Correct any information we hold that is inaccurate</li>
+        <li>Delete information we are not legally required to retain</li>
+        <li>Export your engagement substrate to you in a portable format before deletion</li>
+      </ul>
+      <p>There is no charge for any of these requests. There is no limit on how often you can make them. There is no surveying you about why.</p>
+    </div>
+
+    <div class="legal-section">
+      <h2>10. Governing Law</h2>
+      <p>This policy is governed by the laws of the State of Idaho. If you are a resident of a state with stronger privacy protections than those provided here (including California, Virginia, Colorado, Connecticut, Utah, or any other state with enacted comprehensive privacy law), those protections apply to you in addition to the protections in this document. We honor the stronger protection in any case where state law and this policy differ.</p>
+    </div>
+
+    <div class="legal-close">
+      <p>Your privacy is yours. The protections in this document hold regardless of whether you complete the engagement, change your mind mid-way, or decide after the fact that you would rather we forget you completely.</p>
+      <p>We will honor it the way we want our own to be honored, whether this engagement happens or not.</p>
+      <p class="signature">
+        Erin Stanley<br />
+        Evoked
+      </p>
+    </div>
+
+  </section>
+</BaseLayout>
+
+<style>
+  .hero {
+    text-align: center;
+    padding: var(--space-lg) var(--space-md) var(--space-md);
+  }
+
+  .hero-above {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    color: var(--accent-warm);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: var(--space-xs);
+  }
+
+  .hero h1 {
+    font-family: var(--font-display);
+    font-size: 2.6rem;
+    color: var(--text-primary);
+    margin-bottom: var(--space-xs);
+  }
+
+  .tagline {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    font-style: italic;
+    margin-bottom: var(--space-xs);
+  }
+
+  .version-note {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+  }
+
+  .legal-body {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 var(--space-md) var(--space-xl);
+  }
+
+  .lead {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--text-primary);
+    margin-bottom: var(--space-md);
+  }
+
+  .legal-section {
+    margin: var(--space-lg) 0;
+    padding-top: var(--space-md);
+    border-top: 1px solid var(--border-subtle);
+  }
+
+  .legal-section h2 {
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    color: var(--text-primary);
+    margin-bottom: var(--space-sm);
+  }
+
+  .legal-section p,
+  .legal-section ul {
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: var(--space-sm);
+  }
+
+  .legal-section ul {
+    padding-left: 1.5rem;
+  }
+
+  .legal-section li {
+    margin-bottom: 0.4rem;
+  }
+
+  .legal-section strong {
+    color: var(--text-primary);
+  }
+
+  .legal-close {
+    margin-top: var(--space-xl);
+    padding-top: var(--space-md);
+    border-top: 1px solid var(--border-subtle);
+    text-align: center;
+  }
+
+  .legal-close p {
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: var(--space-sm);
+  }
+
+  .signature {
+    margin-top: var(--space-md);
+    font-style: italic;
+    color: var(--text-primary);
+  }
+</style>
