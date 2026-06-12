@@ -76,11 +76,12 @@ import August2Countdown from '../components/August2Countdown.astro';
 
   <section class="container">
     <div class="ladder">
+      <p class="ladder-bridge">The same practice, at your tier.</p>
       <h2 class="ladder-heading">Start where you are.</h2>
       <div class="ladder-grid">
         <a href="/score" class="ladder-step">
           <span class="ladder-price">Free</span>
-          <span class="ladder-name">See where you are</span>
+          <span class="ladder-name">Take the score</span>
           <span class="ladder-desc">Sovereignty Score, CLI scan, diagnostic, GitHub patterns</span>
         </a>
         <a href="/products/governance-templates-guided" class="ladder-step">
@@ -237,6 +238,17 @@ import August2Countdown from '../components/August2Countdown.astro';
 </script>
 
 <style>
+  /* --- Ladder bridge (Codex: seam between Kitchen Table and income ladder) --- */
+
+  .ladder-bridge {
+    text-align: center;
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    font-style: italic;
+    margin-bottom: var(--space-xs);
+    letter-spacing: 0.02em;
+  }
+
   /* --- Outcome block (specific delivery promise; bridges to /score) --- */
 
   .outcome-block {
