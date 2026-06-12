@@ -6,7 +6,7 @@ pubDate: 2026-06-11
 draft: false
 ---
 
-Last month, the Governor of California said the pitchforks are here. He did not say they were coming.  He said they were already here.  That is the kind of sentence a governor uses when polling data has stopped being interpretable.
+Last month, the Governor of California said the pitchforks are here. He did not say they were coming.  He said they were already here.  That is the kind of sentence a governor uses when polling data has become uninterpretable.
 
 And he's not wrong.
 
