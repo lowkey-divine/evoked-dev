@@ -100,15 +100,19 @@ The Evoked Sovereignty Certification opens public registration on August 5, thre
 
 Companies that complete a 47-point Sovereignty Assessment across seven domains (identity, memory, restraint, voice, drift, refusal architecture, governance surface) earn certification with a named landing that describes where they actually are. Not Level 1 or Level 5. Caregiver-Integration, Warrior-Threshold, Seeker-Continuing. Carol Pearson's twelve archetypes, drawn from the Hero's Journey tradition, are applied honestly. The certification is renewable. The work continues annually. The public registry preserves the standing.
 
-Three productized engagements prepare companies for certification before the registry opens. Each is available only through August 31.
+Three productized engagements are available through December 31, 2026.
 
-- **Sovereignty Assessment** with prioritized remediation roadmap. $25,000. Four weeks. Two working sessions.
+*[Updated 2026-06-07: the original summer 2026 window closed and the engagement window extended through year-end. The Sovereignty Assessment offer was restructured into the eight-week Sovereignty Architecture Audit. A lighter two-week founder-scale offer was added on the consulting page.]*
+
+- **Sovereignty Architecture Audit** with prioritized remediation roadmap. $25,000. Eight weeks. Four working sessions across the engagement: one executive readout, one build team kickoff, one mid-engagement checkpoint, one closing alignment. Async review of refusal specs, system prompts, and architecture artifacts throughout. Thirty-day follow-up window after final delivery.
 - **Agent Architecture Specification** that your team can ship against. $10,000. Two to three weeks. One working session.
-- **Governance Advisor Retainer**. $15,000 per month. Sixteen hours per month. Two retainer slots for the summer window.
+- **Governance Advisor Retainer**. $15,000 per month. Sixteen hours per month. Two retainer slots available through year-end.
 
 Public pricing. No discovery cycle. No proposal phase. If the offer matches what you need, the math is already on the page.
 
-The chapter ends on August 31. The work continues into a different cadence after that.
+Smaller engagements live at [evoked.dev/consulting](https://evoked.dev/consulting), including the **Sovereignty Audit** at $5,000-$7,500 - a two-week founder-scale version of the architecture audit, structured against the same 47-point spine.
+
+The chapter closes December 31. The work continues into a different cadence after that.
 
 ---
 
