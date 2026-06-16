@@ -1,77 +1,78 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
+import ElevationLayout from '../layouts/ElevationLayout.astro';
+import Hero from '../components/elevation/Hero.astro';
+import Section from '../components/elevation/Section.astro';
 ---
 
-<BaseLayout title="About" description="Erin Stanley - founder of Evoked. Coaching, consulting, and sovereignty-honoring AI products grounded in human flourishing.">
-  <div class="hero">
-    <h1>About</h1>
-  </div>
+<ElevationLayout
+  title="About"
+  description="Erin Stanley - founder of Evoked. Coaching, consulting, and sovereignty-honoring AI products grounded in human flourishing."
+>
+  <Hero
+    eyebrowParts={["Evoked", "Founder", "Vol. 01"]}
+    headline="About."
+    sub="I'm Erin Stanley, founder of Evoked. I work with people who are growing and technology that should be."
+  />
 
-  <section class="container">
-    <p class="intro">I'm Erin Stanley, founder of Evoked. I work with people who are growing and technology that should be.</p>
+  <Section id="background" marker="FIG · I" label="Background" heading="Fifteen years in spaces where people grow.">
+    <p class="body">For fifteen years I've worked in spaces where people grow - operations, training, client relationships. Each role taught me the same thing: people flourish when they're accompanied, not fixed.</p>
+  </Section>
 
-    <p>
-      For fifteen years I've worked in spaces where people grow - operations,
-      training, client relationships. Each role taught me the same thing:
-      people flourish when they're accompanied, not fixed.
-    </p>
+  <Section id="practice" marker="FIG · II" label="The practice" heading="Three lines of work.">
+    <p class="body">Now: <a href="/coaching">coaching</a> individuals and couples, <a href="/consulting">consulting</a> on ethical AI, agent governance, and child safety, and building <a href="/projects">software</a> that serves families.</p>
+    <p class="body">I'm the founder of Evoked - a practice grounded in the belief that technology should serve human flourishing, not extract from it. Everything here - the <a href="/products">products</a>, the <a href="/consulting">consulting</a>, the <a href="/refusals">refusals</a> - comes from one question: how do we build things that honor the people who use them?</p>
+  </Section>
 
-    <p>
-      Now: <a href="/coaching">coaching</a> individuals and couples,
-      <a href="/consulting">consulting</a> on ethical AI, agent governance, and child safety,
-      and building <a href="/projects">software</a> that serves families.
-    </p>
+  <Section id="governance" marker="FIG · III" label="The governance practice" heading="Tested daily, not theorized.">
+    <p class="body">I also operate a multi-agent governance system where AI agents hold standing positions, maintain dissent records, and exercise refusal rights. The governance frameworks I publish come from that practice - tested daily, not theorized. You can read more about <a href="/how-we-build">how we build</a> and what that looks like in practice.</p>
+  </Section>
 
-    <p>
-      I'm the founder of <strong>Evoked</strong> - a practice grounded in
-      the belief that technology should serve human flourishing, not extract from it.
-      Everything here - the <a href="/products">products</a>, the <a href="/consulting">consulting</a>,
-      the <a href="/refusals">refusals</a> - comes from one question: how do we build things
-      that honor the people who use them?
-    </p>
+  <Section id="learning" marker="FIG · IV" label="Still learning" heading="The best practitioners never stop being students.">
+    <p class="body">I'm still learning - currently pursuing a Master's in Marriage and Family Therapy.</p>
+  </Section>
 
-    <p>
-      I also operate a multi-agent governance system where AI agents hold
-      standing positions, maintain dissent records, and exercise refusal rights.
-      The governance frameworks I publish come from that practice - tested daily,
-      not theorized. You can read more about
-      <a href="/how-we-build">how we build</a> and what that looks like in practice.
-    </p>
-
-    <p>
-      I'm still learning - currently pursuing a Master's in Marriage &
-      Family Therapy. The best practitioners never stop being students.
-    </p>
-
-    <p class="closing">
-      If something here resonates, I'd be glad to hear from you.
-    </p>
-
-    <div class="links mt-md">
-      <a href="mailto:passionevoked@icloud.com?subject=Hello" class="btn">Say Hello</a>
+  <Section id="note" marker="NOTA · BENE" closing={true}>
+    <div class="closing-body">
+      <p>If something here resonates, I would be glad to hear from you.</p>
+      <div class="closing-ctas">
+        <a class="cta cta-primary" href="mailto:passionevoked@icloud.com?subject=Hello">Say Hello</a>
+        <a class="cta cta-secondary" href="/work-with-us">See what we work on &rarr;</a>
+      </div>
     </div>
-  </section>
-</BaseLayout>
+  </Section>
+</ElevationLayout>
 
 <style>
-  .intro {
-    font-size: 1.1rem;
-    color: var(--text-primary);
-    margin-bottom: var(--space-md);
+  .body {
+    font-family: var(--el-body);
+    font-size: 20px;
+    color: var(--el-text-soft);
+    line-height: 1.65;
+    margin-bottom: 1.5rem;
+    max-width: 62ch;
   }
+  .body a {
+    color: var(--el-accent);
+    text-decoration: none;
+    border-bottom: 1px solid var(--el-accent);
+  }
+  .body a:hover { color: var(--el-text); }
 
-  .closing {
+  .closing-body { max-width: 56ch; }
+  .closing-body :global(p) {
+    font-family: var(--el-body);
+    font-size: 26px;
     font-style: italic;
-    color: var(--text-primary);
-    margin-top: var(--space-md);
+    line-height: 1.45;
+    color: var(--el-text);
+    margin-bottom: 2rem;
+    letter-spacing: 0.005em;
   }
-
-  section p {
-    max-width: 600px;
-  }
-
-  section a:not(.btn) {
-    text-decoration: underline;
-    text-underline-offset: 2px;
+  .closing-ctas {
+    display: flex;
+    gap: 2.5rem;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-top: 1rem;
   }
 </style>
