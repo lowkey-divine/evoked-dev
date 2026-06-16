@@ -1,0 +1,1154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Evoked - The Agentic Standard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=EB+Garamond:wght@400;500;600&family=Space+Grotesk:wght@400;500;600&family=Space+Mono:wght@400&display=swap" rel="stylesheet">
+  <style>
+    /*
+      ================================================================
+      VERSION J - FOUNDATION
+      ================================================================
+      Future-classical, not future-futurist. Hari Seldon's gravitas.
+      Trantor parchment + imperial gold + monumental scale + refined
+      classical letterforms.
+
+      DISPLAY: Syncopate (geometric monumental sans - blocky, straight,
+               carved-feeling; reads as inscription on a Federation monument)
+      SMALL UI: Space Grotesk (modern precision for tiny labels only)
+      BODY: EB Garamond (warm sage humanist serif)
+      MONO: Space Mono (technical accents)
+      SIGIL: Mycelial web - 7 brass nodes connected by irregular lines
+             (non-hierarchical; provenance flows in many directions)
+      ================================================================
+    */
+    :root {
+      --bg: #EBE2CB;
+      --bg-warm: #E2D6BB;
+      --text: #1C1812;
+      --text-soft: #5B4F3F;
+      --text-quiet: #8C7E68;
+      --accent: #A88838;        /* imperial gold - saturated, warm */
+      --accent-deep: #7E6622;
+      --accent-soft: #C3A45A;
+      --cosmic: #2A3A52;        /* deep imperial blue - whisper only */
+      --rule: rgba(28, 24, 18, 0.10);
+      --panel-shadow: 0 1px 0 rgba(255,250,240,0.6) inset, 0 14px 44px -22px rgba(28,24,18,0.20);
+      --display: 'Syncopate', system-ui, sans-serif;
+      --body: 'EB Garamond', Georgia, serif;
+      --ui: 'Space Grotesk', system-ui, sans-serif;
+      --mono: 'Space Mono', ui-monospace, monospace;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--body);
+      font-size: 20px;
+      line-height: 1.72;
+      letter-spacing: 0.003em;
+      font-feature-settings: "kern", "liga", "calt", "onum";
+      min-height: 100vh;
+      overflow-x: clip;
+      background-image:
+        /* warm ambient lighting only - splotches removed */
+        radial-gradient(ellipse 80% 60% at 18% 0%, rgba(255, 230, 180, 0.30) 0%, transparent 60%),
+        radial-gradient(ellipse 70% 50% at 90% 90%, rgba(168, 136, 56, 0.10) 0%, transparent 70%),
+        linear-gradient(180deg, var(--bg) 0%, var(--bg-warm) 100%);
+      background-attachment: fixed;
+    }
+    body::before {
+      /* parchment fiber crosshatch - fine grain */
+      content: '';
+      position: fixed; inset: 0;
+      pointer-events: none;
+      background-image:
+        repeating-linear-gradient(45deg, rgba(28,24,18,0.012) 0, rgba(28,24,18,0.012) 1px, transparent 1px, transparent 3px),
+        repeating-linear-gradient(-45deg, rgba(28,24,18,0.012) 0, rgba(28,24,18,0.012) 1px, transparent 1px, transparent 3px);
+      z-index: 0;
+    }
+    body::after {
+      /* da Vinci / Galileo graph paper - faint brass grid, breathing slowly */
+      content: '';
+      position: fixed; inset: 0;
+      pointer-events: none;
+      background-image:
+        repeating-linear-gradient(0deg, transparent 0, transparent 39px, rgba(168,136,56,0.09) 39px, rgba(168,136,56,0.09) 40px),
+        repeating-linear-gradient(90deg, transparent 0, transparent 39px, rgba(168,136,56,0.09) 39px, rgba(168,136,56,0.09) 40px);
+      animation: paper-breathe 16s ease-in-out infinite;
+      z-index: 0;
+    }
+    @keyframes paper-breathe {
+      0%, 100% { opacity: 0.65; }
+      50%      { opacity: 1.0; }
+    }
+    body > * { position: relative; z-index: 1; }
+
+    .nav-back {
+      position: fixed;
+      top: 1.25rem; right: 1.25rem;
+      font-family: var(--ui);
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--text-quiet);
+      padding: 0.4rem 0.8rem;
+      text-decoration: none;
+      z-index: 100;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+    }
+    .nav-back:hover { color: var(--accent); }
+
+    /* ============================================================
+       HEADER + SIGIL MARK
+       ============================================================ */
+    header.site {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 3.5rem 3rem 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    /* sigil wrap enables hover measurement marks (option 12) */
+    .sigil-wrap {
+      position: relative;
+      display: flex;
+      align-items: center;
+      cursor: help;
+    }
+    .sigil {
+      width: 24px;
+      height: 24px;
+      flex-shrink: 0;
+    }
+    .sigil-wrap span.measure {
+      position: absolute;
+      font-family: var(--ui);
+      font-weight: 500;
+      font-size: 8px;
+      color: var(--accent-deep);
+      letter-spacing: 0.08em;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      pointer-events: none;
+      white-space: nowrap;
+      text-transform: uppercase;
+    }
+    .sigil-wrap:hover span.measure { opacity: 1; }
+    .sigil-wrap .m-top    { top: -11px; left: 50%; transform: translateX(-50%); }
+    .sigil-wrap .m-bot    { bottom: -11px; left: 50%; transform: translateX(-50%); }
+    .sigil-wrap .m-left   { top: 50%; left: -32px; transform: translateY(-50%); }
+    /* phase-of-moon glyph beside menu (option 02) */
+    .moon-glyph {
+      display: inline-block;
+      vertical-align: middle;
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      background: var(--bg);
+      box-shadow: inset 5.5px 0 0 var(--accent);
+      border: 0.6px solid var(--accent);
+      margin-left: 2rem;
+      opacity: 0.85;
+    }
+    .wordmark {
+      font-family: var(--display);
+      font-weight: 700;
+      font-size: 17px;
+      letter-spacing: 0.32em;
+      color: var(--text);
+      line-height: 1;
+    }
+    nav.site {
+      display: flex;
+      align-items: center;
+      gap: 2.5rem;
+    }
+    nav.site a {
+      font-family: var(--ui);
+      font-weight: 500;
+      font-size: 13px;
+      text-decoration: none;
+      color: var(--text-soft);
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      transition: color 200ms ease;
+    }
+    nav.site a:hover { color: var(--accent); }
+
+    /* nav dropdown pattern */
+    .nav-item { position: relative; }
+    .nav-has-dropdown > a {
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5em;
+    }
+    .nav-has-dropdown > a::after {
+      content: '▾';
+      font-size: 0.7em;
+      opacity: 0.55;
+      transition: transform 250ms ease, opacity 200ms ease;
+      display: inline-block;
+    }
+    .nav-has-dropdown:hover > a::after {
+      transform: rotate(180deg);
+      opacity: 1;
+    }
+    .nav-dropdown {
+      position: absolute;
+      top: 100%;
+      left: -1.25rem;
+      margin-top: 1.25rem;
+      background: var(--bg);
+      border: 1px solid var(--accent);
+      padding: 0.75rem 0;
+      min-width: 220px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-6px);
+      transition: opacity 200ms ease-out, transform 200ms ease-out, visibility 200ms;
+      z-index: 50;
+      box-shadow:
+        0 1px 0 rgba(255,250,240,0.5) inset,
+        0 14px 44px -22px rgba(28,24,18,0.28);
+    }
+    .nav-has-dropdown:hover .nav-dropdown,
+    .nav-has-dropdown:focus-within .nav-dropdown {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+    /* small connecting bridge so the cursor can travel from trigger to panel */
+    .nav-dropdown::before {
+      content: '';
+      position: absolute;
+      top: -1.25rem;
+      left: 0;
+      right: 0;
+      height: 1.25rem;
+    }
+    .nav-dropdown a {
+      display: block;
+      margin: 0;
+      padding: 0.7rem 1.4rem;
+      font-size: 12px;
+      letter-spacing: 0.20em;
+      white-space: nowrap;
+      color: var(--text-soft);
+    }
+    .nav-dropdown a:hover {
+      color: var(--accent);
+    }
+    .nav-dropdown a + a {
+      border-top: 1px solid var(--rule);
+    }
+
+    main { max-width: 1180px; margin: 0 auto; padding: 0 3rem; }
+
+    /* ============================================================
+       HERO - monumental, ceremonial
+       ============================================================ */
+    section.hero {
+      position: relative;
+      padding: 8rem 0 10rem;
+    }
+    @media (max-width: 980px) {
+      section.hero {
+        padding: 6rem 0 8rem;
+      }
+    }
+    .hero-content { min-width: 0; max-width: 50rem; position: relative; z-index: 2; }
+    /* figure is absolutely positioned so it can grow without crowding the text column.
+       NOTE: only the inner SVG is rotated - the figure container stays level so the
+       citation labels read horizontally. */
+    .hero-figure {
+      position: absolute;
+      top: 50%;
+      right: -14rem;
+      width: clamp(520px, 58vw, 800px);
+      margin: 0;
+      cursor: help;
+      outline: none;
+      transform: translateY(calc(-50% - 1.5rem));
+      z-index: 1;
+    }
+    /* the figure does not move on hover - only the citation appears */
+    /* on mobile he sits BEHIND the text as parchment-light atmosphere */
+    @media (max-width: 980px) {
+      .hero-figure {
+        top: 50%;
+        left: 50%;
+        right: auto;
+        transform: translate(-50%, -50%);
+        width: clamp(340px, 95vw, 520px);
+        opacity: 0.18;
+        z-index: 1;
+        pointer-events: none;
+        cursor: default;
+      }
+      .hero-figure:hover,
+      .hero-figure:focus-visible,
+      .hero-figure:focus-within {
+        transform: translate(-50%, -50%);
+      }
+      .fig-label-top, .fig-label-bot { display: none; }
+    }
+    .hero-figure svg {
+      width: 100%;
+      height: auto;
+      display: block;
+      transform: rotate(-12deg);
+      transform-origin: center center;
+    }
+    @media (max-width: 980px) {
+      .hero-figure svg { transform: rotate(-10deg); }
+    }
+    .fig-label-top {
+      position: absolute;
+      top: -1.6rem;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: var(--ui);
+      font-weight: 500;
+      font-size: 10px;
+      color: var(--accent);
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      text-align: center;
+      white-space: nowrap;
+      opacity: 0;
+      transition: opacity 450ms ease;
+      pointer-events: none;
+    }
+    .fig-label-bot {
+      position: absolute;
+      bottom: -3.2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: var(--ui);
+      font-weight: 500;
+      font-size: 10px;
+      color: var(--accent-deep);
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      text-align: center;
+      line-height: 1.7;
+      white-space: nowrap;
+      opacity: 0;
+      transition: opacity 450ms ease;
+      pointer-events: none;
+    }
+    .fig-label-bot .fig-sep { color: var(--text-quiet); margin: 0 0.4em; }
+    .hero-figure:hover .fig-label-top,
+    .hero-figure:hover .fig-label-bot,
+    .hero-figure:focus-visible .fig-label-top,
+    .hero-figure:focus-visible .fig-label-bot,
+    .hero-figure:focus-within .fig-label-top,
+    .hero-figure:focus-within .fig-label-bot {
+      opacity: 1;
+    }
+
+    .hero-eyebrow {
+      font-family: var(--ui);
+      font-weight: 500;
+      font-size: 13px;
+      color: var(--accent);
+      margin-bottom: 3rem;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+    }
+    /* load-bearing metaphor - sits between h1 and subhead as an inscription */
+    .hero-metaphor {
+      font-family: var(--display);
+      font-size: clamp(20px, 2.5vw, 30px);
+      font-weight: 400;
+      line-height: 1.25;
+      letter-spacing: 0.025em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-top: -0.5rem;
+      margin-bottom: 2.5rem;
+      max-width: 30ch;
+    }
+    .hero-metaphor span { display: block; }
+    .hero-eyebrow .pipe {
+      color: var(--text-quiet);
+      margin: 0 0.7rem;
+      font-weight: 400;
+    }
+    h1 {
+      font-family: var(--display);
+      font-size: clamp(48px, 6.4vw, 88px);
+      font-weight: 400;
+      line-height: 1.05;
+      letter-spacing: 0.01em;
+      text-transform: uppercase;
+      margin-bottom: 2.5rem;
+      color: var(--text);
+    }
+    .hero-sub {
+      font-family: var(--body);
+      font-size: 23px;
+      line-height: 1.5;
+      color: var(--text-soft);
+      max-width: 48ch;
+      margin-bottom: 3.5rem;
+    }
+    .hero-ctas { display: flex; gap: 2.5rem; flex-wrap: wrap; align-items: center; }
+    .cta {
+      font-family: var(--ui);
+      font-weight: 500;
+      font-size: 14px;
+      text-decoration: none;
+      transition: color 0.2s;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+    }
+    .cta-primary {
+      color: var(--accent);
+      border-bottom: 1px solid var(--accent);
+      padding-bottom: 0.5rem;
+      position: relative;
+    }
+    .cta-primary:hover { color: var(--text); border-color: var(--text); }
+    /* manicule on hover (option 11) - Renaissance "see here" pointing-hand */
+    .cta-primary::before {
+      content: '☞';
+      position: absolute;
+      left: -1.5em;
+      top: -0.15em;
+      font-size: 1.4em;
+      line-height: 1;
+      opacity: 0;
+      transition: opacity 0.25s ease, transform 0.25s ease;
+      transform: translateX(0.4em);
+      pointer-events: none;
+      color: var(--accent);
+    }
+    .cta-primary:hover::before {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    .cta-secondary {
+      color: var(--text-soft);
+    }
+    .cta-secondary:hover { color: var(--accent); }
+
+    /* ============================================================
+       SECTIONS - more ceremonial spacing
+       ============================================================ */
+    section.body {
+      padding: 7rem 0;
+      border-top: 1px solid var(--rule);
+      position: relative;
+    }
+    /* small sigil between sections */
+    /* section divider - scholarly figure label centered on the border */
+    section.body::before {
+      content: 'FIG ·';
+      position: absolute;
+      top: -11px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--bg);
+      padding: 0 1.25rem;
+      color: var(--accent);
+      font-family: var(--ui);
+      font-weight: 500;
+      font-size: 12px;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      line-height: 1;
+    }
+    section#what::before     { content: 'FIG · I'; }
+    section#how::before      { content: 'FIG · II'; }
+    section#where::before    { content: 'FIG · III'; }
+    section#practice::before { content: 'FIG · IV'; }
+    .section-label {
+      font-family: var(--ui);
+      font-weight: 500;
+      font-size: 13px;
+      color: var(--accent);
+      margin-bottom: 2rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+    }
+    h2 {
+      font-family: var(--display);
+      font-size: clamp(24px, 3.2vw, 36px);
+      font-weight: 400;
+      line-height: 1.18;
+      letter-spacing: 0.01em;
+      text-transform: uppercase;
+      margin-bottom: 2rem;
+      max-width: 26ch;
+      color: var(--text);
+    }
+    .lede {
+      font-family: var(--body);
+      font-size: 22px;
+      line-height: 1.6;
+      color: var(--text-soft);
+      max-width: 60ch;
+      margin-bottom: 0;
+    }
+    .what-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 5rem;
+    }
+    @media (max-width: 800px) { .what-grid { grid-template-columns: 1fr; gap: 1.5rem; } }
+
+    .three-pieces {
+      margin-top: 3.5rem;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 4rem;
+    }
+    @media (max-width: 900px) { .three-pieces { grid-template-columns: 1fr; gap: 2.5rem; } }
+    .piece {
+      padding-top: 1.75rem;
+      border-top: 2px solid var(--accent);
+    }
+    .piece-label {
+      font-family: var(--ui);
+      font-weight: 600;
+      font-size: 12px;
+      color: var(--accent);
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+    .piece h3 {
+      font-family: var(--display);
+      font-weight: 400;
+      font-size: 22px;
+      line-height: 1.2;
+      letter-spacing: 0.025em;
+      text-transform: uppercase;
+      margin-bottom: 1.25rem;
+      color: var(--text);
+    }
+    .piece p {
+      font-family: var(--body);
+      font-size: 19px;
+      color: var(--text-soft);
+      line-height: 1.6;
+      max-width: 34ch;
+    }
+
+    .honestly {
+      margin-top: 3rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+    }
+    @media (max-width: 800px) { .honestly { grid-template-columns: 1fr; gap: 3rem; } }
+    .honestly h3 {
+      font-family: var(--ui);
+      font-weight: 600;
+      font-size: 13px;
+      color: var(--accent);
+      margin-bottom: 1.75rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+    }
+    .honestly ul { list-style: none; }
+    .honestly li {
+      padding: 1.25rem 0;
+      font-family: var(--body);
+      font-size: 19px;
+      color: var(--text);
+      line-height: 1.5;
+      border-top: 1px solid var(--rule);
+    }
+    .honestly li:last-child { border-bottom: 1px solid var(--rule); }
+    .honestly code {
+      font-family: var(--mono);
+      font-size: 0.82em;
+      color: var(--accent);
+      letter-spacing: 0.01em;
+    }
+
+    /* ============================================================
+       APPLICATIONS - the nest
+       ============================================================ */
+    .applications {
+      margin-top: 3.5rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+    }
+    @media (max-width: 900px) { .applications { grid-template-columns: 1fr; gap: 2rem; } }
+    .app-card {
+      padding: 2.75rem 2.25rem;
+      background: rgba(255, 250, 240, 0.45);
+      border: 1px solid var(--rule);
+      box-shadow: var(--panel-shadow);
+      transition: border-color 0.2s, transform 0.2s;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+    .app-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+    .app-label {
+      font-family: var(--ui);
+      font-weight: 500;
+      font-size: 12px;
+      color: var(--accent);
+      margin-bottom: 1.25rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+    }
+    .app-card h3 {
+      font-family: var(--display);
+      font-weight: 400;
+      font-size: 22px;
+      line-height: 1.2;
+      letter-spacing: 0.025em;
+      text-transform: uppercase;
+      margin-bottom: 1.25rem;
+      color: var(--text);
+    }
+    .app-card p {
+      font-family: var(--body);
+      font-size: 18px;
+      color: var(--text-soft);
+      line-height: 1.55;
+      margin-bottom: 1.25rem;
+      max-width: none;
+    }
+    .app-card .app-cta {
+      font-family: var(--ui);
+      font-weight: 500;
+      font-size: 13px;
+      color: var(--accent);
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+    }
+    .app-card:hover .app-cta { color: var(--text); }
+
+    /* ============================================================
+       CLOSING
+       ============================================================ */
+    section.closing {
+      padding: 8rem 0 6rem;
+      border-top: 1px solid var(--rule);
+      position: relative;
+    }
+    /* closing section - scholarly Latin annotation */
+    section.closing::before {
+      content: 'NOTA · BENE';
+      position: absolute;
+      top: -11px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--bg);
+      padding: 0 1.25rem;
+      color: var(--accent);
+      font-family: var(--ui);
+      font-weight: 500;
+      font-size: 12px;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      line-height: 1;
+    }
+    .closing-body { max-width: 56ch; }
+    .closing-body p {
+      font-family: var(--body);
+      font-weight: 400;
+      font-size: 26px;
+      line-height: 1.45;
+      color: var(--text);
+      margin-bottom: 3rem;
+      max-width: none;
+      letter-spacing: 0.005em;
+    }
+
+    /* vertical contemplation hair-rule on Where-we-are section (option 10) */
+    section#where .vertical-rule {
+      position: absolute;
+      top: 7rem;
+      bottom: 7rem;
+      left: -1.5rem;
+      width: 1px;
+      background: var(--accent);
+      opacity: 0.75;
+    }
+    @media (max-width: 900px) {
+      section#where .vertical-rule { display: none; }
+    }
+
+    /* astrolabe quarter-arc in footer corner (option 03) */
+    .astrolabe {
+      position: absolute;
+      bottom: 1.5rem;
+      right: 2rem;
+      width: 64px;
+      height: 64px;
+      opacity: 0.75;
+      pointer-events: none;
+    }
+
+    /* ============================================================
+       FOOTER
+       ============================================================ */
+    footer.site {
+      position: relative;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 5rem 3rem 3rem;
+      border-top: 1px solid var(--rule);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+    }
+    @media (max-width: 800px) { footer.site { grid-template-columns: 1fr; gap: 3rem; } }
+    .newsletter-label {
+      font-family: var(--ui);
+      font-weight: 500;
+      font-size: 13px;
+      color: var(--accent);
+      margin-bottom: 1.25rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+    }
+    .newsletter h3 {
+      font-family: var(--display);
+      font-size: 18px;
+      font-weight: 400;
+      margin-bottom: 1.25rem;
+      line-height: 1.3;
+      color: var(--text);
+      letter-spacing: 0.025em;
+      text-transform: uppercase;
+    }
+    .newsletter p {
+      font-family: var(--body);
+      color: var(--text-soft);
+      margin-bottom: 2rem;
+      font-size: 18px;
+      line-height: 1.5;
+      max-width: 42ch;
+    }
+    .newsletter form {
+      display: flex;
+      gap: 0.5rem;
+      max-width: 440px;
+      border-bottom: 1px solid var(--text);
+      padding-bottom: 0.5rem;
+    }
+    .newsletter input {
+      flex: 1;
+      padding: 0.4rem 0;
+      background: transparent;
+      border: none;
+      font-family: var(--body);
+      font-size: 18px;
+      color: var(--text);
+    }
+    .newsletter input::placeholder { color: var(--text-quiet); }
+    .newsletter input:focus { outline: none; }
+    .newsletter button {
+      padding: 0.4rem 0;
+      background: transparent;
+      color: var(--accent);
+      border: none;
+      font-family: var(--ui);
+      font-weight: 500;
+      font-size: 13px;
+      cursor: pointer;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+    }
+    .newsletter button:hover { color: var(--text); }
+    .footer-meta {
+      align-self: end;
+      font-family: var(--ui);
+      font-weight: 500;
+      font-size: 12px;
+      color: var(--text-quiet);
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      padding-right: 5rem; /* leave room for astrolabe in corner */
+    }
+    .footer-meta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2.25rem;
+      margin-bottom: 1.5rem;
+    }
+    .footer-meta a { color: var(--text-soft); text-decoration: none; }
+    .footer-meta a:hover { color: var(--accent); }
+    .footer-meta-quiet { color: var(--text-quiet); letter-spacing: 0.22em; }
+  </style>
+</head>
+<body>
+  <a class="nav-back" href="/elevation/">← compare</a>
+
+  <header class="site">
+    <div class="brand">
+      <div class="sigil-wrap">
+        <span class="measure m-top">Ø 24</span>
+        <span class="measure m-left">0.618</span>
+        <span class="measure m-bot">N=7</span>
+      <svg class="sigil" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <!-- Mycelial web sigil with scholarly star-chart construction lines.
+             Provenance flows in many directions at once; the construction
+             marks signal a thing-being-studied, not just a logo. -->
+        <!-- faint construction circle (the studied object's bounding orbit) -->
+        <circle cx="12" cy="12" r="11" stroke="#A88838" stroke-width="0.2" opacity="0.3" stroke-dasharray="0.4 0.6" />
+        <!-- coordinate cross-hairs (faint) -->
+        <line x1="12" y1="0"  x2="12" y2="24" stroke="#A88838" stroke-width="0.15" opacity="0.25" />
+        <line x1="0"  y1="12" x2="24" y2="12" stroke="#A88838" stroke-width="0.15" opacity="0.25" />
+        <!-- the web connections -->
+        <g stroke="#A88838" stroke-width="0.35" opacity="0.55" fill="none">
+          <line x1="5"  y1="6"  x2="12" y2="4"  />
+          <line x1="12" y1="4"  x2="19" y2="6"  />
+          <line x1="5"  y1="6"  x2="3"  y2="14" />
+          <line x1="19" y1="6"  x2="21" y2="13" />
+          <line x1="12" y1="4"  x2="3"  y2="14" />
+          <line x1="12" y1="4"  x2="21" y2="13" />
+          <line x1="3"  y1="14" x2="7"  y2="20" />
+          <line x1="21" y1="13" x2="17" y2="20" />
+          <line x1="7"  y1="20" x2="17" y2="20" />
+          <line x1="3"  y1="14" x2="21" y2="13" />
+          <line x1="12" y1="4"  x2="12" y2="13" />
+          <line x1="12" y1="13" x2="7"  y2="20" />
+          <line x1="12" y1="13" x2="17" y2="20" />
+        </g>
+        <!-- the 7 web nodes -->
+        <circle cx="5"  cy="6"  r="1.3" stroke="#A88838" stroke-width="0.7" />
+        <circle cx="12" cy="4"  r="1.3" stroke="#A88838" stroke-width="0.7" />
+        <circle cx="19" cy="6"  r="1.3" stroke="#A88838" stroke-width="0.7" />
+        <circle cx="3"  cy="14" r="1.3" stroke="#A88838" stroke-width="0.7" />
+        <circle cx="21" cy="13" r="1.3" stroke="#A88838" stroke-width="0.7" />
+        <circle cx="7"  cy="20" r="1.3" stroke="#A88838" stroke-width="0.7" />
+        <circle cx="17" cy="20" r="1.3" stroke="#A88838" stroke-width="0.7" />
+        <circle cx="12" cy="13" r="1.5" fill="#A88838" />
+      </svg>
+      </div><!-- /sigil-wrap -->
+      <div class="wordmark">EVOKED</div>
+    </div>
+    <nav class="site">
+      <div class="nav-item nav-has-dropdown">
+        <a href="/principles">The Standard</a>
+        <div class="nav-dropdown">
+          <a href="/principles">Principles</a>
+          <a href="/spec">Spec</a>
+          <a href="/registry">Registry</a>
+          <a href="/patents">Patents</a>
+          <a href="/refusals">Refusals</a>
+        </div>
+      </div>
+      <div class="nav-item nav-has-dropdown">
+        <a href="/products">Products</a>
+        <div class="nav-dropdown">
+          <a href="/score">Sovereignty Score</a>
+          <a href="/kitchen-table">Kitchen Table</a>
+          <a href="/products">Governance Bundles</a>
+        </div>
+      </div>
+      <div class="nav-item nav-has-dropdown">
+        <a href="/engage">Engage</a>
+        <div class="nav-dropdown">
+          <a href="/build-with-us">Build with us</a>
+          <a href="/coaching">Coaching</a>
+          <a href="/consulting">Consulting</a>
+          <a href="/engage">Governance Audits</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="/writing">Writing</a>
+      </div>
+      <span class="moon-glyph" aria-hidden="true" title="First quarter moon"></span>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-content">
+        <p class="hero-eyebrow">By Evoked <span class="pipe">·</span> Forming in public <span class="pipe">·</span> Vol. 01</p>
+        <h1>The Agentic Standard.</h1>
+        <p class="hero-metaphor">
+          <span>Credentials prove who.</span>
+          <span>Provenance proves what survived.</span>
+        </p>
+        <p class="hero-sub">Identity, scope, and signed evidence for AI agents that work with the humans behind them. Built in public, shared by license, kept in common.</p>
+        <div class="hero-ctas">
+          <a class="cta cta-primary" href="#what">Read the principles</a>
+          <a class="cta cta-secondary" href="#where">See the registry →</a>
+        </div>
+      </div>
+
+      <figure class="hero-figure" tabindex="0" aria-label="Orion, after Bayer's Uranometria, 1603">
+        <p class="fig-label-top">FIG · ORION</p>
+        <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <!-- Bayer Uranometria 1603 - star-position plate primary, hunter as ghost outline.
+               Greek-letter designations (Bayer's innovation) carried per stellae magnitudinem.
+               Brass-line per Version J palette. Plotted-sketch feel via radial mask on
+               the ghost figure - lines taper at the extremities. -->
+          <defs>
+            <radialGradient id="sketch-fade" cx="50%" cy="50%" r="52%">
+              <stop offset="0%" stop-color="#fff" stop-opacity="1"/>
+              <stop offset="48%" stop-color="#fff" stop-opacity="1"/>
+              <stop offset="80%" stop-color="#fff" stop-opacity="0.55"/>
+              <stop offset="100%" stop-color="#fff" stop-opacity="0"/>
+            </radialGradient>
+            <mask id="sketch-fade-mask">
+              <rect width="400" height="400" fill="url(#sketch-fade)"/>
+            </mask>
+          </defs>
+          <!-- line-work group (frame, grid, ghost hunter) - dimmer than the stars -->
+          <g class="line-work" opacity="0.45">
+          <!-- subtle scholar's frame -->
+          <rect x="20" y="20" width="360" height="360" stroke="#A88838" stroke-width="0.3" stroke-dasharray="1 2" opacity="0.32" fill="none"/>
+          <!-- coordinate cross-hairs - barely there -->
+          <line x1="200" y1="20" x2="200" y2="380" stroke="#A88838" stroke-width="0.15" opacity="0.18"/>
+          <line x1="20" y1="200" x2="380" y2="200" stroke="#A88838" stroke-width="0.15" opacity="0.18"/>
+          <!-- declination/right-ascension grid -->
+          <g stroke="#A88838" stroke-width="0.2" opacity="0.22">
+            <line x1="125" y1="40" x2="125" y2="360" stroke-dasharray="2 3"/>
+            <line x1="275" y1="40" x2="275" y2="360" stroke-dasharray="2 3"/>
+            <line x1="40" y1="125" x2="360" y2="125" stroke-dasharray="2 3"/>
+            <line x1="40" y1="275" x2="360" y2="275" stroke-dasharray="2 3"/>
+          </g>
+
+          <!-- ghost hunter figure - Bayer's own drawing, kept very faint per Fabula's note
+               ("let the page hold the measurement register for a season").
+               Radial mask + round caps give the strokes plotted-sketch taper at the extremities. -->
+          <g stroke="#7E6622" stroke-width="0.5" fill="none" opacity="0.32" stroke-linecap="round" stroke-linejoin="round" mask="url(#sketch-fade-mask)">
+            <!-- head -->
+            <ellipse cx="200" cy="95" rx="11" ry="12"/>
+            <!-- shoulders + torso -->
+            <path d="M 185 110 Q 175 140 175 175 Q 178 205 188 235"/>
+            <path d="M 215 110 Q 225 140 225 175 Q 222 205 212 235"/>
+            <!-- belt across waist -->
+            <path d="M 175 198 Q 200 203 225 198" opacity="0.5"/>
+            <!-- legs -->
+            <path d="M 190 240 Q 180 290 170 340"/>
+            <path d="M 210 240 Q 220 290 230 340"/>
+            <!-- club arm raised -->
+            <path d="M 218 118 Q 250 100 278 80 Q 292 70 300 60"/>
+            <!-- club itself -->
+            <path d="M 300 60 Q 308 50 314 42" stroke-width="0.7"/>
+            <ellipse cx="312" cy="46" rx="7" ry="3.5" transform="rotate(-32 312 46)" stroke-width="0.5"/>
+            <!-- pelt/shield arm -->
+            <path d="M 182 118 Q 145 130 122 155 Q 105 180 100 205"/>
+            <!-- pelt/shield arc -->
+            <path d="M 88 165 Q 70 195 75 235 Q 85 260 110 260 Q 115 245 108 220 Q 98 190 100 165 Z" stroke-width="0.35"/>
+            <!-- sword hanging from belt -->
+            <path d="M 200 203 L 200 245" stroke-width="0.35" opacity="0.5"/>
+          </g>
+          </g><!-- /line-work -->
+
+          <!-- stars + Greek-letter designations group - the load-bearing visual; held at the
+               brighter opacity per the captain's request -->
+          <g class="stars-group" opacity="0.6">
+          <!-- the three belt stars - prominent, brass primary -->
+          <circle cx="170" cy="200" r="3.5" fill="#A88838"/>
+          <circle cx="200" cy="202" r="4" fill="#A88838"/>
+          <circle cx="230" cy="200" r="3.5" fill="#A88838"/>
+          <!-- Greek-letter designations for the belt -->
+          <text x="170" y="187" font-family="EB Garamond, serif" font-size="12" fill="#7E6622" text-anchor="middle" font-style="italic">δ</text>
+          <text x="200" y="187" font-family="EB Garamond, serif" font-size="12" fill="#7E6622" text-anchor="middle" font-style="italic">ε</text>
+          <text x="230" y="187" font-family="EB Garamond, serif" font-size="12" fill="#7E6622" text-anchor="middle" font-style="italic">ζ</text>
+
+          <!-- shoulders -->
+          <circle cx="148" cy="115" r="4.2" fill="#A88838"/>
+          <text x="148" y="103" font-family="EB Garamond, serif" font-size="12" fill="#7E6622" text-anchor="middle" font-style="italic">α</text>
+          <circle cx="252" cy="115" r="3" fill="#A88838"/>
+          <text x="252" y="103" font-family="EB Garamond, serif" font-size="12" fill="#7E6622" text-anchor="middle" font-style="italic">γ</text>
+          <!-- feet -->
+          <circle cx="148" cy="300" r="3" fill="#A88838"/>
+          <text x="148" y="318" font-family="EB Garamond, serif" font-size="12" fill="#7E6622" text-anchor="middle" font-style="italic">κ</text>
+          <circle cx="252" cy="305" r="4.5" fill="#A88838"/>
+          <text x="252" y="323" font-family="EB Garamond, serif" font-size="12" fill="#7E6622" text-anchor="middle" font-style="italic">β</text>
+
+          <!-- sword stars below belt - including M42 nebulosity hint -->
+          <circle cx="200" cy="228" r="2" fill="#A88838" opacity="0.85"/>
+          <circle cx="200" cy="240" r="2.4" fill="#A88838" opacity="0.85"/>
+          <circle cx="200" cy="252" r="2" fill="#A88838" opacity="0.85"/>
+          <!-- subtle nebulosity halo around middle sword star (M42 hint) -->
+          <circle cx="200" cy="240" r="6" fill="#A88838" opacity="0.08"/>
+
+          <!-- minor Orion stars - Bayer was thorough -->
+          <circle cx="115" cy="155" r="1.5" fill="#A88838" opacity="0.65"/>
+          <circle cx="285" cy="155" r="1.5" fill="#A88838" opacity="0.65"/>
+          <circle cx="105" cy="125" r="1.5" fill="#A88838" opacity="0.6"/>
+          <circle cx="295" cy="125" r="1.4" fill="#A88838" opacity="0.6"/>
+          <circle cx="135" cy="175" r="1.2" fill="#A88838" opacity="0.55"/>
+          <circle cx="265" cy="175" r="1.2" fill="#A88838" opacity="0.55"/>
+          <circle cx="155" cy="160" r="1.3" fill="#A88838" opacity="0.65"/>
+          <circle cx="245" cy="160" r="1.3" fill="#A88838" opacity="0.65"/>
+          <circle cx="180" cy="170" r="1.1" fill="#A88838" opacity="0.55"/>
+          <circle cx="220" cy="170" r="1.1" fill="#A88838" opacity="0.55"/>
+          <circle cx="125" cy="265" r="1.4" fill="#A88838" opacity="0.6"/>
+          <circle cx="275" cy="265" r="1.4" fill="#A88838" opacity="0.6"/>
+          <circle cx="165" cy="270" r="1.2" fill="#A88838" opacity="0.55"/>
+          <circle cx="235" cy="270" r="1.2" fill="#A88838" opacity="0.55"/>
+          </g><!-- /stars-group -->
+
+          <!-- the Latin caption was removed when the SVG was tilted; horizontal text is held by
+               the fig-label-top and fig-label-bot outside the SVG. -->
+
+        </svg>
+        <p class="fig-label-bot">After Bayer<span class="fig-sep">·</span>Uranometria<br>Augsburg<span class="fig-sep">·</span>1603</p>
+      </figure>
+    </section>
+
+    <section class="body" id="what">
+      <div class="what-grid">
+        <div>
+          <p class="section-label">What this is</p>
+          <h2>Most systems verify the credential. The Standard verifies the character.</h2>
+        </div>
+        <div>
+          <p class="lede">Identity protocols answer who the agent claims to be at the door. They cannot answer whether the agent's governance specification — its refusal rights, standing positions, behavioral charter — was preserved through deployment to the model, or whether its runtime behavior aligns with that specification. The Agentic Standard answers that. We call it personality fidelity. Character under pressure.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="body" id="how">
+      <p class="section-label">How it works</p>
+      <h2>Three pieces. The character is hashed at every stage.</h2>
+      <div class="three-pieces">
+        <div class="piece">
+          <p class="piece-label">Configuration · H₁</p>
+          <h3>What the agent was authored to be</h3>
+          <p>Persona, refusal specification, standing positions, governance charter, memory. Hashed in deterministic order at authoring. The character the agent is supposed to keep.</p>
+        </div>
+        <div class="piece">
+          <p class="piece-label">Transformation · H<sub>t</sub></p>
+          <h3>The adaptation to the model</h3>
+          <p>The deterministic transformation from canonical governance configuration to model-specific deployment payload. Hashed and attested at the transformation step. The piece no other standard records — character surviving translation.</p>
+        </div>
+        <div class="piece">
+          <p class="piece-label">Behavior · H₃</p>
+          <h3>What the agent did at runtime</h3>
+          <p>Twenty-two structured event types across seven categories — refusal, scope, charter, identity, accountability, ethical override, integrity. Each governance event signed and bound to the previous elements. Character under pressure, recorded.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="body" id="where">
+      <span class="vertical-rule" aria-hidden="true"></span>
+      <p class="section-label">Where we are</p>
+      <h2>What is true today. What is coming.</h2>
+      <p class="lede">A practice that does not name its own readiness asks the reader to trust what cannot yet be verified.</p>
+      <div class="honestly">
+        <div>
+          <h3>True today</h3>
+          <ul>
+            <li>142 agents operating under the Standard with verified personality fidelity</li>
+            <li>The Kitchen Table family-planning app in TestFlight beta</li>
+            <li>Two patents filed; the schema is open</li>
+            <li>The Sovereignty Score is online and free</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Coming</h3>
+          <ul>
+            <li>The verification API at <code>/.well-known/</code></li>
+            <li>A public registry where any agent can be checked</li>
+            <li>A weekly working group, open to anyone</li>
+            <li>The Standard is forming. Read it as it is written.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="body" id="practice">
+      <p class="section-label">What you can see of it today</p>
+      <h2>The Standard is not a paper. It is a practice with surfaces.</h2>
+      <p class="lede">Everything below is built under The Agentic Standard. Some of it is for families. Some of it is for builders. Some of it is for measuring whether what you have built is sovereign or extractive. None of it is theory.</p>
+
+      <div class="applications">
+        <a class="app-card" href="#">
+          <p class="app-label">The family-facing application</p>
+          <h3>The Kitchen Table</h3>
+          <p>A meal-planning app on iOS, in TestFlight beta. Built under the Standard. No streaks. No scores. No surveillance. COPPA-compliant by architecture, not by retrofit.</p>
+          <span class="app-cta">See The Kitchen Table →</span>
+        </a>
+        <a class="app-card" href="#">
+          <p class="app-label">The instrument of character measurement</p>
+          <h3>The Sovereignty Score</h3>
+          <p>Five questions. Two minutes. Free. Score your AI against the Standard's principles. Most systems score zero on three of them.</p>
+          <span class="app-cta">Take the score →</span>
+        </a>
+        <a class="app-card" href="#">
+          <p class="app-label">The demonstration</p>
+          <h3>The 142-Agent Practice</h3>
+          <p>We govern 142 agents under their own identities. Each has its own memory, its own standing positions, its own right to refuse. The fleet is the demonstration that the Standard scales.</p>
+          <span class="app-cta">Read about the fleet →</span>
+        </a>
+        <a class="app-card" href="#">
+          <p class="app-label">The formal layer</p>
+          <h3>Two Patents Filed</h3>
+          <p>The Bot Authority spec and the sovereignty layer have been filed at USPTO. The Standard is formalizing in public, with counsel, on a real clock.</p>
+          <span class="app-cta">Read the patent posture →</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="closing" id="note">
+      <div class="closing-body">
+        <p class="section-label">A note</p>
+        <p>If the work reads true, sit with it. If you have a question, write. If you would like to add your voice to the working group, the door is open.</p>
+        <p>What you read here is the Standard's character — quiet, deliberate, in public. If the form fits the claim, we are in conversation.</p>
+        <div class="hero-ctas">
+          <a class="cta cta-primary" href="#">Write</a>
+          <a class="cta cta-secondary" href="#">Read the spec →</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site">
+    <div class="newsletter">
+      <p class="newsletter-label">If you want to stay in the conversation</p>
+      <h3>Letters about the Standard, the practice, and what we are building.</h3>
+      <p>Sent when there is something worth sending. Not often.</p>
+      <form onsubmit="event.preventDefault();this.querySelector('button').textContent='Thank you ✓';">
+        <input type="email" placeholder="your.email@example.com" required>
+        <button type="submit">Subscribe</button>
+      </form>
+    </div>
+    <div class="footer-meta">
+      <div class="footer-meta-row">
+        <a href="#">Principles</a>
+        <a href="#">Registry</a>
+        <a href="#">Working Group</a>
+        <a href="#">License</a>
+        <a href="#">Spec</a>
+      </div>
+      <div class="footer-meta-quiet">Evoked · The Agentic Standard · Vol. 01 · 2026</div>
+    </div>
+    <!-- Astrolabe quarter-arc (option 03) - geometric instrument signature -->
+    <svg class="astrolabe" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M 60 60 A 50 50 0 0 0 10 10" stroke="#A88838" stroke-width="0.8" fill="none" opacity="0.75"/>
+      <path d="M 56 60 A 42 42 0 0 0 14 18" stroke="#A88838" stroke-width="0.5" fill="none" opacity="0.55"/>
+      <path d="M 52 60 A 34 34 0 0 0 18 26" stroke="#A88838" stroke-width="0.4" fill="none" opacity="0.4"/>
+      <!-- angle hash marks -->
+      <line x1="60" y1="60" x2="60" y2="50" stroke="#A88838" stroke-width="0.5" opacity="0.6"/>
+      <line x1="60" y1="60" x2="50" y2="60" stroke="#A88838" stroke-width="0.5" opacity="0.6"/>
+      <line x1="60" y1="60" x2="42" y2="42" stroke="#A88838" stroke-width="0.3" opacity="0.45"/>
+      <line x1="60" y1="60" x2="25" y2="60" stroke="#A88838" stroke-width="0.3" opacity="0.35"/>
+      <line x1="60" y1="60" x2="60" y2="25" stroke="#A88838" stroke-width="0.3" opacity="0.35"/>
+      <circle cx="60" cy="60" r="1.8" fill="#A88838"/>
+    </svg>
+  </footer>
+</body>
+</html>

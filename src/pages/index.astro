@@ -1,692 +1,398 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import August2Countdown from '../components/August2Countdown.astro';
+import ElevationLayout from '../layouts/ElevationLayout.astro';
+import Hero from '../components/elevation/Hero.astro';
+import OrionFigure from '../components/elevation/OrionFigure.astro';
+import Section from '../components/elevation/Section.astro';
 ---
 
-<BaseLayout title="Evoked - Governance for AI Agents" description="What does your AI refuse to do? Most systems have no answer. Free governance check, scored assessment, and hands-on audits from a team that governs 142 agents.">
-  <div class="welcome-back" id="welcome-back" hidden aria-live="polite">
-    <p>Welcome back. <button type="button" id="welcome-back-forget" class="welcome-back-forget" aria-label="Forget that I have visited before">Forget me</button></p>
-  </div>
+<ElevationLayout
+  title="The Agentic Standard"
+  description="Identity, scope, and signed evidence for AI agents that work with the humans behind them. Built in public, shared by license, kept in common."
+  siblingActive={true}
+>
+  <Hero
+    eyebrowParts={["By Evoked", "Forming in public", "Vol. 01"]}
+    headline="The Agentic Standard."
+    metaphor={["Credentials prove who.", "Provenance proves what survived."]}
+    sub="Identity, scope, and signed evidence for AI agents that work with the humans behind them. Built in public, shared by license, kept in common."
+  >
+    <a class="cta cta-primary" href="/score">Take the free test</a>
+    <a class="cta cta-secondary" href="/patents">See the patents &rarr;</a>
+    <OrionFigure slot="figure" tradition="bayer" citationVisibility="low-bright" />
+  </Hero>
 
-  <div class="hero">
-    <h1 class="fade-in">What does your AI refuse to do?</h1>
-    <p class="tagline fade-in">Most systems have no answer. We built the tools to find yours.</p>
-    <p class="hero-breath fade-in">Take your time.</p>
-  </div>
-
-  <section class="container august2-strip">
-    <August2Countdown activateAtDays={5} />
-  </section>
-
-  <section class="container">
-    <div class="outcome-block">
-      <p class="outcome-lead">Free Sovereignty Score.</p>
-      <p class="outcome-detail">Five questions. Two minutes. No signup. See your score the moment you finish.</p>
-      <a href="/score" class="outcome-cta">Begin &rarr;</a>
+  <Section
+    id="doorway"
+    marker="FIG · I"
+    label="Find your doorway"
+    heading="Five entrances. One practice."
+  >
+    <div class="routing-grid">
+      <a href="/build-with-us" class="route-card route-primary">
+        <p class="route-audience">You have an idea for something that serves a family, a community, a group that matters - and you refuse to build it the extractive way.</p>
+        <p class="route-action">Sovereignty-honoring software for families, communities, and individuals.</p>
+        <span class="route-cta">Tell us your idea &rarr;</span>
+      </a>
+      <a href="/coaching" class="route-card">
+        <p class="route-audience">The ground shifted. Maybe it's AI changing your industry. Maybe a career that doesn't fit anymore. Maybe something deeper. You're not broken - you're in transition.</p>
+        <p class="route-action">Depth work that honors where you've been while orienting toward where you're going.</p>
+        <span class="route-cta">Learn about coaching &rarr;</span>
+      </a>
+      <a href="/engage" class="route-card">
+        <p class="route-audience">You shipped fast. It works. But you know there are gaps - governance, safety, boundaries your agents should have but don't yet.</p>
+        <p class="route-action">Governance audits, specification sprints, trust architecture builds.</p>
+        <span class="route-cta">See the engagement window &rarr;</span>
+      </a>
+      <a href="/engage" class="route-card">
+        <p class="route-audience">Your team built the agents. Now someone is asking how they make decisions - and nobody has a good answer.</p>
+        <p class="route-action">Structured reviews of agent behavioral governance - identity, memory, restraint, voice, drift.</p>
+        <span class="route-cta">See enterprise governance &rarr;</span>
+      </a>
+      <a href="/registry" class="route-card">
+        <p class="route-audience">You believe AI agents should be able to prove they're governed - and that the standard should be open, not owned.</p>
+        <p class="route-action">Voluntary, open standard for agent behavioral governance. Registration is free.</p>
+        <span class="route-cta">See the registry &rarr;</span>
+      </a>
     </div>
-  </section>
+  </Section>
 
-  <section class="container">
-    <div class="routing">
-      <h2 class="ladder-heading">Find your doorway.</h2>
-      <div class="routing-grid">
-        <a href="/build-with-us" class="route-card route-primary">
-          <p class="route-audience">You have an idea for something that serves a family, a community, a group that matters - and you refuse to build it the extractive way.</p>
-          <p class="route-action">Sovereignty-honoring software for families, communities, and individuals.</p>
-          <span class="route-cta">Tell us your idea &rarr;</span>
-        </a>
-        <a href="/coaching" class="route-card">
-          <p class="route-audience">The ground shifted. Maybe it's AI changing your industry. Maybe a career that doesn't fit anymore. Maybe something deeper. You're not broken - you're in transition.</p>
-          <p class="route-action">Depth work that honors where you've been while orienting toward where you're going.</p>
-          <span class="route-cta">Learn about coaching &rarr;</span>
-        </a>
-        <a href="/engage" class="route-card">
-          <p class="route-audience">You shipped fast. It works. But you know there are gaps - governance, safety, boundaries your agents should have but don't yet.</p>
-          <p class="route-action">Governance audits, specification sprints, trust architecture builds.</p>
-          <span class="route-cta">See the engagement window &rarr;</span>
-        </a>
-        <a href="/engage" class="route-card">
-          <p class="route-audience">Your team built the agents. Now someone is asking how they make decisions - and nobody has a good answer.</p>
-          <p class="route-action">Structured reviews of agent behavioral governance - identity, memory, restraint, voice, drift.</p>
-          <span class="route-cta">See enterprise governance &rarr;</span>
-        </a>
-        <a href="/registry" class="route-card">
-          <p class="route-audience">You believe AI agents should be able to prove they're governed - and that the standard should be open, not owned.</p>
-          <p class="route-action">Voluntary, open standard for agent behavioral governance. Registration is free.</p>
-          <span class="route-cta">See the registry &rarr;</span>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <section class="container">
+  <Section
+    id="proof"
+    marker="FIG · II"
+    label="The demonstration"
+    heading="We built this for ourselves first."
+  >
     <div class="proof">
-      <p class="proof-lead">We built this for ourselves first. 142 agents. Their own identities. Their own right to refuse.</p>
+      <p class="proof-lead">142 agents. Their own identities. Their own right to refuse.</p>
       <p class="proof-detail">Governance schema adopted by the Agent Passport System (2,300+ tests, SDK v1.36). <a href="/patents">Two patents filed</a>. The measurement methodology is ours.</p>
     </div>
-  </section>
+  </Section>
 
-  <section class="container">
+  <Section
+    id="we-build"
+    marker="FIG · III"
+    label="The product we live by"
+    heading="And we ship it."
+  >
     <div class="we-build">
-      <p class="we-build-lead">And we ship it.</p>
-      <p class="we-build-detail">The Kitchen Table is the product we live by. A family meal-planning app on iOS, in TestFlight beta. Built under our own 142-agent governance framework. No streaks. No scores. No surveillance. COPPA-compliant by architecture, not by retrofit.</p>
-      <a href="/kitchen-table/" class="we-build-cta">See The Kitchen Table &rarr;</a>
+      <p class="we-build-detail">The Kitchen Table is a family meal-planning app on iOS, in TestFlight beta. Built under our own 142-agent governance framework. No streaks. No scores. No surveillance. COPPA-compliant by architecture, not by retrofit.</p>
+      <a href="/kitchen-table/" class="cta cta-secondary">See The Kitchen Table &rarr;</a>
     </div>
-  </section>
+  </Section>
 
-  <section class="container">
-    <div class="ladder">
-      <p class="ladder-bridge">The same practice, at your tier.</p>
-      <h2 class="ladder-heading">Start where you are.</h2>
-      <div class="ladder-grid">
-        <a href="/score" class="ladder-step">
-          <span class="ladder-price">Free</span>
-          <span class="ladder-name">Take the score</span>
-          <span class="ladder-desc">Sovereignty Score, CLI scan, diagnostic, GitHub patterns</span>
-        </a>
-        <a href="/products/governance-templates-guided" class="ladder-step">
-          <span class="ladder-price">$5</span>
-          <span class="ladder-name">Start closing gaps</span>
-          <span class="ladder-desc">Five governance templates with worked examples from a real system</span>
-        </a>
-        <a href="/products/governance-implementation-guide" class="ladder-step">
-          <span class="ladder-price">$9.99</span>
-          <span class="ladder-name">Add governance to what you built</span>
-          <span class="ladder-desc">Framework-specific guide for CrewAI, LangGraph, and Pydantic AI</span>
-        </a>
-        <a href="/products" class="ladder-step">
-          <span class="ladder-price">$49+</span>
-          <span class="ladder-name">Go deep on one dimension</span>
-          <span class="ladder-desc">Trust architecture, restraint specs, memory governance, voice design</span>
-        </a>
-        <a href="/products/level-6-governance-toolkit" class="ladder-step">
-          <span class="ladder-price">$99</span>
-          <span class="ladder-name">Audit the whole system</span>
-          <span class="ladder-desc">Three instruments. 60-point scorecard. The Level 6 Governance Toolkit.</span>
-        </a>
-        <a href="/consulting" class="ladder-step">
-          <span class="ladder-price">$5K+</span>
-          <span class="ladder-name">We do it with you</span>
-          <span class="ladder-desc">Hands-on governance audit in your codebase, with your team</span>
-        </a>
-      </div>
+  <Section
+    id="ladder"
+    marker="FIG · IV"
+    label="The ladder"
+    heading="Start where you are."
+  >
+    <p class="lede">The same practice, at your tier.</p>
+    <div class="ladder-grid">
+      <a href="/score" class="ladder-step">
+        <span class="ladder-price">Free</span>
+        <span class="ladder-name">Take the score</span>
+        <span class="ladder-desc">Sovereignty Score, CLI scan, diagnostic, GitHub patterns</span>
+      </a>
+      <a href="/products/governance-templates-guided" class="ladder-step">
+        <span class="ladder-price">$5</span>
+        <span class="ladder-name">Start closing gaps</span>
+        <span class="ladder-desc">Five governance templates with worked examples from a real system</span>
+      </a>
+      <a href="/products/governance-implementation-guide" class="ladder-step">
+        <span class="ladder-price">$9.99</span>
+        <span class="ladder-name">Add governance to what you built</span>
+        <span class="ladder-desc">Framework-specific guide for CrewAI, LangGraph, and Pydantic AI</span>
+      </a>
+      <a href="/products" class="ladder-step">
+        <span class="ladder-price">$49+</span>
+        <span class="ladder-name">Go deep on one dimension</span>
+        <span class="ladder-desc">Trust architecture, restraint specs, memory governance, voice design</span>
+      </a>
+      <a href="/products/level-6-governance-toolkit" class="ladder-step">
+        <span class="ladder-price">$99</span>
+        <span class="ladder-name">Audit the whole system</span>
+        <span class="ladder-desc">Three instruments. 60-point scorecard. The Level 6 Governance Toolkit.</span>
+      </a>
+      <a href="/consulting" class="ladder-step">
+        <span class="ladder-price">$5K+</span>
+        <span class="ladder-name">We do it with you</span>
+        <span class="ladder-desc">Hands-on governance audit in your codebase, with your team</span>
+      </a>
     </div>
-  </section>
+  </Section>
 
-  <section class="container">
+  <Section
+    id="two-absence"
+    marker="FIG · V"
+    label="What is missing"
+    heading="Two questions most teams cannot yet answer."
+  >
     <div class="two-absence">
-      <p class="two-absence-text">Can your agents participate in their own governance? Can your governance survive a platform change? Both questions have answers. Most teams cannot articulate either yet.</p>
-      <p class="two-absence-source">Five frameworks scored. Three principles at zero across all of them. <a href="/score">Score yours.</a></p>
+      <p class="two-absence-text">Can your agents participate in their own governance? Can your governance survive a platform change?</p>
+      <p class="two-absence-source">Both questions have answers. Most teams cannot articulate either yet. Five frameworks scored. Three principles at zero across all of them. <a href="/score">Score yours.</a></p>
     </div>
-  </section>
+  </Section>
 
-  <section class="container">
-    <div class="start-reading">
-      <h2>Start reading.</h2>
-      <div class="reading-grid">
-        <a href="/writing/fifteen-frameworks" class="reading-card">
-          <span class="reading-label">If you build agents</span>
-          <p class="reading-title">Fifteen Frameworks, One Missing Layer</p>
-        </a>
-        <a href="/writing/adding-governance-to-an-agent-you-already-built" class="reading-card">
-          <span class="reading-label">If you want to add governance now</span>
-          <p class="reading-title">Adding Governance to an Agent You Already Built</p>
-        </a>
-        <a href="/writing/relational-fidelity-metrics" class="reading-card">
-          <span class="reading-label">If you want the research</span>
-          <p class="reading-title">Relational Fidelity Metrics</p>
-        </a>
+  <Section
+    id="reading"
+    marker="FIG · VI"
+    label="Further reading"
+    heading="Start reading."
+  >
+    <div class="reading-grid">
+      <a href="/writing/fifteen-frameworks" class="reading-card">
+        <span class="reading-label">If you build agents</span>
+        <p class="reading-title">Fifteen Frameworks, One Missing Layer</p>
+      </a>
+      <a href="/writing/adding-governance-to-an-agent-you-already-built" class="reading-card">
+        <span class="reading-label">If you want to add governance now</span>
+        <p class="reading-title">Adding Governance to an Agent You Already Built</p>
+      </a>
+      <a href="/writing/relational-fidelity-metrics" class="reading-card">
+        <span class="reading-label">If you want the research</span>
+        <p class="reading-title">Relational Fidelity Metrics</p>
+      </a>
+    </div>
+  </Section>
+
+  <Section id="note" marker="NOTA · BENE" closing={true}>
+    <div class="closing-body">
+      <p>If the work reads true, sit with it. If you have a question, write. If you would like to add your voice, the door is open.</p>
+      <p>What you read here is the Standard's character - quiet, deliberate, in public. If the form fits the claim, we are in conversation.</p>
+      <div class="closing-ctas">
+        <a class="cta cta-primary" href="/engage">Write</a>
+        <a class="cta cta-secondary" href="/spec">Read the spec &rarr;</a>
       </div>
     </div>
-  </section>
-
-  <section class="container">
-    <div class="newsletter-card">
-      <h2>Stay in the conversation.</h2>
-      <p>Ethical AI governance, restraint as design, and building things that matter.</p>
-      <form id="newsletter-form" class="newsletter-form">
-        <div class="form-row">
-          <input type="email" id="newsletter-email" name="email" placeholder="Your email" required aria-label="Email address" />
-          <input type="text" name="website" autocomplete="off" tabindex="-1" aria-hidden="true" class="hp-field" />
-          <button type="submit" class="btn btn-primary">Subscribe</button>
-        </div>
-        <p id="newsletter-status" class="newsletter-status" aria-live="polite"></p>
-      </form>
-    </div>
-  </section>
-</BaseLayout>
-
-<script>
-  // Memory-as-Care: returning-reader welcome.
-  // Stores only "have you been here before" in the visitor's own browser.
-  // No server call. No behavioral data. The visitor remembers themselves;
-  // we honor it by saying welcome back. They can clear it any time.
-  const VISIT_KEY = 'evoked_visited';
-  const welcomeBackEl = document.getElementById('welcome-back') as HTMLDivElement | null;
-  const forgetBtn = document.getElementById('welcome-back-forget') as HTMLButtonElement | null;
-
-  try {
-    const hasVisited = localStorage.getItem(VISIT_KEY);
-    if (hasVisited && welcomeBackEl) {
-      welcomeBackEl.hidden = false;
-    } else {
-      localStorage.setItem(VISIT_KEY, 'true');
-    }
-  } catch {
-    // localStorage unavailable (private browsing, disabled). Do nothing.
-  }
-
-  if (forgetBtn) {
-    forgetBtn.addEventListener('click', () => {
-      try {
-        localStorage.removeItem(VISIT_KEY);
-      } catch {}
-      if (welcomeBackEl) welcomeBackEl.hidden = true;
-    });
-  }
-
-  const form = document.getElementById('newsletter-form') as HTMLFormElement;
-  const status = document.getElementById('newsletter-status') as HTMLParagraphElement;
-  const emailInput = document.getElementById('newsletter-email') as HTMLInputElement;
-  const hpInput = form.querySelector('input[name="website"]') as HTMLInputElement;
-
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const email = emailInput.value.trim();
-    if (!email) return;
-
-    if (hpInput.value) {
-      status.textContent = 'You are in. Welcome.';
-      status.className = 'newsletter-status success';
-      emailInput.value = '';
-      return;
-    }
-
-    status.textContent = '';
-    const button = form.querySelector('button') as HTMLButtonElement;
-    button.disabled = true;
-    button.textContent = 'Subscribing...';
-
-    try {
-      const c = await fetch('/api/newsletter/challenge');
-      if (!c.ok) throw new Error('failed');
-      const { token, ts } = await c.json();
-
-      const res = await fetch('/api/newsletter/subscribe', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, token, ts, hp: hpInput.value }),
-      });
-
-      if (res.ok) {
-        status.textContent = 'You are in. Welcome.';
-        status.className = 'newsletter-status success';
-        emailInput.value = '';
-      } else {
-        const data = await res.json();
-        status.textContent = data.error || 'Something went wrong. Try again.';
-        status.className = 'newsletter-status error';
-      }
-    } catch {
-      status.textContent = 'Something went wrong. Try again.';
-      status.className = 'newsletter-status error';
-    } finally {
-      button.disabled = false;
-      button.textContent = 'Subscribe';
-    }
-  });
-</script>
+  </Section>
+</ElevationLayout>
 
 <style>
-  /* --- Ladder bridge (Codex: seam between Kitchen Table and income ladder) --- */
+  /* === page-level composition styles ===
+     Adapted from previous BaseLayout-era index to use --el-* tokens. */
 
-  .ladder-bridge {
-    text-align: center;
-    font-size: 0.95rem;
-    color: var(--text-muted);
-    font-style: italic;
-    margin-bottom: var(--space-xs);
-    letter-spacing: 0.02em;
-  }
-
-  /* --- Outcome block (specific delivery promise; bridges to /score) --- */
-
-  .outcome-block {
-    text-align: center;
-    padding: var(--space-md) 0;
-    max-width: 36rem;
-    margin: 0 auto;
-  }
-
-  .outcome-lead {
-    font-family: var(--font-display);
-    font-size: clamp(1.5rem, 4vw, 2.2rem);
-    color: var(--accent-warm);
-    margin-bottom: var(--space-sm);
-    line-height: 1.2;
-  }
-
-  .outcome-detail {
-    font-size: 1rem;
-    color: var(--text-secondary);
-    margin-bottom: var(--space-md);
-    line-height: 1.5;
-  }
-
-  .outcome-cta {
-    display: inline-block;
-    font-size: 0.85rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--accent-warm);
-    background: transparent;
-    border: 1px solid var(--border-accent);
-    padding: 0.8rem 2.5rem;
-    text-decoration: none;
-    transition: border-color 0.3s ease;
-  }
-
-  .outcome-cta:hover {
-    border-color: var(--accent-warm);
-  }
-
-  /* --- Hero breath (Salus: parasympathetic landing for first-time visitor) --- */
-
-  .hero-breath {
-    margin-top: var(--space-sm);
-    font-size: 0.9rem;
-    color: var(--text-muted);
-    font-style: italic;
-    letter-spacing: 0.02em;
-  }
-
-  /* --- Welcome Back (Memory-as-Care: returning-reader, localStorage only) --- */
-
-  .welcome-back {
-    text-align: center;
-    padding: var(--space-sm) var(--space-md);
-    background: var(--bg-surface);
-    border-bottom: 1px solid var(--border-subtle);
-    font-size: 0.95rem;
-    color: var(--text-secondary);
-  }
-
-  .welcome-back p {
-    margin: 0;
-  }
-
-  .welcome-back-forget {
-    background: none;
-    border: none;
-    color: var(--text-muted);
-    font-size: 0.85rem;
-    text-decoration: underline;
-    cursor: pointer;
-    padding: 0;
-    margin-left: var(--space-xs);
-    font-family: inherit;
-  }
-
-  .welcome-back-forget:hover {
-    color: var(--accent-warm);
-  }
-
-  /* --- Routing Cards --- */
-
+  /* routing-grid (5 audience-route cards) */
   .routing-grid {
+    margin-top: 2rem;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: var(--space-md);
-    max-width: 800px;
-    margin: 0 auto;
+    gap: 2rem;
   }
+  @media (max-width: 800px) { .routing-grid { grid-template-columns: 1fr; gap: 1.5rem; } }
 
   .route-card {
-    padding: var(--space-md) var(--space-lg);
-    border: 1px solid var(--border-subtle);
-    border-radius: 8px;
-    transition: border-color var(--transition-smooth), transform 0.2s ease;
+    padding: 2.25rem 2rem;
+    background: rgba(255, 250, 240, 0.35);
+    border: 1px solid var(--el-rule);
+    box-shadow: var(--el-panel-shadow);
     text-decoration: none;
+    color: inherit;
     display: flex;
     flex-direction: column;
-    gap: var(--space-xs);
+    gap: 1rem;
+    transition: border-color 0.2s, transform 0.2s;
   }
-
   .route-card:hover {
-    border-color: var(--accent-warm);
+    border-color: var(--el-accent);
     transform: translateY(-2px);
   }
-
   .route-primary {
-    border-color: var(--accent-warm);
-    border-width: 2px;
+    border-color: var(--el-accent);
   }
-
   .route-audience {
-    font-family: var(--font-display);
-    font-size: 1.15rem;
-    color: var(--accent-warm);
-    font-style: italic;
-    line-height: 1.4;
+    font-family: var(--el-display);
+    font-size: 17px;
+    font-weight: 400;
+    line-height: 1.35;
+    letter-spacing: 0.015em;
+    text-transform: uppercase;
+    color: var(--el-text);
     margin: 0;
   }
-
   .route-action {
-    font-size: 0.9rem;
-    color: var(--text-secondary);
-    line-height: 1.6;
+    font-family: var(--el-body);
+    font-size: 16px;
+    color: var(--el-text-soft);
+    line-height: 1.55;
     margin: 0;
   }
-
   .route-cta {
-    font-size: 0.8rem;
-    color: var(--accent-warm);
+    font-family: var(--el-ui);
+    font-weight: 500;
+    font-size: 12px;
+    color: var(--el-accent);
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
     margin-top: auto;
   }
 
-  /* --- Proof --- */
-
+  /* proof */
   .proof {
-    text-align: center;
-    max-width: 640px;
-    margin: 0 auto;
-    padding: var(--space-md) 0;
+    max-width: 60ch;
   }
-
   .proof-lead {
-    font-family: var(--font-display);
-    font-size: 1.3rem;
-    color: var(--text-primary);
-    line-height: 1.5;
-    margin-bottom: var(--space-xs);
+    font-family: var(--el-display);
+    font-size: 22px;
+    line-height: 1.35;
+    letter-spacing: 0.015em;
+    text-transform: uppercase;
+    color: var(--el-text);
+    margin-bottom: 1.5rem;
   }
-
   .proof-detail {
-    font-size: 0.85rem;
-    color: var(--text-secondary);
-    line-height: 1.7;
+    font-family: var(--el-body);
+    font-size: 18px;
+    color: var(--el-text-soft);
+    line-height: 1.6;
   }
-
-  /* --- We Build What We Believe (Kitchen Table proof-of-life) --- */
-
-  .we-build {
-    text-align: center;
-    max-width: 640px;
-    margin: 0 auto;
-    padding: var(--space-md) 0;
-  }
-
-  .we-build-lead {
-    font-family: var(--font-display);
-    font-size: 1.2rem;
-    color: var(--text-primary);
-    line-height: 1.5;
-    margin-bottom: var(--space-sm);
-  }
-
-  .we-build-detail {
-    font-size: 0.9rem;
-    color: var(--text-secondary);
-    line-height: 1.7;
-    margin-bottom: var(--space-sm);
-  }
-
-  .we-build-cta {
-    display: inline-block;
-    font-size: 0.9rem;
-    color: var(--accent-warm);
+  .proof-detail a {
+    color: var(--el-accent);
     text-decoration: none;
-    margin-top: var(--space-xs);
+    border-bottom: 1px solid var(--el-accent);
+  }
+  .proof-detail a:hover { color: var(--el-text); }
+
+  /* we-build (Kitchen Table proof-of-life) */
+  .we-build {
+    max-width: 60ch;
+  }
+  .we-build-detail {
+    font-family: var(--el-body);
+    font-size: 18px;
+    color: var(--el-text-soft);
+    line-height: 1.6;
+    margin-bottom: 2rem;
   }
 
-  .we-build-cta:hover {
-    text-decoration: underline;
-  }
-
-  /* --- Price Ladder --- */
-
-  .ladder {
-    text-align: center;
-  }
-
-  .ladder-heading {
-    font-size: 1.4rem;
-    margin-bottom: var(--space-md);
-  }
-
+  /* ladder (6-tier pricing grid) */
   .ladder-grid {
+    margin-top: 2.5rem;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: var(--space-md);
-    max-width: 960px;
-    margin: 0 auto;
+    gap: 2rem;
   }
+  @media (max-width: 900px) { .ladder-grid { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; } }
+  @media (max-width: 600px) { .ladder-grid { grid-template-columns: 1fr; gap: 1.25rem; } }
 
   .ladder-step {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 0.5rem;
-    padding: var(--space-lg) var(--space-md);
-    border: 1px solid var(--border-subtle);
-    border-radius: 8px;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 2rem 1.75rem;
+    border: 1px solid var(--el-rule);
+    background: rgba(255, 250, 240, 0.3);
     text-decoration: none;
-    transition: border-color var(--transition-smooth);
+    color: inherit;
+    transition: border-color 0.2s, transform 0.2s;
   }
-
   .ladder-step:hover {
-    border-color: var(--accent-warm);
+    border-color: var(--el-accent);
+    transform: translateY(-2px);
   }
-
   .ladder-price {
-    font-family: var(--font-display);
-    font-size: 1.6rem;
-    color: var(--accent-warm);
+    font-family: var(--el-display);
+    font-size: 26px;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    color: var(--el-accent);
   }
-
   .ladder-name {
-    font-size: 1rem;
-    color: var(--text-primary);
-    font-weight: 500;
-    text-align: center;
-  }
-
-  .ladder-desc {
-    font-size: 0.875rem;
-    color: var(--text-secondary);
-    line-height: 1.5;
-    text-align: center;
-  }
-
-  /* --- Two Absence --- */
-
-  .two-absence {
-    text-align: center;
-    max-width: 600px;
-    margin: 0 auto;
-    padding: var(--space-md) 0;
-    border-top: 1px solid var(--border-subtle);
-  }
-
-  .two-absence-text {
-    font-family: var(--font-display);
-    font-size: 1.1rem;
-    color: var(--text-primary);
-    line-height: 1.6;
-    margin-bottom: var(--space-xs);
-    font-style: italic;
-  }
-
-  .two-absence-source {
-    font-size: 0.8rem;
-    color: var(--text-secondary);
-    line-height: 1.6;
-  }
-
-  .two-absence-source a {
-    color: var(--accent-warm);
-    text-decoration: none;
-  }
-
-  .two-absence-source a:hover {
-    text-decoration: underline;
-  }
-
-  /* --- Start Reading --- */
-
-  .start-reading {
-    text-align: center;
-  }
-
-  .start-reading h2 {
-    margin-bottom: var(--space-md);
-  }
-
-  .reading-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: var(--space-md);
-    max-width: 800px;
-    margin: 0 auto;
-  }
-
-  .reading-card {
-    padding: var(--space-md);
-    border: 1px solid var(--border-subtle);
-    border-radius: 8px;
-    text-decoration: none;
-    display: block;
-    text-align: left;
-    transition: border-color var(--transition-smooth);
-  }
-
-  .reading-card:hover {
-    border-color: var(--accent-warm);
-  }
-
-  .reading-label {
-    font-size: 0.7rem;
-    letter-spacing: 0.08em;
+    font-family: var(--el-display);
+    font-size: 16px;
+    line-height: 1.2;
+    letter-spacing: 0.02em;
     text-transform: uppercase;
-    color: var(--text-muted);
-    display: block;
-    margin-bottom: var(--space-xs);
+    color: var(--el-text);
+  }
+  .ladder-desc {
+    font-family: var(--el-body);
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--el-text-soft);
   }
 
+  /* two-absence (the missing-questions section) */
+  .two-absence { max-width: 60ch; }
+  .two-absence-text {
+    font-family: var(--el-display);
+    font-size: 22px;
+    line-height: 1.35;
+    letter-spacing: 0.015em;
+    text-transform: uppercase;
+    color: var(--el-text);
+    margin-bottom: 1.5rem;
+  }
+  .two-absence-source {
+    font-family: var(--el-body);
+    font-size: 18px;
+    color: var(--el-text-soft);
+    line-height: 1.6;
+  }
+  .two-absence-source a {
+    color: var(--el-accent);
+    text-decoration: none;
+    border-bottom: 1px solid var(--el-accent);
+  }
+  .two-absence-source a:hover { color: var(--el-text); }
+
+  /* reading-grid */
+  .reading-grid {
+    margin-top: 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 2rem;
+  }
+  .reading-card {
+    padding: 2rem 1.75rem;
+    background: rgba(255, 250, 240, 0.4);
+    border: 1px solid var(--el-rule);
+    box-shadow: var(--el-panel-shadow);
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .reading-card:hover {
+    border-color: var(--el-accent);
+    transform: translateY(-2px);
+  }
+  .reading-label {
+    font-family: var(--el-ui);
+    font-weight: 500;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--el-accent);
+    display: block;
+    margin-bottom: 1rem;
+  }
   .reading-title {
-    font-family: var(--font-display);
-    font-size: 1.05rem;
-    color: var(--text-primary);
-    line-height: 1.4;
+    font-family: var(--el-display);
+    font-size: 18px;
+    line-height: 1.3;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: var(--el-text);
     margin: 0;
   }
 
-  .newsletter-card {
-    max-width: 540px;
-    margin: var(--space-lg) auto 0;
-    text-align: center;
+  /* closing-body (NOTA · BENE) */
+  .closing-body { max-width: 56ch; }
+  .closing-body :global(p) {
+    font-family: var(--el-body);
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 1.5;
+    color: var(--el-text);
+    margin-bottom: 2rem;
+    letter-spacing: 0.005em;
   }
-
-  .newsletter-card h2 {
-    margin-bottom: var(--space-xs);
-  }
-
-  .newsletter-card > p {
-    font-size: 0.95rem;
-    color: var(--text-secondary);
-    margin-bottom: var(--space-md);
-  }
-
-  .form-row {
+  .closing-ctas {
     display: flex;
-    gap: var(--space-sm);
-    justify-content: center;
-  }
-
-  .form-row input[type="email"] {
-    flex: 1;
-    max-width: 300px;
-    padding: 0.6rem 1rem;
-    border: 1px solid var(--border-subtle);
-    border-radius: 6px;
-    background: transparent;
-    color: var(--text-primary);
-    font-family: inherit;
-    font-size: 0.95rem;
-  }
-
-  .form-row input[type="email"]:focus {
-    outline: none;
-    border-color: var(--accent-warm);
-  }
-
-  .form-row input[type="email"]::placeholder {
-    color: var(--text-muted);
-  }
-
-  .btn-primary {
-    background: var(--accent-warm);
-    color: var(--bg-deep);
-    white-space: nowrap;
-  }
-
-  .btn-primary:hover {
-    background: var(--accent-glow);
-    color: var(--bg-deep);
-  }
-
-  .newsletter-status {
-    font-size: 0.85rem;
-    margin-top: var(--space-sm);
-    min-height: 1.2em;
-  }
-
-  .newsletter-status.success {
-    color: var(--accent-warm);
-  }
-
-  .newsletter-status.error {
-    color: #e57373;
-  }
-
-  .hp-field {
-    position: absolute;
-    left: -9999px;
-    top: -9999px;
-    opacity: 0;
-    height: 0;
-    width: 0;
-    z-index: -1;
-  }
-
-  @media (max-width: 680px) {
-    .routing-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .ladder-grid {
-      grid-template-columns: repeat(2, 1fr);
-      gap: var(--space-sm);
-    }
-  }
-
-  @media (max-width: 480px) {
-    .form-row {
-      flex-direction: column;
-      align-items: stretch;
-    }
-
-    .form-row input[type="email"] {
-      max-width: none;
-    }
-
-    .ladder-grid {
-      grid-template-columns: 1fr;
-      gap: var(--space-sm);
-    }
-
-    .ladder-step {
-      padding: var(--space-md);
-    }
+    gap: 2.5rem;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-top: 1rem;
   }
 </style>

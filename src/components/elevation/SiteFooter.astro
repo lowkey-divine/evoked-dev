@@ -1,0 +1,159 @@
+---
+/**
+ * SiteFooter - elevation register bottom of page
+ *
+ * Newsletter signup on the left, footer-meta links + version line on the
+ * right, astrolabe quarter-arc in the corner. Verbatim from j.html.
+ */
+import Astrolabe from './Astrolabe.astro';
+
+interface FooterLink { href: string; label: string; }
+interface Props {
+  /** Override the version line at the bottom. */
+  versionLine?: string;
+  /** Override the footer-meta link row. */
+  metaLinks?: FooterLink[];
+  /** Override the newsletter section copy. */
+  newsletterLabel?: string;
+  newsletterHeading?: string;
+  newsletterBlurb?: string;
+  /** Show the astrolabe corner. Default true. */
+  astrolabe?: boolean;
+}
+
+const {
+  versionLine = "Evoked · The Agentic Standard · Vol. 01 · 2026",
+  metaLinks = [
+    { href: "/principles", label: "Principles" },
+    { href: "/registry",   label: "Registry" },
+    { href: "/engage",     label: "Working Group" },
+    { href: "/legal",      label: "License" },
+    { href: "/spec",       label: "Spec" },
+  ],
+  newsletterLabel   = "If you want to stay in the conversation",
+  newsletterHeading = "Letters about the Standard, the practice, and what we are building.",
+  newsletterBlurb   = "Sent when there is something worth sending. Not often.",
+  astrolabe         = true,
+} = Astro.props;
+---
+
+<footer class="site">
+  <div class="newsletter">
+    <p class="newsletter-label">{newsletterLabel}</p>
+    <h3>{newsletterHeading}</h3>
+    <p>{newsletterBlurb}</p>
+    <form data-evoke-newsletter>
+      <input type="email" placeholder="your.email@example.com" required aria-label="Email address" />
+      <button type="submit">Subscribe</button>
+    </form>
+  </div>
+  <div class="footer-meta">
+    <div class="footer-meta-row">
+      {metaLinks.map((l) => <a href={l.href}>{l.label}</a>)}
+    </div>
+    <div class="footer-meta-quiet">{versionLine}</div>
+  </div>
+  {astrolabe && <Astrolabe />}
+</footer>
+
+<script>
+  // newsletter form - signals "Thank you" until a real endpoint is wired up.
+  document.querySelectorAll<HTMLFormElement>('form[data-evoke-newsletter]').forEach((form) => {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const btn = form.querySelector<HTMLButtonElement>('button');
+      if (btn) btn.textContent = 'Thank you ✓';
+    });
+  });
+</script>
+
+<style>
+  footer.site {
+    position: relative;
+    max-width: var(--el-content-max);
+    margin: 0 auto;
+    padding: 5rem 3rem 3rem;
+    border-top: 1px solid var(--el-rule);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+  }
+  @media (max-width: 800px) { footer.site { grid-template-columns: 1fr; gap: 3rem; } }
+  .newsletter-label {
+    font-family: var(--el-ui);
+    font-weight: 500;
+    font-size: 13px;
+    color: var(--el-accent);
+    margin-bottom: 1.25rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+  }
+  .newsletter h3 {
+    font-family: var(--el-display);
+    font-size: 18px;
+    font-weight: 400;
+    margin-bottom: 1.25rem;
+    line-height: 1.3;
+    color: var(--el-text);
+    letter-spacing: 0.025em;
+    text-transform: uppercase;
+  }
+  .newsletter p {
+    font-family: var(--el-body);
+    color: var(--el-text-soft);
+    margin-bottom: 2rem;
+    font-size: 18px;
+    line-height: 1.5;
+    max-width: 42ch;
+  }
+  .newsletter form {
+    display: flex;
+    gap: 0.5rem;
+    max-width: 440px;
+    border-bottom: 1px solid var(--el-text);
+    padding-bottom: 0.5rem;
+  }
+  .newsletter input {
+    flex: 1;
+    padding: 0.4rem 0;
+    background: transparent;
+    border: none;
+    font-family: var(--el-body);
+    font-size: 18px;
+    color: var(--el-text);
+  }
+  .newsletter input::placeholder { color: var(--el-text-quiet); }
+  .newsletter input:focus { outline: none; }
+  .newsletter button {
+    padding: 0.4rem 0;
+    background: transparent;
+    color: var(--el-accent);
+    border: none;
+    font-family: var(--el-ui);
+    font-weight: 500;
+    font-size: 13px;
+    cursor: pointer;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+  }
+  .newsletter button:hover { color: var(--el-text); }
+  .footer-meta {
+    align-self: end;
+    font-family: var(--el-ui);
+    font-weight: 500;
+    font-size: 12px;
+    color: var(--el-text-quiet);
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    padding-right: 5rem; /* leave room for astrolabe in corner */
+  }
+  .footer-meta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2.25rem;
+    margin-bottom: 1.5rem;
+  }
+  .footer-meta a { color: var(--el-text-soft); text-decoration: none; }
+  .footer-meta a:hover { color: var(--el-accent); }
+  .footer-meta-quiet { color: var(--el-text-quiet); letter-spacing: 0.22em; }
+</style>

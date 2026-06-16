@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 460" role="img" aria-label="Orion, after al-Sufi, Kitab Suwar al-Kawakib, Isfahan, 964">
+  <title>al-Jabbar - after al-Sufi - Kitab Suwar al-Kawakib - Isfahan - 964</title>
+  <desc>Robed manuscript figure in the Persian al-Sufi tradition. Source of the Arabic star names Al Mintaqah, Al Nilam, Al Nitaq. Brass-line, Evoked brand palette.</desc>
+  <defs>
+    <style>
+      .frame-outer { stroke: #A88838; stroke-width: 0.8; fill: none; }
+      .frame-inner { stroke: #A88838; stroke-width: 0.3; fill: none; }
+      .corner { stroke: #A88838; stroke-width: 0.6; fill: none; opacity: 0.85; }
+      .robe { stroke: #A88838; stroke-width: 0.55; fill: none; opacity: 0.75; }
+      .star-belt { fill: #7E6622; }
+      .star-major { fill: #A88838; }
+      .star-ring { stroke: #A88838; stroke-width: 0.6; fill: none; }
+      .arabic-name { font-family: 'EB Garamond', Georgia, serif; font-size: 9px; fill: #1C1812; font-style: italic; }
+      .arabic-gloss { font-family: 'EB Garamond', Georgia, serif; font-size: 8px; fill: #8C7E68; opacity: 0.85; }
+      .title-arabic { font-family: 'EB Garamond', Georgia, serif; font-size: 14px; fill: #A88838; font-style: italic; }
+      .caption-main { font-family: 'Space Grotesk', system-ui, sans-serif; font-size: 9px; fill: #A88838; letter-spacing: 0.28em; text-transform: uppercase; font-weight: 500; }
+      .caption-cite { font-family: 'Space Grotesk', system-ui, sans-serif; font-size: 9px; fill: #7E6622; letter-spacing: 0.22em; text-transform: uppercase; font-weight: 500; }
+    </style>
+  </defs>
+
+  <rect class="frame-outer" x="30" y="30" width="340" height="340"/>
+  <rect class="frame-inner" x="36" y="36" width="328" height="328"/>
+  <g class="corner">
+    <path d="M 30 60 L 60 60 L 60 30"/>
+    <path d="M 370 60 L 340 60 L 340 30"/>
+    <path d="M 30 340 L 60 340 L 60 370"/>
+    <path d="M 370 340 L 340 340 L 340 370"/>
+    <circle cx="60" cy="60" r="4"/>
+    <circle cx="340" cy="60" r="4"/>
+    <circle cx="60" cy="340" r="4"/>
+    <circle cx="340" cy="340" r="4"/>
+  </g>
+
+  <g class="robe">
+    <circle cx="200" cy="100" r="12"/>
+    <path d="M 178 116 Q 165 135 160 170 Q 158 200 165 235 Q 175 265 195 275"/>
+    <path d="M 222 116 Q 235 135 240 170 Q 242 200 235 235 Q 225 265 205 275"/>
+    <path d="M 162 198 Q 200 204 238 198" stroke-width="0.7"/>
+    <path d="M 175 130 Q 145 150 130 180 Q 125 200 135 215"/>
+    <path d="M 130 175 Q 110 195 105 225 Q 110 250 130 255" stroke-width="0.4"/>
+    <path d="M 225 130 Q 260 120 285 100 Q 295 90 300 80"/>
+    <path d="M 300 80 L 308 70" stroke-width="0.9"/>
+    <path d="M 175 270 Q 165 310 160 350"/>
+    <path d="M 225 270 Q 235 310 240 350"/>
+    <path d="M 200 275 Q 200 320 200 360" stroke-width="0.4" opacity="0.6"/>
+  </g>
+
+  <circle class="star-belt" cx="170" cy="200" r="3.5"/>
+  <circle class="star-belt" cx="200" cy="202" r="4"/>
+  <circle class="star-belt" cx="230" cy="200" r="3.5"/>
+  <circle class="star-major" cx="148" cy="115" r="3" opacity="0.85"/>
+  <circle class="star-ring" cx="252" cy="115" r="2.5"/>
+  <circle class="star-ring" cx="148" cy="300" r="2.5"/>
+  <circle class="star-major" cx="252" cy="305" r="3.2" opacity="0.9"/>
+
+  <text class="arabic-name" x="170" y="225" text-anchor="middle">Al Mintaqah</text>
+  <text class="arabic-name" x="200" y="225" text-anchor="middle">Al Nilam</text>
+  <text class="arabic-name" x="230" y="225" text-anchor="middle">Al Nitaq</text>
+  <text class="arabic-gloss" x="200" y="245" text-anchor="middle">"the belt" · "the string of pearls" · "the girdle"</text>
+  <text class="title-arabic" x="200" y="55" text-anchor="middle" letter-spacing="0.05em">al-Jabbar · The Giant</text>
+
+  <text class="caption-main" x="200" y="420" text-anchor="middle">FIG · AL-JABBAR (ORION)</text>
+  <text class="caption-cite" x="200" y="438" text-anchor="middle">After al-Sufi · Kitab Suwar al-Kawakib</text>
+  <text class="caption-cite" x="200" y="452" text-anchor="middle">Isfahan · 964</text>
+</svg>

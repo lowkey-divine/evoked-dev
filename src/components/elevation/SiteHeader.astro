@@ -1,0 +1,198 @@
+---
+/**
+ * SiteHeader - elevation register top of page
+ *
+ * Brand (sigil + wordmark) on the left, nav with dropdowns + moon glyph
+ * on the right. Verbatim extraction from j.html.
+ *
+ * Pages can override via the layout's `<slot name="header">` if they
+ * need a different nav (e.g., a "back to compare" elevation draft).
+ */
+import Sigil from './Sigil.astro';
+
+interface NavLink { href: string; label: string; }
+interface NavGroup { label: string; href?: string; children?: NavLink[]; }
+interface Props {
+  /** Override the wordmark text. Defaults to "EVOKED". */
+  wordmark?: string;
+  /** Override the nav structure. Defaults to the canonical site nav. */
+  nav?: NavGroup[];
+}
+
+const {
+  wordmark = "EVOKED",
+  nav = [
+    {
+      label: "The Standard",
+      href: "/principles",
+      children: [
+        { href: "/principles", label: "Principles" },
+        { href: "/spec",       label: "Spec" },
+        { href: "/registry",   label: "Registry" },
+        { href: "/patents",    label: "Patents" },
+        { href: "/refusals",   label: "Refusals" },
+      ],
+    },
+    {
+      label: "Products",
+      href: "/products",
+      children: [
+        { href: "/score",         label: "Sovereignty Score" },
+        { href: "/kitchen-table", label: "Kitchen Table" },
+        { href: "/products",      label: "Governance Bundles" },
+      ],
+    },
+    {
+      label: "Engage",
+      href: "/engage",
+      children: [
+        { href: "/build-with-us", label: "Build with us" },
+        { href: "/coaching",      label: "Coaching" },
+        { href: "/consulting",    label: "Consulting" },
+        { href: "/engage",        label: "Governance Audits" },
+      ],
+    },
+    { label: "Writing", href: "/writing" },
+  ],
+} = Astro.props;
+---
+
+<header class="site">
+  <div class="brand">
+    <Sigil />
+    <a href="/" class="wordmark">{wordmark}</a>
+  </div>
+  <nav class="site">
+    {nav.map((group) => (
+      group.children && group.children.length > 0 ? (
+        <div class="nav-item nav-has-dropdown">
+          <a href={group.href ?? "#"}>{group.label}</a>
+          <div class="nav-dropdown">
+            {group.children.map((child) => (
+              <a href={child.href}>{child.label}</a>
+            ))}
+          </div>
+        </div>
+      ) : (
+        <div class="nav-item">
+          <a href={group.href ?? "#"}>{group.label}</a>
+        </div>
+      )
+    ))}
+    <span class="moon-glyph" aria-hidden="true" title="First quarter moon"></span>
+  </nav>
+</header>
+
+<style>
+  header.site {
+    max-width: var(--el-content-max);
+    margin: 0 auto;
+    padding: 3.5rem 3rem 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .wordmark {
+    font-family: var(--el-display);
+    font-weight: 700;
+    font-size: 17px;
+    letter-spacing: 0.32em;
+    color: var(--el-text);
+    line-height: 1;
+    text-decoration: none;
+  }
+  .moon-glyph {
+    display: inline-block;
+    vertical-align: middle;
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    background: var(--el-bg);
+    box-shadow: inset 5.5px 0 0 var(--el-accent);
+    border: 0.6px solid var(--el-accent);
+    margin-left: 2rem;
+    opacity: 0.85;
+  }
+  nav.site {
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+  }
+  nav.site a {
+    font-family: var(--el-ui);
+    font-weight: 500;
+    font-size: 13px;
+    text-decoration: none;
+    color: var(--el-text-soft);
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    transition: color 200ms ease;
+  }
+  nav.site a:hover { color: var(--el-accent); }
+  .nav-item { position: relative; }
+  .nav-has-dropdown > a {
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5em;
+  }
+  .nav-has-dropdown > a::after {
+    content: '\25BE';
+    font-size: 0.7em;
+    opacity: 0.55;
+    transition: transform 250ms ease, opacity 200ms ease;
+    display: inline-block;
+  }
+  .nav-has-dropdown:hover > a::after {
+    transform: rotate(180deg);
+    opacity: 1;
+  }
+  .nav-dropdown {
+    position: absolute;
+    top: 100%;
+    left: -1.25rem;
+    margin-top: 1.25rem;
+    background: var(--el-bg);
+    border: 1px solid var(--el-accent);
+    padding: 0.75rem 0;
+    min-width: 220px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-6px);
+    transition: opacity 200ms ease-out, transform 200ms ease-out, visibility 200ms;
+    z-index: 50;
+    box-shadow:
+      0 1px 0 rgba(255,250,240,0.5) inset,
+      0 14px 44px -22px rgba(28,24,18,0.28);
+  }
+  .nav-has-dropdown:hover .nav-dropdown,
+  .nav-has-dropdown:focus-within .nav-dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+  .nav-dropdown::before {
+    content: '';
+    position: absolute;
+    top: -1.25rem;
+    left: 0;
+    right: 0;
+    height: 1.25rem;
+  }
+  .nav-dropdown a {
+    display: block;
+    margin: 0;
+    padding: 0.7rem 1.4rem;
+    font-size: 12px;
+    letter-spacing: 0.20em;
+    white-space: nowrap;
+    color: var(--el-text-soft);
+  }
+  .nav-dropdown a:hover { color: var(--el-accent); }
+  .nav-dropdown a + a { border-top: 1px solid var(--el-rule); }
+</style>

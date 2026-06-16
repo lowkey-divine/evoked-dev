@@ -1,0 +1,167 @@
+---
+/**
+ * ElevationLayout - the Version J register layout
+ *
+ * Future-classical parchment-and-brass register. Use for pages that
+ * adopt the J vibe (Trantor parchment, imperial gold, Galileo graph
+ * paper, scholarly figure-numbering).
+ *
+ * Coexists with BaseLayout. Opt in per page; no breaking changes
+ * for pages using BaseLayout.
+ *
+ * Authored 2026-06-16 as part of the J register extraction.
+ */
+import Analytics from '@vercel/analytics/astro';
+import { ClientRouter } from 'astro:transitions';
+import SiteHeader from '../components/elevation/SiteHeader.astro';
+import SiteFooter from '../components/elevation/SiteFooter.astro';
+import '../styles/elevation.css';
+
+interface Props {
+  title: string;
+  description?: string;
+  image?: string;
+  structuredData?: Record<string, any> | Record<string, any>[];
+  ogType?: string;
+  articleMeta?: {
+    publishedTime?: string;
+    author?: string;
+  };
+  /** Hide the default SiteHeader (use named slot "header" to replace, or render bare). */
+  bareHeader?: boolean;
+  /** Hide the default SiteFooter (use named slot "footer" to replace, or render bare). */
+  bareFooter?: boolean;
+  /**
+   * Declare that this page hosts an OrionFigure (or other figure-family member).
+   * When true, the sigil and astrolabe's construction marks brighten to
+   * acknowledge the figure-family relationship. Per the 2026-06-16 drafter-pair
+   * meeting (Wesley + Ishka).
+   */
+  siblingActive?: boolean;
+}
+
+const {
+  title,
+  description = "Governance for AI agents. Identity, restraint, and signed provenance from a team that governs 142 agents.",
+  image = "/images/evoke-lips-yellow.png",
+  structuredData,
+  ogType = "website",
+  articleMeta,
+  bareHeader = false,
+  bareFooter = false,
+  siblingActive = false,
+} = Astro.props;
+
+const bodyClass = siblingActive ? 'elevation-page sibling-active' : 'elevation-page';
+
+const canonicalURL = new URL(Astro.url.pathname, "https://evoked.dev");
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="generator" content={Astro.generator} />
+    {articleMeta?.author && <meta name="author" content={articleMeta.author} />}
+    <link rel="canonical" href={canonicalURL.href} />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content={ogType} />
+    <meta property="og:url" content={canonicalURL.href} />
+    <meta property="og:title" content={`${title} - evoked.dev`} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={new URL(image, "https://evoked.dev").href} />
+    {articleMeta?.publishedTime && <meta property="article:published_time" content={articleMeta.publishedTime} />}
+    {articleMeta?.author && <meta property="article:author" content={articleMeta.author} />}
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={`${title} - evoked.dev`} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={new URL(image, "https://evoked.dev").href} />
+
+    <!-- Structured Data (mirrors BaseLayout) -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Person",
+          "@id": "https://evoked.dev/#person",
+          "name": "Erin Stanley",
+          "url": "https://evoked.dev",
+          "description": "Founder of Evoked. AI agent governance, sovereignty-honoring frameworks, and trust architecture.",
+          "jobTitle": "Founder",
+          "knowsAbout": [
+            "ethical AI",
+            "agent governance",
+            "trust architecture",
+            "restraint specification",
+            "sovereignty-honoring design",
+            "life coaching",
+            "child safety",
+            "data privacy"
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://evoked.dev/#website",
+          "name": "evoked.dev",
+          "url": "https://evoked.dev",
+          "author": { "@id": "https://evoked.dev/#person" }
+        },
+        {
+          "@type": "Organization",
+          "@id": "https://evoked.dev/#organization",
+          "name": "Evoked",
+          "url": "https://evoked.dev",
+          "logo": "https://evoked.dev/images/evoke-lips-yellow.png",
+          "founder": { "@id": "https://evoked.dev/#person" },
+          "description": "AI agent governance consulting, sovereignty-honoring frameworks, and trust architecture. Two patents filed. 142-agent production fleet.",
+          "sameAs": [
+            "https://github.com/lowkey-divine",
+            "https://medium.com/@evokepassion869",
+            "https://x.com/PassionEvoked",
+            "https://www.linkedin.com/company/evoked"
+          ]
+        }
+      ]
+    })} />
+
+    {structuredData && (
+      <script type="application/ld+json" set:html={JSON.stringify(
+        Array.isArray(structuredData)
+          ? { "@context": "https://schema.org", "@graph": structuredData }
+          : { "@context": "https://schema.org", ...structuredData }
+      )} />
+    )}
+
+    <title>{title} - evoked.dev</title>
+
+    <!-- Astro View Transitions for cross-fade navigation continuity.
+         Per the 2026-06-16 meeting: parasympathetic-paced navigation,
+         no body startle between pages in the J register. -->
+    <ClientRouter />
+  </head>
+  <body class={bodyClass}>
+    {!bareHeader && (
+      <slot name="header">
+        <SiteHeader />
+      </slot>
+    )}
+
+    <main class="elevation-main">
+      <slot />
+    </main>
+
+    {!bareFooter && (
+      <slot name="footer">
+        <SiteFooter />
+      </slot>
+    )}
+
+    <Analytics />
+  </body>
+</html>

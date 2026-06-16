@@ -1,0 +1,207 @@
+/* ============================================================
+   ELEVATION DESIGN TOKENS & BASE STYLES
+   ============================================================
+   Version J register - "future-classical, not future-futurist.
+   Hari Seldon's gravitas. Trantor parchment + imperial gold +
+   monumental scale + refined classical letterforms."
+
+   Single source of truth for the J register. Edit here to
+   change site-wide look. Imported globally by ElevationLayout.
+
+   Authored 2026-06-15 by extracting from /elevation/j.html
+   per captain's request to make the register reusable before
+   the vocabulary walk-through.
+   ============================================================ */
+
+/* font stack imports */
+@import url('https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=EB+Garamond:wght@400;500;600&family=Space+Grotesk:wght@400;500;600&family=Space+Mono:wght@400&display=swap');
+
+:root {
+  /* palette - parchment + imperial gold */
+  --el-bg: #EBE2CB;
+  --el-bg-warm: #E2D6BB;
+  --el-text: #1C1812;
+  --el-text-soft: #5B4F3F;
+  --el-text-quiet: #8C7E68;
+  --el-accent: #A88838;        /* imperial gold - saturated, warm */
+  --el-accent-deep: #7E6622;
+  --el-accent-soft: #C3A45A;
+  --el-cosmic: #2A3A52;        /* deep imperial blue - whisper only */
+  --el-rule: rgba(28, 24, 18, 0.10);
+  --el-panel-shadow: 0 1px 0 rgba(255,250,240,0.6) inset, 0 14px 44px -22px rgba(28,24,18,0.20);
+
+  /* typography stack */
+  --el-display: 'Syncopate', system-ui, sans-serif;
+  --el-body: 'EB Garamond', Georgia, serif;
+  --el-ui: 'Space Grotesk', system-ui, sans-serif;
+  --el-mono: 'Space Mono', ui-monospace, monospace;
+
+  /* layout */
+  --el-content-max: 1180px;
+  --el-content-pad: 3rem;
+  --el-content-pad-tight: 1.25rem;
+}
+
+/* === reset (scoped to .elevation-page so it does not affect BaseLayout pages).
+       Includes the .elevation-page element itself (body) - otherwise body keeps
+       its 8px default margin and pushes content down from the top of the viewport. === */
+.elevation-page,
+.elevation-page * { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+/* === body chrome === */
+.elevation-page {
+  background: var(--el-bg);
+  color: var(--el-text);
+  font-family: var(--el-body);
+  font-size: 20px;
+  line-height: 1.72;
+  letter-spacing: 0.003em;
+  font-feature-settings: "kern", "liga", "calt", "onum";
+  min-height: 100vh;
+  overflow-x: clip;
+  background-image:
+    /* warm ambient lighting */
+    radial-gradient(ellipse 80% 60% at 18% 0%, rgba(255, 230, 180, 0.30) 0%, transparent 60%),
+    radial-gradient(ellipse 70% 50% at 90% 90%, rgba(168, 136, 56, 0.10) 0%, transparent 70%),
+    linear-gradient(180deg, var(--el-bg) 0%, var(--el-bg-warm) 100%);
+  background-attachment: fixed;
+}
+
+.elevation-page::before {
+  /* parchment fiber crosshatch - fine grain */
+  content: '';
+  position: fixed; inset: 0;
+  pointer-events: none;
+  background-image:
+    repeating-linear-gradient(45deg, rgba(28,24,18,0.012) 0, rgba(28,24,18,0.012) 1px, transparent 1px, transparent 3px),
+    repeating-linear-gradient(-45deg, rgba(28,24,18,0.012) 0, rgba(28,24,18,0.012) 1px, transparent 1px, transparent 3px);
+  z-index: 0;
+}
+
+.elevation-page::after {
+  /* da Vinci / Galileo graph paper - faint brass grid, breathing slowly */
+  content: '';
+  position: fixed; inset: 0;
+  pointer-events: none;
+  background-image:
+    repeating-linear-gradient(0deg, transparent 0, transparent 39px, rgba(168,136,56,0.09) 39px, rgba(168,136,56,0.09) 40px),
+    repeating-linear-gradient(90deg, transparent 0, transparent 39px, rgba(168,136,56,0.09) 39px, rgba(168,136,56,0.09) 40px);
+  animation: el-paper-breathe 16s ease-in-out infinite;
+  z-index: 0;
+}
+
+@keyframes el-paper-breathe {
+  0%, 100% { opacity: 0.65; }
+  50%      { opacity: 1.0; }
+}
+
+.elevation-page > * { position: relative; z-index: 1; }
+
+/* === main container === */
+.elevation-main {
+  max-width: var(--el-content-max);
+  margin: 0 auto;
+  padding: 0 var(--el-content-pad);
+}
+
+@media (max-width: 600px) {
+  .elevation-main { padding: 0 var(--el-content-pad-tight); }
+}
+
+/* ============================================================
+   SYMBOL FAMILY COORDINATION
+   ============================================================
+   Per the 2026-06-16 drafter-pair meeting (Wesley + Ishka):
+   pages with an OrionFigure hero declare siblingActive on the
+   layout. The Sigil's and Astrolabe's construction marks
+   brighten to acknowledge the figure's presence.
+
+   Default: marks at resting (quiet).
+   Sibling-active: marks at brighter (acknowledging figure family).
+
+   Construction marks = the scholarly-figure overlay (bounding
+   circle + cross-hairs on the sigil, concentric rings + hash
+   marks on the astrolabe). NOT the symbol itself (web nodes,
+   astrolabe arc) - those stay constant.
+   ============================================================ */
+
+:root {
+  --el-mark-opacity: 0.3;
+  --el-mark-opacity-active: 0.55;
+}
+
+.elevation-page .construction-mark {
+  opacity: var(--el-mark-opacity);
+}
+
+.elevation-page.sibling-active .construction-mark {
+  opacity: var(--el-mark-opacity-active);
+}
+
+/* ============================================================
+   QUIET MOTION LANGUAGE (Christine + Wesley, 2026-06-16)
+   ============================================================
+   Three pieces, all honoring prefers-reduced-motion:
+   (a) Sigil construction-marks fade in on first page load
+   (b) Sigil construction-marks micro-pulse on figure-hover
+   (c) Astrolabe rotates in when scrolled into view
+   ============================================================ */
+
+@keyframes el-sigil-fade-in {
+  from { opacity: 0; }
+  to   { opacity: var(--el-mark-opacity); }
+}
+.elevation-page.sibling-active .construction-mark {
+  animation-name: el-sigil-fade-in-active;
+}
+@keyframes el-sigil-fade-in-active {
+  from { opacity: 0; }
+  to   { opacity: var(--el-mark-opacity-active); }
+}
+.elevation-page .construction-mark {
+  animation: el-sigil-fade-in 1200ms ease-out;
+  animation-fill-mode: backwards;
+}
+
+@keyframes el-sigil-pulse {
+  0%, 100% { opacity: var(--el-mark-opacity); }
+  40%      { opacity: calc(var(--el-mark-opacity) + 0.15); }
+}
+@keyframes el-sigil-pulse-active {
+  0%, 100% { opacity: var(--el-mark-opacity-active); }
+  40%      { opacity: calc(var(--el-mark-opacity-active) + 0.15); }
+}
+.elevation-page .construction-mark.pulse {
+  animation: el-sigil-pulse 600ms ease;
+}
+.elevation-page.sibling-active .construction-mark.pulse {
+  animation: el-sigil-pulse-active 600ms ease;
+}
+
+/* astrolabe scroll-in: defaults to invisible + tilted, fades in when
+   IntersectionObserver adds .in-view class. */
+.elevation-page .astrolabe {
+  transform: rotate(-8deg);
+  opacity: 0;
+  transition: transform 800ms ease-out, opacity 800ms ease-out;
+}
+.elevation-page .astrolabe.in-view {
+  transform: rotate(0deg);
+  opacity: 0.75;
+}
+
+/* prefers-reduced-motion - all animations skipped, resting states honored */
+@media (prefers-reduced-motion: reduce) {
+  .elevation-page .construction-mark {
+    animation: none;
+  }
+  .elevation-page .construction-mark.pulse {
+    animation: none;
+  }
+  .elevation-page .astrolabe {
+    transform: none;
+    opacity: 0.75;
+    transition: none;
+  }
+}

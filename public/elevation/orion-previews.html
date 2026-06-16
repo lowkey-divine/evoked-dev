@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Evoked - Orion Figure Previews (Version J)</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=EB+Garamond:wght@400;500;600&family=Space+Grotesk:wght@400;500;600&family=Space+Mono:wght@400&display=swap" rel="stylesheet">
+  <style>
+    /*
+      ================================================================
+      ORION FIGURE PREVIEWS
+      ================================================================
+      Five concept sketches of the same three belt stars rendered in
+      five named scholarly cartographic traditions. Brass-line, Version J
+      palette. NOT tracings of source plates; direction-sketches showing
+      the visual register of each tradition for captain's selection.
+      Actual commission requires public-domain source plates + Codex
+      attribution pass + Stirps Tier-2 review.
+      ================================================================
+    */
+    :root {
+      --bg: #EBE2CB;
+      --bg-warm: #E2D6BB;
+      --text: #1C1812;
+      --text-soft: #5B4F3F;
+      --text-quiet: #8C7E68;
+      --accent: #A88838;
+      --accent-deep: #7E6622;
+      --accent-soft: #C3A45A;
+      --rule: rgba(28, 24, 18, 0.10);
+      --display: 'Syncopate', system-ui, sans-serif;
+      --body: 'EB Garamond', Georgia, serif;
+      --ui: 'Space Grotesk', system-ui, sans-serif;
+      --mono: 'Space Mono', ui-monospace, monospace;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--body);
+      font-size: 18px;
+      line-height: 1.72;
+      min-height: 100vh;
+      background-image:
+        radial-gradient(ellipse 80% 60% at 18% 0%, rgba(255, 230, 180, 0.30) 0%, transparent 60%),
+        radial-gradient(ellipse 70% 50% at 90% 90%, rgba(168, 136, 56, 0.10) 0%, transparent 70%),
+        linear-gradient(180deg, var(--bg) 0%, var(--bg-warm) 100%);
+      background-attachment: fixed;
+    }
+    body::before {
+      content: '';
+      position: fixed; inset: 0; pointer-events: none;
+      background-image:
+        repeating-linear-gradient(45deg, rgba(28,24,18,0.012) 0, rgba(28,24,18,0.012) 1px, transparent 1px, transparent 3px),
+        repeating-linear-gradient(-45deg, rgba(28,24,18,0.012) 0, rgba(28,24,18,0.012) 1px, transparent 1px, transparent 3px);
+      z-index: 0;
+    }
+    body::after {
+      content: '';
+      position: fixed; inset: 0; pointer-events: none;
+      background-image:
+        repeating-linear-gradient(0deg, transparent 0, transparent 39px, rgba(168,136,56,0.09) 39px, rgba(168,136,56,0.09) 40px),
+        repeating-linear-gradient(90deg, transparent 0, transparent 39px, rgba(168,136,56,0.09) 39px, rgba(168,136,56,0.09) 40px);
+      z-index: 0;
+    }
+    body > * { position: relative; z-index: 1; }
+
+    .nav-back {
+      position: fixed;
+      top: 1.25rem; right: 1.25rem;
+      font-family: var(--ui);
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--text-quiet);
+      padding: 0.4rem 0.8rem;
+      text-decoration: none;
+      z-index: 100;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+    }
+    .nav-back:hover { color: var(--accent); }
+
+    header.page {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 4rem 3rem 2rem;
+    }
+    .page-eyebrow {
+      font-family: var(--ui);
+      font-weight: 500;
+      font-size: 13px;
+      color: var(--accent);
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+    h1.page-title {
+      font-family: var(--display);
+      font-size: clamp(32px, 4vw, 48px);
+      font-weight: 400;
+      line-height: 1.1;
+      letter-spacing: 0.01em;
+      text-transform: uppercase;
+      color: var(--text);
+      margin-bottom: 1.5rem;
+      max-width: 28ch;
+    }
+    .page-lede {
+      font-family: var(--body);
+      font-size: 20px;
+      line-height: 1.55;
+      color: var(--text-soft);
+      max-width: 60ch;
+      margin-bottom: 1rem;
+    }
+    .page-caveat {
+      font-family: var(--body);
+      font-size: 17px;
+      line-height: 1.55;
+      color: var(--text-quiet);
+      max-width: 60ch;
+      font-style: italic;
+    }
+
+    main.previews {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 3rem 6rem;
+    }
+
+    .preview {
+      border-top: 1px solid var(--rule);
+      padding: 5rem 0;
+      position: relative;
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+    @media (max-width: 900px) {
+      .preview { grid-template-columns: 1fr; gap: 2.5rem; }
+    }
+    .preview::before {
+      content: '';
+      position: absolute;
+      top: -11px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--bg);
+      padding: 0 1.25rem;
+      color: var(--accent);
+      font-family: var(--ui);
+      font-weight: 500;
+      font-size: 12px;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      line-height: 1;
+    }
+    .preview#hevelius::before { content: 'FIG · I'; }
+    .preview#alsufi::before   { content: 'FIG · II'; }
+    .preview#bayer::before    { content: 'FIG · III'; }
+    .preview#susong::before   { content: 'FIG · IV'; }
+    .preview#korean::before   { content: 'FIG · V'; }
+
+    .preview-figure {
+      position: relative;
+      padding: 2rem;
+      background: rgba(255, 250, 240, 0.30);
+      border: 1px solid var(--rule);
+      box-shadow: 0 1px 0 rgba(255,250,240,0.5) inset, 0 14px 44px -22px rgba(28,24,18,0.20);
+    }
+    .preview-figure svg {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .fig-label {
+      position: absolute;
+      font-family: var(--ui);
+      font-weight: 500;
+      font-size: 10px;
+      color: var(--accent-deep);
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .fig-label.top-left  { top: 1rem; left: 1.25rem; }
+    .fig-label.top-right { top: 1rem; right: 1.25rem; }
+    .fig-label.bot-left  { bottom: 1rem; left: 1.25rem; }
+    .fig-label.bot-right { bottom: 1rem; right: 1.25rem; }
+
+    .preview-text { padding-right: 1rem; }
+    .preview-eyebrow {
+      font-family: var(--ui);
+      font-weight: 500;
+      font-size: 12px;
+      color: var(--accent);
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      margin-bottom: 1.25rem;
+    }
+    .preview-text h2 {
+      font-family: var(--display);
+      font-size: clamp(22px, 2.6vw, 30px);
+      font-weight: 400;
+      line-height: 1.18;
+      letter-spacing: 0.025em;
+      text-transform: uppercase;
+      color: var(--text);
+      margin-bottom: 1.5rem;
+      max-width: 22ch;
+    }
+    .preview-text .meta {
+      font-family: var(--mono);
+      font-size: 13px;
+      color: var(--accent-deep);
+      letter-spacing: 0.04em;
+      margin-bottom: 1.5rem;
+    }
+    .preview-text p {
+      font-family: var(--body);
+      font-size: 18px;
+      line-height: 1.6;
+      color: var(--text-soft);
+      max-width: 42ch;
+      margin-bottom: 1rem;
+    }
+    .preview-text p.character {
+      color: var(--text);
+      font-style: italic;
+      max-width: 38ch;
+      margin-top: 1.5rem;
+    }
+
+    footer.page {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 5rem 3rem 3rem;
+      border-top: 1px solid var(--rule);
+      font-family: var(--ui);
+      font-weight: 500;
+      font-size: 12px;
+      color: var(--text-quiet);
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+    }
+  </style>
+</head>
+<body>
+  <a class="nav-back" href="/elevation/j.html">← Version J</a>
+
+  <header class="page">
+    <p class="page-eyebrow">By Evoked · Concept Direction Sketches · For Captain's Selection</p>
+    <h1 class="page-title">Five Ways To Draw The Same Three Stars.</h1>
+    <p class="page-lede">Each panel below shows the same three belt stars of Orion — what Western astronomy calls Mintaka, Alnilam, Alnitak — rendered in the visual character of a different scholarly cartographic tradition. All five would sit in the same brass tone (#A88838), aligned with the typographic baseline of the Version J hero, woven into a single figure with marginalia citation labels.</p>
+    <p class="page-caveat">These are direction sketches drawn in SVG to show the visual register of each tradition. They are not tracings of source plates. The actual commission requires public-domain high-resolution scans of each source, Codex's attribution pass, and Stirps's Tier-2 cultural-clearance review.</p>
+  </header>
+
+  <main class="previews">
+
+    <!-- ============================================================
+         FIG I - HEVELIUS 1690 (Polish baroque hunter-figure)
+         ============================================================ -->
+    <section class="preview" id="hevelius">
+      <div class="preview-figure">
+        <span class="fig-label top-left">FIG · I</span>
+        <span class="fig-label top-right">HEVELIUS · 1690</span>
+        <span class="fig-label bot-left">FIRMAMENTUM SOBIESCIANUM</span>
+        <span class="fig-label bot-right">POLISH BAROQUE · ENGRAVING</span>
+        <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <!-- faint construction frame -->
+          <rect x="20" y="20" width="360" height="360" stroke="#A88838" stroke-width="0.3" stroke-dasharray="1 2" opacity="0.35" fill="none"/>
+          <!-- coordinate cross-hairs -->
+          <line x1="200" y1="20" x2="200" y2="380" stroke="#A88838" stroke-width="0.2" opacity="0.2"/>
+          <line x1="20" y1="200" x2="380" y2="200" stroke="#A88838" stroke-width="0.2" opacity="0.2"/>
+          <!-- baroque hunter figure - flowing lines suggesting body, club raised, shield/pelt -->
+          <g stroke="#A88838" stroke-width="0.7" fill="none" opacity="0.85">
+            <!-- head -->
+            <ellipse cx="200" cy="80" rx="14" ry="16"/>
+            <!-- helmet plumes (baroque flourish) -->
+            <path d="M 188 68 Q 180 50 175 38 Q 178 45 185 60" />
+            <path d="M 212 68 Q 220 50 225 38 Q 222 45 215 60" />
+            <path d="M 200 65 Q 200 45 198 35" />
+            <!-- shoulders + torso outline (flowing) -->
+            <path d="M 175 100 Q 165 130 165 170 Q 170 200 180 230 L 195 245" />
+            <path d="M 225 100 Q 235 130 235 170 Q 230 200 220 230 L 205 245" />
+            <!-- belt (where the three belt stars sit) -->
+            <path d="M 165 195 Q 200 200 235 195" stroke-width="0.9" opacity="0.95"/>
+            <!-- raised club arm (right, raised high) -->
+            <path d="M 235 110 Q 270 90 295 60 Q 305 50 312 40" stroke-width="0.7"/>
+            <path d="M 295 55 Q 310 45 320 32" stroke-width="0.7"/>
+            <!-- the club itself -->
+            <path d="M 312 40 Q 318 32 322 25" stroke-width="1.3"/>
+            <ellipse cx="320" cy="28" rx="9" ry="5" transform="rotate(-30 320 28)" stroke-width="0.8"/>
+            <!-- shield arm (left, holding pelt or shield) -->
+            <path d="M 165 110 Q 130 130 110 160 Q 100 180 105 195" />
+            <!-- shield/pelt arc -->
+            <path d="M 90 145 Q 70 170 75 215 Q 85 245 110 250 Q 115 240 110 220 Q 100 185 100 160 Z" stroke-width="0.6"/>
+            <!-- legs (striding pose) -->
+            <path d="M 185 240 Q 175 280 165 320 Q 158 340 155 360" />
+            <path d="M 215 240 Q 225 280 240 320 Q 248 340 252 360" />
+            <!-- sword hanging from belt -->
+            <path d="M 200 200 Q 200 230 198 250" stroke-width="0.5" opacity="0.6"/>
+            <!-- ornamental scrollwork (baroque flourish around figure margin) -->
+            <path d="M 50 200 Q 35 180 40 150 Q 50 165 55 185" stroke-width="0.4" opacity="0.45"/>
+            <path d="M 350 200 Q 365 220 360 250 Q 350 235 345 215" stroke-width="0.4" opacity="0.45"/>
+          </g>
+          <!-- the three belt stars - prominent -->
+          <circle cx="172" cy="197" r="3.5" fill="#A88838"/>
+          <circle cx="200" cy="199" r="4" fill="#A88838"/>
+          <circle cx="228" cy="197" r="3.5" fill="#A88838"/>
+          <!-- other major Orion stars -->
+          <circle cx="148" cy="100" r="2.5" stroke="#A88838" stroke-width="0.6" fill="none"/>
+          <circle cx="252" cy="100" r="2.5" stroke="#A88838" stroke-width="0.6" fill="none"/>
+          <circle cx="138" cy="295" r="3" stroke="#A88838" stroke-width="0.6" fill="none"/>
+          <circle cx="262" cy="295" r="3" stroke="#A88838" stroke-width="0.6" fill="none"/>
+          <!-- star labels - Latin names -->
+          <text x="148" y="92" font-family="EB Garamond, serif" font-size="9" fill="#7E6622" text-anchor="middle" opacity="0.7" font-style="italic">Betelgeuse</text>
+          <text x="252" y="92" font-family="EB Garamond, serif" font-size="9" fill="#7E6622" text-anchor="middle" opacity="0.7" font-style="italic">Bellatrix</text>
+          <text x="138" y="310" font-family="EB Garamond, serif" font-size="9" fill="#7E6622" text-anchor="middle" opacity="0.7" font-style="italic">Saiph</text>
+          <text x="262" y="310" font-family="EB Garamond, serif" font-size="9" fill="#7E6622" text-anchor="middle" opacity="0.7" font-style="italic">Rigel</text>
+        </svg>
+      </div>
+      <div class="preview-text">
+        <p class="preview-eyebrow">Option I</p>
+        <h2>The Baroque Hunter</h2>
+        <p class="meta">Hevelius · Firmamentum Sobiescianum · Gdańsk · 1690</p>
+        <p>Polish Renaissance astronomer. Drew the constellations as full figures with flowing baroque flourish — the hunter in striding pose, club raised, pelt-shield over the left arm. Star positions drawn against the figure as scholar's plate. The belt stars sit at the waist.</p>
+        <p class="character">Most narratively alive of the five. The figure tells the Greek myth most legibly. The page reads as a Renaissance frontispiece.</p>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         FIG II - AL-SUFI 964 (Persian/Arabic manuscript)
+         ============================================================ -->
+    <section class="preview" id="alsufi">
+      <div class="preview-figure">
+        <span class="fig-label top-left">FIG · II</span>
+        <span class="fig-label top-right">AL-SUFI · 964</span>
+        <span class="fig-label bot-left">KITĀB ṢUWAR AL-KAWĀKIB</span>
+        <span class="fig-label bot-right">PERSIAN MANUSCRIPT · INK</span>
+        <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <!-- manuscript frame with ornamental corner pieces -->
+          <rect x="30" y="30" width="340" height="340" stroke="#A88838" stroke-width="0.8" fill="none"/>
+          <rect x="36" y="36" width="328" height="328" stroke="#A88838" stroke-width="0.3" fill="none"/>
+          <!-- corner ornaments (geometric arabesque hints) -->
+          <g stroke="#A88838" stroke-width="0.6" fill="none" opacity="0.85">
+            <path d="M 30 60 L 60 60 L 60 30" />
+            <path d="M 370 60 L 340 60 L 340 30" />
+            <path d="M 30 340 L 60 340 L 60 370" />
+            <path d="M 370 340 L 340 340 L 340 370" />
+            <circle cx="60" cy="60" r="4" />
+            <circle cx="340" cy="60" r="4" />
+            <circle cx="60" cy="340" r="4" />
+            <circle cx="340" cy="340" r="4" />
+          </g>
+          <!-- al-Sufi's figures show constellations as outlined humans in robed posture - softer, more stylized than baroque -->
+          <g stroke="#A88838" stroke-width="0.55" fill="none" opacity="0.75">
+            <!-- head (rounded, no helmet plumes - manuscript register) -->
+            <circle cx="200" cy="100" r="12"/>
+            <!-- robed shoulders flowing into garment -->
+            <path d="M 178 116 Q 165 135 160 170 Q 158 200 165 235 Q 175 265 195 275" />
+            <path d="M 222 116 Q 235 135 240 170 Q 242 200 235 235 Q 225 265 205 275" />
+            <!-- belt -->
+            <path d="M 162 198 Q 200 204 238 198" stroke-width="0.7"/>
+            <!-- arms in calm pose, holding lion-skin (al-Sufi tradition draws Orion holding the lion-skin) -->
+            <path d="M 175 130 Q 145 150 130 180 Q 125 200 135 215" />
+            <path d="M 130 175 Q 110 195 105 225 Q 110 250 130 255" stroke-width="0.4"/>
+            <!-- raised right arm with staff/spear -->
+            <path d="M 225 130 Q 260 120 285 100 Q 295 90 300 80" />
+            <path d="M 300 80 L 308 70" stroke-width="0.9"/>
+            <!-- robe lower portion (draped) -->
+            <path d="M 175 270 Q 165 310 160 350" />
+            <path d="M 225 270 Q 235 310 240 350" />
+            <path d="M 200 275 Q 200 320 200 360" stroke-width="0.4" opacity="0.6"/>
+          </g>
+          <!-- the three belt stars - marked as RED dots in al-Sufi tradition (he distinguished color), here in deeper brass -->
+          <circle cx="170" cy="200" r="3.5" fill="#7E6622"/>
+          <circle cx="200" cy="202" r="4" fill="#7E6622"/>
+          <circle cx="230" cy="200" r="3.5" fill="#7E6622"/>
+          <!-- other major stars -->
+          <circle cx="148" cy="115" r="3" fill="#A88838" opacity="0.85"/>
+          <circle cx="252" cy="115" r="2.5" stroke="#A88838" stroke-width="0.6" fill="none"/>
+          <circle cx="148" cy="300" r="2.5" stroke="#A88838" stroke-width="0.6" fill="none"/>
+          <circle cx="252" cy="305" r="3.2" fill="#A88838" opacity="0.9"/>
+          <!-- ARABIC star names in transliteration (would be actual Arabic script in commission) -->
+          <text x="170" y="225" font-family="EB Garamond, serif" font-size="9" fill="#1C1812" text-anchor="middle" font-style="italic">Al Mintaqah</text>
+          <text x="200" y="225" font-family="EB Garamond, serif" font-size="9" fill="#1C1812" text-anchor="middle" font-style="italic">Al Nilam</text>
+          <text x="230" y="225" font-family="EB Garamond, serif" font-size="9" fill="#1C1812" text-anchor="middle" font-style="italic">Al Nitaq</text>
+          <text x="200" y="245" font-family="EB Garamond, serif" font-size="8" fill="#8C7E68" text-anchor="middle" opacity="0.85">"the belt" · "the string of pearls" · "the girdle"</text>
+          <!-- larger Arabic-script-like flourish near the manuscript edge as decorative line -->
+          <text x="200" y="55" font-family="EB Garamond, serif" font-size="14" fill="#A88838" text-anchor="middle" font-style="italic" letter-spacing="0.05em">al-Jabbār · The Giant</text>
+        </svg>
+      </div>
+      <div class="preview-text">
+        <p class="preview-eyebrow">Option II</p>
+        <h2>The Persian Manuscript</h2>
+        <p class="meta">al-Ṣūfī · Kitāb Ṣuwar al-Kawākib · Isfahan · 964</p>
+        <p>Persian astronomer in Isfahan. Drew the constellation as a robed figure - softer, manuscript-register, without baroque flourish. <em>Al-Jabbār</em> (The Giant) was the Arabic name for the constellation. The belt stars Al Mintaqah, Al Nilam, Al Nitaq are the originals of every modern star catalog's Mintaka, Alnilam, Alnitak.</p>
+        <p class="character">Most lineage-load-bearing of the five. The reader who knows where their own star names came from will recognize this figure as the source.</p>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         FIG III - BAYER 1603 (clean cartographic position-plot)
+         ============================================================ -->
+    <section class="preview" id="bayer">
+      <div class="preview-figure">
+        <span class="fig-label top-left">FIG · III</span>
+        <span class="fig-label top-right">BAYER · 1603</span>
+        <span class="fig-label bot-left">URANOMETRIA</span>
+        <span class="fig-label bot-right">GERMAN · COPPER PLATE</span>
+        <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <!-- cleaner grid - ecliptic + celestial frame -->
+          <g stroke="#A88838" stroke-width="0.25" opacity="0.3">
+            <line x1="50" y1="50" x2="350" y2="50"/>
+            <line x1="50" y1="350" x2="350" y2="350"/>
+            <line x1="50" y1="50" x2="50" y2="350"/>
+            <line x1="350" y1="50" x2="350" y2="350"/>
+            <!-- declination/right-ascension grid -->
+            <line x1="125" y1="50" x2="125" y2="350" stroke-dasharray="2 2"/>
+            <line x1="200" y1="50" x2="200" y2="350" stroke-dasharray="2 2"/>
+            <line x1="275" y1="50" x2="275" y2="350" stroke-dasharray="2 2"/>
+            <line x1="50" y1="125" x2="350" y2="125" stroke-dasharray="2 2"/>
+            <line x1="50" y1="200" x2="350" y2="200" stroke-dasharray="2 2"/>
+            <line x1="50" y1="275" x2="350" y2="275" stroke-dasharray="2 2"/>
+          </g>
+          <!-- figure outline VERY FAINT (Bayer drew figures but his innovation was the star-position primacy) -->
+          <g stroke="#A88838" stroke-width="0.3" fill="none" opacity="0.3">
+            <ellipse cx="200" cy="95" rx="10" ry="11"/>
+            <path d="M 185 110 Q 175 140 175 175 Q 178 205 188 235" />
+            <path d="M 215 110 Q 225 140 225 175 Q 222 205 212 235" />
+            <path d="M 190 240 Q 180 290 170 340" />
+            <path d="M 210 240 Q 220 290 230 340" />
+            <path d="M 185 130 Q 150 140 120 130 Q 100 120 90 100" />
+            <path d="M 215 130 Q 250 140 280 130 Q 300 120 310 100" />
+          </g>
+          <!-- ALL the stars - Bayer's innovation was Greek-letter designations by brightness -->
+          <!-- belt stars -->
+          <circle cx="170" cy="200" r="3.5" fill="#A88838"/>
+          <circle cx="200" cy="202" r="4" fill="#A88838"/>
+          <circle cx="230" cy="200" r="3.5" fill="#A88838"/>
+          <text x="170" y="190" font-family="EB Garamond, serif" font-size="11" fill="#7E6622" text-anchor="middle" font-style="italic">δ</text>
+          <text x="200" y="190" font-family="EB Garamond, serif" font-size="11" fill="#7E6622" text-anchor="middle" font-style="italic">ε</text>
+          <text x="230" y="190" font-family="EB Garamond, serif" font-size="11" fill="#7E6622" text-anchor="middle" font-style="italic">ζ</text>
+          <!-- shoulders -->
+          <circle cx="148" cy="115" r="4" fill="#A88838"/>
+          <text x="148" y="105" font-family="EB Garamond, serif" font-size="11" fill="#7E6622" text-anchor="middle" font-style="italic">α</text>
+          <circle cx="252" cy="115" r="3" fill="#A88838"/>
+          <text x="252" y="105" font-family="EB Garamond, serif" font-size="11" fill="#7E6622" text-anchor="middle" font-style="italic">γ</text>
+          <!-- feet -->
+          <circle cx="148" cy="300" r="3" fill="#A88838"/>
+          <text x="148" y="290" font-family="EB Garamond, serif" font-size="11" fill="#7E6622" text-anchor="middle" font-style="italic">κ</text>
+          <circle cx="252" cy="305" r="4.2" fill="#A88838"/>
+          <text x="252" y="295" font-family="EB Garamond, serif" font-size="11" fill="#7E6622" text-anchor="middle" font-style="italic">β</text>
+          <!-- sword stars below belt -->
+          <circle cx="200" cy="228" r="2" fill="#A88838" opacity="0.85"/>
+          <circle cx="200" cy="240" r="2.2" fill="#A88838" opacity="0.85"/>
+          <circle cx="200" cy="252" r="2" fill="#A88838" opacity="0.85"/>
+          <!-- minor stars (Bayer was thorough) -->
+          <circle cx="115" cy="155" r="1.5" fill="#A88838" opacity="0.7"/>
+          <circle cx="285" cy="155" r="1.5" fill="#A88838" opacity="0.7"/>
+          <circle cx="105" cy="125" r="1.5" fill="#A88838" opacity="0.65"/>
+          <circle cx="295" cy="125" r="1.5" fill="#A88838" opacity="0.65"/>
+          <circle cx="135" cy="175" r="1.2" fill="#A88838" opacity="0.6"/>
+          <circle cx="265" cy="175" r="1.2" fill="#A88838" opacity="0.6"/>
+          <circle cx="155" cy="160" r="1.3" fill="#A88838" opacity="0.7"/>
+          <circle cx="245" cy="160" r="1.3" fill="#A88838" opacity="0.7"/>
+          <circle cx="180" cy="170" r="1.2" fill="#A88838" opacity="0.6"/>
+          <circle cx="220" cy="170" r="1.2" fill="#A88838" opacity="0.6"/>
+          <!-- caption -->
+          <text x="200" y="380" font-family="EB Garamond, serif" font-size="11" fill="#7E6622" text-anchor="middle" font-style="italic" letter-spacing="0.04em">ORION · α β γ δ ε ζ · per stellae magnitudinem</text>
+        </svg>
+      </div>
+      <div class="preview-text">
+        <p class="preview-eyebrow">Option III</p>
+        <h2>The Star-Position Plate</h2>
+        <p class="meta">Bayer · Uranometria · Augsburg · 1603</p>
+        <p>German cartographer. Innovation: Greek-letter designations assigned by brightness (α Orionis = Betelgeuse, β Orionis = Rigel). The figure recedes; the star positions and magnitudes take primacy. Coordinate grid clearly drawn. Most modernly cartographic of the five.</p>
+        <p class="character">Most measurement-shaped. The page reads as scientific instrument. Cleanest visual; least narrative.</p>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         FIG IV - SU SONG 1092 (Chinese star atlas)
+         ============================================================ -->
+    <section class="preview" id="susong">
+      <div class="preview-figure">
+        <span class="fig-label top-left">FIG · IV</span>
+        <span class="fig-label top-right">SU SONG · 1092</span>
+        <span class="fig-label bot-left">XIN YI XIANG FA YAO 新儀象法要</span>
+        <span class="fig-label bot-right">CHINESE · WOODBLOCK</span>
+        <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <!-- circular frame (Chinese star charts often circular) -->
+          <circle cx="200" cy="200" r="170" stroke="#A88838" stroke-width="0.5" fill="none" opacity="0.7"/>
+          <circle cx="200" cy="200" r="165" stroke="#A88838" stroke-width="0.25" fill="none" opacity="0.5"/>
+          <!-- Chinese astronomy divided sky into 28 lunar mansions; Shen 參 is the asterism Orion belongs to -->
+          <!-- the seven stars of Shen mansion (which includes Orion's main figure) connected by lines -->
+          <!-- In Chinese tradition stars are connected with straight lines into named patterns -->
+          <g stroke="#A88838" stroke-width="0.8" fill="none">
+            <!-- Shen 參 - seven stars connected -->
+            <!-- Belt stars connected as a horizontal line -->
+            <line x1="170" y1="200" x2="200" y2="202"/>
+            <line x1="200" y1="202" x2="230" y2="200"/>
+            <!-- Shoulders to belt -->
+            <line x1="148" y1="115" x2="170" y2="200"/>
+            <line x1="252" y1="115" x2="230" y2="200"/>
+            <!-- Belt to feet -->
+            <line x1="170" y1="200" x2="148" y2="300"/>
+            <line x1="230" y1="200" x2="252" y2="305"/>
+            <!-- The pattern is hourglass-like - the connection between shoulders and feet -->
+            <line x1="148" y1="115" x2="252" y2="305" stroke-width="0.3" opacity="0.4" stroke-dasharray="2 2"/>
+            <line x1="252" y1="115" x2="148" y2="300" stroke-width="0.3" opacity="0.4" stroke-dasharray="2 2"/>
+          </g>
+          <!-- the stars as larger circles (Chinese tradition often drew prominent stars as ringed circles) -->
+          <circle cx="170" cy="200" r="5" stroke="#A88838" stroke-width="1.2" fill="#EBE2CB"/>
+          <circle cx="170" cy="200" r="2" fill="#A88838"/>
+          <circle cx="200" cy="202" r="5.5" stroke="#A88838" stroke-width="1.2" fill="#EBE2CB"/>
+          <circle cx="200" cy="202" r="2.2" fill="#A88838"/>
+          <circle cx="230" cy="200" r="5" stroke="#A88838" stroke-width="1.2" fill="#EBE2CB"/>
+          <circle cx="230" cy="200" r="2" fill="#A88838"/>
+          <!-- shoulders & feet -->
+          <circle cx="148" cy="115" r="5" stroke="#A88838" stroke-width="1.2" fill="#EBE2CB"/>
+          <circle cx="148" cy="115" r="2" fill="#A88838"/>
+          <circle cx="252" cy="115" r="4.5" stroke="#A88838" stroke-width="1.2" fill="#EBE2CB"/>
+          <circle cx="252" cy="115" r="1.8" fill="#A88838"/>
+          <circle cx="148" cy="300" r="4.5" stroke="#A88838" stroke-width="1.2" fill="#EBE2CB"/>
+          <circle cx="148" cy="300" r="1.8" fill="#A88838"/>
+          <circle cx="252" cy="305" r="5.5" stroke="#A88838" stroke-width="1.2" fill="#EBE2CB"/>
+          <circle cx="252" cy="305" r="2.2" fill="#A88838"/>
+          <!-- Chinese character 參 (Shen) - the lunar mansion name - large, calligraphic -->
+          <text x="200" y="155" font-family="EB Garamond, serif" font-size="34" fill="#A88838" text-anchor="middle" opacity="0.9" font-weight="500">參</text>
+          <!-- caption -->
+          <text x="200" y="378" font-family="EB Garamond, serif" font-size="11" fill="#7E6622" text-anchor="middle" font-style="italic" letter-spacing="0.04em">參 Shen · the white tiger asterism · western quadrant</text>
+          <!-- ecliptic line crossing -->
+          <path d="M 50 230 Q 200 180 350 230" stroke="#A88838" stroke-width="0.25" fill="none" opacity="0.35" stroke-dasharray="3 3"/>
+        </svg>
+      </div>
+      <div class="preview-text">
+        <p class="preview-eyebrow">Option IV</p>
+        <h2>The Shen Asterism</h2>
+        <p class="meta">Su Song · Xin Yi Xiang Fa Yao 新儀象法要 · Kaifeng · 1092</p>
+        <p>Song dynasty polymath. In Chinese astronomy these stars are called <em>Shen</em> 參 - one of the 28 lunar mansions of the white tiger quadrant. Stars connected by straight lines into the named asterism, drawn as ringed circles per Chinese cartographic convention. The figure is geometric, not anthropomorphic.</p>
+        <p class="character">Most geometrically pure of the five. The hunter disappears; the pattern stands. Connects to a wholly different sky-cosmology than the Greek lineage.</p>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         FIG V - KOREAN CHŎNSANG YŎLCH'A PUNYAJIDO 1395
+         ============================================================ -->
+    <section class="preview" id="korean">
+      <div class="preview-figure">
+        <span class="fig-label top-left">FIG · V</span>
+        <span class="fig-label top-right">CHOSŎN · 1395</span>
+        <span class="fig-label bot-left">CHŎNSANG YŎLCH'A PUNYAJIDO 天象列次分野之圖</span>
+        <span class="fig-label bot-right">KOREAN · STONE-CARVED</span>
+        <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <!-- Carved-into-stone aesthetic - thicker, more weathered line quality -->
+          <!-- circular celestial frame, layered (the Chŏnsang Yŏlch'a Punyajido has concentric circles) -->
+          <circle cx="200" cy="200" r="175" stroke="#7E6622" stroke-width="1.5" fill="none" opacity="0.9"/>
+          <circle cx="200" cy="200" r="165" stroke="#A88838" stroke-width="0.6" fill="none" opacity="0.7"/>
+          <circle cx="200" cy="200" r="120" stroke="#A88838" stroke-width="0.4" fill="none" opacity="0.5"/>
+          <circle cx="200" cy="200" r="60" stroke="#A88838" stroke-width="0.4" fill="none" opacity="0.5"/>
+          <!-- 28 mansion divisions - radial lines -->
+          <g stroke="#A88838" stroke-width="0.3" opacity="0.4">
+            <line x1="200" y1="25" x2="200" y2="375"/>
+            <line x1="25" y1="200" x2="375" y2="200"/>
+            <line x1="76" y1="76" x2="324" y2="324"/>
+            <line x1="324" y1="76" x2="76" y2="324"/>
+          </g>
+          <!-- The Shen 參 asterism, same shape as Su Song but carved-line aesthetic -->
+          <g stroke="#7E6622" stroke-width="1.2" fill="none">
+            <line x1="170" y1="200" x2="200" y2="202"/>
+            <line x1="200" y1="202" x2="230" y2="200"/>
+            <line x1="148" y1="115" x2="170" y2="200"/>
+            <line x1="252" y1="115" x2="230" y2="200"/>
+            <line x1="170" y1="200" x2="148" y2="300"/>
+            <line x1="230" y1="200" x2="252" y2="305"/>
+          </g>
+          <!-- Stone-carved star quality - chunkier, less precise circles -->
+          <circle cx="170" cy="200" r="4.5" fill="#7E6622" opacity="0.9"/>
+          <circle cx="200" cy="202" r="5" fill="#7E6622" opacity="0.95"/>
+          <circle cx="230" cy="200" r="4.5" fill="#7E6622" opacity="0.9"/>
+          <circle cx="148" cy="115" r="4" fill="#7E6622" opacity="0.85"/>
+          <circle cx="252" cy="115" r="3.8" fill="#7E6622" opacity="0.85"/>
+          <circle cx="148" cy="300" r="3.8" fill="#7E6622" opacity="0.85"/>
+          <circle cx="252" cy="305" r="4.5" fill="#7E6622" opacity="0.9"/>
+          <!-- Sweat-of-the-stonemason texture - small "chisel marks" hint -->
+          <g stroke="#7E6622" stroke-width="0.2" opacity="0.4">
+            <line x1="170" y1="195" x2="173" y2="192"/>
+            <line x1="167" y1="205" x2="170" y2="208"/>
+            <line x1="200" y1="196" x2="203" y2="194"/>
+            <line x1="197" y1="208" x2="200" y2="210"/>
+            <line x1="230" y1="195" x2="233" y2="192"/>
+            <line x1="227" y1="205" x2="230" y2="208"/>
+          </g>
+          <!-- weathered patina rings (suggesting the stone surface) -->
+          <circle cx="170" cy="200" r="7" stroke="#7E6622" stroke-width="0.25" fill="none" opacity="0.4"/>
+          <circle cx="200" cy="202" r="8" stroke="#7E6622" stroke-width="0.25" fill="none" opacity="0.45"/>
+          <circle cx="230" cy="200" r="7" stroke="#7E6622" stroke-width="0.25" fill="none" opacity="0.4"/>
+          <!-- Hanja characters for Shen carved at top -->
+          <text x="200" y="155" font-family="EB Garamond, serif" font-size="30" fill="#7E6622" text-anchor="middle" font-weight="600" opacity="0.9">參</text>
+          <!-- caption with Korean transliteration -->
+          <text x="200" y="378" font-family="EB Garamond, serif" font-size="11" fill="#7E6622" text-anchor="middle" font-style="italic" letter-spacing="0.04em">Chamsuk 參宿 · Shen mansion · carved at Kyŏngju</text>
+        </svg>
+      </div>
+      <div class="preview-text">
+        <p class="preview-eyebrow">Option V</p>
+        <h2>The Stone-Carved Sky</h2>
+        <p class="meta">Chosŏn dynasty · Chŏnsang Yŏlch'a Punyajido 天象列次分野之圖 · 1395</p>
+        <p>Korean star chart literally carved into a 1.2m black stone slab at the founding of the Chosŏn dynasty. The chart organizes the entire visible sky into 28 mansions with concentric celestial circles. <em>Chamsuk</em> 參宿 is the Shen mansion - same three belt stars, drawn in stone.</p>
+        <p class="character">Most weight-bearing of the five. The stars are not pictured; they are <em>inscribed</em>. The page reads as monument.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="page">
+    Evoked · Concept Direction Sketches · For Captain's Selection · 2026-06-15
+  </footer>
+</body>
+</html>

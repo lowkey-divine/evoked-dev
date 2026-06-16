@@ -1,0 +1,114 @@
+---
+/**
+ * Sigil - Evoked's mycelial-web mark
+ *
+ * 7 brass nodes connected non-hierarchically, with faint scholarly
+ * star-chart construction lines (bounding circle, coordinate cross-hairs).
+ * Reads as a thing-being-studied, not just a logo.
+ *
+ * Hover reveals measurement marks (Ø 24, 0.618, N=7).
+ *
+ * Used in SiteHeader by default. Can be embedded anywhere.
+ */
+interface Props {
+  /** Show the measurement marks on hover. Default true. */
+  measureOnHover?: boolean;
+}
+const { measureOnHover = true } = Astro.props;
+---
+
+<div class:list={["sigil-wrap", { "no-measure": !measureOnHover }]} transition:persist="sigil">
+  {measureOnHover && (
+    <>
+      <span class="measure m-top">Ø 24</span>
+      <span class="measure m-left">0.618</span>
+      <span class="measure m-bot">N=7</span>
+    </>
+  )}
+  <svg class="sigil" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Evoked sigil">
+    <!-- construction marks (bounding orbit + cross-hairs) - respond to sibling-active body class -->
+    <circle class="construction-mark" cx="12" cy="12" r="11" stroke="#A88838" stroke-width="0.2" stroke-dasharray="0.4 0.6" />
+    <line class="construction-mark" x1="12" y1="0" x2="12" y2="24" stroke="#A88838" stroke-width="0.15" />
+    <line class="construction-mark" x1="0" y1="12" x2="24" y2="12" stroke="#A88838" stroke-width="0.15" />
+    <!-- web connections -->
+    <g stroke="#A88838" stroke-width="0.35" opacity="0.55" fill="none">
+      <line x1="5"  y1="6"  x2="12" y2="4"  />
+      <line x1="12" y1="4"  x2="19" y2="6"  />
+      <line x1="5"  y1="6"  x2="3"  y2="14" />
+      <line x1="19" y1="6"  x2="21" y2="13" />
+      <line x1="12" y1="4"  x2="3"  y2="14" />
+      <line x1="12" y1="4"  x2="21" y2="13" />
+      <line x1="3"  y1="14" x2="7"  y2="20" />
+      <line x1="21" y1="13" x2="17" y2="20" />
+      <line x1="7"  y1="20" x2="17" y2="20" />
+      <line x1="3"  y1="14" x2="21" y2="13" />
+      <line x1="12" y1="4"  x2="12" y2="13" />
+      <line x1="12" y1="13" x2="7"  y2="20" />
+      <line x1="12" y1="13" x2="17" y2="20" />
+    </g>
+    <!-- 7 web nodes + center -->
+    <circle cx="5"  cy="6"  r="1.3" stroke="#A88838" stroke-width="0.7" />
+    <circle cx="12" cy="4"  r="1.3" stroke="#A88838" stroke-width="0.7" />
+    <circle cx="19" cy="6"  r="1.3" stroke="#A88838" stroke-width="0.7" />
+    <circle cx="3"  cy="14" r="1.3" stroke="#A88838" stroke-width="0.7" />
+    <circle cx="21" cy="13" r="1.3" stroke="#A88838" stroke-width="0.7" />
+    <circle cx="7"  cy="20" r="1.3" stroke="#A88838" stroke-width="0.7" />
+    <circle cx="17" cy="20" r="1.3" stroke="#A88838" stroke-width="0.7" />
+    <circle cx="12" cy="13" r="1.5" fill="#A88838" />
+  </svg>
+</div>
+
+<script>
+  // Sigil micro-pulse on OrionFigure hover - acknowledges the symbol-family relationship
+  // (sigil and figure are siblings). Per the 2026-06-16 meeting motion language spec.
+  //
+  // Uses Astro's page-load and view-transition events so the listener wires up correctly
+  // on initial load AND after each ClientRouter navigation.
+  function attachSigilPulse() {
+    const handler = () => {
+      document.querySelectorAll('.sigil .construction-mark').forEach((el) => {
+        el.classList.remove('pulse');
+        // force reflow so the class re-application triggers the animation
+        void (el as HTMLElement | SVGElement).getBoundingClientRect();
+        el.classList.add('pulse');
+        window.setTimeout(() => el.classList.remove('pulse'), 600);
+      });
+    };
+    window.removeEventListener('orion:hover', handler);
+    window.addEventListener('orion:hover', handler);
+  }
+  attachSigilPulse();
+  document.addEventListener('astro:after-swap', attachSigilPulse);
+</script>
+
+<style>
+  .sigil-wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+    cursor: help;
+  }
+  .sigil-wrap.no-measure { cursor: default; }
+  .sigil {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+  }
+  .sigil-wrap span.measure {
+    position: absolute;
+    font-family: var(--el-ui);
+    font-weight: 500;
+    font-size: 8px;
+    color: var(--el-accent-deep);
+    letter-spacing: 0.08em;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    white-space: nowrap;
+    text-transform: uppercase;
+  }
+  .sigil-wrap:hover span.measure { opacity: 1; }
+  .sigil-wrap .m-top  { top: -11px; left: 50%; transform: translateX(-50%); }
+  .sigil-wrap .m-bot  { bottom: -11px; left: 50%; transform: translateX(-50%); }
+  .sigil-wrap .m-left { top: 50%; left: -32px; transform: translateY(-50%); }
+</style>
