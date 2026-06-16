@@ -22,20 +22,8 @@ import Section from '../components/elevation/Section.astro';
   </Hero>
 
   <Section
-    id="score"
-    marker="FIG · I"
-    label="The instrument"
-    heading="Free Sovereignty Score."
-  >
-    <div class="outcome-block">
-      <p class="outcome-detail">Five questions. Two minutes. No signup. See your score the moment you finish.</p>
-      <a href="/score" class="cta cta-primary">Begin &rarr;</a>
-    </div>
-  </Section>
-
-  <Section
     id="doorway"
-    marker="FIG · II"
+    marker="FIG · I"
     label="Find your doorway"
     heading="Five entrances. One practice."
   >
@@ -70,7 +58,7 @@ import Section from '../components/elevation/Section.astro';
 
   <Section
     id="proof"
-    marker="FIG · III"
+    marker="FIG · II"
     label="The demonstration"
     heading="We built this for ourselves first."
   >
@@ -82,7 +70,7 @@ import Section from '../components/elevation/Section.astro';
 
   <Section
     id="we-build"
-    marker="FIG · IV"
+    marker="FIG · III"
     label="The product we live by"
     heading="And we ship it."
   >
@@ -94,7 +82,7 @@ import Section from '../components/elevation/Section.astro';
 
   <Section
     id="ladder"
-    marker="FIG · V"
+    marker="FIG · IV"
     label="The ladder"
     heading="Start where you are."
   >
@@ -135,7 +123,7 @@ import Section from '../components/elevation/Section.astro';
 
   <Section
     id="two-absence"
-    marker="FIG · VI"
+    marker="FIG · V"
     label="What is missing"
     heading="Two questions most teams cannot yet answer."
   >
@@ -147,7 +135,7 @@ import Section from '../components/elevation/Section.astro';
 
   <Section
     id="reading"
-    marker="FIG · VII"
+    marker="FIG · VI"
     label="Further reading"
     heading="Start reading."
   >
@@ -182,19 +170,6 @@ import Section from '../components/elevation/Section.astro';
 <style>
   /* === page-level composition styles ===
      Adapted from previous BaseLayout-era index to use --el-* tokens. */
-
-  /* outcome-block (Score CTA) */
-  .outcome-block {
-    text-align: left;
-    max-width: 56ch;
-  }
-  .outcome-detail {
-    font-family: var(--el-body);
-    font-size: 19px;
-    line-height: 1.6;
-    color: var(--el-text-soft);
-    margin-bottom: 2rem;
-  }
 
   /* routing-grid (5 audience-route cards) */
   .routing-grid {
