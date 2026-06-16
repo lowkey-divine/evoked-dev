@@ -1,184 +1,187 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
+import ElevationLayout from '../layouts/ElevationLayout.astro';
+import Hero from '../components/elevation/Hero.astro';
+import Section from '../components/elevation/Section.astro';
 ---
 
-<BaseLayout title="Work With Us" description="Coaching, consulting, products, and implementation - find the right path for where you are right now.">
-  <div class="hero">
-    <h1 class="fade-in">Find your path.</h1>
-    <p class="tagline fade-in">Different work for different needs. Same commitment to sovereignty, care, and building what matters.</p>
-  </div>
+<ElevationLayout
+  title="Work With Us"
+  description="Coaching, consulting, products, and implementation - find the right path for where you are right now."
+>
+  <Hero
+    eyebrowParts={["Evoked", "Work With Us", "Vol. 01"]}
+    headline="Find your path."
+    sub="Different work for different needs. Same commitment to sovereignty, care, and building what matters."
+  />
 
-  <section class="container">
+  <Section id="recognitions" marker="FIG · I" label="Find your path">
     <div class="recognition-paths">
 
       <div class="recognition-group" id="creator">
-        <div class="recognition-moment">
-          <p class="recognition-feeling">You have an idea for something that serves a family, a community, a group that matters - and you refuse to build it the extractive way.</p>
+        <div class="recognition-feeling">
+          <p>You have an idea for something that serves a family, a community, a group that matters - and you refuse to build it the extractive way.</p>
         </div>
         <div class="recognition-path">
           <h3>Build With Us</h3>
           <p>Sovereignty-honoring software for families, communities, and individuals. If the people who use it matter more to you than the metrics, we should talk.</p>
           <div class="path-links">
-            <a href="/build-with-us" class="btn">Tell us your idea</a>
-            <a href="/projects" class="btn btn-secondary">See our projects</a>
+            <a href="/build-with-us" class="cta cta-primary">Tell us your idea</a>
+            <a href="/projects" class="cta cta-secondary">See our projects &rarr;</a>
           </div>
         </div>
       </div>
 
       <div class="recognition-group" id="developer">
-        <div class="recognition-moment">
-          <p class="recognition-feeling">You shipped fast. It works. But you know there are gaps - governance, safety, boundaries your agents should have but don't yet.</p>
+        <div class="recognition-feeling">
+          <p>You shipped fast. It works. But you know there are gaps - governance, safety, boundaries your agents should have but don't yet.</p>
         </div>
         <div class="recognition-path">
           <h3>Consulting and Implementation</h3>
           <p>Governance audits, specification sprints, trust architecture builds, and advisory partnerships. Four disciplines - prompt craft, context engineering, intent engineering, and specification engineering. We meet you where you are.</p>
           <div class="path-links">
-            <a href="/engage" class="btn">Through 12/31 - engagement window</a>
-            <a href="/governance-audit" class="btn btn-secondary">Governance audit</a>
-            <a href="/consulting" class="btn btn-secondary">All services</a>
-            <a href="/products" class="btn btn-secondary">Browse frameworks</a>
+            <a href="/engage" class="cta cta-primary">Through 12/31 - engagement window</a>
+            <a href="/governance-audit" class="cta cta-secondary">Governance audit</a>
+            <a href="/consulting" class="cta cta-secondary">All services</a>
+            <a href="/products" class="cta cta-secondary">Browse frameworks</a>
           </div>
         </div>
       </div>
 
       <div class="recognition-group" id="executive">
-        <div class="recognition-moment">
-          <p class="recognition-feeling">Your team built the agents. Now someone is asking how they make decisions - and nobody has a good answer.</p>
+        <div class="recognition-feeling">
+          <p>Your team built the agents. Now someone is asking how they make decisions - and nobody has a good answer.</p>
         </div>
         <div class="recognition-path">
           <h3>Enterprise Governance</h3>
           <p>Structured reviews of agent behavioral governance - identity, memory, restraint, voice, and drift. Findings come prioritized with implementation roadmaps. Your team gets workshops. Your system gets a governance partner.</p>
           <div class="path-links">
-            <a href="/engage" class="btn">Through 12/31 - engagement window</a>
-            <a href="/governance-audit" class="btn btn-secondary">Governance audit</a>
-            <a href="/consulting" class="btn btn-secondary">Full service menu</a>
-            <a href="https://cal.com/cal.com-evoked/discovery-call" class="btn btn-secondary" target="_blank" rel="noopener">Discovery call</a>
+            <a href="/engage" class="cta cta-primary">Through 12/31 - engagement window</a>
+            <a href="/governance-audit" class="cta cta-secondary">Governance audit</a>
+            <a href="/consulting" class="cta cta-secondary">Full service menu</a>
+            <a href="https://cal.com/cal.com-evoked/discovery-call" class="cta cta-secondary" target="_blank" rel="noopener">Discovery call</a>
           </div>
         </div>
       </div>
 
       <div class="recognition-group" id="coaching">
-        <div class="recognition-moment">
-          <p class="recognition-feeling">The ground shifted. Maybe it's AI changing your industry. Maybe it's a career that doesn't fit anymore. Maybe something deeper. You're not broken - you're in transition.</p>
+        <div class="recognition-feeling">
+          <p>The ground shifted. Maybe it's AI changing your industry. Maybe it's a career that doesn't fit anymore. Maybe something deeper. You're not broken - you're in transition.</p>
         </div>
         <div class="recognition-path">
           <h3>Coaching</h3>
           <p>For individuals and couples navigating real change. Your fifteen years of judgment is not depreciating. Accompaniment, not optimization. Depth work that honors where you've been while orienting toward where you're going.</p>
           <div class="path-links">
-            <a href="/coaching" class="btn">Learn more</a>
-            <a href="https://cal.com/evoked/coaching-conversation" class="btn btn-secondary">Start a conversation</a>
+            <a href="/coaching" class="cta cta-primary">Learn more</a>
+            <a href="https://cal.com/evoked/coaching-conversation" class="cta cta-secondary">Start a conversation</a>
           </div>
         </div>
       </div>
 
       <div class="recognition-group" id="open-source">
-        <div class="recognition-moment">
-          <p class="recognition-feeling">You believe AI agents should be able to prove they're governed - and that the standard should be open, not owned.</p>
+        <div class="recognition-feeling">
+          <p>You believe AI agents should be able to prove they're governed - and that the standard should be open, not owned.</p>
         </div>
         <div class="recognition-path">
           <h3>Evoked Verification - Open Standard</h3>
           <p>A voluntary, open standard for agent behavioral governance. Registry, verification, and public accountability across five properties - identity, memory, restraint, voice, and drift. Registration is free.</p>
           <div class="path-links">
-            <a href="/registry" class="btn">The registry</a>
-            <a href="/pledge" class="btn btn-secondary">The pledge</a>
+            <a href="/registry" class="cta cta-primary">The registry</a>
+            <a href="/pledge" class="cta cta-secondary">The pledge</a>
           </div>
         </div>
       </div>
 
     </div>
-  </section>
+  </Section>
 
-  <section class="container">
-    <div class="not-sure">
-      <h2>Not sure which path?</h2>
-      <p>That's fine. Start here.</p>
-      <div class="not-sure-options">
-        <a href="/diagnostic" class="btn">5-question diagnostic</a>
-        <a href="/fit" class="btn btn-secondary">Fit assessment</a>
-        <a href="/writing" class="btn btn-secondary">Read first</a>
-      </div>
+  <Section id="not-sure" marker="FIG · II" heading="Not sure which path?">
+    <p class="body">That's fine. Start here.</p>
+    <div class="not-sure-options">
+      <a href="/diagnostic" class="cta cta-primary">5-question diagnostic</a>
+      <a href="/fit" class="cta cta-secondary">Fit assessment &rarr;</a>
+      <a href="/writing" class="cta cta-secondary">Read first &rarr;</a>
     </div>
-  </section>
-</BaseLayout>
+  </Section>
+</ElevationLayout>
 
 <style>
+  /* === recognition groups (5 cards stacked vertically) === */
   .recognition-paths {
     display: flex;
     flex-direction: column;
-    gap: var(--space-lg);
+    gap: 2rem;
+    margin-top: 2rem;
   }
 
   .recognition-group {
     display: grid;
     grid-template-columns: 1fr 1.5fr;
-    gap: var(--space-md);
+    gap: 3rem;
     align-items: start;
-    padding: var(--space-md);
-    border: 1px solid var(--border-subtle);
-    border-radius: 8px;
-    transition: border-color var(--transition-smooth);
+    padding: 2.5rem 2.25rem;
+    background: rgba(255, 250, 240, 0.5);
+    border: 1.5px solid var(--el-accent);
+    box-shadow: var(--el-panel-shadow);
+    transition: background 0.2s, border-color 0.2s;
   }
-
   .recognition-group:hover {
-    border-color: var(--border-accent);
+    background: rgba(255, 250, 240, 0.85);
+    border-color: var(--el-accent-deep);
+  }
+  @media (max-width: 800px) {
+    .recognition-group { grid-template-columns: 1fr; gap: 1.5rem; padding: 2rem 1.5rem; }
   }
 
-  .recognition-feeling {
-    font-family: var(--font-display);
-    font-size: 1.3rem;
-    font-style: italic;
-    color: var(--accent-warm);
-    line-height: 1.4;
+  .recognition-feeling p {
+    font-family: var(--el-display);
+    font-size: clamp(18px, 1.8vw, 22px);
+    font-weight: 400;
+    line-height: 1.35;
+    letter-spacing: 0.015em;
+    text-transform: uppercase;
+    color: var(--el-accent-deep);
+    margin: 0;
   }
 
-  .recognition-path h3 {
-    margin-bottom: var(--space-xs);
+  .recognition-path :global(h3) {
+    font-family: var(--el-display);
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 1.2;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: var(--el-text);
+    margin: 0 0 1.25rem;
   }
-
-  .recognition-path p {
-    font-size: 0.95rem;
-    color: var(--text-secondary);
-    line-height: 1.7;
-    margin-bottom: var(--space-sm);
+  .recognition-path :global(p) {
+    font-family: var(--el-body);
+    font-size: 18px;
+    color: var(--el-text-soft);
+    line-height: 1.6;
+    margin: 0 0 1.75rem;
   }
 
   .path-links {
     display: flex;
-    gap: var(--space-sm);
+    gap: 1.5rem 2rem;
     flex-wrap: wrap;
+    align-items: center;
   }
 
-  .btn-secondary {
-    border: 1px solid var(--border-accent);
-    color: var(--text-secondary);
+  /* === not-sure section === */
+  .body {
+    font-family: var(--el-body);
+    font-size: 19px;
+    color: var(--el-text-soft);
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    max-width: 60ch;
   }
-
-  .btn-secondary:hover {
-    color: var(--text-primary);
-    border-color: var(--accent-warm);
-  }
-
-  .not-sure {
-    text-align: center;
-    max-width: 480px;
-    margin: 0 auto;
-  }
-
-  .not-sure p {
-    color: var(--text-secondary);
-    margin-bottom: var(--space-md);
-  }
-
   .not-sure-options {
     display: flex;
-    gap: var(--space-sm);
-    justify-content: center;
+    gap: 2.5rem;
     flex-wrap: wrap;
-  }
-
-  @media (max-width: 768px) {
-    .recognition-group {
-      grid-template-columns: 1fr;
-    }
+    align-items: center;
+    margin-top: 1rem;
   }
 </style>
