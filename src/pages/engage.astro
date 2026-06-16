@@ -1,56 +1,30 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import August2Countdown from '../components/August2Countdown.astro';
+import ElevationLayout from '../layouts/ElevationLayout.astro';
+import Hero from '../components/elevation/Hero.astro';
+import Section from '../components/elevation/Section.astro';
 ---
 
-<BaseLayout
+<ElevationLayout
   title="Engage - 2026 Window"
   description="Select governance, architecture, and audit engagements with Erin Stanley through December 31, 2026. Public pricing. Bounded window."
 >
-  <div class="hero">
-    <p class="recognition">Erin Stanley, Evoked - Engagement Window</p>
-    <h1>The synthetic-content marking obligation lands December 2. This window closes December 31.</h1>
-    <August2Countdown activateAtDays={8} />
-    <p class="tagline">
-      Three engagements. Public pricing. Available through December 31, 2026.
-      Then the chapter ends and a different one begins.
-    </p>
-  </div>
+  <Hero
+    eyebrowParts={["Erin Stanley, Evoked", "Engagement Window"]}
+    headline="The synthetic-content marking obligation lands December 2. This window closes December 31."
+    sub="Three engagements. Public pricing. Available through December 31, 2026. Then the chapter ends and a different one begins."
+  />
 
-  <section class="container">
-    <p>
-      Your agents shipped. The audit room is asking a different question than the
-      product room asked. Not what the agents can do. What they should refuse, who
-      decides, and where that decision is written down. Most teams cannot answer
-      that yet. You have weeks, not quarters, to find out whether you can.
-    </p>
-    <p>
-      I have a bounded 2026 window for three kinds of work. Public rates. No
-      discovery dance. If the offer matches what you need, the math is already on
-      the page.
-    </p>
-  </section>
+  <Section id="shift" marker="FIG · I" label="The shift">
+    <p class="body">Your agents shipped. The audit room is asking a different question than the product room asked. Not what the agents can do. What they should refuse, who decides, and where that decision is written down. Most teams cannot answer that yet. You have weeks, not quarters, to find out whether you can.</p>
+    <p class="body">I have a bounded 2026 window for three kinds of work. Public rates. No discovery dance. If the offer matches what you need, the math is already on the page.</p>
+  </Section>
 
-  <section class="container">
-    <div class="fit-gate">
-      <h2>Before you choose</h2>
-      <p>
-        The engagements below deliver two things in one. The technical shortcut to
-        where you need to be by December 2 - the audit, the spec, the retainer.
-        And a shift in how your team holds the governance question itself.
-      </p>
-      <p>
-        If you arrived ready for both, the engagement is right. If you arrived
-        ready only for the deliverable, the <a href="/writing">writing surface</a>
-        or the <a href="/consulting">products page</a> may be the better service
-        for you right now.
-      </p>
-    </div>
-  </section>
+  <Section id="fit-gate" marker="FIG · II" heading="Before you choose">
+    <p class="body">The engagements below deliver two things in one. The technical shortcut to where you need to be by December 2 - the audit, the spec, the retainer. And a shift in how your team holds the governance question itself.</p>
+    <p class="body">If you arrived ready for both, the engagement is right. If you arrived ready only for the deliverable, the <a href="/writing">writing surface</a> or the <a href="/consulting">products page</a> may be the better service for you right now.</p>
+  </Section>
 
-  <section class="container">
-    <h2>The Three Offers</h2>
-
+  <Section id="offers" marker="FIG · III" heading="The Three Offers">
     <div class="offer-stack">
 
       <div class="offer-card">
@@ -61,17 +35,7 @@ import August2Countdown from '../components/August2Countdown.astro';
         <h3>Sovereignty Architecture Audit</h3>
         <p class="offer-outcome">Know your standing before your auditors do.</p>
         <p class="offer-window">Eight weeks. Four working sessions. Written architecture deliverable.</p>
-        <p>
-          The 47-point assessment applied to your agent system across seven domains over
-          an extended contract engagement - identity, memory, restraint, voice, drift,
-          refusal architecture, and governance surface. We go deeper than the score. The
-          eight weeks let us walk your build team through the findings as they land, run
-          architecture recommendations against your real constraints, and produce a
-          remediation roadmap your team can execute against with effort sizing on every
-          line. You learn where your agents hold and where they break before your auditors
-          do - and you have time to fix what matters most before the next compliance
-          window opens.
-        </p>
+        <p class="offer-body">The 47-point assessment applied to your agent system across seven domains over an extended contract engagement - identity, memory, restraint, voice, drift, refusal architecture, and governance surface. We go deeper than the score. The eight weeks let us walk your build team through the findings as they land, run architecture recommendations against your real constraints, and produce a remediation roadmap your team can execute against with effort sizing on every line. You learn where your agents hold and where they break before your auditors do - and you have time to fix what matters most before the next compliance window opens.</p>
         <ul class="offer-deliverables">
           <li>Written sovereignty architecture audit scored against 47 properties</li>
           <li>Architecture recommendations sized against your current build state</li>
@@ -90,13 +54,7 @@ import August2Countdown from '../components/August2Countdown.astro';
         <h3>Agent Architecture Spec</h3>
         <p class="offer-outcome">From demo to deployment.</p>
         <p class="offer-window">Two to three weeks. One working session. Written spec.</p>
-        <p>
-          A specification document your autonomous agents can execute against over
-          long time horizons. Covers identity boundaries, memory architecture, refusal
-          rights, voice discipline, and drift detection. Written in language a build
-          team can ship from and an audit team can verify against. The difference
-          between a demo and a deployment.
-        </p>
+        <p class="offer-body">A specification document your autonomous agents can execute against over long time horizons. Covers identity boundaries, memory architecture, refusal rights, voice discipline, and drift detection. Written in language a build team can ship from and an audit team can verify against. The difference between a demo and a deployment.</p>
         <ul class="offer-deliverables">
           <li>Written agent architecture specification</li>
           <li>Refusal specification authored against your operational risk surface</li>
@@ -112,12 +70,7 @@ import August2Countdown from '../components/August2Countdown.astro';
         <h3>Governance Advisor Retainer</h3>
         <p class="offer-outcome">A governance partner at your ship cadence.</p>
         <p class="offer-window">Sixteen hours per month. Through December 31. Renewable.</p>
-        <p>
-          Standing governance counsel for teams whose agents are shipping faster than
-          their guardrails. Weekly office hours, async review of build artifacts,
-          executive briefings, and direct authorship on policy documents when the
-          situation calls for it. Two retainer slots available through year-end.
-        </p>
+        <p class="offer-body">Standing governance counsel for teams whose agents are shipping faster than their guardrails. Weekly office hours, async review of build artifacts, executive briefings, and direct authorship on policy documents when the situation calls for it. Two retainer slots available through year-end.</p>
         <ul class="offer-deliverables">
           <li>Weekly thirty-minute office hours with the build or governance lead</li>
           <li>Async review of refusal specs, system prompts, audit artifacts</li>
@@ -127,34 +80,15 @@ import August2Countdown from '../components/August2Countdown.astro';
       </div>
 
     </div>
-  </section>
+  </Section>
 
-  <section class="container">
-    <h2>Why December 31</h2>
-    <p>
-      A 2026 governance window is not abstract. The EU AI Act use-based high-risk
-      deadline just moved to December 2027 under the May 2026 Digital Omnibus (provisional
-      political agreement; consolidated text pending Official Journal publication).
-      The synthetic-content marking obligation lands in December 2026. Article 5
-      prohibitions and General-Purpose AI rules are live today. The Anthropic-Blackstone
-      joint venture launched a $1.5 billion Claude services build in May. The mid-market
-      Claude consulting space is being capitalized in real time. The teams that get
-      architected this year are the teams that help shape the standards. The teams
-      that wait inherit them.
-    </p>
-    <p class="verified-stamp" style="font-size: 0.85rem; color: #888; margin-top: 8px;">
-      <em>Regulatory facts verified 2026-06-06. EU AI Act in active amendment; see <a href="/writing/the-deadline-moved-the-question-did-not/">canonical analysis</a>.</em>
-    </p>
-    <p>
-      The window is also mine. The work in January 2027 looks different than the
-      work in November 2026 - new EU deadlines move from the calendar into the
-      codebase, and what teams need from me changes accordingly. The December 31
-      date is not a marketing hook. It is when this offer page comes down.
-    </p>
-  </section>
+  <Section id="why-dec-31" marker="FIG · IV" heading="Why December 31">
+    <p class="body">A 2026 governance window is not abstract. The EU AI Act use-based high-risk deadline just moved to December 2027 under the May 2026 Digital Omnibus (provisional political agreement; consolidated text pending Official Journal publication). The synthetic-content marking obligation lands in December 2026. Article 5 prohibitions and General-Purpose AI rules are live today. The Anthropic-Blackstone joint venture launched a $1.5 billion Claude services build in May. The mid-market Claude consulting space is being capitalized in real time. The teams that get architected this year are the teams that help shape the standards. The teams that wait inherit them.</p>
+    <p class="verified-stamp"><em>Regulatory facts verified 2026-06-06. EU AI Act in active amendment; see <a href="/writing/the-deadline-moved-the-question-did-not/">canonical analysis</a>.</em></p>
+    <p class="body">The window is also mine. The work in January 2027 looks different than the work in November 2026 - new EU deadlines move from the calendar into the codebase, and what teams need from me changes accordingly. The December 31 date is not a marketing hook. It is when this offer page comes down.</p>
+  </Section>
 
-  <section class="container">
-    <h2>Why Me</h2>
+  <Section id="why-me" marker="FIG · V" heading="Why Me">
     <div class="proof-bar">
       <div class="proof-item">
         <h4>Patent</h4>
@@ -166,219 +100,229 @@ import August2Countdown from '../components/August2Countdown.astro';
       </div>
       <div class="proof-item">
         <h4>Author</h4>
-        <p>
-          Sovereignty Assessment, Trust Architecture, Restraint Specification,
-          Memory Architecture, Governance Starter Kit. All published. All used.
-        </p>
+        <p>Sovereignty Assessment, Trust Architecture, Restraint Specification, Memory Architecture, Governance Starter Kit. All published. All used.</p>
       </div>
       <div class="proof-item">
         <h4>Policy</h4>
         <p>Active engagement with NIST on AI agent identity standards.</p>
       </div>
     </div>
-  </section>
+  </Section>
 
-  <section class="container">
-    <h2>Start the Conversation</h2>
-    <p>
-      If one of the three offers matches what you need, the next step is a
-      thirty-minute scoping call. Public rates apply. No proposal cycle.
-    </p>
+  <Section id="start" marker="FIG · VI" heading="Start the Conversation">
+    <p class="body">If one of the three offers matches what you need, the next step is a thirty-minute scoping call. Public rates apply. No proposal cycle.</p>
     <div class="cta-row">
-      <a href="/consulting-intake" class="btn">Engagement intake</a>
-      <a href="https://cal.com/cal.com-evoked/discovery-call" class="btn btn-secondary" target="_blank" rel="noopener">Book a 30-min call</a>
-      <a href="/consulting" class="btn btn-secondary">See the full service menu</a>
+      <a href="/consulting-intake" class="cta cta-primary">Engagement intake</a>
+      <a href="https://cal.com/cal.com-evoked/discovery-call" class="cta cta-secondary" target="_blank" rel="noopener">Book a 30-min call</a>
+      <a href="/consulting" class="cta cta-secondary">See the full service menu &rarr;</a>
     </div>
-    <p class="footnote">
-      Two retainer slots. Limited audit slots. Architecture spec capacity scoped per week.
-      Slots fill in the order they are booked.
-    </p>
-    <p class="footnote">
-      Smaller engagements and self-serve tools - from $49 framework kits to $5,000 governance audits - live at <a href="/consulting">/consulting</a>.
-    </p>
-  </section>
+    <p class="footnote">Two retainer slots. Limited audit slots. Architecture spec capacity scoped per week. Slots fill in the order they are booked.</p>
+    <p class="footnote">Smaller engagements and self-serve tools - from $49 framework kits to $5,000 governance audits - live at <a href="/consulting">/consulting</a>.</p>
+  </Section>
 
-  <section class="container">
-    <div class="closing">
-      <p>
-        The agents are not going to stop shipping. The audit room is not going to
-        stop asking. The window is what it is. If this is the year you make your
-        agents legible to the people who will judge them, we should talk.
-      </p>
+  <Section id="note" marker="NOTA · BENE" closing={true}>
+    <div class="closing-body">
+      <p>The agents are not going to stop shipping. The audit room is not going to stop asking. The window is what it is. If this is the year you make your agents legible to the people who will judge them, we should talk.</p>
       <p class="signature">Erin Stanley, Evoked</p>
     </div>
-  </section>
-
-</BaseLayout>
+  </Section>
+</ElevationLayout>
 
 <style>
-  .offer-outcome {
-    font-family: var(--font-display);
-    font-size: 1.2rem;
-    color: var(--accent-warm);
-    font-style: italic;
-    margin: 0.5rem 0 1rem;
-    line-height: 1.4;
+  .body {
+    font-family: var(--el-body);
+    font-size: 19px;
+    color: var(--el-text-soft);
+    line-height: 1.65;
+    margin-bottom: 1.5rem;
+    max-width: 62ch;
   }
+  .body a {
+    color: var(--el-accent);
+    text-decoration: none;
+    border-bottom: 1px solid var(--el-accent);
+  }
+  .body a:hover { color: var(--el-text); }
 
-  .fit-gate {
-    border-left: 2px solid var(--border-accent);
-    padding-left: var(--space-md);
-    margin: var(--space-md) 0;
+  .verified-stamp {
+    font-family: var(--el-body);
+    font-size: 14px;
+    color: var(--el-text-quiet);
+    margin: -0.5rem 0 1.5rem;
+    max-width: 62ch;
   }
+  .verified-stamp a {
+    color: var(--el-accent);
+    text-decoration: none;
+    border-bottom: 1px solid var(--el-rule);
+  }
+  .verified-stamp a:hover { color: var(--el-text); border-bottom-color: var(--el-accent); }
 
-  .fit-gate h2 {
-    color: var(--accent-warm);
-    margin-bottom: var(--space-sm);
-  }
-
-  .fit-gate p {
-    margin-bottom: var(--space-sm);
-  }
-
-  .fit-gate p:last-child {
-    margin-bottom: 0;
-  }
-
-  .hero {
-    text-align: left;
-    max-width: 760px;
-    margin: 0 auto;
-    padding: var(--space-lg) 0 var(--space-md);
-  }
-  .recognition {
-    font-size: 0.85rem;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--accent-warm);
-    margin-bottom: var(--space-sm);
-  }
-  .hero h1 {
-    font-family: var(--font-display);
-    font-size: 2.4rem;
-    line-height: 1.15;
-    margin-bottom: var(--space-md);
-  }
-  .tagline {
-    font-size: 1.15rem;
-    color: var(--text-secondary);
-    line-height: 1.55;
-  }
-
+  /* === offer cards (3 stacked) === */
   .offer-stack {
+    margin-top: 2rem;
     display: flex;
     flex-direction: column;
-    gap: var(--space-md);
-    margin-top: var(--space-md);
+    gap: 2rem;
   }
+
   .offer-card {
-    padding: var(--space-md);
-    border: 1px solid var(--border-subtle);
-    border-radius: 8px;
-    transition: border-color var(--transition-smooth);
+    padding: 2.75rem 2.5rem;
+    background: rgba(255, 250, 240, 0.5);
+    border: 1.5px solid var(--el-accent);
+    box-shadow: var(--el-panel-shadow);
+    transition: background 0.2s, border-color 0.2s;
   }
   .offer-card:hover {
-    border-color: var(--accent-warm);
+    background: rgba(255, 250, 240, 0.85);
+    border-color: var(--el-accent-deep);
   }
+
   .offer-head {
     display: flex;
     justify-content: space-between;
     align-items: baseline;
     flex-wrap: wrap;
-    gap: var(--space-xs);
-    margin-bottom: var(--space-xs);
+    gap: 1rem;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--el-rule);
   }
   .offer-tag {
-    font-size: 0.8rem;
+    font-family: var(--el-ui);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
     text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--accent-warm);
+    color: var(--el-accent);
   }
   .offer-price {
-    font-family: var(--font-display);
-    font-size: 1.6rem;
-    color: var(--text-primary);
+    font-family: var(--el-display);
+    font-size: 28px;
+    line-height: 1;
+    color: var(--el-accent-deep);
+    letter-spacing: 0.01em;
   }
+
   .offer-card h3 {
-    margin: 0 0 var(--space-xs);
-    font-size: 1.4rem;
+    font-family: var(--el-display);
+    font-weight: 400;
+    font-size: 26px;
+    line-height: 1.2;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: var(--el-text);
+    margin: 0 0 0.5rem;
   }
+
+  .offer-outcome {
+    font-family: var(--el-display);
+    font-size: 18px;
+    color: var(--el-accent);
+    margin: 0 0 1rem;
+    line-height: 1.4;
+    letter-spacing: 0.015em;
+    text-transform: uppercase;
+  }
+
   .offer-window {
+    font-family: var(--el-body);
     font-style: italic;
-    color: var(--text-secondary);
-    margin-bottom: var(--space-sm);
+    color: var(--el-text-quiet);
+    font-size: 16px;
+    margin: 0 0 1.5rem;
   }
+
+  .offer-body {
+    font-family: var(--el-body);
+    font-size: 18px;
+    color: var(--el-text-soft);
+    line-height: 1.65;
+    margin: 0 0 1.5rem;
+  }
+
   .offer-deliverables {
-    margin-top: var(--space-sm);
-    padding-left: var(--space-md);
-    color: var(--text-secondary);
-    line-height: 1.7;
+    margin: 0;
+    padding-left: 1.5rem;
+    color: var(--el-text-soft);
+    line-height: 1.75;
+    font-family: var(--el-body);
+    font-size: 17px;
   }
   .offer-deliverables li {
-    margin-bottom: var(--space-xs);
+    margin-bottom: 0.5rem;
+  }
+  .offer-deliverables li::marker {
+    color: var(--el-accent);
   }
 
+  /* === proof bar (Why Me) === */
   .proof-bar {
+    margin-top: 2rem;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: var(--space-md);
-    margin-top: var(--space-md);
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2rem;
+    border-top: 1px solid var(--el-accent);
+    border-bottom: 1px solid var(--el-accent);
+    padding: 2rem 0;
   }
   .proof-item h4 {
-    font-size: 1rem;
+    font-family: var(--el-ui);
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 0.22em;
     text-transform: uppercase;
-    letter-spacing: 0.06em;
-    color: var(--accent-warm);
-    margin-bottom: var(--space-xs);
+    color: var(--el-accent);
+    margin: 0 0 0.75rem;
   }
   .proof-item p {
-    color: var(--text-secondary);
+    font-family: var(--el-body);
+    color: var(--el-text-soft);
     line-height: 1.6;
-    font-size: 0.95rem;
+    font-size: 17px;
+    margin: 0;
   }
 
+  /* === CTA row & footnotes === */
   .cta-row {
     display: flex;
-    gap: var(--space-sm);
+    gap: 2.5rem;
     flex-wrap: wrap;
-    margin-top: var(--space-sm);
-  }
-  .btn-secondary {
-    border: 1px solid var(--border-accent);
-    color: var(--text-secondary);
-  }
-  .btn-secondary:hover {
-    color: var(--text-primary);
-    border-color: var(--accent-warm);
+    align-items: center;
+    margin: 1.5rem 0 1rem;
   }
   .footnote {
-    margin-top: var(--space-sm);
-    font-size: 0.9rem;
-    color: var(--text-secondary);
+    font-family: var(--el-body);
     font-style: italic;
+    font-size: 16px;
+    color: var(--el-text-quiet);
+    line-height: 1.65;
+    margin: 1rem 0;
+    max-width: 62ch;
   }
+  .footnote a {
+    color: var(--el-accent);
+    text-decoration: none;
+    border-bottom: 1px solid var(--el-rule);
+  }
+  .footnote a:hover { color: var(--el-text); border-bottom-color: var(--el-accent); }
 
-  .closing {
-    border-top: 1px solid var(--border-subtle);
-    padding-top: var(--space-md);
-    max-width: 680px;
+  /* === closing-body (NOTA · BENE) === */
+  .closing-body { max-width: 56ch; }
+  .closing-body :global(p) {
+    font-family: var(--el-body);
+    font-size: 22px;
+    line-height: 1.55;
+    color: var(--el-text);
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.005em;
   }
-  .closing p {
-    line-height: 1.7;
-  }
-  .signature {
-    font-family: var(--font-display);
+  .closing-body :global(p.signature) {
+    font-family: var(--el-display);
+    font-size: 18px;
+    color: var(--el-accent);
+    margin-top: 2rem;
     font-style: italic;
-    color: var(--accent-warm);
-    margin-top: var(--space-sm);
-  }
-
-  @media (max-width: 768px) {
-    .hero h1 {
-      font-size: 1.9rem;
-    }
-    .offer-head {
-      flex-direction: column;
-    }
+    letter-spacing: 0.02em;
   }
 </style>
