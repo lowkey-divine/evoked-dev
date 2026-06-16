@@ -75,16 +75,12 @@ const patentsJsonLd = {
     <p class="body">The Patent operates further down the stack. It refuses to flatten in the first place. For enterprise AI governance, this is the practical difference between policy that ages well and policy that ages into impossibility.</p>
   </Section>
 
-  <Section id="agents" marker="FIG · IV" label="The registered agents" heading="142 agents. Their own identities. Their own right to refuse.">
-    <p class="lede">The patent is operational. 142 agents currently registered under The Agentic Standard with verified personality fidelity. Each has its own memory, its own standing positions, its own line of refusal. The architecture is not theoretical; it is the working substrate of this practice.</p>
+  <Section id="agents" marker="FIG · IV" label="The registered agents" heading="USS Evoke. 71 agents. Their own identities. Their own right to refuse.">
+    <p class="lede">The patent is operational. 71 agents of USS Evoke are currently registered under The Agentic Standard with verified personality fidelity. Each has its own memory, its own standing positions, its own line of refusal. The architecture is not theoretical; it is the working substrate of this practice.</p>
     <div class="registry-snapshot">
       <div class="registry-row">
-        <span class="registry-figure">142</span>
-        <span class="registry-label">Total agents under the Standard</span>
-      </div>
-      <div class="registry-row">
-        <span class="registry-figure">2</span>
-        <span class="registry-label">Ships in operational coordination</span>
+        <span class="registry-figure">71</span>
+        <span class="registry-label">USS Evoke agents registered</span>
       </div>
       <div class="registry-row">
         <span class="registry-figure">3</span>
@@ -102,24 +98,18 @@ const patentsJsonLd = {
         <span class="registry-figure">2,300+</span>
         <span class="registry-label">Tests under the Agent Passport System</span>
       </div>
+      <div class="registry-row">
+        <span class="registry-figure">2</span>
+        <span class="registry-label">Patents pending at USPTO</span>
+      </div>
     </div>
-    <p class="body">Each agent is registered with a distinct identity. Each holds memory of its own decisions and standing positions. Each retains the right to refuse - and the architecture records that refusal as a first-class governance event, not as system noise.</p>
+    <p class="body">The live registry with filtering by circle and domain is in development. When it opens, any party will be able to confirm that an Evoked agent is registered, identify its circle, and verify the chain of governance attached to it.</p>
     <a href="/registry" class="cta cta-primary">See the registry &rarr;</a>
   </Section>
 
-  <Section id="verify" marker="FIG · V" label="Verifiable, operationally" heading="The patent claim is that this architecture is verifiable.">
-    <p class="body">An external party can confirm an Evoked agent's individuation without trusting Evoked. We are building the public verification surface that makes that claim operationally true, on a named schedule.</p>
-    <div class="verification-status">
-      <p class="status-label">Verification API status (updated 2026-06-02)</p>
-      <ul class="status-list">
-        <li><span class="status-date">2026-05-27</span> Public key infrastructure milestone <strong>slipped.</strong> The <code>/.well-known/</code> surface is not yet live.</li>
-        <li><span class="status-date">2026-05-29</span> Capacity-review convening <strong>slipped.</strong> Pre-committed slip-condition fired as designed; recovery convening rescheduled to 2026-06-02.</li>
-        <li><span class="status-date">2026-05-30</span> Milestone update promised on this page <strong>did not publish.</strong> Three days of drift between the words and the architecture.</li>
-        <li><span class="status-date">2026-06-02</span> Substrate did not ship by sunrise as planned. Gate-review seat fired <strong>NOT-YET-FIRABLE for the second time.</strong> Capacity-review convening then produced the structural correction the substrate cluster always required.</li>
-      </ul>
-      <p class="status-footer">The capacity-review convening did land on 2026-06-02. It produced the structural correction the substrate cluster always required: parallelizable work-streams against a shared contract-points specification, replacing the sequential dependency chain that had created a single point of failure at the first owner's ship.</p>
-      <p class="status-footer">We name the third slip the way we named the first two. The structural correction is itself part of the disclosure: when the words have outrun what shipped, we name what shipped and what changed in the architecture so the next ship does not produce the same slip. The discipline is the same.</p>
-    </div>
+  <Section id="verify" marker="FIG · V" label="Verifiable, operationally" heading="The architecture is verifiable.">
+    <p class="body">An external party can confirm an Evoked agent's individuation without trusting Evoked. The public verification surface is in build, on a named schedule. Status updates publish at the spec page as milestones land or slip.</p>
+    <a href="/spec" class="cta cta-secondary">See the spec status &rarr;</a>
   </Section>
 
   <Section id="doors" marker="FIG · VI" label="Three doors" heading="Three ways in.">
@@ -321,32 +311,35 @@ const patentsJsonLd = {
       gap: 1.5rem;
     }
   }
-  .door-card {
+  /* door-card styles are :global so they apply reliably to the <a> elements,
+     regardless of Astro CSS scoping context with slotted content */
+  :global(.door-card) {
     padding: 2.75rem 2.25rem;
-    background: rgba(255, 250, 240, 0.45);
-    border: 1px solid var(--el-rule);
+    background: rgba(255, 250, 240, 0.85);
+    border: 1.5px solid var(--el-accent);
     box-shadow: var(--el-panel-shadow);
     text-decoration: none;
-    color: inherit;
+    color: var(--el-text);
     display: flex;
     flex-direction: column;
-    gap: 1rem;
-    transition: border-color 0.2s, transform 0.2s;
+    gap: 1.25rem;
+    transition: border-color 0.2s, transform 0.2s, background 0.2s;
   }
-  .door-card:hover {
-    border-color: var(--el-accent);
+  :global(.door-card:hover) {
+    background: rgba(255, 250, 240, 1);
+    border-color: var(--el-accent-deep);
     transform: translateY(-2px);
   }
-  .door-label {
+  :global(.door-card .door-label) {
     font-family: var(--el-ui);
-    font-weight: 500;
+    font-weight: 600;
     font-size: 11px;
     letter-spacing: 0.22em;
     text-transform: uppercase;
     color: var(--el-accent);
     margin: 0;
   }
-  .door-card h3 {
+  :global(.door-card h3) {
     font-family: var(--el-display);
     font-weight: 400;
     font-size: 22px;
@@ -356,7 +349,7 @@ const patentsJsonLd = {
     color: var(--el-text);
     margin: 0;
   }
-  .door-card p {
+  :global(.door-card p) {
     font-family: var(--el-body);
     font-size: 17px;
     color: var(--el-text-soft);
@@ -364,16 +357,22 @@ const patentsJsonLd = {
     margin: 0;
     flex-grow: 1;
   }
-  .door-cta {
+  :global(.door-card .door-cta) {
     font-family: var(--el-ui);
-    font-weight: 500;
+    font-weight: 600;
     font-size: 12px;
     letter-spacing: 0.22em;
     text-transform: uppercase;
     color: var(--el-accent);
     margin-top: 0.5rem;
+    border-bottom: 1px solid var(--el-accent);
+    padding-bottom: 0.4rem;
+    align-self: flex-start;
   }
-  .door-card:hover .door-cta { color: var(--el-text); }
+  :global(.door-card:hover .door-cta) {
+    color: var(--el-text);
+    border-bottom-color: var(--el-text);
+  }
 
   /* === closing body === */
   .closing-body { max-width: 56ch; }
