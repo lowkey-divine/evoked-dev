@@ -2,6 +2,25 @@ import type { APIRoute } from 'astro';
 import { validateOrigin, rateLimit, safeError } from '../../../lib/api/security';
 import { verifyFormToken } from '../../../lib/api/form-token';
 
+/**
+ * Newsletter subscribe endpoint - beehiiv backend.
+ *
+ * Switched from Buttondown to beehiiv 2026-06-16 after the prior service
+ * ended Evoked's account access. Same endpoint URL preserved so existing
+ * callers (writing/, kitchen-table/, who/, SiteFooter) keep working.
+ *
+ * Required env vars:
+ *   BEEHIIV_API_KEY        - bearer token from beehiiv account settings
+ *   BEEHIIV_PUBLICATION_ID - publication ID (pub_xxx...) from beehiiv
+ *   FORM_SECRET            - HMAC secret for challenge-token verification
+ *
+ * Security layers (in order):
+ *   1. Origin validation (Referer / Origin must match evoked.dev)
+ *   2. Rate limit (per-IP, configured in lib/api/security)
+ *   3. Honeypot field (if filled, silent success)
+ *   4. Challenge token (HMAC-signed by /api/newsletter/challenge)
+ */
+
 export const prerender = false;
 
 export const POST: APIRoute = async ({ request }) => {
@@ -20,7 +39,7 @@ export const POST: APIRoute = async ({ request }) => {
       hp?: string;
     };
 
-    // Honeypot check — if filled, silently return success
+    // Honeypot - if filled, silently return success
     if (hp) {
       return new Response(JSON.stringify({ success: true }), {
         status: 200,
@@ -28,7 +47,7 @@ export const POST: APIRoute = async ({ request }) => {
       });
     }
 
-    // Verify challenge token
+    // Challenge token verification
     const secret = import.meta.env.FORM_SECRET;
     if (!secret || !token || !ts) {
       return new Response(JSON.stringify({ error: 'Invalid request' }), {
@@ -36,7 +55,6 @@ export const POST: APIRoute = async ({ request }) => {
         headers: { 'Content-Type': 'application/json' },
       });
     }
-
     const validToken = await verifyFormToken(secret, token, ts);
     if (!validToken) {
       return new Response(JSON.stringify({ error: 'Invalid or expired form. Please refresh and try again.' }), {
@@ -52,9 +70,10 @@ export const POST: APIRoute = async ({ request }) => {
       });
     }
 
-    const apiKey = import.meta.env.BUTTONDOWN_API_KEY;
-    if (!apiKey) {
-      console.error('BUTTONDOWN_API_KEY is not configured');
+    const apiKey = import.meta.env.BEEHIIV_API_KEY;
+    const publicationId = import.meta.env.BEEHIIV_PUBLICATION_ID;
+    if (!apiKey || !publicationId) {
+      console.error('BEEHIIV_API_KEY or BEEHIIV_PUBLICATION_ID is not configured');
       return new Response(JSON.stringify({ error: 'Newsletter not configured' }), {
         status: 500,
         headers: { 'Content-Type': 'application/json' },
@@ -63,37 +82,38 @@ export const POST: APIRoute = async ({ request }) => {
 
     const normalizedEmail = email.toLowerCase().trim();
 
-    const res = await fetch('https://api.buttondown.com/v1/subscribers', {
+    const res = await fetch(`https://api.beehiiv.com/v2/publications/${publicationId}/subscriptions`, {
       method: 'POST',
       headers: {
-        'Authorization': `Token ${apiKey}`,
+        'Authorization': `Bearer ${apiKey}`,
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        email_address: normalizedEmail,
-        type: 'regular',
+        email: normalizedEmail,
+        reactivate_existing: true,
+        send_welcome_email: true,
+        utm_source: 'evoked.dev',
+        utm_medium: 'website',
       }),
     });
 
     if (!res.ok) {
-      const data = await res.json() as { code?: string; detail?: string };
-      // Already subscribed — treat as success (email saved only once)
-      if (res.status === 400 && (data.code === 'email_already_exists' || JSON.stringify(data).includes('already'))) {
+      let data: { errors?: Array<{ message?: string }>; message?: string } = {};
+      try { data = await res.json(); } catch { /* non-JSON error body */ }
+
+      // Already subscribed - beehiiv returns success with status:active, but if we
+      // got 400 with a duplicate hint, treat as success.
+      const errMsg = data?.errors?.[0]?.message || data?.message || '';
+      if (res.status === 400 && /already|duplicate|exists/i.test(errMsg)) {
         return new Response(JSON.stringify({ success: true }), {
           status: 200,
           headers: { 'Content-Type': 'application/json' },
         });
       }
-      // Firewall blocked
-      if (data.code === 'subscriber_blocked') {
-        return new Response(JSON.stringify({ error: 'Unable to subscribe with that email. Please try a different address or contact us directly.' }), {
-          status: 400,
-          headers: { 'Content-Type': 'application/json' },
-        });
-      }
-      console.error('Buttondown subscribe error:', data);
-      return new Response(JSON.stringify({ error: 'Subscription failed' }), {
-        status: 500,
+
+      console.error('beehiiv subscribe error:', res.status, errMsg || data);
+      return new Response(JSON.stringify({ error: 'Subscription failed. Please try again in a moment.' }), {
+        status: 502,
         headers: { 'Content-Type': 'application/json' },
       });
     }
