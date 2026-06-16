@@ -17,7 +17,7 @@ interface Props {
 const { measureOnHover = true } = Astro.props;
 ---
 
-<div class:list={["sigil-wrap", { "no-measure": !measureOnHover }]}>
+<div class:list={["sigil-wrap", { "no-measure": !measureOnHover }]} transition:persist="sigil">
   {measureOnHover && (
     <>
       <span class="measure m-top">Ø 24</span>
@@ -26,11 +26,10 @@ const { measureOnHover = true } = Astro.props;
     </>
   )}
   <svg class="sigil" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Evoked sigil">
-    <!-- faint construction circle (the studied object's bounding orbit) -->
-    <circle cx="12" cy="12" r="11" stroke="#A88838" stroke-width="0.2" opacity="0.3" stroke-dasharray="0.4 0.6" />
-    <!-- coordinate cross-hairs (faint) -->
-    <line x1="12" y1="0" x2="12" y2="24" stroke="#A88838" stroke-width="0.15" opacity="0.25" />
-    <line x1="0" y1="12" x2="24" y2="12" stroke="#A88838" stroke-width="0.15" opacity="0.25" />
+    <!-- construction marks (bounding orbit + cross-hairs) - respond to sibling-active body class -->
+    <circle class="construction-mark" cx="12" cy="12" r="11" stroke="#A88838" stroke-width="0.2" stroke-dasharray="0.4 0.6" />
+    <line class="construction-mark" x1="12" y1="0" x2="12" y2="24" stroke="#A88838" stroke-width="0.15" />
+    <line class="construction-mark" x1="0" y1="12" x2="24" y2="12" stroke="#A88838" stroke-width="0.15" />
     <!-- web connections -->
     <g stroke="#A88838" stroke-width="0.35" opacity="0.55" fill="none">
       <line x1="5"  y1="6"  x2="12" y2="4"  />
@@ -58,6 +57,29 @@ const { measureOnHover = true } = Astro.props;
     <circle cx="12" cy="13" r="1.5" fill="#A88838" />
   </svg>
 </div>
+
+<script>
+  // Sigil micro-pulse on OrionFigure hover - acknowledges the symbol-family relationship
+  // (sigil and figure are siblings). Per the 2026-06-16 meeting motion language spec.
+  //
+  // Uses Astro's page-load and view-transition events so the listener wires up correctly
+  // on initial load AND after each ClientRouter navigation.
+  function attachSigilPulse() {
+    const handler = () => {
+      document.querySelectorAll('.sigil .construction-mark').forEach((el) => {
+        el.classList.remove('pulse');
+        // force reflow so the class re-application triggers the animation
+        void (el as HTMLElement | SVGElement).getBoundingClientRect();
+        el.classList.add('pulse');
+        window.setTimeout(() => el.classList.remove('pulse'), 600);
+      });
+    };
+    window.removeEventListener('orion:hover', handler);
+    window.addEventListener('orion:hover', handler);
+  }
+  attachSigilPulse();
+  document.addEventListener('astro:after-swap', attachSigilPulse);
+</script>
 
 <style>
   .sigil-wrap {

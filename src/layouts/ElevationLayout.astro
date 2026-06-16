@@ -12,6 +12,7 @@
  * Authored 2026-06-16 as part of the J register extraction.
  */
 import Analytics from '@vercel/analytics/astro';
+import { ClientRouter } from 'astro:transitions';
 import SiteHeader from '../components/elevation/SiteHeader.astro';
 import SiteFooter from '../components/elevation/SiteFooter.astro';
 import '../styles/elevation.css';
@@ -30,6 +31,13 @@ interface Props {
   bareHeader?: boolean;
   /** Hide the default SiteFooter (use named slot "footer" to replace, or render bare). */
   bareFooter?: boolean;
+  /**
+   * Declare that this page hosts an OrionFigure (or other figure-family member).
+   * When true, the sigil and astrolabe's construction marks brighten to
+   * acknowledge the figure-family relationship. Per the 2026-06-16 drafter-pair
+   * meeting (Wesley + Ishka).
+   */
+  siblingActive?: boolean;
 }
 
 const {
@@ -41,7 +49,10 @@ const {
   articleMeta,
   bareHeader = false,
   bareFooter = false,
+  siblingActive = false,
 } = Astro.props;
+
+const bodyClass = siblingActive ? 'elevation-page sibling-active' : 'elevation-page';
 
 const canonicalURL = new URL(Astro.url.pathname, "https://evoked.dev");
 ---
@@ -128,8 +139,13 @@ const canonicalURL = new URL(Astro.url.pathname, "https://evoked.dev");
     )}
 
     <title>{title} - evoked.dev</title>
+
+    <!-- Astro View Transitions for cross-fade navigation continuity.
+         Per the 2026-06-16 meeting: parasympathetic-paced navigation,
+         no body startle between pages in the J register. -->
+    <ClientRouter />
   </head>
-  <body class="elevation-page">
+  <body class={bodyClass}>
     {!bareHeader && (
       <slot name="header">
         <SiteHeader />

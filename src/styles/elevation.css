@@ -108,3 +108,100 @@ html { scroll-behavior: smooth; }
 @media (max-width: 600px) {
   .elevation-main { padding: 0 var(--el-content-pad-tight); }
 }
+
+/* ============================================================
+   SYMBOL FAMILY COORDINATION
+   ============================================================
+   Per the 2026-06-16 drafter-pair meeting (Wesley + Ishka):
+   pages with an OrionFigure hero declare siblingActive on the
+   layout. The Sigil's and Astrolabe's construction marks
+   brighten to acknowledge the figure's presence.
+
+   Default: marks at resting (quiet).
+   Sibling-active: marks at brighter (acknowledging figure family).
+
+   Construction marks = the scholarly-figure overlay (bounding
+   circle + cross-hairs on the sigil, concentric rings + hash
+   marks on the astrolabe). NOT the symbol itself (web nodes,
+   astrolabe arc) - those stay constant.
+   ============================================================ */
+
+:root {
+  --el-mark-opacity: 0.3;
+  --el-mark-opacity-active: 0.55;
+}
+
+.elevation-page .construction-mark {
+  opacity: var(--el-mark-opacity);
+}
+
+.elevation-page.sibling-active .construction-mark {
+  opacity: var(--el-mark-opacity-active);
+}
+
+/* ============================================================
+   QUIET MOTION LANGUAGE (Christine + Wesley, 2026-06-16)
+   ============================================================
+   Three pieces, all honoring prefers-reduced-motion:
+   (a) Sigil construction-marks fade in on first page load
+   (b) Sigil construction-marks micro-pulse on figure-hover
+   (c) Astrolabe rotates in when scrolled into view
+   ============================================================ */
+
+@keyframes el-sigil-fade-in {
+  from { opacity: 0; }
+  to   { opacity: var(--el-mark-opacity); }
+}
+.elevation-page.sibling-active .construction-mark {
+  animation-name: el-sigil-fade-in-active;
+}
+@keyframes el-sigil-fade-in-active {
+  from { opacity: 0; }
+  to   { opacity: var(--el-mark-opacity-active); }
+}
+.elevation-page .construction-mark {
+  animation: el-sigil-fade-in 1200ms ease-out;
+  animation-fill-mode: backwards;
+}
+
+@keyframes el-sigil-pulse {
+  0%, 100% { opacity: var(--el-mark-opacity); }
+  40%      { opacity: calc(var(--el-mark-opacity) + 0.15); }
+}
+@keyframes el-sigil-pulse-active {
+  0%, 100% { opacity: var(--el-mark-opacity-active); }
+  40%      { opacity: calc(var(--el-mark-opacity-active) + 0.15); }
+}
+.elevation-page .construction-mark.pulse {
+  animation: el-sigil-pulse 600ms ease;
+}
+.elevation-page.sibling-active .construction-mark.pulse {
+  animation: el-sigil-pulse-active 600ms ease;
+}
+
+/* astrolabe scroll-in: defaults to invisible + tilted, fades in when
+   IntersectionObserver adds .in-view class. */
+.elevation-page .astrolabe {
+  transform: rotate(-8deg);
+  opacity: 0;
+  transition: transform 800ms ease-out, opacity 800ms ease-out;
+}
+.elevation-page .astrolabe.in-view {
+  transform: rotate(0deg);
+  opacity: 0.75;
+}
+
+/* prefers-reduced-motion - all animations skipped, resting states honored */
+@media (prefers-reduced-motion: reduce) {
+  .elevation-page .construction-mark {
+    animation: none;
+  }
+  .elevation-page .construction-mark.pulse {
+    animation: none;
+  }
+  .elevation-page .astrolabe {
+    transform: none;
+    opacity: 0.75;
+    transition: none;
+  }
+}

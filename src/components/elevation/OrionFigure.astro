@@ -357,6 +357,25 @@ const topLabel = fig.topLabel ?? 'ORION';
   <p class="fig-label-bot">After {fig.name}<span class="fig-sep">&middot;</span>{fig.source}<br/>{fig.place}<span class="fig-sep">&middot;</span>{fig.year}</p>
 </figure>
 
+<script>
+  // Dispatch orion:hover event so the Sigil's construction-marks can pulse
+  // in acknowledgment. Symbol-family coordination per the 2026-06-16 meeting.
+  function attachOrionFigureHover() {
+    document.querySelectorAll<HTMLElement>('.orion-figure').forEach((fig) => {
+      if (fig.dataset.hoverWired) return;
+      fig.dataset.hoverWired = 'true';
+      fig.addEventListener('mouseenter', () => {
+        window.dispatchEvent(new CustomEvent('orion:hover'));
+      });
+      fig.addEventListener('focus', () => {
+        window.dispatchEvent(new CustomEvent('orion:hover'));
+      });
+    });
+  }
+  attachOrionFigureHover();
+  document.addEventListener('astro:after-swap', attachOrionFigureHover);
+</script>
+
 <style>
   .orion-figure {
     margin: 0;

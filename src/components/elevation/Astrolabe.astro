@@ -19,17 +19,40 @@ const { inline = false } = Astro.props;
   fill="none"
   xmlns="http://www.w3.org/2000/svg"
   aria-hidden="true"
+  transition:persist="astrolabe"
 >
   <path d="M 60 60 A 50 50 0 0 0 10 10" stroke="#A88838" stroke-width="0.8" fill="none" opacity="0.75"/>
   <path d="M 56 60 A 42 42 0 0 0 14 18" stroke="#A88838" stroke-width="0.5" fill="none" opacity="0.55"/>
   <path d="M 52 60 A 34 34 0 0 0 18 26" stroke="#A88838" stroke-width="0.4" fill="none" opacity="0.4"/>
-  <line x1="60" y1="60" x2="60" y2="50" stroke="#A88838" stroke-width="0.5" opacity="0.6"/>
-  <line x1="60" y1="60" x2="50" y2="60" stroke="#A88838" stroke-width="0.5" opacity="0.6"/>
-  <line x1="60" y1="60" x2="42" y2="42" stroke="#A88838" stroke-width="0.3" opacity="0.45"/>
-  <line x1="60" y1="60" x2="25" y2="60" stroke="#A88838" stroke-width="0.3" opacity="0.35"/>
-  <line x1="60" y1="60" x2="60" y2="25" stroke="#A88838" stroke-width="0.3" opacity="0.35"/>
+  <!-- angle hash marks - tagged as construction-mark so they brighten when sibling-active -->
+  <line class="construction-mark" x1="60" y1="60" x2="60" y2="50" stroke="#A88838" stroke-width="0.5"/>
+  <line class="construction-mark" x1="60" y1="60" x2="50" y2="60" stroke="#A88838" stroke-width="0.5"/>
+  <line class="construction-mark" x1="60" y1="60" x2="42" y2="42" stroke="#A88838" stroke-width="0.3"/>
+  <line class="construction-mark" x1="60" y1="60" x2="25" y2="60" stroke="#A88838" stroke-width="0.3"/>
+  <line class="construction-mark" x1="60" y1="60" x2="60" y2="25" stroke="#A88838" stroke-width="0.3"/>
   <circle cx="60" cy="60" r="1.8" fill="#A88838"/>
 </svg>
+
+<script>
+  // Astrolabe scroll-in: when astrolabe enters viewport, add .in-view to trigger
+  // the rotation-and-fade-in animation defined in elevation.css. Wired on initial
+  // load and after each Astro view-transition navigation.
+  function attachAstrolabeObserver() {
+    const els = document.querySelectorAll<SVGElement>('.astrolabe:not(.in-view)');
+    if (!els.length) return;
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    els.forEach((el) => observer.observe(el));
+  }
+  attachAstrolabeObserver();
+  document.addEventListener('astro:after-swap', attachAstrolabeObserver);
+</script>
 
 <style>
   .astrolabe {
@@ -38,8 +61,8 @@ const { inline = false } = Astro.props;
     right: 2rem;
     width: 64px;
     height: 64px;
-    opacity: 0.75;
     pointer-events: none;
+    /* opacity/transform managed by elevation.css scroll-in animation */
   }
   .astrolabe.inline {
     position: static;
