@@ -3,7 +3,7 @@ title: "Does this AI product respect the user, or extract from them?"
 description: "Seven questions to score any AI product against, and why most product teams have never asked them."
 author: "Erin Stanley, Evoked"
 pubDate: 2026-06-12
-draft: false
+draft: true
 ---
 
 You already know.  You have known since the first time you closed an app and felt a little worse than when you opened it.  What you have not had is a structure outside yourself to point at, one that does not require you to carry the naming alone.
