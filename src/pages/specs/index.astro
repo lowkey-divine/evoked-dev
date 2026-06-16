@@ -1,8 +1,7 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
-
-const title = "Specifications";
-const description = "Open specifications for AI agent governance, identity fidelity, and trust architecture by Evoked.";
+import ElevationLayout from '../../layouts/ElevationLayout.astro';
+import Hero from '../../components/elevation/Hero.astro';
+import Section from '../../components/elevation/Section.astro';
 
 const specs = [
   {
@@ -17,19 +16,22 @@ const specs = [
 ];
 ---
 
-<BaseLayout title={title} description={description}>
-  <div class="container specs-page">
-    <header class="specs-header">
-      <h1>Specifications</h1>
-      <p>Open specifications for AI agent governance. Use them freely with attribution.</p>
-      <p class="specs-license">All specifications published under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</p>
-    </header>
+<ElevationLayout
+  title="Specifications"
+  description="Open specifications for AI agent governance, identity fidelity, and trust architecture by Evoked."
+>
+  <Hero
+    eyebrowParts={["Evoked", "Open Specifications", "Vol. 01"]}
+    headline="The Specifications."
+    sub="Open specifications for AI agent governance. Use them freely with attribution. All specifications published under Creative Commons CC BY 4.0."
+  />
 
+  <Section id="catalog" marker="FIG · I" label="Catalog" heading="Currently available.">
     <div class="specs-list">
       {specs.map((spec) => (
         <a href={spec.href} class="spec-card">
           <div class="spec-card-header">
-            <h2>{spec.title}</h2>
+            <h3>{spec.title}</h3>
             <div class="spec-card-meta">
               <span class="spec-card-version">v{spec.version}</span>
               <span class={`spec-card-status status-${spec.status.toLowerCase()}`}>{spec.status}</span>
@@ -45,134 +47,139 @@ const specs = [
         </a>
       ))}
     </div>
-  </div>
-</BaseLayout>
+  </Section>
+
+  <Section id="note" marker="NOTA · BENE" closing={true}>
+    <div class="closing-body">
+      <p>Specifications are the operational language of the Standard. Each one names what is measurable, what is verifiable, and what is not yet either.</p>
+      <p>More specs land as the work clarifies. The directory is open. The schemas are inspectable. The methodology is ours; the format is permissive.</p>
+      <div class="closing-ctas">
+        <a class="cta cta-primary" href="/principles">Read the principles</a>
+        <a class="cta cta-secondary" href="/patents">See the patents &rarr;</a>
+      </div>
+    </div>
+  </Section>
+</ElevationLayout>
 
 <style>
-  .specs-page {
-    max-width: 700px;
-    padding-top: var(--space-lg);
-    padding-bottom: var(--space-lg);
-  }
-
-  .specs-header {
-    margin-bottom: var(--space-lg);
-  }
-
-  .specs-header h1 {
-    font-size: 2.2rem;
-    margin-bottom: var(--space-xs);
-  }
-
-  .specs-header p {
-    color: var(--text-secondary);
-    font-size: 1.05rem;
-  }
-
-  .specs-license {
-    font-size: 0.85rem;
-    color: var(--text-muted);
-    margin-top: var(--space-xs);
-  }
-
-  .specs-license a {
-    color: var(--accent-warm);
-    text-decoration: underline;
-    text-underline-offset: 2px;
-  }
-
   .specs-list {
     display: flex;
     flex-direction: column;
-    gap: var(--space-md);
+    gap: 1.5rem;
+    margin-top: 2rem;
   }
 
   .spec-card {
     display: block;
-    padding: var(--space-md);
-    background: var(--bg-elevated);
-    border-radius: 8px;
-    border: 1px solid var(--border-subtle);
+    padding: 2.25rem 2rem;
+    background: rgba(255, 250, 240, 0.5);
+    border: 1px solid var(--el-rule);
+    box-shadow: var(--el-panel-shadow);
     text-decoration: none;
-    transition: border-color 0.2s;
+    color: var(--el-text);
+    transition: border-color 0.2s, transform 0.2s, background 0.2s;
   }
-
   .spec-card:hover {
-    border-color: var(--accent-warm);
+    border-color: var(--el-accent);
+    background: rgba(255, 250, 240, 0.85);
+    transform: translateY(-2px);
   }
 
   .spec-card-header {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    gap: var(--space-sm);
-    margin-bottom: var(--space-xs);
+    gap: 1rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
   }
 
-  .spec-card h2 {
-    font-size: 1.2rem;
-    color: var(--text-primary);
+  .spec-card h3 {
+    font-family: var(--el-display);
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 1.2;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: var(--el-text);
     margin: 0;
   }
 
   .spec-card-meta {
     display: flex;
-    gap: var(--space-xs);
+    gap: 0.75rem;
     flex-shrink: 0;
+    align-items: center;
   }
 
   .spec-card-version {
-    font-family: var(--font-mono, monospace);
-    font-size: 0.8rem;
-    color: var(--text-muted);
-    padding: 0.1rem 0.4rem;
-    background: var(--bg-surface);
-    border-radius: 4px;
+    font-family: var(--el-mono);
+    font-size: 12px;
+    color: var(--el-accent-deep);
+    padding: 0.25rem 0.6rem;
+    border: 1px solid var(--el-rule);
+    letter-spacing: 0.04em;
   }
 
   .spec-card-status {
-    font-size: 0.7rem;
-    font-weight: 700;
-    letter-spacing: 0.05em;
+    font-family: var(--el-ui);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
     text-transform: uppercase;
-    padding: 0.15rem 0.5rem;
-    border-radius: 4px;
+    padding: 0.3rem 0.7rem;
+    border: 1px solid currentColor;
   }
-
-  .status-draft {
-    background: rgba(255, 193, 7, 0.15);
-    color: #ffc107;
-  }
-
-  .status-stable {
-    background: rgba(76, 175, 80, 0.15);
-    color: #4caf50;
-  }
+  .status-draft  { color: var(--el-accent); }
+  .status-stable { color: var(--el-accent-deep); }
 
   .spec-card p {
-    color: var(--text-secondary);
-    font-size: 0.9rem;
-    line-height: 1.5;
-    margin: 0;
+    font-family: var(--el-body);
+    font-size: 18px;
+    color: var(--el-text-soft);
+    line-height: 1.6;
+    margin: 0 0 1.5rem 0;
   }
 
   .spec-card-footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: var(--space-sm);
-    padding-top: var(--space-xs);
-    border-top: 1px solid var(--border-subtle);
+    padding-top: 1rem;
+    border-top: 1px solid var(--el-rule);
   }
 
   .spec-card-footer time {
-    font-size: 0.8rem;
-    color: var(--text-muted);
+    font-family: var(--el-mono);
+    font-size: 13px;
+    color: var(--el-text-quiet);
+    letter-spacing: 0.02em;
   }
 
   .spec-card-schema {
-    font-size: 0.75rem;
-    color: var(--accent-warm);
-    font-family: var(--font-mono, monospace);
+    font-family: var(--el-ui);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--el-accent);
+  }
+
+  .closing-body { max-width: 56ch; }
+  .closing-body :global(p) {
+    font-family: var(--el-body);
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 1.5;
+    color: var(--el-text);
+    margin-bottom: 2rem;
+    letter-spacing: 0.005em;
+  }
+  .closing-ctas {
+    display: flex;
+    gap: 2.5rem;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-top: 1rem;
   }
 </style>
