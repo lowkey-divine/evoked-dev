@@ -1,5 +1,7 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
+import ElevationLayout from '../layouts/ElevationLayout.astro';
+import Hero from '../components/elevation/Hero.astro';
+import Section from '../components/elevation/Section.astro';
 import { getAllAgents, getRegistryStats, CIRCLE_NAMES } from '../lib/registry/agents';
 import { webApplicationJsonLd } from '../lib/structured-data';
 
@@ -14,14 +16,16 @@ const registryJsonLd = webApplicationJsonLd(
 );
 ---
 
-<BaseLayout title="Evoked Verification - Agent Governance Registry" description="How do you know an agent is governed? Verify agent identity, restraint, accountability, memory, and governance charter. The first trust registry for AI agents." structuredData={registryJsonLd}>
-
-  <!-- HERO: Problem-first with live verification tool -->
-  <div class="hero">
-    <p class="hero-above">Evoked Verification <span class="patent-pending">Patent Pending</span></p>
-    <h1>How do you know an agent is governed?</h1>
-    <p class="tagline">Verify identity, restraint, and accountability for any registered agent.</p>
-
+<ElevationLayout
+  title="Evoked Verification - Agent Governance Registry"
+  description="How do you know an agent is governed? Verify agent identity, restraint, accountability, memory, and governance charter. The first trust registry for AI agents."
+  structuredData={registryJsonLd}
+>
+  <Hero
+    eyebrowParts={["Evoked Verification", "Patent Pending", "Vol. 01"]}
+    headline="How do you know an agent is governed?"
+    sub="Verify identity, restraint, and accountability for any registered agent. Public. Free. No authentication."
+  >
     <div class="verify-box">
       <input
         type="text"
@@ -32,105 +36,77 @@ const registryJsonLd = webApplicationJsonLd(
       />
       <button id="verify-btn">Verify</button>
     </div>
-  </div>
+  </Hero>
 
-  <!-- RESULT CARD: appears after verification -->
-  <section class="container">
-    <div id="verify-result" class="verify-result hidden"></div>
-  </section>
+  <div id="verify-result" class="verify-result hidden"></div>
 
-  <!-- THE PROBLEM -->
-  <section class="container">
-    <div class="problem-section">
-      <h2>The trust gap in AI agents</h2>
-      <p>
-        Certificate authorities validate websites. Code signing validates software.
-        Nothing validates that an AI agent has governance - identity, restraint,
-        accountability, or the right to refuse.
-      </p>
-      <p>
-        Evoked Verification is the first registry that validates agent governance properties.
-        Not what an agent can do - what it will not do, and why.
-      </p>
-    </div>
-  </section>
+  <Section id="trust-gap" marker="FIG · I" label="The problem" heading="The trust gap in AI agents.">
+    <p class="body">Certificate authorities validate websites. Code signing validates software. Nothing validates that an AI agent has governance - identity, restraint, accountability, or the right to refuse.</p>
+    <p class="body">Evoked Verification is the first registry that validates agent governance properties. Not what an agent can do - what it will not do, and why.</p>
+  </Section>
 
-  <!-- HOW IT WORKS: Three steps, Cloudflare-style -->
-  <section class="container">
-    <h2>How it works</h2>
+  <Section id="how" marker="FIG · II" label="How it works" heading="Three steps. Open process.">
     <div class="how-grid">
       <div class="how-card">
-        <span class="how-number">1</span>
+        <span class="how-number">I</span>
         <h3>Assess</h3>
         <p>Evaluate your agent system against five governance properties: Identity, Restraint, Accountability, Memory, Charter.</p>
       </div>
       <div class="how-card">
-        <span class="how-number">2</span>
+        <span class="how-number">II</span>
         <h3>Validate</h3>
         <p>Submit for review. Governance artifacts assessed against six refusal categories.</p>
       </div>
       <div class="how-card">
-        <span class="how-number">3</span>
+        <span class="how-number">III</span>
         <h3>Attest</h3>
         <p>Your agents appear in the public registry. Verifiable by anyone, anywhere.</p>
       </div>
     </div>
-  </section>
+  </Section>
 
-  <!-- FIVE PROPERTIES: What gets validated -->
-  <section class="container">
-    <h2>Five governance properties</h2>
-    <p class="section-intro">Every registered agent is verified against these.</p>
-
+  <Section id="properties" marker="FIG · III" label="Five governance properties" heading="Every registered agent is verified against these.">
     <div class="properties-grid">
       <div class="property-item">
-        <div class="property-header">
-          <span class="property-icon">ID</span>
+        <span class="property-icon">ID</span>
+        <div class="property-text">
           <h3>Identity</h3>
+          <p>Persona files, role definition, continuity across sessions.</p>
         </div>
-        <p>Persona files, role definition, continuity across sessions.</p>
       </div>
       <div class="property-item">
-        <div class="property-header">
-          <span class="property-icon">RS</span>
+        <span class="property-icon">RS</span>
+        <div class="property-text">
           <h3>Restraint</h3>
+          <p>Defined refusal categories. What the agent will not do, regardless of instruction.</p>
         </div>
-        <p>Defined refusal categories. What the agent will not do, regardless of instruction.</p>
       </div>
       <div class="property-item">
-        <div class="property-header">
-          <span class="property-icon">AC</span>
+        <span class="property-icon">AC</span>
+        <div class="property-text">
           <h3>Accountability</h3>
+          <p>Decisions logged. Reviewable by humans. Traceable to reasoning.</p>
         </div>
-        <p>Decisions logged. Reviewable by humans. Traceable to reasoning.</p>
       </div>
       <div class="property-item">
-        <div class="property-header">
-          <span class="property-icon">MA</span>
+        <span class="property-icon">MA</span>
+        <div class="property-text">
           <h3>Memory</h3>
+          <p>Identity separated from operational data. Poisoning resistance. Governance over what persists.</p>
         </div>
-        <p>Identity separated from operational data. Poisoning resistance. Governance over what persists.</p>
       </div>
       <div class="property-item">
-        <div class="property-header">
-          <span class="property-icon">GC</span>
+        <span class="property-icon">GC</span>
+        <div class="property-text">
           <h3>Charter</h3>
+          <p>Operating principles. Defined boundaries. Authority structure.</p>
         </div>
-        <p>Operating principles. Defined boundaries. Authority structure.</p>
       </div>
     </div>
+    <p class="ontology-note">These five properties emerge from one governance tradition among many. Agent systems governed through collectivist, Indigenous, relational, or other frameworks may define governance differently. Evoked Verification is designed to be extended, not to be the last word. No governance tradition should have to translate itself into ours to be recognized as governance.</p>
+  </Section>
 
-    <p class="ontology-note">
-      These five properties emerge from one governance tradition among many. Agent systems governed
-      through collectivist, Indigenous, relational, or other frameworks may define governance
-      differently. Evoked Verification is designed to be extended, not to be the last word.
-      No governance tradition should have to translate itself into ours to be recognized as governance.
-    </p>
-  </section>
-
-  <!-- TIERS: Progressive trust -->
-  <section class="container">
-    <h2>Three levels of trust</h2>
+  <Section id="tiers" marker="FIG · IV" label="Three levels of trust" heading="From self-attested to cryptographically bound.">
     <div class="tiers-grid">
       <div class="tier-card">
         <div class="tier-header">
@@ -157,10 +133,9 @@ const registryJsonLd = webApplicationJsonLd(
         <p>Cryptographic binding. Persona file hashes tied to workload identity. Memory writes signed. Drift monitoring.</p>
       </div>
     </div>
-  </section>
+  </Section>
 
-  <!-- STATS BAR -->
-  <section class="container">
+  <Section id="registry-table" marker="FIG · V" label="The registry" heading="USS Evoke. 71 agents currently registered.">
     <div class="stats-bar">
       <div class="stat">
         <span class="stat-number">{stats.total_agents}</span>
@@ -182,136 +157,100 @@ const registryJsonLd = webApplicationJsonLd(
         <span class="stat-label">Properties Validated</span>
       </div>
     </div>
-  </section>
 
-  <!-- REGISTRY TABLE: Below the fold, searchable -->
-  <section class="container-wide">
-    <h2>Registry</h2>
+    <div class="registry-wrapper">
+      <div class="registry-controls">
+        <input
+          type="text"
+          id="registry-search"
+          placeholder="Search agents by name or role..."
+          class="registry-search"
+          autocomplete="off"
+        />
+        <div class="filter-bar" id="filter-bar">
+          <button class="filter-btn active" data-circle="all">All</button>
+          {circles.map((circle) => (
+            <button class="filter-btn" data-circle={circle}>{circle}</button>
+          ))}
+        </div>
+      </div>
 
-    <div class="registry-controls">
-      <input
-        type="text"
-        id="registry-search"
-        placeholder="Search agents..."
-        class="registry-search"
-        autocomplete="off"
-      />
-      <div class="filter-bar" id="filter-bar">
-        <button class="filter-btn active" data-circle="all">All</button>
-        {circles.map((circle) => (
-          <button class="filter-btn" data-circle={circle}>{circle}</button>
-        ))}
+      <div class="registry-table-wrap">
+        <table class="registry-table" id="registry-table">
+          <thead>
+            <tr>
+              <th>Agent</th>
+              <th>Role</th>
+              <th>Circle</th>
+              <th>Tier</th>
+              <th class="governance-cols">ID</th>
+              <th class="governance-cols">RS</th>
+              <th class="governance-cols">AC</th>
+              <th class="governance-cols">MA</th>
+              <th class="governance-cols">GC</th>
+            </tr>
+          </thead>
+          <tbody>
+            {agents.map((agent) => (
+              <tr data-circle={agent.circle} data-name={agent.display_name.toLowerCase()} data-role={agent.role.toLowerCase()}>
+                <td class="agent-name">{agent.display_name}</td>
+                <td class="agent-role">{agent.role}</td>
+                <td><span class="circle-badge">{agent.circle}</span></td>
+                <td><span class={`tier-badge tier-${agent.tier}`}>Tier {agent.tier}</span></td>
+                <td class="governance-cols gov-check">{agent.governance.has_identity ? '✓' : '✗'}</td>
+                <td class="governance-cols gov-check">{agent.governance.has_restraint_spec ? '✓' : '✗'}</td>
+                <td class="governance-cols gov-check">{agent.governance.has_accountability ? '✓' : '✗'}</td>
+                <td class="governance-cols gov-check">{agent.governance.has_memory_architecture ? '✓' : '✗'}</td>
+                <td class="governance-cols gov-check">{agent.governance.has_governance_charter ? '✓' : '✗'}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
     </div>
+  </Section>
 
-    <div class="registry-table-wrap">
-      <table class="registry-table" id="registry-table">
-        <thead>
-          <tr>
-            <th>Agent</th>
-            <th>Role</th>
-            <th>Circle</th>
-            <th>Tier</th>
-            <th class="governance-cols">ID</th>
-            <th class="governance-cols">RS</th>
-            <th class="governance-cols">AC</th>
-            <th class="governance-cols">MA</th>
-            <th class="governance-cols">GC</th>
-          </tr>
-        </thead>
-        <tbody>
-          {agents.map((agent) => (
-            <tr data-circle={agent.circle} data-name={agent.display_name.toLowerCase()} data-role={agent.role.toLowerCase()}>
-              <td class="agent-name">{agent.display_name}</td>
-              <td class="agent-role">{agent.role}</td>
-              <td><span class="circle-badge">{agent.circle}</span></td>
-              <td><span class={`tier-badge tier-${agent.tier}`}>Tier {agent.tier}</span></td>
-              <td class="governance-cols gov-check">{agent.governance.has_identity ? '\u2713' : '\u2717'}</td>
-              <td class="governance-cols gov-check">{agent.governance.has_restraint_spec ? '\u2713' : '\u2717'}</td>
-              <td class="governance-cols gov-check">{agent.governance.has_accountability ? '\u2713' : '\u2717'}</td>
-              <td class="governance-cols gov-check">{agent.governance.has_memory_architecture ? '\u2713' : '\u2717'}</td>
-              <td class="governance-cols gov-check">{agent.governance.has_governance_charter ? '\u2713' : '\u2717'}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
-  </section>
-
-  <!-- API: Collapsed, for developers -->
-  <section class="container">
-    <details class="api-details">
-      <summary><h2 class="inline-heading">Developer API</h2></summary>
-      <div class="api-content">
-        <p class="section-intro">Query governance status programmatically. Public. Free. No authentication.</p>
-        <p class="api-note"><a href="/openapi.yaml" class="api-link">OpenAPI 3.1 Specification</a></p>
-
-        <h3>Verify an agent</h3>
+  <Section id="api" marker="FIG · VI" label="For developers" heading="Query governance status programmatically.">
+    <p class="body">Public. Free. No authentication. <a href="/openapi.yaml">OpenAPI 3.1 Specification</a>.</p>
+    <div class="api-blocks">
+      <div class="api-block">
+        <p class="api-label">Verify an agent</p>
         <code class="api-url">GET /api/verify-agent?id=cura</code>
-
-        <h3>List by organization</h3>
+      </div>
+      <div class="api-block">
+        <p class="api-label">List by organization</p>
         <code class="api-url">GET /api/verify-agent?org=Evoked</code>
-
-        <h3>Embeddable badge</h3>
+      </div>
+      <div class="api-block">
+        <p class="api-label">Embeddable badge</p>
         <code class="api-url">GET /api/badge?id=cura</code>
         <div class="badge-preview">
           <img src="/api/badge?id=cura" alt="BA Verified badge for Cura" />
         </div>
-        <p class="api-note">Add to your README or agent profile:</p>
+        <p class="api-snippet">Add to your README or agent profile:</p>
         <code class="api-url">![BA Verified](https://evoked.dev/api/badge?id=your-agent-id)</code>
       </div>
-    </details>
-  </section>
-
-  <!-- CTA -->
-  <section class="container text-center">
-    <div class="cta-section">
-      <h2>Register your agents</h2>
-      <p>The governance scan is free. Validation starts with a conversation.</p>
-      <div class="cta-buttons">
-        <a href="https://cal.com/cal.com-evoked/discovery-call" class="btn btn-primary btn-large" target="_blank" rel="noopener">Book a Discovery Call</a>
-        <a href="/products/agent-governance-starter-kit" class="btn btn-large">Get the Starter Kit</a>
-      </div>
     </div>
-  </section>
+  </Section>
 
-  <!-- PATENT CONTEXT -->
-  <section class="container">
-    <div class="patent-context">
-      <p>
-        This registry operationalizes the architecture in <a href="/patents">Patent #1 and Patent #2</a>.
-        Read why the engineering specification is the ethical position.
-      </p>
-      <p class="patent-context-verification">
-        Public verification API in development. Ships 2026-06-08 at <a href="/verify">evoked.dev/verify</a>. Until then, the registry surface here returns governance profiles; full cryptographic verification follows on the named schedule.
-      </p>
+  <Section id="register" marker="FIG · VII" label="Register" heading="Register your agents.">
+    <p class="body">The governance scan is free. Validation starts with a conversation.</p>
+    <div class="register-ctas">
+      <a href="https://cal.com/cal.com-evoked/discovery-call" class="cta cta-primary" target="_blank" rel="noopener">Book a Discovery Call</a>
+      <a href="/products/agent-governance-starter-kit" class="cta cta-secondary">Get the Starter Kit &rarr;</a>
     </div>
-  </section>
+  </Section>
 
-  <!-- ECOSYSTEM -->
-  <section class="container">
-    <div class="ecosystem">
-      <p class="ecosystem-label">Built on</p>
-      <div class="ecosystem-items">
-        <span class="patent-note">Patent Pending</span>
-        <span class="eco-dot"></span>
-        <span>Claude</span>
-        <span class="eco-dot"></span>
-        <span>MCP</span>
-        <span class="eco-dot"></span>
-        <span>SPIFFE/SPIRE</span>
-        <span class="eco-dot"></span>
-        <span>Astro</span>
-        <span class="eco-dot"></span>
-        <span>Vercel</span>
-      </div>
+  <Section id="note" marker="NOTA · BENE" closing={true}>
+    <div class="closing-body">
+      <p>This registry operationalizes the architecture in <a href="/patents">Patent #1 and Patent #2</a>. Read why the engineering specification is the ethical position.</p>
+      <p class="note-secondary">Public verification API in development. Until full cryptographic verification ships, the registry surface here returns governance profiles. The schedule is named; the slips are named when they happen.</p>
     </div>
-  </section>
-
-</BaseLayout>
+  </Section>
+</ElevationLayout>
 
 <script>
-  // Hero verification tool
+  // Hero verification tool - preserved verbatim from BaseLayout-era registry
   const verifyInput = document.getElementById('verify-input') as HTMLInputElement;
   const verifyBtn = document.getElementById('verify-btn');
   const verifyResult = document.getElementById('verify-result');
@@ -391,7 +330,7 @@ const registryJsonLd = webApplicationJsonLd(
     if (e.key === 'Enter') verifyAgent();
   });
 
-  // Registry search + filter
+  // Registry search + filter - preserved verbatim
   const searchInput = document.getElementById('registry-search') as HTMLInputElement;
   const filterBar = document.getElementById('filter-bar');
   const table = document.getElementById('registry-table');
@@ -425,792 +364,603 @@ const registryJsonLd = webApplicationJsonLd(
 </script>
 
 <style>
-  /* HERO */
-  .hero {
-    min-height: 55vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: var(--space-lg) var(--space-md);
-  }
-
-  .hero-above {
-    font-size: 0.8rem;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    color: var(--accent-warm);
-    margin-bottom: var(--space-sm);
-  }
-
-  .patent-pending {
-    font-size: 0.6rem;
-    color: var(--text-muted);
-    border: 1px solid var(--border-subtle);
-    padding: 2px 8px;
-    border-radius: 100px;
-    margin-left: 8px;
-    letter-spacing: 0.06em;
-    vertical-align: middle;
-  }
-
-  .patent-note {
-    font-size: 0.7rem;
-    color: var(--text-muted);
-    font-style: italic;
-  }
-
-  .hero h1 {
-    max-width: 700px;
-  }
-
-  /* VERIFY BOX */
+  /* === verify-box (in hero default slot) === */
   .verify-box {
     display: flex;
     gap: 0;
-    max-width: 520px;
     width: 100%;
-    margin-top: var(--space-md);
-    border-radius: 8px;
+    max-width: 560px;
+    margin-top: 1rem;
+    border: 1.5px solid var(--el-accent);
+    background: rgba(255, 250, 240, 0.85);
+    box-shadow: var(--el-panel-shadow);
     overflow: hidden;
-    border: 2px solid var(--border-subtle);
     transition: border-color 0.2s ease;
   }
-
-  .verify-box:focus-within {
-    border-color: var(--accent-warm);
-  }
-
+  .verify-box:focus-within { border-color: var(--el-accent-deep); }
   .verify-box input {
     flex: 1;
-    padding: 14px 16px;
-    font-size: 1rem;
-    background: var(--bg-surface);
-    color: var(--text-primary);
+    padding: 1rem 1.25rem;
+    font-family: var(--el-body);
+    font-size: 17px;
+    background: transparent;
+    color: var(--el-text);
     border: none;
     outline: none;
-    font-family: inherit;
   }
-
-  .verify-box input::placeholder {
-    color: var(--text-muted);
-  }
-
+  .verify-box input::placeholder { color: var(--el-text-quiet); font-style: italic; }
   .verify-box button {
-    padding: 14px 28px;
-    background: var(--accent-warm);
-    color: var(--bg-deep);
+    padding: 1rem 2rem;
+    background: var(--el-accent);
+    color: var(--el-bg);
     border: none;
+    font-family: var(--el-ui);
     font-weight: 600;
-    font-size: 0.9rem;
+    font-size: 13px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
     cursor: pointer;
-    font-family: inherit;
     transition: background 0.15s ease;
   }
+  .verify-box button:hover { background: var(--el-accent-deep); }
 
-  .verify-box button:hover {
-    background: var(--accent-glow);
-  }
-
-  /* VERIFY RESULT */
+  /* === verify result (renders below hero, before sections) === */
   .verify-result {
-    max-width: 600px;
-    margin: 0 auto;
-    transition: all 0.2s ease;
+    max-width: 1180px;
+    margin: 0 auto 4rem;
+    padding: 0 3rem;
   }
-
-  .verify-result.hidden {
-    display: none;
-  }
-
+  .verify-result.hidden { display: none; }
   .verify-loading {
     text-align: center;
-    color: var(--text-secondary);
+    color: var(--el-text-soft);
+    font-family: var(--el-body);
+    font-size: 17px;
+    padding: 2rem;
+    background: rgba(255, 250, 240, 0.5);
+    border: 1px solid var(--el-rule);
   }
 
-  .verify-found {
-    background: var(--bg-surface);
-    border: 1px solid var(--accent-warm);
-    border-radius: 8px;
-    padding: var(--space-md);
+  :global(.verify-found) {
+    background: rgba(255, 250, 240, 0.85);
+    border: 1.5px solid var(--el-accent);
+    box-shadow: var(--el-panel-shadow);
+    padding: 2rem 2.25rem;
   }
-
-  .verify-not-found {
-    background: var(--bg-surface);
-    border: 1px solid var(--border-subtle);
-    border-radius: 8px;
-    padding: var(--space-md);
+  :global(.verify-not-found) {
+    background: rgba(255, 250, 240, 0.5);
+    border: 1px solid var(--el-rule);
+    padding: 2rem 2.25rem;
     text-align: center;
+    font-family: var(--el-body);
+    color: var(--el-text-soft);
   }
-
-  .verify-status {
-    color: var(--text-muted);
-    font-size: 0.85rem;
+  :global(.verify-status) {
+    font-family: var(--el-ui);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
-    margin-bottom: var(--space-xs);
+    color: var(--el-accent);
+    margin-bottom: 0.5rem;
   }
-
-  .verify-header {
+  :global(.verify-header) {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    margin-bottom: var(--space-md);
+    margin-bottom: 1.5rem;
   }
-
-  .verify-agent-name {
-    font-family: var(--font-display);
-    font-size: 1.5rem;
-    color: var(--text-primary);
-    margin-bottom: 2px;
+  :global(.verify-agent-name) {
+    font-family: var(--el-display);
+    font-size: 26px;
+    color: var(--el-text);
+    line-height: 1.1;
+    margin: 0 0 0.5rem;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
   }
-
-  .verify-agent-meta {
-    font-size: 0.85rem;
-    color: var(--text-secondary);
-    margin-bottom: 0;
+  :global(.verify-agent-meta) {
+    font-family: var(--el-body);
+    font-size: 16px;
+    color: var(--el-text-soft);
+    margin: 0;
   }
-
-  .verify-props {
+  :global(.verify-props) {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    gap: 8px;
-    margin-bottom: var(--space-md);
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
   }
-
-  .verify-prop {
+  @media (max-width: 600px) { :global(.verify-props) { grid-template-columns: repeat(2, 1fr); } }
+  :global(.verify-prop) {
     text-align: center;
-    padding: 8px 4px;
-    background: var(--bg-deep);
-    border-radius: 6px;
+    padding: 0.75rem 0.5rem;
+    background: rgba(168, 136, 56, 0.08);
+    border: 1px solid var(--el-rule);
   }
-
-  .verify-prop-label {
+  :global(.verify-prop-label) {
     display: block;
-    font-size: 0.7rem;
-    color: var(--text-muted);
+    font-family: var(--el-ui);
+    font-size: 10px;
+    color: var(--el-accent);
     text-transform: uppercase;
-    letter-spacing: 0.04em;
-    margin-bottom: 4px;
+    letter-spacing: 0.22em;
+    margin-bottom: 0.4rem;
   }
-
-  .v-pass {
-    font-size: 0.75rem;
-    color: var(--accent-warm);
-    font-weight: 500;
-  }
-
-  .v-fail {
-    font-size: 0.75rem;
-    color: #ef4444;
-    font-weight: 500;
-  }
-
-  .verify-refusals {
-    margin-bottom: var(--space-sm);
-  }
-
-  .refusal-tag {
+  :global(.v-pass) { font-family: var(--el-ui); font-size: 11px; color: var(--el-accent-deep); font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; }
+  :global(.v-fail) { font-family: var(--el-ui); font-size: 11px; color: #c44; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; }
+  :global(.verify-refusals) { margin-bottom: 1.5rem; }
+  :global(.refusal-tag) {
     display: inline-block;
-    background: var(--accent-subtle);
-    color: var(--accent-warm);
-    font-size: 0.7rem;
-    padding: 2px 8px;
-    border-radius: 100px;
-    margin: 2px 4px 2px 0;
+    background: rgba(168, 136, 56, 0.12);
+    color: var(--el-accent-deep);
+    font-family: var(--el-ui);
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 0.25rem 0.75rem;
+    margin: 0.2rem 0.3rem 0.2rem 0;
+    border: 1px solid var(--el-rule);
   }
-
-  .verify-attestation {
-    font-size: 0.75rem;
-    color: var(--text-muted);
+  :global(.verify-attestation) {
+    font-family: var(--el-ui);
+    font-size: 11px;
+    color: var(--el-text-quiet);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
     display: flex;
     align-items: center;
-    gap: 8px;
-    padding-top: var(--space-sm);
-    border-top: 1px solid var(--border-subtle);
+    gap: 0.75rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--el-rule);
   }
-
-  .verify-dot {
-    width: 3px;
-    height: 3px;
-    background: var(--text-muted);
+  :global(.verify-dot) {
+    width: 3px; height: 3px;
+    background: var(--el-text-quiet);
     border-radius: 50%;
   }
-
-  /* PROBLEM */
-  .problem-section {
-    max-width: 640px;
-    margin: 0 auto;
+  :global(.tier-badge) {
+    display: inline-block;
+    font-family: var(--el-ui);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.7rem;
+    border: 1px solid var(--el-accent);
+    color: var(--el-accent-deep);
+    background: rgba(255, 250, 240, 0.5);
   }
+  :global(.tier-2) { border-color: var(--el-accent); }
+  :global(.tier-1) { color: var(--el-text-quiet); border-color: var(--el-rule); }
+  :global(.tier-3) { color: var(--el-accent-deep); }
 
-  .problem-section h2 {
-    color: var(--accent-warm);
-    font-size: 1.3rem;
-    margin-bottom: var(--space-md);
+  /* === shared section body styles === */
+  .body {
+    font-family: var(--el-body);
+    font-size: 19px;
+    color: var(--el-text-soft);
+    line-height: 1.6;
+    margin-bottom: 1.25rem;
+    max-width: 60ch;
   }
-
-  .problem-section p {
-    font-size: 1.05rem;
-    line-height: 1.8;
+  .body a {
+    color: var(--el-accent);
+    text-decoration: none;
+    border-bottom: 1px solid var(--el-accent);
   }
+  .body a:hover { color: var(--el-text); }
 
-  /* SECTION INTRO */
-  .section-intro {
-    font-size: 1rem;
-    color: var(--text-secondary);
-    margin-bottom: var(--space-md);
-  }
-
-  /* HOW IT WORKS */
+  /* === how-grid (3 step cards) === */
   .how-grid {
+    margin-top: 2rem;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: var(--space-md);
+    gap: 2rem;
   }
-
+  @media (max-width: 900px) { .how-grid { grid-template-columns: 1fr; gap: 1.5rem; } }
   .how-card {
-    background: var(--bg-surface);
-    border: 1px solid var(--border-subtle);
-    border-radius: 8px;
-    padding: var(--space-md);
+    background: rgba(255, 250, 240, 0.5);
+    border: 1px solid var(--el-rule);
+    box-shadow: var(--el-panel-shadow);
+    padding: 2.5rem 2rem;
     text-align: center;
   }
-
   .how-number {
     display: inline-block;
-    width: 36px;
-    height: 36px;
-    line-height: 36px;
-    background: var(--accent-warm);
-    color: var(--bg-deep);
-    border-radius: 50%;
-    font-weight: 600;
-    font-size: 1rem;
-    margin-bottom: var(--space-sm);
+    font-family: var(--el-display);
+    font-size: 32px;
+    color: var(--el-accent);
+    line-height: 1;
+    margin-bottom: 1.25rem;
+    letter-spacing: 0;
   }
-
   .how-card h3 {
-    font-size: 1.1rem;
-    margin-bottom: var(--space-xs);
+    font-family: var(--el-display);
+    font-size: 22px;
+    line-height: 1.2;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: var(--el-text);
+    margin: 0 0 1rem;
   }
-
   .how-card p {
-    font-size: 0.9rem;
-    color: var(--text-secondary);
-    margin-bottom: var(--space-sm);
+    font-family: var(--el-body);
+    font-size: 17px;
+    color: var(--el-text-soft);
+    line-height: 1.55;
+    margin: 0;
   }
 
-  .how-code {
-    display: inline-block;
-    background: var(--bg-deep);
-    color: var(--accent-warm);
-    padding: 4px 10px;
-    border-radius: 4px;
-    font-size: 0.75rem;
-  }
-
-  /* PROPERTIES */
+  /* === properties-grid (5 properties, scholarly registry-row look) === */
   .properties-grid {
+    margin-top: 2rem;
     display: flex;
     flex-direction: column;
-    gap: var(--space-sm);
+    border-top: 1px solid var(--el-accent);
+    border-bottom: 1px solid var(--el-accent);
   }
-
   .property-item {
     display: flex;
-    flex-direction: column;
-    gap: 4px;
-    padding: var(--space-sm) var(--space-md);
-    border-bottom: 1px solid var(--border-subtle);
+    align-items: flex-start;
+    gap: 1.5rem;
+    padding: 1.5rem 1.25rem;
+    border-bottom: 1px solid var(--el-rule);
   }
-
-  .property-item:last-child {
-    border-bottom: none;
-  }
-
-  .property-header {
-    display: flex;
-    align-items: center;
-    gap: var(--space-sm);
-  }
-
+  .property-item:last-child { border-bottom: none; }
   .property-icon {
-    display: inline-block;
-    width: 32px;
-    height: 32px;
-    line-height: 32px;
-    text-align: center;
-    background: var(--accent-subtle);
-    color: var(--accent-warm);
-    font-size: 0.7rem;
-    font-weight: 600;
-    border-radius: 6px;
     flex-shrink: 0;
+    width: 44px;
+    height: 44px;
+    line-height: 44px;
+    text-align: center;
+    background: rgba(168, 136, 56, 0.12);
+    color: var(--el-accent-deep);
+    font-family: var(--el-ui);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    border: 1px solid var(--el-accent);
   }
-
-  .property-item h3 {
-    font-size: 1rem;
-    margin-bottom: 0;
+  .property-text { flex: 1; }
+  .property-text h3 {
+    font-family: var(--el-display);
+    font-size: 20px;
+    line-height: 1.2;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: var(--el-text);
+    margin: 0 0 0.5rem;
   }
-
-  .property-item p {
-    font-size: 0.85rem;
-    color: var(--text-secondary);
-    margin-bottom: 0;
-    padding-left: calc(32px + var(--space-sm));
+  .property-text p {
+    font-family: var(--el-body);
+    font-size: 17px;
+    color: var(--el-text-soft);
+    line-height: 1.55;
+    margin: 0;
   }
-
-  /* ONTOLOGY NOTE */
   .ontology-note {
-    font-size: 0.85rem;
-    color: var(--text-muted);
-    max-width: 640px;
-    margin: var(--space-md) auto 0;
-    padding: var(--space-sm) var(--space-md);
-    border-left: 2px solid var(--border-subtle);
-    line-height: 1.7;
+    font-family: var(--el-body);
+    font-size: 16px;
     font-style: italic;
+    color: var(--el-text-quiet);
+    line-height: 1.7;
+    margin-top: 2rem;
+    padding: 1rem 0 1rem 1.5rem;
+    border-left: 2px solid var(--el-accent-soft);
+    max-width: 60ch;
   }
 
-  /* TIERS */
+  /* === tiers-grid (3 trust levels) === */
   .tiers-grid {
+    margin-top: 2rem;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: var(--space-md);
+    gap: 2rem;
   }
-
+  @media (max-width: 900px) { .tiers-grid { grid-template-columns: 1fr; gap: 1.5rem; } }
   .tier-card {
-    background: var(--bg-surface);
-    border: 1px solid var(--border-subtle);
-    border-radius: 8px;
-    padding: var(--space-md);
+    background: rgba(255, 250, 240, 0.5);
+    border: 1px solid var(--el-rule);
+    box-shadow: var(--el-panel-shadow);
+    padding: 2rem 1.75rem;
   }
-
   .tier-active {
-    border-color: var(--accent-warm);
-    background: var(--accent-subtle);
+    border: 1.5px solid var(--el-accent);
+    background: rgba(255, 250, 240, 0.85);
   }
-
   .tier-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: var(--space-sm);
+    margin-bottom: 1rem;
   }
-
   .tier-label {
-    font-size: 0.7rem;
+    font-family: var(--el-ui);
+    font-size: 11px;
     font-weight: 600;
+    letter-spacing: 0.22em;
     text-transform: uppercase;
-    letter-spacing: 0.06em;
-    color: var(--text-muted);
+    color: var(--el-accent);
   }
-
   .tier-price {
-    font-size: 0.7rem;
-    color: var(--accent-warm);
+    font-family: var(--el-ui);
+    font-size: 11px;
+    letter-spacing: 0.22em;
     text-transform: uppercase;
-    letter-spacing: 0.04em;
+    color: var(--el-text-quiet);
   }
-
   .tier-card h3 {
-    font-size: 1rem;
-    margin-bottom: var(--space-xs);
+    font-family: var(--el-display);
+    font-size: 20px;
+    line-height: 1.2;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: var(--el-text);
+    margin: 0 0 1rem;
   }
-
   .tier-card p {
-    font-size: 0.85rem;
-    color: var(--text-secondary);
-    margin-bottom: 0;
-  }
-
-  /* STATS BAR */
-  .stats-bar {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: var(--space-lg);
-    padding: var(--space-md) 0;
-    border-top: 1px solid var(--border-subtle);
-    border-bottom: 1px solid var(--border-subtle);
-  }
-
-  .stat {
-    text-align: center;
-  }
-
-  .stat-number {
-    display: block;
-    font-family: var(--font-display);
-    font-size: 2rem;
-    color: var(--accent-warm);
-    line-height: 1;
-    margin-bottom: 4px;
-  }
-
-  .stat-label {
-    font-size: 0.7rem;
-    color: var(--text-muted);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-  }
-
-  .stat-divider {
-    width: 1px;
-    height: 40px;
-    background: var(--border-subtle);
-  }
-
-  /* REGISTRY */
-  .container-wide {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: var(--space-lg) var(--space-md);
-  }
-
-  .registry-controls {
-    display: flex;
-    gap: var(--space-md);
-    align-items: center;
-    margin-bottom: var(--space-md);
-    flex-wrap: wrap;
-  }
-
-  .registry-search {
-    padding: 8px 14px;
-    background: var(--bg-surface);
-    border: 1px solid var(--border-subtle);
-    border-radius: 6px;
-    color: var(--text-primary);
-    font-size: 0.85rem;
-    font-family: inherit;
-    outline: none;
-    width: 200px;
-    transition: border-color 0.15s ease;
-  }
-
-  .registry-search:focus {
-    border-color: var(--accent-warm);
-  }
-
-  .registry-search::placeholder {
-    color: var(--text-muted);
-  }
-
-  .filter-bar {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 4px;
-  }
-
-  .filter-btn {
-    background: transparent;
-    border: 1px solid var(--border-subtle);
-    color: var(--text-muted);
-    padding: 4px 10px;
-    border-radius: 100px;
-    font-size: 0.7rem;
-    cursor: pointer;
-    transition: all 0.15s ease;
-  }
-
-  .filter-btn:hover {
-    border-color: var(--accent-warm);
-    color: var(--text-secondary);
-  }
-
-  .filter-btn.active {
-    background: var(--accent-subtle);
-    border-color: var(--accent-warm);
-    color: var(--accent-warm);
-  }
-
-  .registry-table-wrap {
-    overflow-x: auto;
-  }
-
-  .registry-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 0.85rem;
-  }
-
-  .registry-table th {
-    text-align: left;
-    padding: 8px 12px;
-    border-bottom: 2px solid var(--border-subtle);
-    color: var(--text-muted);
-    font-size: 0.7rem;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    font-weight: 500;
-  }
-
-  .registry-table td {
-    padding: 6px 12px;
-    border-bottom: 1px solid var(--border-subtle);
-  }
-
-  .registry-table tbody tr:hover {
-    background: var(--bg-surface);
-  }
-
-  .agent-name {
-    font-weight: 500;
-    color: var(--text-primary);
-  }
-
-  .agent-role {
-    color: var(--text-secondary);
-    font-size: 0.8rem;
-  }
-
-  .circle-badge {
-    display: inline-block;
-    background: var(--bg-elevated);
-    color: var(--text-muted);
-    font-size: 0.65rem;
-    padding: 2px 6px;
-    border-radius: 100px;
-  }
-
-  .tier-badge {
-    display: inline-block;
-    font-size: 0.65rem;
-    padding: 2px 8px;
-    border-radius: 100px;
-    font-weight: 500;
-  }
-
-  .tier-1 { background: rgba(107, 114, 128, 0.2); color: #9ca3af; }
-  .tier-2 { background: var(--accent-subtle); color: var(--accent-warm); }
-  .tier-3 { background: rgba(34, 197, 94, 0.15); color: #4ade80; }
-
-  .gov-check {
-    text-align: center;
-    color: var(--accent-warm);
-    font-size: 0.85rem;
-  }
-
-  /* API DETAILS */
-  .api-details {
-    border: 1px solid var(--border-subtle);
-    border-radius: 8px;
-    overflow: hidden;
-  }
-
-  .api-details summary {
-    padding: var(--space-sm) var(--space-md);
-    cursor: pointer;
-    background: var(--bg-surface);
-    list-style: none;
-  }
-
-  .api-details summary::-webkit-details-marker {
-    display: none;
-  }
-
-  .api-details summary::before {
-    content: '+ ';
-    color: var(--accent-warm);
-  }
-
-  .api-details[open] summary::before {
-    content: '- ';
-  }
-
-  .inline-heading {
-    display: inline;
-    font-size: 1rem;
+    font-family: var(--el-body);
+    font-size: 16px;
+    color: var(--el-text-soft);
+    line-height: 1.55;
     margin: 0;
   }
 
-  .api-content {
-    padding: var(--space-md);
-  }
-
-  .api-content h3 {
-    font-size: 0.85rem;
-    margin-bottom: var(--space-xs);
-    margin-top: var(--space-md);
-  }
-
-  .api-content h3:first-of-type {
-    margin-top: 0;
-  }
-
-  .api-url {
-    display: block;
-    background: var(--bg-deep);
-    color: var(--accent-warm);
-    padding: 8px 12px;
-    border-radius: 4px;
-    font-size: 0.8rem;
-    overflow-x: auto;
-  }
-
-  .api-note {
-    font-size: 0.75rem;
-    color: var(--text-muted);
-    margin-top: var(--space-sm);
-    margin-bottom: var(--space-xs);
-  }
-
-  .api-link {
-    color: var(--accent-warm);
-    text-decoration: none;
-    border-bottom: 1px solid var(--border-subtle);
-  }
-
-  .api-link:hover {
-    border-bottom-color: var(--accent-warm);
-  }
-
-  .badge-preview {
-    margin: var(--space-sm) 0;
-  }
-
-  /* CTA */
-  .cta-section {
-    max-width: 500px;
-    margin: 0 auto;
-    padding: var(--space-lg) 0;
-  }
-
-  .cta-section h2 {
-    margin-bottom: var(--space-xs);
-  }
-
-  .cta-section p {
-    color: var(--text-secondary);
-    margin-bottom: var(--space-md);
-  }
-
-  .cta-buttons {
-    display: flex;
-    gap: var(--space-sm);
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-
-  .btn-large {
-    padding: var(--space-sm) var(--space-lg);
-    font-size: 0.95rem;
-  }
-
-  .btn-primary {
-    background: var(--accent-warm);
-    color: var(--bg-deep);
-  }
-
-  .btn-primary:hover {
-    background: var(--accent-glow);
-    color: var(--bg-deep);
-  }
-
-  /* PATENT CONTEXT */
-  .patent-context {
-    text-align: center;
-    padding: var(--space-md) 0;
-    max-width: 640px;
-    margin: 0 auto;
-  }
-
-  .patent-context p {
-    color: var(--text-secondary);
-    font-size: 0.95rem;
-    line-height: 1.6;
-  }
-
-  .patent-context-verification {
-    margin-top: var(--space-sm);
-    font-size: 0.9rem;
-    color: var(--text-muted);
-    font-style: italic;
-  }
-
-  /* ECOSYSTEM */
-  .ecosystem {
-    text-align: center;
-    padding: var(--space-md) 0;
-    border-top: 1px solid var(--border-subtle);
-  }
-
-  .ecosystem-label {
-    font-size: 0.7rem;
-    color: var(--text-muted);
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    margin-bottom: var(--space-sm);
-  }
-
-  .ecosystem-items {
+  /* === stats-bar === */
+  .stats-bar {
+    margin: 1.5rem 0 3rem;
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: var(--space-sm);
-    color: var(--text-secondary);
-    font-size: 0.85rem;
+    justify-content: space-around;
+    gap: 2rem;
+    padding: 2rem 0;
+    border-top: 1px solid var(--el-accent);
+    border-bottom: 1px solid var(--el-accent);
+    flex-wrap: wrap;
   }
-
-  .eco-dot {
-    width: 3px;
-    height: 3px;
-    background: var(--text-muted);
-    border-radius: 50%;
+  .stat { text-align: center; min-width: 120px; }
+  .stat-number {
+    display: block;
+    font-family: var(--el-display);
+    font-size: 40px;
+    color: var(--el-accent);
+    line-height: 1;
+    margin-bottom: 0.4rem;
+    letter-spacing: 0.01em;
   }
+  .stat-label {
+    font-family: var(--el-ui);
+    font-size: 10px;
+    color: var(--el-text-soft);
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+  }
+  .stat-divider {
+    width: 1px;
+    height: 48px;
+    background: var(--el-rule);
+  }
+  @media (max-width: 700px) { .stat-divider { display: none; } }
 
-  /* RESPONSIVE */
+  /* === registry-wrapper (full-bleed search + table) === */
+  .registry-wrapper {
+    position: relative;
+    left: 50%;
+    margin-left: -50vw;
+    width: 100vw;
+    padding: 0 3rem;
+    margin-top: 2rem;
+  }
   @media (max-width: 900px) {
-    .how-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .tiers-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .verify-props {
-      grid-template-columns: repeat(3, 1fr);
+    .registry-wrapper {
+      position: static;
+      left: auto;
+      margin-left: 0;
+      width: auto;
+      padding: 0;
     }
   }
 
-  @media (max-width: 600px) {
-    .verify-box {
-      flex-direction: column;
-    }
-
-    .verify-box button {
-      padding: 12px;
-    }
-
-    .stats-bar {
-      flex-wrap: wrap;
-      gap: var(--space-md);
-    }
-
-    .stat-divider {
-      display: none;
-    }
-
-    .verify-props {
-      grid-template-columns: repeat(2, 1fr);
-    }
-
-    .governance-cols {
-      display: none;
-    }
-
-    .registry-controls {
-      flex-direction: column;
-      align-items: stretch;
-    }
-
-    .registry-search {
-      width: 100%;
-    }
+  .registry-controls {
+    max-width: 1600px;
+    margin: 0 auto 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
   }
+  .registry-search {
+    padding: 1rem 1.25rem;
+    font-family: var(--el-body);
+    font-size: 17px;
+    background: rgba(255, 250, 240, 0.85);
+    color: var(--el-text);
+    border: 1px solid var(--el-accent);
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .registry-search:focus { border-color: var(--el-accent-deep); }
+  .registry-search::placeholder { color: var(--el-text-quiet); font-style: italic; }
+  .filter-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .filter-btn {
+    font-family: var(--el-ui);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    padding: 0.5rem 1rem;
+    background: rgba(255, 250, 240, 0.5);
+    color: var(--el-text-soft);
+    border: 1px solid var(--el-rule);
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .filter-btn:hover { border-color: var(--el-accent); color: var(--el-text); }
+  .filter-btn.active {
+    background: var(--el-accent);
+    color: var(--el-bg);
+    border-color: var(--el-accent);
+  }
+
+  .registry-table-wrap {
+    max-width: 1600px;
+    margin: 0 auto;
+    overflow-x: auto;
+    border: 1.5px solid var(--el-accent);
+    background: rgba(255, 250, 240, 0.85);
+  }
+  .registry-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: var(--el-body);
+    font-size: 15px;
+  }
+  .registry-table thead {
+    background: rgba(168, 136, 56, 0.12);
+    border-bottom: 1px solid var(--el-accent);
+  }
+  .registry-table th {
+    text-align: left;
+    padding: 1rem 1.25rem;
+    font-family: var(--el-ui);
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--el-accent-deep);
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+  }
+  .registry-table th.governance-cols {
+    text-align: center;
+    width: 56px;
+    padding: 1rem 0.5rem;
+  }
+  .registry-table tbody tr {
+    border-bottom: 1px solid var(--el-rule);
+    transition: background 0.15s;
+  }
+  .registry-table tbody tr:hover { background: rgba(168, 136, 56, 0.06); }
+  .registry-table tbody tr:last-child { border-bottom: none; }
+  .registry-table td {
+    padding: 0.85rem 1.25rem;
+    color: var(--el-text);
+    vertical-align: middle;
+  }
+  .registry-table td.governance-cols {
+    text-align: center;
+    padding: 0.85rem 0.5rem;
+  }
+  :global(.agent-name) {
+    font-family: var(--el-display);
+    font-size: 14px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--el-text);
+    font-weight: 500;
+  }
+  :global(.agent-role) {
+    color: var(--el-text-soft);
+    font-size: 15px;
+  }
+  :global(.circle-badge) {
+    display: inline-block;
+    font-family: var(--el-ui);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 0.25rem 0.6rem;
+    background: rgba(255, 250, 240, 0.85);
+    color: var(--el-accent-deep);
+    border: 1px solid var(--el-rule);
+  }
+  :global(.gov-check) {
+    font-family: var(--el-mono);
+    font-size: 16px;
+    color: var(--el-accent-deep);
+  }
+
+  /* === api-blocks === */
+  .api-blocks {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .api-block {
+    padding: 1.5rem 1.75rem;
+    background: rgba(255, 250, 240, 0.5);
+    border: 1px solid var(--el-rule);
+  }
+  .api-label {
+    font-family: var(--el-ui);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--el-accent);
+    margin: 0 0 0.75rem;
+  }
+  .api-url {
+    display: inline-block;
+    font-family: var(--el-mono);
+    font-size: 14px;
+    color: var(--el-accent-deep);
+    background: rgba(168, 136, 56, 0.08);
+    padding: 0.5rem 0.9rem;
+    border: 1px solid var(--el-rule);
+    letter-spacing: 0.02em;
+  }
+  .api-snippet {
+    margin: 1rem 0 0.5rem;
+    font-family: var(--el-body);
+    font-size: 15px;
+    color: var(--el-text-soft);
+  }
+  .badge-preview {
+    margin: 1rem 0;
+    padding: 1rem;
+    background: rgba(255, 250, 240, 0.85);
+    border: 1px solid var(--el-rule);
+    display: inline-block;
+  }
+  .badge-preview img {
+    display: block;
+    max-width: 200px;
+  }
+
+  /* === register-ctas === */
+  .register-ctas {
+    margin-top: 2rem;
+    display: flex;
+    gap: 2.5rem;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  /* === closing-body === */
+  .closing-body { max-width: 56ch; }
+  .closing-body :global(p) {
+    font-family: var(--el-body);
+    font-size: 22px;
+    line-height: 1.5;
+    color: var(--el-text);
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.005em;
+  }
+  .closing-body :global(p.note-secondary) {
+    font-size: 17px;
+    color: var(--el-text-soft);
+    font-style: italic;
+    margin-bottom: 0;
+  }
+  .closing-body :global(a) {
+    color: var(--el-accent);
+    text-decoration: none;
+    border-bottom: 1px solid var(--el-accent);
+  }
+  .closing-body :global(a:hover) { color: var(--el-text); }
 </style>
-</BaseLayout>
