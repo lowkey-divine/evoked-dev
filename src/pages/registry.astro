@@ -746,18 +746,17 @@ const registryJsonLd = webApplicationJsonLd(
   /* === registry-wrapper (full-bleed search + table) === */
   .registry-wrapper {
     position: relative;
-    left: 50%;
-    margin-left: -50vw;
     width: 100vw;
-    padding: 0 3rem;
+    max-width: 100vw;
+    margin-inline: calc(50% - 50vw);
+    padding: 0 var(--el-content-pad);
     margin-top: 2rem;
   }
   @media (max-width: 900px) {
     .registry-wrapper {
-      position: static;
-      left: auto;
-      margin-left: 0;
       width: auto;
+      max-width: none;
+      margin-inline: 0;
       padding: 0;
     }
   }
@@ -881,6 +880,93 @@ const registryJsonLd = webApplicationJsonLd(
     font-family: var(--el-mono);
     font-size: 16px;
     color: var(--el-accent-deep);
+  }
+
+  /* === STACKED-CARD MOBILE ALTERNATIVE ===
+     Below 700px, the 9-column table is unreadable inside the bounded scroll
+     wrapper. Transform each row into a card via CSS-only table-to-block
+     reflow, preserving the same DOM (so search + filter scripts still work
+     unchanged). Captain decision 2026-06-16 in the responsive overhaul. */
+  @media (max-width: 700px) {
+    .registry-table-wrap {
+      border: none;
+      background: transparent;
+      overflow-x: visible;
+    }
+    .registry-table thead { display: none; }
+    .registry-table,
+    .registry-table tbody,
+    .registry-table tr,
+    .registry-table td { display: block; width: 100%; }
+
+    .registry-table tbody tr {
+      position: relative;
+      background: rgba(255, 250, 240, 0.85);
+      border: 1.5px solid var(--el-accent);
+      margin-bottom: 1rem;
+      padding: 1.25rem 1.25rem 1rem;
+    }
+    .registry-table tbody tr:hover {
+      background: rgba(255, 250, 240, 1);
+      border-color: var(--el-accent-deep);
+    }
+    .registry-table tbody tr:last-child {
+      border-bottom: 1.5px solid var(--el-accent);
+    }
+    .registry-table td {
+      padding: 0.2rem 0;
+      border: none;
+    }
+
+    /* card row 1: agent name + tier badge in top-right */
+    .registry-table td.agent-name {
+      font-size: 18px;
+      padding-right: 5rem; /* leave room for absolute tier badge */
+      padding-bottom: 0.25rem;
+    }
+    .registry-table td.agent-role {
+      color: var(--el-text-soft);
+      font-size: 15px;
+      padding-bottom: 0.5rem;
+    }
+    /* circle badge cell - inline with role on its own row */
+    .registry-table td:nth-child(3) {
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--el-rule);
+      margin-bottom: 0.75rem;
+    }
+    /* tier badge cell - absolute top-right of card */
+    .registry-table td:nth-child(4) {
+      position: absolute;
+      top: 1.25rem;
+      right: 1.25rem;
+      padding: 0;
+      width: auto;
+    }
+
+    /* governance check row: 5 inline chips with property abbreviations */
+    .registry-table td.governance-cols {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      width: auto;
+      padding: 0.25rem 0.5rem 0.25rem 0;
+      font-family: var(--el-ui);
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--el-accent-deep);
+      text-align: left;
+    }
+    .registry-table tbody tr td.governance-cols:nth-of-type(5)::before { content: "ID"; }
+    .registry-table tbody tr td.governance-cols:nth-of-type(6)::before { content: "RS"; }
+    .registry-table tbody tr td.governance-cols:nth-of-type(7)::before { content: "AC"; }
+    .registry-table tbody tr td.governance-cols:nth-of-type(8)::before { content: "MA"; }
+    .registry-table tbody tr td.governance-cols:nth-of-type(9)::before { content: "GC"; }
+    .registry-table tbody tr td.governance-cols::before {
+      font-weight: 600;
+      color: var(--el-accent);
+    }
   }
 
   /* === api-blocks === */

@@ -38,8 +38,44 @@
 
   /* layout */
   --el-content-max: 1180px;
-  --el-content-pad: 3rem;
-  --el-content-pad-tight: 1.25rem;
+  /* content padding: 1.25rem on phones, scales to 3rem on widescreens via clamp */
+  --el-content-pad: clamp(1.25rem, 1rem + 1.5vw, 3rem);
+  /* legacy aliases for components that still reference the old names */
+  --el-content-pad-tight: clamp(1rem, 0.75rem + 1vw, 1.5rem);
+
+  /* === fluid scale tokens (responsive overhaul Phase 1) ===
+     clamp(min, base+vw, max) for smooth scaling without abrupt jumps at
+     the clamp boundaries. The base term respects user font-size preferences;
+     the vw term provides fluid growth across viewports. */
+
+  /* typography */
+  --el-h1:        clamp(2.25rem, 1.6rem + 3.5vw, 5.5rem);   /* 36px -> 88px */
+  --el-h1-tight:  clamp(2rem,    1.4rem + 3vw,   4.5rem);   /* 32px -> 72px (about, work-with-us) */
+  --el-h2:        clamp(1.5rem,  1.1rem + 2vw,   2.25rem);  /* 24px -> 36px */
+  --el-metaphor:  clamp(1.125rem, 0.9rem + 1.2vw, 1.875rem);/* 18px -> 30px */
+  --el-sub:       clamp(1.0625rem, 0.95rem + 0.6vw, 1.4375rem); /* 17px -> 23px */
+  --el-lede:      clamp(1.0625rem, 0.95rem + 0.5vw, 1.375rem);  /* 17px -> 22px */
+  --el-body-size: clamp(1rem,    0.95rem + 0.3vw, 1.1875rem);   /* 16px -> 19px */
+
+  /* spacing */
+  --el-section-y:    clamp(3rem, 2rem + 4vw, 7rem);       /* 48px -> 112px */
+  --el-section-y-tight: clamp(2rem, 1.5rem + 2vw, 4rem);  /* 32px -> 64px (closing variant) */
+  --el-hero-pad-top: clamp(3rem, 2rem + 4vw, 8rem);
+  --el-hero-pad-bot: clamp(4rem, 2.5rem + 5vw, 10rem);
+
+  /* breakpoints (named constants - use in media queries via the
+     declared values, since CSS does not yet support custom-property
+     interpolation in media query conditions).
+       --bp-sm: 640px  (phones small)
+       --bp-md: 900px  (tablets/phones large)
+       --bp-lg: 1100px (small laptops)
+       --bp-xl: 1180px (full content width threshold)
+     Use these three values - 640 / 900 / 1100 - across all components.
+     Components may add a 1180 query when the layout depends on the
+     content-max boundary. */
+
+  /* touch targets */
+  --el-touch-target: 44px;
 }
 
 /* === reset (scoped to .elevation-page so it does not affect BaseLayout pages).
@@ -54,11 +90,13 @@ html { scroll-behavior: smooth; }
   background: var(--el-bg);
   color: var(--el-text);
   font-family: var(--el-body);
-  font-size: 20px;
+  font-size: var(--el-body-size);
   line-height: 1.72;
   letter-spacing: 0.003em;
   font-feature-settings: "kern", "liga", "calt", "onum";
+  /* 100vh fallback for old browsers; 100dvh handles iOS Safari dynamic toolbar */
   min-height: 100vh;
+  min-height: 100dvh;
   overflow-x: clip;
   background-image:
     /* warm ambient lighting */
@@ -105,8 +143,41 @@ html { scroll-behavior: smooth; }
   padding: 0 var(--el-content-pad);
 }
 
-@media (max-width: 600px) {
-  .elevation-main { padding: 0 var(--el-content-pad-tight); }
+/* === responsive utilities ===
+   The full-bleed pattern (cards or tables that extend edge-to-edge past
+   the centered content column). Use these helpers rather than re-rolling
+   the 100vw + negative-margin math per-page. */
+
+.el-full-bleed {
+  /* Equivalent to: position: relative; left: 50%; margin-left: -50vw; width: 100vw;
+     but uses scrollbar-gutter-safe math via 100% trick that ignores the
+     viewport scrollbar gutter on desktop. */
+  width: 100vw;
+  max-width: 100vw;
+  margin-inline: calc(50% - 50vw);
+  position: relative;
+}
+
+.el-full-bleed-inner {
+  /* the content inside a full-bleed container should still be padded,
+     and capped at a wider max if you want a "billboard" rather than
+     literally edge-to-edge. */
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 0 var(--el-content-pad);
+}
+
+@media (max-width: 900px) {
+  /* on tablet / phone collapse, full-bleed loses its bleed - return to
+     normal flow so the content honors the main container padding. */
+  .el-full-bleed {
+    width: auto;
+    max-width: none;
+    margin-inline: 0;
+  }
+  .el-full-bleed-inner {
+    padding: 0;
+  }
 }
 
 /* ============================================================

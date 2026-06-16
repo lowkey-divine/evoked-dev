@@ -87,10 +87,25 @@ const {
   header.site {
     max-width: var(--el-content-max);
     margin: 0 auto;
-    padding: 3.5rem 3rem 0;
+    padding: clamp(1.5rem, 1rem + 2vw, 3.5rem) var(--el-content-pad) 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  @media (max-width: 640px) {
+    header.site {
+      flex-wrap: wrap;
+      row-gap: 1.25rem;
+    }
+    nav.site {
+      width: 100%;
+      gap: 1.25rem;
+      flex-wrap: wrap;
+      row-gap: 0.5rem;
+    }
+    .moon-glyph { margin-left: 0.75rem; }
   }
   .brand {
     display: flex;
