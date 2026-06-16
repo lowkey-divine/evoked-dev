@@ -93,6 +93,13 @@ const {
     align-items: center;
     gap: 1rem;
     flex-wrap: wrap;
+    /* Lift header above main so dropdowns can open over hero text.
+       elevation.css sets .elevation-page > * { z-index: 1 } - both header
+       and main get z-index 1, and main wins because it comes later in the
+       DOM. Bumping header to 100 keeps the dropdown stacking context
+       above whatever the page renders below. */
+    position: relative;
+    z-index: 100;
   }
   @media (max-width: 640px) {
     header.site {
