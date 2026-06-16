@@ -69,6 +69,14 @@ report "SOFT" "AI slop vocabulary (delve/landscape/ecosystem/tapestry/realm)" "\
 report "SOFT" "Hedging language" "\b([Ii]n some ways|[Aa]rguably|[Pp]erhaps|[Oo]ne could argue|[Ss]omewhat|[Rr]ather|[Qq]uite)\b"
 report "SOFT" "Self-answering rhetoricals (question followed by definitive Yes/No)" "\?[[:space:]]+(Yes|No|Absolutely|Certainly|Indeed)\."
 
+# Hoshi 2026-06-16: low-confidence credibility signals (asymmetric to founder-public).
+# Sanchez/Columbia research: statements framed as observations read 40% more credible
+# than statements framed as opinions. Founder-public surfaces should prefer "I've observed"
+# / "I've found" / "we've measured" over "I think" / "we believe". Intimate-domestic
+# surfaces may keep the warmer voice - that is why this is SOFT, not HARD.
+# Tutela owns audit governance; Hoshi authored this patch.
+report "SOFT" "Low-confidence credibility signal ('I think' / 'we believe') - prefer observation register" "\b([Ii]|[Ww]e)\s+(think|believe)\b"
+
 # SOFT FLAGS — Register 3 social-media astrology patterns (read-through to confirm intent)
 # Hoshi: these can appear in legitimate critique of Register 3, but should not be voice in our copy.
 report "SOFT" "Anthropomorphic celestial slop ('she's spicy', 'she's gonna be stinging')" "\b(she|he|it)'?s\s+([a-z]+\s+){0,4}(spicy|stinging|sassy|fierce)\b"
