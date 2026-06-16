@@ -42,12 +42,14 @@ const { marker, label, heading, closing = false, id } = Astro.props;
 
 <style>
   .elevation-section {
-    padding: 7rem 0;
+    padding: var(--el-section-y) 0;
     border-top: 1px solid var(--el-rule);
     position: relative;
   }
   .elevation-section.closing {
-    padding: 8rem 0 6rem;
+    /* closing section has a touch more top padding than the body sections
+       to give the NOTA BENE marker breathing room, then less below. */
+    padding: calc(var(--el-section-y) + 0.5rem) 0 var(--el-section-y-tight);
   }
   .elevation-section::before {
     content: var(--section-marker);
@@ -64,30 +66,35 @@ const { marker, label, heading, closing = false, id } = Astro.props;
     letter-spacing: 0.24em;
     text-transform: uppercase;
     line-height: 1;
+    /* keep the marker on-page even if the section narrows */
+    max-width: calc(100vw - 2rem);
+    text-align: center;
+    white-space: nowrap;
   }
   .section-label {
     font-family: var(--el-ui);
     font-weight: 500;
     font-size: 13px;
     color: var(--el-accent);
-    margin-bottom: 2rem;
+    margin-bottom: clamp(1.25rem, 1rem + 1vw, 2rem);
     letter-spacing: 0.22em;
     text-transform: uppercase;
   }
   .elevation-section :global(h2) {
     font-family: var(--el-display);
-    font-size: clamp(24px, 3.2vw, 36px);
+    font-size: var(--el-h2);
     font-weight: 400;
     line-height: 1.18;
     letter-spacing: 0.01em;
     text-transform: uppercase;
-    margin-bottom: 2rem;
+    margin-bottom: clamp(1.25rem, 1rem + 1vw, 2rem);
     max-width: 26ch;
     color: var(--el-text);
+    overflow-wrap: break-word;
   }
   .elevation-section :global(.lede) {
     font-family: var(--el-body);
-    font-size: 22px;
+    font-size: var(--el-lede);
     line-height: 1.6;
     color: var(--el-text-soft);
     max-width: 60ch;
