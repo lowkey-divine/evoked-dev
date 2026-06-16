@@ -42,10 +42,12 @@ const {
     <p class="newsletter-label">{newsletterLabel}</p>
     <h3>{newsletterHeading}</h3>
     <p>{newsletterBlurb}</p>
-    <form data-evoke-newsletter>
+    <form data-evoke-newsletter novalidate>
       <input type="email" placeholder="your.email@example.com" required aria-label="Email address" />
+      <input type="text" name="website" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true" />
       <button type="submit">Subscribe</button>
     </form>
+    <p class="newsletter-status hidden" aria-live="polite"></p>
   </div>
   <div class="footer-meta">
     <div class="footer-meta-row">
@@ -57,14 +59,86 @@ const {
 </footer>
 
 <script>
-  // newsletter form - signals "Thank you" until a real endpoint is wired up.
-  document.querySelectorAll<HTMLFormElement>('form[data-evoke-newsletter]').forEach((form) => {
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const btn = form.querySelector<HTMLButtonElement>('button');
-      if (btn) btn.textContent = 'Thank you ✓';
+  // SiteFooter newsletter form - wired to /api/newsletter/subscribe (beehiiv backend).
+  // Uses the same challenge-token-then-subscribe pattern as the writing/ pages.
+  // Re-attaches after each ClientRouter navigation since the footer re-renders.
+  function attachFooterNewsletterForms() {
+    document.querySelectorAll<HTMLFormElement>('form[data-evoke-newsletter]').forEach((form) => {
+      if (form.dataset.newsletterWired === 'true') return;
+      form.dataset.newsletterWired = 'true';
+
+      const emailInput = form.querySelector<HTMLInputElement>('input[type="email"]');
+      const hpInput = form.querySelector<HTMLInputElement>('input[name="website"]');
+      const button = form.querySelector<HTMLButtonElement>('button');
+      const status = form.parentElement?.querySelector<HTMLParagraphElement>('.newsletter-status');
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        if (!emailInput || !button) return;
+        const email = emailInput.value.trim();
+        if (!email) return;
+
+        // Honeypot: bot filled the hidden field - silent success
+        if (hpInput?.value) {
+          button.textContent = 'Thank you ✓';
+          emailInput.value = '';
+          return;
+        }
+
+        const originalText = button.textContent || 'Subscribe';
+        button.disabled = true;
+        button.textContent = 'Subscribing...';
+        if (status) {
+          status.textContent = '';
+          status.classList.remove('error', 'success', 'hidden');
+        }
+
+        const showError = (msg: string) => {
+          button.textContent = originalText;
+          button.disabled = false;
+          if (status) {
+            status.textContent = msg;
+            status.classList.remove('success', 'hidden');
+            status.classList.add('error');
+          }
+        };
+
+        try {
+          // 1. Fetch challenge token (HMAC-signed by server)
+          const cRes = await fetch('/api/newsletter/challenge');
+          if (!cRes.ok) {
+            showError('Something went wrong. Try again.');
+            return;
+          }
+          const { token, ts } = await cRes.json();
+
+          // 2. Submit subscribe with token + honeypot
+          const sRes = await fetch('/api/newsletter/subscribe', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email, token, ts, hp: hpInput?.value || '' }),
+          });
+
+          if (sRes.ok) {
+            button.textContent = 'Thank you ✓';
+            emailInput.value = '';
+            if (status) {
+              status.textContent = 'You are in. Welcome.';
+              status.classList.remove('error', 'hidden');
+              status.classList.add('success');
+            }
+          } else {
+            const data = await sRes.json().catch(() => ({} as { error?: string }));
+            showError(data?.error || 'Something went wrong. Try again.');
+          }
+        } catch {
+          showError('Something went wrong. Try again.');
+        }
+      });
     });
-  });
+  }
+  attachFooterNewsletterForms();
+  document.addEventListener('astro:after-swap', attachFooterNewsletterForms);
 </script>
 
 <style>
@@ -137,6 +211,32 @@ const {
     text-transform: uppercase;
   }
   .newsletter button:hover { color: var(--el-text); }
+  .newsletter button:disabled { opacity: 0.6; cursor: wait; }
+
+  /* honeypot field - visually + semantically hidden but submittable */
+  .hp-field {
+    position: absolute;
+    left: -9999px;
+    top: -9999px;
+    opacity: 0;
+    height: 0;
+    width: 0;
+    z-index: -1;
+  }
+
+  /* status message rendered below the form (success or error) */
+  .newsletter-status {
+    font-family: var(--el-ui);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-top: 0.85rem;
+    min-height: 1.2em;
+    color: var(--el-text-quiet);
+  }
+  .newsletter-status.hidden { display: none; }
+  .newsletter-status.success { color: var(--el-accent); }
+  .newsletter-status.error { color: #c44; }
   .footer-meta {
     align-self: end;
     font-family: var(--el-ui);
