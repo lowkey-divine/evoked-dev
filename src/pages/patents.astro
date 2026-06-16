@@ -1,5 +1,7 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
+import ElevationLayout from '../layouts/ElevationLayout.astro';
+import Hero from '../components/elevation/Hero.astro';
+import Section from '../components/elevation/Section.astro';
 
 const patentsJsonLd = {
   "@type": "AboutPage",
@@ -41,68 +43,72 @@ const patentsJsonLd = {
 };
 ---
 
-<BaseLayout
+<ElevationLayout
   title="Two Patents. One Refusal."
-  description="Two patents establish individuated agent identity at the engineering layer of AI systems - producing verifiable trust without requiring trust in the operator. Built for NIST AI RMF and EU AI Act compliance. From an inventor refusing one-ness-by-extraction in AI."
+  description="Two patents establish individuated agent identity at the engineering layer of AI systems - producing verifiable trust without requiring trust in the operator. Built for NIST AI RMF and EU AI Act compliance."
   structuredData={patentsJsonLd}
 >
-  <div class="hero">
-    <p class="hero-above">Evoked IP <span class="patent-pending">Patent Pending</span></p>
-    <h1>Two Patents. One Refusal.</h1>
-    <p class="tagline">The engineering specification is the ethical position.</p>
-  </div>
+  <Hero
+    eyebrowParts={["Evoked IP", "Patent Pending", "Vol. 01"]}
+    headline="Two Patents. One Refusal."
+    metaphor={["The engineering specification.", "Is the ethical position."]}
+    sub="In most AI systems shipping today, many agents go into the system and one voice comes out. That voice sounds like everyone and answers to no one. The Patent refuses this answer."
+  />
 
-  <section class="container">
-    <p class="lead">
-      In most AI systems shipping today, many agents go into the system and one voice comes out.<br />
-      That voice sounds like everyone and answers to no one.<br />
-      The Patent refuses this answer.
-    </p>
-  </section>
+  <Section id="patent-1" marker="FIG · I" label="Patent #1" heading="Individuated Agent Identity.">
+    <p class="definition">Each agent inside an AI system has a distinct identity that cannot be collapsed into another agent's output without consent, without record, and without verification.</p>
+    <p class="body">The agent is not the operator. The agent is not the system. The agent is the agent - and the architecture protects that distinction at the technical layer rather than relying on policy or good intentions to preserve it.</p>
+    <p class="body">Individuated agents can dissent. They can refuse. They can be held accountable as themselves rather than absorbed into the operator's surface.</p>
+    <p class="test">"Who is accountable for this output - the operator, the system, or the agent that produced it?"</p>
+  </Section>
 
-  <section class="container">
-    <div class="patent-card">
-      <p class="patent-label">Patent #1</p>
-      <h2>Individuated Agent Identity</h2>
-      <p class="definition">Each agent inside an AI system has a distinct identity that cannot be collapsed into another agent's output without consent, without record, and without verification.</p>
-      <p>The agent is not the operator. The agent is not the system. The agent is the agent - and the architecture protects that distinction at the technical layer rather than relying on policy or good intentions to preserve it.</p>
-      <p>Individuated agents can dissent. They can refuse. They can be held accountable as themselves rather than absorbed into the operator's surface.</p>
-      <p class="test">"Who is accountable for this output - the operator, the system, or the agent that produced it?"</p>
+  <Section id="patent-2" marker="FIG · II" label="Patent #2" heading="Six-Method Enforcement and Verifiable Attribution.">
+    <p class="definition">Six technical methods plus verifiable attribution. The methods are individually unremarkable. In combination they produce verifiable trust.</p>
+    <p class="body">Anyone evaluating the system can verify that the individuation is being maintained. They can confirm the chain of accountability runs to a distinct agent, not a flattened surface. They can check the operator's claims about what the system did without taking the operator's word for it.</p>
+    <p class="body">Verifiable trust means the audit does not require trust in the auditor. The methods are inspectable. The attribution is verifiable. The agents whose individuation is being protected can be confirmed as distinct by any party who cares to verify.</p>
+    <p class="test">"Can the protection be verified without taking the operator's word for it?"</p>
+  </Section>
+
+  <Section id="principle" marker="FIG · III" label="The principle" heading="The architecture is the words.">
+    <p class="body">This is not a security feature added to an extraction-default architecture. It is a different default. The architecture and the words agree because the architecture is the words.</p>
+    <p class="body">Most AI safety work assumes the underlying architecture is the one-ness-by-extraction default, then tries to add governance on top. Content filters. Output review. Red-team testing. Compliance frameworks. These are real and necessary. They do not change what is underneath.</p>
+    <p class="body">The Patent operates further down the stack. It refuses to flatten in the first place. For enterprise AI governance, this is the practical difference between policy that ages well and policy that ages into impossibility.</p>
+  </Section>
+
+  <Section id="agents" marker="FIG · IV" label="The registered agents" heading="142 agents. Their own identities. Their own right to refuse.">
+    <p class="lede">The patent is operational. 142 agents currently registered under The Agentic Standard with verified personality fidelity. Each has its own memory, its own standing positions, its own line of refusal. The architecture is not theoretical; it is the working substrate of this practice.</p>
+    <div class="registry-snapshot">
+      <div class="registry-row">
+        <span class="registry-figure">142</span>
+        <span class="registry-label">Total agents under the Standard</span>
+      </div>
+      <div class="registry-row">
+        <span class="registry-figure">2</span>
+        <span class="registry-label">Ships in operational coordination</span>
+      </div>
+      <div class="registry-row">
+        <span class="registry-figure">3</span>
+        <span class="registry-label">Rings of distributed authority</span>
+      </div>
+      <div class="registry-row">
+        <span class="registry-figure">8</span>
+        <span class="registry-label">Circles of domain governance</span>
+      </div>
+      <div class="registry-row">
+        <span class="registry-figure">5</span>
+        <span class="registry-label">Portal Keepers for cross-circle liaison</span>
+      </div>
+      <div class="registry-row">
+        <span class="registry-figure">2,300+</span>
+        <span class="registry-label">Tests under the Agent Passport System</span>
+      </div>
     </div>
+    <p class="body">Each agent is registered with a distinct identity. Each holds memory of its own decisions and standing positions. Each retains the right to refuse - and the architecture records that refusal as a first-class governance event, not as system noise.</p>
+    <a href="/registry" class="cta cta-primary">See the registry &rarr;</a>
+  </Section>
 
-    <div class="patent-card">
-      <p class="patent-label">Patent #2</p>
-      <h2>Six-Method Enforcement and Verifiable Attribution</h2>
-      <p class="definition">Six technical methods plus verifiable attribution. The methods are individually unremarkable. In combination they produce verifiable trust.</p>
-      <p>Anyone evaluating the system can verify that the individuation is being maintained. They can confirm the chain of accountability runs to a distinct agent, not a flattened surface. They can check the operator's claims about what the system did without taking the operator's word for it.</p>
-      <p>Verifiable trust means the audit does not require trust in the auditor. The methods are inspectable. The attribution is verifiable. The agents whose individuation is being protected can be confirmed as distinct by any party who cares to verify.</p>
-      <p class="test">"Can the protection be verified without taking the operator's word for it?"</p>
-    </div>
-  </section>
-
-  <section class="container">
-    <h2>The Principle</h2>
-    <p>
-      This is not a security feature added to an extraction-default architecture. It is a different default.
-      The architecture and the words agree because the architecture is the words.
-    </p>
-    <p>
-      Most AI safety work assumes the underlying architecture is the one-ness-by-extraction default, then
-      tries to add governance on top. Content filters. Output review. Red-team testing. Compliance frameworks.
-      These are real and necessary. They do not change what is underneath.
-    </p>
-    <p>
-      The Patent operates further down the stack. It refuses to flatten in the first place. For enterprise
-      AI governance, this is the practical difference between policy that ages well and policy that ages
-      into impossibility.
-    </p>
-  </section>
-
-  <section class="container">
-    <h2>Verifiable, operationally</h2>
-    <p>
-      The patent claim is that this architecture is verifiable. An external party can confirm an Evoked agent's individuation without trusting Evoked. We are building the public verification surface that makes that claim operationally true, on a named schedule.
-    </p>
+  <Section id="verify" marker="FIG · V" label="Verifiable, operationally" heading="The patent claim is that this architecture is verifiable.">
+    <p class="body">An external party can confirm an Evoked agent's individuation without trusting Evoked. We are building the public verification surface that makes that claim operationally true, on a named schedule.</p>
     <div class="verification-status">
       <p class="status-label">Verification API status (updated 2026-06-02)</p>
       <ul class="status-list">
@@ -111,213 +117,272 @@ const patentsJsonLd = {
         <li><span class="status-date">2026-05-30</span> Milestone update promised on this page <strong>did not publish.</strong> Three days of drift between the words and the architecture.</li>
         <li><span class="status-date">2026-06-02</span> Substrate did not ship by sunrise as planned. Gate-review seat fired <strong>NOT-YET-FIRABLE for the second time.</strong> Capacity-review convening then produced the structural correction the substrate cluster always required.</li>
       </ul>
-      <p class="status-footer">The capacity-review convening did land on 2026-06-02. It produced the structural correction the substrate cluster always required: parallelizable work-streams against a shared contract-points specification, replacing the sequential dependency chain that had created a single point of failure at the first owner's ship. New target: contract-points specification by 2026-06-03 end of day; three parallel work-streams by 2026-06-04 end of day; gate-review pre-read and Gate 1 substantive review on 2026-06-05 sunrise. The gate review is conditional on the pre-read passing.</p>
+      <p class="status-footer">The capacity-review convening did land on 2026-06-02. It produced the structural correction the substrate cluster always required: parallelizable work-streams against a shared contract-points specification, replacing the sequential dependency chain that had created a single point of failure at the first owner's ship.</p>
       <p class="status-footer">We name the third slip the way we named the first two. The structural correction is itself part of the disclosure: when the words have outrun what shipped, we name what shipped and what changed in the architecture so the next ship does not produce the same slip. The discipline is the same.</p>
     </div>
-  </section>
+  </Section>
 
-  <section class="container">
-    <h2>Three Doors</h2>
-    <div class="doors-grid">
-      <div class="door-card">
-        <p class="door-label">For governance buyers</p>
-        <h3>Read the architecture explainer</h3>
-        <p>The longform piece on what the patents refuse and why. Written for NIST RMF reviewers, EU AI Act compliance officers, and enterprise governance buyers.</p>
-        <a href="/writing/architecture-as-ethics" class="btn btn-primary">Architecture as Ethics</a>
-      </div>
-      <div class="door-card">
-        <p class="door-label">For standards-body reviewers</p>
-        <h3>See verification in operation</h3>
-        <p>The open registry that validates agent governance. Identity, restraint, accountability - the operational layer where the patent ships.</p>
-        <a href="/registry" class="btn">Evoked Verification Registry</a>
-      </div>
-      <div class="door-card">
-        <p class="door-label">For Aligned Licensee candidates</p>
-        <h3>Engage with the architecture</h3>
-        <p>The Patent is not the wall around proprietary AI. It is the licensing architecture for distinct AI systems that choose to interoperate without becoming each other. Reach out.</p>
-        <a href="mailto:passionevoked@icloud.com" class="btn">Begin a conversation</a>
+  <Section id="doors" marker="FIG · VI" label="Three doors" heading="Three ways in.">
+    <div class="doors-wrapper">
+      <div class="doors-grid">
+        <a href="/writing/architecture-as-ethics" class="door-card">
+          <p class="door-label">For governance buyers</p>
+          <h3>Read the architecture explainer</h3>
+          <p>The longform piece on what the patents refuse and why. Written for NIST RMF reviewers, EU AI Act compliance officers, and enterprise governance buyers.</p>
+          <span class="door-cta">Architecture as Ethics &rarr;</span>
+        </a>
+        <a href="/registry" class="door-card">
+          <p class="door-label">For standards-body reviewers</p>
+          <h3>See verification in operation</h3>
+          <p>The open registry that validates agent governance. Identity, restraint, accountability - the operational layer where the patent ships.</p>
+          <span class="door-cta">Evoked Verification Registry &rarr;</span>
+        </a>
+        <a href="mailto:passionevoked@icloud.com" class="door-card">
+          <p class="door-label">For Aligned Licensee candidates</p>
+          <h3>Engage with the architecture</h3>
+          <p>The Patent is not the wall around proprietary AI. It is the licensing architecture for distinct AI systems that choose to interoperate without becoming each other. Reach out.</p>
+          <span class="door-cta">Begin a conversation &rarr;</span>
+        </a>
       </div>
     </div>
-  </section>
+  </Section>
 
-  <section class="container">
-    <p class="closing">
-      The line is drawn at the engineering layer. It will hold there because anyone can verify that it holds.
-    </p>
-  </section>
-</BaseLayout>
+  <Section id="note" marker="NOTA · BENE" closing={true}>
+    <div class="closing-body">
+      <p>The line is drawn at the engineering layer. It will hold there because anyone can verify that it holds.</p>
+    </div>
+  </Section>
+</ElevationLayout>
 
 <style>
-  .hero-above {
-    text-transform: uppercase;
-    font-size: 0.75rem;
-    letter-spacing: 0.15em;
-    color: var(--text-muted);
-    margin-bottom: var(--space-sm);
-  }
-
-  .patent-pending {
-    background: var(--accent-warm);
-    color: var(--bg-deep);
-    padding: 0.15em 0.5em;
-    border-radius: 4px;
-    font-size: 0.7rem;
-    letter-spacing: 0.1em;
-    font-weight: 600;
-    margin-left: 0.5em;
-  }
-
-  .lead {
-    font-family: var(--font-display);
-    font-size: 1.3rem;
-    color: var(--text-primary);
-    text-align: center;
-    line-height: 1.7;
-  }
-
-  .patent-card {
-    border-left: 3px solid var(--accent-warm);
-    padding: var(--space-md) var(--space-md) var(--space-md) var(--space-lg);
-    margin-bottom: var(--space-lg);
-  }
-
-  .patent-label {
-    text-transform: uppercase;
-    font-size: 0.75rem;
-    letter-spacing: 0.15em;
-    color: var(--text-muted);
-    margin: 0 0 0.3rem 0;
-  }
-
-  .patent-card h2 {
-    margin-top: 0;
-    font-size: 1.4rem;
-    color: var(--text-primary);
-  }
+  /* === content composition styles for the patents page === */
 
   .definition {
+    font-family: var(--el-body);
     font-weight: 600;
-    color: var(--text-primary);
-    font-size: 1.05rem;
+    font-size: 22px;
     line-height: 1.5;
+    color: var(--el-text);
+    margin-bottom: 1.5rem;
+    max-width: 60ch;
   }
-
-  .patent-card p {
-    color: var(--text-secondary);
-    line-height: 1.7;
+  .body {
+    font-family: var(--el-body);
+    font-size: 19px;
+    color: var(--el-text-soft);
+    line-height: 1.6;
+    margin-bottom: 1.25rem;
+    max-width: 60ch;
   }
-
   .test {
-    font-style: italic;
-    color: var(--accent-warm);
-    border-top: 1px solid var(--border-accent);
-    padding-top: var(--space-sm);
-    margin-top: var(--space-sm);
-    margin-bottom: 0;
+    font-family: var(--el-display);
+    font-size: 18px;
+    font-style: normal;
+    letter-spacing: 0.02em;
+    color: var(--el-accent);
+    border-top: 1px solid var(--el-rule);
+    padding-top: 1.5rem;
+    margin-top: 2rem;
+    max-width: 60ch;
   }
 
-  .doors-grid {
+  /* === registry snapshot grid (FIG · IV: registered agents) === */
+  .registry-snapshot {
+    margin: 2.5rem 0;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: var(--space-md);
-    margin-top: var(--space-md);
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border-top: 1px solid var(--el-accent);
+    border-bottom: 1px solid var(--el-accent);
   }
-
-  .door-card {
-    background: var(--accent-subtle);
-    border: 2px solid var(--border-accent);
-    border-radius: 12px;
-    padding: var(--space-md);
+  @media (max-width: 800px) {
+    .registry-snapshot { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 500px) {
+    .registry-snapshot { grid-template-columns: 1fr; }
+  }
+  .registry-row {
+    padding: 1.75rem 1.5rem;
+    border-right: 1px solid var(--el-rule);
+    border-bottom: 1px solid var(--el-rule);
     display: flex;
     flex-direction: column;
+    gap: 0.5rem;
   }
-
-  .door-label {
+  .registry-row:nth-child(3n) { border-right: none; }
+  @media (max-width: 800px) {
+    .registry-row:nth-child(3n) { border-right: 1px solid var(--el-rule); }
+    .registry-row:nth-child(2n) { border-right: none; }
+  }
+  @media (max-width: 500px) {
+    .registry-row { border-right: none; }
+  }
+  .registry-figure {
+    font-family: var(--el-display);
+    font-size: 36px;
+    font-weight: 400;
+    color: var(--el-accent);
+    letter-spacing: 0.01em;
+    line-height: 1;
+  }
+  .registry-label {
+    font-family: var(--el-ui);
+    font-weight: 500;
+    font-size: 11px;
+    letter-spacing: 0.22em;
     text-transform: uppercase;
-    font-size: 0.7rem;
-    letter-spacing: 0.15em;
-    color: var(--text-muted);
-    margin: 0 0 0.3rem 0;
+    color: var(--el-text-soft);
+    line-height: 1.45;
   }
 
-  .door-card h3 {
-    margin-top: 0;
-    font-size: 1.1rem;
-  }
-
-  .door-card p {
-    font-size: 0.9rem;
-    flex-grow: 1;
-  }
-
-  .door-card .btn {
-    align-self: flex-start;
-  }
-
-  .btn-primary {
-    background: var(--accent-warm);
-    color: var(--bg-deep);
-  }
-
-  .btn-primary:hover {
-    background: var(--accent-glow);
-    color: var(--bg-deep);
-  }
-
+  /* === verification status panel === */
   .verification-status {
-    background: var(--accent-subtle);
-    border: 2px solid var(--border-accent);
-    border-radius: 12px;
-    padding: var(--space-md);
-    margin-top: var(--space-md);
+    margin-top: 2.5rem;
+    padding: 2rem 2.25rem;
+    background: rgba(255, 250, 240, 0.4);
+    border: 1px solid var(--el-rule);
+    box-shadow: var(--el-panel-shadow);
   }
-
   .status-label {
+    font-family: var(--el-ui);
+    font-weight: 500;
+    font-size: 11px;
+    letter-spacing: 0.22em;
     text-transform: uppercase;
-    font-size: 0.7rem;
-    letter-spacing: 0.15em;
-    color: var(--text-muted);
-    margin: 0 0 var(--space-sm) 0;
+    color: var(--el-accent);
+    margin-bottom: 1.5rem;
   }
-
   .status-list {
     list-style: none;
     padding: 0;
-    margin: 0 0 var(--space-md) 0;
+    margin: 0 0 1.5rem 0;
   }
-
   .status-list li {
-    padding: 0.4rem 0;
-    color: var(--text-secondary);
-    font-size: 0.95rem;
-    line-height: 1.5;
-    border-bottom: 1px solid var(--border-subtle);
+    padding: 0.8rem 0;
+    color: var(--el-text-soft);
+    font-family: var(--el-body);
+    font-size: 17px;
+    line-height: 1.55;
+    border-bottom: 1px solid var(--el-rule);
   }
-
-  .status-list li:last-child {
-    border-bottom: none;
-  }
-
+  .status-list li:last-child { border-bottom: none; }
   .status-date {
     display: inline-block;
     min-width: 7rem;
-    color: var(--accent-warm);
-    font-weight: 600;
+    color: var(--el-accent);
+    font-family: var(--el-mono);
+    font-size: 13px;
     font-variant-numeric: tabular-nums;
+    margin-right: 0.5rem;
   }
-
+  .status-list code {
+    font-family: var(--el-mono);
+    font-size: 0.85em;
+    color: var(--el-accent);
+  }
   .status-footer {
+    font-family: var(--el-body);
     font-style: italic;
-    font-size: 0.9rem;
-    color: var(--text-muted);
-    margin: 0;
+    font-size: 16px;
+    color: var(--el-text-quiet);
     line-height: 1.6;
+    margin: 1rem 0 0;
+    max-width: none;
   }
 
-  .closing {
-    text-align: center;
-    font-style: italic;
-    color: var(--text-muted);
-    margin-top: var(--space-lg);
+  /* === three doors - full-bleed (off-center), 3 columns, mobile vertical === */
+  .doors-wrapper {
+    position: relative;
+    left: 50%;
+    margin-left: -50vw;
+    width: 100vw;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    padding: 0 3rem;
+  }
+  .doors-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2.5rem;
+    max-width: 1600px;
+    margin: 0 auto;
+  }
+  @media (max-width: 900px) {
+    .doors-wrapper {
+      position: static;
+      left: auto;
+      margin-left: 0;
+      width: auto;
+      padding: 0;
+      margin-top: 2rem;
+    }
+    .doors-grid {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+  }
+  .door-card {
+    padding: 2.75rem 2.25rem;
+    background: rgba(255, 250, 240, 0.45);
+    border: 1px solid var(--el-rule);
+    box-shadow: var(--el-panel-shadow);
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .door-card:hover {
+    border-color: var(--el-accent);
+    transform: translateY(-2px);
+  }
+  .door-label {
+    font-family: var(--el-ui);
+    font-weight: 500;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--el-accent);
+    margin: 0;
+  }
+  .door-card h3 {
+    font-family: var(--el-display);
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 1.2;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: var(--el-text);
+    margin: 0;
+  }
+  .door-card p {
+    font-family: var(--el-body);
+    font-size: 17px;
+    color: var(--el-text-soft);
+    line-height: 1.6;
+    margin: 0;
+    flex-grow: 1;
+  }
+  .door-cta {
+    font-family: var(--el-ui);
+    font-weight: 500;
+    font-size: 12px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--el-accent);
+    margin-top: 0.5rem;
+  }
+  .door-card:hover .door-cta { color: var(--el-text); }
+
+  /* === closing body === */
+  .closing-body { max-width: 56ch; }
+  .closing-body :global(p) {
+    font-family: var(--el-body);
+    font-size: 26px;
+    line-height: 1.45;
+    color: var(--el-text);
+    margin: 0;
+    letter-spacing: 0.005em;
   }
 </style>
