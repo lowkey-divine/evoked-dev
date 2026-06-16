@@ -1,29 +1,20 @@
 ---
-// /score — Sovereignty Score: five governance questions for your agent system.
+// /score - Sovereignty Score: five governance questions for your agent system.
 // Scored 0-3 per question. Email-gated. Results stored in Neon Postgres.
-// Design follows /diagnostic pattern. Backend: /api/sovereignty-submit.
-// Blocking conditions met: result card honesty caveat + email consent transparency.
+// Backend: /api/sovereignty-submit. Blocking conditions met: result card
+// honesty caveat + email consent transparency.
+//
+// HYBRID LAYOUT (preview): ElevationLayout chrome (sigil header + astrolabe
+// footer) wraps the calm dark assessment space. The quiz body keeps its
+// Cormorant-and-charcoal aesthetic intact within .score-experience.
+import ElevationLayout from '../layouts/ElevationLayout.astro';
 ---
 
-<!DOCTYPE html>
-<html lang="en" class="no-js">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="robots" content="index" />
-    <title>sovereignty score</title>
-    <meta name="description" content="Can your agents refuse? Do they remember their own decisions? Would you notice if they drifted? Five governance questions, scored 0-15. Industry baseline: 0-3." />
-
-    <meta property="og:title" content="Sovereignty Score" />
-    <meta property="og:description" content="Can your agents refuse? Five governance questions, scored 0-15. Industry baseline: 0-3. Two minutes." />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://evoked.dev/score" />
-
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&display=swap" rel="stylesheet" />
-  </head>
-  <body>
+<ElevationLayout
+  title="Sovereignty Score"
+  description="Can your agents refuse? Do they remember their own decisions? Would you notice if they drifted? Five governance questions, scored 0-15. Industry baseline: 0-3."
+>
+  <div class="score-experience">
 
     <!-- Phase 1: Intro -->
     <div class="space" id="intro">
@@ -181,26 +172,34 @@
 
     <p class="credit">Sovereignty Score from <a href="https://evoked.dev">evoked.dev</a>. Your data is stored securely and never shared.</p>
 
-  </body>
-</html>
+  </div><!-- /score-experience -->
+</ElevationLayout>
 
-<style>
-  * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
-
-  html, body {
-    height: 100%;
-  }
-
-  body {
+<style is:global>
+  /* Cormorant Garamond - the quiz's display font, preserved from the
+     pre-hybrid /score implementation. */
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&display=swap');
+  /* HYBRID: the dark "assessment space" lives inside .score-experience.
+     The ElevationLayout body (.elevation-page) stays parchment for the
+     sigil header and astrolabe footer. Visitor steps into the dark
+     space at the quiz, steps out at the footer. */
+  .score-experience {
     background: #13110f;
     display: flex;
     flex-direction: column;
+    min-height: 75vh;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    margin: 0 -3rem;
+    /* extend past the elevation-main padding so the dark band reads
+       edge-to-edge horizontally */
+  }
+  @media (max-width: 600px) {
+    .score-experience { margin: 0 -1.25rem; }
+  }
+
+  .score-experience * {
+    box-sizing: border-box;
   }
 
   .space {
