@@ -314,7 +314,7 @@ const patentsJsonLd = {
   /* door-card styles are :global so they apply reliably to the <a> elements,
      regardless of Astro CSS scoping context with slotted content */
   :global(.door-card) {
-    padding: 2.75rem 2.25rem;
+    padding: 3.5rem 2.5rem;
     background: rgba(255, 250, 240, 0.85);
     border: 1.5px solid var(--el-accent);
     box-shadow: var(--el-panel-shadow);
@@ -322,7 +322,9 @@ const patentsJsonLd = {
     color: var(--el-text);
     display: flex;
     flex-direction: column;
-    gap: 1.25rem;
+    align-items: center;
+    text-align: center;
+    gap: 1.5rem;
     transition: border-color 0.2s, transform 0.2s, background 0.2s;
   }
   :global(.door-card:hover) {
@@ -343,11 +345,12 @@ const patentsJsonLd = {
     font-family: var(--el-display);
     font-weight: 400;
     font-size: 22px;
-    line-height: 1.2;
+    line-height: 1.25;
     letter-spacing: 0.02em;
     text-transform: uppercase;
     color: var(--el-text);
     margin: 0;
+    max-width: 18ch;
   }
   :global(.door-card p) {
     font-family: var(--el-body);
@@ -356,6 +359,7 @@ const patentsJsonLd = {
     line-height: 1.6;
     margin: 0;
     flex-grow: 1;
+    max-width: 32ch;
   }
   :global(.door-card .door-cta) {
     font-family: var(--el-ui);
@@ -364,10 +368,9 @@ const patentsJsonLd = {
     letter-spacing: 0.22em;
     text-transform: uppercase;
     color: var(--el-accent);
-    margin-top: 0.5rem;
+    margin-top: auto;
     border-bottom: 1px solid var(--el-accent);
     padding-bottom: 0.4rem;
-    align-self: flex-start;
   }
   :global(.door-card:hover .door-cta) {
     color: var(--el-text);
