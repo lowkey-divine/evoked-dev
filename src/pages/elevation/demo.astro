@@ -1,0 +1,318 @@
+---
+/**
+ * Elevation register demo - rebuilds j.html as an Astro page using
+ * the new ElevationLayout + components. Serves at /elevation/demo.
+ *
+ * If this renders pixel-equivalent to /elevation/j.html, the component
+ * stack is correctly composed and the J register is ready to host other
+ * pages.
+ *
+ * Authored 2026-06-16 as the proof-of-stack for the J register extraction.
+ */
+import ElevationLayout from '../../layouts/ElevationLayout.astro';
+import Hero from '../../components/elevation/Hero.astro';
+import OrionFigure from '../../components/elevation/OrionFigure.astro';
+import Section from '../../components/elevation/Section.astro';
+---
+
+<ElevationLayout
+  title="The Agentic Standard"
+  description="Identity, scope, and signed evidence for AI agents that work with the humans behind them. Built in public, shared by license, kept in common."
+>
+  <Hero
+    eyebrowParts={["By Evoked", "Forming in public", "Vol. 01"]}
+    headline="The Agentic Standard."
+    metaphor={["Credentials prove who.", "Provenance proves what survived."]}
+    sub="Identity, scope, and signed evidence for AI agents that work with the humans behind them. Built in public, shared by license, kept in common."
+  >
+    <a class="cta cta-primary" href="#what">Read the principles</a>
+    <a class="cta cta-secondary" href="#where">See the registry &rarr;</a>
+    <OrionFigure slot="figure" tradition="bayer" />
+  </Hero>
+
+  <Section id="what" marker="FIG · I">
+    <div class="what-grid">
+      <div>
+        <p class="section-label">What this is</p>
+        <h2>Most systems verify the credential. The Standard verifies the character.</h2>
+      </div>
+      <div>
+        <p class="lede">Identity protocols answer who the agent claims to be at the door. They cannot answer whether the agent's governance specification - its refusal rights, standing positions, behavioral charter - was preserved through deployment to the model, or whether its runtime behavior aligns with that specification. The Agentic Standard answers that. We call it personality fidelity. Character under pressure.</p>
+      </div>
+    </div>
+  </Section>
+
+  <Section
+    id="how"
+    marker="FIG · II"
+    label="How it works"
+    heading="Three pieces. The character is hashed at every stage."
+  >
+    <div class="three-pieces">
+      <div class="piece">
+        <p class="piece-label">Configuration · H₁</p>
+        <h3>What the agent was authored to be</h3>
+        <p>Persona, refusal specification, standing positions, governance charter, memory. Hashed in deterministic order at authoring. The character the agent is supposed to keep.</p>
+      </div>
+      <div class="piece">
+        <p class="piece-label">Transformation · H<sub>t</sub></p>
+        <h3>The adaptation to the model</h3>
+        <p>The deterministic transformation from canonical governance configuration to model-specific deployment payload. Hashed and attested at the transformation step. The piece no other standard records - character surviving translation.</p>
+      </div>
+      <div class="piece">
+        <p class="piece-label">Behavior · H₃</p>
+        <h3>What the agent did at runtime</h3>
+        <p>Twenty-two structured event types across seven categories - refusal, scope, charter, identity, accountability, ethical override, integrity. Each governance event signed and bound to the previous elements. Character under pressure, recorded.</p>
+      </div>
+    </div>
+  </Section>
+
+  <Section
+    id="where"
+    marker="FIG · III"
+    label="Where we are"
+    heading="What is true today. What is coming."
+  >
+    <p class="lede">A practice that does not name its own readiness asks the reader to trust what cannot yet be verified.</p>
+    <div class="honestly">
+      <div>
+        <h3>True today</h3>
+        <ul>
+          <li>142 agents operating under the Standard with verified personality fidelity</li>
+          <li>The Kitchen Table family-planning app in TestFlight beta</li>
+          <li>Two patents filed; the schema is open</li>
+          <li>The Sovereignty Score is online and free</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Coming</h3>
+        <ul>
+          <li>The verification API at <code>/.well-known/</code></li>
+          <li>A public registry where any agent can be checked</li>
+          <li>A weekly working group, open to anyone</li>
+          <li>The Standard is forming. Read it as it is written.</li>
+        </ul>
+      </div>
+    </div>
+  </Section>
+
+  <Section
+    id="practice"
+    marker="FIG · IV"
+    label="What you can see of it today"
+    heading="The Standard is not a paper. It is a practice with surfaces."
+  >
+    <p class="lede">Everything below is built under The Agentic Standard. Some of it is for families. Some of it is for builders. Some of it is for measuring whether what you have built is sovereign or extractive. None of it is theory.</p>
+    <div class="applications">
+      <a class="app-card" href="#">
+        <p class="app-label">The family-facing application</p>
+        <h3>The Kitchen Table</h3>
+        <p>A meal-planning app on iOS, in TestFlight beta. Built under the Standard. No streaks. No scores. No surveillance. COPPA-compliant by architecture, not by retrofit.</p>
+        <span class="app-cta">See The Kitchen Table &rarr;</span>
+      </a>
+      <a class="app-card" href="#">
+        <p class="app-label">The instrument of character measurement</p>
+        <h3>The Sovereignty Score</h3>
+        <p>Five questions. Two minutes. Free. Score your AI against the Standard's principles. Most systems score zero on three of them.</p>
+        <span class="app-cta">Take the score &rarr;</span>
+      </a>
+      <a class="app-card" href="#">
+        <p class="app-label">The demonstration</p>
+        <h3>The 142-Agent Practice</h3>
+        <p>We govern 142 agents under their own identities. Each has its own memory, its own standing positions, its own right to refuse. The fleet is the demonstration that the Standard scales.</p>
+        <span class="app-cta">Read about the fleet &rarr;</span>
+      </a>
+      <a class="app-card" href="#">
+        <p class="app-label">The formal layer</p>
+        <h3>Two Patents Filed</h3>
+        <p>The Bot Authority spec and the sovereignty layer have been filed at USPTO. The Standard is formalizing in public, with counsel, on a real clock.</p>
+        <span class="app-cta">Read the patent posture &rarr;</span>
+      </a>
+    </div>
+  </Section>
+
+  <Section id="note" marker="NOTA · BENE" closing={true}>
+    <div class="closing-body">
+      <p class="section-label">A note</p>
+      <p>If the work reads true, sit with it. If you have a question, write. If you would like to add your voice to the working group, the door is open.</p>
+      <p>What you read here is the Standard's character - quiet, deliberate, in public. If the form fits the claim, we are in conversation.</p>
+      <div class="closing-ctas">
+        <a class="cta cta-primary" href="#">Write</a>
+        <a class="cta cta-secondary" href="#">Read the spec &rarr;</a>
+      </div>
+    </div>
+  </Section>
+</ElevationLayout>
+
+<style>
+  /* === page-level grid compositions ===
+     Reusable patterns that might eventually become components, but
+     starting as page-level styles per "build it twice before extracting." */
+
+  .what-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 5rem;
+  }
+  @media (max-width: 800px) { .what-grid { grid-template-columns: 1fr; gap: 1.5rem; } }
+
+  .three-pieces {
+    margin-top: 3.5rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 4rem;
+  }
+  @media (max-width: 900px) { .three-pieces { grid-template-columns: 1fr; gap: 2.5rem; } }
+
+  .piece {
+    padding-top: 1.75rem;
+    border-top: 2px solid var(--el-accent);
+  }
+  .piece-label {
+    font-family: var(--el-ui);
+    font-weight: 600;
+    font-size: 12px;
+    color: var(--el-accent);
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+  }
+  .piece :global(h3) {
+    font-family: var(--el-display);
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 1.2;
+    letter-spacing: 0.025em;
+    text-transform: uppercase;
+    margin-bottom: 1.25rem;
+    color: var(--el-text);
+  }
+  .piece :global(p) {
+    font-family: var(--el-body);
+    font-size: 19px;
+    color: var(--el-text-soft);
+    line-height: 1.6;
+    max-width: 34ch;
+  }
+
+  .honestly {
+    margin-top: 3rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+  }
+  @media (max-width: 800px) { .honestly { grid-template-columns: 1fr; gap: 3rem; } }
+  .honestly :global(h3) {
+    font-family: var(--el-ui);
+    font-weight: 600;
+    font-size: 13px;
+    color: var(--el-accent);
+    margin-bottom: 1.75rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+  }
+  .honestly :global(ul) { list-style: none; }
+  .honestly :global(li) {
+    padding: 1.25rem 0;
+    font-family: var(--el-body);
+    font-size: 19px;
+    color: var(--el-text);
+    line-height: 1.5;
+    border-top: 1px solid var(--el-rule);
+  }
+  .honestly :global(li:last-child) { border-bottom: 1px solid var(--el-rule); }
+  .honestly :global(code) {
+    font-family: var(--el-mono);
+    font-size: 0.82em;
+    color: var(--el-accent);
+    letter-spacing: 0.01em;
+  }
+
+  .applications {
+    margin-top: 3.5rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+  }
+  @media (max-width: 900px) { .applications { grid-template-columns: 1fr; gap: 2rem; } }
+  .app-card {
+    padding: 2.75rem 2.25rem;
+    background: rgba(255, 250, 240, 0.45);
+    border: 1px solid var(--el-rule);
+    box-shadow: var(--el-panel-shadow);
+    transition: border-color 0.2s, transform 0.2s;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
+  .app-card:hover {
+    border-color: var(--el-accent);
+    transform: translateY(-2px);
+  }
+  .app-label {
+    font-family: var(--el-ui);
+    font-weight: 500;
+    font-size: 12px;
+    color: var(--el-accent);
+    margin-bottom: 1.25rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+  }
+  .app-card :global(h3) {
+    font-family: var(--el-display);
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 1.2;
+    letter-spacing: 0.025em;
+    text-transform: uppercase;
+    margin-bottom: 1.25rem;
+    color: var(--el-text);
+  }
+  .app-card :global(p) {
+    font-family: var(--el-body);
+    font-size: 18px;
+    color: var(--el-text-soft);
+    line-height: 1.55;
+    margin-bottom: 1.25rem;
+    max-width: none;
+  }
+  .app-card .app-cta {
+    font-family: var(--el-ui);
+    font-weight: 500;
+    font-size: 13px;
+    color: var(--el-accent);
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+  }
+  .app-card:hover .app-cta { color: var(--el-text); }
+
+  /* closing body */
+  .closing-body { max-width: 56ch; }
+  .closing-body :global(.section-label) {
+    /* allow the section-label class to render inside closing-body the same as
+       Section.label - color-cycle to accent and same type tokens */
+    font-family: var(--el-ui);
+    font-weight: 500;
+    font-size: 13px;
+    color: var(--el-accent);
+    margin-bottom: 2rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+  }
+  .closing-body :global(p) {
+    font-family: var(--el-body);
+    font-weight: 400;
+    font-size: 26px;
+    line-height: 1.45;
+    color: var(--el-text);
+    margin-bottom: 3rem;
+    max-width: none;
+    letter-spacing: 0.005em;
+  }
+  .closing-ctas {
+    display: flex;
+    gap: 2.5rem;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+</style>

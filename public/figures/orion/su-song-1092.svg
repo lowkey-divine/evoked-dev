@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 460" role="img" aria-label="Shen asterism, after Su Song, Xin Yi Xiang Fa Yao, Kaifeng, 1092">
+  <title>Shen 參 - after Su Song - Xin Yi Xiang Fa Yao - Kaifeng - 1092</title>
+  <desc>Chinese lunar mansion Shen, asterism of seven stars in the white tiger quadrant. Geometric, non-anthropomorphic. Brass-line, Evoked brand palette.</desc>
+  <defs>
+    <style>
+      .frame-outer { stroke: #A88838; stroke-width: 0.5; fill: none; opacity: 0.7; }
+      .frame-inner { stroke: #A88838; stroke-width: 0.25; fill: none; opacity: 0.5; }
+      .connect { stroke: #A88838; stroke-width: 0.8; fill: none; }
+      .connect-faint { stroke: #A88838; stroke-width: 0.3; opacity: 0.4; stroke-dasharray: 2 2; fill: none; }
+      .star-ring { stroke: #A88838; stroke-width: 1.2; fill: #EBE2CB; }
+      .star-core { fill: #A88838; }
+      .ecliptic { stroke: #A88838; stroke-width: 0.25; opacity: 0.35; fill: none; }
+      .hanja { font-family: 'EB Garamond', Georgia, serif; font-size: 34px; fill: #A88838; font-weight: 500; opacity: 0.9; }
+      .label { font-family: 'EB Garamond', Georgia, serif; font-size: 10px; fill: #7E6622; font-style: italic; }
+      .caption-main { font-family: 'Space Grotesk', system-ui, sans-serif; font-size: 9px; fill: #A88838; letter-spacing: 0.28em; text-transform: uppercase; font-weight: 500; }
+      .caption-cite { font-family: 'Space Grotesk', system-ui, sans-serif; font-size: 9px; fill: #7E6622; letter-spacing: 0.22em; text-transform: uppercase; font-weight: 500; }
+    </style>
+  </defs>
+
+  <circle class="frame-outer" cx="200" cy="200" r="170"/>
+  <circle class="frame-inner" cx="200" cy="200" r="165"/>
+
+  <g class="connect">
+    <line x1="170" y1="200" x2="200" y2="202"/>
+    <line x1="200" y1="202" x2="230" y2="200"/>
+    <line x1="148" y1="115" x2="170" y2="200"/>
+    <line x1="252" y1="115" x2="230" y2="200"/>
+    <line x1="170" y1="200" x2="148" y2="300"/>
+    <line x1="230" y1="200" x2="252" y2="305"/>
+  </g>
+  <g class="connect-faint">
+    <line x1="148" y1="115" x2="252" y2="305"/>
+    <line x1="252" y1="115" x2="148" y2="300"/>
+  </g>
+
+  <circle class="star-ring" cx="170" cy="200" r="5"/>
+  <circle class="star-core" cx="170" cy="200" r="2"/>
+  <circle class="star-ring" cx="200" cy="202" r="5.5"/>
+  <circle class="star-core" cx="200" cy="202" r="2.2"/>
+  <circle class="star-ring" cx="230" cy="200" r="5"/>
+  <circle class="star-core" cx="230" cy="200" r="2"/>
+  <circle class="star-ring" cx="148" cy="115" r="5"/>
+  <circle class="star-core" cx="148" cy="115" r="2"/>
+  <circle class="star-ring" cx="252" cy="115" r="4.5"/>
+  <circle class="star-core" cx="252" cy="115" r="1.8"/>
+  <circle class="star-ring" cx="148" cy="300" r="4.5"/>
+  <circle class="star-core" cx="148" cy="300" r="1.8"/>
+  <circle class="star-ring" cx="252" cy="305" r="5.5"/>
+  <circle class="star-core" cx="252" cy="305" r="2.2"/>
+
+  <text class="hanja" x="200" y="155" text-anchor="middle">參</text>
+  <text class="label" x="200" y="378" text-anchor="middle" letter-spacing="0.04em">Shen · the white tiger asterism · western quadrant</text>
+  <path class="ecliptic" d="M 50 230 Q 200 180 350 230" stroke-dasharray="3 3"/>
+
+  <text class="caption-main" x="200" y="420" text-anchor="middle">FIG · SHEN 參 (ORION)</text>
+  <text class="caption-cite" x="200" y="438" text-anchor="middle">After Su Song · Xin Yi Xiang Fa Yao</text>
+  <text class="caption-cite" x="200" y="452" text-anchor="middle">Kaifeng · 1092</text>
+</svg>

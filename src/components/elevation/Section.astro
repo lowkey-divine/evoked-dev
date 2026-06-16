@@ -1,0 +1,96 @@
+---
+/**
+ * Section - the elevation register body section
+ *
+ * A bordered-top section with a scholarly marker centered on the border
+ * (e.g., "FIG · I", "FIG · II", or any string). Optional small label and
+ * h2 heading above the slot content.
+ *
+ * Pass marker="NOTA · BENE" and closing={true} for the closing-style section
+ * (different padding, same border + marker pattern).
+ *
+ * Usage:
+ *   <Section marker="FIG · I" label="What this is" heading="Most systems...">
+ *     <p class="lede">...</p>
+ *   </Section>
+ */
+interface Props {
+  /** Marker text rendered on the section's top border (e.g., "FIG · I"). */
+  marker: string;
+  /** Small uppercase label above the heading. */
+  label?: string;
+  /** h2 heading text. */
+  heading?: string;
+  /** Use the closing-section padding (8rem 0 6rem instead of 7rem 0). */
+  closing?: boolean;
+  /** Optional id for anchor linking. */
+  id?: string;
+}
+
+const { marker, label, heading, closing = false, id } = Astro.props;
+---
+
+<section
+  class:list={["elevation-section", { closing }]}
+  id={id}
+  style={`--section-marker: "${marker}"`}
+>
+  {label && <p class="section-label">{label}</p>}
+  {heading && <h2>{heading}</h2>}
+  <slot />
+</section>
+
+<style>
+  .elevation-section {
+    padding: 7rem 0;
+    border-top: 1px solid var(--el-rule);
+    position: relative;
+  }
+  .elevation-section.closing {
+    padding: 8rem 0 6rem;
+  }
+  .elevation-section::before {
+    content: var(--section-marker);
+    position: absolute;
+    top: -11px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--el-bg);
+    padding: 0 1.25rem;
+    color: var(--el-accent);
+    font-family: var(--el-ui);
+    font-weight: 500;
+    font-size: 12px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    line-height: 1;
+  }
+  .section-label {
+    font-family: var(--el-ui);
+    font-weight: 500;
+    font-size: 13px;
+    color: var(--el-accent);
+    margin-bottom: 2rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+  }
+  .elevation-section :global(h2) {
+    font-family: var(--el-display);
+    font-size: clamp(24px, 3.2vw, 36px);
+    font-weight: 400;
+    line-height: 1.18;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+    max-width: 26ch;
+    color: var(--el-text);
+  }
+  .elevation-section :global(.lede) {
+    font-family: var(--el-body);
+    font-size: 22px;
+    line-height: 1.6;
+    color: var(--el-text-soft);
+    max-width: 60ch;
+    margin-bottom: 0;
+  }
+</style>

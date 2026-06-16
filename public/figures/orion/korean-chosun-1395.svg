@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 460" role="img" aria-label="Chamsuk, after Chonsang Yolch'a Punyajido, Korean star chart, 1395">
+  <title>Chamsuk 參宿 - Chonsang Yolch'a Punyajido - Korean stone-carved star chart - 1395</title>
+  <desc>Stone-carved Korean star chart from the founding of the Choson dynasty. The Shen mansion as carved at Kyongju. Brass-line, Evoked brand palette.</desc>
+  <defs>
+    <style>
+      .frame-stone { stroke: #7E6622; stroke-width: 1.5; fill: none; opacity: 0.9; }
+      .frame-mid { stroke: #A88838; stroke-width: 0.6; fill: none; opacity: 0.7; }
+      .frame-inner { stroke: #A88838; stroke-width: 0.4; fill: none; opacity: 0.5; }
+      .division { stroke: #A88838; stroke-width: 0.3; opacity: 0.4; }
+      .connect-carved { stroke: #7E6622; stroke-width: 1.2; fill: none; }
+      .star-carved { fill: #7E6622; }
+      .patina { stroke: #7E6622; stroke-width: 0.25; fill: none; }
+      .chisel { stroke: #7E6622; stroke-width: 0.2; opacity: 0.4; }
+      .hanja { font-family: 'EB Garamond', Georgia, serif; font-size: 30px; fill: #7E6622; font-weight: 600; opacity: 0.9; }
+      .label { font-family: 'EB Garamond', Georgia, serif; font-size: 10px; fill: #7E6622; font-style: italic; }
+      .caption-main { font-family: 'Space Grotesk', system-ui, sans-serif; font-size: 9px; fill: #A88838; letter-spacing: 0.28em; text-transform: uppercase; font-weight: 500; }
+      .caption-cite { font-family: 'Space Grotesk', system-ui, sans-serif; font-size: 9px; fill: #7E6622; letter-spacing: 0.22em; text-transform: uppercase; font-weight: 500; }
+    </style>
+  </defs>
+
+  <circle class="frame-stone" cx="200" cy="200" r="175"/>
+  <circle class="frame-mid" cx="200" cy="200" r="165"/>
+  <circle class="frame-inner" cx="200" cy="200" r="120"/>
+  <circle class="frame-inner" cx="200" cy="200" r="60"/>
+
+  <g class="division">
+    <line x1="200" y1="25" x2="200" y2="375"/>
+    <line x1="25" y1="200" x2="375" y2="200"/>
+    <line x1="76" y1="76" x2="324" y2="324"/>
+    <line x1="324" y1="76" x2="76" y2="324"/>
+  </g>
+
+  <g class="connect-carved">
+    <line x1="170" y1="200" x2="200" y2="202"/>
+    <line x1="200" y1="202" x2="230" y2="200"/>
+    <line x1="148" y1="115" x2="170" y2="200"/>
+    <line x1="252" y1="115" x2="230" y2="200"/>
+    <line x1="170" y1="200" x2="148" y2="300"/>
+    <line x1="230" y1="200" x2="252" y2="305"/>
+  </g>
+
+  <circle class="star-carved" cx="170" cy="200" r="4.5" opacity="0.9"/>
+  <circle class="star-carved" cx="200" cy="202" r="5" opacity="0.95"/>
+  <circle class="star-carved" cx="230" cy="200" r="4.5" opacity="0.9"/>
+  <circle class="star-carved" cx="148" cy="115" r="4" opacity="0.85"/>
+  <circle class="star-carved" cx="252" cy="115" r="3.8" opacity="0.85"/>
+  <circle class="star-carved" cx="148" cy="300" r="3.8" opacity="0.85"/>
+  <circle class="star-carved" cx="252" cy="305" r="4.5" opacity="0.9"/>
+
+  <g class="chisel">
+    <line x1="170" y1="195" x2="173" y2="192"/>
+    <line x1="167" y1="205" x2="170" y2="208"/>
+    <line x1="200" y1="196" x2="203" y2="194"/>
+    <line x1="197" y1="208" x2="200" y2="210"/>
+    <line x1="230" y1="195" x2="233" y2="192"/>
+    <line x1="227" y1="205" x2="230" y2="208"/>
+  </g>
+
+  <circle class="patina" cx="170" cy="200" r="7" opacity="0.4"/>
+  <circle class="patina" cx="200" cy="202" r="8" opacity="0.45"/>
+  <circle class="patina" cx="230" cy="200" r="7" opacity="0.4"/>
+
+  <text class="hanja" x="200" y="155" text-anchor="middle">參</text>
+  <text class="label" x="200" y="378" text-anchor="middle" letter-spacing="0.04em">Chamsuk 參宿 · Shen mansion · carved at Kyongju</text>
+
+  <text class="caption-main" x="200" y="420" text-anchor="middle">FIG · CHAMSUK 參宿 (ORION)</text>
+  <text class="caption-cite" x="200" y="438" text-anchor="middle">Chonsang Yolch'a Punyajido</text>
+  <text class="caption-cite" x="200" y="452" text-anchor="middle">Choson · 1395</text>
+</svg>
