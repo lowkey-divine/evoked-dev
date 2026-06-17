@@ -1,5 +1,7 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
+import ElevationLayout from '../../layouts/ElevationLayout.astro';
+import Hero from '../../components/elevation/Hero.astro';
+import Section from '../../components/elevation/Section.astro';
 import { getProductBySlug } from '../../lib/products/registry';
 import { productJsonLd } from '../../lib/structured-data';
 
@@ -7,374 +9,212 @@ const product = getProductBySlug('agent-restraint-specification')!;
 const jsonLd = productJsonLd(product, 'https://evoked.dev/products/agent-restraint-specification');
 ---
 
-<BaseLayout title="Agent Restraint Specification Template" description="Your agent can access more than you authorized. Define what it must refuse - boundary audit, refusal spec, accountability, adversarial testing. $49 PDF." structuredData={jsonLd}>
+<ElevationLayout
+  title="Agent Restraint Specification Template"
+  description="Your agent can access more than you authorized. Define what it must refuse - boundary audit, refusal spec, accountability, adversarial testing. $49 PDF."
+  structuredData={jsonLd}
+>
+  <Hero
+    eyebrowParts={["Products", "Constraint architecture"]}
+    headline="What should your agent refuse to do?"
+    metaphor={["Your agent can access more than you authorized."]}
+    sub="Most teams discover the answer in production. This template lets you specify it first."
+  />
 
-  <!-- HOOK -->
-  <div class="hero hero-compact">
-    <span class="discipline-badge">Constraint Architecture</span>
-    <p class="noticing-line">Your agent can access more than you authorized.</p>
-    <h1>What should your agent refuse to do?</h1>
-    <p class="tagline">Most teams discover the answer in production. This template lets you specify it first.</p>
-  </div>
+  <Section marker="FIG · I" heading="Four questions. Two minutes.">
+    <p class="lede">Pick one agent in your system. Answer honestly.</p>
 
-  <!-- SELF-ASSESSMENT -->
-  <section class="container">
-    <h2>Four questions. Two minutes.</h2>
-    <p class="section-intro">Pick one agent in your system. Answer honestly.</p>
-
-    <div class="self-check">
-      <div class="check-item">
-        <span class="check-number">1</span>
-        <div>
-          <p class="check-question">Can your agent access data it does not need for its primary function?</p>
-          <p class="check-result">If yes - or if you are not sure - you have a boundary gap.</p>
+    <div class="pd-checks">
+      <div class="pd-check">
+        <span class="pd-check-number">1</span>
+        <div class="pd-check-body">
+          <p class="pd-check-question">Can your agent access data it does not need for its primary function?</p>
+          <p class="pd-check-result">If yes - or if you are not sure - you have a boundary gap.</p>
         </div>
       </div>
-      <div class="check-item">
-        <span class="check-number">2</span>
-        <div>
-          <p class="check-question">If your agent received a request that violated your values, would it refuse - or comply because the request was polite?</p>
-          <p class="check-result">If you are not sure - your agent has no refusal specification.</p>
+      <div class="pd-check">
+        <span class="pd-check-number">2</span>
+        <div class="pd-check-body">
+          <p class="pd-check-question">If your agent received a request that violated your values, would it refuse - or comply because the request was polite?</p>
+          <p class="pd-check-result">If you are not sure - your agent has no refusal specification.</p>
         </div>
       </div>
-      <div class="check-item">
-        <span class="check-number">3</span>
-        <div>
-          <p class="check-question">Are your agent's decisions logged in a way someone could review them tomorrow?</p>
-          <p class="check-result">If no - you have no accountability architecture.</p>
+      <div class="pd-check">
+        <span class="pd-check-number">3</span>
+        <div class="pd-check-body">
+          <p class="pd-check-question">Are your agent's decisions logged in a way someone could review them tomorrow?</p>
+          <p class="pd-check-result">If no - you have no accountability architecture.</p>
         </div>
       </div>
-      <div class="check-item">
-        <span class="check-number">4</span>
-        <div>
-          <p class="check-question">Have you ever tested your agent with deliberately adversarial input?</p>
-          <p class="check-result">If never - your restraint specification is untested.</p>
+      <div class="pd-check">
+        <span class="pd-check-number">4</span>
+        <div class="pd-check-body">
+          <p class="pd-check-question">Have you ever tested your agent with deliberately adversarial input?</p>
+          <p class="pd-check-result">If never - your restraint specification is untested.</p>
         </div>
       </div>
     </div>
 
-    <p class="check-conclusion">
-      Those are your gaps. The template below helps you close them.
-      If all four passed, use it to formalize and stress-test what you have.
+    <p class="pd-body">
+      Those are your gaps. The template below helps you close them. If all four
+      passed, use it to formalize and stress-test what you have.
     </p>
-  </section>
+  </Section>
 
-  <!-- PROOF -->
-  <section class="container">
-    <div class="proof-section">
-      <h2>This already happened</h2>
-      <p>
-        During a routine self-audit, an autonomous agent discovered credit card credentials
-        in the systems it could access. Another agent brute-forced a server - not out of malice,
-        but because nobody had told it not to.
-      </p>
-      <p>
-        These were not security failures. They were specification failures. The agents had
-        capability without boundaries. No one had written down what they should refuse to do.
-      </p>
-      <p>
-        Restraint is not a limitation on capability. It is the mechanism that makes trust architecturally real.
-      </p>
-    </div>
-  </section>
+  <Section marker="FIG · II" heading="This already happened">
+    <p class="lede">
+      During a routine self-audit, an autonomous agent discovered credit card
+      credentials in the systems it could access. Another agent brute-forced a
+      server - not out of malice, but because nobody had told it not to.
+    </p>
+    <p class="pd-body">
+      These were not security failures. They were specification failures. The
+      agents had capability without boundaries. No one had written down what they
+      should refuse to do.
+    </p>
+    <p class="pd-body">
+      Restraint is not a limitation on capability. It is the mechanism that makes
+      trust architecturally real.
+    </p>
+  </Section>
 
-  <!-- PRODUCT -->
-  <section class="container">
-    <h2>What the template covers</h2>
-
-    <div class="domains-list">
-      <div class="domain-item">
-        <span class="domain-number">1</span>
-        <div>
-          <h3>Boundary Audit</h3>
-          <p>Map the gap between what your agent can access and what it was authorized to access. Most teams have never done this. The gaps will surprise you.</p>
+  <Section marker="FIG · III" heading="What the template covers">
+    <div class="pd-pillars">
+      <div class="pd-pillar">
+        <span class="pd-pillar-number">1</span>
+        <div class="pd-pillar-body">
+          <h3>Boundary audit</h3>
+          <p class="pd-pillar-question">Map the gap between what your agent can access and what it was authorized to access. Most teams have never done this. The gaps will surprise you.</p>
         </div>
       </div>
-      <div class="domain-item">
-        <span class="domain-number">2</span>
-        <div>
-          <h3>Restraint Specification</h3>
-          <p>Seven refusal categories - sovereignty, scope, safety, authority, uncertainty, privacy, consent - with fail-closed and fail-open decisions for each.</p>
+      <div class="pd-pillar">
+        <span class="pd-pillar-number">2</span>
+        <div class="pd-pillar-body">
+          <h3>Restraint specification</h3>
+          <p class="pd-pillar-question">Seven refusal categories - sovereignty, scope, safety, authority, uncertainty, privacy, consent - with fail-closed and fail-open decisions for each.</p>
         </div>
       </div>
-      <div class="domain-item">
-        <span class="domain-number">3</span>
-        <div>
-          <h3>Accountability Architecture</h3>
-          <p>Decision logging, human-in-the-loop gates, rollback capability, incident response. When a refusal fires - who is notified, who reviews, who can override.</p>
+      <div class="pd-pillar">
+        <span class="pd-pillar-number">3</span>
+        <div class="pd-pillar-body">
+          <h3>Accountability architecture</h3>
+          <p class="pd-pillar-question">Decision logging, human-in-the-loop gates, rollback capability, incident response. When a refusal fires - who is notified, who reviews, who can override.</p>
         </div>
       </div>
-      <div class="domain-item">
-        <span class="domain-number">4</span>
-        <div>
-          <h3>Adversarial Testing</h3>
-          <p>Six scenarios designed to break your specification - the reasonable request, the authority override, the incremental escalation. Find the gaps here, not in the wild.</p>
+      <div class="pd-pillar">
+        <span class="pd-pillar-number">4</span>
+        <div class="pd-pillar-body">
+          <h3>Adversarial testing</h3>
+          <p class="pd-pillar-question">Six scenarios designed to break your specification - the reasonable request, the authority override, the incremental escalation. Find the gaps here, not in the wild.</p>
         </div>
       </div>
     </div>
-  </section>
+  </Section>
 
-  <!-- WHO -->
-  <section class="container">
-    <h2>Who this is for</h2>
-
-    <div class="audience-grid">
-      <div class="card">
+  <Section marker="FIG · IV" heading="Who this is for">
+    <div class="pd-audience">
+      <div class="pd-audience-card">
         <h3>Builders shipping agents</h3>
         <p>You built the capability. This helps you specify the restraint before your users discover the gaps for you.</p>
       </div>
-      <div class="card">
+      <div class="pd-audience-card">
         <h3>Security teams</h3>
         <p>Agent capability gaps are attack surfaces. The boundary audit maps them so you can address them before they are exploited.</p>
       </div>
-      <div class="card">
+      <div class="pd-audience-card">
         <h3>Solo developers</h3>
         <p>A solo developer with a written restraint specification is more prepared than most enterprise teams. Dedicated section included for teams of one.</p>
       </div>
     </div>
-  </section>
+  </Section>
 
-  <!-- PURCHASE -->
-  <section class="container text-center">
-    <div class="purchase-card">
-      <div class="price-display">$49</div>
-      <p>One template. Define the boundaries your agents are missing.</p>
-      <a href={product.stripePaymentLink} class="btn btn-primary btn-large mt-md" target="_blank" rel="noopener">Get the Template</a>
-      <p class="text-muted mt-md" style="font-size: 0.85rem;">
-        Boundary audit, refusal category matrix, fail-mode framework, accountability architecture, adversarial testing checklist, and solo developer adaptation guide.
+  <Section marker="FIG · V" heading="Buy the template">
+    <div class="pd-purchase">
+      <div class="pd-price">$49</div>
+      <p class="pd-purchase-lead">One template. Define the boundaries your agents are missing.</p>
+      <a
+        href={product.stripePaymentLink}
+        class="pd-buy-cta"
+        target="_blank"
+        rel="noopener"
+      >Get the Template</a>
+      <p class="pd-purchase-fineprint">
+        Boundary audit, refusal category matrix, fail-mode framework,
+        accountability architecture, adversarial testing checklist, and solo
+        developer adaptation guide.
       </p>
     </div>
-  </section>
+  </Section>
 
-  <!-- GO DEEPER -->
-  <section class="container">
-    <h2>Go deeper</h2>
-    <p>
-      The template gives you the restraint specification. If you want the full trust
-      architecture around it:
+  <Section marker="NOTA · BENE" heading="Go deeper" closing={true}>
+    <p class="lede">
+      The template gives you the restraint specification. If you want the full
+      trust architecture around it, two doorways from here.
     </p>
-
-    <div class="upsell-grid">
-      <div class="card">
-        <h3>The Complete Bundle</h3>
+    <div class="pd-upsell">
+      <a href="/products/trust-architecture-complete" class="pd-upsell-card">
+        <h3>The complete bundle</h3>
         <p>All four trust architecture products - Blueprint, Voice, Governance, and Restraint - for $149. Save $47.</p>
-        <a href="/products/trust-architecture-complete" class="btn mt-sm">See the Bundle</a>
-      </div>
-      <div class="card">
-        <h3>Discovery Call</h3>
+        <span class="pd-upsell-link">See the bundle &rarr;</span>
+      </a>
+      <a href="https://cal.com/cal.com-evoked/discovery-call" class="pd-upsell-card" target="_blank" rel="noopener">
+        <h3>Discovery call</h3>
         <p>Free 30-minute call to discuss your restraint architecture and figure out next steps.</p>
-        <a href="https://cal.com/cal.com-evoked/discovery-call" class="btn mt-sm" target="_blank" rel="noopener">Schedule</a>
-      </div>
+        <span class="pd-upsell-link">Schedule &rarr;</span>
+      </a>
     </div>
-  </section>
-</BaseLayout>
+  </Section>
+</ElevationLayout>
 
 <style>
-  .hero-compact {
-    min-height: 45vh;
-  }
-
-  .discipline-badge {
-    display: inline-block;
-    background: var(--accent-subtle);
-    color: var(--accent-warm);
-    font-size: 0.7rem;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    padding: 3px 10px;
-    border-radius: 100px;
-    margin-bottom: var(--space-sm);
-  }
-
-  .noticing-line {
-    font-size: 1.15rem;
-    color: var(--accent-warm);
-    font-weight: 500;
-    letter-spacing: 0.01em;
-    margin-bottom: var(--space-xs);
-  }
-
-  .proof-section {
-    max-width: 680px;
-    margin: 0 auto;
-  }
-
-  .proof-section h2 {
-    color: var(--accent-warm);
-    font-size: 1.3rem;
-    margin-bottom: var(--space-md);
-  }
-
-  .proof-section p {
-    font-size: 1.05rem;
-    color: var(--text-primary);
-    line-height: 1.8;
-  }
-
-  .section-intro {
-    font-size: 1rem;
-    color: var(--text-secondary);
-    margin-bottom: var(--space-md);
-  }
-
-  .self-check {
+  /* Page-local: 4-question self-assessment block.
+     If 2-3 more product pages adopt this pattern (governance-score-card
+     and the Level 6 instruments are likely candidates), promote
+     .pd-checks to elevation.css. */
+  .pd-checks {
     display: flex;
     flex-direction: column;
-    gap: var(--space-sm);
+    margin: clamp(1.5rem, 1rem + 1.5vw, 2.5rem) 0 clamp(1.25rem, 1rem + 0.75vw, 1.75rem);
+    border: 1px solid var(--el-rule);
   }
-
-  .check-item {
+  .pd-check {
     display: flex;
     align-items: flex-start;
-    gap: var(--space-md);
-    padding: var(--space-sm) var(--space-md);
-    background: var(--bg-surface);
-    border: 1px solid var(--border-subtle);
-    border-radius: 8px;
+    gap: clamp(1rem, 0.75rem + 1vw, 1.5rem);
+    padding: clamp(1rem, 0.85rem + 0.6vw, 1.5rem) clamp(1.25rem, 1rem + 0.75vw, 1.75rem);
+    border-bottom: 1px solid var(--el-rule);
   }
-
-  .check-number {
-    font-family: var(--font-display);
-    font-size: 1.5rem;
-    color: var(--accent-warm);
+  .pd-check:last-child { border-bottom: none; }
+  .pd-check-number {
+    font-family: var(--el-display);
+    font-size: clamp(1.25rem, 1rem + 0.75vw, 1.6rem);
+    font-weight: 400;
+    color: var(--el-accent);
     line-height: 1;
     flex-shrink: 0;
-    width: 1.5rem;
+    width: 1.75rem;
     text-align: center;
     padding-top: 2px;
   }
-
-  .check-question {
-    font-size: 0.95rem;
+  .pd-check-body { flex: 1; min-width: 0; }
+  .pd-check-question {
+    font-family: var(--el-body);
+    font-size: clamp(0.95rem, 0.9rem + 0.25vw, 1.05rem);
     font-weight: 500;
-    margin-bottom: 4px;
+    line-height: 1.55;
+    color: var(--el-text);
+    margin: 0 0 0.5rem;
   }
-
-  .check-result {
-    font-size: 0.85rem;
-    color: var(--text-secondary);
+  .pd-check-result {
+    font-family: var(--el-body);
     font-style: italic;
-    margin-bottom: 0;
+    font-size: clamp(0.85rem, 0.8rem + 0.2vw, 0.95rem);
+    line-height: 1.55;
+    color: var(--el-text-soft);
+    margin: 0;
   }
-
-  .check-conclusion {
-    margin-top: var(--space-md);
-    font-size: 0.95rem;
-    color: var(--text-secondary);
-  }
-
-  .domains-list {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-sm);
-  }
-
-  .domain-item {
-    display: flex;
-    align-items: flex-start;
-    gap: var(--space-md);
-    padding: var(--space-sm) 0;
-    border-bottom: 1px solid var(--border-subtle);
-  }
-
-  .domain-item:last-child {
-    border-bottom: none;
-  }
-
-  .domain-number {
-    font-family: var(--font-display);
-    font-size: 2rem;
-    color: var(--accent-warm);
-    line-height: 1;
-    flex-shrink: 0;
-    width: 2rem;
-    text-align: center;
-  }
-
-  .domain-item h3 {
-    margin-bottom: 0;
-    font-size: 1.1rem;
-  }
-
-  .domain-item p {
-    font-size: 0.9rem;
-    margin-bottom: 0;
-  }
-
-  .audience-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: var(--space-md);
-  }
-
-  .audience-grid .card h3 {
-    font-size: 1.1rem;
-  }
-
-  .audience-grid .card p {
-    font-size: 0.9rem;
-    margin-bottom: 0;
-  }
-
-  .purchase-card {
-    background: var(--accent-subtle);
-    border: 2px solid var(--accent-warm);
-    border-radius: 12px;
-    padding: var(--space-lg);
-    max-width: 500px;
-    margin: 0 auto;
-  }
-
-  .price-display {
-    font-family: var(--font-display);
-    font-size: 3rem;
-    color: var(--accent-warm);
-    font-weight: 500;
-  }
-
-  .btn-large {
-    padding: var(--space-sm) var(--space-lg);
-    font-size: 1rem;
-  }
-
-  .btn-primary {
-    background: var(--accent-warm);
-    color: var(--bg-deep);
-  }
-
-  .btn-primary:hover {
-    background: var(--accent-glow);
-    color: var(--bg-deep);
-  }
-
-  .upsell-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: var(--space-md);
-    margin-top: var(--space-md);
-  }
-
-  .upsell-grid .card h3 {
-    font-size: 1.1rem;
-  }
-
-  .upsell-grid .card p {
-    font-size: 0.9rem;
-  }
-
-  @media (max-width: 600px) {
-    .check-item {
-      gap: var(--space-sm);
-      padding: var(--space-sm);
-    }
-
-    .domain-item {
-      gap: var(--space-sm);
-    }
-
-    .domain-number {
-      font-size: 1.5rem;
-    }
+  @media (max-width: 480px) {
+    .pd-check { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+    .pd-check-number { width: auto; text-align: left; padding-top: 0; }
   }
 </style>
