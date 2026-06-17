@@ -1,5 +1,7 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
+import ElevationLayout from '../../layouts/ElevationLayout.astro';
+import Hero from '../../components/elevation/Hero.astro';
+import Section from '../../components/elevation/Section.astro';
 import { getProductBySlug } from '../../lib/products/registry';
 import { productJsonLd } from '../../lib/structured-data';
 
@@ -7,317 +9,389 @@ const product = getProductBySlug('trust-architecture-complete')!;
 const jsonLd = productJsonLd(product, 'https://evoked.dev/products/trust-architecture-complete');
 ---
 
-<BaseLayout title="Trust Architecture Complete" description="The complete trust practice: identity, voice, governance, and restraint. All four products, one price, the right build order. $149." structuredData={jsonLd}>
-  <div class="hero hero-compact">
-    <span class="discipline-badge">Full Practice</span>
-    <h1>The complete trust practice.</h1>
-    <p class="tagline">Identity, voice, governance, and restraint - in the order they should be built.</p>
-  </div>
+<ElevationLayout
+  title="Trust Architecture Complete"
+  description="The complete trust practice: identity, voice, governance, and restraint. All four products, one price, the right build order. $149."
+  structuredData={jsonLd}
+>
+  <Hero
+    eyebrowParts={["Products", "Full practice"]}
+    headline="The complete trust practice."
+    metaphor={["Identity. Voice. Governance. Restraint."]}
+    sub="In the order they should be built."
+  />
 
-  <section class="container">
-    <div class="value-prop">
-      <p>
-        Trust isn't one thing. It's four architectural decisions working together. Identity
-        without governance drifts. Governance without voice alienates. Voice without restraint
-        manipulates. Restraint without identity has nothing to protect.
-      </p>
-      <p>
-        The complete bundle gives you all four products in the order they should be built -
-        so each layer strengthens the one before it.
-      </p>
-    </div>
-  </section>
+  <Section marker="FIG · I" heading="Why a bundle">
+    <p class="lede">
+      Trust isn't one thing. It's four architectural decisions working together.
+      Identity without governance drifts. Governance without voice alienates.
+      Voice without restraint manipulates. Restraint without identity has nothing
+      to protect.
+    </p>
+    <p class="pd-body">
+      The complete bundle gives you all four products in the order they should be
+      built - so each layer strengthens the one before it.
+    </p>
+  </Section>
 
-  <section class="container">
-    <h2>What's Included</h2>
-
-    <div class="features-grid">
-      <div class="feature">
+  <Section marker="FIG · II" heading="What's included">
+    <div class="pd-features">
+      <div class="pd-feature">
         <h3>Trust Architecture Blueprint</h3>
         <p>The four-pillar framework. Persona file templates, session protocols, graduated trust stages, and quarterly reviews. Start here.</p>
-        <a href="/products/trust-architecture-blueprint" class="feature-link">Learn more</a>
+        <a href="/products/trust-architecture-blueprint" class="pd-feature-link">Learn more &rarr;</a>
       </div>
-      <div class="feature">
+      <div class="pd-feature">
         <h3>Agent Voice Architecture Guide</h3>
         <p>Three-level voice framework - protection, respect, nurturance. Sovereignty language audit, voice specifications, and refusal voice patterns.</p>
-        <a href="/products/agent-voice-architecture-guide" class="feature-link">Learn more</a>
+        <a href="/products/agent-voice-architecture-guide" class="pd-feature-link">Learn more &rarr;</a>
       </div>
-      <div class="feature">
+      <div class="pd-feature">
         <h3>Agent Governance Starter Kit</h3>
         <p>Charter template, boundary specifications, drift monitoring thresholds, and four-level accountability framework.</p>
-        <a href="/products/agent-governance-starter-kit" class="feature-link">Learn more</a>
+        <a href="/products/agent-governance-starter-kit" class="pd-feature-link">Learn more &rarr;</a>
       </div>
-      <div class="feature">
+      <div class="pd-feature">
         <h3>Agent Restraint Specification</h3>
         <p>Boundary audit, refusal category matrix, fail-mode decisions, accountability architecture, and adversarial testing checklist.</p>
-        <a href="/products/agent-restraint-specification" class="feature-link">Learn more</a>
+        <a href="/products/agent-restraint-specification" class="pd-feature-link">Learn more &rarr;</a>
       </div>
     </div>
-  </section>
+  </Section>
 
-  <section class="container">
-    <h2>The Build Order</h2>
-
-    <div class="domains-list">
-      <div class="domain-item">
-        <span class="domain-number">1</span>
-        <div>
-          <h3>Blueprint First</h3>
-          <p>"Understand the four pillars. Define your agent's identity. Everything else builds on this."</p>
+  <Section marker="FIG · III" heading="The build order">
+    <div class="pd-pillars">
+      <div class="pd-pillar">
+        <span class="pd-pillar-number">1</span>
+        <div class="pd-pillar-body">
+          <h3>Blueprint first</h3>
+          <p class="pd-pillar-question">"Understand the four pillars. Define your agent's identity. Everything else builds on this."</p>
         </div>
       </div>
-      <div class="domain-item">
-        <span class="domain-number">2</span>
-        <div>
-          <h3>Voice Second</h3>
-          <p>"Design how your agent speaks - and what it will never say. Voice is where identity meets the user."</p>
+      <div class="pd-pillar">
+        <span class="pd-pillar-number">2</span>
+        <div class="pd-pillar-body">
+          <h3>Voice second</h3>
+          <p class="pd-pillar-question">"Design how your agent speaks - and what it will never say. Voice is where identity meets the user."</p>
         </div>
       </div>
-      <div class="domain-item">
-        <span class="domain-number">3</span>
-        <div>
-          <h3>Governance Third</h3>
-          <p>"Set the boundaries, thresholds, and accountability chains. Structure that holds when you're not watching."</p>
+      <div class="pd-pillar">
+        <span class="pd-pillar-number">3</span>
+        <div class="pd-pillar-body">
+          <h3>Governance third</h3>
+          <p class="pd-pillar-question">"Set the boundaries, thresholds, and accountability chains. Structure that holds when you're not watching."</p>
         </div>
       </div>
-      <div class="domain-item">
-        <span class="domain-number">4</span>
-        <div>
-          <h3>Restraint Last</h3>
-          <p>"Specify what the agent must refuse. Restraint is the final layer - it protects everything you've built."</p>
+      <div class="pd-pillar">
+        <span class="pd-pillar-number">4</span>
+        <div class="pd-pillar-body">
+          <h3>Restraint last</h3>
+          <p class="pd-pillar-question">"Specify what the agent must refuse. Restraint is the final layer - it protects everything you've built."</p>
         </div>
       </div>
     </div>
-  </section>
+  </Section>
 
-  <section class="container">
-    <h2>Who This Is For</h2>
-
-    <div class="audience-grid">
-      <div class="card">
-        <h3>Teams Going All-In</h3>
+  <Section marker="FIG · IV" heading="Who this is for">
+    <div class="pd-audience">
+      <div class="pd-audience-card">
+        <h3>Teams going all-in</h3>
         <p>You've decided trust architecture matters. The bundle gives you the complete practice without piecemealing it together over months.</p>
       </div>
-      <div class="card">
-        <h3>Agencies & Consultancies</h3>
+      <div class="pd-audience-card">
+        <h3>Agencies and consultancies</h3>
         <p>Building agent systems for clients. The four-product framework gives you a repeatable trust architecture process you can apply across engagements.</p>
       </div>
-      <div class="card">
-        <h3>Organizations Scaling Agents</h3>
+      <div class="pd-audience-card">
+        <h3>Organizations scaling agents</h3>
         <p>Moving from one agent to many. The trust architecture that worked for a single agent needs structural reinforcement at scale. This is it.</p>
       </div>
     </div>
-  </section>
+  </Section>
 
-  <section class="container text-center">
-    <div class="purchase-card">
-      <div class="price-display">$149</div>
-      <p class="savings">Save $47 vs. buying individually ($196)</p>
-      <p>Four PDFs. The complete trust architecture practice.</p>
-      <a href={product.stripePaymentLink} class="btn btn-primary btn-large mt-md" target="_blank" rel="noopener">Buy the Complete Bundle</a>
-      <p class="text-muted mt-md" style="font-size: 0.85rem;">
-        Includes Trust Architecture Blueprint, Agent Voice Architecture Guide, Agent Governance Starter Kit, and Agent Restraint Specification Template.
+  <Section marker="FIG · V" heading="Buy the complete bundle">
+    <div class="pd-purchase">
+      <div class="pd-price">$149</div>
+      <p class="pd-savings">Save $47 vs. buying individually ($196)</p>
+      <p class="pd-purchase-lead">Four PDFs. The complete trust architecture practice.</p>
+      <a
+        href={product.stripePaymentLink}
+        class="pd-buy-cta"
+        target="_blank"
+        rel="noopener"
+      >Buy the Complete Bundle</a>
+      <p class="pd-purchase-fineprint">
+        Includes Trust Architecture Blueprint, Agent Voice Architecture Guide,
+        Agent Governance Starter Kit, and Agent Restraint Specification Template.
       </p>
     </div>
-  </section>
+  </Section>
 
-  <section class="container">
-    <h2>Go Deeper</h2>
-    <p>
-      The bundle gives you the frameworks. If you want hands-on help implementing them,
-      two options:
+  <Section marker="NOTA · BENE" heading="Go deeper" closing={true}>
+    <p class="lede">
+      The bundle gives you the frameworks. If you want hands-on help implementing
+      them, three doorways from here.
     </p>
-
-    <div class="upsell-grid">
-      <div class="card">
-        <h3>See It in Practice</h3>
+    <div class="pd-upsell">
+      <a href="/case-studies/labyrinth" class="pd-upsell-card">
+        <h3>See it in practice</h3>
         <p>We analyzed a real defensive AI security platform through the four pillars. See what trust architecture looks like in the wild.</p>
-        <a href="/case-studies/labyrinth" class="btn mt-sm">Read the Case Study</a>
-      </div>
-      <div class="card">
+        <span class="pd-upsell-link">Read the case study &rarr;</span>
+      </a>
+      <a href="/consulting" class="pd-upsell-card">
         <h3>Trust Architecture Workshop</h3>
         <p>Full-day guided implementation on your agent system with your team. I facilitate. You see. $8,000.</p>
-        <a href="/consulting" class="btn mt-sm">Learn More</a>
-      </div>
-      <div class="card">
-        <h3>Discovery Call</h3>
+        <span class="pd-upsell-link">Learn more &rarr;</span>
+      </a>
+      <a href="https://cal.com/cal.com-evoked/discovery-call" class="pd-upsell-card" target="_blank" rel="noopener">
+        <h3>Discovery call</h3>
         <p>Free 30-minute call to discuss your trust architecture and figure out next steps.</p>
-        <a href="https://cal.com/cal.com-evoked/discovery-call" class="btn mt-sm" target="_blank" rel="noopener">Schedule</a>
-      </div>
+        <span class="pd-upsell-link">Schedule &rarr;</span>
+      </a>
     </div>
-  </section>
-</BaseLayout>
+  </Section>
+</ElevationLayout>
 
 <style>
-  .hero-compact {
-    min-height: 45vh;
+  /* Product detail template - reused from trust-architecture-blueprint.
+     Two additions on this page (and reusable on others):
+       .pd-feature-link  - inline "Learn more" link inside a pd-feature
+       .pd-savings       - the savings line in the purchase card */
+
+  .pd-body {
+    font-family: var(--el-body);
+    font-size: clamp(1rem, 0.95rem + 0.3vw, 1.1rem);
+    line-height: 1.7;
+    color: var(--el-text-soft);
+    margin-top: 1.25rem;
+    margin-bottom: 0;
+    max-width: 60ch;
   }
 
-  .discipline-badge {
-    display: inline-block;
-    background: var(--accent-subtle);
-    color: var(--accent-warm);
-    font-size: 0.7rem;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    padding: 3px 10px;
-    border-radius: 100px;
-    margin-bottom: var(--space-sm);
-  }
-
-  .value-prop p {
-    font-size: 1.05rem;
-    color: var(--text-primary);
-    line-height: 1.8;
-  }
-
-  .features-grid {
+  /* ---- FIG II: feature grid ---- */
+  .pd-features {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: var(--space-md);
+    gap: clamp(1rem, 0.75rem + 1vw, 1.5rem);
+    margin-top: clamp(1.5rem, 1rem + 1.5vw, 2.5rem);
   }
-
-  .feature {
-    background: var(--bg-surface);
-    border: 1px solid var(--border-subtle);
-    border-radius: 8px;
-    padding: var(--space-md);
-  }
-
-  .feature h3 {
-    font-size: 1.1rem;
-    margin-bottom: var(--space-xs);
-  }
-
-  .feature p {
-    font-size: 0.9rem;
-    margin-bottom: var(--space-xs);
-  }
-
-  .feature-link {
-    font-size: 0.85rem;
-    color: var(--accent-warm);
-  }
-
-  .domains-list {
+  .pd-feature {
     display: flex;
     flex-direction: column;
-    gap: var(--space-sm);
+    gap: 0.6rem;
+    padding: clamp(1.25rem, 1rem + 0.75vw, 1.75rem);
+    border: 1px solid var(--el-rule);
+    transition: border-color 0.2s ease;
   }
+  .pd-feature:hover { border-color: var(--el-accent); }
+  .pd-feature h3 {
+    font-family: var(--el-display);
+    font-size: clamp(1rem, 0.95rem + 0.3vw, 1.15rem);
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--el-text);
+    margin: 0;
+  }
+  .pd-feature p {
+    font-family: var(--el-body);
+    font-size: clamp(0.95rem, 0.9rem + 0.2vw, 1.05rem);
+    line-height: 1.6;
+    color: var(--el-text-soft);
+    margin: 0;
+    flex: 1;
+  }
+  .pd-feature-link {
+    font-family: var(--el-ui);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--el-accent);
+    text-decoration: none;
+    align-self: flex-start;
+    margin-top: 0.25rem;
+  }
+  .pd-feature-link:hover { color: var(--el-text); }
 
-  .domain-item {
+  /* ---- FIG III: pillar list (numbered) ---- */
+  .pd-pillars {
     display: flex;
-    align-items: flex-start;
-    gap: var(--space-md);
-    padding: var(--space-sm) 0;
-    border-bottom: 1px solid var(--border-subtle);
+    flex-direction: column;
+    margin-top: clamp(1.5rem, 1rem + 1.5vw, 2.5rem);
+    border: 1px solid var(--el-rule);
   }
-
-  .domain-item:last-child {
-    border-bottom: none;
+  .pd-pillar {
+    display: flex;
+    align-items: center;
+    gap: clamp(1rem, 0.75rem + 1vw, 1.75rem);
+    padding: clamp(1rem, 0.85rem + 0.6vw, 1.5rem) clamp(1.25rem, 1rem + 0.75vw, 1.75rem);
+    border-bottom: 1px solid var(--el-rule);
   }
-
-  .domain-number {
-    font-family: var(--font-display);
-    font-size: 2rem;
-    color: var(--accent-warm);
-    line-height: 1;
+  .pd-pillar:last-child { border-bottom: none; }
+  .pd-pillar-number {
+    font-family: var(--el-display);
+    font-size: clamp(1.75rem, 1.25rem + 1.5vw, 2.25rem);
+    font-weight: 400;
+    color: var(--el-accent);
+    line-height: 0.9;
     flex-shrink: 0;
     width: 2rem;
     text-align: center;
   }
-
-  .domain-item h3 {
-    margin-bottom: 0;
-    font-size: 1.1rem;
+  .pd-pillar-body { flex: 1; min-width: 0; }
+  .pd-pillar-body h3 {
+    font-family: var(--el-display);
+    font-size: clamp(1rem, 0.95rem + 0.3vw, 1.15rem);
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--el-text);
+    margin: 0 0 0.35rem;
   }
-
-  .domain-item p {
-    font-size: 0.9rem;
+  .pd-pillar-question {
+    font-family: var(--el-body);
     font-style: italic;
-    margin-bottom: 0;
+    font-size: clamp(0.9rem, 0.85rem + 0.2vw, 1rem);
+    line-height: 1.5;
+    color: var(--el-text-quiet);
+    margin: 0;
+  }
+  @media (max-width: 480px) {
+    .pd-pillar { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+    .pd-pillar-number { width: auto; text-align: left; }
   }
 
-  .audience-grid {
+  /* ---- FIG IV: audience cards ---- */
+  .pd-audience {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: var(--space-md);
+    gap: clamp(1rem, 0.75rem + 1vw, 1.5rem);
+    margin-top: clamp(1.5rem, 1rem + 1.5vw, 2.5rem);
   }
-
-  .audience-grid .card h3 {
-    font-size: 1.1rem;
+  .pd-audience-card {
+    padding: clamp(1.25rem, 1rem + 0.75vw, 1.75rem);
+    border: 1px solid var(--el-rule);
   }
-
-  .audience-grid .card p {
-    font-size: 0.9rem;
-    margin-bottom: 0;
-  }
-
-  .purchase-card {
-    background: var(--accent-subtle);
-    border: 2px solid var(--accent-warm);
-    border-radius: 12px;
-    padding: var(--space-lg);
-    max-width: 500px;
-    margin: 0 auto;
-  }
-
-  .price-display {
-    font-family: var(--font-display);
-    font-size: 3rem;
-    color: var(--accent-warm);
+  .pd-audience-card h3 {
+    font-family: var(--el-display);
+    font-size: clamp(1rem, 0.95rem + 0.3vw, 1.15rem);
     font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--el-text);
+    margin: 0 0 0.75rem;
+  }
+  .pd-audience-card p {
+    font-family: var(--el-body);
+    font-size: clamp(0.95rem, 0.9rem + 0.2vw, 1.05rem);
+    line-height: 1.55;
+    color: var(--el-text-soft);
+    margin: 0;
   }
 
-  .savings {
-    font-size: 0.95rem;
-    color: var(--accent-warm);
+  /* ---- FIG V: purchase card ---- */
+  .pd-purchase {
+    max-width: 520px;
+    margin: clamp(1.5rem, 1rem + 1.5vw, 2.5rem) auto 0;
+    padding: clamp(1.75rem, 1.25rem + 1.5vw, 2.75rem);
+    border: 2px solid var(--el-accent);
+    background: color-mix(in oklab, var(--el-accent) 6%, transparent);
+    text-align: center;
+  }
+  .pd-price {
+    font-family: var(--el-display);
+    font-size: clamp(2.5rem, 1.75rem + 2.5vw, 3.5rem);
+    font-weight: 400;
+    color: var(--el-accent);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+  .pd-savings {
+    font-family: var(--el-ui);
+    font-size: 12px;
     font-weight: 500;
-    margin-bottom: var(--space-xs);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--el-accent);
+    margin: 0 0 1rem;
+  }
+  .pd-purchase-lead {
+    font-family: var(--el-body);
+    font-size: clamp(0.95rem, 0.9rem + 0.25vw, 1.1rem);
+    line-height: 1.55;
+    color: var(--el-text-soft);
+    margin: 0 0 1.5rem;
+  }
+  .pd-buy-cta {
+    display: inline-block;
+    padding: 0.85rem 2rem;
+    background: var(--el-accent);
+    color: var(--el-bg);
+    border: 1px solid var(--el-accent);
+    font-family: var(--el-ui);
+    font-weight: 500;
+    font-size: 13px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background 0.2s ease, color 0.2s ease;
+  }
+  .pd-buy-cta:hover {
+    background: transparent;
+    color: var(--el-accent);
+  }
+  .pd-purchase-fineprint {
+    font-family: var(--el-body);
+    font-size: clamp(0.8rem, 0.75rem + 0.2vw, 0.9rem);
+    line-height: 1.6;
+    color: var(--el-text-quiet);
+    margin: 1.5rem auto 0;
+    max-width: 50ch;
   }
 
-  .btn-large {
-    padding: var(--space-sm) var(--space-lg);
-    font-size: 1rem;
-  }
-
-  .btn-primary {
-    background: var(--accent-warm);
-    color: var(--bg-deep);
-  }
-
-  .btn-primary:hover {
-    background: var(--accent-glow);
-    color: var(--bg-deep);
-  }
-
-  .upsell-grid {
+  /* ---- NOTA BENE: upsell cards ---- */
+  .pd-upsell {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: var(--space-md);
-    margin-top: var(--space-md);
+    gap: clamp(1rem, 0.75rem + 0.75vw, 1.5rem);
+    margin-top: clamp(1.5rem, 1rem + 1.5vw, 2.5rem);
   }
-
-  .upsell-grid .card h3 {
-    font-size: 1.1rem;
+  .pd-upsell-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: clamp(1.25rem, 1rem + 0.75vw, 1.75rem);
+    border: 1px solid var(--el-rule);
+    text-decoration: none;
+    color: inherit;
+    transition: border-color 0.2s ease;
   }
-
-  .upsell-grid .card p {
-    font-size: 0.9rem;
+  .pd-upsell-card:hover { border-color: var(--el-accent); }
+  .pd-upsell-card h3 {
+    font-family: var(--el-display);
+    font-size: clamp(1rem, 0.95rem + 0.3vw, 1.15rem);
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--el-text);
+    margin: 0;
   }
-
-  @media (max-width: 600px) {
-    .features-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .domain-item {
-      gap: var(--space-sm);
-    }
-
-    .domain-number {
-      font-size: 1.5rem;
-    }
+  .pd-upsell-card p {
+    font-family: var(--el-body);
+    font-size: clamp(0.9rem, 0.85rem + 0.2vw, 1rem);
+    line-height: 1.55;
+    color: var(--el-text-soft);
+    margin: 0;
+    flex: 1;
+  }
+  .pd-upsell-link {
+    font-family: var(--el-ui);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--el-accent);
+    margin-top: 0.25rem;
   }
 </style>
