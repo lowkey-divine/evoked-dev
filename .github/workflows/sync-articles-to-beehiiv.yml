@@ -1,0 +1,73 @@
+name: Sync new articles to beehiiv
+
+# Fires when a new markdown file is added to src/content/writing/ on main.
+# Posts each new article to beehiiv as a DRAFT (no auto-send). Captain
+# reviews + sends from beehiiv UI.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'src/content/writing/**.md'
+      - 'scripts/sync-article-to-beehiiv.mjs'
+      - '.github/workflows/sync-articles-to-beehiiv.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          # Fetch the previous commit so we can diff to find newly-added files
+          fetch-depth: 2
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install sync-script dependencies
+        # Install just the two packages the sync script needs.
+        # Kept out of package.json to avoid bloating the Astro dev install.
+        run: npm install --no-save gray-matter marked
+
+      - name: Detect newly-added articles
+        id: changed
+        run: |
+          # Find files ADDED (not modified) under src/content/writing/ in this push.
+          # We sync NEW articles only - this prevents duplicate drafts when you
+          # edit a typo on an article that already shipped to beehiiv.
+          added=$(git diff --name-only --diff-filter=A "$(git rev-parse HEAD~1)" "$(git rev-parse HEAD)" \
+                 | grep -E '^src/content/writing/.*\.md$' \
+                 || true)
+          if [ -z "$added" ]; then
+            echo "No newly-added articles in this push - nothing to sync."
+            echo "files=" >> "$GITHUB_OUTPUT"
+          else
+            echo "Newly-added articles:"
+            echo "$added"
+            # GitHub Actions multi-line output
+            {
+              echo "files<<EOF"
+              echo "$added"
+              echo "EOF"
+            } >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Sync each new article to beehiiv as a draft
+        if: steps.changed.outputs.files != ''
+        env:
+          BEEHIIV_API_KEY: ${{ secrets.BEEHIIV_API_KEY }}
+          BEEHIIV_PUBLICATION_ID: ${{ secrets.BEEHIIV_PUBLICATION_ID }}
+        run: |
+          set -e
+          while IFS= read -r file; do
+            [ -z "$file" ] && continue
+            echo ""
+            echo "=== syncing $file ==="
+            node scripts/sync-article-to-beehiiv.mjs "$file"
+          done <<< "${{ steps.changed.outputs.files }}"
