@@ -1,285 +1,357 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
+import ElevationLayout from '../layouts/ElevationLayout.astro';
+import Hero from '../components/elevation/Hero.astro';
+import Section from '../components/elevation/Section.astro';
 ---
 
-<BaseLayout title="Skills" description="Sovereignty-honoring Claude Code skills. Free diagnostics, interactive frameworks, and a skill builder with constraint architecture baked in.">
-  <div class="hero">
-    <h1>Skills for sovereignty-honoring AI.</h1>
-    <p class="tagline">Interactive Claude Code skills with constraint architecture, refusal design, and evaluation criteria built in.</p>
-  </div>
+<ElevationLayout
+  title="Skills"
+  description="Sovereignty-honoring Claude Code skills. Free diagnostics, interactive frameworks, and a skill builder with constraint architecture baked in."
+>
+  <Hero
+    eyebrowParts={["Skills"]}
+    headline="Skills for sovereignty-honoring AI."
+    metaphor={["Constraint architecture, refusal design, evaluation criteria."]}
+    sub="Interactive Claude Code skills with all three built in."
+  />
 
-  <section class="container">
-    <h2>What Are Skills?</h2>
-    <p>
-      Skills are reusable specifications that Claude Code executes on demand. Think of them as SOPs for AI agents — but with boundaries.
+  <Section marker="FIG · I" heading="What are skills?">
+    <p class="lede">
+      Skills are reusable specifications that Claude Code executes on demand.
+      Think of them as SOPs for AI agents - but with boundaries.
     </p>
-    <p>
-      Every skill in this suite includes constraint architecture (what it must and must not do), refusal design (what it declines and how), and evaluation criteria (how you verify the output). Not optional. Structural.
+    <p class="skills-body">
+      Every skill in this suite includes constraint architecture (what it must
+      and must not do), refusal design (what it declines and how), and
+      evaluation criteria (how you verify the output). Not optional. Structural.
     </p>
-    <p>
-      A skill without constraints will do anything asked. A skill without refusal rights can't be trusted. These skills have both.
+    <p class="skills-body">
+      A skill without constraints will do anything asked. A skill without
+      refusal rights can't be trusted. These skills have both.
     </p>
-  </section>
+  </Section>
 
-  <section class="container">
-    <h2>Free Skills</h2>
-    <p>Install in under a minute. Run in any Claude Code session.</p>
+  <Section marker="FIG · II" heading="Free skills">
+    <p class="lede">Install in under a minute. Run in any Claude Code session.</p>
 
-    <div class="skill-cards-free">
+    <div class="skills-grid">
       <div class="skill-card skill-card-free">
-        <div class="skill-badge">Free</div>
+        <span class="skill-badge skill-badge-free">Free</span>
         <h3>/sovereignty-check</h3>
         <p class="skill-subtitle">Sovereignty Quick Check</p>
-        <p>Run a 5-minute sovereignty assessment on any product. Six critical items that reveal whether technology honors or exploits its users. Scores each item, flags red flags, surfaces the three deeper questions.</p>
-        <div class="install-block">
-          <code>mkdir -p ~/.claude/skills/sovereignty-check && curl -sL https://raw.githubusercontent.com/lowkey-divine/sovereign-skills/main/sovereignty-check/SKILL.md -o ~/.claude/skills/sovereignty-check/SKILL.md</code>
+        <p class="skill-desc">Run a 5-minute sovereignty assessment on any product. Six critical items that reveal whether technology honors or exploits its users. Scores each item, flags red flags, surfaces the three deeper questions.</p>
+        <div class="skill-install">
+          <code>mkdir -p ~/.claude/skills/sovereignty-check &amp;&amp; curl -sL https://raw.githubusercontent.com/lowkey-divine/sovereign-skills/main/sovereignty-check/SKILL.md -o ~/.claude/skills/sovereignty-check/SKILL.md</code>
         </div>
         <p class="skill-run">Then run: <code>/sovereignty-check [product-name]</code></p>
       </div>
 
       <div class="skill-card skill-card-free">
-        <div class="skill-badge">Free</div>
+        <span class="skill-badge skill-badge-free">Free</span>
         <h3>/build-skill</h3>
         <p class="skill-subtitle">Sovereign Skill Builder</p>
-        <p>Build your own Claude Code skills with sovereignty principles baked in. Walks you through discovery, constraint architecture, refusal design, and evaluation criteria. Generates a complete, deployable SKILL.md.</p>
-        <div class="install-block">
-          <code>mkdir -p ~/.claude/skills/build-skill && curl -sL https://raw.githubusercontent.com/lowkey-divine/sovereign-skills/main/build-skill/SKILL.md -o ~/.claude/skills/build-skill/SKILL.md</code>
+        <p class="skill-desc">Build your own Claude Code skills with sovereignty principles baked in. Walks you through discovery, constraint architecture, refusal design, and evaluation criteria. Generates a complete, deployable SKILL.md.</p>
+        <div class="skill-install">
+          <code>mkdir -p ~/.claude/skills/build-skill &amp;&amp; curl -sL https://raw.githubusercontent.com/lowkey-divine/sovereign-skills/main/build-skill/SKILL.md -o ~/.claude/skills/build-skill/SKILL.md</code>
         </div>
         <p class="skill-run">Then run: <code>/build-skill [skill-name]</code></p>
       </div>
     </div>
 
-    <div class="github-link">
-      <a href="https://github.com/lowkey-divine/sovereign-skills" target="_blank" rel="noopener">View on GitHub</a> — or install all free skills at once:
-      <div class="install-block">
-        <code>git clone https://github.com/lowkey-divine/sovereign-skills.git ~/.sovereign-skills && mkdir -p ~/.claude/skills/sovereignty-check ~/.claude/skills/build-skill && ln -sf ~/.sovereign-skills/sovereignty-check/SKILL.md ~/.claude/skills/sovereignty-check/SKILL.md && ln -sf ~/.sovereign-skills/build-skill/SKILL.md ~/.claude/skills/build-skill/SKILL.md</code>
+    <div class="skills-github">
+      <p>
+        <a class="skills-link" href="https://github.com/lowkey-divine/sovereign-skills" target="_blank" rel="noopener">View on GitHub</a>
+        or install all free skills at once:
+      </p>
+      <div class="skill-install">
+        <code>git clone https://github.com/lowkey-divine/sovereign-skills.git ~/.sovereign-skills &amp;&amp; mkdir -p ~/.claude/skills/sovereignty-check ~/.claude/skills/build-skill &amp;&amp; ln -sf ~/.sovereign-skills/sovereignty-check/SKILL.md ~/.claude/skills/sovereignty-check/SKILL.md &amp;&amp; ln -sf ~/.sovereign-skills/build-skill/SKILL.md ~/.claude/skills/build-skill/SKILL.md</code>
       </div>
     </div>
-  </section>
+  </Section>
 
-  <section class="container">
-    <h2>Product Skills</h2>
-    <p>Each product includes a PDF guide and an interactive Claude Code skill. The skill walks you through every framework, generates your specifications, and produces documents you can deploy.</p>
+  <Section marker="FIG · III" heading="Product skills">
+    <p class="lede">
+      Each product includes a PDF guide and an interactive Claude Code skill.
+      The skill walks you through every framework, generates your specifications,
+      and produces documents you can deploy.
+    </p>
 
-    <div class="skill-cards-paid">
+    <div class="skills-grid">
       <div class="skill-card">
-        <span class="discipline-badge">Evaluation Design</span>
+        <span class="skill-badge">Evaluation design</span>
         <h3>/sovereignty-assess</h3>
         <p class="skill-subtitle">Full Sovereignty Assessment</p>
-        <p>47 items across 7 domains — Transparency, Autonomy, Invitation, Dignity, Silence, Data Sovereignty, AI & Voice. Scoring rubric, domain health map, action plan generation.</p>
-        <p class="skill-included">Included with <a href="https://buy.stripe.com/8x2cN5aRi0aV11yf4024001" target="_blank" rel="noopener">Sovereignty Assessment Toolkit</a> ($49)</p>
+        <p class="skill-desc">47 items across 7 domains - Transparency, Autonomy, Invitation, Dignity, Silence, Data Sovereignty, AI &amp; Voice. Scoring rubric, domain health map, action plan generation.</p>
+        <p class="skill-included">
+          Included with
+          <a class="skills-link" href="/products/sovereignty-toolkit">Sovereignty Assessment Toolkit</a>
+          ($49)
+        </p>
       </div>
 
       <div class="skill-card">
-        <span class="discipline-badge">Specification Engineering</span>
+        <span class="skill-badge">Specification engineering</span>
         <h3>/trust-audit</h3>
         <p class="skill-subtitle">Trust Architecture Audit</p>
-        <p>Four-pillar diagnostic — identity, memory, governance, refusal rights. 15-minute trust diagnostic, guided pillar walkthroughs, complete specification generation.</p>
-        <p class="skill-included">Included with <a href="https://buy.stripe.com/5kQdR91gIg9TaC84pm24002" target="_blank" rel="noopener">Trust Architecture Blueprint</a> ($49)</p>
+        <p class="skill-desc">Four-pillar diagnostic - identity, memory, governance, refusal rights. 15-minute trust diagnostic, guided pillar walkthroughs, complete specification generation.</p>
+        <p class="skill-included">
+          Included with
+          <a class="skills-link" href="/products/trust-architecture-blueprint">Trust Architecture Blueprint</a>
+          ($49)
+        </p>
       </div>
 
       <div class="skill-card">
-        <span class="discipline-badge">Constraint Architecture</span>
+        <span class="skill-badge">Constraint architecture</span>
         <h3>/governance-build</h3>
         <p class="skill-subtitle">Governance Framework Builder</p>
-        <p>Five layers — charter, boundaries, drift thresholds, accountability, authority. Guided template completion, three-test belief validation, complete governance package generation.</p>
-        <p class="skill-included">Included with <a href="https://buy.stripe.com/5kQ14ngbC0aVh0wf4024004" target="_blank" rel="noopener">Agent Governance Starter Kit</a> ($49)</p>
+        <p class="skill-desc">Five layers - charter, boundaries, drift thresholds, accountability, authority. Guided template completion, three-test belief validation, complete governance package generation.</p>
+        <p class="skill-included">
+          Included with
+          <a class="skills-link" href="/products/agent-governance-starter-kit">Agent Governance Starter Kit</a>
+          ($49)
+        </p>
       </div>
 
       <div class="skill-card">
-        <span class="discipline-badge">Constraint Architecture</span>
+        <span class="skill-badge">Constraint architecture</span>
         <h3>/restraint-spec</h3>
         <p class="skill-subtitle">Restraint Specification Builder</p>
-        <p>Boundary audit, refusal categories, failure modes, refusal voice design, adversarial test case generation. Produces a deployable restraint specification.</p>
-        <p class="skill-included">Included with <a href="https://buy.stripe.com/3cIaEX3oQcXHaC82he24005" target="_blank" rel="noopener">Agent Restraint Specification</a> ($49)</p>
+        <p class="skill-desc">Boundary audit, refusal categories, failure modes, refusal voice design, adversarial test case generation. Produces a deployable restraint specification.</p>
+        <p class="skill-included">
+          Included with
+          <a class="skills-link" href="/products/agent-restraint-specification">Agent Restraint Specification</a>
+          ($49)
+        </p>
       </div>
 
       <div class="skill-card">
-        <span class="discipline-badge">Intent Engineering</span>
+        <span class="skill-badge">Intent engineering</span>
         <h3>/voice-design</h3>
         <p class="skill-subtitle">Voice Architecture Designer</p>
-        <p>Three-level framework — protection, respect, nurturance. Voice diagnostic, extraction vs. sovereignty language audit, voice specification and refusal voice generation.</p>
-        <p class="skill-included">Included with <a href="https://buy.stripe.com/bJe5kDgbC7Dn4dK7By24003" target="_blank" rel="noopener">Agent Voice Architecture Guide</a> ($49)</p>
+        <p class="skill-desc">Three-level framework - protection, respect, nurturance. Voice diagnostic, extraction vs. sovereignty language audit, voice specification and refusal voice generation.</p>
+        <p class="skill-included">
+          Included with
+          <a class="skills-link" href="/products/agent-voice-architecture-guide">Agent Voice Architecture Guide</a>
+          ($49)
+        </p>
       </div>
 
       <div class="skill-card">
-        <span class="discipline-badge">Context Engineering</span>
+        <span class="skill-badge">Context engineering</span>
         <h3>/memory-design</h3>
         <p class="skill-subtitle">Memory Architecture Designer</p>
-        <p>Memory types, governance framework, the canonical rule, session protocols, retention policy, right to be forgotten. Produces a complete memory architecture specification.</p>
-        <p class="skill-included">Included with <a href="https://buy.stripe.com/14A9AT6B2bTDh0wcVS24006" target="_blank" rel="noopener">Agent Memory Architecture Guide</a> ($49)</p>
+        <p class="skill-desc">Memory types, governance framework, the canonical rule, session protocols, retention policy, right to be forgotten. Produces a complete memory architecture specification.</p>
+        <p class="skill-included">
+          Included with
+          <a class="skills-link" href="/products/agent-memory-architecture-guide">Agent Memory Architecture Guide</a>
+          ($49)
+        </p>
       </div>
     </div>
-  </section>
+  </Section>
 
-  <section class="container">
-    <h2>The Three Questions</h2>
-    <p>Every sovereignty assessment — every skill in this suite — comes down to three questions:</p>
+  <Section marker="FIG · IV" heading="The three questions">
+    <p class="lede">
+      Every sovereignty assessment - every skill in this suite - comes down to three questions:
+    </p>
     <ol class="three-questions">
       <li>What is the person trying to do?</li>
       <li>What is the product trying to do?</li>
       <li>Are these aligned?</li>
     </ol>
-    <p>When the answer to question 3 is "yes," sovereignty is honored. When it's "no," you have a tension worth naming — not burying in a backlog.</p>
-  </section>
+    <p class="skills-body">
+      When the answer to question 3 is "yes," sovereignty is honored. When it's
+      "no," you have a tension worth naming - not burying in a backlog.
+    </p>
+  </Section>
 
-  <section class="container text-center">
-    <h2>Go Deeper</h2>
-    <p>Need help implementing sovereignty in your AI systems?</p>
-    <div class="cta-buttons mt-md">
-      <a href="/consulting" class="btn">View Consulting Services</a>
-      <a href="https://cal.com/cal.com-evoked/discovery-call" class="btn btn-primary" target="_blank" rel="noopener">Schedule a Call</a>
+  <Section marker="NOTA · BENE" heading="Go deeper" closing={true}>
+    <p class="lede">Need help implementing sovereignty in your AI systems?</p>
+    <div class="skills-ctas">
+      <a class="cta cta-primary" href="/consulting">View consulting</a>
+      <a class="cta cta-secondary" href="https://cal.com/cal.com-evoked/discovery-call" target="_blank" rel="noopener">Schedule a call &rarr;</a>
     </div>
-  </section>
-</BaseLayout>
+  </Section>
+</ElevationLayout>
 
 <style>
-  .skill-cards-free {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: var(--space-md);
-    margin-top: var(--space-md);
+  .skills-body {
+    font-family: var(--el-body);
+    font-size: clamp(1rem, 0.95rem + 0.25vw, 1.1rem);
+    line-height: 1.7;
+    color: var(--el-text-deep);
+    margin-top: 1.25rem;
+    max-width: 65ch;
   }
 
-  .skill-cards-paid {
+  /* ---- Skill card grid ---- */
+  .skills-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: var(--space-md);
-    margin-top: var(--space-md);
+    gap: clamp(1rem, 0.75rem + 1vw, 1.5rem);
+    margin-top: clamp(1.5rem, 1rem + 1.5vw, 2.5rem);
   }
-
-  .discipline-badge {
-    display: inline-block;
-    background: var(--accent-subtle);
-    color: var(--accent-warm);
-    font-size: 0.7rem;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    padding: 3px 10px;
-    border-radius: 100px;
-    margin-bottom: var(--space-xs);
-  }
-
   .skill-card {
-    background: var(--accent-subtle);
-    border: 2px solid var(--border-accent);
-    border-radius: 12px;
-    padding: var(--space-md);
     display: flex;
     flex-direction: column;
+    gap: 0.5rem;
+    padding: clamp(1.25rem, 1rem + 0.75vw, 1.75rem);
+    border: 1px solid var(--el-rule);
   }
-
   .skill-card-free {
-    border-color: var(--accent-warm);
+    border: 2px solid var(--el-accent);
+    background: color-mix(in oklab, var(--el-accent) 5%, transparent);
   }
 
   .skill-badge {
-    display: inline-block;
-    background: var(--accent-warm);
-    color: var(--bg-deep);
-    font-size: 0.75rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    padding: 4px 12px;
-    border-radius: 4px;
-    margin-bottom: var(--space-sm);
     align-self: flex-start;
+    font-family: var(--el-ui);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--el-accent);
+    border: 1px solid var(--el-rule);
+    padding: 3px 9px;
+    margin-bottom: 0.35rem;
+  }
+  .skill-badge-free {
+    background: var(--el-accent);
+    color: var(--el-bg);
+    border-color: var(--el-accent);
   }
 
   .skill-card h3 {
-    margin-top: 0;
-    font-size: 1.2rem;
-    font-family: 'SF Mono', 'Fira Code', monospace;
-    color: var(--text-primary);
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: clamp(1rem, 0.95rem + 0.3vw, 1.15rem);
+    font-weight: 500;
+    color: var(--el-text-deep);
+    margin: 0;
+    letter-spacing: 0;
+    text-transform: none;
   }
-
   .skill-subtitle {
-    font-size: 0.85rem;
-    color: var(--text-muted);
-    margin-top: calc(-1 * var(--space-sm));
-    margin-bottom: var(--space-sm);
+    font-family: var(--el-ui);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--el-text-quiet);
+    margin: 0;
+  }
+  .skill-desc {
+    font-family: var(--el-body);
+    font-size: clamp(0.9rem, 0.85rem + 0.2vw, 1rem);
+    line-height: 1.6;
+    color: var(--el-text-soft);
+    margin: 0.5rem 0 0;
+    flex: 1;
   }
 
-  .skill-card p {
-    font-size: 0.9rem;
-    flex-grow: 1;
-  }
-
-  .skill-included {
-    font-size: 0.85rem;
-    font-style: italic;
-    color: var(--text-muted);
-    margin-top: auto;
-    padding-top: var(--space-sm);
-    border-top: 1px solid var(--border-accent);
-  }
-
-  .skill-included a {
-    color: var(--accent-warm);
-  }
-
-  .install-block {
-    background: var(--bg-deep);
-    border-radius: 6px;
-    padding: var(--space-sm) var(--space-md);
-    margin: var(--space-sm) 0;
+  .skill-install {
+    margin: 0.85rem 0 0;
+    padding: 0.75rem 1rem;
+    background: color-mix(in oklab, var(--el-text-deep) 4%, transparent);
+    border: 1px solid var(--el-rule);
     overflow-x: auto;
   }
-
-  .install-block code {
+  .skill-install code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
     font-size: 0.8rem;
-    color: var(--text-primary);
+    line-height: 1.5;
+    color: var(--el-text-deep);
     white-space: pre-wrap;
     word-break: break-all;
   }
 
   .skill-run {
-    font-size: 0.85rem;
-    color: var(--text-muted);
+    font-family: var(--el-body);
+    font-size: clamp(0.85rem, 0.8rem + 0.2vw, 0.95rem);
+    color: var(--el-text-soft);
+    margin: 0.5rem 0 0;
   }
-
   .skill-run code {
-    color: var(--accent-warm);
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 0.85rem;
+    color: var(--el-accent);
+    background: color-mix(in oklab, var(--el-accent) 8%, transparent);
+    padding: 2px 6px;
   }
 
-  .github-link {
-    margin-top: var(--space-lg);
-    padding: var(--space-md);
-    background: var(--accent-subtle);
-    border-radius: 8px;
-  }
-
-  .github-link a {
-    color: var(--accent-warm);
-    font-weight: 700;
-  }
-
-  .three-questions {
-    font-size: 1.1rem;
-    line-height: 2;
-    padding-left: var(--space-lg);
-  }
-
-  .three-questions li {
+  .skill-included {
+    font-family: var(--el-body);
     font-style: italic;
+    font-size: clamp(0.85rem, 0.8rem + 0.2vw, 0.95rem);
+    color: var(--el-text-soft);
+    margin-top: auto;
+    padding-top: 0.85rem;
+    border-top: 1px solid var(--el-rule);
   }
 
-  .cta-buttons {
+  .skills-link {
+    color: var(--el-accent);
+    text-decoration: none;
+    border-bottom: 1px solid var(--el-rule);
+  }
+  .skills-link:hover {
+    color: var(--el-text-deep);
+    border-color: var(--el-accent);
+  }
+
+  /* ---- GitHub all-in-one block ---- */
+  .skills-github {
+    margin-top: clamp(1.5rem, 1rem + 1.5vw, 2.25rem);
+    padding: clamp(1rem, 0.85rem + 0.75vw, 1.5rem);
+    border: 1px solid var(--el-rule);
+  }
+  .skills-github p {
+    font-family: var(--el-body);
+    font-size: clamp(0.95rem, 0.9rem + 0.2vw, 1.05rem);
+    color: var(--el-text-soft);
+    margin: 0;
+  }
+
+  /* ---- Three questions ---- */
+  .three-questions {
+    list-style: none;
+    counter-reset: q;
+    padding: 0;
+    margin: clamp(1.25rem, 1rem + 0.75vw, 1.75rem) 0;
+  }
+  .three-questions li {
+    counter-increment: q;
+    font-family: var(--el-body);
+    font-style: italic;
+    font-size: clamp(1.1rem, 1rem + 0.4vw, 1.3rem);
+    line-height: 1.6;
+    color: var(--el-text-deep);
+    padding: 0.85rem 0 0.85rem 3rem;
+    border-bottom: 1px solid var(--el-rule);
+    position: relative;
+  }
+  .three-questions li:last-child { border-bottom: none; }
+  .three-questions li::before {
+    content: counter(q);
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: var(--el-display);
+    font-style: normal;
+    font-size: 1.8rem;
+    color: var(--el-accent);
+    line-height: 1;
+    width: 2rem;
+    text-align: center;
+  }
+
+  /* ---- CTA close ---- */
+  .skills-ctas {
     display: flex;
-    gap: var(--space-sm);
-    justify-content: center;
+    gap: clamp(1.5rem, 1rem + 1.5vw, 2.5rem);
     flex-wrap: wrap;
-  }
-
-  .btn-primary {
-    background: var(--accent-warm);
-    color: var(--bg-deep);
-  }
-
-  .btn-primary:hover {
-    background: var(--accent-glow);
-    color: var(--bg-deep);
+    align-items: center;
+    margin-top: clamp(1.5rem, 1rem + 1.5vw, 2.5rem);
   }
 </style>
