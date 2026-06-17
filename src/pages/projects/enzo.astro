@@ -1,27 +1,32 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
+import ElevationLayout from '../../layouts/ElevationLayout.astro';
+import Hero from '../../components/elevation/Hero.astro';
+import Section from '../../components/elevation/Section.astro';
 ---
 
-<BaseLayout title="Enzo" description="A game is forming.">
-  <div class="hero">
-    <h1>Enzo</h1>
-    <p class="tagline">A game is forming.</p>
-    <span class="badge mt-md">Forming</span>
-  </div>
+<ElevationLayout
+  title="Enzo"
+  description="A game is forming."
+>
+  <Hero
+    eyebrowParts={["Projects", "Forming"]}
+    headline="Enzo."
+    metaphor={["A game is forming."]}
+  />
 
-  <section class="container text-center">
-    <p class="patient">
-      More soon.
-    </p>
-  </section>
-</BaseLayout>
+  <Section marker="NOTA · BENE" closing={true}>
+    <p class="enzo-patient">More soon.</p>
+  </Section>
+</ElevationLayout>
 
 <style>
-  .patient {
-    font-family: var(--font-display);
-    font-size: 1.3rem;
+  .enzo-patient {
+    font-family: var(--el-body);
     font-style: italic;
-    color: var(--text-muted);
-    margin-top: var(--space-lg);
+    font-size: clamp(1.15rem, 1.05rem + 0.5vw, 1.4rem);
+    line-height: 1.5;
+    color: var(--el-text-quiet);
+    margin: 0;
+    text-align: center;
   }
 </style>

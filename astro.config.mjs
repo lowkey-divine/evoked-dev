@@ -9,7 +9,12 @@ export default defineConfig({
   output: 'static',
   adapter: vercel(),
   redirects: {
-    '/projects/executive-chef': '/projects/kitchen-table',
+    // Historical: /projects/executive-chef was the original kitchen-table marketing
+    // page (renamed 2026-06-05). After /projects/kitchen-table was deleted as
+    // an orphan, both legacy URLs now redirect directly to the canonical
+    // /kitchen-table marketing surface.
+    '/projects/executive-chef': '/kitchen-table',
+    '/projects/kitchen-table': '/kitchen-table',
   },
   integrations: [
     sitemap({

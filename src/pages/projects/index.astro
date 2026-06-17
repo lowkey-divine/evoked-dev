@@ -1,99 +1,131 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
+import ElevationLayout from '../../layouts/ElevationLayout.astro';
+import Hero from '../../components/elevation/Hero.astro';
+import Section from '../../components/elevation/Section.astro';
 ---
 
-<BaseLayout title="Projects" description="Software that serves human flourishing.">
-  <div class="hero">
-    <h1>Projects</h1>
-    <p class="tagline">Software that serves human flourishing.</p>
-  </div>
+<ElevationLayout
+  title="Projects"
+  description="Software that serves human flourishing."
+>
+  <Hero
+    headline="Projects."
+    metaphor={["Software that serves human flourishing."]}
+    sub="Built on sovereignty-honoring principles. Privacy-first. Non-extractive. Human-centered."
+  />
 
-  <section class="container">
-    <div class="project-list">
-
-      <a href="/projects/kitchen-table" class="project-card">
-        <div class="project-header">
+  <Section marker="FIG · I" heading="In progress">
+    <div class="projects-grid">
+      <a href="/kitchen-table" class="project-card">
+        <div class="project-card-head">
           <h3>The Kitchen Table</h3>
-          <span class="badge">Coming Soon</span>
+          <span class="project-badge">Coming soon</span>
         </div>
         <p>Family meal planning. Heritage recipe preservation. Flourishing through food.</p>
+        <span class="project-card-link">Open the door &rarr;</span>
       </a>
-
       <a href="/projects/ezri" class="project-card">
-        <div class="project-header">
+        <div class="project-card-head">
           <h3>Ezri</h3>
-          <span class="badge">In Development</span>
+          <span class="project-badge">In development</span>
         </div>
         <p>A cosmos for your inner world. Reflection without optimization.</p>
+        <span class="project-card-link">Visit the clearing &rarr;</span>
       </a>
-
       <a href="/projects/enzo" class="project-card">
-        <div class="project-header">
+        <div class="project-card-head">
           <h3>Enzo</h3>
-          <span class="badge">Forming</span>
+          <span class="project-badge">Forming</span>
         </div>
         <p>A game is taking shape.</p>
+        <span class="project-card-link">See what's forming &rarr;</span>
       </a>
-
     </div>
-  </section>
+  </Section>
 
-  <section class="container">
-    <h2>Case Studies</h2>
-    <div class="project-list">
+  <Section marker="FIG · II" heading="Case studies">
+    <div class="projects-grid">
       <a href="/case-studies/labyrinth" class="project-card">
-        <div class="project-header">
+        <div class="project-card-head">
           <h3>Trust Architecture in the Wild</h3>
-          <span class="badge">Case Study</span>
+          <span class="project-badge">Case study</span>
         </div>
         <p>The four pillars of trust architecture in a defensive AI security platform. Identity, memory, governance, and refusal rights - built into the structure.</p>
+        <span class="project-card-link">Read the analysis &rarr;</span>
       </a>
     </div>
-  </section>
+  </Section>
 
-  <section class="container text-center">
-    <p class="text-muted">
-      All projects built on sovereignty-honoring principles.<br />
-      Privacy-first. Non-extractive. Human-centered.
+  <Section marker="NOTA · BENE" closing={true}>
+    <p class="lede">
+      All projects built on sovereignty-honoring principles. Privacy-first.
+      Non-extractive. Human-centered.
     </p>
-  </section>
-</BaseLayout>
+  </Section>
+</ElevationLayout>
 
 <style>
-  .project-list {
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: clamp(1rem, 0.75rem + 1vw, 1.5rem);
+    margin-top: clamp(1.5rem, 1rem + 1.5vw, 2.5rem);
+  }
+  .project-card {
     display: flex;
     flex-direction: column;
-    gap: var(--space-md);
-  }
-
-  .project-card {
-    display: block;
-    padding: var(--space-md);
-    border: 1px solid var(--border-subtle);
-    border-radius: 8px;
-    transition: all var(--transition-smooth);
+    gap: 0.75rem;
+    padding: clamp(1.25rem, 1rem + 0.75vw, 1.75rem);
+    border: 1px solid var(--el-rule);
     text-decoration: none;
+    color: inherit;
+    transition: border-color 0.2s ease, transform 0.2s ease;
   }
-
   .project-card:hover {
-    border-color: var(--border-accent);
-    transform: translateY(-2px);
+    border-color: var(--el-accent);
+    transform: translateY(-1px);
   }
-
-  .project-header {
+  .project-card-head {
     display: flex;
     align-items: center;
-    gap: var(--space-sm);
-    margin-bottom: var(--space-xs);
+    gap: 0.85rem;
+    flex-wrap: wrap;
   }
-
   .project-card h3 {
+    font-family: var(--el-display);
+    font-size: clamp(1.1rem, 1rem + 0.5vw, 1.35rem);
+    font-weight: 400;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    color: var(--el-text);
     margin: 0;
-    color: var(--text-primary);
+    line-height: 1.25;
   }
-
+  .project-badge {
+    font-family: var(--el-ui);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--el-accent);
+    border: 1px solid var(--el-rule);
+    padding: 3px 9px;
+  }
   .project-card p {
+    font-family: var(--el-body);
+    font-size: clamp(0.95rem, 0.9rem + 0.2vw, 1.05rem);
+    line-height: 1.55;
+    color: var(--el-text-soft);
     margin: 0;
-    color: var(--text-secondary);
+    flex: 1;
+  }
+  .project-card-link {
+    font-family: var(--el-ui);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--el-accent);
+    margin-top: 0.25rem;
   }
 </style>
