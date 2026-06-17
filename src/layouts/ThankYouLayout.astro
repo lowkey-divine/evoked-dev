@@ -1,0 +1,122 @@
+---
+/**
+ * ThankYouLayout - shared chrome for all 15 /thank-you/* surfaces.
+ *
+ * Wraps each page in ElevationLayout with:
+ *   - Hero: eyebrow "Thank you · Vol. 01", headline "Thank you.",
+ *           metaphor = props.readyLine (e.g., "Your Ostrom Score is ready.")
+ *   - FIG · I: download card with brass border + brass tint background,
+ *     filled brass download CTA pointing to props.downloadHref
+ *   - FIG · II: "What's next" with a slot for next-step cards (.pd-upsell
+ *     pattern)
+ *   - ReflectionInvitation: prompt + product-name binding via productSlug
+ *
+ * Children supply content via slots:
+ *   <slot name="download-description"> - body inside the download card
+ *   <slot name="next-steps"> - the .pd-upsell-card elements
+ */
+import ElevationLayout from './ElevationLayout.astro';
+import Hero from '../components/elevation/Hero.astro';
+import Section from '../components/elevation/Section.astro';
+import ReflectionInvitation from '../components/ReflectionInvitation.astro';
+import { getProductBySlug } from '../lib/products/registry';
+
+interface Props {
+  /** Slug of the product (matches /products/* page slugs and registry keys). */
+  productSlug: string;
+  /** Document title (defaults to "Thank You"). */
+  title?: string;
+  /** Meta description. */
+  description: string;
+  /** Hero metaphor line, e.g., "Your Ostrom Score is ready." */
+  readyLine: string;
+  /** Section heading for the download FIG, e.g., "Download your assessment". */
+  downloadHeading: string;
+  /** Path or URL to the downloadable PDF. */
+  downloadHref: string;
+  /** Label on the download button. Defaults to "Download PDF". */
+  downloadCtaLabel?: string;
+}
+
+const {
+  productSlug,
+  title = 'Thank You',
+  description,
+  readyLine,
+  downloadHeading,
+  downloadHref,
+  downloadCtaLabel = 'Download PDF',
+} = Astro.props;
+
+const product = getProductBySlug(productSlug)!;
+---
+
+<ElevationLayout title={title} description={description}>
+  <Hero
+    eyebrowParts={["Thank you", "Vol. 01"]}
+    headline="Thank you."
+    metaphor={[readyLine]}
+  />
+
+  <Section marker="FIG · I" heading={downloadHeading}>
+    <div class="ty-download">
+      <slot name="download-description" />
+      <a href={downloadHref} class="pd-buy-cta" download>{downloadCtaLabel}</a>
+      <p class="pd-purchase-fineprint ty-support-note">
+        If you have any issues with your download, reach out at
+        <a href="mailto:evokesupports@icloud.com">evokesupports@icloud.com</a>.
+      </p>
+    </div>
+  </Section>
+
+  <Section marker="FIG · II" heading="What's next">
+    <div class="pd-upsell">
+      <slot name="next-steps" />
+    </div>
+  </Section>
+
+  <ReflectionInvitation prompt={product.reciprocityPrompt} productName={product.name} />
+</ElevationLayout>
+
+<style>
+  /* The .ty-download card lives inline here (vs elevation.css) because
+     it's specific to the thank-you surface. Sister-shape to .pd-purchase
+     without the price element. */
+  .ty-download {
+    max-width: 520px;
+    margin: clamp(1.5rem, 1rem + 1.5vw, 2.5rem) auto 0;
+    padding: clamp(1.75rem, 1.25rem + 1.5vw, 2.75rem);
+    border: 2px solid var(--el-accent);
+    background: color-mix(in oklab, var(--el-accent) 6%, transparent);
+    text-align: center;
+  }
+  .ty-download :global(p) {
+    font-family: var(--el-body);
+    font-size: clamp(0.95rem, 0.9rem + 0.25vw, 1.1rem);
+    line-height: 1.6;
+    color: var(--el-text-soft);
+    margin: 0 0 1.25rem;
+    max-width: 50ch;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .ty-download :global(p:last-of-type) {
+    margin-bottom: 1.5rem;
+  }
+  .ty-support-note {
+    font-size: clamp(0.8rem, 0.75rem + 0.2vw, 0.9rem) !important;
+    line-height: 1.6 !important;
+    color: var(--el-text-quiet) !important;
+    margin-top: 1.5rem !important;
+    margin-bottom: 0 !important;
+  }
+  .ty-support-note a {
+    color: var(--el-accent);
+    text-decoration: none;
+    border-bottom: 1px solid var(--el-rule);
+  }
+  .ty-support-note a:hover {
+    color: var(--el-text);
+    border-color: var(--el-accent);
+  }
+</style>

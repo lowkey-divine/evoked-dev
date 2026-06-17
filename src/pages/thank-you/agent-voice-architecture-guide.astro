@@ -1,94 +1,39 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import ReflectionInvitation from '../../components/ReflectionInvitation.astro';
-import { getProductBySlug } from '../../lib/products/registry';
-
-const product = getProductBySlug('agent-voice-architecture-guide')!;
+import ThankYouLayout from '../../layouts/ThankYouLayout.astro';
 ---
 
-<BaseLayout title="Thank You" description="Your Agent Voice Architecture Guide is ready to download.">
-  <div class="hero">
-    <h1>Thank you.</h1>
-    <p class="tagline">Your Agent Voice Architecture Guide is ready.</p>
-  </div>
+<ThankYouLayout
+  productSlug="agent-voice-architecture-guide"
+  description="Your Agent Voice Architecture Guide is ready to download."
+  readyLine="Your Agent Voice Architecture Guide is ready."
+  downloadHeading="Download your guide"
+  downloadHref="/downloads/Agent-Voice-Architecture-Guide-v1.0.pdf"
+>
+  <Fragment slot="download-description">
+    <p>The Agent Voice Architecture Guide covers voice design principles, extraction vs. sovereignty language, voice specification templates, quality checks, and refusal voice patterns.</p>
+    <p>Start with Part 2: the extraction vs. sovereignty language table. It will change how you hear your agents.</p>
+  </Fragment>
 
-  <section class="container thank-you-content">
-    <div class="download-card">
-      <h2>Download Your Guide</h2>
-      <p>The Agent Voice Architecture Guide covers voice design principles, extraction vs. sovereignty language, voice specification templates, quality checks, and refusal voice patterns.</p>
-      <p>Start with Part 2: the extraction vs. sovereignty language table. It will change how you hear your agents.</p>
-      <a href="/downloads/Agent-Voice-Architecture-Guide-v1.0.pdf" class="btn btn-primary mt-md" download>Download PDF</a>
-      <p class="text-muted mt-md" style="font-size: 0.85rem;">If you have any issues with your download, reach out at <a href="mailto:evokesupports@icloud.com">evokesupports@icloud.com</a>.</p>
-    </div>
-  </section>
-
-  <section class="container">
-    <h2>What's Next</h2>
-    <div class="next-steps">
-      <div class="card">
-        <h3>Run the Voice Audit</h3>
-        <p>Use the 12-point Pre-Deployment Voice Audit in Part 4 on your existing agents. It takes 15 minutes.</p>
-      </div>
-      <div class="card">
-        <h3>Go Deeper</h3>
-        <p>Pair this with the <a href="/consulting">Trust Architecture Blueprint</a> for identity and governance, or the <a href="/consulting">Agent Restraint Specification Template</a> for refusal architecture.</p>
-      </div>
-      <div class="card">
-        <h3>Check Your Fit</h3>
-        <p>Take the <a href="/fit">5-minute fit assessment</a> to see which Evoke services align with where you are right now.</p>
-      </div>
-      <div class="card">
-        <h3>Talk It Through</h3>
-        <p>Book a free <a href="https://cal.com/cal.com-evoked/discovery-call" target="_blank" rel="noopener">discovery call</a> to discuss your voice architecture.</p>
-      </div>
-    </div>
-  </section>
-
-  <ReflectionInvitation prompt={product.reciprocityPrompt} productName={product.name} />
-</BaseLayout>
-
-<style>
-  .thank-you-content {
-    max-width: 640px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .download-card {
-    background: var(--accent-subtle);
-    border: 2px solid var(--accent-warm);
-    border-radius: 12px;
-    padding: var(--space-lg);
-    text-align: center;
-  }
-
-  .download-card h2 {
-    margin-top: 0;
-  }
-
-  .next-steps {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: var(--space-md);
-  }
-
-  .next-steps .card h3 {
-    font-size: 1.1rem;
-  }
-
-  .next-steps .card p {
-    font-size: 0.9rem;
-    margin-bottom: 0;
-  }
-
-  .btn-primary {
-    background: var(--accent-warm);
-    color: var(--bg-deep);
-    display: inline-block;
-  }
-
-  .btn-primary:hover {
-    background: var(--accent-glow);
-    color: var(--bg-deep);
-  }
-</style>
+  <Fragment slot="next-steps">
+    <a href="/products/agent-voice-architecture-guide" class="pd-upsell-card">
+      <h3>Run the voice audit</h3>
+      <p>Use the 12-point Pre-Deployment Voice Audit in Part 4 on your existing agents. It takes 15 minutes.</p>
+      <span class="pd-upsell-link">Open the guide page &rarr;</span>
+    </a>
+    <a href="/products/trust-architecture-blueprint" class="pd-upsell-card">
+      <h3>Go deeper</h3>
+      <p>Pair this with the Trust Architecture Blueprint for identity and governance, or the Agent Restraint Specification Template for refusal architecture.</p>
+      <span class="pd-upsell-link">See the Blueprint &rarr;</span>
+    </a>
+    <a href="/fit" class="pd-upsell-card">
+      <h3>Check your fit</h3>
+      <p>A 5-minute fit assessment to see which Evoke services align with where you are right now.</p>
+      <span class="pd-upsell-link">Take the assessment &rarr;</span>
+    </a>
+    <a href="https://cal.com/cal.com-evoked/discovery-call" class="pd-upsell-card" target="_blank" rel="noopener">
+      <h3>Talk it through</h3>
+      <p>Book a free 30-minute discovery call to discuss your voice architecture.</p>
+      <span class="pd-upsell-link">Schedule &rarr;</span>
+    </a>
+  </Fragment>
+</ThankYouLayout>
