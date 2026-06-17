@@ -1,20 +1,24 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
+import ElevationLayout from '../layouts/ElevationLayout.astro';
+import Hero from '../components/elevation/Hero.astro';
+import Section from '../components/elevation/Section.astro';
 
 export const prerender = false;
 ---
 
-<BaseLayout
+<ElevationLayout
   title="Sovereignty Audit - Request a Call"
   description="Request a 20-minute call about a sovereignty audit for your AI agents or agent system. Read every submission. Reply within a few days."
 >
-  <div class="hero-small">
-    <h1>Request a call.</h1>
-    <p class="tagline">Five fields. One 20-minute call to see if a sovereignty audit fits.</p>
-  </div>
+  <Hero
+    eyebrowParts={["Engage", "Sovereignty audit"]}
+    headline="Request a call."
+    metaphor={["Five fields. One 20-minute call."]}
+    sub="To see if a sovereignty audit fits."
+  />
 
-  <section class="container">
-    <form id="audit-form" class="intake-form">
+  <section class="audit-section">
+    <form id="audit-form" class="audit-form" novalidate>
 
       <label for="ai-q3">What AI agents, agent systems, or AI tooling that touches your users are you working with right now?</label>
       <textarea id="ai-q3" name="systems" rows="3" required maxlength="500" placeholder="One sentence is enough."></textarea>
@@ -22,167 +26,185 @@ export const prerender = false;
       <label for="ai-q4" class="mt-md">What brought you here today?</label>
       <textarea id="ai-q4" name="brought_here" rows="3" maxlength="500" placeholder="One sentence is enough."></textarea>
 
-      <label for="ai-name" class="mt-md">Your name</label>
+      <label for="ai-name" class="mt-md audit-meta-label">Your name</label>
       <input type="text" id="ai-name" name="name" required maxlength="120" />
 
-      <label for="ai-email" class="mt-md">Your email</label>
+      <label for="ai-email" class="mt-md audit-meta-label">Your email</label>
       <input type="email" id="ai-email" name="email" required maxlength="254" />
 
-      <label for="ai-org" class="mt-md">Company or organization <span class="optional">(optional)</span></label>
+      <label for="ai-org" class="mt-md audit-meta-label">
+        Company or organization <span class="optional">(optional)</span>
+      </label>
       <input type="text" id="ai-org" name="org" maxlength="160" />
 
       <fieldset class="mt-md window-set">
         <legend>Preferred call window (Eastern Time)</legend>
-        <label class="radio-label"><input type="radio" name="window" value="morning" required /> Morning</label>
-        <label class="radio-label"><input type="radio" name="window" value="midday" /> Midday</label>
-        <label class="radio-label"><input type="radio" name="window" value="afternoon" /> Afternoon</label>
+        <div class="window-options">
+          <label class="window-option"><input type="radio" name="window" value="morning" required /> Morning</label>
+          <label class="window-option"><input type="radio" name="window" value="midday" /> Midday</label>
+          <label class="window-option"><input type="radio" name="window" value="afternoon" /> Afternoon</label>
+        </div>
       </fieldset>
 
       <input type="text" name="hp" id="ai-hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
 
-      <div class="data-handling mt-lg">
+      <div class="audit-fineprint mt-lg">
         <p>What you write here goes to Erin's inbox and is used to schedule one call. Nothing else.</p>
         <p>Minimal site analytics via Vercel (pageview only, no cookies, no profile). No marketing trackers, no list, no profile sold or shared.</p>
         <p>If we don't end up working together, Erin deletes your message within 30 days.</p>
         <p>How we treat your data - and everyone's data - is named at our <a href="/pledge">pledge</a> and at our <a href="/legal/privacy">privacy policy</a>.</p>
       </div>
 
-      <button type="submit" class="btn btn-primary mt-md">Request the call</button>
+      <button type="submit" class="audit-submit mt-md">Request the call</button>
       <p id="ai-status" class="form-status" aria-live="polite"></p>
     </form>
   </section>
 
-  <section class="container">
-    <div class="what-happens">
-      <h2>What happens next</h2>
-      <p>Erin reads every submission. If there is a fit for a sovereignty audit, she replies within a few business days to schedule the 20-minute call. The call is the qualification. Pricing is discussed on the call, not on the page.</p>
-    </div>
-  </section>
-</BaseLayout>
+  <Section marker="NOTA · BENE" heading="What happens next" closing={true}>
+    <p class="lede">
+      Erin reads every submission. If there is a fit for a sovereignty audit, she
+      replies within a few business days to schedule the 20-minute call. The call
+      is the qualification. Pricing is discussed on the call, not on the page.
+    </p>
+  </Section>
+</ElevationLayout>
 
 <script>
-  const form = document.getElementById('audit-form') as HTMLFormElement;
-  const status = document.getElementById('ai-status') as HTMLParagraphElement;
-  const formLoadedAt = Date.now();
+  function attachAuditIntake() {
+    const form = document.getElementById('audit-form') as HTMLFormElement | null;
+    if (!form || form.dataset.wired === 'true') return;
+    form.dataset.wired = 'true';
 
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    status.textContent = '';
+    const status = document.getElementById('ai-status') as HTMLParagraphElement;
+    const formLoadedAt = Date.now();
 
-    const systems = (document.getElementById('ai-q3') as HTMLTextAreaElement).value.trim();
-    const brought_here = (document.getElementById('ai-q4') as HTMLTextAreaElement).value.trim();
-    const name = (document.getElementById('ai-name') as HTMLInputElement).value.trim();
-    const email = (document.getElementById('ai-email') as HTMLInputElement).value.trim();
-    const org = (document.getElementById('ai-org') as HTMLInputElement).value.trim();
-    const callWindow = (form.querySelector('input[name="window"]:checked') as HTMLInputElement)?.value || '';
-    const hp = (document.getElementById('ai-hp') as HTMLInputElement).value;
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      status.textContent = '';
 
-    if (!name || !email || !systems || !callWindow) return;
+      const systems = (document.getElementById('ai-q3') as HTMLTextAreaElement).value.trim();
+      const brought_here = (document.getElementById('ai-q4') as HTMLTextAreaElement).value.trim();
+      const name = (document.getElementById('ai-name') as HTMLInputElement).value.trim();
+      const email = (document.getElementById('ai-email') as HTMLInputElement).value.trim();
+      const org = (document.getElementById('ai-org') as HTMLInputElement).value.trim();
+      const callWindow = (form!.querySelector('input[name="window"]:checked') as HTMLInputElement)?.value || '';
+      const hp = (document.getElementById('ai-hp') as HTMLInputElement).value;
 
-    const button = form.querySelector('[type="submit"]') as HTMLButtonElement;
-    button.disabled = true;
-    button.textContent = 'Sending...';
+      if (!name || !email || !systems || !callWindow) return;
 
-    try {
-      const c = await fetch('/api/form/challenge');
-      if (!c.ok) throw new Error('challenge failed');
-      const { token, ts } = await c.json();
+      const button = form!.querySelector('[type="submit"]') as HTMLButtonElement;
+      button.disabled = true;
+      button.textContent = 'Sending...';
 
-      const res = await fetch('/api/sovereignty-audit-intake', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          name, email, org, systems, brought_here,
-          call_window: callWindow,
-          token, ts, hp, formLoadedAt,
-        }),
-      });
+      try {
+        const c = await fetch('/api/form/challenge');
+        if (!c.ok) throw new Error('challenge failed');
+        const { token, ts } = await c.json();
 
-      if (res.ok) {
-        status.textContent = 'Received. Erin will be in touch within a few business days.';
-        status.className = 'form-status success';
-        form.reset();
-      } else {
-        const data = await res.json();
-        status.textContent = data.error || 'Something went wrong. Try again.';
+        const res = await fetch('/api/sovereignty-audit-intake', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            name, email, org, systems, brought_here,
+            call_window: callWindow,
+            token, ts, hp, formLoadedAt,
+          }),
+        });
+
+        if (res.ok) {
+          status.textContent = 'Received. Erin will be in touch within a few business days.';
+          status.className = 'form-status success';
+          form!.reset();
+        } else {
+          const data = await res.json();
+          status.textContent = data.error || 'Something went wrong. Try again.';
+          status.className = 'form-status error';
+        }
+      } catch {
+        status.textContent = 'Something went wrong. Try again.';
         status.className = 'form-status error';
+      } finally {
+        button.disabled = false;
+        button.textContent = 'Request the call';
       }
-    } catch {
-      status.textContent = 'Something went wrong. Try again.';
-      status.className = 'form-status error';
-    } finally {
-      button.disabled = false;
-      button.textContent = 'Request the call';
-    }
-  });
+    });
+  }
+  attachAuditIntake();
+  document.addEventListener('astro:after-swap', attachAuditIntake);
 </script>
 
 <style>
-  .hero-small {
-    text-align: center;
-    padding: var(--space-lg) var(--space-md);
-  }
+  /* /sovereignty-audit-intake - founder-public register, single-page
+     form in J chrome. Unlike /coaching-intake and /consulting-intake
+     this one is one page, not multi-step. Same input/button pattern
+     for visual consistency with the other Engage intakes. */
 
-  .hero-small h1 {
-    font-size: clamp(2rem, 5vw, 3rem);
-    margin-bottom: var(--space-xs);
+  .audit-section {
+    padding: clamp(2rem, 1.5rem + 2vw, 4rem) 0
+            clamp(3rem, 2rem + 3vw, 5rem);
+    border-top: 1px solid var(--el-rule);
   }
-
-  .hero-small .tagline {
-    font-family: var(--font-display);
-    font-size: 1.1rem;
-    color: var(--text-secondary);
-    font-style: italic;
-  }
-
-  .intake-form {
+  .audit-form {
     max-width: 560px;
     margin: 0 auto;
   }
 
-  .intake-form label:not(.radio-label):not(.type-option) {
+  /* Primary question labels - display serif at display size */
+  .audit-form > label:not(.window-option):not(.audit-meta-label) {
     display: block;
-    font-size: 1.05rem;
-    color: var(--text-primary);
-    margin-bottom: var(--space-xs);
-    font-family: var(--font-display);
+    font-family: var(--el-display);
+    font-size: clamp(1rem, 0.95rem + 0.35vw, 1.2rem);
+    font-weight: 400;
     line-height: 1.4;
+    letter-spacing: 0.005em;
+    color: var(--el-text);
+    margin-bottom: clamp(0.75rem, 0.6rem + 0.4vw, 1rem);
+  }
+
+  /* Contact-meta labels (name / email / org) - small-caps UI */
+  .audit-meta-label {
+    display: block;
+    font-family: var(--el-ui);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--el-text-quiet);
+    margin-bottom: 0.4rem;
   }
 
   .optional {
-    font-size: 0.8rem;
-    color: var(--text-muted);
+    font-family: var(--el-body);
+    font-size: 11px;
+    color: var(--el-text-quiet);
     font-style: italic;
+    letter-spacing: 0;
+    text-transform: none;
+    margin-left: 0.35rem;
   }
 
-  .intake-form input[type="text"],
-  .intake-form input[type="email"],
-  .intake-form textarea {
+  .audit-form input[type="text"],
+  .audit-form input[type="email"],
+  .audit-form textarea {
     width: 100%;
-    padding: 0.6rem 1rem;
-    border: 1px solid var(--border-subtle);
-    border-radius: 6px;
+    padding: 0.7rem 0.9rem;
+    border: 1px solid var(--el-rule);
     background: transparent;
-    color: var(--text-primary);
-    font-family: var(--font-body, inherit);
-    font-size: 0.95rem;
-    line-height: 1.6;
+    color: var(--el-text);
+    font-family: var(--el-body);
+    font-size: clamp(1rem, 0.95rem + 0.2vw, 1.1rem);
+    line-height: 1.55;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
   }
-
-  .intake-form input:focus,
-  .intake-form textarea:focus {
+  .audit-form input:focus,
+  .audit-form textarea:focus {
     outline: none;
-    border-color: var(--accent-warm);
+    border-color: var(--el-accent);
+    box-shadow: 0 0 0 1px var(--el-accent);
   }
-
-  .intake-form input::placeholder,
-  .intake-form textarea::placeholder {
-    color: var(--text-muted);
-  }
-
-  .intake-form textarea {
-    resize: vertical;
-  }
+  .audit-form input::placeholder,
+  .audit-form textarea::placeholder { color: var(--el-text-quiet); }
+  .audit-form textarea { resize: vertical; }
 
   #ai-hp {
     position: absolute;
@@ -192,95 +214,115 @@ export const prerender = false;
     opacity: 0;
   }
 
+  /* Call-window radios as brass-outlined chips (matches build-with-us
+     'type' chip pattern) */
   .window-set {
-    border: 1px solid var(--border-subtle);
-    border-radius: 6px;
-    padding: var(--space-sm) var(--space-md);
+    border: 1px solid var(--el-rule);
+    padding: clamp(0.85rem, 0.7rem + 0.6vw, 1.25rem) clamp(1rem, 0.85rem + 0.5vw, 1.5rem);
+    margin: 0;
   }
-
   .window-set legend {
-    font-family: var(--font-display);
-    font-size: 1.05rem;
-    color: var(--text-primary);
-    padding: 0 var(--space-xs);
+    font-family: var(--el-ui);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--el-text-quiet);
+    padding: 0 0.5rem;
   }
-
-  .radio-label {
-    display: inline-flex;
+  .window-options {
+    display: flex;
+    gap: 0.6rem;
+    margin-top: 0.75rem;
+    flex-wrap: wrap;
+  }
+  .window-option {
+    display: flex;
     align-items: center;
-    gap: 0.4rem;
-    margin-right: var(--space-md);
-    font-size: 0.95rem;
-    color: var(--text-secondary);
+    gap: 0.55rem;
+    font-family: var(--el-ui);
+    font-weight: 500;
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--el-text-soft);
     cursor: pointer;
+    padding: 0.55rem 1rem;
+    border: 1px solid var(--el-rule);
+    transition: border-color 0.2s ease, color 0.2s ease;
+    margin: 0;
+  }
+  .window-option:has(input:checked) {
+    border-color: var(--el-accent);
+    color: var(--el-text);
+  }
+  .window-option input[type="radio"] {
+    width: auto;
+    accent-color: var(--el-accent);
   }
 
-  .data-handling {
-    border-left: 2px solid var(--border-subtle);
-    padding: var(--space-sm) var(--space-md);
-    background: rgba(255, 255, 255, 0.02);
-    border-radius: 4px;
+  /* Privacy fineprint (brass left-rule aside, sister to consulting-intake) */
+  .audit-fineprint {
+    border-left: 2px solid var(--el-accent);
+    padding: 0.85rem 0 0.85rem 1.5rem;
+  }
+  .audit-fineprint p {
+    font-family: var(--el-body);
+    font-size: clamp(0.85rem, 0.8rem + 0.2vw, 0.95rem);
+    line-height: 1.65;
+    color: var(--el-text-quiet);
+    margin: 0 0 0.6rem;
+    max-width: 65ch;
+  }
+  .audit-fineprint p:last-child { margin-bottom: 0; }
+  .audit-fineprint a {
+    color: var(--el-text-soft);
+    text-decoration: none;
+    border-bottom: 1px solid var(--el-rule);
+  }
+  .audit-fineprint a:hover {
+    color: var(--el-accent);
+    border-color: var(--el-accent);
   }
 
-  .data-handling p {
-    font-size: 0.9rem;
-    color: var(--text-secondary);
-    line-height: 1.6;
-    margin-bottom: var(--space-xs);
+  /* Submit button (brass-outlined ghost that fills on hover) */
+  .audit-submit {
+    margin-top: clamp(1.25rem, 1rem + 0.75vw, 1.75rem);
+    padding: 0.6rem 1.6rem;
+    background: transparent;
+    color: var(--el-accent);
+    border: 1px solid var(--el-accent);
+    font-family: var(--el-ui);
+    font-weight: 500;
+    font-size: 13px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease;
   }
-
-  .data-handling p:last-child {
-    margin-bottom: 0;
+  .audit-submit:hover {
+    background: var(--el-accent);
+    color: var(--el-bg);
   }
+  .audit-submit:disabled { opacity: 0.55; cursor: wait; }
 
-  .data-handling a {
-    color: var(--accent-warm);
-    text-decoration: underline;
-    text-decoration-thickness: 1px;
-    text-underline-offset: 2px;
-  }
-
-  .btn-primary {
-    background: var(--accent-warm);
-    color: var(--bg-deep);
-    white-space: nowrap;
-  }
-
-  .btn-primary:hover {
-    background: var(--accent-glow);
-    color: var(--bg-deep);
-  }
-
-  .mt-md { margin-top: var(--space-md); }
-  .mt-lg { margin-top: var(--space-lg); }
+  .mt-md { margin-top: clamp(0.85rem, 0.7rem + 0.4vw, 1.2rem); }
+  .mt-lg { margin-top: clamp(1.5rem, 1rem + 1.5vw, 2.25rem); }
 
   .form-status {
-    font-size: 0.9rem;
-    margin-top: var(--space-sm);
+    font-family: var(--el-ui);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-top: 1rem;
     min-height: 1.2em;
+    color: var(--el-text-quiet);
   }
+  .form-status.success { color: var(--el-accent); }
+  .form-status.error   { color: #c44; }
 
-  .form-status.success {
-    color: var(--accent-warm);
-  }
-
-  .form-status.error {
-    color: #e57373;
-  }
-
-  .what-happens {
-    max-width: 560px;
-    margin: var(--space-lg) auto 0;
-  }
-
-  .what-happens h2 {
-    font-size: 1.3rem;
-    margin-bottom: var(--space-sm);
-  }
-
-  .what-happens p {
-    font-size: 0.95rem;
-    color: var(--text-secondary);
-    line-height: 1.7;
+  @media (max-width: 480px) {
+    .window-options { gap: 0.45rem; }
+    .window-option { padding: 0.5rem 0.85rem; }
   }
 </style>
