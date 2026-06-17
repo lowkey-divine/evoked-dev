@@ -1,134 +1,143 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
+import ElevationLayout from '../layouts/ElevationLayout.astro';
+import Hero from '../components/elevation/Hero.astro';
+import Section from '../components/elevation/Section.astro';
 import { consultingPageJsonLd } from '../lib/structured-data';
 
 const services = consultingPageJsonLd();
 ---
 
-<BaseLayout title="Consulting" description="Behavioral governance, trust architecture, and restraint specification for teams building with AI agents. Audits, workshops, implementation, and advisory." structuredData={services}>
-  <div class="time-windowed-banner" style="background: #2a2a2a; color: #f5f5f5; padding: 1rem 1.5rem; border-left: 4px solid #d4a574; margin: 0 auto 1.5rem; max-width: 900px;">
-    <p style="margin: 0; line-height: 1.55;">
-      <strong>Through December 31, 2026:</strong> three productized engagements with public pricing - Sovereignty Architecture Audit, Architecture Spec, and Governance Advisor Retainer. <a href="/engage" style="color: #d4a574; text-decoration: underline;">See the engagement window &rarr;</a>
+<ElevationLayout
+  title="Consulting"
+  description="Behavioral governance, trust architecture, and restraint specification for teams building with AI agents. Audits, workshops, implementation, and advisory."
+  structuredData={services}
+>
+  <aside class="consulting-window">
+    <p>
+      <strong>Through December 31, 2026:</strong>
+      three productized engagements with public pricing - Sovereignty Architecture
+      Audit, Architecture Spec, and Governance Advisor Retainer.
+      <a href="/engage">See the engagement window &rarr;</a>
     </p>
-  </div>
-  <div class="hero">
-    <p class="recognition">Evoked - AI Agent Governance</p>
-    <h1>Know what your agents refuse - before your users find out what they don't.</h1>
-    <p class="tagline">Governance audits from $5,000. Self-assessment kits from $49. We evaluate your agents against five governance properties and test them across models to find where they hold - and where they break.</p>
-  </div>
+  </aside>
 
-  <section class="container">
+  <Hero
+    eyebrowParts={["Engage", "AI agent governance"]}
+    headline="Know what your agents refuse - before your users find out what they don't."
+    sub="Governance audits from $5,000. Self-assessment kits from $49. We evaluate your agents against five governance properties and test them across models to find where they hold - and where they break."
+  />
+
+  <section class="consulting-intro">
     <p>
       AI capabilities are outpacing adoption. Most organizations can build agents
-      that work - fewer can build agents that work <em>well</em>, consistently, at scale,
-      under real constraints. The gap between what's possible and what's deployed is where
-      the real work lives. I help you see the gap clearly.
+      that work - fewer can build agents that work <em>well</em>, consistently, at
+      scale, under real constraints. The gap between what's possible and what's
+      deployed is where the real work lives. I help you see the gap clearly.
     </p>
   </section>
 
-  <section class="container">
-    <h2>Why Organizations Get Stuck</h2>
-    <p>Four forces keep capable teams from deploying AI well.</p>
-
+  <Section marker="FIG · I" heading="Why organizations get stuck">
+    <p class="lede">Four forces keep capable teams from deploying AI well.</p>
     <div class="inertia-grid">
-      <div class="card">
+      <div class="el-card">
         <h3>Regulatory</h3>
         <p>COPPA, HIPAA, GDPR, the EU AI Act. Rules written for a world before agents. The EU AI Act has no compliance pathway for autonomous agent systems. Procurement cycles measured in years, not sprints.</p>
       </div>
-      <div class="card">
+      <div class="el-card">
         <h3>Organizational</h3>
         <p>18 months from "this saves $10M/year" to saving it. Pilot programs, change management, internal politics.</p>
       </div>
-      <div class="card">
+      <div class="el-card">
         <h3>Cultural</h3>
         <p>Most teams treat AI as a tool, not a discipline. Adoption requires muscle memory, not just better models.</p>
       </div>
-      <div class="card">
+      <div class="el-card">
         <h3>Trust</h3>
         <p>Verification at scale is expensive. Moving from "I do the work" to "I verify AI work" requires guardrails and oversight infrastructure.</p>
       </div>
     </div>
-  </section>
+  </Section>
 
-  <section class="container">
-    <h2>How We Work</h2>
-    <p>Four disciplines, each building on the last.</p>
+  <Section marker="FIG · II" heading="How we work">
+    <p class="lede">Four disciplines, each building on the last.</p>
 
     <div class="discipline-stack">
       <div class="level-card">
         <div class="level-number">1</div>
         <div class="level-content">
-          <h3>Prompt Craft</h3>
+          <h3>Prompt craft</h3>
           <p>Clear instructions, examples, guardrails. This is where most teams start - and where most teams stop. It's necessary, but not sufficient.</p>
         </div>
       </div>
       <div class="level-card">
         <div class="level-number">2</div>
         <div class="level-content">
-          <h3>Context Engineering</h3>
+          <h3>Context engineering</h3>
           <p>Curating the information environment agents operate within. System prompts, memory architecture, MCP servers, retrieval design.</p>
         </div>
       </div>
       <div class="level-card">
         <div class="level-number">3</div>
         <div class="level-content">
-          <h3>Intent Engineering</h3>
+          <h3>Intent engineering</h3>
           <p>Encoding organizational purpose, values, and decision boundaries into agent infrastructure. Not what agents <em>can</em> do - what they <em>should</em> do.</p>
         </div>
       </div>
       <div class="level-card">
         <div class="level-number">4</div>
         <div class="level-content">
-          <h3>Specification Engineering</h3>
+          <h3>Specification engineering</h3>
           <p>Writing documents autonomous agents can execute against over extended time horizons. The difference between a demo and a deployment.</p>
         </div>
       </div>
     </div>
 
     <p class="bridge-text">
-      Most organizations are strong at Level 1, aware of Level 2, and have never considered
-      Levels 3 and 4. We help you see the full stack.
+      Most organizations are strong at Level 1, aware of Level 2, and have never
+      considered Levels 3 and 4. We help you see the full stack.
     </p>
     <p class="bridge-text">
-      Built in practice, not in theory. These frameworks come from a live 142-agent governance system we operate daily - 30 days of governance reviews, a published <a href="/writing/relational-fidelity-metrics">relational fidelity metrics</a> framework independently adopted into external enforcement infrastructure, and active policy engagement with NIST on AI agent identity standards.
+      Built in practice, not in theory. These frameworks come from a live 142-agent
+      governance system we operate daily - 30 days of governance reviews, a
+      published <a href="/writing/relational-fidelity-metrics">relational fidelity
+      metrics</a> framework independently adopted into external enforcement
+      infrastructure, and active policy engagement with NIST on AI agent identity
+      standards.
     </p>
-  </section>
+  </Section>
 
-  <section class="container">
-    <h2>In Practice</h2>
-    <p>These frameworks come from live systems, not whiteboards.</p>
+  <Section marker="FIG · III" heading="In practice">
+    <p class="lede">These frameworks come from live systems, not whiteboards.</p>
 
     <a href="/case-studies/labyrinth" class="case-study-card">
       <div class="case-study-header">
-        <span class="badge">Case Study</span>
+        <span class="case-study-badge">Case study</span>
         <span class="case-study-collab">Builder: <strong>DaxxSec</strong></span>
       </div>
-      <h3>Trust Architecture in the Wild</h3>
+      <h3>Trust architecture in the wild</h3>
       <p>
-        An independent defensive AI security platform analyzed through the four pillars
-        of trust architecture. Identity as a defensive surface, memory with governance,
-        structured authority, and refusal as architecture - not a feature.
+        An independent defensive AI security platform analyzed through the four
+        pillars of trust architecture. Identity as a defensive surface, memory
+        with governance, structured authority, and refusal as architecture - not
+        a feature.
       </p>
       <div class="case-study-stats">
         <span>5 defense layers</span>
         <span>5 AI providers intercepted</span>
         <span>4 operational modes</span>
       </div>
-      <span class="case-study-link">Read the full case study</span>
+      <span class="case-study-link">Read the full case study &rarr;</span>
     </a>
-  </section>
+  </Section>
 
-  <section class="container">
-    <h2>Start Here</h2>
-    <p>Start where you are. Go as deep as you need.</p>
+  <Section marker="FIG · IV" heading="Start here">
+    <p class="lede">Start where you are. Go as deep as you need.</p>
 
     <div class="ladder">
       <div class="ladder-step">
-        <div class="ladder-marker">
-          <span class="ladder-label">Self-serve</span>
-        </div>
+        <div class="ladder-marker"><span class="ladder-label">Self-serve</span></div>
         <div class="ladder-content">
-          <h3>Digital Products</h3>
+          <h3>Digital products</h3>
           <p>Score your agent governance yourself. Three Level 6 assessment instruments - each with a diagnostic rubric, industry baseline data, and scoring guide.</p>
           <div class="instrument-grid">
             <div class="instrument">
@@ -153,38 +162,32 @@ const services = consultingPageJsonLd();
             </div>
           </div>
           <p class="instrument-note">Also available: sovereignty assessment, trust architecture, voice design, restraint, and memory frameworks.</p>
-          <a href="/products" class="ladder-link">Browse all products</a>
+          <a href="/products" class="ladder-link">Browse all products &rarr;</a>
         </div>
       </div>
 
       <div class="ladder-step">
-        <div class="ladder-marker">
-          <span class="ladder-label">Evaluate</span>
-        </div>
+        <div class="ladder-marker"><span class="ladder-label">Evaluate</span></div>
         <div class="ladder-content">
-          <h3>Fit Assessment</h3>
+          <h3>Fit assessment</h3>
           <p>5-minute assessment to figure out which engagement type matches where you are right now. No commitment, no sales call required.</p>
           <span class="ladder-price">Free</span>
-          <a href="/fit" class="ladder-link">Take the assessment</a>
+          <a href="/fit" class="ladder-link">Take the assessment &rarr;</a>
         </div>
       </div>
 
       <div class="ladder-step">
-        <div class="ladder-marker">
-          <span class="ladder-label">Audit</span>
-        </div>
+        <div class="ladder-marker"><span class="ladder-label">Audit</span></div>
         <div class="ladder-content">
-          <h3>Governance Audit</h3>
+          <h3>Governance audit</h3>
           <p>We evaluate your agent system against five governance properties - identity, restraint, accountability, memory, and charter - and test agent-model affinity across substrates. Three tiers from diagnostic to enterprise architecture.</p>
           <span class="ladder-price">$5,000 - $35,000</span>
-          <a href="#services" class="ladder-link">See audit options</a>
+          <a href="#services" class="ladder-link">See audit options &rarr;</a>
         </div>
       </div>
 
       <div class="ladder-step">
-        <div class="ladder-marker">
-          <span class="ladder-label">Build</span>
-        </div>
+        <div class="ladder-marker"><span class="ladder-label">Build</span></div>
         <div class="ladder-content">
           <h3>Implementation</h3>
           <p>Hands-on work with your team - specification sprints, trust architecture builds, restraint specification development, agent identity design. Scope and timeline defined by audit findings.</p>
@@ -193,26 +196,23 @@ const services = consultingPageJsonLd();
       </div>
 
       <div class="ladder-step">
-        <div class="ladder-marker">
-          <span class="ladder-label">Sustain</span>
-        </div>
+        <div class="ladder-marker"><span class="ladder-label">Sustain</span></div>
         <div class="ladder-content">
-          <h3>Advisory Retainer</h3>
+          <h3>Advisory retainer</h3>
           <p>Ongoing governance partner. Monthly reviews, drift monitoring, specification updates, and strategic counsel as your agent system evolves.</p>
           <span class="ladder-price">$5,000 - $15,000/mo</span>
         </div>
       </div>
     </div>
-  </section>
+  </Section>
 
-  <section class="container" id="services">
-    <h2>Services</h2>
-
+  <Section marker="FIG · V" heading="Services" id="services">
     <div class="guarantee">
-      <strong>The Guarantee:</strong> If an assessment or audit doesn't surface at least 3 actionable findings, you pay nothing.
+      <strong>The guarantee:</strong> If an assessment or audit doesn't surface at
+      least 3 actionable findings, you pay nothing.
     </div>
 
-    <h3>Governance Audits</h3>
+    <h3 class="services-group">Governance audits</h3>
     <div class="services-list">
       <div class="service-item">
         <div class="service-name">Governance Diagnostic <span class="discipline-badge">Tier 1</span></div>
@@ -261,7 +261,7 @@ const services = consultingPageJsonLd();
       </div>
     </div>
 
-    <h3 class="mt-lg">Workshops</h3>
+    <h3 class="services-group">Workshops</h3>
     <div class="services-list">
       <div class="service-item">
         <div class="service-name">Trust Architecture Workshop <span class="discipline-badge">Full Practice</span></div>
@@ -285,7 +285,7 @@ const services = consultingPageJsonLd();
       </div>
     </div>
 
-    <h3 class="mt-lg">Implementation</h3>
+    <h3 class="services-group">Implementation</h3>
     <div class="services-list">
       <div class="service-item">
         <div class="service-name">Specification Engineering Sprint <span class="discipline-badge">Specification Engineering</span></div>
@@ -314,7 +314,7 @@ const services = consultingPageJsonLd();
       </div>
     </div>
 
-    <h3 class="mt-lg">Advisory</h3>
+    <h3 class="services-group">Advisory</h3>
     <div class="services-list">
       <div class="service-item">
         <div class="service-name">Governance Advisory <span class="discipline-badge">Full Practice</span></div>
@@ -323,367 +323,454 @@ const services = consultingPageJsonLd();
       </div>
     </div>
 
-    <p class="text-muted mt-md" style="font-size: 0.9rem;">
+    <p class="services-fineprint">
       I focus on technical implementation - not legal advice. For legal interpretation
       of COPPA, GDPR, or other regulations, please consult a qualified attorney.
     </p>
-    <p class="text-muted" style="font-size: 0.8rem;">
+    <p class="services-fineprint services-fineprint--quiet">
       Governance verification methodology protected under U.S. Patent Application 64/004,087 (Patent Pending).
     </p>
-  </section>
+  </Section>
 
-  <section class="container text-center">
-    <h2>Let's Talk</h2>
-    <p>Free 30-minute discovery call. No pitch deck. Just a conversation about where you are and what you need.</p>
-    <div class="cta-buttons mt-md">
-      <a href="/consulting-intake" class="btn">Tell Us About Your System</a>
-      <a href="https://cal.com/cal.com-evoked/discovery-call" class="btn btn-primary" target="_blank" rel="noopener">Schedule a Call</a>
+  <Section marker="NOTA · BENE" heading="Let's talk" closing={true}>
+    <p class="lede">Free 30-minute discovery call. No pitch deck. Just a conversation about where you are and what you need.</p>
+    <div class="consulting-ctas">
+      <a class="cta cta-primary" href="/consulting-intake">Tell us about your system</a>
+      <a class="cta cta-secondary" href="https://cal.com/cal.com-evoked/discovery-call" target="_blank" rel="noopener">Schedule a call &rarr;</a>
     </div>
-  </section>
-</BaseLayout>
+  </Section>
+</ElevationLayout>
 
 <style>
-  .discipline-badge {
-    display: inline-block;
-    background: var(--accent-subtle);
-    color: var(--accent-warm);
-    font-size: 0.7rem;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    padding: 3px 10px;
-    border-radius: 100px;
-    vertical-align: middle;
+  /* ============================================================
+     /consulting - J register chrome for the sales-page surface.
+     Founder-public register. Each bespoke widget restyled with
+     --el-* tokens: brass-bordered cards, parchment surfaces,
+     UPPERCASE labels, display-serif headings.
+     ============================================================*/
+
+  /* ---- Time-window banner (above hero) ---- */
+  .consulting-window {
+    max-width: var(--el-content-max);
+    margin: 1.5rem auto 0;
+    padding: 0 var(--el-content-pad);
+  }
+  .consulting-window p {
+    font-family: var(--el-body);
+    font-size: clamp(0.9rem, 0.85rem + 0.25vw, 1rem);
+    line-height: 1.6;
+    color: var(--el-text-soft);
+    margin: 0;
+    padding: 0.85rem 1.25rem;
+    border: 1px solid var(--el-rule);
+    border-left: 3px solid var(--el-accent);
+    max-width: 70ch;
+  }
+  .consulting-window strong { color: var(--el-text); font-weight: 500; }
+  .consulting-window a {
+    color: var(--el-accent);
+    text-decoration: none;
+    border-bottom: 1px solid var(--el-accent);
+  }
+  .consulting-window a:hover { color: var(--el-text); border-color: var(--el-text); }
+
+  /* ---- Intro paragraph between hero and FIG I ---- */
+  .consulting-intro {
+    max-width: var(--el-content-max);
+    margin: 0 auto;
+    padding: 0 var(--el-content-pad) clamp(2rem, 1.5rem + 2vw, 4rem);
+  }
+  .consulting-intro p {
+    font-family: var(--el-body);
+    font-size: clamp(1.1rem, 1rem + 0.5vw, 1.35rem);
+    line-height: 1.55;
+    color: var(--el-text-soft);
+    max-width: 60ch;
+    margin: 0;
+  }
+  .consulting-intro em {
+    font-style: italic;
+    color: var(--el-text);
   }
 
-  .instrument-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: var(--space-sm);
-    margin: var(--space-sm) 0;
-  }
-
-  .instrument {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    padding: var(--space-sm);
-    background: var(--bg-surface);
-    border: 1px solid var(--border-subtle);
-    border-radius: 6px;
-  }
-
-  .instrument strong {
-    font-size: 0.95rem;
-  }
-
-  .instrument-desc {
-    font-size: 0.8rem;
-    color: var(--text-secondary);
-    line-height: 1.4;
-  }
-
-  .instrument .ladder-price {
-    font-size: 0.95rem;
-  }
-
-  .instrument-note {
-    font-size: 0.85rem;
-    color: var(--text-muted);
-    margin-top: var(--space-xs);
-    margin-bottom: var(--space-xs);
-  }
-
+  /* ---- FIG I: inertia grid (4 cards) ---- */
   .inertia-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: var(--space-md);
+    gap: clamp(1rem, 0.75rem + 1vw, 1.5rem);
+    margin-top: clamp(1.5rem, 1rem + 1.5vw, 2.5rem);
+  }
+  .el-card {
+    padding: clamp(1.25rem, 1rem + 0.75vw, 1.75rem);
+    border: 1px solid var(--el-rule);
+    background: transparent;
+  }
+  .el-card h3 {
+    font-family: var(--el-display);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--el-accent);
+    margin: 0 0 0.85rem;
+  }
+  .el-card p {
+    font-family: var(--el-body);
+    font-size: clamp(0.95rem, 0.9rem + 0.2vw, 1.05rem);
+    line-height: 1.6;
+    color: var(--el-text-soft);
+    margin: 0;
   }
 
-  .inertia-grid .card h3 {
-    font-size: 1.1rem;
-  }
-
-  .inertia-grid .card p {
-    font-size: 0.9rem;
-    margin-bottom: 0;
-  }
-
+  /* ---- FIG II: discipline-stack (4 levels) ---- */
   .discipline-stack {
     display: flex;
     flex-direction: column;
-    gap: var(--space-md);
-    margin: var(--space-md) 0;
+    gap: clamp(1rem, 0.75rem + 0.75vw, 1.5rem);
+    margin-top: clamp(1.5rem, 1rem + 1.5vw, 2.5rem);
   }
-
   .level-card {
     display: flex;
     align-items: flex-start;
-    gap: var(--space-md);
-    background: var(--bg-surface);
-    border: 1px solid var(--border-subtle);
-    border-radius: 8px;
-    padding: var(--space-md);
-    transition: border-color var(--transition-smooth);
+    gap: clamp(1rem, 0.75rem + 1vw, 1.75rem);
+    padding: clamp(1.25rem, 1rem + 0.75vw, 1.75rem);
+    border: 1px solid var(--el-rule);
+    transition: border-color 0.2s ease;
   }
-
-  .level-card:hover {
-    border-color: var(--border-accent);
-  }
-
+  .level-card:hover { border-color: var(--el-accent); }
   .level-number {
-    font-family: var(--font-display);
-    font-size: 2.5rem;
+    font-family: var(--el-display);
+    font-size: clamp(2.25rem, 1.75rem + 2vw, 3rem);
     font-weight: 400;
-    color: var(--accent-warm);
+    color: var(--el-accent);
     line-height: 1;
     flex-shrink: 0;
     width: 2rem;
     text-align: center;
   }
-
   .level-content h3 {
-    margin-top: 0;
-    margin-bottom: var(--space-xs);
-    font-size: 1.1rem;
+    font-family: var(--el-display);
+    font-size: clamp(1rem, 0.95rem + 0.35vw, 1.2rem);
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--el-text);
+    margin: 0 0 0.55rem;
   }
-
   .level-content p {
+    font-family: var(--el-body);
+    font-size: clamp(0.95rem, 0.9rem + 0.2vw, 1.05rem);
+    line-height: 1.6;
+    color: var(--el-text-soft);
     margin: 0;
-    font-size: 0.9rem;
   }
-
+  .level-content em { font-style: italic; color: var(--el-text); }
   .bridge-text {
-    margin-top: var(--space-md);
+    font-family: var(--el-body);
+    font-size: clamp(1rem, 0.95rem + 0.25vw, 1.1rem);
+    line-height: 1.65;
+    color: var(--el-text-soft);
+    margin-top: clamp(1.25rem, 1rem + 0.75vw, 1.75rem);
+    margin-bottom: 0;
+    max-width: 60ch;
     font-style: italic;
-    color: var(--text-secondary);
+  }
+  .bridge-text a {
+    color: var(--el-accent);
+    text-decoration: none;
+    border-bottom: 1px solid var(--el-accent);
+  }
+  .bridge-text a:hover { color: var(--el-text); border-color: var(--el-text); }
+
+  /* ---- FIG III: case-study card ---- */
+  .case-study-card {
+    display: block;
+    margin-top: clamp(1.5rem, 1rem + 1.5vw, 2.5rem);
+    padding: clamp(1.5rem, 1rem + 1.5vw, 2.25rem);
+    border: 1px solid var(--el-rule);
+    text-decoration: none;
+    color: inherit;
+    transition: border-color 0.2s ease, transform 0.2s ease;
+  }
+  .case-study-card:hover {
+    border-color: var(--el-accent);
+    transform: translateY(-1px);
+  }
+  .case-study-header {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    margin-bottom: 1.25rem;
+    flex-wrap: wrap;
+  }
+  .case-study-badge {
+    font-family: var(--el-ui);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--el-accent);
+    padding: 4px 10px;
+    border: 1px solid var(--el-accent);
+  }
+  .case-study-collab {
+    font-family: var(--el-ui);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--el-text-quiet);
+  }
+  .case-study-collab strong { color: var(--el-text-soft); font-weight: 500; }
+  .case-study-card h3 {
+    font-family: var(--el-display);
+    font-size: clamp(1.2rem, 1.1rem + 0.6vw, 1.6rem);
+    font-weight: 400;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    color: var(--el-text);
+    margin: 0 0 0.85rem;
+  }
+  .case-study-card p {
+    font-family: var(--el-body);
+    font-size: clamp(0.95rem, 0.9rem + 0.25vw, 1.1rem);
+    line-height: 1.6;
+    color: var(--el-text-soft);
+    margin: 0 0 1.25rem;
+  }
+  .case-study-stats {
+    display: flex;
+    gap: 0.75rem;
+    margin-bottom: 1.25rem;
+    flex-wrap: wrap;
+  }
+  .case-study-stats span {
+    font-family: var(--el-ui);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--el-accent);
+    padding: 4px 10px;
+    border: 1px solid var(--el-rule);
+  }
+  .case-study-link {
+    font-family: var(--el-ui);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--el-accent);
   }
 
-  /* Engagement ladder */
+  /* ---- FIG IV: engagement ladder ---- */
   .ladder {
     display: flex;
     flex-direction: column;
-    gap: 0;
-    margin: var(--space-md) 0;
+    margin-top: clamp(1.5rem, 1rem + 1.5vw, 2.5rem);
   }
-
   .ladder-step {
     display: flex;
-    gap: var(--space-md);
-    padding: var(--space-md) 0;
-    border-bottom: 1px solid var(--border-subtle);
+    gap: clamp(1rem, 0.75rem + 1vw, 2rem);
+    padding: clamp(1.5rem, 1rem + 1vw, 2rem) 0;
+    border-bottom: 1px solid var(--el-rule);
   }
-
-  .ladder-step:last-child {
-    border-bottom: none;
-  }
-
+  .ladder-step:last-child { border-bottom: none; }
   .ladder-marker {
     flex-shrink: 0;
-    width: 80px;
+    width: 110px;
     display: flex;
     align-items: flex-start;
-    padding-top: 2px;
+    padding-top: 4px;
   }
-
   .ladder-label {
-    font-size: 0.7rem;
+    font-family: var(--el-ui);
+    font-size: 11px;
     font-weight: 500;
+    letter-spacing: 0.22em;
     text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--accent-warm);
-    background: var(--accent-subtle);
-    padding: 3px 8px;
-    border-radius: 100px;
+    color: var(--el-accent);
+    border: 1px solid var(--el-accent);
+    padding: 4px 10px;
+    white-space: nowrap;
   }
-
-  .ladder-content {
-    flex: 1;
-  }
-
+  .ladder-content { flex: 1; min-width: 0; }
   .ladder-content h3 {
-    margin-top: 0;
-    margin-bottom: var(--space-xs);
-    font-size: 1.1rem;
-  }
-
-  .ladder-content p {
-    font-size: 0.9rem;
-    margin-bottom: var(--space-xs);
-    color: var(--text-secondary);
-  }
-
-  .ladder-price {
-    font-family: var(--font-display);
-    font-size: 1.1rem;
-    color: var(--accent-warm);
+    font-family: var(--el-display);
+    font-size: clamp(1.05rem, 0.95rem + 0.4vw, 1.3rem);
     font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--el-text);
+    margin: 0 0 0.55rem;
   }
-
+  .ladder-content p {
+    font-family: var(--el-body);
+    font-size: clamp(0.95rem, 0.9rem + 0.2vw, 1.05rem);
+    line-height: 1.6;
+    color: var(--el-text-soft);
+    margin: 0 0 0.55rem;
+    max-width: 60ch;
+  }
+  .ladder-price {
+    font-family: var(--el-display);
+    font-size: clamp(1rem, 0.95rem + 0.25vw, 1.15rem);
+    font-weight: 500;
+    color: var(--el-accent);
+    margin-right: 0.75rem;
+  }
   .ladder-link {
-    display: inline-block;
-    margin-left: var(--space-sm);
+    font-family: var(--el-ui);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--el-accent);
+    text-decoration: none;
+  }
+  .ladder-link:hover { color: var(--el-text); }
+
+  .instrument-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 0.85rem;
+    margin: 1rem 0 1rem;
+  }
+  .instrument {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    padding: 0.85rem 1rem;
+    border: 1px solid var(--el-rule);
+  }
+  .instrument strong {
+    font-family: var(--el-display);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--el-text);
+  }
+  .instrument-desc {
+    font-family: var(--el-body);
     font-size: 0.85rem;
-    color: var(--accent-warm);
+    line-height: 1.5;
+    color: var(--el-text-soft);
+  }
+  .instrument .ladder-price {
+    font-size: 0.95rem;
+    margin-right: 0;
+  }
+  .instrument-note {
+    font-family: var(--el-body);
+    font-style: italic;
+    font-size: 0.9rem;
+    color: var(--el-text-quiet);
+    margin: 0.5rem 0 0.75rem;
   }
 
-  /* Services list */
+  /* ---- FIG V: services list + guarantee ---- */
+  .guarantee {
+    padding: clamp(1rem, 0.85rem + 0.75vw, 1.5rem) clamp(1.25rem, 1rem + 1vw, 1.75rem);
+    border: 1px solid var(--el-accent);
+    margin: clamp(1.5rem, 1rem + 1.5vw, 2.5rem) 0;
+    font-family: var(--el-body);
+    font-size: clamp(0.95rem, 0.9rem + 0.25vw, 1.1rem);
+    line-height: 1.55;
+    color: var(--el-text-soft);
+    max-width: 65ch;
+  }
+  .guarantee strong { color: var(--el-accent); font-weight: 500; }
+
+  .services-group {
+    font-family: var(--el-display);
+    font-size: clamp(1.1rem, 1rem + 0.5vw, 1.4rem);
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--el-text);
+    margin: clamp(2rem, 1.5rem + 1.5vw, 3rem) 0 1rem;
+  }
+
   .services-list {
     display: flex;
     flex-direction: column;
-    gap: var(--space-sm);
   }
-
   .service-item {
     display: flex;
     align-items: baseline;
-    gap: var(--space-sm);
-    padding: var(--space-sm) 0;
-    border-bottom: 1px solid var(--border-subtle);
+    gap: 1rem;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--el-rule);
     flex-wrap: wrap;
   }
-
-  .service-item:last-child {
-    border-bottom: none;
-  }
-
+  .service-item:last-child { border-bottom: none; }
   .service-name {
+    font-family: var(--el-display);
+    font-size: clamp(0.95rem, 0.9rem + 0.25vw, 1.05rem);
     font-weight: 500;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: var(--el-text);
     flex-shrink: 0;
   }
-
   .service-desc {
-    font-size: 0.9rem;
-    color: var(--text-secondary);
+    font-family: var(--el-body);
+    font-size: clamp(0.9rem, 0.85rem + 0.2vw, 1rem);
+    line-height: 1.55;
+    color: var(--el-text-soft);
     flex: 1;
-    min-width: 200px;
+    min-width: 240px;
   }
-
   .service-price {
-    color: var(--accent-warm);
+    font-family: var(--el-display);
+    font-size: clamp(0.95rem, 0.9rem + 0.2vw, 1.05rem);
     font-weight: 500;
+    color: var(--el-accent);
     flex-shrink: 0;
     margin-left: auto;
   }
 
-  .guarantee {
-    background: var(--accent-subtle);
-    border: 1px solid var(--border-accent);
-    border-radius: 8px;
-    padding: var(--space-md);
-    margin-bottom: var(--space-lg);
-    text-align: center;
+  .discipline-badge {
+    display: inline-block;
+    font-family: var(--el-ui);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--el-accent);
+    border: 1px solid var(--el-rule);
+    padding: 2px 8px;
+    margin-left: 0.5rem;
+    vertical-align: middle;
   }
 
-  .guarantee strong {
-    color: var(--accent-warm);
+  .services-fineprint {
+    font-family: var(--el-body);
+    font-size: 0.85rem;
+    line-height: 1.55;
+    color: var(--el-text-quiet);
+    margin-top: clamp(1.5rem, 1rem + 1.5vw, 2.25rem);
+    margin-bottom: 0;
+    max-width: 65ch;
   }
+  .services-fineprint--quiet { font-size: 0.78rem; margin-top: 0.85rem; }
 
-  .cta-buttons {
+  /* ---- NOTA BENE close: CTAs ---- */
+  .consulting-ctas {
     display: flex;
-    gap: var(--space-sm);
-    justify-content: center;
+    gap: clamp(1.5rem, 1rem + 1.5vw, 2.5rem);
     flex-wrap: wrap;
-  }
-
-  .btn-primary {
-    background: var(--accent-warm);
-    color: var(--bg-deep);
-  }
-
-  .btn-primary:hover {
-    background: var(--accent-glow);
-    color: var(--bg-deep);
-  }
-
-  /* Case study card */
-  .case-study-card {
-    display: block;
-    padding: var(--space-md);
-    background: var(--bg-surface);
-    border: 1px solid var(--border-subtle);
-    border-radius: 8px;
-    text-decoration: none;
-    transition: all var(--transition-smooth);
-    margin-top: var(--space-md);
-  }
-
-  .case-study-card:hover {
-    border-color: var(--border-accent);
-    transform: translateY(-2px);
-  }
-
-  .case-study-header {
-    display: flex;
     align-items: center;
-    gap: var(--space-sm);
-    margin-bottom: var(--space-sm);
+    margin-top: clamp(1.5rem, 1rem + 1.5vw, 2.5rem);
   }
 
-  .case-study-collab {
-    font-size: 0.85rem;
-    color: var(--text-muted);
-  }
-
-  .case-study-collab strong {
-    color: var(--text-secondary);
-  }
-
-  .case-study-card h3 {
-    font-size: 1.3rem;
-    margin-bottom: var(--space-xs);
-  }
-
-  .case-study-card p {
-    font-size: 0.9rem;
-    margin-bottom: var(--space-sm);
-  }
-
-  .case-study-stats {
-    display: flex;
-    gap: var(--space-md);
-    margin-bottom: var(--space-sm);
-    flex-wrap: wrap;
-  }
-
-  .case-study-stats span {
-    font-size: 0.8rem;
-    color: var(--accent-warm);
-    background: var(--accent-subtle);
-    padding: 3px 10px;
-    border-radius: 100px;
-  }
-
-  .case-study-link {
-    font-size: 0.85rem;
-    color: var(--accent-warm);
-  }
-
+  /* ---- Responsive fine-tuning ---- */
   @media (max-width: 600px) {
-    .service-item {
-      flex-direction: column;
-      gap: 0.25rem;
-    }
-
-    .service-price {
-      margin-left: 0;
-    }
-
-    .level-card {
-      gap: var(--space-sm);
-    }
-
-    .level-number {
-      font-size: 2rem;
-    }
-
-    .ladder-step {
-      flex-direction: column;
-      gap: var(--space-xs);
-    }
-
-    .ladder-marker {
-      width: auto;
-    }
+    .service-item { flex-direction: column; gap: 0.3rem; }
+    .service-price { margin-left: 0; }
+    .ladder-step { flex-direction: column; gap: 0.6rem; }
+    .ladder-marker { width: auto; }
+    .level-card { gap: 1rem; }
+    .level-number { font-size: 2.25rem; width: 1.75rem; }
+    .discipline-badge { margin-left: 0; display: inline-block; margin-top: 0.25rem; }
   }
 </style>
