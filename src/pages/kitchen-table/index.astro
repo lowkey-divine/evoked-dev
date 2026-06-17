@@ -1,5 +1,5 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
+import ElevationLayout from '../../layouts/ElevationLayout.astro';
 
 const structuredData = {
   "@type": "SoftwareApplication",
@@ -16,233 +16,438 @@ const structuredData = {
   Voice register: intimate-domestic, threshold-not-yet-crossed sub-register.
   Per evoked-dev/CLAUDE.md "Voice Discipline Scope" addendum (Hoshi, 2026-05-03):
   em-dashes are permitted on intimate-domestic surfaces - the dash signals breath,
-  hesitation, gentleness. The two &mdash; below (lines ~34 and ~90) are register-correct,
-  not voice-tells failures. The founder-public voice-tells-audit.sh ruleset does not
-  apply to this file. If a future reviewer in founder-public discipline-mode reads
-  this page and reflexively flags the em-dashes, read the addendum first.
+  hesitation, gentleness. The em-dashes below are register-correct, not voice-tells
+  failures. The founder-public voice-tells-audit.sh ruleset does not apply to this
+  file. If a future reviewer in founder-public discipline-mode reads this page and
+  reflexively flags the em-dashes, read the addendum first.
+
+  Chrome: J register (parchment + brass + sigil + astrolabe) extracted from
+  /elevation/j.html via ElevationLayout. Body typography is sentence-case serif
+  italic, not the UPPERCASE Syncopate of founder-public Hero/Section. This is the
+  designed seam Hoshi named - one product, two registers, both correct on their
+  own surfaces.
 */}
 
-<BaseLayout
+<ElevationLayout
   title="The Kitchen Table"
   description="A family meal-planning app from Evoked. No streaks, no scores, no surveillance. Heritage recipes welcomed as fragments. COPPA-compliant by design. iOS beta on TestFlight."
   structuredData={structuredData}
 >
-  <div class="hero">
-    <h1>The Kitchen Table</h1>
-    <p class="tagline">Family flourishing through food.</p>
-    <p class="hero-sub">A quiet meal-planning app for families. iOS beta on TestFlight.</p>
-  </div>
+  <article class="kt">
+    <header class="kt-hero">
+      <p class="kt-eyebrow">From Evoked · A family meal-planning app</p>
+      <h1 class="kt-title">The Kitchen Table</h1>
+      <p class="kt-tagline">Family flourishing through food.</p>
+      <p class="kt-sub">A quiet meal-planning app for families. iOS beta on TestFlight.</p>
+    </header>
 
-  <section class="container">
-    <h2>What this is</h2>
-    <p>
-      We made it because we couldn't find a meal-planning app we trusted to leave
-      open in a kitchen where children can see the screen.
-    </p>
-    <p>
-      Food is never just food. The moment you ask a family <em>what do you eat?</em>
-      you're asking about identity, culture, memory, survival.
-    </p>
-    <p>
-      The Kitchen Table is built to honor that &mdash; not to optimize your diet or
-      gamify your groceries, but to help families plan meals, preserve heritage
-      recipes, and eat together.
-    </p>
-  </section>
+    <section class="kt-section">
+      <h2>What this is</h2>
+      <p>
+        We made it because we couldn't find a meal-planning app we trusted to leave
+        open in a kitchen where children can see the screen.
+      </p>
+      <p>
+        Food is never just food. The moment you ask a family <em>what do you eat?</em>
+        you're asking about identity, culture, memory, survival.
+      </p>
+      <p>
+        The Kitchen Table is built to honor that &mdash; not to optimize your diet or
+        gamify your groceries, but to help families plan meals, preserve heritage
+        recipes, and eat together.
+      </p>
+    </section>
 
-  <section class="container">
-    <h2>Who's at the table</h2>
-    <p>
-      Table keepers, planners, members, learners, guests. Everyone has a place.
-      Everyone participates according to their capacity.
-    </p>
-    <p>
-      A four-year-old can be at the table. A grandparent who only remembers
-      "some kind of dumpling" can be at the table. A teenager who wants quiet
-      can be at the table without performing.
-    </p>
-  </section>
+    <section class="kt-section">
+      <h2>Who's at the table</h2>
+      <p>
+        Table keepers, planners, members, learners, guests. Everyone has a place.
+        Everyone participates according to their capacity.
+      </p>
+      <p>
+        A four-year-old can be at the table. A grandparent who only remembers
+        "some kind of dumpling" can be at the table. A teenager who wants quiet
+        can be at the table without performing.
+      </p>
+    </section>
 
-  <section class="container">
-    <h2>What we honor</h2>
-    <ul class="principles">
-      <li><strong>Reverent references, not reductive captures.</strong> A recipe is a doorway, not a database row.</li>
-      <li><strong>Fragments are sacred.</strong> A single memory is enough. A story without measurements is complete.</li>
-      <li><strong>Family defines family.</strong> Your words for who you are. Not our taxonomy.</li>
-      <li><strong>The system knows when to be quiet.</strong> Grief, busy seasons, days that are simply hard. We step back.</li>
-      <li><strong>Space for all of it.</strong> Celebration and grief. Roots and searching. Heritage embraced and heritage reclaimed.</li>
-    </ul>
-    <p class="heritage-example">
-      If a family only remembers "some kind of dumpling" from a grandmother lost to displacement,
-      that fragment is welcome here. We don't require completeness. We honor what remains.
-    </p>
-    <p class="heritage-closing">
-      Some recipes survive because someone made sure they would.
-    </p>
-  </section>
+    <section class="kt-section">
+      <h2>What we honor</h2>
+      <ul class="kt-principles">
+        <li>
+          <strong>Reverent references, not reductive captures.</strong>
+          A recipe is a doorway, not a database row.
+        </li>
+        <li>
+          <strong>Fragments are sacred.</strong>
+          A single memory is enough. A story without measurements is complete.
+        </li>
+        <li>
+          <strong>Family defines family.</strong>
+          Your words for who you are. Not our taxonomy.
+        </li>
+        <li>
+          <strong>The system knows when to be quiet.</strong>
+          Grief, busy seasons, days that are simply hard. We step back.
+        </li>
+        <li>
+          <strong>Space for all of it.</strong>
+          Celebration and grief. Roots and searching. Heritage embraced and
+          heritage reclaimed.
+        </li>
+      </ul>
+      <p class="kt-aside">
+        If a family only remembers "some kind of dumpling" from a grandmother lost
+        to displacement, that fragment is welcome here. We don't require
+        completeness. We honor what remains.
+      </p>
+      <p class="kt-closing">
+        Some recipes survive because someone made sure they would.
+      </p>
+    </section>
 
-  <section class="container">
-    <h2>What this is not</h2>
-    <p>
-      No streaks. No scores. No leaderboards.
-    </p>
-    <p>
-      No notifications designed to pull you back when you didn't choose to come back.
-      No engagement metrics that override how you're actually feeling. No quiet
-      collection of behavioral data we'd rather you not think about.
-    </p>
-    <p>
-      No advertising. Ever. Not now, not when we're bigger, not when someone offers
-      us money to start.
-    </p>
-    <p>
-      Children's profiles are unreachable to anyone outside the family &mdash;
-      by architecture, not by promise. COPPA-compliant by design, not by retrofit.
-    </p>
-  </section>
+    <section class="kt-section">
+      <h2>What this is not</h2>
+      <p>No streaks. No scores. No leaderboards.</p>
+      <p>
+        No notifications designed to pull you back when you didn't choose to come
+        back. No engagement metrics that override how you're actually feeling. No
+        quiet collection of behavioral data we'd rather you not think about.
+      </p>
+      <p>
+        No advertising. Ever. Not now, not when we're bigger, not when someone
+        offers us money to start.
+      </p>
+      <p>
+        Children's profiles are unreachable to anyone outside the family &mdash;
+        by architecture, not by promise. COPPA-compliant by design, not by retrofit.
+      </p>
+    </section>
 
-  <section class="container text-center">
-    <h2>Join the waitlist</h2>
-    <p>We'll write when there's something real to share. Not before.</p>
-    <form id="waitlist-form" class="waitlist-form mt-md">
-      <input type="email" id="waitlist-email" name="email" placeholder="your@email.com" required aria-label="Email address" />
-      <button type="submit" class="btn btn-primary">Join waitlist</button>
-    </form>
-    <p id="waitlist-status" class="waitlist-status" aria-live="polite"></p>
-    <p class="form-note">No spam. No selling. Just one email when we open the door wider.</p>
-  </section>
-</BaseLayout>
+    <section class="kt-section kt-section--waitlist">
+      <h2>Join the waitlist</h2>
+      <p class="kt-waitlist-blurb">
+        We'll write when there's something real to share. Not before.
+      </p>
+      <form id="kt-waitlist-form" class="kt-waitlist-form" novalidate>
+        <label class="kt-waitlist-label" for="kt-waitlist-email">Email</label>
+        <div class="kt-waitlist-row">
+          <input
+            type="email"
+            id="kt-waitlist-email"
+            name="email"
+            placeholder="your.email@example.com"
+            required
+            aria-label="Email address"
+          />
+          <input
+            type="text"
+            name="website"
+            class="kt-hp-field"
+            tabindex="-1"
+            autocomplete="off"
+            aria-hidden="true"
+          />
+          <button type="submit">Join waitlist</button>
+        </div>
+      </form>
+      <p id="kt-waitlist-status" class="kt-waitlist-status hidden" aria-live="polite"></p>
+      <p class="kt-form-note">
+        No spam. No selling. Just one email when we open the door wider.
+      </p>
+    </section>
+  </article>
+</ElevationLayout>
 
 <script>
-  const form = document.getElementById('waitlist-form') as HTMLFormElement;
-  const status = document.getElementById('waitlist-status') as HTMLParagraphElement;
-  const emailInput = document.getElementById('waitlist-email') as HTMLInputElement;
+  function attachKitchenTableWaitlist() {
+    const form = document.getElementById('kt-waitlist-form') as HTMLFormElement | null;
+    if (!form || form.dataset.wired === 'true') return;
+    form.dataset.wired = 'true';
 
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const email = emailInput.value.trim();
-    if (!email) return;
-
-    status.textContent = '';
+    const emailInput = document.getElementById('kt-waitlist-email') as HTMLInputElement;
+    const status = document.getElementById('kt-waitlist-status') as HTMLParagraphElement;
     const button = form.querySelector('button') as HTMLButtonElement;
-    button.disabled = true;
-    button.textContent = 'Joining...';
+    const hpInput = form.querySelector<HTMLInputElement>('input[name="website"]');
 
-    try {
-      const res = await fetch('/api/newsletter/subscribe', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email }),
-      });
-
-      if (res.ok) {
-        status.textContent = 'You are in. Welcome.';
-        status.className = 'waitlist-status success';
-        emailInput.value = '';
-      } else {
-        const data = await res.json();
-        status.textContent = data.error || 'Something went wrong. Try again.';
-        status.className = 'waitlist-status error';
-      }
-    } catch {
-      status.textContent = 'Something went wrong. Try again.';
-      status.className = 'waitlist-status error';
-    } finally {
+    const showError = (msg: string) => {
       button.disabled = false;
       button.textContent = 'Join waitlist';
-    }
-  });
+      status.textContent = msg;
+      status.classList.remove('hidden', 'success');
+      status.classList.add('error');
+    };
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const email = emailInput.value.trim();
+      if (!email) return;
+
+      // Honeypot: bot filled the hidden field - silent success
+      if (hpInput?.value) {
+        button.textContent = 'Thank you ✓';
+        emailInput.value = '';
+        return;
+      }
+
+      button.disabled = true;
+      button.textContent = 'Joining...';
+      status.textContent = '';
+      status.classList.remove('error', 'success', 'hidden');
+
+      try {
+        // 1. Fetch challenge token (HMAC-signed by server)
+        const cRes = await fetch('/api/newsletter/challenge');
+        if (!cRes.ok) {
+          showError('Something went wrong. Try again.');
+          return;
+        }
+        const { token, ts } = await cRes.json();
+
+        // 2. Submit with token + honeypot
+        const sRes = await fetch('/api/newsletter/subscribe', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, token, ts, hp: hpInput?.value || '' }),
+        });
+
+        if (sRes.ok) {
+          button.textContent = 'Thank you ✓';
+          emailInput.value = '';
+          status.textContent = 'You are in. Welcome.';
+          status.classList.remove('error', 'hidden');
+          status.classList.add('success');
+        } else {
+          const data = await sRes.json().catch(() => ({} as { error?: string }));
+          showError(data?.error || 'Something went wrong. Try again.');
+        }
+      } catch {
+        showError('Something went wrong. Try again.');
+      }
+    });
+  }
+  attachKitchenTableWaitlist();
+  document.addEventListener('astro:after-swap', attachKitchenTableWaitlist);
 </script>
 
 <style>
-  .hero-sub {
-    margin-top: var(--space-sm);
-    color: var(--text-secondary);
-    font-size: 1rem;
+  /* ---------------------------------------------------------------
+     Kitchen Table - intimate-domestic body inside J register chrome.
+     Typography is sentence-case serif italic, slower rhythm, softer
+     accents than the founder-public Hero/Section components.
+     ---------------------------------------------------------------*/
+  .kt {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: clamp(2rem, 1.5rem + 3vw, 5rem) var(--el-content-pad)
+            clamp(3rem, 2rem + 4vw, 6rem);
+    color: var(--el-text);
+    font-family: var(--el-body);
   }
 
-  .principles {
+  .kt-hero {
+    text-align: left;
+    margin-bottom: clamp(3rem, 2rem + 3vw, 5rem);
+  }
+  .kt-eyebrow {
+    font-family: var(--el-ui);
+    font-weight: 500;
+    font-size: 12px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--el-accent);
+    margin: 0 0 clamp(1.25rem, 1rem + 1vw, 2rem);
+  }
+  .kt-title {
+    font-family: var(--el-body);
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(2.5rem, 1.8rem + 3.5vw, 4.5rem);
+    line-height: 1.05;
+    letter-spacing: -0.005em;
+    margin: 0 0 1rem;
+    color: var(--el-text);
+  }
+  .kt-tagline {
+    font-family: var(--el-body);
+    font-size: clamp(1.25rem, 1.05rem + 0.8vw, 1.6rem);
+    line-height: 1.4;
+    color: var(--el-text);
+    margin: 0 0 0.85rem;
+    max-width: 28ch;
+  }
+  .kt-sub {
+    font-family: var(--el-ui);
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--el-text-quiet);
+    margin: 0;
+  }
+
+  .kt-section {
+    margin: clamp(3rem, 2rem + 2.5vw, 4.5rem) 0;
+    padding-top: clamp(2rem, 1.5rem + 1.5vw, 3rem);
+    border-top: 1px solid var(--el-rule);
+  }
+  .kt-section h2 {
+    font-family: var(--el-body);
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(1.5rem, 1.25rem + 1vw, 2rem);
+    line-height: 1.25;
+    color: var(--el-text);
+    margin: 0 0 clamp(1.25rem, 1rem + 0.75vw, 1.75rem);
+    text-transform: none;
+    letter-spacing: 0;
+  }
+  .kt-section p {
+    font-size: clamp(1.05rem, 1rem + 0.25vw, 1.2rem);
+    line-height: 1.65;
+    color: var(--el-text-soft);
+    margin: 0 0 1.1rem;
+    max-width: 60ch;
+  }
+  .kt-section p:last-child { margin-bottom: 0; }
+  .kt-section em {
+    font-style: italic;
+    color: var(--el-text);
+  }
+
+  .kt-principles {
     list-style: none;
     padding: 0;
+    margin: 0;
   }
-
-  .principles li {
-    padding: var(--space-sm) 0;
-    border-bottom: 1px solid var(--border-subtle);
-    color: var(--text-secondary);
+  .kt-principles li {
+    padding: 1.1rem 0;
+    border-bottom: 1px solid var(--el-rule);
+    font-size: clamp(1.05rem, 1rem + 0.25vw, 1.15rem);
+    line-height: 1.55;
+    color: var(--el-text-soft);
   }
-
-  .principles li:last-child {
-    border-bottom: none;
-  }
-
-  .principles strong {
-    color: var(--accent-warm);
-  }
-
-  .heritage-example {
-    margin-top: var(--space-md);
+  .kt-principles li:last-child { border-bottom: none; }
+  .kt-principles strong {
+    display: block;
+    font-weight: 500;
     font-style: italic;
-    color: var(--text-secondary);
-    border-left: 2px solid var(--accent-subtle);
-    padding-left: var(--space-md);
+    color: var(--el-text);
+    margin-bottom: 0.35rem;
   }
 
-  .heritage-closing {
-    margin-top: var(--space-sm);
-    color: var(--text-primary);
-    font-family: var(--font-display);
-    font-size: 1.1rem;
+  .kt-aside {
+    margin-top: clamp(1.5rem, 1rem + 1vw, 2.25rem) !important;
+    padding: 1rem 0 1rem 1.25rem;
+    border-left: 2px solid var(--el-accent);
+    font-style: italic;
+    color: var(--el-text-soft);
+    max-width: 60ch;
+  }
+  .kt-closing {
+    margin-top: clamp(1.25rem, 1rem + 0.75vw, 1.75rem) !important;
+    font-family: var(--el-body);
+    font-style: italic;
+    font-size: clamp(1.2rem, 1.05rem + 0.5vw, 1.4rem);
+    color: var(--el-text);
   }
 
-  .waitlist-form {
+  /* ---- Waitlist ---- */
+  .kt-section--waitlist { text-align: left; }
+  .kt-waitlist-blurb {
+    font-size: clamp(1.05rem, 1rem + 0.25vw, 1.2rem);
+    line-height: 1.55;
+    color: var(--el-text-soft);
+    margin: 0 0 1.5rem;
+    max-width: 50ch;
+  }
+  .kt-waitlist-label {
+    display: block;
+    font-family: var(--el-ui);
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--el-text-quiet);
+    margin-bottom: 0.55rem;
+  }
+  .kt-waitlist-form {
+    max-width: 480px;
+  }
+  .kt-waitlist-row {
     display: flex;
-    gap: var(--space-xs);
-    justify-content: center;
-    flex-wrap: wrap;
-    max-width: 400px;
-    margin-left: auto;
-    margin-right: auto;
+    gap: 0.5rem;
+    border-bottom: 1px solid var(--el-text);
+    padding-bottom: 0.5rem;
   }
-
-  .waitlist-form input[type="email"] {
+  .kt-waitlist-row input[type="email"] {
     flex: 1;
-    min-width: 200px;
-    padding: var(--space-sm) var(--space-md);
-    background: var(--bg-surface);
-    border: 1px solid var(--border-subtle);
-    border-radius: 4px;
-    color: var(--text-primary);
-    font-size: 0.95rem;
-    font-family: var(--font-body);
+    padding: 0.45rem 0;
+    background: transparent;
+    border: none;
+    font-family: var(--el-body);
+    font-size: clamp(1rem, 0.95rem + 0.2vw, 1.1rem);
+    color: var(--el-text);
+    min-width: 0;
+  }
+  .kt-waitlist-row input[type="email"]::placeholder {
+    color: var(--el-text-quiet);
+  }
+  .kt-waitlist-row input[type="email"]:focus { outline: none; }
+  .kt-waitlist-row button {
+    padding: 0.45rem 0;
+    background: transparent;
+    color: var(--el-accent);
+    border: none;
+    font-family: var(--el-ui);
+    font-weight: 500;
+    font-size: 13px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+  .kt-waitlist-row button:hover { color: var(--el-text); }
+  .kt-waitlist-row button:disabled { opacity: 0.6; cursor: wait; }
+
+  /* honeypot - visually + semantically hidden but submittable */
+  .kt-hp-field {
+    position: absolute;
+    left: -9999px;
+    top: -9999px;
+    opacity: 0;
+    height: 0;
+    width: 0;
+    z-index: -1;
   }
 
-  .waitlist-form input[type="email"]:focus {
-    outline: none;
-    border-color: var(--border-accent);
-  }
-
-  .waitlist-form input[type="email"]::placeholder {
-    color: var(--text-muted);
-  }
-
-  .waitlist-status {
-    font-size: 0.85rem;
-    margin-top: var(--space-sm);
+  .kt-waitlist-status {
+    font-family: var(--el-ui);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-top: 0.85rem;
     min-height: 1.2em;
+    color: var(--el-text-quiet);
+  }
+  .kt-waitlist-status.hidden { display: none; }
+  .kt-waitlist-status.success { color: var(--el-accent); }
+  .kt-waitlist-status.error { color: #c44; }
+
+  .kt-form-note {
+    font-family: var(--el-ui);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--el-text-quiet);
+    margin-top: 1.5rem;
   }
 
-  .waitlist-status.success {
-    color: var(--accent-warm);
-  }
-
-  .waitlist-status.error {
-    color: #e57373;
-  }
-
-  .form-note {
-    font-size: 0.8rem;
-    color: var(--text-muted);
-    margin-top: var(--space-sm);
+  /* Mobile fine-tune: keep the waitlist row inline; only wrap when truly cramped */
+  @media (max-width: 480px) {
+    .kt-waitlist-row {
+      flex-wrap: wrap;
+    }
+    .kt-waitlist-row button {
+      padding-top: 0.85rem;
+    }
   }
 </style>
