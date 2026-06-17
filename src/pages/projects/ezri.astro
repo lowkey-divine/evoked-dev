@@ -1,170 +1,261 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
+import ElevationLayout from '../../layouts/ElevationLayout.astro';
 ---
 
-<BaseLayout title="Ezri" description="A place to play with who you are. Not a guru — a mirror.">
-  <div class="hero">
-    <h1>Ezri</h1>
-    <p class="tagline">A place to play with who you are.</p>
-    <span class="badge mt-md">In Development</span>
-  </div>
+{/*
+  Voice register: intimate-domestic, reflection-not-optimization sub-register.
+  Sister-shape to /kitchen-table - the gentle, present-tense, acknowledgment-first
+  voice is intentional. Per evoked-dev/CLAUDE.md "Voice Discipline Scope" addendum:
+  em-dashes are permitted on intimate-domestic surfaces because the dash signals
+  breath, hesitation, gentleness - exactly what this surface does. The em-dashes
+  below (lines describing the mirror, the constellation, the candle flame) are
+  register-correct, not voice-tells failures.
+*/}
 
-  <section class="container">
-    <p class="lead">
+<ElevationLayout
+  title="Ezri"
+  description="A place to play with who you are. Not a guru — a mirror."
+>
+  <article class="ez">
+    <header class="ez-hero">
+      <p class="ez-eyebrow">Projects · In development</p>
+      <h1 class="ez-title">Ezri</h1>
+      <p class="ez-tagline">A place to play with who you are.</p>
+    </header>
+
+    <p class="ez-lede">
       You open the app. There's a quiet space.<br />
       Not a dashboard. Not a quiz. Just a constellation — yours.
     </p>
-  </section>
 
-  <section class="container">
-    <h2>Not a Guru. A Mirror.</h2>
-    <p>
-      Ezri does not teach you who you are. It reflects what's already there
-      and gives you room to look. The way a candle flame holds your attention — not
-      because it demands anything, but because something in you is ready to be still.
-    </p>
-    <p>
-      You are not deficient. You are not behind. You might be buried — under noise,
-      under expectations, under the weight of a world that measures everything and
-      reflects nothing. Ezri helps you dig out. And then it gets out of the way.
-    </p>
-  </section>
+    <section class="ez-section">
+      <h2>Not a guru. A mirror.</h2>
+      <p>
+        Ezri does not teach you who you are. It reflects what's already there and
+        gives you room to look. The way a candle flame holds your attention — not
+        because it demands anything, but because something in you is ready to be
+        still.
+      </p>
+      <p>
+        You are not deficient. You are not behind. You might be buried — under
+        noise, under expectations, under the weight of a world that measures
+        everything and reflects nothing. Ezri helps you dig out. And then it gets
+        out of the way.
+      </p>
+    </section>
 
-  <section class="container">
-    <h2>What Happens Inside</h2>
-    <ul class="features">
-      <li>A constellation forms from who you already are — no quiz, no assessment, no earning it</li>
-      <li>Archetypes show up as characters to talk to — curious, surprising, sometimes funny</li>
-      <li>Other people's inner worlds are out there, anonymous, waiting to shift your perspective</li>
-      <li>The deeper you go, the more it reveals — not because an algorithm decided, but because you came back</li>
-    </ul>
-  </section>
+    <section class="ez-section">
+      <h2>What happens inside</h2>
+      <ul class="ez-features">
+        <li>A constellation forms from who you already are — no quiz, no assessment, no earning it</li>
+        <li>Archetypes show up as characters to talk to — curious, surprising, sometimes funny</li>
+        <li>Other people's inner worlds are out there, anonymous, waiting to shift your perspective</li>
+        <li>The deeper you go, the more it reveals — not because an algorithm decided, but because you came back</li>
+      </ul>
+    </section>
 
-  <section class="container">
-    <blockquote>
-      The system reflects. It does not direct.
-    </blockquote>
-    <p>
-      No progress bars. No streaks. No growth percentages. No notifications
-      guilting you for being away. The constellation waits the way a clearing in
-      the woods waits. It was here before you arrived.
-    </p>
-  </section>
+    <section class="ez-section">
+      <blockquote class="ez-quote">The system reflects. It does not direct.</blockquote>
+      <p>
+        No progress bars. No streaks. No growth percentages. No notifications
+        guilting you for being away. The constellation waits the way a clearing in
+        the woods waits. It was here before you arrived.
+      </p>
+    </section>
 
-  <section class="container">
-    <h2>What It Is Not</h2>
-    <p>
-      Not a productivity tool. Not a mental health app. Not a social network.
-      Not a belief system. Not something you can fail at.
-    </p>
-    <p>
-      If you need therapy, you should get therapy — and Ezri will gently say so
-      if it senses you might. This is not a replacement for a person who can
-      look you in the eye.
-    </p>
-  </section>
+    <section class="ez-section">
+      <h2>What it is not</h2>
+      <p>
+        Not a productivity tool. Not a mental health app. Not a social network.
+        Not a belief system. Not something you can fail at.
+      </p>
+      <p>
+        If you need therapy, you should get therapy — and Ezri will gently say so
+        if it senses you might. This is not a replacement for a person who can
+        look you in the eye.
+      </p>
+    </section>
 
-  <section class="container">
-    <h2>What Matters Most</h2>
-    <p>
-      What you carry away from Ezri matters more than what happens inside it.
-      The conversation with your partner that goes differently. The moment at work
-      where you catch a pattern you only recognized because an archetype named it.
-      The night you look at the actual sky and feel connected to something bigger
-      than your own story.
-    </p>
-    <p>
-      Every session sends you back to your life. That's the point. This is a clearing
-      you visit so you can see more clearly when you leave.
-    </p>
-  </section>
+    <section class="ez-section">
+      <h2>What matters most</h2>
+      <p>
+        What you carry away from Ezri matters more than what happens inside it.
+        The conversation with your partner that goes differently. The moment at
+        work where you catch a pattern you only recognized because an archetype
+        named it. The night you look at the actual sky and feel connected to
+        something bigger than your own story.
+      </p>
+      <p>
+        Every session sends you back to your life. That's the point. This is a
+        clearing you visit so you can see more clearly when you leave.
+      </p>
+    </section>
 
-  <section class="container note-section">
-    <h2>A Note on Inner Work</h2>
-    <p>
-      Reflection can surface things that are tender, confusing, or difficult.
-      That's part of the process — but it's not something to face alone.
-    </p>
-    <p>
-      If at any point you feel overwhelmed, please pause.
-      <a href="/resources" class="text-link">Here are some places to find support</a>.
-    </p>
-    <p class="privacy-note">
-      Your inner world belongs to you. Ezri is designed so your data stays private,
-      unanalyzed, and never sold.
-    </p>
-  </section>
+    <section class="ez-section ez-note-section">
+      <h2>A note on inner work</h2>
+      <p>
+        Reflection can surface things that are tender, confusing, or difficult.
+        That's part of the process — but it's not something to face alone.
+      </p>
+      <p>
+        If at any point you feel overwhelmed, please pause.
+        <a class="ez-link" href="/resources">Here are some places to find support</a>.
+      </p>
+      <p class="ez-privacy-note">
+        Your inner world belongs to you. Ezri is designed so your data stays
+        private, unanalyzed, and never sold.
+      </p>
+    </section>
 
-  <section class="container text-center">
-    <p class="text-muted">
-      More soon.
-    </p>
-  </section>
-</BaseLayout>
+    <p class="ez-close">More soon.</p>
+  </article>
+</ElevationLayout>
 
 <style>
-  .lead {
-    font-family: var(--font-display);
-    font-size: 1.4rem;
-    color: var(--text-primary);
-    text-align: center;
-    line-height: 1.6;
+  /* Ezri - intimate-domestic register inside J chrome.
+     Sister-shape to /kitchen-table - sentence-case headings, serif italic
+     where presence helps, slower rhythm. Em-dashes preserved as breath. */
+
+  .ez {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: clamp(2rem, 1.5rem + 3vw, 5rem) var(--el-content-pad)
+            clamp(3rem, 2rem + 4vw, 6rem);
+    color: var(--el-text-deep);
+    font-family: var(--el-body);
   }
 
-  .features {
+  .ez-hero {
+    text-align: left;
+    margin-bottom: clamp(2.5rem, 2rem + 2.5vw, 4rem);
+  }
+  .ez-eyebrow {
+    font-family: var(--el-ui);
+    font-weight: 500;
+    font-size: 12px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--el-accent);
+    margin: 0 0 clamp(1.25rem, 1rem + 1vw, 2rem);
+  }
+  .ez-title {
+    font-family: var(--el-body);
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(2.5rem, 1.8rem + 3.5vw, 4.5rem);
+    line-height: 1.05;
+    letter-spacing: -0.005em;
+    margin: 0 0 1rem;
+    color: var(--el-text-deep);
+  }
+  .ez-tagline {
+    font-family: var(--el-body);
+    font-size: clamp(1.2rem, 1.05rem + 0.7vw, 1.55rem);
+    line-height: 1.4;
+    color: var(--el-text);
+    margin: 0;
+    max-width: 28ch;
+  }
+
+  .ez-lede {
+    font-family: var(--el-body);
+    font-style: italic;
+    font-size: clamp(1.15rem, 1.05rem + 0.5vw, 1.4rem);
+    line-height: 1.55;
+    color: var(--el-text-deep);
+    text-align: center;
+    margin: 0 0 clamp(2.5rem, 2rem + 2vw, 4rem);
+    max-width: 36ch;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .ez-section {
+    margin: clamp(2.5rem, 2rem + 2vw, 4rem) 0;
+    padding-top: clamp(1.75rem, 1.25rem + 1.5vw, 2.5rem);
+    border-top: 1px solid var(--el-rule);
+  }
+  .ez-section h2 {
+    font-family: var(--el-body);
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(1.4rem, 1.2rem + 0.9vw, 1.85rem);
+    line-height: 1.25;
+    color: var(--el-text-deep);
+    margin: 0 0 clamp(1.1rem, 0.9rem + 0.6vw, 1.5rem);
+  }
+  .ez-section p {
+    font-size: clamp(1.05rem, 1rem + 0.25vw, 1.2rem);
+    line-height: 1.7;
+    color: var(--el-text-deep);
+    margin: 0 0 1.1rem;
+    max-width: 60ch;
+  }
+  .ez-section p:last-child { margin-bottom: 0; }
+
+  .ez-features {
     list-style: none;
     padding: 0;
+    margin: 0;
   }
-
-  .features li {
-    padding: var(--space-sm) 0;
-    padding-left: var(--space-md);
-    border-left: 2px solid var(--accent-subtle);
-    color: var(--text-secondary);
-    margin-bottom: var(--space-xs);
+  .ez-features li {
+    padding: 1rem 0 1rem 1.25rem;
+    border-left: 2px solid var(--el-accent);
+    color: var(--el-text-deep);
+    font-size: clamp(1rem, 0.95rem + 0.25vw, 1.15rem);
+    line-height: 1.65;
+    margin-bottom: 0.6rem;
   }
+  .ez-features li:last-child { margin-bottom: 0; }
 
-  blockquote {
-    font-family: var(--font-display);
-    font-size: 1.5rem;
+  .ez-quote {
+    font-family: var(--el-body);
     font-style: italic;
-    color: var(--accent-warm);
-    border-left: 3px solid var(--accent-warm);
-    padding-left: var(--space-md);
-    margin: var(--space-md) 0;
+    font-size: clamp(1.35rem, 1.2rem + 0.7vw, 1.7rem);
+    line-height: 1.35;
+    color: var(--el-accent);
+    border-left: 3px solid var(--el-accent);
+    padding-left: 1.5rem;
+    margin: 0 0 1.5rem;
+    max-width: 30ch;
   }
 
-  .note-section {
-    background: var(--bg-elevated);
-    border-radius: 8px;
-    padding: var(--space-lg);
-    margin-top: var(--space-lg);
+  .ez-note-section {
+    background: color-mix(in oklab, var(--el-accent) 5%, transparent);
+    padding: clamp(1.5rem, 1.25rem + 1vw, 2.25rem);
+    border-top: none;
+    border: 1px solid var(--el-rule);
+  }
+  .ez-note-section h2 {
+    font-size: clamp(1.1rem, 1rem + 0.4vw, 1.3rem);
+  }
+  .ez-note-section p {
+    color: var(--el-text-soft);
   }
 
-  .note-section h2 {
-    font-size: 1.2rem;
-    margin-bottom: var(--space-md);
+  .ez-link {
+    color: var(--el-accent);
+    text-decoration: none;
+    border-bottom: 1px solid var(--el-rule);
+  }
+  .ez-link:hover {
+    color: var(--el-text-deep);
+    border-color: var(--el-accent);
   }
 
-  .note-section p {
-    color: var(--text-secondary);
-    margin-bottom: var(--space-sm);
-  }
-
-  .text-link {
-    color: var(--accent-warm);
-    text-decoration: underline;
-    text-underline-offset: 2px;
-  }
-
-  .text-link:hover {
-    color: var(--accent-glow);
-  }
-
-  .privacy-note {
+  .ez-privacy-note {
     font-style: italic;
-    color: var(--text-muted);
-    margin-top: var(--space-md);
-    font-size: 0.95rem;
+    font-size: clamp(0.9rem, 0.85rem + 0.2vw, 1rem) !important;
+    color: var(--el-text-quiet) !important;
+    margin-top: 1.25rem !important;
+  }
+
+  .ez-close {
+    text-align: center;
+    margin-top: clamp(3rem, 2rem + 2vw, 4rem);
+    font-family: var(--el-body);
+    font-style: italic;
+    font-size: clamp(1.1rem, 1rem + 0.4vw, 1.3rem);
+    color: var(--el-text-quiet);
   }
 </style>
