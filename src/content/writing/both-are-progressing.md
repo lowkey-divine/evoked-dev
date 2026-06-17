@@ -83,7 +83,7 @@ Item 30 (vulnerable populations receive additional protection) scored zero.  Thi
 
 Item 38 (data minimized to feature need) scored zero.  Facial geometry templates are not minimized data for a conversational AI feature.  They are collecting a scope substantially beyond what the product needs to function.
 
-Item 40 (data not sold or shared without explicit, informed consent) scored zero.  This is the second red-flag failure.  The previous policy required Anthropic to disclose user data to law enforcement when compelled by a court order.  The new policy commits Anthropic to disclosing user data when *"based on the information available to us, we have a good-faith belief that disclosure is reasonably necessary to (i) comply with applicable law, regulation or legal process."*  The threshold has moved from external (a judge) to internal (the company).  The user has not consented to disclosure on these terms.  Consent was given against the old threshold and has been moved without re-consent.
+Item 40 (data not sold or shared without explicit, informed consent) scored zero.  This is the second red-flag failure.  The previous policy permitted disclosure to law enforcement only in response to valid legal process such as a subpoena or warrant, or in a genuine emergency.  The new policy commits Anthropic to disclosing user data when *"based on the information available to us, we have a good-faith belief that disclosure is reasonably necessary to (i) comply with applicable law, regulation or legal process."*  The threshold has moved from external (formal legal process required) to internal (the company's interpretation that disclosure is legally necessary).  The user has not consented to disclosure on these terms.  Consent was given against the old threshold and has been moved without re-consent.
 
 Two red-flag-zero failures.  The pre-update Anthropic would have scored 80 or higher on these items.  The June 8 update caused the failure.  This is not a slow drift.  This is a specific policy change with a specific date and a specific direction.
 
@@ -91,7 +91,7 @@ Two red-flag-zero failures.  The pre-update Anthropic would have scored 80 or hi
 
 Both products score in the Progressing band.  Neither is adversarial.  Neither is monolithically extractive.  Both have substantive strengths in dignity, in invitation, in product-experience choices that show real care.
 
-And both fail the same three items.
+And both score below 2 on the same three items.
 
 Item 15.  Item 38.  Item 40.  Default opt-in instead of opt-out.  Vendor-need collection instead of user-feature need.  Internal disclosure threshold instead of external.
 
@@ -113,7 +113,7 @@ These are decisions.  They have been chosen otherwise.
 
 If you score the AI products you use against the same rubric, you will most likely find the same pattern.  The data sovereignty domain is where the failures cluster.  The dignity and invitation domains are where the strengths live.  This is not a coincidence.  The industry has gotten good at the parts of sovereignty that show up in marketing.  It has gotten worse in the parts that show up in policy.
 
-The rubric is published.  The scoring criteria are reproducible.  If you score a product and reach different conclusions, the disagreement is a conversation worth having.  We will publish our scoring methodology in full.  We will be measured by it ourselves.  We have been scored against the same rubric, and we have failed items as well.  The recursive question that yesterday's article identified applies to us as much as it does to the companies we scored.  Level 6 is not exempt from measurement.  It is the willingness to be measured.
+The rubric is published.  The scoring criteria are reproducible.  If you score a product and reach different conclusions, the disagreement is a conversation worth having.  We will publish our scoring methodology in full.  We will be measured by it ourselves.  We will publish our own score against the same rubric in time.  The recursive question that yesterday's article identified applies to us as much as it does to the companies we scored.  Level 6 is not exempt from measurement.  It is the willingness to be measured.
 
 Score your own AI stack.
 
