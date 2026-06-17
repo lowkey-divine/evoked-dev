@@ -17,7 +17,7 @@ The result is more specific than the story.  Both products land in the Progressi
 
 ### How we scored.
 
-The rubric is published.  It is at evoked.dev/products/sovereignty-assessment-toolkit.  Seven domains, 47 items, scored 0 (no), 1 (partial), 2 (yes), for a maximum of 94 points.  Score bands per the published rubric: 80-94 Sovereignty-Honoring, 60-79 Progressing, 40-59 Mixed, 20-39 Extractive, 0-19 Adversarial.
+The rubric is published.  It is offered as a $49 PDF at evoked.dev/products/sovereignty-toolkit, and an interactive version is freely available as a Claude skill (`/sovereignty-assess`) for any reader who wants to score products themselves.  Seven domains, 47 items, scored 0 (no), 1 (partial), 2 (yes), for a maximum of 94 points.  Score bands per the published rubric: 80-94 Sovereignty-Honoring, 60-79 Progressing, 40-59 Mixed, 20-39 Extractive, 0-19 Adversarial.
 
 The unit of assessment was each product as it is encountered by the consumer user, not the company overall.  For Google, this means the Search Services framework as rolled out from May 26, including the Search Services History and Personalized Recommendations settings, the inheritance pattern, and the media scope additions.  For Anthropic, this means the consumer privacy policy published on June 8 (effective July 8) as it governs Claude Free, Pro, and Max accounts.  Enterprise, Team, and API accounts are explicitly out of scope per Anthropic's own exemption language.
 
