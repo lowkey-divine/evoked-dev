@@ -1,5 +1,7 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
+import ElevationLayout from '../layouts/ElevationLayout.astro';
+import Hero from '../components/elevation/Hero.astro';
+import Section from '../components/elevation/Section.astro';
 
 const badges = [
   {
@@ -19,7 +21,7 @@ const badges = [
   {
     label: 'sovereignty',
     message: 'assessed',
-    product: '/products/sovereignty-assessment-toolkit',
+    product: '/products/sovereignty-toolkit',
     productName: 'Sovereignty Assessment Toolkit',
     description: 'This project has been audited against a 47-point sovereignty assessment across 7 domains.',
   },
@@ -56,26 +58,21 @@ function badgeMarkdown(label: string, message: string) {
 }
 ---
 
-<BaseLayout title="Governance Badges" description="Open standard README badges for AI agent governance. Signal your project's governance posture. Free to adopt.">
-  <div class="hero-compact">
-    <p class="discipline-badge">Open Standard</p>
-    <h1>Governance Badges</h1>
-    <p class="tagline">Signal your project's governance posture. Free to adopt.</p>
-  </div>
+<ElevationLayout
+  title="Governance Badges"
+  description="Open standard README badges for AI agent governance. Signal your project's governance posture. Free to adopt."
+>
+  <Hero
+    eyebrowParts={["Open standard"]}
+    headline="Governance badges."
+    metaphor={["Signal your project's governance posture."]}
+    sub="Free to adopt. Every repo signals its license, its build status, its test coverage. None of them signal whether the agents inside have been told what to refuse."
+  />
 
-  <section class="container">
-    <p class="lead">
-      Every repo signals its license. Its build status. Its test coverage.<br />
-      None of them signal whether the agents inside have been told what to refuse.
+  <Section marker="FIG · I" heading="The badges">
+    <p class="lede">
+      Add them to your README. Link back here. That's it.
     </p>
-    <p class="lead-sub">
-      These badges change that. Add them to your README. Link back here. That's it.
-    </p>
-  </section>
-
-  <section class="container">
-    <h2>The Badges</h2>
-
     {badges.map((badge) => (
       <div class="badge-card">
         <div class="badge-preview">
@@ -83,217 +80,215 @@ function badgeMarkdown(label: string, message: string) {
         </div>
         <p class="badge-description">{badge.description}</p>
         <div class="badge-snippet">
-          <p class="snippet-label">Markdown</p>
+          <p class="badge-snippet-label">Markdown</p>
           <code>{badgeMarkdown(badge.label, badge.message)}</code>
         </div>
         <p class="badge-link">
-          Framework: <a href={badge.product}>{badge.productName}</a> - $49
+          Framework:
+          <a href={badge.product}>{badge.productName}</a>
+          <span class="badge-link-price">$49</span>
         </p>
       </div>
     ))}
-  </section>
+  </Section>
 
-  <section class="container">
-    <h2>How It Works</h2>
-    <div class="steps">
-      <div class="step">
-        <span class="step-number">1</span>
-        <div>
+  <Section marker="FIG · II" heading="How it works">
+    <div class="badge-steps">
+      <div class="badge-step">
+        <span class="badge-step-number">1</span>
+        <div class="badge-step-body">
           <h3>Do the work</h3>
           <p>Write the governance framework. Define the refusal spec. Run the sovereignty audit. The badge means you did the work - not that you bought a sticker.</p>
         </div>
       </div>
-      <div class="step">
-        <span class="step-number">2</span>
-        <div>
+      <div class="badge-step">
+        <span class="badge-step-number">2</span>
+        <div class="badge-step-body">
           <h3>Add the badge</h3>
           <p>Copy the markdown. Paste it in your README. It links back here so anyone can understand what the badge means and adopt it themselves.</p>
         </div>
       </div>
-      <div class="step">
-        <span class="step-number">3</span>
-        <div>
+      <div class="badge-step">
+        <span class="badge-step-number">3</span>
+        <div class="badge-step-body">
           <h3>That's it</h3>
           <p>No verification process. No registry. No annual renewal fee. You're an adult. If you put the badge on your repo, we trust that you did the work.</p>
         </div>
       </div>
     </div>
-  </section>
+  </Section>
 
-  <section class="container">
-    <h2>Why This Exists</h2>
-    <p>
+  <Section marker="FIG · III" heading="Why this exists">
+    <p class="lede">
       "MIT Licensed" isn't just a badge. It's a signal - a one-line declaration that tells every developer who lands on your repo what they're working with. It compresses a legal framework into two words.
     </p>
-    <p>
+    <p class="badge-body">
       Agent governance doesn't have that yet. There's no shorthand for "we defined what our agents refuse to do." No signal for "we audited this system's sovereignty posture." You either read the whole repo or you don't know.
     </p>
-    <p>
+    <p class="badge-body">
       These badges are that shorthand. They compress a governance posture into a line in your README. They don't replace the work. They make the work visible.
     </p>
-  </section>
+  </Section>
 
-  <section class="container">
-    <h2>The Standard</h2>
-    <p>
+  <Section marker="FIG · IV" heading="The standard">
+    <p class="lede">
       This is an open standard. No trademark. No certification authority. No gatekeeping.
     </p>
-    <p>
-      The badges link to <a href="https://evoked.dev/badges">evoked.dev/badges</a> so anyone who sees one can understand what it means. The frameworks behind them are $49 each - or build your own. The badge is free regardless.
+    <p class="badge-body">
+      The badges link to
+      <a class="badge-inline-link" href="https://evoked.dev/badges">evoked.dev/badges</a>
+      so anyone who sees one can understand what it means. The frameworks behind them are $49 each - or build your own. The badge is free regardless.
     </p>
-    <p>
-      If you want to contribute to the standard - propose new badge categories, suggest improvements, challenge the framework - <a href="mailto:evokesupports@icloud.com">reach out</a>.
+    <p class="badge-body">
+      If you want to contribute to the standard - propose new badge categories, suggest improvements, challenge the framework -
+      <a class="badge-inline-link" href="mailto:evokesupports@icloud.com">reach out</a>.
     </p>
-  </section>
+  </Section>
 
-  <section class="container">
-    <p class="closing">
-      Make the governance visible.
-    </p>
-  </section>
-</BaseLayout>
+  <Section marker="NOTA · BENE" closing={true}>
+    <p class="badge-close">Make the governance visible.</p>
+  </Section>
+</ElevationLayout>
 
 <style>
-  .hero-compact {
-    text-align: center;
-    padding: var(--space-lg) var(--space-md);
-  }
-
-  .hero-compact h1 {
-    font-size: clamp(2.5rem, 8vw, 3.5rem);
-    margin-bottom: var(--space-xs);
-  }
-
-  .discipline-badge {
-    display: inline-block;
-    padding: 0.25rem 0.75rem;
-    background: var(--accent-subtle);
-    color: var(--accent-warm);
-    border-radius: 100px;
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    margin-bottom: var(--space-sm);
-  }
-
-  .tagline {
-    font-family: var(--font-display);
-    font-size: 1.3rem;
-    color: var(--text-secondary);
-    font-style: italic;
-  }
-
-  .lead {
-    font-family: var(--font-display);
-    font-size: 1.3rem;
-    color: var(--text-primary);
-    text-align: center;
-    line-height: 1.6;
-  }
-
-  .lead-sub {
-    text-align: center;
-    color: var(--text-secondary);
-    font-size: 1.05rem;
-    margin-top: var(--space-xs);
-  }
-
   .badge-card {
-    border-left: 3px solid var(--accent-warm);
-    padding: var(--space-md) var(--space-md) var(--space-md) var(--space-lg);
-    margin-bottom: var(--space-lg);
+    margin-top: clamp(1.5rem, 1.25rem + 1vw, 2.25rem);
+    padding: 1rem 0 1rem 1.5rem;
+    border-left: 2px solid var(--el-accent);
+    max-width: 68ch;
   }
-
+  .badge-card:first-of-type {
+    margin-top: clamp(1.25rem, 1rem + 1vw, 2rem);
+  }
   .badge-preview {
-    margin-bottom: var(--space-sm);
+    margin-bottom: 0.85rem;
   }
-
   .badge-preview img {
     display: block;
   }
-
   .badge-description {
-    color: var(--text-primary);
-    font-size: 1.05rem;
-    line-height: 1.5;
-    margin-bottom: var(--space-sm);
+    font-family: var(--el-body);
+    font-size: clamp(1rem, 0.95rem + 0.25vw, 1.1rem);
+    line-height: 1.6;
+    color: var(--el-text-deep);
+    margin: 0 0 1rem;
   }
-
   .badge-snippet {
-    background: var(--bg-surface);
-    border: 1px solid var(--border-subtle);
-    border-radius: 6px;
-    padding: var(--space-sm);
-    margin-bottom: var(--space-sm);
+    border: 1px solid var(--el-rule);
+    padding: 0.75rem 1rem;
+    margin: 0 0 1rem;
     overflow-x: auto;
   }
-
-  .snippet-label {
-    font-size: 0.75rem;
+  .badge-snippet-label {
+    font-family: var(--el-ui);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.22em;
     text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--text-muted);
-    margin-bottom: var(--space-xs);
+    color: var(--el-accent);
+    margin: 0 0 0.5rem;
   }
-
   .badge-snippet code {
-    font-size: 0.8rem;
-    color: var(--text-secondary);
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 0.85rem;
+    line-height: 1.5;
+    color: var(--el-text);
     word-break: break-all;
     white-space: pre-wrap;
   }
-
   .badge-link {
-    font-size: 0.9rem;
-    color: var(--text-muted);
-    margin-bottom: 0;
+    font-family: var(--el-body);
+    font-size: clamp(0.9rem, 0.85rem + 0.2vw, 1rem);
+    color: var(--el-text-soft);
+    margin: 0;
+  }
+  .badge-link a {
+    color: var(--el-accent);
+    text-decoration: none;
+    border-bottom: 1px solid var(--el-rule);
+  }
+  .badge-link a:hover {
+    color: var(--el-text-deep);
+    border-color: var(--el-accent);
+  }
+  .badge-link-price {
+    color: var(--el-text-quiet);
+    margin-left: 0.5rem;
   }
 
-  .steps {
-    margin-top: var(--space-md);
-  }
-
-  .step {
+  .badge-steps {
     display: flex;
-    gap: var(--space-md);
-    margin-bottom: var(--space-lg);
-    align-items: flex-start;
+    flex-direction: column;
+    margin-top: clamp(1.5rem, 1rem + 1.5vw, 2.5rem);
   }
-
-  .step-number {
-    font-family: var(--font-display);
-    font-size: 2rem;
-    color: var(--accent-warm);
-    line-height: 1;
+  .badge-step {
+    display: flex;
+    gap: clamp(1rem, 0.75rem + 1vw, 1.75rem);
+    padding: 1.25rem 0;
+    border-bottom: 1px solid var(--el-rule);
+  }
+  .badge-step:last-child { border-bottom: none; }
+  .badge-step-number {
+    font-family: var(--el-display);
+    font-size: clamp(1.75rem, 1.25rem + 1.5vw, 2.25rem);
+    font-weight: 400;
+    color: var(--el-accent);
+    line-height: 0.9;
     flex-shrink: 0;
     width: 2rem;
     text-align: center;
   }
-
-  .step h3 {
-    margin-top: 0;
-    font-size: 1.1rem;
+  .badge-step-body { flex: 1; min-width: 0; }
+  .badge-step-body h3 {
+    font-family: var(--el-display);
+    font-size: clamp(1rem, 0.95rem + 0.3vw, 1.15rem);
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--el-text-deep);
+    margin: 0 0 0.5rem;
+  }
+  .badge-step-body p {
+    font-family: var(--el-body);
+    font-size: clamp(0.95rem, 0.9rem + 0.2vw, 1.05rem);
+    line-height: 1.6;
+    color: var(--el-text-soft);
+    margin: 0;
+    max-width: 60ch;
+  }
+  @media (max-width: 480px) {
+    .badge-step { flex-direction: column; gap: 0.5rem; }
+    .badge-step-number { width: auto; text-align: left; }
   }
 
-  .step p {
-    font-size: 0.95rem;
-    margin-bottom: 0;
+  .badge-body {
+    font-family: var(--el-body);
+    font-size: clamp(1rem, 0.95rem + 0.25vw, 1.1rem);
+    line-height: 1.7;
+    color: var(--el-text-deep);
+    margin-top: 1.25rem;
+    max-width: 65ch;
+  }
+  .badge-inline-link {
+    color: var(--el-accent);
+    text-decoration: none;
+    border-bottom: 1px solid var(--el-rule);
+  }
+  .badge-inline-link:hover {
+    color: var(--el-text-deep);
+    border-color: var(--el-accent);
   }
 
-  .closing {
-    text-align: center;
+  .badge-close {
+    font-family: var(--el-body);
     font-style: italic;
-    color: var(--text-muted);
-    margin-top: var(--space-lg);
-  }
-
-  @media (max-width: 600px) {
-    .badge-snippet code {
-      font-size: 0.7rem;
-    }
-
-    .step {
-      gap: var(--space-sm);
-    }
+    font-size: clamp(1.15rem, 1.05rem + 0.5vw, 1.4rem);
+    line-height: 1.5;
+    color: var(--el-text-deep);
+    text-align: center;
+    margin: 0;
+    max-width: 36ch;
+    margin-left: auto;
+    margin-right: auto;
   }
 </style>
