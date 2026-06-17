@@ -1,0 +1,117 @@
+---
+title: "Both Are Progressing. Both Failed the Same Three Items."
+description: "We scored Google Search Services and Anthropic's June 8 privacy policy against the 47-point Sovereignty Assessment. Neither is adversarial. The failures concentrate in a layer worth naming."
+author: "Evoked"
+pubDate: 2026-06-18
+draft: true
+---
+
+Yesterday we said the scoring would be published as a follow-up piece today.  Here is the follow-up.
+
+We assessed Google's new Search Services framework and Anthropic's June 8 consumer privacy policy against the 47-point Sovereignty Assessment our publication uses.  We did this from publicly available material only.  We did this because the gap between naming an architecture and measuring it is the gap where critique becomes work.
+
+The result is more specific than the story.  Both products land in the Progressing band.  Both fail the same three items.  The architecture failure is more diagnosable, and more fixable, than the broader-market average would suggest.
+
+How we scored.
+
+The rubric is published.  It is at evoked.dev/products/sovereignty-assessment-toolkit.  Seven domains, 47 items, scored 0 (no), 1 (partial), 2 (yes), for a maximum of 94 points.  Score bands per the published rubric: 80-94 Sovereignty-Honoring, 60-79 Progressing, 40-59 Mixed, 20-39 Extractive, 0-19 Adversarial.
+
+The unit of assessment was each product as it is encountered by the consumer user, not the company overall.  For Google this means the Search Services framework as rolled out from May 26, including the Search Services History and Personalized Recommendations settings, the inheritance pattern, the media scope additions.  For Anthropic this means the consumer privacy policy published June 8 and effective July 8, as governing Claude Free, Pro, and Max accounts.  Enterprise, Team, and API accounts are explicitly out of scope per Anthropic's own exemption language.
+
+Every non-zero score below carries citation to publicly available material.  Disagree with a score?  Read the source, apply the rubric, reach your own conclusion.  The practice of looking honestly is the point of the assessment.  The numbers are how we make the practice visible.
+
+The Fable shutdown architecture from last week was not scored here.  It is the third signal that made the week visible, but it is a government-action-on-vendor event, not a product-design choice that the consumer encounters directly.  The rubric was built for the latter.  Scoring the former would require a different rubric we have not published, and we will not pretend otherwise.
+
+Google Search Services framework: 63 out of 94.  Progressing.
+
+The full domain breakdown:
+
+| Domain | Score | Max |
+|--------|-------|-----|
+| 1. Transparency | 9 | 16 |
+| 2. Autonomy | 10 | 16 |
+| 3. Invitation | 11 | 14 |
+| 4. Dignity | 13 | 16 |
+| 5. Silence | 8 | 12 |
+| 6. Data Sovereignty | 5 | 10 |
+| 7. AI and Voice | 7 | 10 |
+| **Total** | **63** | **94** |
+
+Where the framework holds up: Domain 3 (Invitation) and Domain 4 (Dignity).  Google's opt-out flow does not use confirmshaming.  The rollout banner does not manufacture urgency.  Search itself works without engineered friction.  Free tiers are functional, not crippled.  Error messages are clear.  These are real choices and they matter.
+
+Where the framework fails: three items score zero, and they cluster.
+
+Item 15 (default settings serve user interest) scored zero.  The new Search Services History setting inherits its default state from the user's prior Web and App Activity state.  The help page is explicit: *"If these were on, these new settings are also on."*  This means most users encounter the broader-scope collection on by default, without affirmative opt-in to the media scope that did not previously exist.  Inheritance of consent across architectures the user has not seen is not consent.  It is administrative continuity dressed as user choice.
+
+Item 36 (background data collection minimal and disclosed) scored zero.  The Search Services History scope now includes media: *"images, files, and audio/video recordings, such as Google Lens images, content you upload, and recordings from Search Live, Translate speaking practice, and voice searches."*  This is a scope expansion announced via help page banner, applied via inherited consent, without the re-consent step that a scope expansion of this magnitude would otherwise require.  "Minimal" is the opposite of what is happening.
+
+Item 38 (data minimized to feature need) scored zero.  The expanded collection is for AI model training.  The help page is clear about this.  The user's primary feature need (search results) does not require Google to store the audio of their voice searches or the images they uploaded to Lens.  The collection serves the vendor need, not the feature need.
+
+These three items are the architecture of the rollout.  They are not separate failures.  They are the same decision, applied three ways.
+
+On the red-flag items the rubric flags as outweighing overall score: Google did not fail any red-flag item outright.  But four red-flag items scored partial (Item 13 on account deletion, Item 27 on consent flow trickery, Item 30 on vulnerable-population protection, Item 40 on data sharing without consent).  The inheritance-of-consent architecture weakens four red-flag items simultaneously without failing any.  This is what the architecture is engineered to do.
+
+Anthropic consumer privacy policy: 68 out of 94.  Progressing.
+
+The full domain breakdown:
+
+| Domain | Score | Max |
+|--------|-------|-----|
+| 1. Transparency | 11 | 16 |
+| 2. Autonomy | 10 | 16 |
+| 3. Invitation | 11 | 14 |
+| 4. Dignity | 14 | 16 |
+| 5. Silence | 9 | 12 |
+| 6. Data Sovereignty | 4 | 10 |
+| 7. AI and Voice | 9 | 10 |
+| **Total** | **68** | **94** |
+
+Where the policy holds up: Domain 4 (Dignity) and Domain 7 (AI and Voice).  Claude's voice work, trained under Constitutional AI, scores meaningfully above the consumer-AI average for honesty about uncertainty, intentional voice, and reviewable interactions.  Account deletion works as the rubric requires: individual conversations deletable immediately from history, 30-day backend cleanup, the right to data portability disclosed in policy.  These are not industry-average choices.  They were made.
+
+Where the policy fails: four items score zero, and two of them are red-flag items.
+
+Item 15 (default settings serve user interest) scored zero.  The policy permits using user Inputs and Outputs to train Anthropic AI models unless the user opts out through account settings.  Even with opt-out, conversations flagged for safety review are still used.  Training-data use is opt-in by default.  The rubric requires defaults that serve the user, not defaults that the user must work to undo.
+
+Item 30 (vulnerable populations receive additional protection) scored zero.  This is a red-flag failure.  The June 8 policy introduces a new category called Verification Data, under which Anthropic may request that a user verify their age or identity by submitting government-issued ID documents, ID numbers, photographs of themselves, and facial geometry templates.  This shifts the burden of vulnerable-population protection onto the user.  It asks vulnerable users to prove their vulnerability to the company that is then permitted to collect facial geometry from them.  The rubric requires the opposite: vulnerable populations receive additional protection, not additional targeting.  Verification-as-protection is a category move in the wrong direction.
+
+Item 38 (data minimized to feature need) scored zero.  Facial geometry templates are not minimized data for a conversational AI feature.  They are collection scope substantially beyond what the product needs to function.
+
+Item 40 (data not sold or shared without explicit, informed consent) scored zero.  This is the second red-flag failure.  The previous policy committed Anthropic to disclosing user data to law enforcement when compelled by court order.  The new policy commits Anthropic to disclosing user data when, *"based on the information available to us, we have a good-faith belief that disclosure is reasonably necessary to (i) comply with applicable law, regulation or legal process."*  The threshold has moved from external (a judge) to internal (the company).  The user has not consented to disclosure on these terms.  Consent was given against the old threshold and has been moved without re-consent.
+
+Two red-flag-zero failures.  The pre-update Anthropic would have scored 80 or higher on these items.  The June 8 update is what created the failure.  This is not a slow drift.  This is a specific policy change with a specific date and a specific direction.
+
+What the pattern reveals.
+
+Both products score in the Progressing band.  Neither is adversarial.  Neither is monolithically extractive.  Both have substantive strengths in dignity, in invitation, in product-experience choices that show real care.
+
+And both fail the same three items.
+
+Item 15.  Item 38.  Item 40.  Default opt-in instead of opt-out.  Vendor-need collection instead of user-feature need.  Internal disclosure threshold instead of external.
+
+This is what we mean when we say architecture, not incidents.  Two different companies, two different products, two different domains, one shared failure pattern.  The failure pattern is not engineering complexity or regulatory burden.  The failure pattern is a decision-set the industry has converged on because the cost of adjusting the user is currently lower than the cost of honoring the user.
+
+The three changes that would shift both products toward Sovereignty-Honoring are not technically complex.  They are not legally risky.  They are not regulatory burden.
+
+One: defaults that require affirmative opt-in to scope changes, not inheritance from prior settings the user agreed to under different terms.
+
+Two: collection scope minimized to what the user-facing feature actually needs to function, not expanded to serve vendor training pipelines.
+
+Three: external thresholds for third-party disclosure (court order, or equivalent independent process), not internal good-faith determinations.
+
+These are decisions.  They have been chosen otherwise.
+
+What this means for the reader.
+
+If you score the AI products you use against the same rubric, you will most likely find the same pattern.  The data sovereignty domain is where the failures cluster.  The dignity and invitation domains are where the strengths live.  This is not a coincidence.  The industry has gotten good at the parts of sovereignty that show up in marketing.  It has gotten worse at the parts that show up in policy.
+
+The rubric is published.  The scoring criteria are reproducible.  If you score a product and reach different conclusions, the disagreement is the conversation worth having.  We will publish our scoring methodology in full.  We will be measured by it ourselves.  We have been scored against the same rubric and we have failed items too.  The recursive question Yesterday's article named applies to us as much as to the companies we scored.  Level 6 is not exemption from measurement.  It is the willingness to be measured.
+
+Score your own AI stack.  Score the products your organization has shipped.  Score the vendors you are evaluating.  The seven domains exist.  The 47 items exist.  The bands exist.  The practice exists.  All that is missing is your willingness to look.
+
+The architecture of the consumer AI industry in June 2026 is more diagnosable than it appears from the outside.  Three items.  Two companies.  One week.  One pattern that anyone with the rubric in hand can verify, reproduce, and act on.
+
+The variable being adjusted is the user.  The instrument of measurement is now in your hands.
+
+
+
+From the Evoked specifications working group, in the practice of looking honestly.
