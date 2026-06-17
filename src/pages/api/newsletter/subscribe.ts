@@ -9,8 +9,9 @@ import { verifyFormToken } from '../../../lib/api/form-token';
  * ended Evoked's account access. Same endpoint URL preserved so existing
  * callers (writing/, kitchen-table/, who/, SiteFooter) keep working.
  *
- * Uses beehiiv API V1 (matches captain's existing key). V1 is maintained
- * but deprecated by beehiiv; migrate to V2 when convenient.
+ * Uses beehiiv API V2. (Switched from V1 to V2 on 2026-06-17 after
+ * beehiiv deprecated V1 - V1 endpoint now returns 404. BEEHIIV_API_KEY
+ * in Vercel must be the V2 key.)
  *
  * Required env vars:
  *   BEEHIIV_API_KEY        - bearer token from beehiiv account settings (V1)
@@ -85,7 +86,7 @@ export const POST: APIRoute = async ({ request }) => {
 
     const normalizedEmail = email.toLowerCase().trim();
 
-    const res = await fetch(`https://api.beehiiv.com/v1/publications/${publicationId}/subscriptions`, {
+    const res = await fetch(`https://api.beehiiv.com/v2/publications/${publicationId}/subscriptions`, {
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${apiKey}`,
