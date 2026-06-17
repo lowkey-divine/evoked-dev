@@ -131,6 +131,17 @@ const formattedDate = post.data.pubDate.toLocaleDateString('en-US', {
           </form>
           <p id="newsletter-status" class="el-newsletter-status hidden" aria-live="polite"></p>
         </div>
+
+        <div class="el-article-share">
+          <p class="el-article-share-label">Share this with someone</p>
+          <a
+            class="el-article-share-link"
+            href={`mailto:?subject=${encodeURIComponent(post.data.title)}&body=${encodeURIComponent(
+              `Thought you might want to read this:\n\n${post.data.title}\n${post.data.description}\n\nhttps://evoked.dev/writing/${post.slug}\n\nIf you want to follow along, you can subscribe at the bottom of the page.`
+            )}`}
+          >Send via email &rarr;</a>
+        </div>
+
         <a href="/writing" class="el-back-link">&larr; Back to Writing</a>
       </footer>
     </article>
@@ -519,6 +530,38 @@ const formattedDate = post.data.pubDate.toLocaleDateString('en-US', {
   .el-newsletter-status.hidden { display: none; }
   .el-newsletter-status.success { color: var(--el-accent); }
   .el-newsletter-status.error { color: #c44; }
+
+  /* ---- Share-via-email block (between newsletter CTA and back link) ---- */
+  .el-article-share {
+    margin: clamp(2rem, 1.5rem + 1.5vw, 3rem) 0 clamp(1.75rem, 1.25rem + 1.25vw, 2.5rem);
+    padding-top: clamp(1.5rem, 1rem + 1vw, 2.25rem);
+    border-top: 1px solid var(--el-rule);
+  }
+  .el-article-share-label {
+    font-family: var(--el-ui);
+    font-weight: 500;
+    font-size: 12px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--el-accent);
+    margin: 0 0 0.75rem;
+  }
+  .el-article-share-link {
+    font-family: var(--el-ui);
+    font-weight: 500;
+    font-size: 12px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--el-text-soft);
+    text-decoration: none;
+    border-bottom: 1px solid var(--el-rule);
+    padding-bottom: 0.25rem;
+    transition: color 0.2s ease, border-color 0.2s ease;
+  }
+  .el-article-share-link:hover {
+    color: var(--el-accent);
+    border-color: var(--el-accent);
+  }
 
   .el-back-link {
     font-family: var(--el-ui);
