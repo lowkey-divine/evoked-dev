@@ -46,13 +46,13 @@ const {
       label: "Engage",
       href: "/engage",
       children: [
+        { href: "/writing",       label: "Writing" },
         { href: "/build-with-us", label: "Build with us" },
         { href: "/coaching",      label: "Coaching" },
         { href: "/consulting",    label: "Consulting" },
         { href: "/engage",        label: "Governance Audits" },
       ],
     },
-    { label: "Writing", href: "/writing" },
   ],
 } = Astro.props;
 ---
@@ -108,12 +108,12 @@ const {
     }
     nav.site {
       width: 100%;
-      gap: 0.85rem;
+      gap: 1.25rem;
       flex-wrap: wrap;
       row-gap: 0.6rem;
-      justify-content: flex-start;
+      justify-content: space-between;
     }
-    .moon-glyph { margin-left: 0.5rem; }
+    .moon-glyph { margin-left: 0; }
   }
   .brand {
     display: flex;
