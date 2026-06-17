@@ -15,10 +15,23 @@ if (import.meta.env.DEV) {
 
 export function validateOrigin(request: Request, requireOrigin: boolean = false): Response | null {
   const origin = request.headers.get('origin');
+  const referer = request.headers.get('referer');
 
-  // When requireOrigin is true, block requests without an Origin header.
-  // This prevents direct curl/Postman calls to form endpoints.
-  if (!origin) {
+  // Origin header is the strict signal, but Chrome (and other browsers) does
+  // NOT send Origin for same-origin GET requests like /api/newsletter/challenge.
+  // Fall back to the origin of the Referer URL when Origin is absent so legit
+  // browser fetches aren't blocked. Direct curl/Postman with neither still
+  // gets rejected.
+  let effectiveOrigin = origin;
+  if (!effectiveOrigin && referer) {
+    try {
+      effectiveOrigin = new URL(referer).origin;
+    } catch {
+      // Malformed Referer - leave effectiveOrigin null so the next branch blocks
+    }
+  }
+
+  if (!effectiveOrigin) {
     if (requireOrigin) {
       return new Response(JSON.stringify({ error: 'Forbidden' }), {
         status: 403,
@@ -28,7 +41,7 @@ export function validateOrigin(request: Request, requireOrigin: boolean = false)
     return null;
   }
 
-  if (!ALLOWED_ORIGINS.includes(origin)) {
+  if (!ALLOWED_ORIGINS.includes(effectiveOrigin)) {
     return new Response(JSON.stringify({ error: 'Forbidden' }), {
       status: 403,
       headers: { 'Content-Type': 'application/json' },
