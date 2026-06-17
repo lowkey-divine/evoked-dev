@@ -1,0 +1,240 @@
+---
+/**
+ * LegalLayout - shared chrome for long-form legal / policy documents.
+ *
+ * Used by:
+ *   /pledge
+ *   /legal/privacy
+ *   /legal/terms
+ *   /kitchen-table/privacy   (intimate-domestic register - em-dashes preserved)
+ *   /kitchen-table/terms     (intimate-domestic register - em-dashes preserved)
+ *
+ * Wraps each doc in ElevationLayout with:
+ *   - Hero: eyebrow (defaults to "Evoked") · h1 title · italic productLine ·
+ *     brass small-caps version stamp
+ *   - .legal-body reading container with article-like typography for
+ *     section headings, paragraphs, lists, blockquotes, and inline emphasis
+ *
+ * The body lives in the default <slot> - pages supply their own structured
+ * content wrapped in .legal-section divs (existing convention from BaseLayout
+ * era preserved for visual rhythm).
+ */
+import ElevationLayout from './ElevationLayout.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  /** Eyebrow line above the h1. Defaults to "Evoked". */
+  eyebrow?: string;
+  /** Italic sub-tagline under the h1, e.g., "Sovereignty Audit" or "The Kitchen Table". */
+  productLine?: string;
+  /** Brass small-caps version stamp under the title. */
+  version?: string;
+  /** Hide the FloatingChat on legal surfaces (default true). */
+  hideFloatingChat?: boolean;
+}
+
+const {
+  title,
+  description,
+  eyebrow = 'Evoked',
+  productLine,
+  version,
+  hideFloatingChat = true,
+} = Astro.props;
+---
+
+<ElevationLayout
+  title={title}
+  description={description}
+  hideFloatingChat={hideFloatingChat}
+>
+  <article class="legal">
+    <header class="legal-hero">
+      <p class="legal-eyebrow">{eyebrow}</p>
+      <h1 class="legal-title">{title}</h1>
+      {productLine && <p class="legal-productline">{productLine}</p>}
+      {version && <p class="legal-version">{version}</p>}
+    </header>
+
+    <div class="legal-body">
+      <slot />
+    </div>
+  </article>
+</ElevationLayout>
+
+<style>
+  .legal {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: clamp(2rem, 1.5rem + 2vw, 4rem) var(--el-content-pad)
+            clamp(3rem, 2rem + 3vw, 5rem);
+  }
+
+  /* ---- Legal header ---- */
+  .legal-hero {
+    margin-bottom: clamp(2.5rem, 2rem + 2vw, 4rem);
+    padding-bottom: clamp(1.5rem, 1rem + 1vw, 2.25rem);
+    border-bottom: 1px solid var(--el-rule);
+  }
+  .legal-eyebrow {
+    font-family: var(--el-ui);
+    font-weight: 500;
+    font-size: 12px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--el-accent);
+    margin: 0 0 clamp(1rem, 0.85rem + 0.75vw, 1.5rem);
+  }
+  .legal-title {
+    font-family: var(--el-display);
+    font-size: clamp(2rem, 1.5rem + 2.5vw, 3.25rem);
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: 0.005em;
+    text-transform: uppercase;
+    color: var(--el-text-deep);
+    margin: 0 0 0.85rem;
+    overflow-wrap: break-word;
+  }
+  .legal-productline {
+    font-family: var(--el-body);
+    font-style: italic;
+    font-size: clamp(1.05rem, 1rem + 0.4vw, 1.3rem);
+    line-height: 1.4;
+    color: var(--el-text-soft);
+    margin: 0 0 1.25rem;
+  }
+  .legal-version {
+    font-family: var(--el-ui);
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--el-text-quiet);
+    margin: 0;
+  }
+
+  /* ---- Legal body (rendering for slot content) ---- */
+  .legal-body {
+    font-family: var(--el-body);
+    font-size: clamp(1.05rem, 1rem + 0.3vw, 1.15rem);
+    line-height: 1.75;
+    color: var(--el-text-deep);
+  }
+  .legal-body :global(.legal-section) {
+    margin: clamp(2.5rem, 2rem + 1.5vw, 3.75rem) 0;
+    padding-top: clamp(1.75rem, 1.25rem + 1.5vw, 2.5rem);
+    border-top: 1px solid var(--el-rule);
+  }
+  .legal-body :global(.legal-section:first-child) {
+    margin-top: 0;
+    padding-top: 0;
+    border-top: none;
+  }
+  .legal-body :global(.legal-section h2) {
+    font-family: var(--el-display);
+    font-style: normal;
+    font-size: clamp(1.5rem, 1.25rem + 1vw, 2rem);
+    font-weight: 400;
+    line-height: 1.2;
+    letter-spacing: -0.005em;
+    color: var(--el-text-deep);
+    margin: 0 0 clamp(1rem, 0.85rem + 0.75vw, 1.5rem);
+    text-transform: none;
+  }
+  .legal-body :global(.legal-section h3) {
+    font-family: var(--el-display);
+    font-style: italic;
+    font-size: clamp(1.15rem, 1.05rem + 0.5vw, 1.4rem);
+    font-weight: 400;
+    line-height: 1.25;
+    color: var(--el-text-deep);
+    margin: clamp(1.75rem, 1.25rem + 1vw, 2.25rem) 0 0.75rem;
+    text-transform: none;
+  }
+  .legal-body :global(p) {
+    margin: 0 0 1.25rem;
+    color: var(--el-text-deep);
+    max-width: 68ch;
+  }
+  .legal-body :global(p:last-child) { margin-bottom: 0; }
+  .legal-body :global(.lead) {
+    font-size: clamp(1.15rem, 1.05rem + 0.4vw, 1.3rem);
+    line-height: 1.6;
+    color: var(--el-text-deep);
+    font-style: italic;
+    max-width: 60ch;
+  }
+  .legal-body :global(ul),
+  .legal-body :global(ol) {
+    margin: 0 0 1.25rem;
+    padding-left: 1.5rem;
+    max-width: 68ch;
+  }
+  .legal-body :global(li) {
+    margin-bottom: 0.5rem;
+    color: var(--el-text-deep);
+    line-height: 1.65;
+  }
+  .legal-body :global(blockquote) {
+    margin: clamp(1.25rem, 1rem + 0.75vw, 1.75rem) 0;
+    padding: 0.5rem 0 0.5rem 1.5rem;
+    border-left: 2px solid var(--el-accent);
+    font-style: italic;
+    color: var(--el-text-soft);
+    max-width: 60ch;
+  }
+  .legal-body :global(a) {
+    color: var(--el-accent);
+    text-decoration: none;
+    border-bottom: 1px solid var(--el-rule);
+    transition: border-color 0.2s ease, color 0.2s ease;
+  }
+  .legal-body :global(a:hover) {
+    border-color: var(--el-accent);
+    color: var(--el-text-deep);
+  }
+  .legal-body :global(strong) {
+    font-weight: 500;
+    color: var(--el-text-deep);
+  }
+  .legal-body :global(em) {
+    font-style: italic;
+  }
+  .legal-body :global(hr) {
+    border: none;
+    height: 1px;
+    background: var(--el-rule);
+    margin: clamp(2rem, 1.5rem + 1.5vw, 3rem) 0;
+    max-width: 60ch;
+  }
+  .legal-body :global(.version-note) {
+    font-family: var(--el-ui);
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--el-text-quiet);
+    margin: 0 0 1.5rem;
+  }
+
+  /* Closing block + signature (used on /legal/privacy + /legal/terms) */
+  .legal-body :global(.legal-close) {
+    margin-top: clamp(2.5rem, 2rem + 1.5vw, 3.5rem);
+    padding-top: clamp(1.5rem, 1rem + 1vw, 2.25rem);
+    border-top: 1px solid var(--el-rule);
+    text-align: center;
+  }
+  .legal-body :global(.legal-close p) {
+    color: var(--el-text-soft);
+    margin-bottom: 0.85rem;
+    max-width: 60ch;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .legal-body :global(.signature) {
+    margin-top: clamp(1.25rem, 1rem + 0.75vw, 1.75rem) !important;
+    font-style: italic;
+    color: var(--el-text-deep);
+    font-size: clamp(1rem, 0.95rem + 0.25vw, 1.1rem);
+  }
+</style>
