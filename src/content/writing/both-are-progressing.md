@@ -73,7 +73,7 @@ The full domain breakdown:
 
 Where the policy holds up: Domain 4 (Dignity) and Domain 7 (AI and Voice).
 
-Claude's voice work, trained under Constitutional AI, scores meaningfully above the consumer-AI average for honesty about uncertainty, intentional voice, and reviewable interactions.  Account deletion works as the rubric requires: individual conversations are deletable immediately from history, there is a 30-day backend cleanup, and the right to data portability is disclosed in the policy.  These are not industry-average choices.  They were made.
+Claude's voice work, trained under Constitutional AI (Anthropic's framework for training models to honor declared values), scores meaningfully above the consumer-AI average for honesty about uncertainty, intentional voice, and reviewable interactions.  Account deletion works as the rubric requires: individual conversations are deletable immediately from history, there is a 30-day backend cleanup, and the right to data portability is disclosed in the policy.  These are not industry-average choices.  They were made.
 
 Where the policy fails: four items score zero, and two of them are red-flag items.
 
@@ -91,9 +91,9 @@ Two red-flag-zero failures.  The pre-update Anthropic would have scored 80 or hi
 
 Both products score in the Progressing band.  Neither is adversarial.  Neither is monolithically extractive.  Both have substantive strengths in dignity, in invitation, in product-experience choices that show real care.
 
-And both score below 2 on the same three items.
+And both score below 2 on the same four items.
 
-Item 15.  Item 38.  Item 40.  Default opt-in instead of opt-out.  Vendor-need collection instead of user-feature need.  Internal disclosure threshold instead of external.
+Item 15.  Item 36.  Item 38.  Item 40.  Default opt-in instead of opt-out.  Data collection scope expanded beyond what users agreed to and beyond what the feature needs.  Internal disclosure threshold instead of external.
 
 This is what we mean by architecture, not incidents.
 
@@ -119,7 +119,7 @@ Score your own AI stack.
 
 Score the products your organization has shipped.  Score the vendors you are evaluating.  The seven domains exist.  The 47 items exist.  The bands exist.  The practice exists.  All that is missing is your willingness to look.
 
-The architecture of the consumer AI industry in June 2026 is more diagnosable than it appears from the outside.  Three items.  Two companies.  One week.  One pattern that anyone with the rubric in hand can verify, reproduce, and act on.
+The architecture of the consumer AI industry in June 2026 is more diagnosable than it appears from the outside.  Four items.  Two companies.  One week.  One pattern that anyone with the rubric in hand can verify, reproduce, and act on.
 
 The variable being adjusted is the user.  The instrument of measurement is now in your hands.
 
