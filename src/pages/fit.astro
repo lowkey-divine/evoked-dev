@@ -1,5 +1,7 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
+import ElevationLayout from '../layouts/ElevationLayout.astro';
+import Hero from '../components/elevation/Hero.astro';
+import Section from '../components/elevation/Section.astro';
 import FitAssessment from '../components/ai/FitAssessment.astro';
 import { webApplicationJsonLd } from '../lib/structured-data';
 
@@ -12,21 +14,32 @@ const fitJsonLd = webApplicationJsonLd(
 );
 ---
 
-<BaseLayout title="Fit Assessment" description="See if your project is a good fit for my consulting services." structuredData={fitJsonLd}>
-  <div class="hero-small">
-    <h1>Is this a good fit?</h1>
-    <p class="tagline">Honest assessment of project alignment.</p>
-    <p class="ai-disclosure">This assessment uses Claude AI by <a href="https://www.anthropic.com" target="_blank" rel="noopener">Anthropic</a> to evaluate project fit. Your description is sent to their API. Nothing is stored.</p>
-  </div>
+<ElevationLayout
+  title="Fit Assessment"
+  description="See if your project is a good fit for my consulting services."
+  structuredData={fitJsonLd}
+>
+  <Hero
+    eyebrowParts={["Engage", "Fit assessment"]}
+    headline="Is this a good fit?"
+    metaphor={["Honest assessment of project alignment."]}
+  />
 
-  <section class="container">
+  <section class="fit-disclosure">
+    <p>
+      This assessment uses Claude AI by
+      <a href="https://www.anthropic.com" target="_blank" rel="noopener">Anthropic</a>
+      to evaluate project fit. Your description is sent to their API. Nothing is stored.
+    </p>
+  </section>
+
+  <section class="fit-assessment-wrap">
     <FitAssessment />
   </section>
 
-  <section class="container explanation">
-    <h2>What I look for</h2>
+  <Section marker="FIG · I" heading="What I look for">
     <div class="fit-grid">
-      <div class="fit-column good">
+      <div class="fit-column fit-strong">
         <h3>Strong fit</h3>
         <ul>
           <li>Teams deploying AI agents who need context, intent, or specification engineering</li>
@@ -36,7 +49,7 @@ const fitJsonLd = webApplicationJsonLd(
           <li>Companies wanting sovereignty-honoring design</li>
         </ul>
       </div>
-      <div class="fit-column moderate">
+      <div class="fit-column fit-moderate">
         <h3>Moderate fit</h3>
         <ul>
           <li>Teams strong at prompt craft but unsure what comes next</li>
@@ -44,7 +57,7 @@ const fitJsonLd = webApplicationJsonLd(
           <li>Security audits and code review</li>
         </ul>
       </div>
-      <div class="fit-column limited">
+      <div class="fit-column fit-limited">
         <h3>Limited fit</h3>
         <ul>
           <li>Growth hacking or engagement optimization</li>
@@ -54,79 +67,99 @@ const fitJsonLd = webApplicationJsonLd(
         </ul>
       </div>
     </div>
-  </section>
+  </Section>
 
-  <section class="container text-center">
-    <p>Not sure? <a href="/ask">Ask me directly</a> or <a href="mailto:passionevoked@icloud.com?subject=Consulting Inquiry">reach out</a>.</p>
-  </section>
-</BaseLayout>
+  <Section marker="NOTA · BENE" heading="Not sure?" closing={true}>
+    <p class="lede">
+      <a class="fit-inline-link" href="/ask">Ask me directly</a>
+      or
+      <a class="fit-inline-link" href="mailto:passionevoked@icloud.com?subject=Consulting Inquiry">reach out</a>.
+    </p>
+  </Section>
+</ElevationLayout>
 
 <style>
-  .hero-small {
-    text-align: center;
-    padding: var(--space-lg) var(--space-md);
-  }
+  /* /fit - J register chrome for the assessment surface.
+     Founder-public register. The FitAssessment component keeps
+     its own internal styling; this stylesheet only handles the
+     outer chrome (disclosure, wrap, fit-grid columns, inline
+     links in the close). */
 
-  .hero-small h1 {
-    font-size: clamp(2rem, 5vw, 3rem);
-    margin-bottom: var(--space-xs);
+  .fit-disclosure {
+    max-width: var(--el-content-max);
+    margin: 0 auto;
+    padding: 0 var(--el-content-pad) clamp(1rem, 0.75rem + 1vw, 1.5rem);
   }
-
-  .hero-small .tagline {
-    font-family: var(--font-display);
-    font-size: 1.1rem;
-    color: var(--text-secondary);
-    font-style: italic;
+  .fit-disclosure p {
+    font-family: var(--el-ui);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--el-text-quiet);
+    line-height: 1.6;
+    max-width: 70ch;
+    margin: 0;
   }
-
-  .ai-disclosure {
-    font-size: 0.8rem;
-    color: var(--text-muted);
-    margin-top: var(--space-sm);
-  }
-
-  .ai-disclosure a {
-    color: var(--text-muted);
+  .fit-disclosure a {
+    color: var(--el-text-soft);
     text-decoration: underline;
   }
+  .fit-disclosure a:hover { color: var(--el-accent); }
 
-  .ai-disclosure a:hover {
-    color: var(--accent-warm);
+  .fit-assessment-wrap {
+    max-width: var(--el-content-max);
+    margin: 0 auto;
+    padding: 0 var(--el-content-pad) clamp(2rem, 1.5rem + 2vw, 3.5rem);
   }
 
-  .explanation {
-    margin-top: var(--space-lg);
-  }
-
+  /* ---- FIG I: three-column fit grid ---- */
   .fit-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: var(--space-md);
-    margin-top: var(--space-md);
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: clamp(1rem, 0.75rem + 1vw, 1.75rem);
+    margin-top: clamp(1.25rem, 1rem + 1vw, 2rem);
   }
-
+  .fit-column {
+    padding: clamp(1.25rem, 1rem + 0.75vw, 1.75rem);
+    border: 1px solid var(--el-rule);
+  }
   .fit-column h3 {
-    font-size: 1rem;
-    margin-bottom: var(--space-sm);
+    font-family: var(--el-display);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    margin: 0 0 1rem;
   }
-
-  .fit-column.good h3 { color: #22c55e; }
-  .fit-column.moderate h3 { color: var(--accent-warm); }
-  .fit-column.limited h3 { color: #eab308; }
+  /* Semantic signal preserved (strong / moderate / limited) but
+     toned to harmonize with the parchment palette. */
+  .fit-column.fit-strong   h3 { color: #5a8a4a; }
+  .fit-column.fit-moderate h3 { color: var(--el-accent); }
+  .fit-column.fit-limited  h3 { color: #b89a3a; }
 
   .fit-column ul {
     list-style: none;
     padding: 0;
+    margin: 0;
   }
-
   .fit-column li {
-    padding: var(--space-xs) 0;
-    font-size: 0.9rem;
-    color: var(--text-secondary);
-    border-bottom: 1px solid var(--border-subtle);
+    padding: 0.75rem 0;
+    font-family: var(--el-body);
+    font-size: clamp(0.9rem, 0.85rem + 0.2vw, 1rem);
+    line-height: 1.5;
+    color: var(--el-text-soft);
+    border-bottom: 1px solid var(--el-rule);
   }
+  .fit-column li:last-child { border-bottom: none; }
 
-  .fit-column li:last-child {
-    border-bottom: none;
+  /* ---- NOTA BENE close: inline routing links ---- */
+  .fit-inline-link {
+    color: var(--el-accent);
+    text-decoration: none;
+    border-bottom: 1px solid var(--el-accent);
+  }
+  .fit-inline-link:hover {
+    color: var(--el-text);
+    border-color: var(--el-text);
   }
 </style>
