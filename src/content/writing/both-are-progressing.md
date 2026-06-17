@@ -113,7 +113,7 @@ These are decisions.  They have been chosen otherwise.
 
 If you score the AI products you use against the same rubric, you will most likely find the same pattern.  The data sovereignty domain is where the failures cluster.  The dignity and invitation domains are where the strengths live.  This is not a coincidence.  The industry has gotten good at the parts of sovereignty that show up in marketing.  It has gotten worse in the parts that show up in policy.
 
-The rubric is published.  The scoring criteria are reproducible.  If you score a product and reach different conclusions, the disagreement is a conversation worth having.  We will publish our scoring methodology in full.  We will be measured by it ourselves.  We will publish our own score against the same rubric in time.  The recursive question that yesterday's article identified applies to us as much as it does to the companies we scored.  Level 6 is not exempt from measurement.  It is the willingness to be measured.
+The rubric is published.  The scoring criteria are reproducible.  If you score a product and reach different conclusions, the disagreement is a conversation worth having.  We will publish our scoring methodology in full.  We will be measured by it ourselves.  Next week we will publish a score of the Sovereignty Assessment Toolkit itself, including the Claude skill version, which inherits the Anthropic consumer infrastructure we scored today.  The instrument of measurement applied to itself.  The recursive question that yesterday's article identified applies to us as much as it does to the companies we scored.  Level 6 is not exempt from measurement.  It is the willingness to be measured.
 
 Score your own AI stack.
 
