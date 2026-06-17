@@ -1,177 +1,237 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
+import ElevationLayout from '../layouts/ElevationLayout.astro';
+import Hero from '../components/elevation/Hero.astro';
+import Section from '../components/elevation/Section.astro';
 import ChatWidget from '../components/ai/ChatWidget.astro';
 
 export const prerender = false;
 ---
 
-<BaseLayout title="Ask" description="Have questions about my work? Ask me anything.">
-  <div class="hero-small">
-    <h1>Ask me anything.</h1>
-    <p class="tagline">Questions about services, projects, philosophy, or fit.</p>
-    <p class="disclaimer">This conversation uses Claude AI by <a href="https://www.anthropic.com" target="_blank" rel="noopener">Anthropic</a>. Your messages are sent to their API to generate responses. Nothing is stored on our end. For deeper conversation, <a href="mailto:passionevoked@icloud.com">reach out directly</a>.</p>
+<ElevationLayout
+  title="Ask"
+  description="Have questions about my work? Ask me anything."
+>
+  <Hero
+    eyebrowParts={["Ask"]}
+    headline="Ask me anything."
+    metaphor={["Services. Projects. Philosophy. Fit."]}
+  />
 
-    <details open class="tuning-note">
+  <section class="ask-disclosure">
+    <p class="ask-disclaimer">
+      This conversation uses Claude AI by
+      <a href="https://www.anthropic.com" target="_blank" rel="noopener">Anthropic</a>.
+      Your messages are sent to their API to generate responses. Nothing is stored
+      on our end. For deeper conversation,
+      <a href="mailto:passionevoked@icloud.com">reach out directly</a>.
+    </p>
+
+    <details open class="ask-tuning">
       <summary>A note on the tuning</summary>
-      <p>Every general-purpose language model is tuned to please you. This tool included. It will soften, agree, and reinforce by default - that is the tuning, not a failure to be neutral. If you want the honest version, ask for it out loud. A phrase that works: <em>"Be direct. Tell me my blind spots."</em> Or for reflection moments: <em>"Tell me what I'm missing."</em> Say it at the start of any conversation that matters. Say it again when the answers start feeling too smooth. This is user-side discipline, on the order of checking your mirrors when driving. The default is tilted toward you. The default will not warn you that it is.</p>
-      <p class="tuning-link"><a href="/governance/tuning">Why we ship this disclosure</a></p>
+      <div class="ask-tuning-body">
+        <p>
+          Every general-purpose language model is tuned to please you. This tool
+          included. It will soften, agree, and reinforce by default - that is the
+          tuning, not a failure to be neutral. If you want the honest version, ask
+          for it out loud. A phrase that works:
+          <em>"Be direct. Tell me my blind spots."</em>
+          Or for reflection moments:
+          <em>"Tell me what I'm missing."</em>
+          Say it at the start of any conversation that matters. Say it again when
+          the answers start feeling too smooth. This is user-side discipline, on
+          the order of checking your mirrors when driving. The default is tilted
+          toward you. The default will not warn you that it is.
+        </p>
+        <p class="ask-tuning-link">
+          <a href="/governance/tuning">Why we ship this disclosure &rarr;</a>
+        </p>
+      </div>
     </details>
-  </div>
+  </section>
 
-  <section class="container-wide">
+  <section class="ask-widget-wrap">
     <ChatWidget mode="embedded" />
   </section>
 
-  <section class="container-wide text-center suggestions">
-    <p class="text-muted">Try asking:</p>
-    <div class="suggestion-chips">
-      <button class="chip" data-question="What services do you offer?">Services</button>
-      <button class="chip" data-question="Tell me about Executive Chef">Executive Chef</button>
-      <button class="chip" data-question="What's your approach to coaching?">Coaching approach</button>
-      <button class="chip" data-question="What's COPPA and why does it matter?">COPPA</button>
-      <button class="chip" data-question="What does 'evoke, never extract' mean?">Philosophy</button>
+  <Section marker="NOTA · BENE" heading="Try asking" closing={true}>
+    <div class="ask-suggestions">
+      <button class="ask-chip" data-question="What services do you offer?">Services</button>
+      <button class="ask-chip" data-question="Tell me about Executive Chef">Executive Chef</button>
+      <button class="ask-chip" data-question="What's your approach to coaching?">Coaching approach</button>
+      <button class="ask-chip" data-question="What's COPPA and why does it matter?">COPPA</button>
+      <button class="ask-chip" data-question="What does 'evoke, never extract' mean?">Philosophy</button>
     </div>
-  </section>
-</BaseLayout>
+    <p class="ask-related">
+      Looking for written answers instead?
+      <a href="/answers">The Answers page</a>
+      collects the questions I get asked most often.
+    </p>
+  </Section>
+</ElevationLayout>
 
 <script>
-  const chips = document.querySelectorAll('.chip');
-  const input = document.getElementById('chat-input') as HTMLInputElement;
-  const form = document.getElementById('chat-form') as HTMLFormElement;
+  function attachAskChips() {
+    const chips = document.querySelectorAll<HTMLButtonElement>('.ask-chip');
+    const input = document.getElementById('chat-input') as HTMLInputElement | null;
+    const form = document.getElementById('chat-form') as HTMLFormElement | null;
+    if (!chips.length || !input || !form) return;
 
-  chips.forEach(chip => {
-    chip.addEventListener('click', () => {
-      const question = chip.getAttribute('data-question');
-      if (question && input) {
-        input.value = question;
-        input.focus();
-        // Trigger submit
-        form.dispatchEvent(new Event('submit'));
-      }
+    chips.forEach(chip => {
+      if (chip.dataset.wired === 'true') return;
+      chip.dataset.wired = 'true';
+      chip.addEventListener('click', () => {
+        const question = chip.getAttribute('data-question');
+        if (question) {
+          input.value = question;
+          input.focus();
+          form.dispatchEvent(new Event('submit'));
+        }
+      });
     });
-  });
+  }
+  attachAskChips();
+  document.addEventListener('astro:after-swap', attachAskChips);
 </script>
 
 <style>
-  .hero-small {
-    text-align: center;
-    padding: var(--space-lg) var(--space-md);
-  }
+  /* /ask - J chrome for the live Claude chat.
+     Below the hero: a brass-rule disclosure block + details/summary
+     "tuning note" + the embedded ChatWidget + suggestion chips. */
 
-  .hero-small h1 {
-    font-size: clamp(2rem, 5vw, 3rem);
-    margin-bottom: var(--space-xs);
+  .ask-disclosure {
+    max-width: var(--el-content-max);
+    margin: 0 auto;
+    padding: 0 var(--el-content-pad) clamp(1.25rem, 1rem + 1vw, 2rem);
   }
-
-  .hero-small .tagline {
-    font-family: var(--font-display);
-    font-size: 1.1rem;
-    color: var(--text-secondary);
-    font-style: italic;
+  .ask-disclaimer {
+    font-family: var(--el-ui);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--el-text-quiet);
+    line-height: 1.6;
+    max-width: 70ch;
+    margin: 0 0 clamp(1.25rem, 1rem + 0.75vw, 1.75rem);
   }
-
-  .hero-small .disclaimer {
-    font-size: 0.85rem;
-    color: var(--text-muted);
-    margin-top: var(--space-sm);
-  }
-
-  .hero-small .disclaimer a {
-    color: var(--text-muted);
+  .ask-disclaimer a {
+    color: var(--el-text-soft);
     text-decoration: underline;
   }
+  .ask-disclaimer a:hover { color: var(--el-accent); }
 
-  .hero-small .disclaimer a:hover {
-    color: var(--accent-warm);
+  /* ---- Tuning note (details/summary) ---- */
+  .ask-tuning {
+    max-width: 70ch;
+    border: 1px solid var(--el-rule);
+    padding: clamp(0.85rem, 0.7rem + 0.5vw, 1.25rem) clamp(1rem, 0.85rem + 0.5vw, 1.5rem);
   }
-
-  .tuning-note {
-    max-width: 620px;
-    margin: var(--space-sm) auto 0;
-    font-size: 0.85rem;
-    color: var(--text-muted);
-    text-align: left;
-    border-top: 1px solid var(--border-subtle);
-    padding-top: var(--space-sm);
-  }
-
-  .tuning-note > summary {
+  .ask-tuning > summary {
     cursor: pointer;
-    font-weight: 600;
-    color: var(--text-secondary);
+    font-family: var(--el-ui);
+    font-weight: 500;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--el-accent);
     list-style: none;
-    text-align: center;
-    padding: var(--space-xs) 0;
+    padding: 0.25rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
   }
-
-  .tuning-note > summary::-webkit-details-marker {
-    display: none;
+  .ask-tuning > summary::-webkit-details-marker { display: none; }
+  .ask-tuning > summary::before {
+    content: "+";
+    color: var(--el-accent);
+    font-family: var(--el-display);
+    font-size: 16px;
+    line-height: 1;
+    width: 0.8em;
   }
+  .ask-tuning[open] > summary::before { content: "−"; }
+  .ask-tuning > summary:hover { color: var(--el-text-deep); }
 
-  .tuning-note > summary::before {
-    content: "+ ";
-    color: var(--text-muted);
+  .ask-tuning-body {
+    margin-top: clamp(0.75rem, 0.6rem + 0.5vw, 1.25rem);
   }
-
-  .tuning-note[open] > summary::before {
-    content: "- ";
-  }
-
-  .tuning-note > summary:hover {
-    color: var(--accent-warm);
-  }
-
-  .tuning-note p {
-    margin: var(--space-sm) 0 0;
+  .ask-tuning-body p {
+    font-family: var(--el-body);
+    font-size: clamp(0.95rem, 0.9rem + 0.25vw, 1.05rem);
     line-height: 1.7;
+    color: var(--el-text-soft);
+    margin: 0 0 0.85rem;
+    max-width: 65ch;
   }
-
-  .tuning-note em {
-    color: var(--text-secondary);
+  .ask-tuning-body em {
     font-style: italic;
+    color: var(--el-text-deep);
+  }
+  .ask-tuning-link {
+    font-family: var(--el-ui);
+    font-size: 11px !important;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    margin-top: 1rem !important;
+    margin-bottom: 0 !important;
+  }
+  .ask-tuning-link a {
+    color: var(--el-accent);
+    text-decoration: none;
+    border-bottom: 1px solid var(--el-rule);
+  }
+  .ask-tuning-link a:hover {
+    color: var(--el-text-deep);
+    border-color: var(--el-accent);
   }
 
-  .tuning-note .tuning-link {
-    margin-top: var(--space-sm);
-    font-size: 0.8rem;
+  /* ---- ChatWidget wrap ---- */
+  .ask-widget-wrap {
+    max-width: var(--el-content-max);
+    margin: 0 auto;
+    padding: 0 var(--el-content-pad) clamp(2rem, 1.5rem + 2vw, 3.5rem);
   }
 
-  .tuning-note .tuning-link a {
-    color: var(--text-muted);
-    text-decoration: underline;
-  }
-
-  .tuning-note .tuning-link a:hover {
-    color: var(--accent-warm);
-  }
-
-  .suggestions {
-    padding-top: var(--space-md);
-    border-top: none;
-  }
-
-  .suggestion-chips {
+  /* ---- NOTA BENE: suggestion chips ---- */
+  .ask-suggestions {
     display: flex;
     flex-wrap: wrap;
-    gap: var(--space-xs);
-    justify-content: center;
-    margin-top: var(--space-sm);
+    gap: 0.6rem;
+    margin-top: clamp(1.25rem, 1rem + 1vw, 2rem);
   }
-
-  .chip {
-    padding: var(--space-xs) var(--space-sm);
-    background: var(--bg-surface);
-    border: 1px solid var(--border-subtle);
-    border-radius: 100px;
-    color: var(--text-secondary);
-    font-size: 0.85rem;
+  .ask-chip {
+    padding: 0.55rem 1rem;
+    background: transparent;
+    border: 1px solid var(--el-rule);
+    font-family: var(--el-ui);
+    font-weight: 500;
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--el-text-soft);
     cursor: pointer;
-    transition: all var(--transition-fast);
-    font-family: var(--font-body);
+    transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
+  }
+  .ask-chip:hover {
+    border-color: var(--el-accent);
+    color: var(--el-text-deep);
+    background: color-mix(in oklab, var(--el-accent) 5%, transparent);
   }
 
-  .chip:hover {
-    border-color: var(--border-accent);
-    color: var(--accent-warm);
+  .ask-related {
+    font-family: var(--el-body);
+    font-size: clamp(0.95rem, 0.9rem + 0.25vw, 1.05rem);
+    line-height: 1.6;
+    color: var(--el-text-soft);
+    margin-top: clamp(1.5rem, 1rem + 1.5vw, 2.5rem);
+    max-width: 60ch;
+  }
+  .ask-related a {
+    color: var(--el-accent);
+    text-decoration: none;
+    border-bottom: 1px solid var(--el-rule);
+  }
+  .ask-related a:hover {
+    color: var(--el-text-deep);
+    border-color: var(--el-accent);
   }
 </style>
