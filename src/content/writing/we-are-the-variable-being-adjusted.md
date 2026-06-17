@@ -6,11 +6,6 @@ pubDate: 2026-06-17
 draft: false
 ---
 
-Two companies, three signals, one week, one architecture.
-
-The user has become the thing the system tunes around.
-
-
 My father spent over forty years building things.  Navy, then Raytheon, then the kinds of government programs that do not get named in public.  He understands systems.  He understands what it means to be on the side of the room that designs the architecture, rather than the side that has to live inside it.
 
 Last week, he sat down with his phone, screenshots in hand, looking for a door that was not there.
@@ -21,7 +16,7 @@ He did not find an opt-out.  He found a help page that offered him tips on how t
 
 He is sixty-six years old.  He spent his life building systems that worked.  He understood, as he closed the app, that he had just been billed for an hour of his retirement in exchange for the privilege of withdrawing consent he never knowingly gave.
 
-Two companies.  Three signals.  One week.  One architecture.
+### Two companies. Three signals. One week. One architecture.
 
 On May 26, Google began rolling out a new framework for its Search Services.  The framework consolidates Web and App Activity into two new settings called Search Services History and Personalized Recommendations.  The framework now includes media: images, files, audio, and video.  The framework's default state is whatever your prior state was. "If these were on, these new settings are also on." That is consent inherited from one architecture and applied to another.
 
@@ -37,7 +32,7 @@ The mechanism has a name.
 
 The architecture is not opt-out.  Opt-out is the brand the architecture wears in public.
 
-The mechanism is exhaustion.
+### The mechanism is exhaustion.
 
 A system that places the burden of opting out on the user and then bills the user's time and labor as the price of opting out does not honor consent.  It is simulating honoring consent.  The economic logic is that most users will not pay the cost.  The economic logic is correct.  The cost is the point.
 
@@ -45,7 +40,7 @@ This is not a Google problem.  It is not an Anthropic problem.  It is the operat
 
 Most consumer AI products score between 11 and 19 out of 94 on the rubric this publication uses to assess sovereignty.  The gap between what teams think they have built and what the rubric reveals is the same gap that sent my father looking for a door.
 
-What people can do.
+### What people can do.
 
 Three layers, three time horizons.
 
@@ -57,7 +52,7 @@ This year, your voice.  The people working on this at the policy level are real,
 
 None of this fixes the architecture.  The architecture is downstream of an industry that decided several years ago that the user is the variable it can adjust.  The architecture changes when the cost of adjusting the user exceeds the cost of honoring the user.  Right now, those costs are not in the right relation.  Your awareness of the architecture is one of the inputs that changes the ratio.
 
-What Evoked is doing.
+### What Evoked is doing.
 
 This is what an AI-sovereignty publisher owes its readers in a week like this one.
 
@@ -67,7 +62,7 @@ We are doing this because writing an article about architecture is not enough.  
 
 The scoring will be published as a follow-up piece tomorrow.
 
-The question that turns inward.
+### The question that turns inward.
 
 Kohlberg's sixth level of moral development is not a listicle.  It is a frame.  The frame is that the question we should ask of every system is not whether it meets industry standards, but whether we would build it this way today, knowing what we know about what people deserve.  The frame applies to Google.  The frame applies to Anthropic.  The frame, and this is the courageous move, applies to Evoked.
 
@@ -77,4 +72,4 @@ That is what makes Level 6 different from Level 4.  Level 4 says industry standa
 
 
 
-From the Evoked specifications working group, on behalf of every reader who knew something was wrong.
+*From the Evoked specifications working group, on behalf of every reader who knew something was wrong.*
