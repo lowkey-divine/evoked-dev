@@ -21,6 +21,7 @@
   --el-bg: #EBE2CB;
   --el-bg-warm: #E2D6BB;
   --el-text: #1C1812;
+  --el-text-deep: #100C06;       /* slightly darker than --el-text - for long-form article body */
   --el-text-soft: #5B4F3F;
   --el-text-quiet: #8C7E68;
   --el-accent: #A88838;        /* imperial gold - saturated, warm */
