@@ -1,15 +1,13 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
+import LegalLayout from '../../layouts/LegalLayout.astro';
 ---
 
-<BaseLayout title="Terms & Conditions — The Kitchen Table" description="Terms and Conditions for The Kitchen Table family meal planning application, operated by Evoked." hideFloatingChat={true}>
-  <div class="legal-header">
-    <p class="legal-app">The Kitchen Table</p>
-    <h1>Terms & Conditions</h1>
-    <p class="legal-meta">Version 2.0 &middot; Effective January 26, 2026 &middot; Last Updated January 26, 2026</p>
-  </div>
-
-  <article class="legal-content">
+<LegalLayout
+  title="Terms & Conditions"
+  description="Terms and Conditions for The Kitchen Table family meal planning application, operated by Evoked."
+  productLine="The Kitchen Table"
+  version="Version 2.0 · Effective January 26, 2026 · Last Updated January 26, 2026"
+>
     <p>This Terms &amp; Conditions Agreement ("Agreement") is entered into between <strong>The Kitchen Table</strong> ("Company," "we," "us," or "our"), operated by Evoked, and you, the user ("you," "your," or "User") for use of The Kitchen Table mobile application, website, and related services (collectively referred to as "Services").</p>
     <p>By creating an account, accessing, or using our Services, you acknowledge that you have read, understood, and agree to be bound by these terms. If you do not agree to these terms, please do not use our Services.</p>
 
@@ -475,138 +473,4 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
       <p class="legal-version">Document Version: 2.0 &middot; Effective Date: January 26, 2026 &middot; Last Reviewed: January 26, 2026</p>
       <p><em>The Kitchen Table - Bringing Families Together, One Meal at a Time</em></p>
     </div>
-  </article>
-</BaseLayout>
-
-<style>
-  .legal-header {
-    text-align: center;
-    padding: var(--space-lg) var(--space-md) var(--space-md);
-  }
-
-  .legal-header .legal-app {
-    font-family: var(--font-display);
-    font-size: 1.1rem;
-    color: var(--accent-warm);
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    margin-bottom: var(--space-xs);
-  }
-
-  .legal-header h1 {
-    font-family: var(--font-display);
-    font-size: 2.4rem;
-    color: var(--text-primary);
-    margin-bottom: var(--space-xs);
-  }
-
-  .legal-header .legal-meta {
-    color: var(--text-muted);
-    font-size: 0.85rem;
-  }
-
-  .legal-content {
-    max-width: 720px;
-    margin: 0 auto;
-    padding: 0 var(--space-md) var(--space-lg);
-    line-height: 1.75;
-  }
-
-  .legal-content h2 {
-    font-family: var(--font-display);
-    font-size: 1.5rem;
-    color: var(--accent-warm);
-    margin-top: var(--space-lg);
-    margin-bottom: var(--space-sm);
-    padding-bottom: var(--space-xs);
-    border-bottom: 1px solid var(--border-accent);
-  }
-
-  .legal-content h3 {
-    font-size: 1.05rem;
-    color: var(--text-primary);
-    margin-top: var(--space-md);
-    margin-bottom: var(--space-xs);
-  }
-
-  .legal-content p {
-    color: var(--text-secondary);
-    margin-bottom: 0.75rem;
-  }
-
-  .legal-content strong {
-    color: var(--text-primary);
-  }
-
-  .legal-content ul, .legal-content ol {
-    color: var(--text-secondary);
-    margin: 0.5rem 0 1rem 1.5rem;
-  }
-
-  .legal-content li {
-    margin-bottom: 0.3rem;
-  }
-
-  .legal-content a {
-    color: var(--accent-warm);
-    text-decoration: none;
-    border-bottom: 1px solid var(--border-accent);
-    transition: color var(--transition-fast);
-  }
-
-  .legal-content a:hover {
-    color: var(--accent-glow);
-  }
-
-  .legal-content table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 1rem 0;
-    font-size: 0.9rem;
-  }
-
-  .legal-content th {
-    background: var(--bg-elevated);
-    color: var(--accent-warm);
-    padding: 0.6rem 0.8rem;
-    text-align: left;
-    font-weight: 500;
-    border-bottom: 1px solid var(--border-accent);
-  }
-
-  .legal-content td {
-    padding: 0.5rem 0.8rem;
-    border-bottom: 1px solid var(--border-subtle);
-    color: var(--text-secondary);
-  }
-
-  .legal-content tr:nth-child(even) td {
-    background: rgba(255, 255, 255, 0.02);
-  }
-
-  .legal-closing {
-    margin-top: var(--space-lg);
-    padding-top: var(--space-md);
-    border-top: 1px solid var(--border-accent);
-    text-align: center;
-  }
-
-  .legal-closing .legal-version {
-    color: var(--text-muted);
-    font-size: 0.85rem;
-  }
-
-  @media (max-width: 600px) {
-    .legal-content {
-      padding: 0 var(--space-sm) var(--space-md);
-    }
-
-    .legal-content table {
-      font-size: 0.8rem;
-    }
-
-    .legal-content th, .legal-content td {
-      padding: 0.4rem;
-    }
-  }
-</style>
+</LegalLayout>

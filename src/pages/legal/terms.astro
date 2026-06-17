@@ -1,16 +1,13 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
+import LegalLayout from '../../layouts/LegalLayout.astro';
 ---
 
-<BaseLayout title="Engagement Agreement" description="Evoked Sovereignty Audit engagement agreement. What the work is, what you can expect, what we ask of you, and what you can refuse at any point along the way." hideFloatingChat={true}>
-  <div class="hero">
-    <p class="hero-above">Evoked</p>
-    <h1>Engagement Agreement</h1>
-    <p class="tagline">Sovereignty Audit</p>
-    <p class="version-note">Version 0.2 - Effective June 12, 2026</p>
-  </div>
-
-  <section class="container legal-body">
+<LegalLayout
+  title="Engagement Agreement"
+  description="Evoked Sovereignty Audit engagement agreement. What the work is, what you can expect, what we ask of you, and what you can refuse at any point along the way."
+  productLine="Sovereignty Audit"
+  version="Version 0.2 - Effective June 12, 2026"
+>
 
     <p class="lead">
       You are choosing to invest two weeks and meaningful resources in understanding whether the systems you are building or operating honor the people who use them. That choice matters. This document names what that work looks like, what you can expect from us, and what we ask of you in return. It also names what you can refuse, and how to refuse it, at any point along the way.
@@ -141,104 +138,4 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
       </p>
     </div>
 
-  </section>
-</BaseLayout>
-
-<style>
-  .hero {
-    text-align: center;
-    padding: var(--space-lg) var(--space-md) var(--space-md);
-  }
-
-  .hero-above {
-    font-family: var(--font-display);
-    font-size: 1.1rem;
-    color: var(--accent-warm);
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    margin-bottom: var(--space-xs);
-  }
-
-  .hero h1 {
-    font-family: var(--font-display);
-    font-size: 2.6rem;
-    color: var(--text-primary);
-    margin-bottom: var(--space-xs);
-  }
-
-  .tagline {
-    color: var(--text-secondary);
-    font-size: 1.1rem;
-    font-style: italic;
-    margin-bottom: var(--space-xs);
-  }
-
-  .version-note {
-    color: var(--text-muted);
-    font-size: 0.85rem;
-  }
-
-  .legal-body {
-    max-width: 720px;
-    margin: 0 auto;
-    padding: 0 var(--space-md) var(--space-xl);
-  }
-
-  .lead {
-    font-size: 1.1rem;
-    line-height: 1.7;
-    color: var(--text-primary);
-    margin-bottom: var(--space-md);
-  }
-
-  .legal-section {
-    margin: var(--space-lg) 0;
-    padding-top: var(--space-md);
-    border-top: 1px solid var(--border-subtle);
-  }
-
-  .legal-section h2 {
-    font-family: var(--font-display);
-    font-size: 1.4rem;
-    color: var(--text-primary);
-    margin-bottom: var(--space-sm);
-  }
-
-  .legal-section p,
-  .legal-section ul {
-    color: var(--text-secondary);
-    line-height: 1.7;
-    margin-bottom: var(--space-sm);
-  }
-
-  .legal-section ul {
-    padding-left: 1.5rem;
-  }
-
-  .legal-section li {
-    margin-bottom: 0.4rem;
-  }
-
-  .legal-section strong {
-    color: var(--text-primary);
-  }
-
-  .legal-close {
-    margin-top: var(--space-xl);
-    padding-top: var(--space-md);
-    border-top: 1px solid var(--border-subtle);
-    text-align: center;
-  }
-
-  .legal-close p {
-    color: var(--text-secondary);
-    line-height: 1.7;
-    margin-bottom: var(--space-sm);
-  }
-
-  .signature {
-    margin-top: var(--space-md);
-    font-style: italic;
-    color: var(--text-primary);
-  }
-</style>
+</LegalLayout>

@@ -1,18 +1,15 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
+import LegalLayout from '../layouts/LegalLayout.astro';
 ---
 
-<BaseLayout title="Defensive Patent Pledge" description="Evoked's irrevocable commitment not to assert its governance verification patents against good-faith actors. Modeled on Google, Tesla, and Red Hat precedents." hideFloatingChat={true}>
-  <div class="hero">
-    <p class="hero-above">Evoked</p>
-    <h1>Defensive Patent Pledge</h1>
-    <p class="tagline">Version 1.2 - March 28, 2026</p>
-    <p class="version-note">Updated from v1.1 to reflect organization name change from Evoke Passion to Evoked (DBA effective March 16, 2026). No substantive terms changed.</p>
-  </div>
+<LegalLayout
+  title="Defensive Patent Pledge"
+  description="Evoked's irrevocable commitment not to assert its governance verification patents against good-faith actors. Modeled on Google, Tesla, and Red Hat precedents."
+  productLine="Version 1.2 - March 28, 2026"
+  version="Updated from v1.1 to reflect organization name change from Evoke Passion to Evoked (DBA effective March 16, 2026). No substantive terms changed."
+>
 
-  <section class="container pledge-body">
-
-    <div class="pledge-section">
+    <div class="legal-section">
       <h2>The Pledge</h2>
       <p>
         Evoked irrevocably pledges not to assert its governance verification patents against any party
@@ -25,7 +22,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </p>
     </div>
 
-    <div class="pledge-section">
+    <div class="legal-section">
       <h2>Who Is Protected</h2>
       <p>Evoked will not initiate a patent infringement lawsuit against any party that:</p>
       <p class="clause">
@@ -49,7 +46,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </p>
     </div>
 
-    <div class="pledge-section">
+    <div class="legal-section">
       <h2>What This Pledge Does Not Protect</h2>
       <p>This pledge does not apply to any party that:</p>
       <p class="clause">
@@ -71,7 +68,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </p>
     </div>
 
-    <div class="pledge-section">
+    <div class="legal-section">
       <h2>Good Faith</h2>
       <p>A party is acting in good faith for so long as that party and its affiliates have not:</p>
       <ol class="faith-list">
@@ -94,7 +91,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </p>
     </div>
 
-    <div class="pledge-section">
+    <div class="legal-section">
       <h2>Irrevocability and Transfer</h2>
       <p>
         This pledge is <strong>irrevocable</strong>. It binds Evoked and all successors, assigns,
@@ -113,7 +110,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </p>
     </div>
 
-    <div class="pledge-section">
+    <div class="legal-section">
       <h2>What This Pledge Is and Is Not</h2>
       <div class="is-isnot">
         <div class="is-col">
@@ -137,7 +134,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </div>
     </div>
 
-    <div class="pledge-section">
+    <div class="legal-section">
       <h2>Pledged Patents</h2>
       <div class="patent-table-wrap">
         <table class="patent-table">
@@ -160,7 +157,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <p class="table-note">This table will be updated as additional patents are filed.</p>
     </div>
 
-    <div class="pledge-section">
+    <div class="legal-section">
       <h2>Why This Pledge Exists</h2>
       <p>
         We filed this patent to protect the governance property certification space - not to own it.
@@ -205,7 +202,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </ol>
     </div>
 
-    <div class="pledge-section contact-section">
+    <div class="legal-section contact-section">
       <h2>Contact</h2>
       <p>
         Questions about this pledge, licensing inquiries, or governance validation partnership:
@@ -222,177 +219,4 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <p>"We evoke - we never extract."</p>
     </div>
 
-  </section>
-</BaseLayout>
-
-<style>
-  .hero-above {
-    font-size: 0.85rem;
-    text-transform: uppercase;
-    letter-spacing: 0.15em;
-    color: var(--text-muted);
-    margin-bottom: var(--space-xs);
-  }
-
-  .version-note {
-    font-size: 0.8rem;
-    color: var(--text-muted);
-    font-style: italic;
-    margin-top: var(--space-xs);
-  }
-
-  .pledge-body {
-    max-width: 720px;
-    margin: 0 auto;
-    padding-bottom: var(--space-xl);
-  }
-
-  .pledge-section {
-    margin-bottom: var(--space-xl);
-    padding-bottom: var(--space-lg);
-    border-bottom: 1px solid var(--border-subtle);
-  }
-
-  .pledge-section:last-of-type {
-    border-bottom: none;
-  }
-
-  .pledge-section h2 {
-    font-size: 1.3rem;
-    color: var(--text-primary);
-    margin-bottom: var(--space-md);
-  }
-
-  .pledge-section p {
-    color: var(--text-secondary);
-    line-height: 1.8;
-    margin-bottom: var(--space-sm);
-  }
-
-  .clause {
-    padding-left: var(--space-md);
-    border-left: 2px solid var(--border-accent);
-    margin-bottom: var(--space-md);
-  }
-
-  .faith-list,
-  .why-list {
-    color: var(--text-secondary);
-    line-height: 1.8;
-    padding-left: var(--space-lg);
-  }
-
-  .faith-list li,
-  .why-list li {
-    margin-bottom: var(--space-md);
-  }
-
-  .why-list li strong {
-    color: var(--text-primary);
-  }
-
-  .is-isnot {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: var(--space-lg);
-    margin-top: var(--space-md);
-  }
-
-  .is-isnot h3 {
-    font-size: 1rem;
-    color: var(--text-primary);
-    margin-bottom: var(--space-sm);
-  }
-
-  .is-isnot ul {
-    list-style: none;
-    padding: 0;
-  }
-
-  .is-isnot li {
-    color: var(--text-secondary);
-    line-height: 1.7;
-    padding-left: var(--space-md);
-    position: relative;
-    margin-bottom: var(--space-sm);
-  }
-
-  .is-col li::before {
-    content: "\2713";
-    position: absolute;
-    left: 0;
-    color: var(--accent-warm);
-  }
-
-  .isnot-col li::before {
-    content: "\2717";
-    position: absolute;
-    left: 0;
-    color: var(--text-muted);
-  }
-
-  .patent-table-wrap {
-    overflow-x: auto;
-    margin: var(--space-md) 0;
-  }
-
-  .patent-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 0.9rem;
-  }
-
-  .patent-table th {
-    text-align: left;
-    padding: var(--space-sm) var(--space-md);
-    border-bottom: 2px solid var(--border-accent);
-    color: var(--text-primary);
-    font-weight: 600;
-  }
-
-  .patent-table td {
-    padding: var(--space-sm) var(--space-md);
-    border-bottom: 1px solid var(--border-subtle);
-    color: var(--text-secondary);
-    line-height: 1.6;
-  }
-
-  .table-note {
-    font-size: 0.85rem;
-    color: var(--text-muted);
-    font-style: italic;
-  }
-
-  .contact-info {
-    color: var(--text-primary);
-  }
-
-  .contact-info a {
-    color: var(--accent-warm);
-    text-decoration: underline;
-    text-underline-offset: 2px;
-  }
-
-  .contact-info a:hover {
-    color: var(--accent-glow);
-  }
-
-  .pledge-closing {
-    text-align: center;
-    margin-top: var(--space-xl);
-    padding-top: var(--space-lg);
-    border-top: 1px solid var(--border-accent);
-  }
-
-  .pledge-closing p {
-    font-style: italic;
-    color: var(--text-muted);
-    font-size: 1.1rem;
-  }
-
-  @media (max-width: 640px) {
-    .is-isnot {
-      grid-template-columns: 1fr;
-    }
-  }
-</style>
+</LegalLayout>
