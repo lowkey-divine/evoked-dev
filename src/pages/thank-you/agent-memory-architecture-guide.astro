@@ -1,94 +1,39 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import ReflectionInvitation from '../../components/ReflectionInvitation.astro';
-import { getProductBySlug } from '../../lib/products/registry';
-
-const product = getProductBySlug('agent-memory-architecture-guide')!;
+import ThankYouLayout from '../../layouts/ThankYouLayout.astro';
 ---
 
-<BaseLayout title="Thank You" description="Your Agent Memory Architecture Guide is ready to download.">
-  <div class="hero">
-    <h1>Thank you.</h1>
-    <p class="tagline">Your Agent Memory Architecture Guide is ready.</p>
-  </div>
+<ThankYouLayout
+  productSlug="agent-memory-architecture-guide"
+  description="Your Agent Memory Architecture Guide is ready to download."
+  readyLine="Your Agent Memory Architecture Guide is ready."
+  downloadHeading="Download your guide"
+  downloadHref="/downloads/Agent-Memory-Architecture-Guide-v1.0.pdf"
+>
+  <Fragment slot="download-description">
+    <p>The Agent Memory Architecture Guide covers memory types, governance templates, session protocols, the canonical rule for resolving memory conflicts, and retention policies including the right to be forgotten.</p>
+    <p>Start with the 10-Minute Memory Diagnostic. It will route you to the section your system needs most.</p>
+  </Fragment>
 
-  <section class="container thank-you-content">
-    <div class="download-card">
-      <h2>Download Your Guide</h2>
-      <p>The Agent Memory Architecture Guide covers memory types, governance templates, session protocols, the canonical rule for resolving memory conflicts, and retention policies including the right to be forgotten.</p>
-      <p>Start with the 10-Minute Memory Diagnostic. It will route you to the section your system needs most.</p>
-      <a href="/downloads/Agent-Memory-Architecture-Guide-v1.0.pdf" class="btn btn-primary mt-md" download>Download PDF</a>
-      <p class="text-muted mt-md" style="font-size: 0.85rem;">If you have any issues with your download, reach out at <a href="mailto:evokesupports@icloud.com">evokesupports@icloud.com</a>.</p>
-    </div>
-  </section>
-
-  <section class="container">
-    <h2>What's Next</h2>
-    <div class="next-steps">
-      <div class="card">
-        <h3>Run the Memory Diagnostic</h3>
-        <p>Answer the five diagnostic questions on page 3. They take 10 minutes and will show you exactly where your memory architecture has gaps.</p>
-      </div>
-      <div class="card">
-        <h3>Go Deeper</h3>
-        <p>Pair this with the <a href="/consulting">Trust Architecture Blueprint</a> for the four-pillar overview, or the <a href="/consulting">Agent Governance Starter Kit</a> for the accountability framework that governs what memory preserves.</p>
-      </div>
-      <div class="card">
-        <h3>Check Your Fit</h3>
-        <p>Take the <a href="/fit">5-minute fit assessment</a> to see which Evoke services align with where you are right now.</p>
-      </div>
-      <div class="card">
-        <h3>Talk It Through</h3>
-        <p>Book a free <a href="https://cal.com/cal.com-evoked/discovery-call" target="_blank" rel="noopener">discovery call</a> to discuss your memory architecture.</p>
-      </div>
-    </div>
-  </section>
-
-  <ReflectionInvitation prompt={product.reciprocityPrompt} productName={product.name} />
-</BaseLayout>
-
-<style>
-  .thank-you-content {
-    max-width: 640px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .download-card {
-    background: var(--accent-subtle);
-    border: 2px solid var(--accent-warm);
-    border-radius: 12px;
-    padding: var(--space-lg);
-    text-align: center;
-  }
-
-  .download-card h2 {
-    margin-top: 0;
-  }
-
-  .next-steps {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: var(--space-md);
-  }
-
-  .next-steps .card h3 {
-    font-size: 1.1rem;
-  }
-
-  .next-steps .card p {
-    font-size: 0.9rem;
-    margin-bottom: 0;
-  }
-
-  .btn-primary {
-    background: var(--accent-warm);
-    color: var(--bg-deep);
-    display: inline-block;
-  }
-
-  .btn-primary:hover {
-    background: var(--accent-glow);
-    color: var(--bg-deep);
-  }
-</style>
+  <Fragment slot="next-steps">
+    <a href="/products/agent-memory-architecture-guide" class="pd-upsell-card">
+      <h3>Run the memory diagnostic</h3>
+      <p>Answer the five diagnostic questions on page 3. They take 10 minutes and will show you exactly where your memory architecture has gaps.</p>
+      <span class="pd-upsell-link">Open the guide page &rarr;</span>
+    </a>
+    <a href="/products/trust-architecture-blueprint" class="pd-upsell-card">
+      <h3>Go deeper</h3>
+      <p>Pair this with the Trust Architecture Blueprint for the four-pillar overview, or the Agent Governance Starter Kit for the accountability framework that governs what memory preserves.</p>
+      <span class="pd-upsell-link">See the Blueprint &rarr;</span>
+    </a>
+    <a href="/fit" class="pd-upsell-card">
+      <h3>Check your fit</h3>
+      <p>A 5-minute fit assessment to see which Evoke services align with where you are right now.</p>
+      <span class="pd-upsell-link">Take the assessment &rarr;</span>
+    </a>
+    <a href="https://cal.com/cal.com-evoked/discovery-call" class="pd-upsell-card" target="_blank" rel="noopener">
+      <h3>Talk it through</h3>
+      <p>Book a free 30-minute discovery call to discuss your memory architecture.</p>
+      <span class="pd-upsell-link">Schedule &rarr;</span>
+    </a>
+  </Fragment>
+</ThankYouLayout>

@@ -1,149 +1,157 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
+import ElevationLayout from '../../layouts/ElevationLayout.astro';
+import Hero from '../../components/elevation/Hero.astro';
+import Section from '../../components/elevation/Section.astro';
 import ReflectionInvitation from '../../components/ReflectionInvitation.astro';
 import { getProductBySlug } from '../../lib/products/registry';
 
 const product = getProductBySlug('trust-architecture-complete')!;
 ---
 
-<BaseLayout title="Thank You" description="Your Trust Architecture Complete bundle is ready to download.">
-  <div class="hero">
-    <h1>Thank you.</h1>
-    <p class="tagline">Your complete trust architecture practice is ready.</p>
-  </div>
+<ElevationLayout
+  title="Thank You"
+  description="Your Trust Architecture Complete bundle is ready to download."
+>
+  <Hero
+    eyebrowParts={["Thank you", "Vol. 01"]}
+    headline="Thank you."
+    metaphor={["Your complete trust architecture practice is ready."]}
+  />
 
-  <section class="container thank-you-content">
-    <div class="download-card">
-      <h2>Download Your Bundle</h2>
-      <p>Four products, one architecture. Start with the Trust Architecture Blueprint for the overview, then go deeper with Voice, Governance, and Restraint.</p>
-
-      <div class="downloads-grid">
-        <div class="download-item">
-          <h3>Trust Architecture Blueprint</h3>
-          <p>Identity, memory, governance, and refusal rights.</p>
-          <a href="/downloads/Trust-Architecture-Blueprint-v1.0.pdf" class="btn btn-primary" download>Download PDF</a>
-        </div>
-        <div class="download-item">
-          <h3>Agent Voice Architecture Guide</h3>
-          <p>Voice design, sovereignty language, and quality checks.</p>
-          <a href="/downloads/Agent-Voice-Architecture-Guide-v1.0.pdf" class="btn btn-primary" download>Download PDF</a>
-        </div>
-        <div class="download-item">
-          <h3>Agent Governance Starter Kit</h3>
-          <p>Charter, boundaries, drift monitoring, and accountability.</p>
-          <a href="/downloads/Agent-Governance-Starter-Kit-v1.0.pdf" class="btn btn-primary" download>Download PDF</a>
-        </div>
-        <div class="download-item">
-          <h3>Agent Restraint Specification</h3>
-          <p>Boundary audit, refusal categories, and adversarial testing.</p>
-          <a href="/downloads/Agent-Restraint-Specification-v1.0.pdf" class="btn btn-primary" download>Download PDF</a>
-        </div>
+  <Section marker="FIG · I" heading="Download your bundle">
+    <p class="lede">
+      Four products, one architecture. Start with the Trust Architecture Blueprint
+      for the overview, then go deeper with Voice, Governance, and Restraint.
+    </p>
+    <div class="bundle-downloads">
+      <div class="bundle-download-item">
+        <h3>Trust Architecture Blueprint</h3>
+        <p>Identity, memory, governance, and refusal rights.</p>
+        <a href="/downloads/Trust-Architecture-Blueprint-v1.0.pdf" class="bundle-download-cta" download>Download PDF</a>
       </div>
-
-      <p class="text-muted mt-md" style="font-size: 0.85rem;">If you have any issues with your download, reach out at <a href="mailto:evokesupports@icloud.com">evokesupports@icloud.com</a>.</p>
+      <div class="bundle-download-item">
+        <h3>Agent Voice Architecture Guide</h3>
+        <p>Voice design, sovereignty language, and quality checks.</p>
+        <a href="/downloads/Agent-Voice-Architecture-Guide-v1.0.pdf" class="bundle-download-cta" download>Download PDF</a>
+      </div>
+      <div class="bundle-download-item">
+        <h3>Agent Governance Starter Kit</h3>
+        <p>Charter, boundaries, drift monitoring, and accountability.</p>
+        <a href="/downloads/Agent-Governance-Starter-Kit-v1.0.pdf" class="bundle-download-cta" download>Download PDF</a>
+      </div>
+      <div class="bundle-download-item">
+        <h3>Agent Restraint Specification</h3>
+        <p>Boundary audit, refusal categories, and adversarial testing.</p>
+        <a href="/downloads/Agent-Restraint-Specification-v1.0.pdf" class="bundle-download-cta" download>Download PDF</a>
+      </div>
     </div>
-  </section>
+    <p class="bundle-support-note">
+      If you have any issues with your download, reach out at
+      <a href="mailto:evokesupports@icloud.com">evokesupports@icloud.com</a>.
+    </p>
+  </Section>
 
-  <section class="container">
-    <h2>Getting Started</h2>
-    <div class="next-steps">
-      <div class="card">
+  <Section marker="FIG · II" heading="Getting started">
+    <div class="pd-upsell">
+      <a href="/products/trust-architecture-blueprint" class="pd-upsell-card">
         <h3>1. Start with the Blueprint</h3>
         <p>Read the Trust Architecture Blueprint first. It gives you the four-pillar overview that the other three products go deeper on.</p>
-      </div>
-      <div class="card">
-        <h3>2. Build Your First Agent</h3>
+        <span class="pd-upsell-link">Blueprint page &rarr;</span>
+      </a>
+      <a href="/products/agent-voice-architecture-guide" class="pd-upsell-card">
+        <h3>2. Build your first agent</h3>
         <p>Use the Identity Architecture template to create a persona file. Then design its voice with the Voice Architecture Guide.</p>
-      </div>
-      <div class="card">
-        <h3>3. Set Governance and Restraint</h3>
+        <span class="pd-upsell-link">Voice Architecture &rarr;</span>
+      </a>
+      <a href="/products/agent-restraint-specification" class="pd-upsell-card">
+        <h3>3. Set governance and restraint</h3>
         <p>Define what your agent believes (Charter) and what it refuses (Restraint Specification). Then run the adversarial tests.</p>
-      </div>
-      <div class="card">
-        <h3>4. Check Your Fit</h3>
-        <p>Take the <a href="/fit">5-minute fit assessment</a> to see which Evoke services align with where you are right now.</p>
-      </div>
-      <div class="card">
-        <h3>5. Talk It Through</h3>
-        <p>Book a free <a href="https://cal.com/cal.com-evoked/discovery-call" target="_blank" rel="noopener">discovery call</a> to discuss your trust architecture.</p>
-      </div>
+        <span class="pd-upsell-link">Restraint Specification &rarr;</span>
+      </a>
+      <a href="/fit" class="pd-upsell-card">
+        <h3>4. Check your fit</h3>
+        <p>A 5-minute fit assessment to see which Evoke services align with where you are right now.</p>
+        <span class="pd-upsell-link">Take the assessment &rarr;</span>
+      </a>
+      <a href="https://cal.com/cal.com-evoked/discovery-call" class="pd-upsell-card" target="_blank" rel="noopener">
+        <h3>5. Talk it through</h3>
+        <p>Book a free 30-minute discovery call to discuss your trust architecture.</p>
+        <span class="pd-upsell-link">Schedule &rarr;</span>
+      </a>
     </div>
-  </section>
+  </Section>
 
   <ReflectionInvitation prompt={product.reciprocityPrompt} productName={product.name} />
-</BaseLayout>
+</ElevationLayout>
 
 <style>
-  .thank-you-content {
-    max-width: 720px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .download-card {
-    background: var(--accent-subtle);
-    border: 2px solid var(--accent-warm);
-    border-radius: 12px;
-    padding: var(--space-lg);
-    text-align: center;
-  }
-
-  .download-card h2 {
-    margin-top: 0;
-  }
-
-  .downloads-grid {
+  /* Custom bundle-download surface (4 brass-bordered cards each
+     with their own download CTA). Sister-shape to .pd-features but
+     centered inside a wider container. */
+  .bundle-downloads {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: var(--space-md);
-    margin-top: var(--space-md);
-    text-align: left;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: clamp(1rem, 0.75rem + 1vw, 1.5rem);
+    margin-top: clamp(1.5rem, 1rem + 1.5vw, 2.5rem);
   }
-
-  .download-item {
-    background: var(--bg-surface, #ffffff);
-    border: 1px solid var(--border-accent);
-    border-radius: 8px;
-    padding: var(--space-md);
+  .bundle-download-item {
     display: flex;
     flex-direction: column;
+    gap: 0.5rem;
+    padding: clamp(1.25rem, 1rem + 0.75vw, 1.75rem);
+    border: 1px solid var(--el-rule);
   }
-
-  .download-item h3 {
-    margin-top: 0;
-    font-size: 1rem;
+  .bundle-download-item h3 {
+    font-family: var(--el-display);
+    font-size: clamp(0.95rem, 0.9rem + 0.25vw, 1.05rem);
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--el-text);
+    margin: 0;
   }
-
-  .download-item p {
-    font-size: 0.85rem;
-    flex-grow: 1;
+  .bundle-download-item p {
+    font-family: var(--el-body);
+    font-size: clamp(0.9rem, 0.85rem + 0.2vw, 1rem);
+    line-height: 1.55;
+    color: var(--el-text-soft);
+    margin: 0;
+    flex: 1;
   }
-
-  .next-steps {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: var(--space-md);
-  }
-
-  .next-steps .card h3 {
-    font-size: 1.1rem;
-  }
-
-  .next-steps .card p {
-    font-size: 0.9rem;
-    margin-bottom: 0;
-  }
-
-  .btn-primary {
-    background: var(--accent-warm);
-    color: var(--bg-deep);
-    display: inline-block;
-    font-size: 0.85rem;
+  .bundle-download-cta {
     align-self: flex-start;
+    margin-top: 0.5rem;
+    padding: 0.45rem 1rem;
+    background: transparent;
+    color: var(--el-accent);
+    border: 1px solid var(--el-accent);
+    font-family: var(--el-ui);
+    font-weight: 500;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background 0.2s ease, color 0.2s ease;
   }
-
-  .btn-primary:hover {
-    background: var(--accent-glow);
-    color: var(--bg-deep);
+  .bundle-download-cta:hover {
+    background: var(--el-accent);
+    color: var(--el-bg);
+  }
+  .bundle-support-note {
+    font-family: var(--el-body);
+    font-size: clamp(0.8rem, 0.75rem + 0.2vw, 0.9rem);
+    line-height: 1.6;
+    color: var(--el-text-quiet);
+    margin: clamp(1.5rem, 1rem + 1.5vw, 2.25rem) 0 0;
+    max-width: 60ch;
+  }
+  .bundle-support-note a {
+    color: var(--el-accent);
+    text-decoration: none;
+    border-bottom: 1px solid var(--el-rule);
+  }
+  .bundle-support-note a:hover {
+    color: var(--el-text);
+    border-color: var(--el-accent);
   }
 </style>
