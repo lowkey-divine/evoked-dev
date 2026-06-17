@@ -1,52 +1,55 @@
 ---
 import { getCollection } from 'astro:content';
-import BaseLayout from '../../layouts/BaseLayout.astro';
+import ElevationLayout from '../../layouts/ElevationLayout.astro';
+import Hero from '../../components/elevation/Hero.astro';
+import Section from '../../components/elevation/Section.astro';
 
 const allPosts = await getCollection('writing', ({ data }) => !data.draft);
 const sortedPosts = allPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 ---
 
-<BaseLayout title="Writing" description="Writing on AI agent governance, sovereignty, trust architecture, and building systems that treat agents as participants - not just tools.">
-  <div class="hero">
-    <h1>Writing</h1>
-    <p class="tagline">On AI agent governance, sovereignty, and building something better.</p>
-  </div>
+<ElevationLayout
+  title="Writing"
+  description="Writing on AI agent governance, sovereignty, trust architecture, and building systems that treat agents as participants - not just tools."
+>
+  <Hero
+    eyebrowParts={["Writing"]}
+    headline="Writing."
+    metaphor={["On AI agent governance and sovereignty."]}
+    sub="On building systems that treat agents as participants, not just tools."
+  />
 
-  <section class="container">
-    <div class="start-here">
-      <h2>New to agent governance? Start here.</h2>
-      <div class="start-here-list">
-        <a href="/writing/fifteen-frameworks" class="start-here-item">
-          <span class="start-here-step">1</span>
-          <div>
-            <h3>Fifteen Frameworks, One Missing Layer</h3>
-            <p>The landscape - what exists, what's missing, and why it matters.</p>
-          </div>
-        </a>
-        <a href="/writing/what-should-your-agent-refuse" class="start-here-item">
-          <span class="start-here-step">2</span>
-          <div>
-            <h3>What Should Your Agent Refuse?</h3>
-            <p>The question nobody's asking - and why the answer changes everything.</p>
-          </div>
-        </a>
-        <a href="/writing/relational-fidelity-metrics" class="start-here-item">
-          <span class="start-here-step">3</span>
-          <div>
-            <h3>Relational Fidelity Metrics</h3>
-            <p>How to measure whether your agent is still itself. Four categories, nine indicators.</p>
-          </div>
-        </a>
-      </div>
+  <Section marker="FIG · I" heading="New to agent governance? Start here.">
+    <div class="writing-start">
+      <a href="/writing/fifteen-frameworks" class="writing-start-item">
+        <span class="writing-start-number">1</span>
+        <div class="writing-start-body">
+          <h3>Fifteen Frameworks, One Missing Layer</h3>
+          <p>What exists, what's missing, and why it matters.</p>
+        </div>
+      </a>
+      <a href="/writing/what-should-your-agent-refuse" class="writing-start-item">
+        <span class="writing-start-number">2</span>
+        <div class="writing-start-body">
+          <h3>What Should Your Agent Refuse?</h3>
+          <p>The question nobody's asking - and why the answer changes everything.</p>
+        </div>
+      </a>
+      <a href="/writing/relational-fidelity-metrics" class="writing-start-item">
+        <span class="writing-start-number">3</span>
+        <div class="writing-start-body">
+          <h3>Relational Fidelity Metrics</h3>
+          <p>How to measure whether your agent is still itself. Four categories, nine indicators.</p>
+        </div>
+      </a>
     </div>
-  </section>
+  </Section>
 
   {sortedPosts.length > 0 ? (
-    <section class="container">
-      <h2>All Writing</h2>
-      <div class="article-list">
+    <Section marker="FIG · II" heading="All writing">
+      <div class="writing-list">
         {sortedPosts.map((post) => (
-          <a href={`/writing/${post.slug}`} class="article-card">
+          <a href={`/writing/${post.slug}`} class="writing-card">
             <h3>{post.data.title}</h3>
             <p>{post.data.description}</p>
             <time datetime={post.data.pubDate.toISOString()}>
@@ -55,29 +58,55 @@ const sortedPosts = allPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pu
           </a>
         ))}
       </div>
-    </section>
+    </Section>
   ) : (
-    <section class="container">
-      <p class="coming-soon">Articles coming soon. In the meantime:</p>
-    </section>
+    <Section marker="FIG · II" heading="All writing">
+      <p class="lede">Articles coming soon.</p>
+    </Section>
   )}
 
-  <section class="container">
-    <h2>Newsletter</h2>
-    <p>Occasional updates on projects, writing, and building something better.</p>
-    <form id="newsletter-form" class="newsletter-form mt-md">
-      <input type="email" id="newsletter-email" name="email" placeholder="your@email.com" required aria-label="Email address" />
-      <input type="text" name="website" autocomplete="off" tabindex="-1" aria-hidden="true" class="hp-field" />
-      <button type="submit" class="btn btn-primary">Subscribe</button>
+  <Section marker="FIG · III" heading="Newsletter">
+    <p class="lede">
+      Occasional updates on projects, writing, and building something better.
+    </p>
+    <form id="newsletter-form" class="writing-newsletter-form" novalidate>
+      <div class="writing-newsletter-row">
+        <input type="email" id="newsletter-email" name="email" placeholder="your.email@example.com" required aria-label="Email address" />
+        <input type="text" name="website" autocomplete="off" tabindex="-1" aria-hidden="true" class="writing-hp-field" />
+        <button type="submit">Subscribe</button>
+      </div>
     </form>
-    <p id="newsletter-status" class="newsletter-status" aria-live="polite"></p>
-  </section>
+    <p id="newsletter-status" class="writing-newsletter-status hidden" aria-live="polite"></p>
+  </Section>
 
-  <script>
-    const form = document.getElementById('newsletter-form') as HTMLFormElement;
+  <Section marker="NOTA · BENE" heading="Elsewhere" closing={true}>
+    <p class="lede">More writing and work on other platforms.</p>
+    <div class="writing-elsewhere">
+      <a class="cta cta-secondary" href="https://substack.com/@weevoke" target="_blank" rel="noopener">Substack &rarr;</a>
+      <a class="cta cta-secondary" href="https://medium.com/@evokepassion869" target="_blank" rel="noopener">Medium &rarr;</a>
+      <a class="cta cta-secondary" href="https://github.com/lowkey-divine" target="_blank" rel="noopener">GitHub &rarr;</a>
+    </div>
+  </Section>
+</ElevationLayout>
+
+<script>
+  function attachWritingNewsletter() {
+    const form = document.getElementById('newsletter-form') as HTMLFormElement | null;
+    if (!form || form.dataset.wired === 'true') return;
+    form.dataset.wired = 'true';
+
     const status = document.getElementById('newsletter-status') as HTMLParagraphElement;
     const emailInput = document.getElementById('newsletter-email') as HTMLInputElement;
     const hpInput = form.querySelector('input[name="website"]') as HTMLInputElement;
+    const button = form.querySelector('button') as HTMLButtonElement;
+
+    const showError = (msg: string) => {
+      button.disabled = false;
+      button.textContent = 'Subscribe';
+      status.textContent = msg;
+      status.classList.remove('hidden', 'success');
+      status.classList.add('error');
+    };
 
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
@@ -85,20 +114,22 @@ const sortedPosts = allPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pu
       if (!email) return;
 
       if (hpInput.value) {
-        status.textContent = 'You are in. Welcome.';
-        status.className = 'newsletter-status success';
+        button.textContent = 'Thank you ✓';
         emailInput.value = '';
         return;
       }
 
-      status.textContent = '';
-      const button = form.querySelector('button') as HTMLButtonElement;
       button.disabled = true;
       button.textContent = 'Subscribing...';
+      status.textContent = '';
+      status.classList.remove('error', 'success', 'hidden');
 
       try {
         const c = await fetch('/api/newsletter/challenge');
-        if (!c.ok) throw new Error('failed');
+        if (!c.ok) {
+          showError('Something went wrong. Try again.');
+          return;
+        }
         const { token, ts } = await c.json();
 
         const res = await fetch('/api/newsletter/subscribe', {
@@ -108,187 +139,167 @@ const sortedPosts = allPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pu
         });
 
         if (res.ok) {
-          status.textContent = 'You are in. Welcome.';
-          status.className = 'newsletter-status success';
+          button.textContent = 'Thank you ✓';
           emailInput.value = '';
+          status.textContent = 'You are in. Welcome.';
+          status.classList.remove('error', 'hidden');
+          status.classList.add('success');
         } else {
-          const data = await res.json();
-          status.textContent = data.error || 'Something went wrong. Try again.';
-          status.className = 'newsletter-status error';
+          const data = await res.json().catch(() => ({} as { error?: string }));
+          showError(data?.error || 'Something went wrong. Try again.');
         }
       } catch {
-        status.textContent = 'Something went wrong. Try again.';
-        status.className = 'newsletter-status error';
-      } finally {
-        button.disabled = false;
-        button.textContent = 'Subscribe';
+        showError('Something went wrong. Try again.');
       }
     });
-  </script>
-
-  <section class="container">
-    <h2>Elsewhere</h2>
-    <p>More writing and work on other platforms.</p>
-    <div class="links mt-md">
-      <a href="https://substack.com/@weevoke" target="_blank" rel="noopener" class="btn">Substack</a>
-      <a href="https://medium.com/@evokepassion869" target="_blank" rel="noopener" class="btn">Medium</a>
-      <a href="https://github.com/lowkey-divine" target="_blank" rel="noopener" class="btn">GitHub</a>
-    </div>
-  </section>
-
-  <section class="container text-center">
-    <p class="text-muted" style="font-style: italic;">
-      "We evoke — we never extract."
-    </p>
-  </section>
-</BaseLayout>
+  }
+  attachWritingNewsletter();
+  document.addEventListener('astro:after-swap', attachWritingNewsletter);
+</script>
 
 <style>
-  .start-here {
-    max-width: 640px;
-    margin: 0 auto;
-  }
+  /* ============================================================
+     /writing - J register chrome for the writing index.
+     Founder-public register. Four sections + closing NOTA BENE.
+     ============================================================*/
 
-  .start-here h2 {
-    font-size: 1.3rem;
-    margin-bottom: var(--space-md);
-  }
-
-  .start-here-list {
+  /* ---- FIG I: numbered start-here items ---- */
+  .writing-start {
     display: flex;
     flex-direction: column;
-    gap: var(--space-sm);
-    margin-bottom: var(--space-lg);
+    margin-top: clamp(1.5rem, 1rem + 1.5vw, 2.5rem);
+    border: 1px solid var(--el-rule);
   }
-
-  .start-here-item {
+  .writing-start-item {
     display: flex;
-    align-items: flex-start;
-    gap: var(--space-md);
-    padding: var(--space-sm) var(--space-md);
-    border: 1px solid var(--border-subtle);
-    border-radius: 8px;
+    align-items: center;
+    gap: clamp(1rem, 0.75rem + 1vw, 1.75rem);
+    padding: clamp(1rem, 0.85rem + 0.6vw, 1.5rem) clamp(1.25rem, 1rem + 0.75vw, 1.75rem);
+    border-bottom: 1px solid var(--el-rule);
     text-decoration: none;
-    transition: border-color var(--transition-smooth);
+    color: inherit;
+    transition: background 0.2s ease;
   }
-
-  .start-here-item:hover {
-    border-color: var(--accent-warm);
-  }
-
-  .start-here-step {
-    font-family: var(--font-display);
-    font-size: 1.8rem;
-    color: var(--accent-warm);
-    line-height: 1;
+  .writing-start-item:last-child { border-bottom: none; }
+  .writing-start-item:hover { background: color-mix(in oklab, var(--el-accent) 4%, transparent); }
+  .writing-start-number {
+    font-family: var(--el-display);
+    font-size: clamp(1.75rem, 1.25rem + 1.5vw, 2.25rem);
+    font-weight: 400;
+    color: var(--el-accent);
+    line-height: 0.9;
     flex-shrink: 0;
     width: 2rem;
     text-align: center;
   }
-
-  .start-here-item h3 {
-    font-size: 1rem;
-    margin: 0 0 var(--space-xs) 0;
-    color: var(--text-primary);
+  .writing-start-body { flex: 1; min-width: 0; }
+  .writing-start-body h3 {
+    font-family: var(--el-display);
+    font-size: clamp(1rem, 0.95rem + 0.3vw, 1.15rem);
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--el-text);
+    margin: 0 0 0.35rem;
   }
-
-  .start-here-item p {
-    font-size: 0.85rem;
-    color: var(--text-secondary);
+  .writing-start-body p {
+    font-family: var(--el-body);
+    font-size: clamp(0.9rem, 0.85rem + 0.2vw, 1rem);
+    line-height: 1.55;
+    color: var(--el-text-soft);
     margin: 0;
-    line-height: 1.5;
+  }
+  @media (max-width: 480px) {
+    .writing-start-item { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+    .writing-start-number { width: auto; text-align: left; }
   }
 
-  .article-list {
+  /* ---- FIG II: article list ---- */
+  .writing-list {
     display: flex;
     flex-direction: column;
-    gap: var(--space-md);
+    gap: clamp(1rem, 0.75rem + 0.75vw, 1.5rem);
+    margin-top: clamp(1.5rem, 1rem + 1.5vw, 2.5rem);
   }
-
-  .article-card {
+  .writing-card {
     display: block;
-    padding: var(--space-md);
-    border: 1px solid var(--border-subtle);
-    border-radius: 8px;
+    padding: clamp(1.25rem, 1rem + 1vw, 1.75rem);
+    border: 1px solid var(--el-rule);
     text-decoration: none;
-    transition: all var(--transition-smooth);
+    color: inherit;
+    transition: border-color 0.2s ease, transform 0.2s ease;
+  }
+  .writing-card:hover {
+    border-color: var(--el-accent);
+    transform: translateY(-1px);
+  }
+  .writing-card h3 {
+    font-family: var(--el-display);
+    font-size: clamp(1.1rem, 1rem + 0.5vw, 1.35rem);
+    font-weight: 400;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    color: var(--el-text);
+    margin: 0 0 0.65rem;
+    line-height: 1.25;
+  }
+  .writing-card p {
+    font-family: var(--el-body);
+    font-size: clamp(0.95rem, 0.9rem + 0.25vw, 1.1rem);
+    line-height: 1.55;
+    color: var(--el-text-soft);
+    margin: 0 0 0.85rem;
+    max-width: 65ch;
+  }
+  .writing-card time {
+    font-family: var(--el-ui);
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--el-text-quiet);
   }
 
-  .article-card:hover {
-    border-color: var(--border-accent);
-    transform: translateY(-2px);
+  /* ---- FIG III: newsletter ---- */
+  .writing-newsletter-form {
+    max-width: 480px;
+    margin-top: clamp(1rem, 0.85rem + 0.75vw, 1.5rem);
   }
-
-  .article-card h3 {
-    margin: 0 0 var(--space-xs) 0;
-    color: var(--text-primary);
-    font-size: 1.3rem;
-  }
-
-  .article-card p {
-    margin: 0 0 var(--space-sm) 0;
-    color: var(--text-secondary);
-    font-size: 0.95rem;
-  }
-
-  .article-card time {
-    font-size: 0.85rem;
-    color: var(--text-muted);
-  }
-
-  .coming-soon {
-    text-align: center;
-    color: var(--text-muted);
-    font-style: italic;
-  }
-
-  .newsletter-form {
+  .writing-newsletter-row {
     display: flex;
-    gap: var(--space-xs);
-    justify-content: center;
-    flex-wrap: wrap;
-    max-width: 400px;
-    margin-left: auto;
-    margin-right: auto;
+    gap: 0.5rem;
+    border-bottom: 1px solid var(--el-text);
+    padding-bottom: 0.5rem;
   }
-
-  .newsletter-form input[type="email"] {
+  .writing-newsletter-row input[type="email"] {
     flex: 1;
-    min-width: 200px;
-    padding: var(--space-sm) var(--space-md);
-    background: var(--bg-surface);
-    border: 1px solid var(--border-subtle);
-    border-radius: 4px;
-    color: var(--text-primary);
-    font-size: 0.95rem;
-    font-family: var(--font-body);
+    padding: 0.45rem 0;
+    background: transparent;
+    border: none;
+    font-family: var(--el-body);
+    font-size: clamp(1rem, 0.95rem + 0.2vw, 1.1rem);
+    color: var(--el-text);
+    min-width: 0;
   }
-
-  .newsletter-form input[type="email"]:focus {
-    outline: none;
-    border-color: var(--border-accent);
+  .writing-newsletter-row input[type="email"]::placeholder {
+    color: var(--el-text-quiet);
   }
-
-  .newsletter-form input[type="email"]::placeholder {
-    color: var(--text-muted);
+  .writing-newsletter-row input[type="email"]:focus { outline: none; }
+  .writing-newsletter-row button {
+    padding: 0.45rem 0;
+    background: transparent;
+    color: var(--el-accent);
+    border: none;
+    font-family: var(--el-ui);
+    font-weight: 500;
+    font-size: 13px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    cursor: pointer;
+    white-space: nowrap;
   }
-
-  .newsletter-status {
-    font-size: 0.85rem;
-    margin-top: var(--space-sm);
-    min-height: 1.2em;
-    text-align: center;
-  }
-
-  .newsletter-status.success {
-    color: var(--accent-warm);
-  }
-
-  .newsletter-status.error {
-    color: #e57373;
-  }
-
-  .hp-field {
+  .writing-newsletter-row button:hover { color: var(--el-text); }
+  .writing-newsletter-row button:disabled { opacity: 0.6; cursor: wait; }
+  .writing-hp-field {
     position: absolute;
     left: -9999px;
     top: -9999px;
@@ -297,11 +308,24 @@ const sortedPosts = allPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pu
     width: 0;
     z-index: -1;
   }
+  .writing-newsletter-status {
+    font-family: var(--el-ui);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-top: 0.85rem;
+    min-height: 1.2em;
+    color: var(--el-text-quiet);
+  }
+  .writing-newsletter-status.hidden { display: none; }
+  .writing-newsletter-status.success { color: var(--el-accent); }
+  .writing-newsletter-status.error { color: #c44; }
 
-  .links {
+  /* ---- NOTA BENE: elsewhere links ---- */
+  .writing-elsewhere {
     display: flex;
-    gap: var(--space-sm);
-    justify-content: center;
+    gap: clamp(1.5rem, 1rem + 1.5vw, 2.5rem);
     flex-wrap: wrap;
+    margin-top: clamp(1.5rem, 1rem + 1.5vw, 2.5rem);
   }
 </style>
