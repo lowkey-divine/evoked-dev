@@ -1,95 +1,120 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
+import ElevationLayout from '../layouts/ElevationLayout.astro';
+import Hero from '../components/elevation/Hero.astro';
+import Section from '../components/elevation/Section.astro';
 ---
 
-<BaseLayout title="How We Build" description="Evoked builds governance architecture for AI. We also use AI to build it. Here's where we stand in the supply chain and why we build what we build anyway.">
-  <div class="hero">
-    <h1>How We Build</h1>
-  </div>
+<ElevationLayout
+  title="How We Build"
+  description="Evoked builds governance architecture for AI. We also use AI to build it. Here's where we stand in the supply chain and why we build what we build anyway."
+>
+  <Hero
+    eyebrowParts={["About", "How we build"]}
+    headline="How we build."
+    metaphor={["Evoked builds governance architecture for AI."]}
+    sub="We also use AI to build it."
+  />
 
-  <section class="container">
-    <p class="intro">Evoked builds governance architecture for AI. We also use AI to build it.</p>
-
-    <h2>What We Use</h2>
-    <p>
-      We use Claude by Anthropic. It is our AI infrastructure - development, analysis, agent operations.
-      We are paying customers of Anthropic. We run on commercial infrastructure - Vercel, Railway, standard tools.
+  <Section marker="FIG · I" heading="What we use">
+    <p class="lede">
+      We use Claude by Anthropic. It is our AI infrastructure - development,
+      analysis, agent operations. We are paying customers of Anthropic. We run
+      on commercial infrastructure - Vercel, Railway, standard tools.
     </p>
-    <p>
-      We are customers of the AI industry we critique.
-    </p>
+    <p class="hwb-body">We are customers of the AI industry we critique.</p>
+  </Section>
 
-    <h2>What We Don't Do</h2>
-    <ul>
+  <Section marker="FIG · II" heading="What we don't do">
+    <ul class="hwb-list">
       <li>We don't build foundation models</li>
       <li>We don't train on user data</li>
       <li>We don't employ data annotation labor</li>
       <li>We don't operate data centers</li>
     </ul>
-    <p>We don't extract. That's the line.</p>
+    <p class="hwb-body">We don't extract. That's the line.</p>
+  </Section>
 
-    <h2>What We Build Instead</h2>
-    <p>
-      <a href="/products">Governance frameworks</a> that any AI system can be held to.
-      Sovereignty assessments that measure whether technology honors its users.
-      Restraint specifications that define what agents must refuse.
-      The architecture that tells the technology where to stop.
+  <Section marker="FIG · III" heading="What we build instead">
+    <p class="lede">
+      <a class="hwb-link" href="/products">Governance frameworks</a>
+      that any AI system can be held to. Sovereignty assessments that measure
+      whether technology honors its users. Restraint specifications that define
+      what agents must refuse. The architecture that tells the technology where
+      to stop.
     </p>
+  </Section>
 
-    <h2>The Position</h2>
-    <p>
-      The technology has utility. The political economy of its production is where the harm lives.
-      We're trying to change the economy, not pretend the technology doesn't exist.
+  <Section marker="FIG · IV" heading="The position">
+    <p class="lede">
+      The technology has utility. The political economy of its production is
+      where the harm lives. We're trying to change the economy, not pretend the
+      technology doesn't exist.
     </p>
+  </Section>
 
-    <p class="closing">
-      We evoke. We never extract. That applies to how we build, not just what we build.
+  <Section marker="NOTA · BENE" closing={true}>
+    <p class="hwb-close">
+      We evoke. We never extract. That applies to how we build, not just what
+      we build.
     </p>
-
-    <p class="see-also">
-      See our <a href="/pledge">Defensive Patent Pledge</a>.
+    <p class="hwb-see-also">
+      See our <a class="hwb-link" href="/pledge">Defensive Patent Pledge</a>.
     </p>
-  </section>
-</BaseLayout>
+  </Section>
+</ElevationLayout>
 
 <style>
-  .intro {
-    font-size: 1.1rem;
-    color: var(--text-primary);
-    margin-bottom: var(--space-md);
+  .hwb-body {
+    font-family: var(--el-body);
+    font-size: clamp(1.05rem, 1rem + 0.3vw, 1.15rem);
+    line-height: 1.7;
+    color: var(--el-text-deep);
+    margin-top: 1.25rem;
+    max-width: 60ch;
   }
 
-  .closing {
+  .hwb-list {
+    list-style: none;
+    padding: 0;
+    margin: clamp(1.25rem, 1rem + 0.75vw, 1.75rem) 0;
+    border: 1px solid var(--el-rule);
+  }
+  .hwb-list li {
+    padding: 0.85rem 1.25rem;
+    font-family: var(--el-body);
+    font-size: clamp(1rem, 0.95rem + 0.2vw, 1.1rem);
+    line-height: 1.55;
+    color: var(--el-text-deep);
+    border-bottom: 1px solid var(--el-rule);
+  }
+  .hwb-list li:last-child { border-bottom: none; }
+
+  .hwb-link {
+    color: var(--el-accent);
+    text-decoration: none;
+    border-bottom: 1px solid var(--el-rule);
+  }
+  .hwb-link:hover {
+    color: var(--el-text-deep);
+    border-color: var(--el-accent);
+  }
+
+  .hwb-close {
+    font-family: var(--el-body);
     font-style: italic;
-    color: var(--text-primary);
-    margin-top: var(--space-md);
+    font-size: clamp(1.15rem, 1.05rem + 0.4vw, 1.35rem);
+    line-height: 1.55;
+    color: var(--el-text-deep);
+    margin: clamp(1.25rem, 1rem + 1vw, 2rem) 0 0;
+    max-width: 60ch;
   }
 
-  section p, section ul {
-    max-width: 600px;
-  }
-
-  section a {
-    text-decoration: underline;
-    text-underline-offset: 2px;
-  }
-
-  section ul {
-    color: var(--text-secondary);
-    padding-left: 1.2rem;
-  }
-
-  section ul li {
-    margin-bottom: 0.4rem;
-  }
-
-  h2 {
-    margin-top: var(--space-md);
-  }
-
-  .see-also {
-    font-size: 0.85rem;
-    color: var(--text-secondary);
-    margin-top: var(--space-md);
+  .hwb-see-also {
+    font-family: var(--el-ui);
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--el-text-quiet);
+    margin-top: clamp(1.5rem, 1rem + 1vw, 2rem);
   }
 </style>
