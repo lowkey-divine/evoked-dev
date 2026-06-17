@@ -2,7 +2,9 @@
 
 **A structured self-assessment framework for evaluating whether the technology you use or build honors human sovereignty.**
 
-Version 1.0 | evoked.dev | 2026
+Version 1.1 | evoked.dev | Updated 2026-06-17
+
+*This methodology is published free. Evoked offers facilitated consulting for teams that want guided assessment; details at the end of this document.*
 
 ---
 
@@ -21,6 +23,8 @@ You can use this to assess:
 - Your own design practices and culture
 
 Be honest. The value of this assessment is in the truth, not in the score.
+
+This assessment is meant to be paced. You can pause at any section boundary; the work keeps. If you are in grief, in crisis, or otherwise navigating a hard day, there is no wrong time to come back to it.
 
 This toolkit reflects a specific tradition of design ethics rooted in Western technology culture. The principles are offered as starting points - not universal truths. If your cultural context values community stewardship over individual data control, or warmth and presence over silence, that is not a failure of sovereignty. It is sovereignty in practice. Bring your own ground to this assessment.
 
@@ -134,6 +138,10 @@ For each item, rate your product:
 | 31 | Social features don't exploit comparison, competition, or fear of missing out. | ___ |
 
 **Domain 4 Total: ___ / 16**
+
+---
+
+*Halfway through. Pause if you need one. Your work is held by your own honesty, not by us.*
 
 ---
 
@@ -424,6 +432,14 @@ If you want to go deeper:
 Learn more at evoked.dev/consulting
 
 Schedule a free discovery call at cal.com/evoked/discovery-call
+
+---
+
+## Version History
+
+**v1.1** - 2026-06-17 - Self-score improvements. Added upfront business-model disclosure (was at end only), pacing/accommodation note for hard days, mid-assessment break prompt, and this version history. Updates emerged from scoring the Toolkit against itself; specific findings published in "We Measured the Measurement" (forthcoming).
+
+**v1.0** - 2026 - Initial release.
 
 ---
 
