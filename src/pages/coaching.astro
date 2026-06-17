@@ -1,49 +1,50 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
+import ElevationLayout from '../layouts/ElevationLayout.astro';
+import Hero from '../components/elevation/Hero.astro';
+import Section from '../components/elevation/Section.astro';
 ---
 
-<BaseLayout title="Coaching" description="Life coaching for individuals and couples. Depth work oriented toward a future worth creating.">
-  <div class="hero">
-    <p class="recognition">Something in your life is asking for attention.</p>
-    <h1>Coaching for the life you're building.</h1>
-    <p class="tagline">Accompaniment through growth, relationships, and direction.</p>
-  </div>
+<ElevationLayout
+  title="Coaching"
+  description="Life coaching for individuals and couples. Depth work oriented toward a future worth creating."
+>
+  <Hero
+    eyebrowParts={["Engage", "Coaching"]}
+    headline="Coaching for the life you're building."
+    metaphor={["Something in your life is asking for attention."]}
+    sub="Accompaniment through growth, relationships, and direction."
+  />
 
-  <section class="container">
-    <h2>The Work</h2>
-    <p>
+  <Section marker="FIG · I" heading="The work">
+    <p class="lede">
       Individual and couples coaching. Depth work that honors where you've been
       while orienting toward where you're going.
     </p>
-    <p>
+    <p class="coaching-body">
       I draw from psychodynamic and humanistic traditions — attending to unconscious
       patterns, attachment, and meaning-making while staying grounded in your present
       experience and authentic self.
     </p>
-    <p>
+    <p class="coaching-body">
       This isn't about fixing what's broken. It's about understanding what's there
       and building toward what's possible.
     </p>
-  </section>
+  </Section>
 
-  <section class="container">
-    <h2>Orientation</h2>
-    <p>
+  <Section marker="FIG · II" heading="Orientation">
+    <p class="lede">
       I believe a better future is achievable — not in some distant utopia, but in
       the life you're living now. The small choices. The relationships you tend.
       The person you're becoming.
     </p>
-    <p>
+    <p class="coaching-body">
       The future I orient toward is one where people are accompanied, not optimized.
     </p>
-  </section>
+  </Section>
 
-  <section class="container">
-    <h2>A Note on What This Is</h2>
-    <div class="card">
-      <p>
-        <strong>This is life coaching, not therapy.</strong>
-      </p>
+  <Section marker="FIG · III" heading="A note on what this is">
+    <div class="coaching-note">
+      <p class="coaching-note-lead"><strong>This is life coaching, not therapy.</strong></p>
       <p>
         I'm not a licensed therapist. I don't diagnose, treat mental illness, or
         provide clinical intervention.
@@ -56,14 +57,56 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         If you need clinical support, I'm happy to help you find the right fit.
       </p>
     </div>
-  </section>
+  </Section>
 
-  <section class="container text-center">
-    <h2>Begin</h2>
-    <p>Reach out to start a conversation.</p>
-    <div class="cta-buttons mt-md">
-      <a href="/coaching-intake" class="btn">Tell Us Where You Are</a>
-      <a href="https://cal.com/evoked/coaching-conversation" class="btn" target="_blank" rel="noopener">Schedule Directly</a>
+  <Section marker="NOTA · BENE" heading="Begin" closing={true}>
+    <p class="lede">Reach out to start a conversation.</p>
+    <div class="coaching-ctas">
+      <a class="cta cta-primary" href="/coaching-intake">Tell us where you are</a>
+      <a class="cta cta-secondary" href="https://cal.com/evoked/coaching-conversation" target="_blank" rel="noopener">Schedule directly &rarr;</a>
     </div>
-  </section>
-</BaseLayout>
+  </Section>
+</ElevationLayout>
+
+<style>
+  /* Coaching page - founder-public register, slightly softer cadence
+     than the patents/spec surfaces. Uses Section's built-in lede style
+     for the opening line of each section; .coaching-body for follow-up
+     paragraphs that should read at the same rhythm but without the
+     larger lede font size. */
+  .coaching-body {
+    font-family: var(--el-body);
+    font-size: clamp(1rem, 0.95rem + 0.3vw, 1.1rem);
+    line-height: 1.7;
+    color: var(--el-text-soft);
+    max-width: 60ch;
+    margin-top: 1.25rem;
+    margin-bottom: 0;
+  }
+
+  .coaching-note {
+    border-left: 2px solid var(--el-accent);
+    padding: 0.5rem 0 0.5rem 1.5rem;
+    max-width: 60ch;
+  }
+  .coaching-note p {
+    font-family: var(--el-body);
+    font-size: clamp(1rem, 0.95rem + 0.3vw, 1.1rem);
+    line-height: 1.7;
+    color: var(--el-text-soft);
+    margin: 0 0 1rem;
+  }
+  .coaching-note p:last-child { margin-bottom: 0; }
+  .coaching-note-lead strong {
+    color: var(--el-text);
+    font-weight: 500;
+  }
+
+  .coaching-ctas {
+    display: flex;
+    gap: clamp(1.5rem, 1rem + 1.5vw, 2.5rem);
+    flex-wrap: wrap;
+    align-items: center;
+    margin-top: clamp(1.5rem, 1rem + 1.5vw, 2.5rem);
+  }
+</style>
