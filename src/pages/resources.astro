@@ -1,26 +1,32 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
+import ElevationLayout from '../layouts/ElevationLayout.astro';
+import Hero from '../components/elevation/Hero.astro';
+import Section from '../components/elevation/Section.astro';
 ---
 
-<BaseLayout title="Resources" description="Places to find support when you need it.">
-  <div class="hero">
-    <h1>Resources</h1>
-    <p class="tagline">Places to find support.</p>
-  </div>
+{/*
+  Voice register: care-oriented, sister-shape to /projects/ezri and
+  /kitchen-table. Intimate-domestic-leaning - the page is linked from
+  /projects/ezri's "Here are some places to find support" footer. The
+  em-dash on line "Call or text 988 — available 24/7" is preserved as
+  register-correct per the Voice Discipline Scope addendum.
+*/}
 
-  <section class="container">
-    <p class="lead">
-      Inner work can surface things that are tender or difficult.<br />
-      If you need support, these are good places to start.
-    </p>
-  </section>
+<ElevationLayout
+  title="Resources"
+  description="Places to find support when you need it."
+>
+  <Hero
+    headline="Resources."
+    metaphor={["Places to find support."]}
+    sub="Inner work can surface things that are tender or difficult. If you need support, these are good places to start."
+  />
 
-  <section class="container">
-    <h2>Crisis Support</h2>
-    <p>If you're in immediate distress, please reach out:</p>
+  <Section marker="FIG · I" heading="Crisis support">
+    <p class="lede">If you're in immediate distress, please reach out:</p>
     <ul class="resource-list">
       <li>
-        <strong>988 Suicide & Crisis Lifeline</strong> (US)<br />
+        <strong>988 Suicide &amp; Crisis Lifeline</strong> (US)<br />
         Call or text <a href="tel:988">988</a> — available 24/7
       </li>
       <li>
@@ -32,11 +38,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <a href="https://www.iasp.info/resources/Crisis_Centres/" target="_blank" rel="noopener">Find a crisis center in your country</a>
       </li>
     </ul>
-  </section>
+  </Section>
 
-  <section class="container">
-    <h2>Finding a Therapist</h2>
-    <p>If you're looking for ongoing professional support:</p>
+  <Section marker="FIG · II" heading="Finding a therapist">
+    <p class="lede">If you're looking for ongoing professional support:</p>
     <ul class="resource-list">
       <li>
         <strong>Psychology Today Therapist Finder</strong><br />
@@ -51,11 +56,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <a href="https://www.inclusivetherapists.com/" target="_blank" rel="noopener">Directory centered on marginalized communities</a>
       </li>
     </ul>
-  </section>
+  </Section>
 
-  <section class="container">
-    <h2>Peer Support</h2>
-    <p>Sometimes you just need to talk to someone who understands:</p>
+  <Section marker="FIG · III" heading="Peer support">
+    <p class="lede">Sometimes you just need to talk to someone who understands:</p>
     <ul class="resource-list">
       <li>
         <strong>Warmlines</strong> (non-crisis support)<br />
@@ -66,56 +70,57 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <a href="https://www.7cups.com/" target="_blank" rel="noopener">Free online chat with trained listeners</a>
       </li>
     </ul>
-  </section>
+  </Section>
 
-  <section class="container">
-    <p class="closing">
-      Reaching out is not weakness. It's wisdom.
-    </p>
-  </section>
-</BaseLayout>
+  <Section marker="NOTA · BENE" closing={true}>
+    <p class="resources-close">Reaching out is not weakness. It's wisdom.</p>
+  </Section>
+</ElevationLayout>
 
 <style>
-  .lead {
-    font-family: var(--font-display);
-    font-size: 1.3rem;
-    color: var(--text-primary);
-    text-align: center;
-    line-height: 1.6;
-  }
-
+  /* Resource list - brass-left-rule items, gentle reading typography
+     matching the intimate-domestic register of /ezri + /kitchen-table. */
   .resource-list {
     list-style: none;
     padding: 0;
+    margin: clamp(1.25rem, 1rem + 0.75vw, 1.75rem) 0 0;
   }
-
   .resource-list li {
-    padding: var(--space-md);
-    border-left: 2px solid var(--accent-subtle);
-    margin-bottom: var(--space-md);
-    color: var(--text-secondary);
+    padding: 0.85rem 0 0.85rem 1.5rem;
+    border-left: 2px solid var(--el-accent);
+    margin-bottom: clamp(1rem, 0.85rem + 0.5vw, 1.25rem);
+    font-family: var(--el-body);
+    font-size: clamp(1rem, 0.95rem + 0.25vw, 1.1rem);
+    line-height: 1.7;
+    color: var(--el-text-soft);
+    max-width: 60ch;
   }
-
+  .resource-list li:last-child { margin-bottom: 0; }
   .resource-list li strong {
-    color: var(--text-primary);
-    display: block;
-    margin-bottom: var(--space-xs);
+    color: var(--el-text-deep);
+    display: inline;
+    font-weight: 500;
   }
-
   .resource-list a {
-    color: var(--accent-warm);
-    text-decoration: underline;
-    text-underline-offset: 2px;
+    color: var(--el-accent);
+    text-decoration: none;
+    border-bottom: 1px solid var(--el-rule);
   }
-
   .resource-list a:hover {
-    color: var(--accent-glow);
+    color: var(--el-text-deep);
+    border-color: var(--el-accent);
   }
 
-  .closing {
-    text-align: center;
+  .resources-close {
+    font-family: var(--el-body);
     font-style: italic;
-    color: var(--text-muted);
-    margin-top: var(--space-lg);
+    font-size: clamp(1.15rem, 1.05rem + 0.5vw, 1.4rem);
+    line-height: 1.5;
+    color: var(--el-text-deep);
+    text-align: center;
+    margin: 0;
+    max-width: 36ch;
+    margin-left: auto;
+    margin-right: auto;
   }
 </style>
