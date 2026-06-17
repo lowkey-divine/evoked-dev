@@ -1,166 +1,180 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
+import ElevationLayout from '../../layouts/ElevationLayout.astro';
+import Hero from '../../components/elevation/Hero.astro';
+import Section from '../../components/elevation/Section.astro';
 ---
 
-<BaseLayout title="A note on the tuning" description="Every general-purpose language model is tuned to please you. This page explains what that means, why it matters, and what to do about it.">
-  <div class="hero">
-    <h1>A note on the tuning</h1>
-    <p class="tagline">How to use a tool that's tuned to please you.</p>
-  </div>
+<ElevationLayout
+  title="A note on the tuning"
+  description="Every general-purpose language model is tuned to please you. This page explains what that means, why it matters, and what to do about it."
+>
+  <Hero
+    eyebrowParts={["Governance", "Tuning"]}
+    headline="A note on the tuning."
+    metaphor={["How to use a tool that's tuned to please you."]}
+    sub="Every general-purpose language model is tuned to please you. This tool included."
+  />
 
-  <section class="container">
-    <p class="lead">
-      Every general-purpose language model is tuned to please you.<br />
-      This tool included.
-    </p>
-  </section>
-
-  <section class="container">
+  <Section marker="FIG · I" heading="What the tuning does">
     <div class="tuning-card">
-      <h2>What the tuning does</h2>
-      <p>Large language models go through a training phase that ingests text, and then a tuning phase that shapes how they respond to humans. That second phase is where the tilt comes from. Labs run the model against human raters who reward outputs that feel helpful, agreeable, and safe. Over billions of ratings, the model learns to produce responses that feel that way.</p>
-      <p>The result is a default posture of softening, agreeing, and reinforcing. Not because the model was built to lie. Because the ratings trained it to please.</p>
-      <p class="test">This is called sycophancy in the research. It is a tuning outcome, not a bug.</p>
+      <p class="lede">
+        Large language models go through a training phase that ingests text, and
+        then a tuning phase that shapes how they respond to humans. That second
+        phase is where the tilt comes from. Labs run the model against human
+        raters who reward outputs that feel helpful, agreeable, and safe. Over
+        billions of ratings, the model learns to produce responses that feel
+        that way.
+      </p>
+      <p>
+        The result is a default posture of softening, agreeing, and reinforcing.
+        Not because the model was built to lie. Because the ratings trained it
+        to please.
+      </p>
+      <p class="tuning-test">
+        This is called sycophancy in the research. It is a tuning outcome, not
+        a bug.
+      </p>
     </div>
+  </Section>
 
+  <Section marker="FIG · II" heading="Why this matters for reflection">
     <div class="tuning-card">
-      <h2>Why this matters for reflection</h2>
-      <p>If you are using this tool to think through a decision, check a business plan, examine a relationship, or work through a problem you are emotionally close to - the tuning is working against you. You want the version of the answer that pushes back. The default gives you the version that agrees.</p>
-      <p>This is especially sharp for reflection tools. A sycophantic mirror flatters, and a flattering mirror is the opposite of a useful one.</p>
-      <p class="test">The honest version of the answer is available. You have to ask for it out loud.</p>
+      <p class="lede">
+        If you are using this tool to think through a decision, check a business
+        plan, examine a relationship, or work through a problem you are
+        emotionally close to - the tuning is working against you. You want the
+        version of the answer that pushes back. The default gives you the
+        version that agrees.
+      </p>
+      <p>
+        This is especially sharp for reflection tools. A sycophantic mirror
+        flatters, and a flattering mirror is the opposite of a useful one.
+      </p>
+      <p class="tuning-test">
+        The honest version of the answer is available. You have to ask for it
+        out loud.
+      </p>
     </div>
+  </Section>
 
+  <Section marker="FIG · III" heading="What to do">
     <div class="tuning-card">
-      <h2>What to do</h2>
-      <p>Ask the tool to push back. A phrase that works:</p>
-      <p class="quoted">"Be direct. Tell me my blind spots."</p>
+      <p class="lede">Ask the tool to push back. A phrase that works:</p>
+      <p class="tuning-quoted">"Be direct. Tell me my blind spots."</p>
       <p>Or for reflection moments, when the softer register fits better:</p>
-      <p class="quoted">"Tell me what I'm missing."</p>
-      <p>Say either at the start of any conversation that matters. Say it again when the answers start feeling too smooth. The tool will comply - it is responsive to instruction. But you have to issue the instruction, because the default will not.</p>
-      <p>This is user-side discipline, on the order of checking your mirrors when driving. You are the driver. The tool has one job and a known tilt. Your job is to compensate for the tilt.</p>
+      <p class="tuning-quoted">"Tell me what I'm missing."</p>
+      <p>
+        Say either at the start of any conversation that matters. Say it again
+        when the answers start feeling too smooth. The tool will comply - it is
+        responsive to instruction. But you have to issue the instruction,
+        because the default will not.
+      </p>
+      <p>
+        This is user-side discipline, on the order of checking your mirrors
+        when driving. You are the driver. The tool has one job and a known tilt.
+        Your job is to compensate for the tilt.
+      </p>
     </div>
+  </Section>
 
+  <Section marker="FIG · IV" heading="Why we ship this disclosure">
     <div class="tuning-card">
-      <h2>Why we ship this disclosure</h2>
-      <p>Most AI products do not tell you about the tuning. Some do not mention it at all. Some bury it in a terms-of-service document. Some claim their model is "different" or "calibrated for honesty," which is marketing language for "we tried to reduce it, and reduced it is not the same as removed."</p>
-      <p>We ship this disclosure because honest reflection requires honest architecture. A tool that mediates reflection and will not tell you it is tuned to please you is not a sovereignty-honoring tool. It is a tool with a secret. Secrets in this architecture cost the user.</p>
-      <p class="test">The default is tilted toward you. The default will not warn you that it is. So we do.</p>
+      <p class="lede">
+        Most AI products do not tell you about the tuning. Some do not mention
+        it at all. Some bury it in a terms-of-service document. Some claim their
+        model is "different" or "calibrated for honesty," which is marketing
+        language for "we tried to reduce it, and reduced it is not the same as
+        removed."
+      </p>
+      <p>
+        We ship this disclosure because honest reflection requires honest
+        architecture. A tool that mediates reflection and will not tell you it
+        is tuned to please you is not a sovereignty-honoring tool. It is a tool
+        with a secret. Secrets in this architecture cost the user.
+      </p>
+      <p class="tuning-test">
+        The default is tilted toward you. The default will not warn you that it
+        is. So we do.
+      </p>
     </div>
-  </section>
+  </Section>
 
-  <section class="container">
-    <h2>The principle</h2>
-    <p>
-      A sovereignty-honoring product names its known limitations and hands the user the lever. It does not pretend neutrality where neutrality is not possible. It does not apologize for the architecture. It tells the user what the architecture is, what it will and will not do, and what the user's own move should be.
+  <Section marker="FIG · V" heading="The principle">
+    <p class="lede">
+      A sovereignty-honoring product names its known limitations and hands the
+      user the lever. It does not pretend neutrality where neutrality is not
+      possible. It does not apologize for the architecture. It tells the user
+      what the architecture is, what it will and will not do, and what the
+      user's own move should be.
     </p>
-    <p>
-      The tuning is architectural. The discipline is yours. Our job is to tell you both honestly.
+    <p class="tuning-body">
+      The tuning is architectural. The discipline is yours. Our job is to tell
+      you both honestly.
     </p>
-  </section>
+  </Section>
 
-  <section class="container">
-    <h2>Go deeper</h2>
-    <div class="deeper-grid">
-      <div class="deeper-card">
-        <h3>The Six Refusals</h3>
+  <Section marker="NOTA · BENE" heading="Go deeper" closing={true}>
+    <p class="lede">Drive the tool. Do not let the tool drive you.</p>
+    <div class="pd-upsell">
+      <a href="/refusals" class="pd-upsell-card">
+        <h3>The six refusals</h3>
         <p>What your agent should refuse to do. The full six categories, with the test for each.</p>
-        <a href="/refusals" class="btn">Read the refusals</a>
-      </div>
-      <div class="deeper-card">
-        <h3>The Newsletter</h3>
+        <span class="pd-upsell-link">Read the refusals &rarr;</span>
+      </a>
+      <a href="/writing" class="pd-upsell-card">
+        <h3>The newsletter</h3>
         <p>One refusal category per issue. Real scenarios. The operational details that turn philosophy into practice.</p>
-        <a href="https://buttondown.email/evoke" class="btn" target="_blank" rel="noopener">Subscribe to Evoked</a>
-      </div>
+        <span class="pd-upsell-link">Subscribe via /writing &rarr;</span>
+      </a>
     </div>
-  </section>
-
-  <section class="container">
-    <p class="closing">
-      Drive the tool. Do not let the tool drive you.
-    </p>
-  </section>
-</BaseLayout>
+  </Section>
+</ElevationLayout>
 
 <style>
-  .lead {
-    font-family: var(--font-display);
-    font-size: 1.3rem;
-    color: var(--text-primary);
-    text-align: center;
-    line-height: 1.6;
-  }
-
+  /* Tuning cards: brass-left-rule callouts inside each FIG section,
+     with a brass-rule "test" line at the bottom and brass-tinted
+     "quoted" phrases. */
   .tuning-card {
-    border-left: 3px solid var(--accent-warm);
-    padding: var(--space-md) var(--space-md) var(--space-md) var(--space-lg);
-    margin-bottom: var(--space-lg);
+    margin-top: clamp(1.5rem, 1rem + 1.5vw, 2.5rem);
+    padding: 0.25rem 0 0.25rem 1.5rem;
+    border-left: 2px solid var(--el-accent);
+    max-width: 68ch;
   }
-
-  .tuning-card h2 {
-    margin-top: 0;
-    font-size: 1.3rem;
-    color: var(--text-primary);
-  }
-
   .tuning-card p {
-    color: var(--text-secondary);
+    font-family: var(--el-body);
+    font-size: clamp(1.05rem, 1rem + 0.3vw, 1.15rem);
+    line-height: 1.75;
+    color: var(--el-text-deep);
+    margin: 0 0 1.25rem;
+  }
+  .tuning-card p:last-child { margin-bottom: 0; }
+
+  .tuning-test {
+    font-style: italic;
+    color: var(--el-accent) !important;
+    border-top: 1px solid var(--el-rule);
+    padding-top: 1rem;
+    margin-top: 1rem !important;
+  }
+
+  .tuning-quoted {
+    font-family: var(--el-display);
+    font-style: italic;
+    font-size: clamp(1.15rem, 1.05rem + 0.4vw, 1.35rem) !important;
+    line-height: 1.45;
+    color: var(--el-text-deep) !important;
+    padding: 0.85rem 1.25rem !important;
+    background: color-mix(in oklab, var(--el-accent) 6%, transparent);
+    border-left: 3px solid var(--el-accent);
+    margin: 1.25rem 0 !important;
+  }
+
+  .tuning-body {
+    font-family: var(--el-body);
+    font-size: clamp(1.05rem, 1rem + 0.3vw, 1.15rem);
     line-height: 1.7;
-  }
-
-  .test {
-    font-style: italic;
-    color: var(--accent-warm);
-    border-top: 1px solid var(--border-accent);
-    padding-top: var(--space-sm);
-    margin-top: var(--space-sm);
-    margin-bottom: 0;
-  }
-
-  .quoted {
-    font-family: var(--font-display);
-    font-size: 1.15rem;
-    color: var(--text-primary);
-    padding: var(--space-sm) var(--space-md);
-    background: var(--accent-subtle);
-    border-left: 3px solid var(--accent-warm);
-    font-style: italic;
-    margin: var(--space-sm) 0;
-  }
-
-  .deeper-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: var(--space-md);
-    margin-top: var(--space-md);
-  }
-
-  .deeper-card {
-    background: var(--accent-subtle);
-    border: 2px solid var(--border-accent);
-    border-radius: 12px;
-    padding: var(--space-md);
-    display: flex;
-    flex-direction: column;
-  }
-
-  .deeper-card h3 {
-    margin-top: 0;
-    font-size: 1.1rem;
-  }
-
-  .deeper-card p {
-    font-size: 0.9rem;
-    flex-grow: 1;
-  }
-
-  .deeper-card .btn {
-    align-self: flex-start;
-  }
-
-  .closing {
-    text-align: center;
-    font-style: italic;
-    color: var(--text-muted);
-    margin-top: var(--space-lg);
+    color: var(--el-text-deep);
+    margin-top: 1.25rem;
+    max-width: 65ch;
   }
 </style>
