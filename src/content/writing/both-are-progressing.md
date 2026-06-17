@@ -8,6 +8,8 @@ draft: true
 
 Yesterday we said the scoring would be published as a follow-up piece today.  Here is the follow-up.
 
+One correction first.  Yesterday's article said "three companies."  The honest count is two companies and three signals.  Google moved once.  Anthropic moved twice (the consumer privacy policy update on June 8, and the worldwide shutdown of Claude Fable 5 on June 13).  We have corrected the live article.  The recursive question yesterday's piece closed on requires that when we slip, we name the slip.  That is the practice.
+
 We assessed Google's new Search Services framework and Anthropic's June 8 consumer privacy policy against the 47-point Sovereignty Assessment our publication uses.  We did this from publicly available material only.  We did this because the gap between naming an architecture and measuring it is the gap where critique becomes work.
 
 The result is more specific than the story.  Both products land in the Progressing band.  Both fail the same three items.  The architecture failure is more diagnosable, and more fixable, than the broader-market average would suggest.

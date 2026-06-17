@@ -1,12 +1,12 @@
 ---
 title: "We Are the Variable Being Adjusted"
-description: "Three companies, one week, one architecture. The user has become the thing the system tunes around."
+description: "Two companies, three signals, one week, one architecture. The user has become the thing the system tunes around."
 author: "Evoked"
 pubDate: 2026-06-17
 draft: false
 ---
 
-Three companies, one week, one architecture.
+Two companies, three signals, one week, one architecture.
 
 The user has become the thing the system tunes around.
 
@@ -21,7 +21,7 @@ He did not find an opt-out.  He found a help page that offered him tips on how t
 
 He is sixty-six years old.  He spent his life building systems that worked.  He understood, as he closed the app, that he had just been billed for an hour of his retirement in exchange for the privilege of withdrawing consent he never knowingly gave.
 
-Three companies.  One week.  One architecture.
+Two companies.  Three signals.  One week.  One architecture.
 
 On May 26, Google began rolling out a new framework for its Search Services.  The framework consolidates Web and App Activity into two new settings called Search Services History and Personalized Recommendations.  The framework now includes media: images, files, audio, and video.  The framework's default state is whatever your prior state was. "If these were on, these new settings are also on." That is consent inherited from one architecture and applied to another.
 
@@ -31,7 +31,7 @@ On June 8, Anthropic published an update to its consumer privacy policy, effecti
 
 On June 9, Anthropic released Claude Fable 5, the most capable consumer model the company had ever shipped.  On June 12, Amazon CEO Andy Jassy informed United States officials that Amazon researchers had jailbroken Fable 5 into producing content useful for cyberattacks.  On June 13, the Trump administration issued an emergency export-control directive ordering Anthropic to block all foreign nationals from accessing Fable 5 and Mythos 5.  Anthropic disabled both models for all customers worldwide to comply.  The user's access to the tool was revoked within three days through a route no user had standing to use.
 
-Three companies.  Three news items.  One architecture.
+Two companies.  Three signals.  One architecture.
 
 The mechanism has a name.
 
