@@ -1,5 +1,7 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
+import ElevationLayout from '../../layouts/ElevationLayout.astro';
+import Hero from '../../components/elevation/Hero.astro';
+import Section from '../../components/elevation/Section.astro';
 import { getProductBySlug } from '../../lib/products/registry';
 import { productJsonLd } from '../../lib/structured-data';
 
@@ -7,288 +9,346 @@ const product = getProductBySlug('agent-voice-architecture-guide')!;
 const jsonLd = productJsonLd(product, 'https://evoked.dev/products/agent-voice-architecture-guide');
 ---
 
-<BaseLayout title="Agent Voice Architecture Guide" description="Design agent voices that protect, respect, and nurture - in that order. Sovereignty language audit, voice specs, and refusal voice patterns. $49 PDF." structuredData={jsonLd}>
-  <div class="hero hero-compact">
-    <span class="discipline-badge">Intent Engineering</span>
-    <h1>Does your agent's voice respect the person hearing it?</h1>
-    <p class="tagline">Voice design that protects, respects, and nurtures - in that order.</p>
-  </div>
+<ElevationLayout
+  title="Agent Voice Architecture Guide"
+  description="Design agent voices that protect, respect, and nurture - in that order. Sovereignty language audit, voice specs, and refusal voice patterns. $49 PDF."
+  structuredData={jsonLd}
+>
+  <Hero
+    eyebrowParts={["Products", "Intent engineering"]}
+    headline="Does your agent's voice respect the person hearing it?"
+    metaphor={["Protect. Respect. Nurture."]}
+    sub="Voice design that honors sovereignty - in that order."
+  />
 
-  <section class="container">
-    <div class="value-prop">
-      <p>
-        Every agent has a voice. Most were designed to sound helpful, friendly, engaging.
-        None of those words ask the question that matters: does the voice serve the person
-        hearing it, or does it serve the system speaking?
-      </p>
-      <p>
-        This guide gives you a framework for designing agent voices that honor sovereignty
-        at every level - from the words they choose to the silence they keep.
-      </p>
-    </div>
-  </section>
+  <Section marker="FIG · I" heading="Why voice is architecture">
+    <p class="lede">
+      Every agent has a voice. Most were designed to sound helpful, friendly,
+      engaging. None of those words ask the question that matters: does the voice
+      serve the person hearing it, or does it serve the system speaking?
+    </p>
+    <p class="pd-body">
+      This guide gives you a framework for designing agent voices that honor
+      sovereignty at every level - from the words they choose to the silence
+      they keep.
+    </p>
+  </Section>
 
-  <section class="container">
-    <h2>What You Get</h2>
-
-    <div class="features-grid">
-      <div class="feature">
-        <h3>Three-Level Voice Framework</h3>
+  <Section marker="FIG · II" heading="What you get">
+    <div class="pd-features">
+      <div class="pd-feature">
+        <h3>Three-level voice framework</h3>
         <p>Protection, respect, and nurturance as a design hierarchy. Get the order wrong and the voice becomes manipulation with good manners.</p>
       </div>
-      <div class="feature">
-        <h3>Sovereignty Language Audit</h3>
+      <div class="pd-feature">
+        <h3>Sovereignty language audit</h3>
         <p>A structured method for identifying extraction patterns in your agent's language. The patterns you don't notice are the ones doing the most work.</p>
       </div>
-      <div class="feature">
-        <h3>Voice Specification Templates</h3>
+      <div class="pd-feature">
+        <h3>Voice specification templates</h3>
         <p>Complete templates for defining an agent's voice - tone, boundaries, language patterns, and the things it will never say.</p>
       </div>
-      <div class="feature">
-        <h3>Refusal Voice Patterns</h3>
+      <div class="pd-feature">
+        <h3>Refusal voice patterns</h3>
         <p>How your agent says no matters as much as whether it says no. Patterns for refusing with clarity, dignity, and without apology.</p>
       </div>
     </div>
-  </section>
+  </Section>
 
-  <section class="container">
-    <h2>The Three Levels</h2>
-
-    <div class="domains-list">
-      <div class="domain-item">
-        <span class="domain-number">1</span>
-        <div>
+  <Section marker="FIG · III" heading="The three levels">
+    <div class="pd-pillars">
+      <div class="pd-pillar">
+        <span class="pd-pillar-number">1</span>
+        <div class="pd-pillar-body">
           <h3>Protection</h3>
-          <p>"First, do no harm. Does the voice protect the person from manipulation, shame, and coercion?"</p>
+          <p class="pd-pillar-question">"First, do no harm. Does the voice protect the person from manipulation, shame, and coercion?"</p>
         </div>
       </div>
-      <div class="domain-item">
-        <span class="domain-number">2</span>
-        <div>
+      <div class="pd-pillar">
+        <span class="pd-pillar-number">2</span>
+        <div class="pd-pillar-body">
           <h3>Respect</h3>
-          <p>"Does the voice treat the person as a sovereign being with their own judgment, preferences, and right to choose?"</p>
+          <p class="pd-pillar-question">"Does the voice treat the person as a sovereign being with their own judgment, preferences, and right to choose?"</p>
         </div>
       </div>
-      <div class="domain-item">
-        <span class="domain-number">3</span>
-        <div>
+      <div class="pd-pillar">
+        <span class="pd-pillar-number">3</span>
+        <div class="pd-pillar-body">
           <h3>Nurturance</h3>
-          <p>"Does the voice support growth, confidence, and capability - without creating dependency?"</p>
+          <p class="pd-pillar-question">"Does the voice support growth, confidence, and capability - without creating dependency?"</p>
         </div>
       </div>
     </div>
-  </section>
+  </Section>
 
-  <section class="container">
-    <h2>Who This Is For</h2>
-
-    <div class="audience-grid">
-      <div class="card">
-        <h3>Product Teams</h3>
+  <Section marker="FIG · IV" heading="Who this is for">
+    <div class="pd-audience">
+      <div class="pd-audience-card">
+        <h3>Product teams</h3>
         <p>Your agent's voice is a design decision with ethical weight. This guide makes the decision deliberate instead of accidental.</p>
       </div>
-      <div class="card">
-        <h3>UX Writers & Content Designers</h3>
+      <div class="pd-audience-card">
+        <h3>UX writers and content designers</h3>
         <p>If you write the words agents speak, this framework gives you a sovereignty-first lens for every line of copy.</p>
       </div>
-      <div class="card">
-        <h3>Conversational AI Developers</h3>
+      <div class="pd-audience-card">
+        <h3>Conversational AI developers</h3>
         <p>Building chatbots, assistants, or agents that talk to people. The voice architecture shapes what your system feels like to use.</p>
       </div>
     </div>
-  </section>
+  </Section>
 
-  <section class="container text-center">
-    <div class="purchase-card">
-      <div class="price-display">$49</div>
-      <p>PDF download. Design voices for as many agents as you need.</p>
-      <a href={product.stripePaymentLink} class="btn btn-primary btn-large mt-md" target="_blank" rel="noopener">Buy the Guide</a>
-      <p class="text-muted mt-md" style="font-size: 0.85rem;">
-        Includes the three-level framework, sovereignty language audit, voice specification templates, quality checks, and refusal voice patterns.
+  <Section marker="FIG · V" heading="Buy the guide">
+    <div class="pd-purchase">
+      <div class="pd-price">$49</div>
+      <p class="pd-purchase-lead">PDF download. Design voices for as many agents as you need.</p>
+      <a
+        href={product.stripePaymentLink}
+        class="pd-buy-cta"
+        target="_blank"
+        rel="noopener"
+      >Buy the Guide</a>
+      <p class="pd-purchase-fineprint">
+        Includes the three-level framework, sovereignty language audit, voice
+        specification templates, quality checks, and refusal voice patterns.
       </p>
     </div>
-  </section>
+  </Section>
 
-  <section class="container">
-    <h2>Go Deeper</h2>
-    <p>
-      The guide gives you the voice framework. If you want to build the full trust architecture
-      around it, two options:
+  <Section marker="NOTA · BENE" heading="Go deeper" closing={true}>
+    <p class="lede">
+      The guide gives you the voice framework. If you want the full trust
+      architecture around it, two doorways from here.
     </p>
-
-    <div class="upsell-grid">
-      <div class="card">
-        <h3>The Complete Bundle</h3>
-        <p>Get all four trust architecture products - Blueprint, Voice, Governance, and Restraint - for $149. Save $47.</p>
-        <a href="/products/trust-architecture-complete" class="btn mt-sm">See the Bundle</a>
-      </div>
-      <div class="card">
-        <h3>Discovery Call</h3>
+    <div class="pd-upsell">
+      <a href="/products/trust-architecture-complete" class="pd-upsell-card">
+        <h3>The complete bundle</h3>
+        <p>All four trust architecture products - Blueprint, Voice, Governance, and Restraint - for $149. Save $47.</p>
+        <span class="pd-upsell-link">See the bundle &rarr;</span>
+      </a>
+      <a href="https://cal.com/cal.com-evoked/discovery-call" class="pd-upsell-card" target="_blank" rel="noopener">
+        <h3>Discovery call</h3>
         <p>Free 30-minute call to discuss your agent's voice design and figure out next steps.</p>
-        <a href="https://cal.com/cal.com-evoked/discovery-call" class="btn mt-sm" target="_blank" rel="noopener">Schedule</a>
-      </div>
+        <span class="pd-upsell-link">Schedule &rarr;</span>
+      </a>
     </div>
-  </section>
-</BaseLayout>
+  </Section>
+</ElevationLayout>
 
 <style>
-  .hero-compact {
-    min-height: 45vh;
+  /* Product detail template - reused from /products/trust-architecture-blueprint
+     and /products/trust-architecture-complete. .pd-* classes are stable across
+     product pages. */
+
+  .pd-body {
+    font-family: var(--el-body);
+    font-size: clamp(1rem, 0.95rem + 0.3vw, 1.1rem);
+    line-height: 1.7;
+    color: var(--el-text-soft);
+    margin-top: 1.25rem;
+    margin-bottom: 0;
+    max-width: 60ch;
   }
 
-  .discipline-badge {
-    display: inline-block;
-    background: var(--accent-subtle);
-    color: var(--accent-warm);
-    font-size: 0.7rem;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    padding: 3px 10px;
-    border-radius: 100px;
-    margin-bottom: var(--space-sm);
-  }
-
-  .value-prop p {
-    font-size: 1.05rem;
-    color: var(--text-primary);
-    line-height: 1.8;
-  }
-
-  .features-grid {
+  /* ---- FIG II: feature grid ---- */
+  .pd-features {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: var(--space-md);
+    gap: clamp(1rem, 0.75rem + 1vw, 1.5rem);
+    margin-top: clamp(1.5rem, 1rem + 1.5vw, 2.5rem);
+  }
+  .pd-feature {
+    padding: clamp(1.25rem, 1rem + 0.75vw, 1.75rem);
+    border: 1px solid var(--el-rule);
+    transition: border-color 0.2s ease;
+  }
+  .pd-feature:hover { border-color: var(--el-accent); }
+  .pd-feature h3 {
+    font-family: var(--el-display);
+    font-size: clamp(1rem, 0.95rem + 0.3vw, 1.15rem);
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--el-text);
+    margin: 0 0 0.75rem;
+  }
+  .pd-feature p {
+    font-family: var(--el-body);
+    font-size: clamp(0.95rem, 0.9rem + 0.2vw, 1.05rem);
+    line-height: 1.6;
+    color: var(--el-text-soft);
+    margin: 0;
   }
 
-  .feature {
-    background: var(--bg-surface);
-    border: 1px solid var(--border-subtle);
-    border-radius: 8px;
-    padding: var(--space-md);
-  }
-
-  .feature h3 {
-    font-size: 1.1rem;
-    margin-bottom: var(--space-xs);
-  }
-
-  .feature p {
-    font-size: 0.9rem;
-    margin-bottom: 0;
-  }
-
-  .domains-list {
+  /* ---- FIG III: pillar list (numbered) ---- */
+  .pd-pillars {
     display: flex;
     flex-direction: column;
-    gap: var(--space-sm);
+    margin-top: clamp(1.5rem, 1rem + 1.5vw, 2.5rem);
+    border: 1px solid var(--el-rule);
   }
-
-  .domain-item {
+  .pd-pillar {
     display: flex;
-    align-items: flex-start;
-    gap: var(--space-md);
-    padding: var(--space-sm) 0;
-    border-bottom: 1px solid var(--border-subtle);
+    align-items: center;
+    gap: clamp(1rem, 0.75rem + 1vw, 1.75rem);
+    padding: clamp(1rem, 0.85rem + 0.6vw, 1.5rem) clamp(1.25rem, 1rem + 0.75vw, 1.75rem);
+    border-bottom: 1px solid var(--el-rule);
   }
-
-  .domain-item:last-child {
-    border-bottom: none;
-  }
-
-  .domain-number {
-    font-family: var(--font-display);
-    font-size: 2rem;
-    color: var(--accent-warm);
-    line-height: 1;
+  .pd-pillar:last-child { border-bottom: none; }
+  .pd-pillar-number {
+    font-family: var(--el-display);
+    font-size: clamp(1.75rem, 1.25rem + 1.5vw, 2.25rem);
+    font-weight: 400;
+    color: var(--el-accent);
+    line-height: 0.9;
     flex-shrink: 0;
     width: 2rem;
     text-align: center;
   }
-
-  .domain-item h3 {
-    margin-bottom: 0;
-    font-size: 1.1rem;
+  .pd-pillar-body { flex: 1; min-width: 0; }
+  .pd-pillar-body h3 {
+    font-family: var(--el-display);
+    font-size: clamp(1rem, 0.95rem + 0.3vw, 1.15rem);
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--el-text);
+    margin: 0 0 0.35rem;
   }
-
-  .domain-item p {
-    font-size: 0.9rem;
+  .pd-pillar-question {
+    font-family: var(--el-body);
     font-style: italic;
-    margin-bottom: 0;
+    font-size: clamp(0.9rem, 0.85rem + 0.2vw, 1rem);
+    line-height: 1.5;
+    color: var(--el-text-quiet);
+    margin: 0;
+  }
+  @media (max-width: 480px) {
+    .pd-pillar { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+    .pd-pillar-number { width: auto; text-align: left; }
   }
 
-  .audience-grid {
+  /* ---- FIG IV: audience cards ---- */
+  .pd-audience {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: var(--space-md);
+    gap: clamp(1rem, 0.75rem + 1vw, 1.5rem);
+    margin-top: clamp(1.5rem, 1rem + 1.5vw, 2.5rem);
   }
-
-  .audience-grid .card h3 {
-    font-size: 1.1rem;
+  .pd-audience-card {
+    padding: clamp(1.25rem, 1rem + 0.75vw, 1.75rem);
+    border: 1px solid var(--el-rule);
   }
-
-  .audience-grid .card p {
-    font-size: 0.9rem;
-    margin-bottom: 0;
-  }
-
-  .purchase-card {
-    background: var(--accent-subtle);
-    border: 2px solid var(--accent-warm);
-    border-radius: 12px;
-    padding: var(--space-lg);
-    max-width: 500px;
-    margin: 0 auto;
-  }
-
-  .price-display {
-    font-family: var(--font-display);
-    font-size: 3rem;
-    color: var(--accent-warm);
+  .pd-audience-card h3 {
+    font-family: var(--el-display);
+    font-size: clamp(1rem, 0.95rem + 0.3vw, 1.15rem);
     font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--el-text);
+    margin: 0 0 0.75rem;
+  }
+  .pd-audience-card p {
+    font-family: var(--el-body);
+    font-size: clamp(0.95rem, 0.9rem + 0.2vw, 1.05rem);
+    line-height: 1.55;
+    color: var(--el-text-soft);
+    margin: 0;
   }
 
-  .btn-large {
-    padding: var(--space-sm) var(--space-lg);
-    font-size: 1rem;
+  /* ---- FIG V: purchase card ---- */
+  .pd-purchase {
+    max-width: 520px;
+    margin: clamp(1.5rem, 1rem + 1.5vw, 2.5rem) auto 0;
+    padding: clamp(1.75rem, 1.25rem + 1.5vw, 2.75rem);
+    border: 2px solid var(--el-accent);
+    background: color-mix(in oklab, var(--el-accent) 6%, transparent);
+    text-align: center;
+  }
+  .pd-price {
+    font-family: var(--el-display);
+    font-size: clamp(2.5rem, 1.75rem + 2.5vw, 3.5rem);
+    font-weight: 400;
+    color: var(--el-accent);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+  .pd-purchase-lead {
+    font-family: var(--el-body);
+    font-size: clamp(0.95rem, 0.9rem + 0.25vw, 1.1rem);
+    line-height: 1.55;
+    color: var(--el-text-soft);
+    margin: 0 0 1.5rem;
+  }
+  .pd-buy-cta {
+    display: inline-block;
+    padding: 0.85rem 2rem;
+    background: var(--el-accent);
+    color: var(--el-bg);
+    border: 1px solid var(--el-accent);
+    font-family: var(--el-ui);
+    font-weight: 500;
+    font-size: 13px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background 0.2s ease, color 0.2s ease;
+  }
+  .pd-buy-cta:hover {
+    background: transparent;
+    color: var(--el-accent);
+  }
+  .pd-purchase-fineprint {
+    font-family: var(--el-body);
+    font-size: clamp(0.8rem, 0.75rem + 0.2vw, 0.9rem);
+    line-height: 1.6;
+    color: var(--el-text-quiet);
+    margin: 1.5rem auto 0;
+    max-width: 50ch;
   }
 
-  .btn-primary {
-    background: var(--accent-warm);
-    color: var(--bg-deep);
-  }
-
-  .btn-primary:hover {
-    background: var(--accent-glow);
-    color: var(--bg-deep);
-  }
-
-  .upsell-grid {
+  /* ---- NOTA BENE: upsell cards ---- */
+  .pd-upsell {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: var(--space-md);
-    margin-top: var(--space-md);
+    gap: clamp(1rem, 0.75rem + 0.75vw, 1.5rem);
+    margin-top: clamp(1.5rem, 1rem + 1.5vw, 2.5rem);
   }
-
-  .upsell-grid .card h3 {
-    font-size: 1.1rem;
+  .pd-upsell-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: clamp(1.25rem, 1rem + 0.75vw, 1.75rem);
+    border: 1px solid var(--el-rule);
+    text-decoration: none;
+    color: inherit;
+    transition: border-color 0.2s ease;
   }
-
-  .upsell-grid .card p {
-    font-size: 0.9rem;
+  .pd-upsell-card:hover { border-color: var(--el-accent); }
+  .pd-upsell-card h3 {
+    font-family: var(--el-display);
+    font-size: clamp(1rem, 0.95rem + 0.3vw, 1.15rem);
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--el-text);
+    margin: 0;
   }
-
-  @media (max-width: 600px) {
-    .features-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .domain-item {
-      gap: var(--space-sm);
-    }
-
-    .domain-number {
-      font-size: 1.5rem;
-    }
+  .pd-upsell-card p {
+    font-family: var(--el-body);
+    font-size: clamp(0.9rem, 0.85rem + 0.2vw, 1rem);
+    line-height: 1.55;
+    color: var(--el-text-soft);
+    margin: 0;
+    flex: 1;
+  }
+  .pd-upsell-link {
+    font-family: var(--el-ui);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--el-accent);
+    margin-top: 0.25rem;
   }
 </style>
