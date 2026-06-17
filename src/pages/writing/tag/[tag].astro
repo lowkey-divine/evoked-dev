@@ -1,6 +1,8 @@
 ---
 import { getCollection } from 'astro:content';
-import BaseLayout from '../../../layouts/BaseLayout.astro';
+import ElevationLayout from '../../../layouts/ElevationLayout.astro';
+import Hero from '../../../components/elevation/Hero.astro';
+import Section from '../../../components/elevation/Section.astro';
 
 export async function getStaticPaths() {
   const allPosts = await getCollection('writing', ({ data }) => !data.draft);
@@ -27,18 +29,23 @@ export async function getStaticPaths() {
 
 const { tag, posts } = Astro.props;
 const displayTag = tag.replace(/-/g, ' ');
+const countLine = `${posts.length} article${posts.length !== 1 ? 's' : ''}`;
 ---
 
-<BaseLayout title={`Articles tagged "${displayTag}"`} description={`All articles on evoked.dev tagged with "${displayTag}" - writing on AI agent governance, sovereignty, and trust architecture.`}>
-  <div class="hero">
-    <h1>Tag: {displayTag}</h1>
-    <p class="tagline">{posts.length} article{posts.length !== 1 ? 's' : ''}</p>
-  </div>
+<ElevationLayout
+  title={`Articles tagged "${displayTag}"`}
+  description={`All articles on evoked.dev tagged with "${displayTag}" - writing on AI agent governance, sovereignty, and trust architecture.`}
+>
+  <Hero
+    eyebrowParts={["Writing", "Tag"]}
+    headline={displayTag}
+    metaphor={[countLine]}
+  />
 
-  <section class="container">
-    <div class="article-list">
+  <Section marker="FIG · I" heading="Articles">
+    <div class="writing-tag-list">
       {posts.map((post) => (
-        <a href={`/writing/${post.slug}`} class="article-card">
+        <a href={`/writing/${post.slug}`} class="writing-tag-card">
           <h3>{post.data.title}</h3>
           <p>{post.data.description}</p>
           <time datetime={post.data.pubDate.toISOString()}>
@@ -47,58 +54,57 @@ const displayTag = tag.replace(/-/g, ' ');
         </a>
       ))}
     </div>
-  </section>
+  </Section>
 
-  <section class="container">
-    <a href="/writing" class="back-link">&larr; Back to all writing</a>
-  </section>
-</BaseLayout>
+  <Section marker="NOTA · BENE" heading="Back to writing" closing={true}>
+    <p class="lede">
+      <a class="cta cta-secondary" href="/writing">All writing &rarr;</a>
+    </p>
+  </Section>
+</ElevationLayout>
 
 <style>
-  .article-list {
+  .writing-tag-list {
     display: flex;
     flex-direction: column;
-    gap: var(--space-md);
+    gap: clamp(1rem, 0.75rem + 0.75vw, 1.5rem);
+    margin-top: clamp(1.5rem, 1rem + 1.5vw, 2.5rem);
   }
-
-  .article-card {
+  .writing-tag-card {
     display: block;
-    padding: var(--space-md);
-    border: 1px solid var(--border-subtle);
-    border-radius: 8px;
+    padding: clamp(1.25rem, 1rem + 1vw, 1.75rem);
+    border: 1px solid var(--el-rule);
     text-decoration: none;
-    transition: all var(--transition-smooth);
+    color: inherit;
+    transition: border-color 0.2s ease, transform 0.2s ease;
   }
-
-  .article-card:hover {
-    border-color: var(--border-accent);
-    transform: translateY(-2px);
+  .writing-tag-card:hover {
+    border-color: var(--el-accent);
+    transform: translateY(-1px);
   }
-
-  .article-card h3 {
-    margin: 0 0 var(--space-xs) 0;
-    color: var(--text-primary);
-    font-size: 1.3rem;
+  .writing-tag-card h3 {
+    font-family: var(--el-display);
+    font-size: clamp(1.1rem, 1rem + 0.5vw, 1.35rem);
+    font-weight: 400;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    color: var(--el-text);
+    margin: 0 0 0.65rem;
+    line-height: 1.25;
   }
-
-  .article-card p {
-    margin: 0 0 var(--space-sm) 0;
-    color: var(--text-secondary);
-    font-size: 0.95rem;
+  .writing-tag-card p {
+    font-family: var(--el-body);
+    font-size: clamp(0.95rem, 0.9rem + 0.25vw, 1.1rem);
+    line-height: 1.55;
+    color: var(--el-text-soft);
+    margin: 0 0 0.85rem;
+    max-width: 65ch;
   }
-
-  .article-card time {
-    font-size: 0.85rem;
-    color: var(--text-muted);
-  }
-
-  .back-link {
-    color: var(--text-muted);
-    text-decoration: none;
-    font-size: 0.9rem;
-  }
-
-  .back-link:hover {
-    color: var(--accent-warm);
+  .writing-tag-card time {
+    font-family: var(--el-ui);
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--el-text-quiet);
   }
 </style>
