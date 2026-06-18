@@ -6,9 +6,6 @@ pubDate: 2026-06-18
 draft: false
 ---
 
-We scored Google Search Services and Anthropic's June 8 privacy policy against the 47-point Sovereignty Assessment.  Neither is adversarial.  The failures concentrate in a layer worth naming.
-
-
 Yesterday, we said the scoring would be published as a follow-up piece today.  Here is the follow-up.
 
 We assessed Google's new Search Services framework and Anthropic's June 8 consumer privacy policy against the 47-point Sovereignty Assessment used by our publication.  We did this using only publicly available material.  We did this because the gap between naming an architecture and measuring it is the gap where critique becomes work.
