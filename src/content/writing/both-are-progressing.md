@@ -13,7 +13,7 @@ Yesterday, we said the scoring would be published as a follow-up piece today.  H
 
 We assessed Google's new Search Services framework and Anthropic's June 8 consumer privacy policy against the 47-point Sovereignty Assessment used by our publication.  We did this using only publicly available material.  We did this because the gap between naming an architecture and measuring it is the gap where critique becomes work.
 
-The result is more specific than the story.  Both products land in the Progressing band.  Both fail the same three items.  The architecture failure is more diagnosable and fixable than the broader market average would suggest.
+The result is more specific than the story.  Both products land in the Progressing band.  Both score below 2 on the same four items.  The architecture failure is more diagnosable and fixable than the broader market average would suggest.
 
 ### How we scored.
 
