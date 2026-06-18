@@ -3,7 +3,7 @@ title: "Both Are Progressing. Both Failed the Same Three Items."
 description: "We scored Google Search Services and Anthropic's June 8 privacy policy against the 47-point Sovereignty Assessment. Neither is adversarial. The failures concentrate in a layer worth naming."
 author: "Evoked"
 pubDate: 2026-06-18
-draft: true
+draft: false
 ---
 
 We scored Google Search Services and Anthropic's June 8 privacy policy against the 47-point Sovereignty Assessment.  Neither is adversarial.  The failures concentrate in a layer worth naming.
