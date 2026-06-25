@@ -209,7 +209,7 @@ export const POST: APIRoute = async ({ request }) => {
       await resend.emails.send({
         from: FROM_EMAIL,
         to: normalizedEmail,
-        replyTo: 'evokesupports@icloud.com',
+        replyTo: 'erin@evoked.dev',
         subject,
         html: emailHtml,
       });

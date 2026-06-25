@@ -96,6 +96,6 @@ The line is drawn at the engineering layer. It will hold there because anyone ca
 
 ---
 
-*Governance buyers, standards-body reviewers, and Aligned Licensee candidates who want to engage with this position can reach me at passionevoked@icloud.com. I respond personally within 5 business days.*
+*Governance buyers, standards-body reviewers, and Aligned Licensee candidates who want to engage with this position can reach me at erin@evoked.dev. I respond personally within 5 business days.*
 
 *Erin Stanley is the founder of Evoked. She is the inventor of Patent #1 and the related Patent #2 (Six-Method Enforcement and Verifiable Attribution).*

@@ -51,7 +51,7 @@ const {
 const product = getProductBySlug(productSlug)!;
 ---
 
-<ElevationLayout title={title} description={description}>
+<ElevationLayout title={title} description={description} hideFloatingChat={true}>
   <Hero
     eyebrowParts={["Thank you", "Vol. 01"]}
     headline="Thank you."
@@ -64,7 +64,7 @@ const product = getProductBySlug(productSlug)!;
       <a href={downloadHref} class="pd-buy-cta" download>{downloadCtaLabel}</a>
       <p class="pd-purchase-fineprint ty-support-note">
         If you have any issues with your download, reach out at
-        <a href="mailto:evokesupports@icloud.com">evokesupports@icloud.com</a>.
+        <a href="mailto:erin@evoked.dev">erin@evoked.dev</a>.
       </p>
     </div>
   </Section>
