@@ -1,0 +1,578 @@
+---
+/**
+ * StandardLayout — Parchment register for The Agentic Standard
+ *
+ * Used for pages in the elevation register (Path B preview).
+ * Peer to BaseLayout.astro (dark-mystical) and SovereignLayout.astro (privacy-strict).
+ *
+ * Carries the shared chrome:
+ * - Syncopate (display) + EB Garamond (body) + Space Grotesk (UI) + Space Mono (mono) fonts
+ * - Warm parchment palette + brass accent + aged-ambient lighting
+ * - Brand wordmark with web sigil + dropdown navigation
+ * - Footer with newsletter capture + astrolabe quarter-arc
+ * - Da Vinci / Galileo register: graph paper grid, paper grain, foxed-but-clean parchment
+ *
+ * Page content is slotted into <main>. Page-specific styles live in each page.
+ */
+
+interface Props {
+  title: string;
+  description?: string;
+  ogImage?: string;
+  /** When true, emit a robots noindex,nofollow meta tag (default false). */
+  noindex?: boolean;
+}
+
+const {
+  title,
+  description = "The Agentic Standard. Credentials prove who. Provenance proves what survived.",
+  ogImage = "/images/evoke-lips-yellow.png",
+  noindex = false
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, "https://evoked.dev");
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
+    <link rel="canonical" href={canonicalURL.href} />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL.href} />
+    <meta property="og:title" content={`${title} — Evoked`} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={new URL(ogImage, "https://evoked.dev").href} />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={`${title} — Evoked`} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={new URL(ogImage, "https://evoked.dev").href} />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=EB+Garamond:wght@400;500;600&family=Space+Grotesk:wght@400;500;600&family=Space+Mono:wght@400&display=swap" rel="stylesheet" />
+
+    <title>{title} — Evoked</title>
+  </head>
+  <body>
+    <header class="brand-header">
+      <div class="brand">
+        <div class="sigil-wrap">
+          <span class="measure m-top">Ø 24</span>
+          <span class="measure m-left">0.618</span>
+          <span class="measure m-bot">N=7</span>
+          <svg class="sigil" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <circle cx="12" cy="12" r="11" stroke="#A88838" stroke-width="0.2" opacity="0.3" stroke-dasharray="0.4 0.6" />
+            <line x1="12" y1="0"  x2="12" y2="24" stroke="#A88838" stroke-width="0.15" opacity="0.25" />
+            <line x1="0"  y1="12" x2="24" y2="12" stroke="#A88838" stroke-width="0.15" opacity="0.25" />
+            <g stroke="#A88838" stroke-width="0.35" opacity="0.55" fill="none">
+              <line x1="5"  y1="6"  x2="12" y2="4" />
+              <line x1="12" y1="4"  x2="19" y2="6" />
+              <line x1="5"  y1="6"  x2="3"  y2="14" />
+              <line x1="19" y1="6"  x2="21" y2="13" />
+              <line x1="12" y1="4"  x2="3"  y2="14" />
+              <line x1="12" y1="4"  x2="21" y2="13" />
+              <line x1="3"  y1="14" x2="7"  y2="20" />
+              <line x1="21" y1="13" x2="17" y2="20" />
+              <line x1="7"  y1="20" x2="17" y2="20" />
+              <line x1="3"  y1="14" x2="21" y2="13" />
+              <line x1="12" y1="4"  x2="12" y2="13" />
+              <line x1="12" y1="13" x2="7"  y2="20" />
+              <line x1="12" y1="13" x2="17" y2="20" />
+            </g>
+            <circle cx="5"  cy="6"  r="1.3" stroke="#A88838" stroke-width="0.7" />
+            <circle cx="12" cy="4"  r="1.3" stroke="#A88838" stroke-width="0.7" />
+            <circle cx="19" cy="6"  r="1.3" stroke="#A88838" stroke-width="0.7" />
+            <circle cx="3"  cy="14" r="1.3" stroke="#A88838" stroke-width="0.7" />
+            <circle cx="21" cy="13" r="1.3" stroke="#A88838" stroke-width="0.7" />
+            <circle cx="7"  cy="20" r="1.3" stroke="#A88838" stroke-width="0.7" />
+            <circle cx="17" cy="20" r="1.3" stroke="#A88838" stroke-width="0.7" />
+            <circle cx="12" cy="13" r="1.5" fill="#A88838" />
+          </svg>
+        </div>
+        <a href="/index-v2" class="wordmark">EVOKED</a>
+      </div>
+      <nav class="brand-nav">
+        <div class="nav-item nav-has-dropdown">
+          <a href="/principles-v2">The Standard</a>
+          <div class="nav-dropdown">
+            <a href="/principles-v2">Principles</a>
+            <a href="/specs">Spec</a>
+            <a href="/registry">Registry</a>
+            <a href="/patents">Patents</a>
+            <a href="/refusals">Refusals</a>
+          </div>
+        </div>
+        <div class="nav-item nav-has-dropdown">
+          <a href="/products">Products</a>
+          <div class="nav-dropdown">
+            <a href="/score">Sovereignty Score</a>
+            <a href="/kitchen-table">Kitchen Table</a>
+            <a href="/products">Governance Bundles</a>
+          </div>
+        </div>
+        <div class="nav-item nav-has-dropdown">
+          <a href="/engage">Engage</a>
+          <div class="nav-dropdown">
+            <a href="/build-with-us">Build with us</a>
+            <a href="/coaching">Coaching</a>
+            <a href="/consulting">Consulting</a>
+            <a href="/engage">Governance Audits</a>
+          </div>
+        </div>
+        <div class="nav-item">
+          <a href="/writing">Writing</a>
+        </div>
+        <span class="moon-glyph" aria-hidden="true" title="First quarter moon"></span>
+      </nav>
+    </header>
+
+    <main class="content">
+      <slot />
+    </main>
+
+    <footer class="brand-footer">
+      <div class="newsletter">
+        <p class="newsletter-label">If you want to stay in the conversation</p>
+        <h3>Letters about the Standard, the practice, and what we are building.</h3>
+        <p>Sent when there is something worth sending. Not often.</p>
+        <form onsubmit="event.preventDefault();this.querySelector('button').textContent='Thank you ✓';">
+          <input type="email" placeholder="your.email@example.com" required />
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
+      <div class="footer-meta">
+        <div class="footer-meta-row">
+          <a href="/principles-v2">Principles</a>
+          <a href="/registry">Registry</a>
+          <a href="/engage">Working Group</a>
+          <a href="/legal/terms">License</a>
+          <a href="/specs">Spec</a>
+        </div>
+        <div class="footer-meta-quiet">Evoked · The Agentic Standard · Vol. 01 · 2026</div>
+      </div>
+      <svg class="astrolabe" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M 60 60 A 50 50 0 0 0 10 10" stroke="#A88838" stroke-width="0.8" fill="none" opacity="0.75" />
+        <path d="M 56 60 A 42 42 0 0 0 14 18" stroke="#A88838" stroke-width="0.5" fill="none" opacity="0.55" />
+        <path d="M 52 60 A 34 34 0 0 0 18 26" stroke="#A88838" stroke-width="0.4" fill="none" opacity="0.4" />
+        <line x1="60" y1="60" x2="60" y2="50" stroke="#A88838" stroke-width="0.5" opacity="0.6" />
+        <line x1="60" y1="60" x2="50" y2="60" stroke="#A88838" stroke-width="0.5" opacity="0.6" />
+        <line x1="60" y1="60" x2="42" y2="42" stroke="#A88838" stroke-width="0.3" opacity="0.45" />
+        <line x1="60" y1="60" x2="25" y2="60" stroke="#A88838" stroke-width="0.3" opacity="0.35" />
+        <line x1="60" y1="60" x2="60" y2="25" stroke="#A88838" stroke-width="0.3" opacity="0.35" />
+        <circle cx="60" cy="60" r="1.8" fill="#A88838" />
+      </svg>
+    </footer>
+
+    <style is:global>
+      /*
+        ================================================================
+        StandardLayout — global parchment register
+        Scoped to pages using this layout only. BaseLayout/SovereignLayout
+        pages keep their own register.
+        ================================================================
+      */
+      :root {
+        --bg: #EBE2CB;
+        --bg-warm: #E2D6BB;
+        --text: #1C1812;
+        --text-soft: #5B4F3F;
+        --text-quiet: #8C7E68;
+        --accent: #A88838;
+        --accent-deep: #7E6622;
+        --accent-soft: #A98256;
+        --rule: rgba(28, 24, 18, 0.10);
+        --panel-shadow: 0 1px 0 rgba(255,250,240,0.6) inset, 0 14px 44px -22px rgba(28,24,18,0.20);
+        --display: 'Syncopate', system-ui, sans-serif;
+        --body: 'EB Garamond', Georgia, serif;
+        --ui: 'Space Grotesk', system-ui, sans-serif;
+        --mono: 'Space Mono', ui-monospace, monospace;
+      }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        background: var(--bg);
+        color: var(--text);
+        font-family: var(--body);
+        font-size: 20px;
+        line-height: 1.72;
+        letter-spacing: 0.003em;
+        font-feature-settings: "kern", "liga", "calt", "onum";
+        min-height: 100vh;
+        background-image:
+          radial-gradient(ellipse 80% 60% at 18% 0%, rgba(255, 230, 180, 0.30) 0%, transparent 60%),
+          radial-gradient(ellipse 70% 50% at 90% 90%, rgba(168, 136, 56, 0.10) 0%, transparent 70%),
+          linear-gradient(180deg, var(--bg) 0%, var(--bg-warm) 100%);
+        background-attachment: fixed;
+      }
+      body::before {
+        content: '';
+        position: fixed; inset: 0;
+        pointer-events: none;
+        background-image:
+          repeating-linear-gradient(45deg, rgba(28,24,18,0.012) 0, rgba(28,24,18,0.012) 1px, transparent 1px, transparent 3px),
+          repeating-linear-gradient(-45deg, rgba(28,24,18,0.012) 0, rgba(28,24,18,0.012) 1px, transparent 1px, transparent 3px);
+        z-index: 0;
+      }
+      body::after {
+        content: '';
+        position: fixed; inset: 0;
+        pointer-events: none;
+        background-image:
+          repeating-linear-gradient(0deg, transparent 0, transparent 39px, rgba(168,136,56,0.09) 39px, rgba(168,136,56,0.09) 40px),
+          repeating-linear-gradient(90deg, transparent 0, transparent 39px, rgba(168,136,56,0.09) 39px, rgba(168,136,56,0.09) 40px);
+        animation: paper-breathe 16s ease-in-out infinite;
+        z-index: 0;
+      }
+      @keyframes paper-breathe {
+        0%, 100% { opacity: 0.65; }
+        50%      { opacity: 1.0; }
+      }
+      body > * { position: relative; z-index: 1; }
+
+      /* ============================================================
+         HEADER + BRAND
+         ============================================================ */
+      .brand-header {
+        max-width: 1180px;
+        margin: 0 auto;
+        padding: 3.5rem 3rem 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+      .sigil-wrap {
+        position: relative;
+        display: flex;
+        align-items: center;
+        cursor: help;
+      }
+      .sigil {
+        width: 24px;
+        height: 24px;
+        flex-shrink: 0;
+      }
+      .sigil-wrap span.measure {
+        position: absolute;
+        font-family: var(--ui);
+        font-weight: 500;
+        font-size: 8px;
+        color: var(--accent-deep);
+        letter-spacing: 0.08em;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        pointer-events: none;
+        white-space: nowrap;
+        text-transform: uppercase;
+      }
+      .sigil-wrap:hover span.measure { opacity: 1; }
+      .sigil-wrap .m-top  { top: -11px; left: 50%; transform: translateX(-50%); }
+      .sigil-wrap .m-bot  { bottom: -11px; left: 50%; transform: translateX(-50%); }
+      .sigil-wrap .m-left { top: 50%; left: -32px; transform: translateY(-50%); }
+      .wordmark {
+        font-family: var(--display);
+        font-weight: 700;
+        font-size: 17px;
+        letter-spacing: 0.32em;
+        color: var(--text);
+        line-height: 1;
+        text-decoration: none;
+      }
+      .wordmark:hover { color: var(--accent); }
+      .moon-glyph {
+        display: inline-block;
+        vertical-align: middle;
+        width: 11px;
+        height: 11px;
+        border-radius: 50%;
+        background: var(--bg);
+        box-shadow: inset 5.5px 0 0 var(--accent);
+        border: 0.6px solid var(--accent);
+        margin-left: 2rem;
+        opacity: 0.85;
+      }
+
+      /* ============================================================
+         NAV + DROPDOWN
+         ============================================================ */
+      .brand-nav {
+        display: flex;
+        align-items: center;
+        gap: 2.5rem;
+      }
+      .brand-nav a {
+        font-family: var(--ui);
+        font-weight: 500;
+        font-size: 13px;
+        text-decoration: none;
+        color: var(--text-soft);
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        transition: color 200ms ease;
+      }
+      .brand-nav a:hover { color: var(--accent); }
+      .nav-item { position: relative; }
+      .nav-has-dropdown > a {
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5em;
+      }
+      .nav-has-dropdown > a::after {
+        content: '▾';
+        font-size: 0.7em;
+        opacity: 0.55;
+        transition: transform 250ms ease, opacity 200ms ease;
+        display: inline-block;
+      }
+      .nav-has-dropdown:hover > a::after {
+        transform: rotate(180deg);
+        opacity: 1;
+      }
+      .nav-dropdown {
+        position: absolute;
+        top: 100%;
+        left: -1.25rem;
+        margin-top: 1.25rem;
+        background: var(--bg);
+        border: 1px solid var(--accent);
+        padding: 0.75rem 0;
+        min-width: 220px;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-6px);
+        transition: opacity 200ms ease-out, transform 200ms ease-out, visibility 200ms;
+        z-index: 50;
+        box-shadow:
+          0 1px 0 rgba(255,250,240,0.5) inset,
+          0 14px 44px -22px rgba(28,24,18,0.28);
+      }
+      .nav-has-dropdown:hover .nav-dropdown,
+      .nav-has-dropdown:focus-within .nav-dropdown {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+      }
+      .nav-dropdown::before {
+        content: '';
+        position: absolute;
+        top: -1.25rem;
+        left: 0;
+        right: 0;
+        height: 1.25rem;
+      }
+      .nav-dropdown a {
+        display: block;
+        margin: 0;
+        padding: 0.7rem 1.4rem;
+        font-size: 12px;
+        letter-spacing: 0.20em;
+        white-space: nowrap;
+        color: var(--text-soft);
+      }
+      .nav-dropdown a:hover { color: var(--accent); }
+      .nav-dropdown a + a { border-top: 1px solid var(--rule); }
+
+      /* ============================================================
+         CONTENT WRAPPER
+         ============================================================ */
+      main.content {
+        max-width: 1180px;
+        margin: 0 auto;
+        padding: 0 3rem;
+      }
+
+      /* shared section/h2/lede/CTA primitives that pages inherit */
+      .section-label {
+        font-family: var(--ui);
+        font-weight: 500;
+        font-size: 13px;
+        color: var(--accent);
+        margin-bottom: 2rem;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+      }
+      h1, h2, h3 {
+        font-family: var(--display);
+        font-weight: 400;
+        text-transform: uppercase;
+        color: var(--text);
+      }
+      h1 {
+        font-size: clamp(48px, 6.4vw, 88px);
+        line-height: 1.05;
+        letter-spacing: 0.01em;
+      }
+      h2 {
+        font-size: clamp(24px, 3.2vw, 36px);
+        line-height: 1.18;
+        letter-spacing: 0.01em;
+      }
+      h3 {
+        font-size: 22px;
+        line-height: 1.2;
+        letter-spacing: 0.025em;
+      }
+      .lede {
+        font-family: var(--body);
+        font-size: 21px;
+        line-height: 1.65;
+        color: var(--text-soft);
+        max-width: 62ch;
+      }
+      .cta {
+        font-family: var(--ui);
+        font-weight: 500;
+        font-size: 14px;
+        text-decoration: none;
+        transition: color 0.2s;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+      }
+      .cta-primary {
+        color: var(--accent);
+        border-bottom: 1px solid var(--accent);
+        padding-bottom: 0.5rem;
+        position: relative;
+      }
+      .cta-primary:hover { color: var(--text); border-color: var(--text); }
+      .cta-primary::before {
+        content: '☞';
+        position: absolute;
+        left: -1.5em;
+        top: -0.15em;
+        font-size: 1.4em;
+        line-height: 1;
+        opacity: 0;
+        transition: opacity 0.25s ease, transform 0.25s ease;
+        transform: translateX(0.4em);
+        pointer-events: none;
+        color: var(--accent);
+      }
+      .cta-primary:hover::before {
+        opacity: 1;
+        transform: translateX(0);
+      }
+      .cta-secondary {
+        color: var(--text-soft);
+      }
+      .cta-secondary:hover { color: var(--accent); }
+      .cta-row { display: flex; gap: 2.5rem; flex-wrap: wrap; align-items: center; }
+
+      /* ============================================================
+         FOOTER (shared chrome)
+         ============================================================ */
+      .brand-footer {
+        position: relative;
+        max-width: 1180px;
+        margin: 0 auto;
+        padding: 5rem 3rem 3rem;
+        border-top: 1px solid var(--rule);
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 5rem;
+      }
+      @media (max-width: 800px) { .brand-footer { grid-template-columns: 1fr; gap: 3rem; } }
+      .newsletter-label {
+        font-family: var(--ui);
+        font-weight: 500;
+        font-size: 13px;
+        color: var(--accent);
+        margin-bottom: 1.25rem;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+      }
+      .newsletter h3 {
+        font-family: var(--display);
+        font-size: 18px;
+        font-weight: 400;
+        margin-bottom: 1.25rem;
+        line-height: 1.3;
+        color: var(--text);
+        letter-spacing: 0.025em;
+        text-transform: uppercase;
+      }
+      .newsletter p {
+        font-family: var(--body);
+        color: var(--text-soft);
+        margin-bottom: 2rem;
+        font-size: 18px;
+        line-height: 1.5;
+        max-width: 42ch;
+      }
+      .newsletter form {
+        display: flex;
+        gap: 0.5rem;
+        max-width: 440px;
+        border-bottom: 1px solid var(--text);
+        padding-bottom: 0.5rem;
+      }
+      .newsletter input {
+        flex: 1;
+        padding: 0.4rem 0;
+        background: transparent;
+        border: none;
+        font-family: var(--body);
+        font-size: 18px;
+        color: var(--text);
+      }
+      .newsletter input::placeholder { color: var(--text-quiet); }
+      .newsletter input:focus { outline: none; }
+      .newsletter button {
+        padding: 0.4rem 0;
+        background: transparent;
+        color: var(--accent);
+        border: none;
+        font-family: var(--ui);
+        font-weight: 500;
+        font-size: 13px;
+        cursor: pointer;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+      }
+      .newsletter button:hover { color: var(--text); }
+      .footer-meta {
+        align-self: end;
+        font-family: var(--ui);
+        font-weight: 500;
+        font-size: 12px;
+        color: var(--text-quiet);
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        padding-right: 5rem;
+      }
+      .footer-meta-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2.25rem;
+        margin-bottom: 1.5rem;
+      }
+      .footer-meta a { color: var(--text-soft); text-decoration: none; }
+      .footer-meta a:hover { color: var(--accent); }
+      .footer-meta-quiet { color: var(--text-quiet); letter-spacing: 0.22em; }
+      .astrolabe {
+        position: absolute;
+        bottom: 1.5rem;
+        right: 2rem;
+        width: 64px;
+        height: 64px;
+        opacity: 0.75;
+        pointer-events: none;
+      }
+    </style>
+  </body>
+</html>

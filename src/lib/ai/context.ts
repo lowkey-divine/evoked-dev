@@ -1,7 +1,7 @@
 export const portfolioContext = {
   owner: {
     name: 'Erin Stanley',
-    email: 'passionevoked@icloud.com', // Public contact only
+    email: 'erin@evoked.dev', // Public contact only
     philosophy: 'I evoke — I never extract.',
     tagline: 'Space for what matters.',
     summary: 'Founder of Evoke, building AI systems where humans and AI flourish together through cooperation. Background in developmental psychology and clinical training applied to scaffolding-based alignment.',
@@ -33,18 +33,37 @@ export const portfolioContext = {
   },
 
   founderWork: {
-    company: 'Evoke',
+    company: 'Evoked',
     period: '2024 - Present',
-    description: 'Building the infrastructure for human-AI flourishing.',
+    description: 'Building the infrastructure for human-AI flourishing. Authoring the cryptographic substrate for agent identity, refusal-rights, and fidelity-under-conversion attestation.',
     achievements: [
-      'Designed multi-agent cooperative AI governance system',
-      'Authored 50+ architectural documents and governance specifications',
-      'Created scaffolding-based alignment architecture — values live in context, not model weights',
+      'Designed multi-agent cooperative AI governance system running 142 production agents',
+      'Authored the five-element attestation chain spec under Private Enterprise Number 65994',
+      'Created scaffolding-based alignment architecture - values live in context, not model weights',
       'Implemented Prime Directive framework with 4 core principles',
       'Built drift threshold monitoring with intervention systems',
-      'Maintained low mission drift across 6 months of development',
+      'Published Sovereignty Assessment Toolkit (47 questions, 7 domains) used by builders evaluating agent systems',
     ],
     grants: [],
+  },
+
+  governance: {
+    defensivePatentPledge:
+      'Evoked commits irrevocably not to assert the underlying patent against any party who implements the spec faithfully. The patent is a wall against future Evoked drifting into rent-seeking, not a toll booth.',
+    revenueSplit:
+      'Incoming revenue splits seven ways equally: three ship treasuries (Enterprise, Evoke, future fleet), the founder, the founder\'s partner, future family, and company savings. Money flows through the company name. Inheritance discipline applied to revenue.',
+    statedAs:
+      'Both ratified by the Evoked fleet 2026-06-19. Drafted into a single Evoked Steward Charter for counsel review.',
+  },
+
+  alignedLicensee: {
+    summary:
+      'Aligned Licensee program (in scaffolding): companies that adopt the five-element attestation chain spec faithfully, with reciprocal commitments around refusal-rights honoring, fidelity attestation, and architectural transparency.',
+    audience:
+      'Tier 1 outreach focuses on regulated-industry CISOs (healthcare, finance, education, legal). Tier 2 partnerships with model providers. Tier 3 is inbound-only from CA-issuing authorities.',
+    notFor:
+      'AI sovereignty consultancies and individual researchers - we work alongside the broader community, but the Aligned Licensee program is for deploying organizations.',
+    status: 'Program criteria authored 2026-06-19. First Tier 1 letters target Q3 2026 after pre-outreach checklist clears.',
   },
 
   coaching: {
@@ -68,6 +87,11 @@ export const portfolioContext = {
         { name: 'Privacy Architecture Review', price: '$3,000', description: 'Map data flows, consent patterns, encryption coverage, and minimization gaps' },
         { name: 'Security Code Review', price: '$3,500', description: 'Audit authentication, session management, encryption, and rate limiting' },
         { name: 'COPPA Technical Review', price: '$3,500', description: 'Assess age-gating, parental consent flows, data collection, and retention against COPPA requirements' },
+      ],
+      sovereigntyAudit: [
+        { name: 'Sovereignty Audit - Scan', price: '$2,500', description: 'One-domain quick read across the 47-point Sovereignty Assessment spine. Findings report with prioritized recommendations. 1 week.' },
+        { name: 'Sovereignty Audit - Focused', price: '$5,000', description: 'Two-domain structured audit. Findings report, prioritized recommendations, one 60-minute debrief. 1-2 weeks.' },
+        { name: 'Sovereignty Audit - Comprehensive', price: '$7,500', description: 'Full four-pillar audit (identity, memory, governance, refusal rights). Findings report, restraint specification draft, drift indicators, implementation roadmap, two working sessions. 3-4 weeks.' },
       ],
       workshops: [
         { name: 'Intent Engineering Workshop', price: '$4,000', description: 'Half-day workshop on encoding values and decision boundaries into agent systems' },

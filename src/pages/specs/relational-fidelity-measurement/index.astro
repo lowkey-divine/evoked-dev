@@ -1,5 +1,5 @@
 ---
-import BaseLayout from '../../../layouts/BaseLayout.astro';
+import ElevationLayout from '../../../layouts/ElevationLayout.astro';
 
 const title = "Relational Fidelity Measurement Specification v0.2.0";
 const description = "An open specification for measuring whether AI agents maintain their declared identity across substrate changes, session boundaries, and operational pressure.";
@@ -24,7 +24,7 @@ const structuredData = {
 };
 ---
 
-<BaseLayout title={title} description={description} hideFloatingChat={true} structuredData={structuredData}>
+<ElevationLayout title={title} description={description} hideFloatingChat={true} structuredData={structuredData}>
   <article class="container spec">
     <header class="spec-header">
       <div class="spec-meta">
@@ -421,9 +421,65 @@ type CategoryId =
       <a href="/specs" class="back-link">&larr; Back to Specifications</a>
     </footer>
   </article>
-</BaseLayout>
+</ElevationLayout>
 
 <style>
+  /* --------------------------------------------------------------
+     global.css compatibility shim. This spec was authored against the
+     dark "global.css" design system (BaseLayout). It now renders under
+     ElevationLayout (parchment, --el-* tokens), which defines none of
+     these tokens or the .container primitive. Inlined here so the page
+     renders identically to its BaseLayout form. Scoped to this page.
+     Note: --bg-base is mapped to the deep background; global.css never
+     defined it, so the SPECIFICATION badge label color was previously
+     unset - this makes it legibly dark on the gold badge.
+     -------------------------------------------------------------- */
+  :root {
+    --bg-deep: #0a0a0f;
+    --bg-base: #0a0a0f;
+    --bg-surface: #12121a;
+    --bg-elevated: #1a1a24;
+    --text-primary: #e8e4df;
+    --text-secondary: #9a968f;
+    --text-muted: #5a5850;
+    --accent-warm: #c4a77d;
+    --accent-glow: #d4b896;
+    --accent-subtle: rgba(196, 167, 125, 0.15);
+    --border-subtle: rgba(255, 255, 255, 0.06);
+    --border-accent: rgba(196, 167, 125, 0.3);
+    --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --font-display: 'Cormorant Garamond', Georgia, serif;
+    --space-xs: 0.5rem;
+    --space-sm: 1rem;
+    --space-md: 2rem;
+    --space-lg: 4rem;
+    --space-xl: 8rem;
+    --transition-fast: 150ms ease;
+    --transition-smooth: 300ms ease;
+  }
+
+  /* Paint the dark canvas this page was designed for. Bundled only
+     on this page, so other (parchment) elevation pages are unaffected. */
+  :global(body.elevation-page) {
+    background: #0a0a0f;
+  }
+  :global(body.elevation-page)::before,
+  :global(body.elevation-page)::after {
+    display: none;
+  }
+  :global(.elevation-main) {
+    background: #0a0a0f;
+    color: #e8e4df;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    line-height: 1.7;
+  }
+
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: var(--space-md);
+  }
+
   .spec {
     max-width: 760px;
     padding-top: var(--space-lg);

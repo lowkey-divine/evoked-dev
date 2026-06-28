@@ -184,7 +184,7 @@ export const POST: APIRoute = async ({ request }) => {
     try {
       await resend.emails.send({
         from: FROM_EMAIL,
-        to: 'passionevoked@icloud.com',
+        to: 'erin@evoked.dev',
         subject: `Consulting Intake: ${name.trim()}`,
         html: emailHtml,
       });

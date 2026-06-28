@@ -104,7 +104,7 @@ export function productDeliveryEmail(product: Product, customerName?: string): s
 
               <p style="color: #666666; font-size: 14px; line-height: 1.6; margin: 0 0 24px;">
                 If something lands, reply to
-                <a href="mailto:evokesupports@icloud.com?subject=Re: ${encodeURIComponent(product.name)}" style="color: #1a1a2e;">evokesupports@icloud.com</a>.
+                <a href="mailto:erin@evoked.dev?subject=Re: ${encodeURIComponent(product.name)}" style="color: #1a1a2e;">erin@evoked.dev</a>.
                 No obligation. We read everything.
               </p>
 
@@ -112,7 +112,7 @@ export function productDeliveryEmail(product: Product, customerName?: string): s
 
               <p style="color: #666666; font-size: 14px; line-height: 1.6; margin: 0 0 16px;">
                 Questions about your download? Reach out at
-                <a href="mailto:evokesupports@icloud.com" style="color: #1a1a2e;">evokesupports@icloud.com</a>.
+                <a href="mailto:erin@evoked.dev" style="color: #1a1a2e;">erin@evoked.dev</a>.
               </p>
 
               <p style="color: #666666; font-size: 14px; line-height: 1.6; margin: 0;">

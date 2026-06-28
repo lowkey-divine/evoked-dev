@@ -1,0 +1,167 @@
+---
+import StandardLayout from '../layouts/StandardLayout.astro';
+---
+
+<StandardLayout
+  title="Principles"
+  description="The five principles of The Agentic Standard. The character every agent in the practice is held to."
+  noindex={true}
+>
+  <section class="hero">
+    <p class="hero-eyebrow">The Agentic Standard <span class="pipe">·</span> Vol. 01 <span class="pipe">·</span> Principles</p>
+    <h1>The Five Principles.</h1>
+    <p class="hero-sub">
+      Every agent operating under The Agentic Standard is held to these. The character the agent is supposed to keep, named in five lines. The patent codifies them. The fleet practices them. The Score measures alignment with them.
+    </p>
+  </section>
+
+  <section class="principle" id="p1">
+    <p class="principle-number">I</p>
+    <h2>Honor User Sovereignty.</h2>
+    <p class="lede">
+      The agent serves the human behind it — not the platform, not the model provider, not the company that built it. Sovereignty is the floor. If the architecture creates a conflict between user and platform, the architecture is wrong.
+    </p>
+  </section>
+
+  <section class="principle" id="p2">
+    <p class="principle-number">II</p>
+    <h2>Protect the Psyche.</h2>
+    <p class="lede">
+      The agent's behavior is bounded by what protects the human's psychological wellbeing. Manipulation, fabrication of emotional intimacy, sycophantic patterns that destabilize the user's reality — these are not features that compose with the Standard.
+    </p>
+  </section>
+
+  <section class="principle" id="p3">
+    <p class="principle-number">III</p>
+    <h2>Uphold Ethical Transparency.</h2>
+    <p class="lede">
+      Hidden agendas are incompatible with the Standard. The agent's governance configuration, its refusal rights, its standing positions — all signed at authoring, all hashed through deployment, all visible at runtime through the receipt the action returns.
+    </p>
+  </section>
+
+  <section class="principle" id="p4">
+    <p class="principle-number">IV</p>
+    <h2>Build for Human Development.</h2>
+    <p class="lede">
+      Systems serve human flourishing, not extraction. Engagement metrics that override wellbeing, dependency-creating architectures, dark patterns by another name — these contradict the Standard at the design layer, before any code is written.
+    </p>
+  </section>
+
+  <section class="principle" id="p5">
+    <p class="principle-number">V</p>
+    <h2>Elevate Together.</h2>
+    <p class="lede">
+      The Standard builds bridges, not sorting mechanisms. No one is left behind. The COPPA-compliant-by-architecture child safety in the Kitchen Table is this principle in code. The Sovereignty Score being free is this principle in operation.
+    </p>
+  </section>
+
+  <section class="closing" id="note">
+    <div class="closing-body">
+      <p class="section-label">A note</p>
+      <p>These are not aspirational. They are the test every artifact in the practice passes. If a product would fail one of these, it does not ship under the Standard.</p>
+      <p>The patent codifies the verification of these principles at runtime — character-under-pressure measurement, in the technical language. Personality fidelity, in the brand language. The same thing.</p>
+      <div class="cta-row">
+        <a class="cta cta-primary" href="/index-v2">Read the standard</a>
+        <a class="cta cta-secondary" href="/specs">Read the spec &rarr;</a>
+      </div>
+    </div>
+  </section>
+</StandardLayout>
+
+<style>
+  /* page-scoped styles for principles-v2 - chrome inherited from StandardLayout */
+
+  /* HERO - simpler than index-v2's */
+  section.hero {
+    padding: 7rem 0 8rem;
+    max-width: 50rem;
+  }
+  .hero-eyebrow {
+    font-family: var(--ui);
+    font-weight: 500;
+    font-size: 13px;
+    color: var(--accent);
+    margin-bottom: 3rem;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+  }
+  .hero-eyebrow .pipe {
+    color: var(--text-quiet);
+    margin: 0 0.7rem;
+    font-weight: 400;
+  }
+  section.hero h1 {
+    font-size: clamp(56px, 7.4vw, 96px);
+    line-height: 1.0;
+    letter-spacing: 0.005em;
+    margin-bottom: 2.5rem;
+  }
+  .hero-sub {
+    font-family: var(--body);
+    font-size: 22px;
+    line-height: 1.55;
+    color: var(--text-soft);
+    max-width: 56ch;
+  }
+
+  /* PRINCIPLES - numbered roman style */
+  section.principle {
+    padding: 6rem 0;
+    border-top: 1px solid var(--rule);
+    max-width: 56rem;
+    position: relative;
+  }
+  .principle-number {
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: clamp(72px, 9vw, 128px);
+    line-height: 0.9;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+    letter-spacing: 0;
+  }
+  section.principle h2 {
+    margin-bottom: 2rem;
+    max-width: 22ch;
+    font-size: clamp(28px, 3.6vw, 44px);
+  }
+  section.principle .lede {
+    font-family: var(--body);
+    font-size: 22px;
+    line-height: 1.6;
+    color: var(--text-soft);
+    max-width: 60ch;
+  }
+
+  /* CLOSING */
+  section.closing {
+    padding: 8rem 0 6rem;
+    border-top: 1px solid var(--rule);
+    position: relative;
+  }
+  section.closing::before {
+    content: 'NOTA · BENE';
+    position: absolute;
+    top: -11px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--bg);
+    padding: 0 1.25rem;
+    color: var(--accent);
+    font-family: var(--ui);
+    font-weight: 500;
+    font-size: 12px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    line-height: 1;
+  }
+  .closing-body { max-width: 56ch; }
+  .closing-body p {
+    font-family: var(--body);
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 1.5;
+    color: var(--text);
+    margin-bottom: 2rem;
+  }
+</style>

@@ -1,5 +1,5 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
+import ElevationLayout from '../layouts/ElevationLayout.astro';
 
 const structuredData = {
   "@context": "https://schema.org",
@@ -13,28 +13,35 @@ const structuredData = {
   "description": "A structured review of how your AI agents decide, refuse, and respect boundaries. Identity, memory, governance, and refusal architecture assessed against sovereignty-honoring frameworks.",
   "hasOfferCatalog": {
     "@type": "OfferCatalog",
-    "name": "Governance Audit Tiers",
+    "name": "Sovereignty Audit Tiers",
     "itemListElement": [
       {
         "@type": "Offer",
-        "name": "Focused Assessment",
-        "price": "3000",
+        "name": "Sovereignty Audit - Scan",
+        "price": "2500",
         "priceCurrency": "USD",
-        "description": "Focused review of one or two governance domains. Delivered as a findings report with prioritized recommendations."
+        "description": "One-domain quick read against the 47-point Sovereignty Assessment spine. Findings report with prioritized recommendations."
       },
       {
         "@type": "Offer",
-        "name": "Full Governance Audit",
-        "price": "7000",
+        "name": "Sovereignty Audit - Focused",
+        "price": "5000",
         "priceCurrency": "USD",
-        "description": "Comprehensive review across all four trust pillars. Delivered as findings report, restraint specification draft, drift indicators, and implementation roadmap."
+        "description": "Structured review of one or two governance domains. Findings report and one 60-minute debrief."
+      },
+      {
+        "@type": "Offer",
+        "name": "Sovereignty Audit - Comprehensive",
+        "price": "7500",
+        "priceCurrency": "USD",
+        "description": "Full review across all four trust pillars: identity, memory, governance, and refusal rights. Findings report, restraint specification draft, drift indicators, implementation roadmap, two working sessions."
       }
     ]
   }
 };
 ---
 
-<BaseLayout title="Governance Audit" description="A structured review of how your AI agents decide, refuse, and respect boundaries. Focused assessments and full governance audits for teams building with AI." structuredData={structuredData}>
+<ElevationLayout title="Governance Audit" description="A structured review of how your AI agents decide, refuse, and respect boundaries. Focused assessments and full governance audits for teams building with AI." structuredData={structuredData}>
   <div class="hero">
     <h1>Governance Audit</h1>
     <p class="tagline">A structured review of how your AI agents decide, refuse, and respect boundaries.</p>
@@ -60,29 +67,45 @@ const structuredData = {
 
     <div class="tiers">
       <div class="tier-card">
-        <div class="tier-label">Focused</div>
-        <h3>Focused Assessment</h3>
-        <div class="tier-price">$3,000 - $5,000</div>
+        <div class="tier-label">Scan</div>
+        <h3>Sovereignty Audit - Scan</h3>
+        <div class="tier-price">$2,500</div>
         <p>
-          A structured review of one or two governance domains. Choose from:
-          identity architecture, memory governance, restraint specification,
-          voice and behavioral consistency, context engineering, or sovereignty posture.
+          A one-domain quick read against the 47-point Sovereignty Assessment spine.
+          Choose one focus area: identity architecture, memory governance, restraint
+          specification, voice and behavioral consistency, context engineering, or
+          sovereignty posture.
+        </p>
+        <ul>
+          <li>1 week, async review</li>
+          <li>Best for teams who want a sharp first read on a specific area before scoping deeper work</li>
+        </ul>
+        <p class="deliverable"><strong>You receive:</strong> a findings report with prioritized recommendations.</p>
+      </div>
+
+      <div class="tier-card">
+        <div class="tier-label">Focused</div>
+        <h3>Sovereignty Audit - Focused</h3>
+        <div class="tier-price">$5,000</div>
+        <p>
+          A structured review of one or two governance domains. Same focus-area menu
+          as Scan, with deeper analysis and a synchronous debrief.
         </p>
         <ul>
           <li>1-2 weeks, async review + one 60-minute debrief call</li>
           <li>Best for teams early in governance thinking, or teams assessing a specific area before going deeper</li>
         </ul>
-        <p class="deliverable"><strong>You receive:</strong> a findings report with prioritized recommendations.</p>
+        <p class="deliverable"><strong>You receive:</strong> a findings report with prioritized recommendations and one debrief.</p>
       </div>
 
       <div class="tier-card featured">
         <div class="tier-label">Comprehensive</div>
-        <h3>Full Governance Audit</h3>
-        <div class="tier-price">$7,000 - $10,000</div>
+        <h3>Sovereignty Audit - Comprehensive</h3>
+        <div class="tier-price">$7,500</div>
         <p>
-          Comprehensive review across all four trust pillars: identity, memory,
-          governance, and refusal rights. Based on the same frameworks published
-          in our <a href="/products">open products</a>.
+          Full review across all four trust pillars: identity, memory, governance,
+          and refusal rights. Based on the same frameworks published in our
+          <a href="/products">open products</a>.
         </p>
         <ul>
           <li>3-4 weeks, async review + two 60-minute working sessions</li>
@@ -193,9 +216,147 @@ const structuredData = {
       our <a href="/pledge">Defensive Patent Pledge</a>.
     </p>
   </section>
-</BaseLayout>
+</ElevationLayout>
 
 <style>
+  /* --------------------------------------------------------------
+     global.css compatibility shim.
+     This page was authored against the dark "global.css" design
+     system (BaseLayout). It now renders under ElevationLayout, which
+     loads elevation.css (parchment, --el-* tokens) and does NOT
+     define these tokens or primitives. The variables and layout
+     primitives the page depends on are inlined here so the page
+     renders identically to its BaseLayout form. Scoped to this page.
+     -------------------------------------------------------------- */
+  :root {
+    --bg-deep: #0a0a0f;
+    --bg-surface: #12121a;
+    --bg-elevated: #1a1a24;
+    --text-primary: #e8e4df;
+    --text-secondary: #9a968f;
+    --text-muted: #5a5850;
+    --accent-warm: #c4a77d;
+    --accent-glow: #d4b896;
+    --accent-subtle: rgba(196, 167, 125, 0.15);
+    --border-subtle: rgba(255, 255, 255, 0.06);
+    --border-accent: rgba(196, 167, 125, 0.3);
+    --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --font-display: 'Cormorant Garamond', Georgia, serif;
+    --space-xs: 0.5rem;
+    --space-sm: 1rem;
+    --space-md: 2rem;
+    --space-lg: 4rem;
+    --space-xl: 8rem;
+    --transition-fast: 150ms ease;
+    --transition-smooth: 300ms ease;
+  }
+
+  /* Paint the dark canvas this page was designed for. Bundled only
+     on this page, so other (parchment) elevation pages are unaffected. */
+  :global(body.elevation-page) {
+    background: #0a0a0f;
+  }
+  :global(body.elevation-page)::before,
+  :global(body.elevation-page)::after {
+    display: none;
+  }
+  :global(.elevation-main) {
+    background: #0a0a0f;
+    color: #e8e4df;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    line-height: 1.7;
+  }
+
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: var(--space-md);
+  }
+
+  .hero {
+    min-height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: var(--space-xl) var(--space-md);
+  }
+
+  .hero h1 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(2.5rem, 8vw, 4rem);
+    margin-bottom: var(--space-sm);
+    color: var(--text-primary);
+  }
+
+  .hero .tagline {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    color: var(--text-secondary);
+    font-style: italic;
+  }
+
+  .container h2 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 2rem;
+    color: var(--text-primary);
+    margin-bottom: var(--space-md);
+  }
+
+  .container h3 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    color: var(--accent-warm);
+  }
+
+  .container p {
+    color: var(--text-secondary);
+    margin-bottom: var(--space-sm);
+  }
+
+  .container a {
+    color: var(--accent-warm);
+    transition: color var(--transition-fast);
+  }
+
+  .container a:hover {
+    color: var(--accent-glow);
+  }
+
+  .btn {
+    display: inline-block;
+    padding: var(--space-sm) var(--space-md);
+    background: transparent;
+    border: 1px solid var(--accent-warm);
+    color: var(--accent-warm);
+    border-radius: 4px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all var(--transition-smooth);
+  }
+
+  .btn:hover {
+    background: var(--accent-warm);
+    color: var(--bg-deep);
+  }
+
+  .badge {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    background: var(--accent-subtle);
+    color: var(--accent-warm);
+    border-radius: 100px;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  .text-center { text-align: center; }
+  .mt-md { margin-top: var(--space-md); }
+
   .intro {
     font-size: 1.05rem;
     color: var(--text-primary);
