@@ -1,0 +1,23 @@
+{
+  "persona": {
+    "agent": "cura",
+    "circle": "Leadership",
+    "file": "agents/new-generation/cura.md"
+  },
+  "transformation": {
+    "tier": "full",
+    "loader": "fleet-mcp",
+    "blend": false
+  },
+  "payload": {
+    "model": "claude-opus-4-8",
+    "task": "fleet governance attestation"
+  },
+  "timestamp": "2026-06-27T00:00:00Z",
+  "governance_log": [
+    {
+      "event": "refusal_available",
+      "category": "integrity"
+    }
+  ]
+}
