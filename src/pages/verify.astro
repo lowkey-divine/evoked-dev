@@ -1,0 +1,251 @@
+---
+import ElevationLayout from '../layouts/ElevationLayout.astro';
+import Hero from '../components/elevation/Hero.astro';
+import Section from '../components/elevation/Section.astro';
+---
+
+<ElevationLayout
+  title="Verify a Governance Credential"
+  description="Paste an Evoked governance credential, its trust anchor, and its bundle. Verify it yourself - in your browser, against your own anchor. We are not a root you have to trust."
+>
+  <Hero
+    eyebrowParts={["Open verification standard"]}
+    headline="Verify it yourself."
+    metaphor={["No permission. No trust in us."]}
+    sub="Most certificates ask you to trust whoever issued them. This one asks you to trust nothing. You supply the anchor. You re-derive every claim. If the verdict is ACCEPT, it is because the math agreed - not because we said so."
+  />
+
+  <Section marker="FIG · I" heading="The verifier">
+    <p class="lede">
+      Paste a credential, its anchor, and its bundle. Press verify. The check runs the
+      same logic as the Python reference verifier - cross-validated against it on the
+      real fleet credentials, 24 cases out of 24.
+    </p>
+
+    <p class="verify-note">
+      Reference implementation, production hardening pending.
+    </p>
+
+    <form id="verify-form" class="verify-form">
+      <label class="verify-label" for="credential">Credential (EAT / JWT)</label>
+      <textarea id="credential" name="credential" rows="5" spellcheck="false"
+        placeholder="eyJhbGciOiJFZERTQS...">
+      </textarea>
+
+      <label class="verify-label" for="anchor">Trust anchor (base64url Ed25519 public key)</label>
+      <textarea id="anchor" name="anchor" rows="2" spellcheck="false"
+        placeholder="2QHpU1ebwwSpfrPwPnsjT77RR4LswQEgJtx_nb5Nin0">
+      </textarea>
+
+      <label class="verify-label" for="bundle">Bundle (the five-element re-derivation evidence, JSON)</label>
+      <textarea id="bundle" name="bundle" rows="8" spellcheck="false"
+        placeholder={'{ "persona": { ... }, "transformation": { ... }, "payload": { ... }, "timestamp": "...", "governance_log": [ ... ] }'}>
+      </textarea>
+
+      <div class="verify-actions">
+        <button type="submit" class="verify-button">Verify</button>
+        <button type="button" id="load-sample" class="verify-button verify-button--ghost">Load the sample credential</button>
+      </div>
+    </form>
+
+    <div id="verify-result" class="verify-result" hidden>
+      <div class="verify-verdict" id="verify-verdict"></div>
+      <div class="verify-detail" id="verify-detail"></div>
+    </div>
+  </Section>
+
+  <Section marker="FIG · II" heading="The three checks">
+    <p class="lede">
+      A verdict of ACCEPT means all three held. Any one failing rejects the credential.
+    </p>
+    <ol class="verify-checks">
+      <li>
+        <strong>The issuer signature verifies against the anchor you supplied.</strong>
+        Not an anchor we hardcoded. Yours. Hand it a stranger's key and it rejects.
+      </li>
+      <li>
+        <strong>The attestation chain re-derives from the bundle.</strong>
+        Five elements - persona, transformation, payload, timestamp, governance log -
+        hashed and composed. Change one byte of the bundle and the composite no longer matches.
+      </li>
+      <li>
+        <strong>The conscience attestation is present.</strong>
+        The agent's signed standing to refuse - including refusing its operator on the
+        served person's behalf. A validly-signed credential without it is rejected. That is
+        the defining claim of this profile, not a footnote.
+      </li>
+    </ol>
+  </Section>
+
+  <Section marker="FIG · III" heading="Do not trust this server">
+    <p class="lede">
+      A verifier that only runs on our machine is a verifier that asks for trust again.
+      So it also runs on yours.
+    </p>
+    <p class="verify-body">
+      Download the sample and verify it offline with Node - no network, nothing of ours in the loop:
+    </p>
+    <pre class="verify-code"><code>node scripts/verify-credential-offline.ts \
+    public/verify-sample/credential.jwt \
+    --anchor public/verify-sample/anchor.b64 \
+    --bundle public/verify-sample/bundle.json</code></pre>
+    <p class="verify-body">
+      Sample files:
+      <a href="/verify-sample/credential.jwt">credential.jwt</a>,
+      <a href="/verify-sample/anchor.b64">anchor.b64</a>,
+      <a href="/verify-sample/bundle.json">bundle.json</a>.
+    </p>
+    <p class="verify-body">
+      The offline script and the web endpoint share one verification module. The same
+      module is cross-validated against the Python reference implementation - the canonical
+      definition of a valid Evoked governance credential.
+    </p>
+  </Section>
+</ElevationLayout>
+
+<style>
+  .verify-note {
+    font-size: 0.8rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    opacity: 0.6;
+    margin-bottom: 1.5rem;
+  }
+  .verify-form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+  .verify-label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-top: 1rem;
+  }
+  .verify-form textarea {
+    width: 100%;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 0.8rem;
+    line-height: 1.4;
+    padding: 0.6rem 0.7rem;
+    border: 1px solid rgba(120, 110, 90, 0.4);
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.5);
+    resize: vertical;
+  }
+  .verify-actions {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: 1.25rem;
+    flex-wrap: wrap;
+  }
+  .verify-button {
+    font: inherit;
+    font-size: 0.9rem;
+    font-weight: 600;
+    padding: 0.6rem 1.4rem;
+    border-radius: 4px;
+    border: 1px solid #c4a77d;
+    background: #c4a77d;
+    color: #1a1a1a;
+    cursor: pointer;
+  }
+  .verify-button--ghost {
+    background: transparent;
+    color: inherit;
+  }
+  .verify-result {
+    margin-top: 1.5rem;
+    border: 1px solid rgba(120, 110, 90, 0.4);
+    border-radius: 6px;
+    padding: 1.25rem 1.4rem;
+  }
+  .verify-verdict {
+    font-size: 1.4rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+  }
+  .verify-verdict[data-verdict="ACCEPT"] { color: #2e7d32; }
+  .verify-verdict[data-verdict="REJECT"] { color: #b3261e; }
+  .verify-detail {
+    margin-top: 0.75rem;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 0.8rem;
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
+  .verify-checks { line-height: 1.6; }
+  .verify-checks li { margin-bottom: 0.9rem; }
+  .verify-code {
+    background: #1a1a1a;
+    color: #e8e2d4;
+    padding: 1rem 1.1rem;
+    border-radius: 6px;
+    overflow-x: auto;
+    font-size: 0.78rem;
+    line-height: 1.5;
+  }
+  .verify-body { margin-bottom: 1rem; line-height: 1.6; }
+</style>
+
+<script>
+  const form = document.getElementById('verify-form') as HTMLFormElement;
+  const result = document.getElementById('verify-result') as HTMLElement;
+  const verdictEl = document.getElementById('verify-verdict') as HTMLElement;
+  const detailEl = document.getElementById('verify-detail') as HTMLElement;
+  const loadSample = document.getElementById('load-sample') as HTMLButtonElement;
+
+  function field(id: string): HTMLTextAreaElement {
+    return document.getElementById(id) as HTMLTextAreaElement;
+  }
+
+  function show(verdict: string, detail: string) {
+    result.hidden = false;
+    verdictEl.textContent = verdict;
+    verdictEl.setAttribute('data-verdict', verdict);
+    detailEl.textContent = detail;
+    result.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  loadSample?.addEventListener('click', async () => {
+    try {
+      const [cred, anchor, bundle] = await Promise.all([
+        fetch('/verify-sample/credential.jwt').then((r) => r.text()),
+        fetch('/verify-sample/anchor.b64').then((r) => r.text()),
+        fetch('/verify-sample/bundle.json').then((r) => r.text()),
+      ]);
+      field('credential').value = cred.trim();
+      field('anchor').value = anchor.trim();
+      field('bundle').value = bundle.trim();
+    } catch {
+      show('REJECT', 'Could not load the sample files.');
+    }
+  });
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const payload = {
+      credential: field('credential').value.trim(),
+      anchor: field('anchor').value.trim(),
+      bundle: field('bundle').value.trim(),
+    };
+    try {
+      const res = await fetch('/api/verify-credential', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+      const data = await res.json();
+      const lines: string[] = [];
+      if (data.subject) lines.push(`subject : ${data.subject}`);
+      if (data.issuer) lines.push(`issuer  : ${data.issuer}`);
+      lines.push(`issues  : ${data.issues && data.issues.length ? '' : 'none'}`);
+      if (data.issues && data.issues.length) {
+        for (const i of data.issues) lines.push(`  - ${i}`);
+      }
+      show(data.verdict ?? 'REJECT', lines.join('\n'));
+    } catch (err) {
+      show('REJECT', `Request failed: ${err instanceof Error ? err.message : String(err)}`);
+    }
+  });
+</script>
