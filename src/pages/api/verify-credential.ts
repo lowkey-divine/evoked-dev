@@ -31,6 +31,10 @@ const HEADERS: Record<string, string> = {
   'Cache-Control': 'no-store',
 };
 
+// Cap the request body. A credential + anchor + bundle is a few KB; anything past
+// this is a mistake or a DoS attempt against the crypto / canonicalization path.
+const MAX_BODY = 64 * 1024;
+
 interface VerifyInput {
   credential?: string;
   anchor?: string;
@@ -96,7 +100,7 @@ function run(input: VerifyInput): Response {
     return new Response(
       JSON.stringify({
         verdict: 'REJECT',
-        issues: [`could not verify: ${e instanceof Error ? e.message : String(e)}`],
+        issues: ['could not verify: malformed credential or bundle'],
       }),
       { status: 200, headers: HEADERS }
     );
@@ -106,9 +110,19 @@ function run(input: VerifyInput): Response {
 export const OPTIONS: APIRoute = async () => new Response(null, { status: 204, headers: HEADERS });
 
 export const POST: APIRoute = async ({ request }) => {
+  if (Number(request.headers.get('content-length') ?? '0') > MAX_BODY) {
+    return bad('request too large', 413);
+  }
+  let raw: string;
+  try {
+    raw = await request.text();
+  } catch {
+    return bad('could not read request body');
+  }
+  if (raw.length > MAX_BODY) return bad('request too large', 413);
   let body: VerifyInput;
   try {
-    body = (await request.json()) as VerifyInput;
+    body = JSON.parse(raw) as VerifyInput;
   } catch {
     return bad('request body is not valid JSON');
   }
@@ -117,6 +131,7 @@ export const POST: APIRoute = async ({ request }) => {
 
 export const GET: APIRoute = async ({ request }) => {
   const url = new URL(request.url);
+  if (url.search.length > MAX_BODY) return bad('request too large', 413);
   return run({
     credential: url.searchParams.get('credential') ?? undefined,
     anchor: url.searchParams.get('anchor') ?? undefined,

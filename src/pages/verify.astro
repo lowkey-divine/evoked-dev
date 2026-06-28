@@ -54,7 +54,32 @@ import Section from '../components/elevation/Section.astro';
     </div>
   </Section>
 
-  <Section marker="FIG · II" heading="The three checks">
+  <Section marker="FIG · II" heading="Where these come from">
+    <p class="lede">
+      Three inputs, three sources. None of them is "ask us nicely."
+    </p>
+    <ol class="verify-checks">
+      <li>
+        <strong>The credential and the bundle are issued together.</strong>
+        When we attest an agent, the tool writes the credential and its bundle as one set.
+        The bundle is the re-derivation evidence for that exact credential. Whoever holds the
+        credential holds the bundle - you receive both.
+      </li>
+      <li>
+        <strong>The anchor is the issuer's public key, and you obtain it on its own.</strong>
+        That is the point of the whole exercise: you check the credential against an anchor you
+        got independently, not one we slipped you next to the credential. For this demo,
+        "Load the sample credential" fills it in.
+      </li>
+    </ol>
+    <p class="verify-body">
+      A governance credential is meant to be handed out and checked. There is nothing secret in
+      what you paste here - the key that signs a credential never appears in it. What proves the
+      credential is the math, run against an anchor you trust.
+    </p>
+  </Section>
+
+  <Section marker="FIG · III" heading="The three checks">
     <p class="lede">
       A verdict of ACCEPT means all three held. Any one failing rejects the credential.
     </p>
@@ -77,7 +102,7 @@ import Section from '../components/elevation/Section.astro';
     </ol>
   </Section>
 
-  <Section marker="FIG · III" heading="Do not trust this server">
+  <Section marker="FIG · IV" heading="Do not trust this server">
     <p class="lede">
       A verifier that only runs on our machine is a verifier that asks for trust again.
       So it also runs on yours.
