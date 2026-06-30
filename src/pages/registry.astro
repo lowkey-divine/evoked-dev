@@ -267,7 +267,7 @@ const registryJsonLd = webApplicationJsonLd(
       const res = await fetch(`/api/verify-agent?id=${encodeURIComponent(id)}`);
       const data = await res.json();
 
-      if (!res.ok || !data.verified) {
+      if (!res.ok || !data.registered) {
         verifyResult.innerHTML = `
           <div class="verify-not-found">
             <p class="verify-status">Not found</p>

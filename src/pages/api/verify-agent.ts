@@ -23,7 +23,7 @@ export const GET: APIRoute = async ({ request }) => {
         JSON.stringify({
           error: 'Agent not found',
           agent_id: id,
-          verified: false,
+          registered: false,
         }),
         { status: 404, headers }
       );
@@ -39,8 +39,13 @@ export const GET: APIRoute = async ({ request }) => {
         tier: agent.tier,
         governance: agent.governance,
         attestation: agent.attestation,
-        verified: true,
-        verified_by: 'Evoked Verification',
+        registered: true,
+        listed_in: 'Evoked Agent Registry',
+        // Honesty boundary (verify-page escalation, 2026-06-30): this endpoint
+        // confirms registry presence + governance-property flags. It does NOT
+        // perform cryptographic verification. The word "verified" is reserved
+        // for the credential verifier at /verify (see /api/verify-credential).
+        note: 'Registry listing only — not a cryptographic verification. For credential verification see /verify.',
       }),
       { status: 200, headers }
     );
