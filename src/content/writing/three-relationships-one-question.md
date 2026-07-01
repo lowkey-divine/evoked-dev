@@ -2,8 +2,8 @@
 title: "If You Use It. If You Don't. If You Build It."
 description: "Three relationships with AI right now. Same world, different views. Same question underneath: what do you do about it this week?"
 author: "Evoked"
-pubDate: 2026-06-18
-draft: true
+pubDate: 2026-06-30
+draft: false
 ---
 
 Three relationships with AI are happening at the same time, in the same world. You use it. You don't. You build it.
@@ -32,7 +32,7 @@ Three things worth knowing:
 
 **Decisions are being made about you anyway.** Insurance, hiring, loans, school admissions, parole, credit scoring. AI is shaping these whether or not you ever open a chatbot. The most consequential AI in your life is the AI you do not see. Knowing that it exists is the first literacy.
 
-**The privacy architecture is moving under your feet.** [Last week's Google framework change](/writing/we-are-the-variable-being-adjusted) is one of three signals from one week in June 2026. The companies are quietly moving the floor under everyone. Following this is not activism. It is reading the room.
+**The privacy architecture is moving under your feet.** [Google's June 2026 privacy update](/writing/we-are-the-variable-being-adjusted) was one of three signals from a single week this June. The companies are quietly moving the floor under everyone. Following this is not activism. It is reading the room.
 
 **Your voice at the policy level is real.** The Electronic Privacy Information Center. The European Data Protection Supervisor. Your state attorney general. These are real institutions doing real work, and they read public comment seriously. The line between "AI policy" and "your life" is shorter than the headlines make it sound.
 
@@ -46,7 +46,7 @@ Not what it cannot do. What does it refuse?
 
 Three places that question lands this quarter:
 
-**Write the refusal specification.** [Six categories.](/refusals) Sovereignty. Scope. Safety. Authority. Uncertainty. Privacy. Consent. Pick the one your product is most at risk of failing and ship a refusal pattern this sprint. The boundary you draw is the boundary your users get to trust.
+**Write the refusal specification.** [Six categories.](/refusals) Sovereignty. Scope. Dependency. Consent. Integrity. Energy. Pick the one your product is most at risk of failing and ship a refusal pattern this sprint. The boundary you draw is the boundary your users get to trust.
 
 **Run the Sovereignty Assessment.** [47 points across 7 domains.](/products/sovereignty-toolkit) Most consumer AI products score between 11 and 19 out of 47. Knowing where you are is the first audit. The score is not the point. The conversation it surfaces inside your team is.
 
