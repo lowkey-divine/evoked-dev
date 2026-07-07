@@ -76,7 +76,8 @@ async function main() {
     status: 'draft',
     audience: 'free',
     platform: 'both', // email + web
-    custom_fields: [],
+    // custom_fields omitted: beehiiv V2 expects an object, not an array.
+    // An empty array ([]) fails schema validation with HTTP 400. Omit when unused.
   };
 
   console.log(`Posting "${data.title}" to beehiiv as draft...`);
