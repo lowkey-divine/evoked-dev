@@ -1,6 +1,6 @@
 # Newsletter platform decision
 
-**Status:** Open. Decide when fresh.
+**Status:** DECIDED 2026-07-08 — Option B (build custom on Resend + Neon). See "Decision recorded" below.
 **Decided by:** Erin
 **Drafted:** 2026-06-18 after a long day of beehiiv friction surfaced the underlying strategic question.
 
@@ -19,7 +19,7 @@ A third option is the hybrid: keep beehiiv as the primary sender but maintain ou
 **Working:**
 - Subscribe form on evoked.dev wired to beehiiv V2 API via `/api/newsletter/subscribe`
 - Welcome email configured in beehiiv, arriving on subscribe
-- Beehiiv auto-sync workflow live (push article to main with `draft: false`, beehiiv draft post created automatically within 30 seconds)
+- ~~Beehiiv auto-sync workflow live (push article to main with `draft: false`, beehiiv draft post created automatically within 30 seconds)~~ **CORRECTED 2026-07-08:** this never worked. The repo→beehiiv auto-post uses beehiiv's Posts API, which is **Enterprise-plan gated** (`SEND_API_NOT_ENTERPRISE_PLAN`, HTTP 403). Fixing a `custom_fields` schema bug in the sync script revealed the plan wall underneath. Auto-posting from the repo is not available on Launch or Grow — only Enterprise. The subscribe endpoint (V2 subscriptions) works fine on the current tier; only programmatic post creation is gated.
 - Beehiiv account set up with mailing address (CAN-SPAM compliant), reply-to pending verification, sender currently shows as `evoked@mail.beehiiv.com`
 - We already have Resend in dependencies (`resend@^6.9.2`) used for Stripe transactional emails
 - We already have Neon Postgres (`@neondatabase/serverless`) used for sovereignty submissions
@@ -197,4 +197,8 @@ You do not have to do all three phases on day one. Phase 1 alone is enough to st
 
 *Write here when you decide. Include the date, the chosen option, and one sentence on why.*
 
-[Pending]
+**2026-07-08 — Option B: build custom on Resend + Neon.**
+
+Why: the finding that beehiiv's Posts API is Enterprise-gated removed Option A's headline benefit (repo→beehiiv auto-posting is unavailable on any plan short of Enterprise, well above the $30/mo Grow tier the doc assumed). Re-running the doc's own five-question matrix with that correction, four of five questions tip toward custom — decisively, brand sovereignty (the Evoked thesis) and no per-month fee in a June–August income window. We already have Resend and Neon installed; the build is ~3 hours; we own the list end to end. The one real trade-off (deliverability tuning beehiiv would do for us) is acceptable for a small, well-written list. Analytics we forgo is analytics Evoked declines to run anyway.
+
+Bridge note: the beehiiv subscribe form stays working during the build; the failing auto-sync workflow was disabled 2026-07-08 (`gh workflow disable`) so it stops erroring on every publish. Re-enable only if the plan question ever changes.
