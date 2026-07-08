@@ -11,6 +11,12 @@ on:
       - 'src/content/writing/**.md'
       - 'scripts/sync-article-to-beehiiv.mjs'
       - '.github/workflows/sync-articles-to-beehiiv.yml'
+  workflow_dispatch:
+    inputs:
+      article:
+        description: 'Sync one specific article (e.g. src/content/writing/foo.md). Leave blank to use push-detection behavior.'
+        required: false
+        default: ''
 
 permissions:
   contents: read
@@ -38,6 +44,17 @@ jobs:
       - name: Detect newly-added articles
         id: changed
         run: |
+          # Manual dispatch: sync one explicitly-named article, bypassing diff detection.
+          manual="${{ github.event.inputs.article }}"
+          if [ -n "$manual" ]; then
+            echo "Manual dispatch - syncing: $manual"
+            {
+              echo "files<<EOF"
+              echo "$manual"
+              echo "EOF"
+            } >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
           # Find files ADDED (not modified) under src/content/writing/ in this push.
           # We sync NEW articles only - this prevents duplicate drafts when you
           # edit a typo on an article that already shipped to beehiiv.
