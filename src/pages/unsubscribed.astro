@@ -1,0 +1,65 @@
+---
+import ElevationLayout from '../layouts/ElevationLayout.astro';
+
+// Newsletter unsubscribe confirmation page.
+//
+// By the time anyone lands here, the unsubscribe has ALREADY happened - the
+// /api/newsletter/unsubscribe endpoint flips the row and spends the token
+// before redirecting here (303). This page only confirms it, in the past tense.
+//
+// Copy by Codex (voice-checked). Posture set by Polaris: one-click, no "are you
+// sure?", no survey, no retention plea, no confirm-shaming, no new-signup
+// capture. The re-subscribe line is neutral and equal-weight - a door back, not
+// a hand on the door. This page is static; it carries NO token or email in its
+// URL, so nothing about the departing reader is exposed here.
+---
+
+<ElevationLayout
+  title="You are unsubscribed"
+  description="You have been removed from the Evoked newsletter."
+>
+  <section class="unsub">
+    <div class="unsub__inner">
+      <h1 class="unsub__title">You are unsubscribed</h1>
+      <p class="unsub__body">
+        You have been removed from the Evoked newsletter. This only affects the
+        newsletter - it does not touch any other mail from us or anything else
+        you have with Evoked.
+      </p>
+      <p class="unsub__body">
+        If you did not mean to do this, you can
+        <a href="/writing">sign up again</a>
+        from the form at the bottom of any page on evoked.dev.
+      </p>
+      <p class="unsub__home">
+        <a href="/">Back to evoked.dev</a>
+      </p>
+    </div>
+  </section>
+</ElevationLayout>
+
+<style>
+  .unsub {
+    display: flex;
+    justify-content: center;
+    padding: 6rem 1.5rem;
+  }
+  .unsub__inner {
+    max-width: 34rem;
+    text-align: left;
+  }
+  .unsub__title {
+    font-size: 2rem;
+    font-weight: 600;
+    margin: 0 0 1.5rem;
+    line-height: 1.2;
+  }
+  .unsub__body {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    margin: 0 0 1.25rem;
+  }
+  .unsub__home {
+    margin: 2rem 0 0;
+  }
+</style>
