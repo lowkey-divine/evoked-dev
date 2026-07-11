@@ -208,7 +208,7 @@ const structuredData = {
         const sRes = await fetch('/api/newsletter/subscribe', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ email, token, ts, hp: hpInput?.value || '' }),
+          body: JSON.stringify({ email, token, ts, hp: hpInput?.value || '', source: 'kitchen-table' }),
         });
 
         if (sRes.ok) {

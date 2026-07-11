@@ -91,6 +91,7 @@ const RATE_LIMITS: Record<string, RateLimitConfig> = {
   chat:          { windowMs: 60_000, maxRequests: 10 },   // 10 per minute
   assessFit:     { windowMs: 60_000, maxRequests: 5 },    // 5 per minute
   newsletter:    { windowMs: 60_000, maxRequests: 3 },    // 3 per minute
+  newsletterUnsubscribe: { windowMs: 60_000, maxRequests: 10 }, // 10/min - emailed one-click link; caps token-enumeration attempts
   buildWithUs:   { windowMs: 300_000, maxRequests: 1 },   // 1 per 5 minutes
   fitFollowup:   { windowMs: 60_000, maxRequests: 5 },    // 5 per minute
   challenge:     { windowMs: 60_000, maxRequests: 10 },   // 10 per minute (serves all forms)

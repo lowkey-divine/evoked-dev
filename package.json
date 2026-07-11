@@ -7,7 +7,9 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "subscribers": "node --env-file=.env scripts/subscribers.mjs"
+    "subscribers": "node --env-file=.env scripts/subscribers.mjs",
+    "migrate:newsletter": "node --env-file=.env scripts/migrate-newsletter.mjs",
+    "newsletter:send": "node --env-file=.env scripts/newsletter-send.mjs"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.80.0",
@@ -17,6 +19,8 @@
     "@neondatabase/serverless": "^1.0.2",
     "@vercel/analytics": "^2.0.1",
     "astro": "^5.17.1",
+    "gray-matter": "^4.0.3",
+    "marked": "^18.0.5",
     "puppeteer-core": "^24.37.5",
     "resend": "^6.9.2",
     "stripe": "^20.3.1"
