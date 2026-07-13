@@ -1,9 +1,9 @@
 # Regulatory State - Canonical Source of Truth
 # See README.md in this directory for purpose, use, and verification cadence.
 
-last_verified: "2026-06-06"
-verified_by: "Claude Code session with Captain Europa + WebSearch (Latham Watkins, Council of EU press release, Pinsent Masons, Inside Privacy, White Case, Gibson Dunn, Morrison Foerster)"
-next_verification_due: "2026-06-13"  # weekly cadence for EU AI Act during active amendment
+last_verified: "2026-07-11"
+verified_by: "Claude Code session with Captain Europa + WebSearch (European Commission AI-literacy FAQ, artificialintelligenceact.eu, Morrison Foerster, Gibson Dunn, Sidley Data Matters). Prior verification 2026-06-06."
+next_verification_due: "2026-07-18"  # weekly cadence for EU AI Act during active amendment
 
 # ---------------------------------------------------------------------------
 # EU AI Act (Regulation (EU) 2024/1689)
@@ -11,13 +11,14 @@ next_verification_due: "2026-06-13"  # weekly cadence for EU AI Act during activ
 
 eu_ai_act:
   name: "EU AI Act (Regulation (EU) 2024/1689)"
-  status_summary: "In force; provisional Digital Omnibus amendments pending Official Journal publication"
+  status_summary: "In force; Digital Omnibus amendments adopted (European Parliament 16 Jun 2026, Council 29 Jun 2026), awaiting Official Journal publication (expected before 2 Aug 2026)"
   entry_into_force: "2024-08-01"
   consolidated_text_url: "https://eur-lex.europa.eu/eli/reg/2024/1689/oj"
   ai_office_page: "https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai"
 
   # Publication state matters as much as the dates themselves.
   # in_force = published, adopted, currently binding
+  # adopted_pending_publication = formally adopted by Parliament + Council, awaiting OJ publication (binding on OJ + 3 days)
   # provisional = political agreement reached, awaiting formal adoption + OJ publication
   # proposed = published Commission proposal, not yet politically agreed
   # rumoured = discussed publicly, no formal proposal yet
@@ -26,6 +27,7 @@ eu_ai_act:
       date: "2025-02-02"
       status: in_force
       description: "Chapter I (general provisions), Chapter II Article 5 prohibitions (original 8), Article 4 AI literacy"
+      notes: "Article 4 in force since 2025-02-02; national market surveillance authorities begin supervising and enforcing from 2026-08-02. The Digital Omnibus softened the Article 4 standard to 'support the development of' staff AI literacy rather than guarantee a specific level; it did NOT defer Article 4."
 
     - id: gpai_and_governance
       date: "2025-08-02"
@@ -35,30 +37,30 @@ eu_ai_act:
     - id: synthetic_content_marking_pre_existing
       date: "2026-12-02"
       original_date: "2026-08-02"
-      status: provisional
+      status: adopted_pending_publication
       description: "Article 50 synthetic-content marking obligation for systems placed on market before 2 August 2026"
-      source: "Digital Omnibus political agreement 7 May 2026"
+      source: "Digital Omnibus: political agreement 7 May 2026; adopted by European Parliament 16 Jun 2026 and Council 29 Jun 2026; awaiting OJ publication. Re-verify exact provision text against OJ when published."
 
     - id: new_article_5_prohibitions
       date: "2026-12-02"
-      status: provisional
+      status: adopted_pending_publication
       description: "Two new Article 5 prohibitions: (1) AI generation/manipulation of non-consensual intimate material; (2) AI generation/manipulation of child sexual abuse material (CSAM)"
-      source: "Digital Omnibus political agreement 7 May 2026"
+      source: "Digital Omnibus: political agreement 7 May 2026; adopted by European Parliament 16 Jun 2026 and Council 29 Jun 2026; awaiting OJ publication. Re-verify exact provision text against OJ when published."
 
     - id: annex_iii_high_risk_use_based
       date: "2027-12-02"
       original_date: "2026-08-02"
-      status: provisional
+      status: adopted_pending_publication
       description: "Use-based high-risk obligations (Annex III: credit scoring, recruitment, education, essential services, law enforcement, migration, justice)"
-      source: "Digital Omnibus political agreement 7 May 2026"
+      source: "Digital Omnibus: political agreement 7 May 2026; adopted by European Parliament 16 Jun 2026 and Council 29 Jun 2026; awaiting OJ publication. Re-verify exact provision text against OJ when published."
       deferral_months: 16
 
     - id: annex_i_high_risk_product_regulated
       date: "2028-08-02"
       original_date: "2027-08-02"
-      status: provisional
+      status: adopted_pending_publication
       description: "Product-regulated high-risk obligations (Annex I: medical devices, lifts, radio equipment, vehicles)"
-      source: "Digital Omnibus political agreement 7 May 2026"
+      source: "Digital Omnibus: political agreement 7 May 2026; adopted by European Parliament 16 Jun 2026 and Council 29 Jun 2026; awaiting OJ publication. Re-verify exact provision text against OJ when published."
       deferral_months: 12
 
     - id: member_state_sandbox_establishment
@@ -88,10 +90,10 @@ eu_ai_act:
     notes: "Currently captures a handful of frontier models. Threshold subject to Commission review."
 
   pending_actions:
-    - "Parliament plenary vote on Digital Omnibus"
-    - "Council formal adoption"
-    - "Official Journal publication of consolidated Omnibus text"
-    - "Expected completion: before 2 August 2026 (specifically to prevent original use-based deadline from triggering during adoption window)"
+    - "COMPLETE: European Parliament plenary endorsement of Digital Omnibus (16 June 2026)"
+    - "COMPLETE: Council formal adoption (29 June 2026)"
+    - "PENDING: Official Journal publication of consolidated Omnibus text; enters into force on OJ + 3 days"
+    - "Expected OJ publication: before 2 August 2026 (specifically to prevent original use-based deadline from triggering during adoption window)"
 
   scope:
     roles_bound:

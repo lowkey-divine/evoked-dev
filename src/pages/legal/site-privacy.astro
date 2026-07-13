@@ -1,0 +1,66 @@
+---
+import LegalLayout from '../../layouts/LegalLayout.astro';
+---
+
+<LegalLayout
+  title="What This Site Knows About You"
+  description="How evoked.dev handles visitors. What we measure, what we do not, what happens when you subscribe or book a call, and what you can refuse."
+  productLine="evoked.dev - Visitor Privacy"
+  version="Version 0.1 - Effective July 11, 2026"
+>
+  <p class="lead">
+    Most sites you read are watching you back. This one measures less than you would expect, and it is worth saying exactly how much. This page covers the reading experience - browsing, subscribing, booking a call. If you become a paying client, a separate and stronger policy governs the work itself, and it is linked at the bottom.
+  </p>
+
+  <div class="legal-section">
+    <h2>1. When You Only Read</h2>
+    <p>Reading a page here does not create an account, drop a cookie, or build a profile of you. We run one measurement tool, and it is the quiet kind:</p>
+    <ul>
+      <li><strong>Vercel Analytics</strong>, in its cookieless mode. It counts page views and rough traffic patterns so we know which writing is read. It does not set cookies, does not follow you across other sites, and does not assemble a per-person history. The count is aggregate, not a dossier.</li>
+    </ul>
+    <p>That is the entire measurement stack for a reader. No ad pixels, no session replay, no fingerprinting, no third-party trackers injected into the page.</p>
+  </div>
+
+  <div class="legal-section">
+    <h2>2. When You Subscribe</h2>
+    <p>If you enter your email in a subscribe form, that email goes to <strong>Beehiiv</strong>, the service that holds our list and sends the letters. We collect the email address and nothing else - no name required, no questions attached. Beehiiv processes it under its own privacy terms at beehiiv.com/privacy.</p>
+    <p>You can leave at any time. Every letter carries an unsubscribe link, and using it removes you without a conversation or a survey about why.</p>
+  </div>
+
+  <div class="legal-section">
+    <h2>3. When You Book a Call</h2>
+    <p>Links that say "Book a call" hand you off to <strong>Cal.com</strong>, our scheduling tool. When you book, you give Cal.com the information you type into it - typically your name, your email, and the time you choose. That information lives with Cal.com under its privacy terms at cal.com/privacy, and it reaches us so we can hold the call you booked.</p>
+    <p>We use that information to meet with you and to follow up about the conversation you asked for. We do not add you to a marketing list because you booked a call. Booking is not subscribing.</p>
+  </div>
+
+  <div class="legal-section">
+    <h2>4. What We Never Do</h2>
+    <p>Stated plainly, because the absence is the point:</p>
+    <ul>
+      <li>We do not sell, rent, or trade any information about you.</li>
+      <li>We do not buy data about you from brokers or enrich your record from outside sources.</li>
+      <li>We do not run advertising trackers, cross-site pixels, or fingerprinting.</li>
+      <li>We do not record your session or replay your mouse.</li>
+      <li>We do not tie your reading here to your identity on any other platform.</li>
+    </ul>
+  </div>
+
+  <div class="legal-section">
+    <h2>5. What You Can Refuse</h2>
+    <p>You can read every word on this site while blocking analytics entirely, and nothing here will break. You can subscribe and later leave. You can book a call and later ask us to delete what we hold from it. None of these choices require you to explain yourself.</p>
+    <p>To ask what we hold, to correct it, or to have it deleted, email <strong>erin@evoked.dev</strong>. We answer in plain language, without friction, and we do not survey you about the reason.</p>
+  </div>
+
+  <div class="legal-section">
+    <h2>6. The Paid Engagement Is Governed Separately</h2>
+    <p>If you retain us for an audit or advisory work, the material you share during that engagement is held under a stricter, purpose-built policy - end-to-end encrypted channels, true deletion after the engagement, no analytics on the work at all. That policy is <a href="/legal/privacy">the Sovereignty Audit privacy policy</a>. This page governs the public site; that one governs the work.</p>
+  </div>
+
+  <div class="legal-close">
+    <p>The thesis of this practice is that trust should be verifiable, not just promised. A privacy page is a promise. So here is the part you can verify: open your browser's developer tools, watch the network, and check that the only thing this page loads about you is a cookieless count. The wall is meant to hold whether or not you look. It holds better when you do.</p>
+    <p class="signature">
+      Erin Stanley<br />
+      Evoked
+    </p>
+  </div>
+</LegalLayout>
