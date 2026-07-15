@@ -65,7 +65,7 @@ If you are sitting on your own unfinished draft right now - the policy you meant
 
 ---
 
-*The instrument is public in two ways: the same 47 items are available for free as the /sovereignty-assess Claude skill, and there is a paid [PDF of the Toolkit](/products/sovereignty-toolkit) for offline and team use. Naming the price up front is the point - it is the exact fix we made in version 1.1. Run it on your own product, or on ours. We would rather you checked us than took our word.*
+*The instrument is public three ways: the same 47 items run free as the /sovereignty-assess Claude skill, free as a [printable checklist](/products/sovereignty-checklist) you score by hand with nothing leaving your desk, and paid as a [PDF of the Toolkit](/products/sovereignty-toolkit) for offline and team use. Naming the price up front is the point - it is the exact fix we made in version 1.1. Run it on your own product, or on ours. We would rather you checked us than took our word.*
 
 Sources: Anthropic, "Updates to Consumer Terms and Privacy Policy" and Privacy Center articles on model training, identity verification, and government requests, privacy.claude.com and anthropic.com; TechCrunch, "Anthropic says Claude may want to see your ID" (2026-06-22); prior Evoked scoring, "Both Are Progressing. Both Failed the Same Three Items." Anthropic policy points verified current July 2026.
 
