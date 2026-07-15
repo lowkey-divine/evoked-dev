@@ -1,0 +1,314 @@
+---
+import ElevationLayout from '../../layouts/ElevationLayout.astro';
+import Hero from '../../components/elevation/Hero.astro';
+import Section from '../../components/elevation/Section.astro';
+
+const domains = [
+  {
+    n: 1,
+    name: 'Transparency',
+    max: 16,
+    question: 'Are we honest about what we’re doing and why?',
+    items: [
+      [1, 'Users can see what data is collected about them.'],
+      [2, 'Privacy policy is in plain language - not legal boilerplate.'],
+      [3, 'The business model is visible. Users understand how the product makes money.'],
+      [4, 'Algorithmic recommendations are explained or explainable on request.'],
+      [5, 'Third-party data sharing is disclosed specifically - not bundled into a blanket consent.'],
+      [6, 'Policy changes and updates are communicated proactively, not buried.'],
+      [7, 'Pricing is clear. No hidden fees, surprise charges, or bait-and-switch.'],
+      [8, 'Marketing claims match actual product behavior.'],
+    ],
+  },
+  {
+    n: 2,
+    name: 'Autonomy',
+    max: 16,
+    question: 'Does the product support user goals - or hijack them?',
+    items: [
+      [9, 'Users can complete their primary task without engineered friction barriers.'],
+      [10, 'The product has natural stopping points. No infinite scroll, no compulsive autoplay.'],
+      [11, 'Time-awareness features are available - usage reminders, session limits, or break prompts.'],
+      [12, 'Cancellation is as easy as signup. No retention mazes. No phone-call-required cancellation.'],
+      [13, 'Account deletion is straightforward, complete, and timely.'],
+      [14, 'Data export is available in a portable, standard format.'],
+      [15, 'Default settings serve the user’s interest, not engagement metrics.'],
+      [16, 'Users can customize notification frequency, type, and timing.'],
+    ],
+  },
+  {
+    n: 3,
+    name: 'Invitation',
+    max: 14,
+    question: 'Do we earn attention through value - or capture it through tricks?',
+    items: [
+      [17, 'Onboarding demonstrates value before asking for commitment.'],
+      [18, 'Notifications respect user-set boundaries and schedules.'],
+      [19, 'Permission requests happen in context, when the feature is needed - not on first launch.'],
+      [20, 'Re-engagement messages provide genuine value, not guilt or manufactured urgency.'],
+      [21, 'Upgrade prompts are informational and dismissible - not manipulative or recurring.'],
+      [22, 'Free tiers are genuinely functional. Not crippled to coerce conversion.'],
+      [23, 'The product degrades gracefully - works offline, on slow connections, on older devices when possible.'],
+    ],
+  },
+  {
+    n: 4,
+    name: 'Dignity',
+    max: 16,
+    question: 'Do we respect the person - or exploit their psychology?',
+    items: [
+      [24, 'No confirmshaming. ("Are you sure you want to miss out?" is not a real question.)'],
+      [25, 'No artificial urgency or scarcity. ("Only 2 left!" when there are 2,000.)'],
+      [26, 'No guilt mechanics - no streaks designed to punish absence, no sad mascots, no social pressure to re-engage.'],
+      [27, 'No trick questions or misdirection in consent flows. The "yes" and "no" are equally clear.'],
+      [28, 'Error messages are helpful and human - not blaming, not cryptic.'],
+      [29, 'The product accommodates diverse emotional states. It doesn’t assume everyone is having a good day.'],
+      [30, 'Vulnerable populations - children, elderly, people in grief or crisis - receive additional protection, not additional targeting.'],
+      [31, 'Social features don’t exploit comparison, competition, or fear of missing out.'],
+    ],
+  },
+  {
+    n: 5,
+    name: 'Silence',
+    max: 12,
+    question: 'Do we know when to be quiet?',
+    items: [
+      [32, 'The product knows when not to send a notification.'],
+      [33, 'Quiet modes, focus modes, or reduced-engagement options exist.'],
+      [34, 'Empty states are calm - not anxiety-inducing calls to action.'],
+      [35, 'The product doesn’t punish absence. Coming back after time away feels like a welcome, not a guilt trip.'],
+      [36, 'Background data collection and activity are minimal and fully disclosed.'],
+      [37, 'The product supports completion. It can be "done." It doesn’t engineer endless engagement.'],
+    ],
+  },
+  {
+    n: 6,
+    name: 'Data Sovereignty',
+    max: 10,
+    question: 'Does the user’s data serve the user - or the business?',
+    items: [
+      [38, 'Data collection is minimized to what the feature actually needs. No "collect everything, figure out use later."'],
+      [39, 'Sensitive data is encrypted at rest and in transit.'],
+      [40, 'User data is not sold, shared for advertising, or monetized without explicit, informed consent.'],
+      [41, 'Consent is granular. Separate permissions for separate uses. Users can say yes to some and no to others.'],
+      [42, 'Data retention has clear, documented limits. Users can see and control how long their data is kept.'],
+    ],
+  },
+  {
+    n: 7,
+    name: 'AI and Voice',
+    max: 10,
+    question: 'If the product uses AI - does the AI honor sovereignty too?',
+    items: [
+      [43, 'AI agents are honest about what they don’t know. They say "I’m not sure" instead of fabricating.'],
+      [44, 'The AI’s voice reflects intentional values - not unexamined defaults. Someone chose how it speaks.'],
+      [45, 'AI interactions don’t use sycophancy, emotional manipulation, or false urgency.'],
+      [46, 'AI outputs are presented as suggestions - not commands. The human remains the decision-maker.'],
+      [47, 'AI interactions are reviewable. Users can see what the AI said, correct it, or report problems.'],
+    ],
+  },
+];
+
+const bands = [
+  ['80-94', '85-100%', 'Sovereignty-Honoring'],
+  ['60-79', '64-84%', 'Progressing'],
+  ['40-59', '43-63%', 'Mixed'],
+  ['20-39', '21-42%', 'Extractive'],
+  ['0-19', '0-20%', 'Adversarial'],
+];
+---
+
+<ElevationLayout
+  title="The Sovereignty Checklist (Free)"
+  description="The free, channel-free version of the Sovereignty Assessment Toolkit. 47 items, 7 domains. Print it, score it by hand, and nothing leaves your desk. CC BY 4.0."
+>
+  <Hero
+    eyebrowParts={["Products", "Free"]}
+    headline="The Sovereignty Checklist"
+    metaphor={["47 items. 7 domains. On paper."]}
+    sub="The free, channel-free version. Print it, score it by hand, and nothing leaves your desk."
+  />
+
+  <Section marker="FIG · I" heading="Three ways to run it, none of them gated">
+    <p class="lede">
+      The assessment is free. This page is the version that touches no
+      channel at all - you can print it, score it with a pen, and no data
+      about your product ever leaves the room. That is the point.
+    </p>
+    <p class="pd-body">
+      Prefer a guided run? The same 47 items work as a free Claude skill,
+      <code>/sovereignty-assess</code>, that walks you through them
+      conversationally. Prefer a polished, team-ready document? The <a href="/products/sovereignty-toolkit">$49 PDF</a>
+      adds the scoring rubric, the domain health map, and the action-plan
+      template. The methodology is identical across all three. Sovereignty
+      is the free part; polish is the paid part.
+    </p>
+    <div class="sc-actions">
+      <a href="/sovereignty-checklist.txt" class="pd-buy-cta" download>Download the printable checklist</a>
+      <button type="button" class="sc-print" onclick="window.print()">Print this page</button>
+    </div>
+  </Section>
+
+  <Section marker="FIG · II" heading="How to score">
+    <ul class="sc-key">
+      <li><span class="sc-key-mark">2</span> Yes, fully implemented.</li>
+      <li><span class="sc-key-mark">1</span> Partially implemented, or inconsistently applied.</li>
+      <li><span class="sc-key-mark">0</span> No, not implemented.</li>
+      <li><span class="sc-key-mark">N/A</span> Not applicable to this product. Subtract 2 from the maximum for each.</li>
+    </ul>
+    <p class="pd-body">
+      Be honest. If you are not sure, lean toward the lower score. It is easy
+      to revise upward later; it is hard to be honest retroactively. Maximum
+      score: 94.
+    </p>
+  </Section>
+
+  <Section marker="FIG · III" heading="The 6 red flags">
+    <p class="lede">
+      These six override everything. A product that fails any one of them has
+      work to do, regardless of its overall score. If you have five minutes,
+      start here.
+    </p>
+    <ul class="sc-redflags">
+      <li><span class="sc-num">13</span> Account deletion is straightforward, complete, and timely.</li>
+      <li><span class="sc-num">24</span> No confirmshaming. ("Are you sure you want to miss out?" is not a real question.)</li>
+      <li><span class="sc-num">25</span> No artificial urgency or scarcity. ("Only 2 left!" when there are 2,000.)</li>
+      <li><span class="sc-num">27</span> No trick questions or misdirection in consent flows. The "yes" and "no" are equally clear.</li>
+      <li><span class="sc-num">30</span> Vulnerable populations - children, elderly, people in grief or crisis - receive additional protection, not additional targeting.</li>
+      <li><span class="sc-num">40</span> User data is not sold, shared for advertising, or monetized without explicit, informed consent.</li>
+    </ul>
+  </Section>
+
+  <Section marker="FIG · IV" heading="The 47 items">
+    {domains.map((d) => (
+      <div class="sc-domain">
+        <h3 class="sc-domain-name"><span class="sc-domain-n">{d.n}</span> {d.name} <span class="sc-domain-max">/ {d.max}</span></h3>
+        <p class="sc-domain-q">"{d.question}"</p>
+        <ul class="sc-items">
+          {d.items.map(([num, text]) => (
+            <li><span class="sc-box" aria-hidden="true">&#9744;</span><span class="sc-num">{num}</span><span class="sc-text">{text}</span></li>
+          ))}
+        </ul>
+      </div>
+    ))}
+    <p class="pd-body sc-ainote">
+      If the product doesn’t use AI, mark items 43-47 N/A and subtract 10
+      from the maximum.
+    </p>
+  </Section>
+
+  <Section marker="FIG · V" heading="What your score means">
+    <ul class="sc-bands">
+      {bands.map(([score, pct, label]) => (
+        <li><span class="sc-band-score">{score}</span><span class="sc-band-pct">{pct}</span><span class="sc-band-label">{label}</span></li>
+      ))}
+    </ul>
+    <p class="pd-body">
+      Red flags override the total. A product can score well overall and still
+      have a critical failure. If any of items 13, 24, 25, 27, 30, or 40
+      scored 0, that is your priority regardless of the total.
+    </p>
+    <h3 class="sc-domain-name">The three questions</h3>
+    <p class="pd-body">
+      Every one of the 47 items is a specific instance of three deeper
+      questions: What is the person trying to do? What is the product trying to
+      do? Are these aligned? When the answer to the third is yes, sovereignty
+      is honored. When it is no, you have a tension worth naming - not burying
+      in a backlog.
+    </p>
+  </Section>
+
+  <Section marker="NOTA · BENE" heading="Sovereignty is free. Polish is paid." closing={true}>
+    <p class="lede">
+      Run it on your own product, or on someone else’s. Then run it again in
+      90 days. If you want the polished, team-ready edition - the scoring
+      rubric, the domain health map, the action-plan template, and a team
+      license - that is the <a href="/products/sovereignty-toolkit">$49 PDF</a>. The assessment above is
+      free and stays free.
+    </p>
+    <p class="pd-body sc-license">
+      Licensed under <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0</a>
+      (CC BY 4.0). Free to use, share, and adapt with attribution to Erin
+      Stanley, Evoked.
+    </p>
+  </Section>
+</ElevationLayout>
+
+<style>
+  .sc-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: center;
+    margin-top: 2rem;
+  }
+  .sc-print {
+    background: none;
+    border: 1px solid currentColor;
+    color: inherit;
+    font: inherit;
+    padding: 0.75rem 1.5rem;
+    cursor: pointer;
+    border-radius: 2px;
+  }
+  .sc-print:hover { opacity: 0.7; }
+
+  .sc-key {
+    list-style: none;
+    padding-left: 0;
+    margin: 0 0 1.5rem;
+    display: grid;
+    gap: 0.6rem;
+  }
+  .sc-key li { display: flex; gap: 0.9rem; align-items: baseline; }
+  .sc-key-mark {
+    flex: 0 0 3ch;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .sc-redflags { list-style: none; padding-left: 0; margin: 0; display: grid; gap: 0.9rem; }
+  .sc-redflags li { display: flex; gap: 0.9rem; align-items: baseline; }
+
+  .sc-domain { margin-block: 2.5rem; }
+  .sc-domain:first-of-type { margin-top: 0.5rem; }
+  .sc-domain-name { margin: 0 0 0.25rem; }
+  .sc-domain-n {
+    display: inline-block;
+    min-width: 1.6em;
+    opacity: 0.55;
+    font-variant-numeric: tabular-nums;
+  }
+  .sc-domain-max { opacity: 0.5; font-weight: 400; }
+  .sc-domain-q { font-style: italic; opacity: 0.8; margin: 0 0 1rem; }
+
+  .sc-items { list-style: none; padding-left: 0; margin: 0; }
+  .sc-items li {
+    display: flex;
+    gap: 0.75rem;
+    align-items: baseline;
+    padding: 0.55rem 0;
+    border-top: 1px solid color-mix(in srgb, currentColor 15%, transparent);
+  }
+  .sc-box { flex: 0 0 auto; font-size: 1.1em; }
+  .sc-num {
+    flex: 0 0 2.4ch;
+    text-align: right;
+    opacity: 0.55;
+    font-variant-numeric: tabular-nums;
+  }
+  .sc-text { flex: 1; }
+  .sc-ainote { margin-top: 1.75rem; opacity: 0.8; }
+
+  .sc-bands { list-style: none; padding-left: 0; margin: 0 0 1.5rem; display: grid; gap: 0.6rem; }
+  .sc-bands li { display: flex; gap: 1.2rem; align-items: baseline; flex-wrap: wrap; }
+  .sc-band-score { flex: 0 0 6ch; font-weight: 700; font-variant-numeric: tabular-nums; }
+  .sc-band-pct { flex: 0 0 8ch; opacity: 0.6; font-variant-numeric: tabular-nums; }
+  .sc-band-label { flex: 1; }
+
+  .sc-license { opacity: 0.75; font-size: 0.95em; margin-top: 1.5rem; }
+
+  @media print {
+    .sc-actions { display: none; }
+  }
+</style>

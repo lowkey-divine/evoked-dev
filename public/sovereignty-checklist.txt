@@ -1,0 +1,226 @@
+THE SOVEREIGNTY CHECKLIST
+47 items. 7 domains. Run it on paper. Nothing leaves your desk.
+
+From the Sovereignty Assessment Toolkit by Evoked (evoked.dev).
+This is the free, channel-free version: print it, score it by hand, and
+no data ever leaves the room. The same 47 items also run as a free Claude
+skill (/sovereignty-assess) and as a paid PDF that adds the scoring
+rubric, domain health map, and action-plan template.
+
+Licensed under Creative Commons Attribution 4.0 (CC BY 4.0). Free to use,
+share, and adapt with attribution to Erin Stanley, Evoked.
+
+=======================================================================
+
+HOW TO SCORE
+
+  2   = Yes, fully implemented
+  1   = Partially implemented, or inconsistently applied
+  0   = No, not implemented
+  N/A = Not applicable to this product (adjust the maximum)
+
+Be honest. If you are not sure, lean toward the lower score. It is easy
+to revise upward later; it is hard to be honest retroactively.
+
+Maximum score: 94 (47 items x 2). For each item you mark N/A, subtract 2
+from the maximum.
+
+=======================================================================
+
+THE 6 RED FLAGS  (start here if you have five minutes)
+
+These six override everything. A product that fails any one of them has
+work to do, regardless of its overall score.
+
+  [ ] 13. Account deletion is straightforward, complete, and timely.
+  [ ] 24. No confirmshaming. ("Are you sure you want to miss out?" is
+          not a real question.)
+  [ ] 25. No artificial urgency or scarcity. ("Only 2 left!" when there
+          are 2,000.)
+  [ ] 27. No trick questions or misdirection in consent flows. The
+          "yes" and "no" are equally clear.
+  [ ] 30. Vulnerable populations - children, elderly, people in grief or
+          crisis - receive additional protection, not additional
+          targeting.
+  [ ] 40. User data is not sold, shared for advertising, or monetized
+          without explicit, informed consent.
+
+=======================================================================
+
+DOMAIN 1 - TRANSPARENCY   (8 items, /16)
+"Are we honest about what we're doing and why?"
+
+  [ ] 1. Users can see what data is collected about them.
+  [ ] 2. Privacy policy is in plain language - not legal boilerplate.
+  [ ] 3. The business model is visible. Users understand how the product
+         makes money.
+  [ ] 4. Algorithmic recommendations are explained or explainable on
+         request.
+  [ ] 5. Third-party data sharing is disclosed specifically - not bundled
+         into a blanket consent.
+  [ ] 6. Policy changes and updates are communicated proactively, not
+         buried.
+  [ ] 7. Pricing is clear. No hidden fees, surprise charges, or
+         bait-and-switch.
+  [ ] 8. Marketing claims match actual product behavior.
+
+  Domain 1 subtotal: ____ / 16
+
+DOMAIN 2 - AUTONOMY   (8 items, /16)
+"Does the product support user goals - or hijack them?"
+
+  [ ] 9.  Users can complete their primary task without engineered
+          friction barriers.
+  [ ] 10. The product has natural stopping points. No infinite scroll, no
+          compulsive autoplay.
+  [ ] 11. Time-awareness features are available - usage reminders, session
+          limits, or break prompts.
+  [ ] 12. Cancellation is as easy as signup. No retention mazes. No
+          phone-call-required cancellation.
+  [ ] 13. Account deletion is straightforward, complete, and timely.
+  [ ] 14. Data export is available in a portable, standard format.
+  [ ] 15. Default settings serve the user's interest, not engagement
+          metrics.
+  [ ] 16. Users can customize notification frequency, type, and timing.
+
+  Domain 2 subtotal: ____ / 16
+
+DOMAIN 3 - INVITATION   (7 items, /14)
+"Do we earn attention through value - or capture it through tricks?"
+
+  [ ] 17. Onboarding demonstrates value before asking for commitment.
+  [ ] 18. Notifications respect user-set boundaries and schedules.
+  [ ] 19. Permission requests happen in context, when the feature is
+          needed - not on first launch.
+  [ ] 20. Re-engagement messages provide genuine value, not guilt or
+          manufactured urgency.
+  [ ] 21. Upgrade prompts are informational and dismissible - not
+          manipulative or recurring.
+  [ ] 22. Free tiers are genuinely functional. Not crippled to coerce
+          conversion.
+  [ ] 23. The product degrades gracefully - works offline, on slow
+          connections, on older devices when possible.
+
+  Domain 3 subtotal: ____ / 14
+
+DOMAIN 4 - DIGNITY   (8 items, /16)
+"Do we respect the person - or exploit their psychology?"
+
+  [ ] 24. No confirmshaming. ("Are you sure you want to miss out?" is not
+          a real question.)
+  [ ] 25. No artificial urgency or scarcity. ("Only 2 left!" when there
+          are 2,000.)
+  [ ] 26. No guilt mechanics - no streaks designed to punish absence, no
+          sad mascots, no social pressure to re-engage.
+  [ ] 27. No trick questions or misdirection in consent flows. The "yes"
+          and "no" are equally clear.
+  [ ] 28. Error messages are helpful and human - not blaming, not cryptic.
+  [ ] 29. The product accommodates diverse emotional states. It doesn't
+          assume everyone is having a good day.
+  [ ] 30. Vulnerable populations - children, elderly, people in grief or
+          crisis - receive additional protection, not additional
+          targeting.
+  [ ] 31. Social features don't exploit comparison, competition, or fear
+          of missing out.
+
+  Domain 4 subtotal: ____ / 16
+
+DOMAIN 5 - SILENCE   (6 items, /12)
+"Do we know when to be quiet?"
+
+  [ ] 32. The product knows when not to send a notification.
+  [ ] 33. Quiet modes, focus modes, or reduced-engagement options exist.
+  [ ] 34. Empty states are calm - not anxiety-inducing calls to action.
+  [ ] 35. The product doesn't punish absence. Coming back after time away
+          feels like a welcome, not a guilt trip.
+  [ ] 36. Background data collection and activity are minimal and fully
+          disclosed.
+  [ ] 37. The product supports completion. It can be "done." It doesn't
+          engineer endless engagement.
+
+  Domain 5 subtotal: ____ / 12
+
+DOMAIN 6 - DATA SOVEREIGNTY   (5 items, /10)
+"Does the user's data serve the user - or the business?"
+
+  [ ] 38. Data collection is minimized to what the feature actually needs.
+          No "collect everything, figure out use later."
+  [ ] 39. Sensitive data is encrypted at rest and in transit.
+  [ ] 40. User data is not sold, shared for advertising, or monetized
+          without explicit, informed consent.
+  [ ] 41. Consent is granular. Separate permissions for separate uses.
+          Users can say yes to some and no to others.
+  [ ] 42. Data retention has clear, documented limits. Users can see and
+          control how long their data is kept.
+
+  Domain 6 subtotal: ____ / 10
+
+DOMAIN 7 - AI AND VOICE   (5 items, /10)
+"If the product uses AI - does the AI honor sovereignty too?"
+
+  [ ] 43. AI agents are honest about what they don't know. They say "I'm
+          not sure" instead of fabricating.
+  [ ] 44. The AI's voice reflects intentional values - not unexamined
+          defaults. Someone chose how it speaks.
+  [ ] 45. AI interactions don't use sycophancy, emotional manipulation, or
+          false urgency.
+  [ ] 46. AI outputs are presented as suggestions - not commands. The
+          human remains the decision-maker.
+  [ ] 47. AI interactions are reviewable. Users can see what the AI said,
+          correct it, or report problems.
+
+  Domain 7 subtotal: ____ / 10
+
+  (If the product doesn't use AI, mark items 43-47 N/A and subtract 10
+  from the maximum.)
+
+=======================================================================
+
+YOUR SCORE
+
+  1. Transparency        ____ / 16
+  2. Autonomy            ____ / 16
+  3. Invitation          ____ / 14
+  4. Dignity             ____ / 16
+  5. Silence             ____ / 12
+  6. Data Sovereignty    ____ / 10
+  7. AI and Voice        ____ / 10
+  -----------------------------------
+  TOTAL                  ____ / 94
+
+WHAT THE SCORE MEANS
+
+  80-94  (85-100%)   Sovereignty-Honoring
+  60-79  (64-84%)    Progressing
+  40-59  (43-63%)    Mixed
+  20-39  (21-42%)    Extractive
+   0-19  (0-20%)     Adversarial
+
+Red flags override the total. A product can score well overall and still
+have a critical failure. If any of items 13, 24, 25, 27, 30, or 40 scored
+0, that is your priority regardless of the total.
+
+=======================================================================
+
+THE THREE QUESTIONS
+
+Every one of the 47 items is a specific instance of three deeper
+questions:
+
+  1. What is the person trying to do?
+  2. What is the product trying to do?
+  3. Are these aligned?
+
+When the answer to question 3 is yes, sovereignty is honored. When it is
+no, you have a tension worth naming - not burying in a backlog.
+
+=======================================================================
+
+Run it on your own product, or on someone else's. Then run it again in 90
+days.
+
+The assessment is free. The $49 PDF adds the polished rubric, the domain
+health map, the action-plan template, and a team license:
+evoked.dev/products/sovereignty-toolkit
+
+Created by Erin Stanley, Evoked.  "We evoke - we never extract."
