@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1350" viewBox="0 0 1080 1350" font-family="'Space Grotesk', system-ui, Arial, sans-serif">
+  <defs>
+    <style>
+      .serif { font-family: 'EB Garamond', Georgia, 'Times New Roman', serif; }
+      .sans  { font-family: 'Space Grotesk', system-ui, Arial, sans-serif; }
+    </style>
+  </defs>
+
+  <!-- background -->
+  <rect x="0" y="0" width="1080" height="1350" fill="#EBE2CB"/>
+  <rect x="40" y="40" width="1000" height="1270" fill="none" stroke="#A88838" stroke-opacity="0.28" stroke-width="1.5"/>
+
+  <!-- title block -->
+  <text x="90" y="130" class="sans" font-size="22" letter-spacing="5" fill="#7E6622">A GOVERNANCE DIAGNOSTIC</text>
+  <text x="88" y="205" class="serif" font-size="58" fill="#1C1812">Can you prove your</text>
+  <text x="88" y="270" class="serif" font-size="58" fill="#1C1812">AI policy runs?</text>
+  <text x="90" y="320" class="sans" font-size="25" fill="#5B4F3F">Four questions. Ten minutes. Find the rung you are on.</text>
+  <line x1="90" y1="352" x2="990" y2="352" stroke="#A88838" stroke-opacity="0.35" stroke-width="1.5"/>
+
+  <!-- climb rail: vertical line through the number discs, arrow pointing up -->
+  <line x1="155" y1="1010" x2="155" y2="430" stroke="#A88838" stroke-width="2.5" stroke-opacity="0.55"/>
+  <path d="M155 400 L143 424 L167 424 Z" fill="#A88838" fill-opacity="0.8"/>
+
+  <!-- ================= RUNG 4 (top - the frontier) ================= -->
+  <rect x="245" y="392" width="745" height="150" rx="14" fill="none" stroke="#A88838" stroke-width="2" stroke-dasharray="9 7"/>
+  <circle cx="155" cy="467" r="50" fill="#EBE2CB" stroke="#A88838" stroke-width="2.5" stroke-dasharray="7 6"/>
+  <text x="155" y="485" text-anchor="middle" class="sans" font-size="50" font-weight="700" fill="#A88838">4</text>
+  <text x="290" y="462" class="serif" font-size="33" fill="#1C1812">Could you show someone outside?</text>
+  <text x="290" y="500" class="sans" font-size="18" letter-spacing="2.5" fill="#A88838">THE FRONTIER  -  ALMOST NO ONE IS HERE YET</text>
+
+  <!-- divider: most teams stop here -->
+  <line x1="245" y1="567" x2="990" y2="567" stroke="#8C7E68" stroke-width="1.5" stroke-dasharray="2 6"/>
+  <rect x="470" y="555" width="295" height="24" fill="#EBE2CB"/>
+  <text x="617" y="573" text-anchor="middle" class="sans" font-size="17" letter-spacing="3" fill="#8C7E68">MOST TEAMS STOP HERE</text>
+
+  <!-- ================= RUNG 3 ================= -->
+  <rect x="245" y="595" width="745" height="150" rx="14" fill="#F3EBD6" stroke="#A88838" stroke-opacity="0.30" stroke-width="1.5"/>
+  <circle cx="155" cy="670" r="50" fill="#A88838"/>
+  <text x="155" y="688" text-anchor="middle" class="sans" font-size="50" font-weight="700" fill="#F3EBD6">3</text>
+  <text x="290" y="665" class="serif" font-size="33" fill="#1C1812">Can you show, today, it was followed?</text>
+  <text x="290" y="703" class="sans" font-size="18" letter-spacing="2.5" fill="#7E6622">A FOLDER, NOT A STORY</text>
+
+  <!-- ================= RUNG 2 ================= -->
+  <rect x="245" y="770" width="745" height="150" rx="14" fill="#F3EBD6" stroke="#A88838" stroke-opacity="0.30" stroke-width="1.5"/>
+  <circle cx="155" cy="845" r="50" fill="#A88838"/>
+  <text x="155" y="863" text-anchor="middle" class="sans" font-size="50" font-weight="700" fill="#F3EBD6">2</text>
+  <text x="290" y="840" class="serif" font-size="33" fill="#1C1812">Can you name who it applies to?</text>
+  <text x="290" y="878" class="sans" font-size="18" letter-spacing="2.5" fill="#7E6622">MAP IT TO ACTUAL PEOPLE</text>
+
+  <!-- ================= RUNG 1 (bottom) ================= -->
+  <rect x="245" y="945" width="745" height="150" rx="14" fill="#F3EBD6" stroke="#A88838" stroke-opacity="0.30" stroke-width="1.5"/>
+  <circle cx="155" cy="1020" r="50" fill="#A88838"/>
+  <text x="155" y="1038" text-anchor="middle" class="sans" font-size="50" font-weight="700" fill="#F3EBD6">1</text>
+  <text x="290" y="1015" class="serif" font-size="33" fill="#1C1812">Do you have a written AI-use policy?</text>
+  <text x="290" y="1053" class="sans" font-size="18" letter-spacing="2.5" fill="#7E6622">FURTHER ALONG THAN YOU THINK</text>
+
+  <!-- footer -->
+  <line x1="90" y1="1168" x2="990" y2="1168" stroke="#A88838" stroke-opacity="0.35" stroke-width="1.5"/>
+  <text x="90" y="1208" class="sans" font-size="20" fill="#5B4F3F">Free to use  -  CC BY 4.0  -  Erin Stanley, Evoked</text>
+  <text x="90" y="1240" class="sans" font-size="20" fill="#A88838">evoked.dev/writing/prove-your-ai-policy-runs</text>
+</svg>

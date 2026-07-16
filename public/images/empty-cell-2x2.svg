@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 500" role="img" aria-labelledby="ec-title ec-desc" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, sans-serif">
+  <title id="ec-title">Capability by trust-type: the empty cell</title>
+  <desc id="ec-desc">A two-by-two chart. The horizontal axis is capability, from weak on the left to frontier on the right. The vertical axis is trust type, from policy-trust at the bottom to architectural-trust at the top. Bottom-right, capable and policy-trust: "Take our word for it" - where almost all mainstream AI lives. Bottom-left, weak and policy-trust: "Worst of both." Top-left, weak and architectural-trust: "Verifiable but weak." Top-right, capable and architectural-trust: "The empty cell" - good and verifiable, which does not meaningfully exist at scale yet.</desc>
+
+  <rect x="0" y="0" width="640" height="500" fill="#EBE2CB"/>
+
+  <!-- Axis titles -->
+  <text x="340" y="486" text-anchor="middle" font-size="17" font-weight="700" fill="#1C1812">Capability &#8594;</text>
+  <text x="26" y="250" text-anchor="middle" font-size="17" font-weight="700" fill="#1C1812" transform="rotate(-90 26 250)">Trust type &#8593;</text>
+
+  <!-- Axis end labels -->
+  <text x="120" y="470" text-anchor="start" font-size="13" fill="#5B4F3F">weak</text>
+  <text x="600" y="470" text-anchor="end" font-size="13" fill="#5B4F3F">frontier</text>
+  <text x="60" y="424" text-anchor="middle" font-size="13" fill="#5B4F3F" transform="rotate(-90 60 424)">policy-trust</text>
+  <text x="60" y="90" text-anchor="middle" font-size="13" fill="#5B4F3F" transform="rotate(-90 60 90)">architectural-trust</text>
+
+  <!-- Plot cells: x 120..600 (mid 360), y 40..400 (mid 220) -->
+  <!-- Top-left: weak + architectural-trust -->
+  <rect x="120" y="40" width="240" height="180" fill="none" stroke="#8C7E68" stroke-width="1.5"/>
+  <text x="240" y="120" text-anchor="middle" font-size="15" font-weight="700" fill="#1C1812">Verifiable</text>
+  <text x="240" y="140" text-anchor="middle" font-size="15" font-weight="700" fill="#1C1812">but weak</text>
+  <text x="240" y="164" text-anchor="middle" font-size="11.5" fill="#5B4F3F">paper checklist, local small models</text>
+
+  <!-- Top-right: capable + architectural-trust: THE EMPTY CELL -->
+  <rect x="360" y="40" width="240" height="180" fill="#EBE2CB" stroke="#1C1812" stroke-width="2" stroke-dasharray="7 6"/>
+  <text x="480" y="118" text-anchor="middle" font-size="15" font-weight="700" fill="#1C1812">THE EMPTY CELL</text>
+  <text x="480" y="140" text-anchor="middle" font-size="12.5" fill="#5B4F3F">good and verifiable</text>
+  <text x="480" y="158" text-anchor="middle" font-size="12.5" fill="#5B4F3F">- does not exist at</text>
+  <text x="480" y="174" text-anchor="middle" font-size="12.5" fill="#5B4F3F">scale yet</text>
+
+  <!-- Bottom-left: weak + policy-trust -->
+  <rect x="120" y="220" width="240" height="180" fill="none" stroke="#8C7E68" stroke-width="1.5"/>
+  <text x="240" y="304" text-anchor="middle" font-size="15" font-weight="700" fill="#1C1812">Worst of both</text>
+  <text x="240" y="328" text-anchor="middle" font-size="11.5" fill="#5B4F3F">weak, and you must trust it</text>
+
+  <!-- Bottom-right: capable + policy-trust: where everything lives -->
+  <rect x="360" y="220" width="240" height="180" fill="#E2D6BB" stroke="#8C7E68" stroke-width="1.5"/>
+  <text x="480" y="296" text-anchor="middle" font-size="15" font-weight="700" fill="#1C1812">Take our word</text>
+  <text x="480" y="316" text-anchor="middle" font-size="15" font-weight="700" fill="#1C1812">for it</text>
+  <text x="480" y="340" text-anchor="middle" font-size="11.5" fill="#5B4F3F">where almost everything lives</text>
+
+  <!-- Axis lines -->
+  <line x1="120" y1="40" x2="120" y2="400" stroke="#1C1812" stroke-width="1"/>
+  <line x1="120" y1="400" x2="600" y2="400" stroke="#1C1812" stroke-width="1"/>
+</svg>
