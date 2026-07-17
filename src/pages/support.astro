@@ -1,0 +1,68 @@
+---
+import ElevationLayout from '../layouts/ElevationLayout.astro';
+import Hero from '../components/elevation/Hero.astro';
+import Section from '../components/elevation/Section.astro';
+
+// TODO(open-collective): replace SUPPORT_URL with the real Open Collective URL
+// once the collective + fiscal host are set up. DO NOT MERGE this branch to main
+// with the placeholder, and not before the Polaris copy review + Tutela incognito
+// check clear (2026-07-17 fleet mini-review). A dead give-button must never ship.
+const SUPPORT_URL = '#open-collective-url-pending';
+const LEDGER_URL = SUPPORT_URL;
+---
+
+<ElevationLayout
+  title="Support the work"
+  description="A lot of what Evoked publishes is free, and the free things stay free. If the free work helped you, you can support what keeps it free and growing. Any amount, once or ongoing, with your name or anonymously."
+>
+  <Hero
+    eyebrowParts={["Evoked", "Support"]}
+    headline="If the free work helped you, you can support it."
+    metaphor={["Any amount. Once or ongoing. No strings."]}
+    sub="An open door, not a toll booth."
+  />
+
+  <Section marker="FIG · I" heading="What this page is">
+    <p class="lede">
+      A lot of what Evoked puts on this site is free - the sovereignty checklist,
+      the writing, the free tools - no account, no email wall, and the free things
+      stay free. We also sell things: the $49 toolkit, the workshop, consulting.
+      That is how the work sustains itself, and we would rather say so plainly than
+      pretend the whole site is a gift.
+    </p>
+    <p class="pd-body">
+      This page is only about the free side. If something we gave away helped you -
+      you ran the checklist and saw your product more clearly, or an article changed
+      how you think - you can support the work that keeps that free side free and
+      growing. It is not a product, and it is not a second way to buy one. It is an
+      open door for people who found the free work worth something.
+    </p>
+  </Section>
+
+  <Section marker="FIG · II" heading="Give what it was worth to you">
+    <p class="pd-body">
+      Any amount, once or ongoing. No suggested number, because only you know what
+      it was worth.
+    </p>
+    <div class="sc-actions">
+      <a href={SUPPORT_URL} class="pd-buy-cta">Support Evoked &rarr;</a>
+    </div>
+    <p class="pd-body">One-time or recurring. Give with your name or anonymously.</p>
+  </Section>
+
+  <Section marker="FIG · III" heading="Where it goes">
+    <p class="pd-body">
+      We publish where the money goes, the same way we ask the tools you use to.
+      Contributions are split seven ways, and the ledger is open:
+      <a href={LEDGER_URL}>read it here</a>.
+    </p>
+  </Section>
+
+  <Section marker="NOTA · BENE" heading="You never have to" closing={true}>
+    <p class="lede">
+      The free things stay free whether you give or not, and buying a product is not
+      what this page is for either. If you are here to use what we made and move on,
+      that is exactly right, and it is enough. No strings, no follow-up.
+    </p>
+  </Section>
+</ElevationLayout>
