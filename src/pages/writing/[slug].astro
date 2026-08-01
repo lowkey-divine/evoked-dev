@@ -3,6 +3,7 @@ import { getCollection } from 'astro:content';
 import ElevationLayout from '../../layouts/ElevationLayout.astro';
 import SovereignLayout from '../../layouts/SovereignLayout.astro';
 import August2Countdown from '../../components/August2Countdown.astro';
+import { faqJsonLd } from '../../lib/structured-data';
 
 export async function getStaticPaths() {
   const posts = await getCollection('writing', ({ data }) => {
@@ -38,6 +39,7 @@ const articleStructuredData = [
       { "@type": "ListItem", "position": 3, "name": post.data.title, "item": `https://evoked.dev/writing/${post.slug}/` },
     ],
   },
+  ...(post.data.faq && post.data.faq.length ? [faqJsonLd(post.data.faq)] : []),
 ];
 
 const articleMeta = {
