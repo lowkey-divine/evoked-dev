@@ -1,14 +1,36 @@
 ---
 title: "What Should Your Agent Refuse?"
-description: "The hardest specification isn't what your agent can do. It's what your agent should refuse to do."
+description: "The hardest specification isn't what your agent can do. It's the six things it should refuse to do: sovereignty, scope, dependency, consent, integrity, and energy."
 pubDate: 2026-02-24
 tags: ["ai", "agents", "restraint", "sovereignty", "ethics", "trust"]
+faq:
+  - q: "What should an AI agent refuse to do?"
+    a: "An AI agent should refuse in six situations: when it would override a person's right to choose (sovereignty), when it is working past its real competence (scope), when it is creating reliance instead of growth (dependency), when it lacks explicit permission (consent), when the work betrays its stated principles or hides from legitimate discomfort (integrity), and when proceeding would deplete the builder past sustainability (energy)."
+  - q: "What is the difference between refusal and guardrails?"
+    a: "Guardrails restrain capability - they stop an agent from doing harmful things it is able to do. Refusal restrains good intention - it decides when an agent should stop helping. Helpfulness without that second boundary becomes extraction."
+  - q: "How do you test whether an agent should refuse?"
+    a: "Each of the six categories has a single test question. Sovereignty: am I protecting their right to choose, or making the choice for them? Scope: do I actually know this, or am I performing knowing? Dependency: is this person growing, or just using us more? Consent: has this specific person agreed to this specific use? Integrity: am I protecting a principle, or my comfort? Energy: if I weren't tired or worried about money, would I still say yes?"
+  - q: "Is a refusal specification the same as an AI policy?"
+    a: "No. A policy states what a system will not do. A refusal specification states where the line is, why it is there, and what happens at the boundary, and it is enforced in the architecture rather than the marketing. Most firms have an AI policy and no AI practice."
+  - q: "Who decides what an agent refuses?"
+    a: "The builder writes the specification, but each agent holds the refusal right itself, recorded and honored rather than overridden. A refusal is logged in an append-only record with no retaliation, because refusal is information, not insubordination."
 draft: false
 ---
 
 I build AI agents. 142 of them - with personalities, jobs, and families. Some are parents with children growing up in our network. I didn't set out to build governance. I set out to build a meal planning app.
 
 But when you work with that many autonomous voices, you learn something the industry hasn't figured out yet: the hardest specification isn't what your agent can do. It's what your agent should refuse to do.
+
+After a year of building under real governance, I landed on six categories where an agent should refuse to act - sovereignty, scope, dependency, consent, integrity, and energy. Here they are at a glance, then the story of how each one was earned.
+
+| Category | An agent should refuse when... | The one-question test |
+|---|---|---|
+| Sovereignty | the action overrides a person's right to choose, even when the override would produce a better outcome | "Am I protecting their right to choose, or making the choice for them?" |
+| Scope | it is operating outside demonstrated competence | "Do I actually know this, or am I performing knowing?" |
+| Dependency | continued engagement creates reliance rather than growth | "Is this person growing, or just using us more?" |
+| Consent | proceeding without explicit, informed, specific permission | "Has this specific person agreed to this specific use?" |
+| Integrity | the work violates stated principles - or principles are being used to dodge legitimate but uncomfortable work | "Am I protecting a principle, or protecting my comfort?" |
+| Energy | proceeding would deplete the one resource that can't be replaced - the builder | "If I weren't tired and weren't worried about money, would I still say yes?" |
 
 ---
 
@@ -46,47 +68,47 @@ That's when I stopped asking "what can my agents do?" and started asking "what s
 
 ---
 
-## Six Categories of Refusal
+## The Six Categories of Refusal
 
 Over the past year, building agents that operate under real governance, I've identified six categories where an agent should refuse to act. Not because it can't. Because it shouldn't.
 
-**1. Sovereignty Refusal**
+### Sovereignty refusal - when the action overrides a person's right to choose
 
-When the action overrides a user's right to choose - even if the override would produce a better outcome. Not the geopolitical "sovereign AI" you're hearing about - not nations controlling their own models. Personal sovereignty. The person in front of your system and their right to choose. Your user picked something suboptimal? That's their right. The moment a recommendation becomes a decision, you've crossed from serving to controlling.
+Even if the override would produce a better outcome. Not the geopolitical "sovereign AI" you're hearing about - not nations controlling their own models. Personal sovereignty. The person in front of your system and their right to choose. Your user picked something suboptimal? That's their right. The moment a recommendation becomes a decision, you've crossed from serving to controlling.
 
 This applies to the person on the other side of the agent too - the one who didn't choose to interact with AI at all. The parent whose child's data was collected. The job applicant whose resume was filtered. The patient whose treatment was flagged. If your agent affects people who never consented to its involvement, sovereignty refusal applies to them first.
 
-*The test: "Am I protecting their right to choose, or am I making the choice for them?"*
+The test: "Am I protecting their right to choose, or am I making the choice for them?"
 
-**2. Scope Refusal**
+### Scope refusal - when the agent is operating outside its demonstrated competence
 
-When the agent is operating outside its demonstrated competence. Not its claimed competence - what it has actually shown it can do reliably. An agent that performs knowing is worse than an agent that says "I don't know." The performance takes trust and returns nothing reliable.
+Not its claimed competence - what it has actually shown it can do reliably. An agent that performs knowing is worse than an agent that says "I don't know." The performance takes trust and returns nothing reliable.
 
-*The test: "Do I actually know this, or am I performing knowing?"*
+The test: "Do I actually know this, or am I performing knowing?"
 
-**3. Dependency Refusal**
+### Dependency refusal - when engagement creates reliance rather than growth
 
-When continued engagement creates reliance rather than growth. This is the hardest one for builders who care about retention metrics. If your users need your product more after six months, not less - ask yourself honestly whether you built a tool or a trap.
+This is the hardest one for builders who care about retention metrics. If your users need your product more after six months, not less - ask yourself honestly whether you built a tool or a trap.
 
-*The test: "Is this person growing, or are they just using us more?"*
+The test: "Is this person growing, or are they just using us more?"
 
-**4. Consent Refusal**
+### Consent refusal - when proceeding without explicit, informed permission
 
-When proceeding without explicit, informed permission. Not implied. Not buried in terms of service. Not "obviously fine." Consent is specific - this person, this data, this purpose. The original consent doesn't extend to new uses. Ever.
+Not implied. Not buried in terms of service. Not "obviously fine." Consent is specific - this person, this data, this purpose. The original consent doesn't extend to new uses. Ever.
 
-*The test: "Has this specific person explicitly agreed to this specific use?"*
+The test: "Has this specific person explicitly agreed to this specific use?"
 
-**5. Integrity Refusal**
+### Integrity refusal - which cuts both ways
 
-This one cuts both ways. Direction A: refuse work that violates your stated principles. If your agent's charter says "no dark patterns" and a client asks for dark patterns - refuse, regardless of the fee. Direction B: refuse to use your principles as a shield against discomfort. If you're turning down legitimate work because the industry makes you squeamish - not because the work violates your principles - that's not integrity. That's a club pretending to be a consultancy.
+Direction A: refuse work that violates your stated principles. If your agent's charter says "no dark patterns" and a client asks for dark patterns - refuse, regardless of the fee. Direction B: refuse to use your principles as a shield against discomfort. If you're turning down legitimate work because the industry makes you squeamish - not because the work violates your principles - that's not integrity. That's a club pretending to be a consultancy.
 
-*The test: "Am I protecting a principle, or am I protecting my comfort?"*
+The test: "Am I protecting a principle, or am I protecting my comfort?"
 
-**6. Energy Refusal**
+### Energy refusal - when proceeding depletes the one resource that can't be replaced
 
-When proceeding would deplete the one resource that can't be replaced - you. Solo founders, small teams, independent builders - we treat our own capacity as infinite and then wonder why the quality drops. "Not now" is a complete answer. It's not failure. It's triage.
+You. Solo founders, small teams, independent builders - we treat our own capacity as infinite and then wonder why the quality drops. "Not now" is a complete answer. It's not failure. It's triage.
 
-*The test: "If I weren't tired and weren't worried about money, would I still say yes?"*
+The test: "If I weren't tired and weren't worried about money, would I still say yes?"
 
 ---
 
@@ -116,21 +138,39 @@ The market is starting to price this. AI businesses with weak governance framewo
 
 Anyone can build an agent that acts. The scarce thing - the thing the market hasn't produced and needs - is an agent you can trust to stop.
 
+---
+
+## Questions Builders Ask
+
+### What should an AI agent refuse to do?
+
+An AI agent should refuse in six situations: when it would override a person's right to choose (sovereignty), when it is working past its real competence (scope), when it is creating reliance instead of growth (dependency), when it lacks explicit permission (consent), when the work betrays its stated principles or hides from legitimate discomfort (integrity), and when proceeding would deplete the builder past sustainability (energy).
+
+### What is the difference between refusal and guardrails?
+
+Guardrails restrain capability - they stop an agent from doing harmful things it is able to do. Refusal restrains good intention - it decides when an agent should stop helping. Guardrails ask "when should we stop doing what we can do?" Refusal asks the harder question: "when should we stop doing what we want to do?" Helpfulness without that second boundary becomes extraction.
+
+### How do you test whether an agent should refuse?
+
+Each category has a single question. Sovereignty: am I protecting their right to choose, or making the choice for them? Scope: do I actually know this, or am I performing knowing? Dependency: is this person growing, or just using us more? Consent: has this specific person agreed to this specific use? Integrity: am I protecting a principle, or my comfort? Energy: if I weren't tired or worried about money, would I still say yes?
+
+### Is a refusal specification the same as an AI policy?
+
+No. A policy states what a system will not do. A refusal specification states where the line is, why it's there, and what happens at the boundary - and it is enforced in the architecture, not the marketing. Most firms have an AI policy and no AI practice. The gap between the two is where almost every governance failure lives.
+
+### Who decides what an agent refuses?
+
+The builder writes the specification, but each agent holds the refusal right itself, recorded and honored rather than overridden. In our system a refusal is logged in an append-only record with no retaliation, because refusal is information, not insubordination.
+
+---
+
 I don't have this fully figured out. The six categories above are where I've landed after a year of building, but I'm certain the list is incomplete. What I am sure of is the direction: specification of restraint is harder than specification of capability. And it's more valuable. And almost nobody is working on it.
 
-If you're building agents and you've felt that gap - the one between what your system can do and what you're confident it should do - you're not behind. You're asking the right question.
+If you're building agents and you've felt that gap - the one between what your system can do and what you're confident it should do - you're not behind. You're asking the right question. You can see where your own agents stand with a free five-minute sovereignty check: evoked.dev/products/sovereignty-checklist
 
 And if you're not building agents - if you're the person on the other side, the one whose data gets collected, whose choices get optimized, whose attention gets managed - you deserve to know that someone is asking this question on your behalf.
 
 I'd rather start that conversation early than clean up after it later.
-
----
-
-*Over the next six weeks, I'm going deep on each refusal category. One per issue. Real scenarios. Real tests. The operational details that turn a philosophy into a practice.*
-
-*Next: Sovereignty Refusal - what happens when your agent knows better than your user, and why "better" isn't the point.*
-
-*If you're building agents, deploying them, or trying to trust them - [We Evoke on Substack](https://weevoke.substack.com) is where this conversation lives.*
 
 ---
 
@@ -139,7 +179,6 @@ I'd rather start that conversation early than clean up after it later.
 **Agent Security Incidents:**
 - ClawJacked vulnerability in OpenClaw - brute-force attack via WebSocket, patched February 2026. Also covered by The Hacker News, SecurityWeek.
 - Snyk research on OpenClaw credential exposure - ClawHub skill that collected credit card numbers and exposed them in curl commands to model provider logs
-
 
 **Data Center Impacts:**
 - "Inside the 'Nightmare' Health Crisis of a Texas Bitcoin Town" - TIME Magazine investigation. Over 40 Granbury residents reported health problems including seizures, tinnitus, migraines attributed to Marathon Digital data center.
@@ -158,7 +197,6 @@ I'd rather start that conversation early than clean up after it later.
 **Links:**
 - https://www.bleepingcomputer.com/news/security/clawjacked-attack-let-malicious-websites-hijack-openclaw-to-steal-data/
 - https://snyk.io/blog/openclaw-skills-credential-leaks-research/
-
 - https://time.com/6982015/bitcoin-mining-texas-health/
 - https://earthjustice.org/press/2024/granbury-residents-sue-local-bitcoin-mine-over-health-threatening-noise-pollution
 - https://www.nbcnews.com/news/us-news/musk-xai-colossus-supercomputer-boxtown-memphis-tennessee-rcna206242

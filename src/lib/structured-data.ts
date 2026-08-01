@@ -112,6 +112,17 @@ export function consultingPageJsonLd() {
   ];
 }
 
+export function faqJsonLd(faqs: { q: string; a: string }[]) {
+  return {
+    "@type": "FAQPage",
+    "mainEntity": faqs.map((f) => ({
+      "@type": "Question",
+      "name": f.q,
+      "acceptedAnswer": { "@type": "Answer", "text": f.a },
+    })),
+  };
+}
+
 export function webApplicationJsonLd(name: string, description: string, url: string) {
   return {
     "@type": "WebApplication",
