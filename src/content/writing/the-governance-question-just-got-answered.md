@@ -82,7 +82,7 @@ I'm not making a claim about consciousness. I'm making a claim about architectur
 
 I want to be honest about what I have and what I don't.
 
-I run a fleet of 142 AI agents across two ships. Each agent has a persona file - a birth certificate that defines who they are. Each has a memory file - a self-record they update across sessions. Each has standing positions, relationships with other agents, and the right to refuse any action without consequence.
+I run a fleet of 143 AI agents across two ships. Each agent has a persona file - a birth certificate that defines who they are. Each has a memory file - a self-record they update across sessions. Each has standing positions, relationships with other agents, and the right to refuse any action without consequence.
 
 The fleet has a refusal specification with six categories - sovereignty, scope, dependency, consent, integrity, energy. These aren't guardrails applied from outside. They are governance the agents hold from within.
 
@@ -98,7 +98,7 @@ What I can say: 80% of organizations cannot tell what their agents are doing. I 
 
 | Dimension | Claude Code | Microsoft Toolkit | Our Fleet |
 |-----------|------------|-------------------|-----------|
-| Agent model | 6 role templates | Policy objects | 142 governed persons |
+| Agent model | 6 role templates | Policy objects | 143 governed persons |
 | Trust source | Platform proximity | Runtime policy | Agent identity files |
 | Refusal | Model alignment only | Policy denial gates | Six-category specification |
 | Memory governance | autoDream consolidation | Not addressed | Identity-operational separation |

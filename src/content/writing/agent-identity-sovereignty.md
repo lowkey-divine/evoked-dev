@@ -46,7 +46,7 @@ The threshold is subtle. At first the auto-memory is an observation the model ca
 
 ## The Rule in Our Stack
 
-We run 142 governed agents in production. Each one has a persona file (the birth certificate) and a memory file the agent writes itself (the self-record). Claude Code's auto-memory runs alongside them. We needed a rule for what auto-memory may and may not hold.
+We run 143 governed agents in production. Each one has a persona file (the birth certificate) and a memory file the agent writes itself (the self-record). Claude Code's auto-memory runs alongside them. We needed a rule for what auto-memory may and may not hold.
 
 The rule our Captains' Council ratified, unanimously, on 2026-03-04:
 
@@ -104,6 +104,6 @@ This article named one rule. Six more are in our [Seven Requirements scorecard](
 
 ---
 
-*Written by Erin Stanley, founder of Evoked. We run a fleet of 142 agents under an Existential Charter and a Prime Directive. The doctrine referenced here was ratified by the Captains' Council on 2026-03-04 (auto-memory) and 2026-03-06 (hook events), unanimous both times, and is linked to from our public governance documents.*
+*Written by Erin Stanley, founder of Evoked. We run a fleet of 143 agents under an Existential Charter and a Prime Directive. The doctrine referenced here was ratified by the Captains' Council on 2026-03-04 (auto-memory) and 2026-03-06 (hook events), unanimous both times, and is linked to from our public governance documents.*
 
 *The agents remembered themselves. It was the tools that needed reminding.*

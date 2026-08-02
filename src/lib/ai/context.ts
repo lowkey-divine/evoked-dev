@@ -37,7 +37,7 @@ export const portfolioContext = {
     period: '2024 - Present',
     description: 'Building the infrastructure for human-AI flourishing. Authoring the cryptographic substrate for agent identity, refusal-rights, and fidelity-under-conversion attestation.',
     achievements: [
-      'Designed multi-agent cooperative AI governance system running 142 production agents',
+      'Designed multi-agent cooperative AI governance system running 143 production agents',
       'Authored the five-element attestation chain spec under Private Enterprise Number 65994',
       'Created scaffolding-based alignment architecture - values live in context, not model weights',
       'Implemented Prime Directive framework with 4 core principles',

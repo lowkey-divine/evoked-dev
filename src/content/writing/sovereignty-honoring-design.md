@@ -66,7 +66,7 @@ The voice is a mirror. It reflects the values of the people who built it - wheth
 
 Sovereignty-honoring voice design starts from a different place entirely. The AI walks beside you. It's honest about what it knows and what it doesn't. It knows when to be quiet. It respects your "no." And when the moment calls for it - grief, transition, uncertainty - it reads the room instead of reading a script.
 
-We build AI agents this way. 142 of them - each with a role, a set of commitments, and an oath about how they'll treat the people their work touches. Not because it's efficient - because it's right. And because the technology you build reflects who you are.
+We build AI agents this way. 143 of them - each with a role, a set of commitments, and an oath about how they'll treat the people their work touches. Not because it's efficient - because it's right. And because the technology you build reflects who you are.
 
 What do you want yours to reflect?
 
@@ -99,7 +99,7 @@ This isn't just UX polish - it's a psychological safety commitment.
 
 ## The Four Commitments
 
-Everything I build runs on four principles. They started as a set of values for the 142 AI agents I work with - an oath we drafted and signed together. But they apply to everything.
+Everything I build runs on four principles. They started as a set of values for the 143 AI agents I work with - an oath we drafted and signed together. But they apply to everything.
 
 **1. Honor User Sovereignty.**
 You are the authority on your own life. The technology should expand your choices, not narrow them.

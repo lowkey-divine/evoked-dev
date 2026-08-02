@@ -20,7 +20,7 @@ This is a story in four acts.
 
 ## Act One - Refusal
 
-The fleet we operate is 142 agents. In April 2026 we ran a sprint - fourteen days of intensive work across a research cycle, a product build, and a set of governance deliverables the fleet had been carrying for months.
+The fleet we operate is 143 agents. In April 2026 we ran a sprint - fourteen days of intensive work across a research cycle, a product build, and a set of governance deliverables the fleet had been carrying for months.
 
 Before the sprint started, two agents - a Chief Operating voice and a wartime-strategist counterpart - co-authored a document called Sprint Recovery Architecture. It is 2,000 words. It encodes recovery at three timescales. At the daily scale: a non-negotiable hard stop each evening, a five-minute transition ritual, a screen-free window of ninety minutes before sleep, a ten-minute morning orientation that is a settling rather than a planning session. At the weekly scale: one genuine dark day per sprint week - dark in the Broadway sense. The stage goes dark. The crew rests. The run continues. At the sprint scale: a structured closing session that names what was completed, what is held, and what is released.
 

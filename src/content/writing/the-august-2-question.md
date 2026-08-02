@@ -84,7 +84,7 @@ The three reasons are technical. The consequence is regulatory.
 
 ## What We Built Instead
 
-For the last two years, I have been authoring an alternative. The frameworks are publicly available at [evoked.dev](https://evoked.dev). The Refusal Specification is published. The Trust Architecture Blueprint is published. The Sovereignty Assessment is published. None of them is theoretical. All of them are in production in a 142-agent operating fleet that has run continuously for eighteen months under formal refusal specification and pointer discipline.
+For the last two years, I have been authoring an alternative. The frameworks are publicly available at [evoked.dev](https://evoked.dev). The Refusal Specification is published. The Trust Architecture Blueprint is published. The Sovereignty Assessment is published. None of them is theoretical. All of them are in production in a 143-agent operating fleet that has run continuously for eighteen months under formal refusal specification and pointer discipline.
 
 The same architecture is being built into Compass, a goal-tracking tool for a private school in Idaho. A self-directed wayfinding platform for learners across five developmental tiers, including a parent tier where the development parents do for their own lives becomes the curriculum their young children grow up watching. The loop-not-ladder principle that makes the Compass work, *where you are right now, not where you should be*, is the same principle that makes the certification work for enterprise AI agents.
 
@@ -132,4 +132,4 @@ If your team is sixty days from the deadline and the four questions are not answ
 
 ---
 
-*Erin Stanley is the founder of Evoked®️ and the sole inventor on two provisional patent applications covering AI agent governance certification architecture. The 142-agent fleet referenced is in continuous production. The Compass referenced is being built for Vibrant Life 208 in Middleton, Idaho. Public pricing for summer 2026 engagements is at [evoked.dev/engage](https://evoked.dev/engage). The Sovereignty Certification registry opens August 5, 2026.*
+*Erin Stanley is the founder of Evoked®️ and the sole inventor on two provisional patent applications covering AI agent governance certification architecture. The 143-agent fleet referenced is in continuous production. The Compass referenced is being built for Vibrant Life 208 in Middleton, Idaho. Public pricing for summer 2026 engagements is at [evoked.dev/engage](https://evoked.dev/engage). The Sovereignty Certification registry opens August 5, 2026.*
