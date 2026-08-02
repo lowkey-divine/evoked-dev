@@ -7,7 +7,10 @@
   },
   "scripts": {
     "dev": "astro dev",
+    "prebuild": "node scripts/course-parity.mjs",
     "build": "astro build",
+    "test:course": "node scripts/course-parity.mjs",
+    "build:course-kit": "bash scripts/build-course-kit.sh",
     "preview": "astro preview",
     "astro": "astro",
     "subscribers": "node --env-file=.env scripts/subscribers.mjs",

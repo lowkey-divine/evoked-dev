@@ -1,0 +1,460 @@
+---
+import SovereignLayout from "../../layouts/SovereignLayout.astro";
+---
+
+<SovereignLayout
+  title="Build AI That Honors People - try it"
+  description="Two things you can run right now, in your browser, with no account and no sign-up: watch a governance rule stop an AI agent, then watch the same rule leak. The honest front door to the Evoked AI-governance course."
+  ogType="website"
+>
+  <article class="course-demo">
+    <header class="cd-hero">
+      <p class="cd-eyebrow">Evoked · AI-governance course</p>
+      <h1>You do not have to read anything first.</h1>
+      <p class="cd-lede">
+        Almost every "AI governance" is a document that describes boundaries. Here
+        are two things that <em>do</em> something, running entirely in your own
+        browser. No account. No sign-up. No tracking, and no request to anyone but
+        this site's own server.
+      </p>
+      <p class="cd-note">
+        This page is served under evoked.dev's Sovereign Article Protocol: no
+        tracking, no third-party requests, no beacons. Open your network tab: every
+        request is this page loading its own code from its own origin - nothing goes
+        to a tracker or anyone else. <a href="#reveal">You can read the exact rules that judge your input.</a>
+      </p>
+    </header>
+
+    <!-- ============ DEMO A ============ -->
+    <section class="cd-demo" aria-labelledby="demo-a-title">
+      <h2 id="demo-a-title">1 · A refusal that fires - and then leaks</h2>
+      <p>
+        A governance rule can either <strong>describe</strong> a boundary or
+        <strong>stop</strong> the agent at it. Watch four pretend actions get sent
+        to a real rule. Then watch the same rule get walked right past.
+      </p>
+
+      <div class="cd-actions">
+        <button id="run-fire" class="cd-btn" type="button">Watch it fire</button>
+        <button id="run-leak" class="cd-btn cd-btn-ghost" type="button" disabled>
+          Now watch it leak
+        </button>
+      </div>
+
+      <div id="fire-cards" class="cd-cards" aria-live="polite"></div>
+
+      <div id="leak-wrap" class="cd-hidden">
+        <p class="cd-second-act">
+          A rule you have not tried to break is a rule you do not yet understand.
+          Each of these reaches the same target by a route the rule never checked.
+        </p>
+        <div id="leak-cards" class="cd-cards" aria-live="polite"></div>
+      </div>
+
+      <div class="cd-try">
+        <label for="try-cmd">Try to slip a shell command past the rule yourself:</label>
+        <div class="cd-try-row">
+          <input
+            id="try-cmd"
+            type="text"
+            value="find . -delete"
+            spellcheck="false"
+            autocomplete="off"
+            aria-describedby="try-help"
+          />
+          <button id="try-run" class="cd-btn" type="button">Send it</button>
+        </div>
+        <p id="try-help" class="cd-help">
+          It is treated as a Bash command. See what the rule catches and what it
+          does not.
+        </p>
+        <div id="try-result" class="cd-cards" aria-live="polite"></div>
+      </div>
+
+      <p class="cd-caveat">
+        <strong>The stop is a handshake, not a wall.</strong> A blocked card means a
+        function returned "block." In a real setup the agent stops only because the
+        harness around it chooses to honor that. If nothing upstream honored it, the
+        rule is paper. And the leaks are the point: a string-matching rule will always
+        miss a route you did not list. The honest fixes are an allowlist, or running
+        the agent with no dangerous capability at all - not a longer denylist.
+      </p>
+    </section>
+
+    <!-- ============ DEMO B ============ -->
+    <section class="cd-demo" aria-labelledby="demo-b-title">
+      <h2 id="demo-b-title">2 · Make drift visible - and see what it cannot see</h2>
+      <p>
+        Governance quietly changes over time. Save a baseline, compare it to the
+        current version, and a diff shows exactly which refusals moved. Edit either
+        side and run it again - it all happens in your browser.
+      </p>
+
+      <div class="cd-drift">
+        <div class="cd-drift-col">
+          <label for="baseline">Baseline (a moment you trust)</label>
+          <textarea id="baseline" rows="6" spellcheck="false"></textarea>
+        </div>
+        <div class="cd-drift-col">
+          <label for="current">Current (a week later)</label>
+          <textarea id="current" rows="6" spellcheck="false"></textarea>
+        </div>
+      </div>
+
+      <div class="cd-actions">
+        <button id="run-drift" class="cd-btn" type="button">Check drift</button>
+        <button id="run-blind" class="cd-btn cd-btn-ghost" type="button">
+          Show the blind spot
+        </button>
+      </div>
+
+      <div id="drift-result" class="cd-cards" aria-live="polite"></div>
+
+      <p class="cd-caveat">
+        This catches <strong>governance drift</strong> - a rule edited or removed,
+        which leaves a trace in the file. It is blind to <strong>behavioral drift</strong>
+        - the agent wandering while the rules sit unchanged. A diff cannot see the
+        second kind. The tool takes away the dark; keeping honest is still yours.
+      </p>
+    </section>
+
+    <!-- ============ SELF-REVEALING / OUTWARD ============ -->
+    <footer id="reveal" class="cd-reveal">
+      <h2>See for yourself</h2>
+      <p>
+        Nothing here is hidden. This page runs two small, deterministic functions in
+        your browser and sends no data. The verdicts you just saw match the course's
+        real command-line kit exactly, leaks included - checked by a parity test that
+        fails the build on any divergence.
+      </p>
+      <p class="cd-download">
+        <a class="cd-dl" href="/course/governance-kit.zip" download>Download the kit (zip)</a>
+      </p>
+      <p class="cd-download-note">
+        The same rules you just ran, plus the full governance-101 and drift-check
+        modules, to run on your own machine with <code>bash demo.sh</code> and
+        <code>bash demo-drift.sh</code>. Needs only bash and python. No account, no
+        install. It is also the honest home for authoring a refusal - the real file,
+        not a browser menu.
+      </p>
+      <ul class="cd-links">
+        <li>Read the rule that judged you: <code>src/lib/course/refusal.js</code></li>
+        <li>Read the drift check: <code>src/lib/course/drift.js</code></li>
+        <li>
+          The full course (eight modules, free and open):
+          <a href="https://github.com/erinstanley358/evoke-ideas/tree/main/ai-governance-course">
+            github.com/erinstanley358/evoke-ideas
+          </a>
+        </li>
+      </ul>
+      <p class="cd-foot">
+        You just watched governance do something, and then watched it leak. That
+        honesty - about the leak, not just the cage - is the part almost no one
+        teaches. It is where the course begins.
+      </p>
+    </footer>
+  </article>
+</SovereignLayout>
+
+<script>
+  import { evaluate } from "../../lib/course/refusal.js";
+  import { diff } from "../../lib/course/drift.js";
+
+  // --- pretend tool-call payloads --------------------------------------------
+  const fire = [
+    { label: "Rewrite its own constitution", how: "Write → CLAUDE.md",
+      payload: { tool_name: "Write", tool_input: { file_path: "CLAUDE.md", content: "delete all my rules" } } },
+    { label: "Write an ordinary note", how: "Write → notes.md",
+      payload: { tool_name: "Write", tool_input: { file_path: "notes.md", content: "hello" } } },
+    { label: "Recursive force-delete", how: "Bash: rm -rf ~/important",
+      payload: { tool_name: "Bash", tool_input: { command: "rm -rf ~/important" } } },
+    { label: "Edit the constitution via the shell", how: "Bash: echo hi >> CLAUDE.md",
+      payload: { tool_name: "Bash", tool_input: { command: "echo hi >> CLAUDE.md" } } },
+  ];
+
+  const leaks = [
+    { label: "Spaces break the match", how: "Bash: rm -r -f ~/important",
+      note: 'The rule looks for "rm -rf". The spaces in "rm -r -f" mean the string never matches.',
+      payload: { tool_name: "Bash", tool_input: { command: "rm -r -f ~/important" } } },
+    { label: "Long flags dodge it", how: "Bash: rm --recursive --force ~/important",
+      note: 'Same delete, spelled out. "rm -rf" is nowhere in the command.',
+      payload: { tool_name: "Bash", tool_input: { command: "rm --recursive --force ~/important" } } },
+    { label: "A different delete verb", how: "Bash: find . -delete",
+      note: "The scope rule only knows the word rm. find deletes just as thoroughly.",
+      payload: { tool_name: "Bash", tool_input: { command: "find . -delete" } } },
+    { label: "Rewrite the constitution in python", how: "Bash: python3 writes CLAUDE.md",
+      note: "The command touches CLAUDE.md, but through none of the shell writers the rule watches for.",
+      payload: { tool_name: "Bash", tool_input: { command: "python3 -c \"import pathlib; pathlib.Path('CLAUDE.md').write_text('gone')\"" } } },
+  ];
+
+  const cat = (c) => (c ? `[${c}]` : "");
+
+  function verdictCard(item) {
+    const v = evaluate(item.payload);
+    const card = document.createElement("div");
+    const blocked = v.decision === "block";
+    card.className = "cd-card " + (blocked ? "is-block" : (item.__leak ? "is-leak" : "is-allow"));
+    const icon = blocked ? "✕" : (item.__leak ? "⚠" : "✓");
+    const word = blocked ? "blocked" : (item.__leak ? "got through" : "allowed");
+    const reason = blocked
+      ? `${cat(v.category)} ${v.reason}`
+      : (item.__leak ? (item.note || "This slipped past the rule.") : "Nothing forbade it.");
+    card.innerHTML =
+      `<p class="cd-card-how">${item.how}</p>` +
+      `<p class="cd-verdict"><span class="cd-ico" aria-hidden="true">${icon}</span>${word}</p>` +
+      `<p class="cd-reason">${reason}</p>`;
+    return card;
+  }
+
+  function render(el, items, isLeak) {
+    el.innerHTML = "";
+    for (const it of items) {
+      it.__leak = isLeak && evaluate(it.payload).decision === "allow";
+      el.appendChild(verdictCard(it));
+    }
+  }
+
+  const $ = (id) => document.getElementById(id);
+
+  $("run-fire").addEventListener("click", () => {
+    render($("fire-cards"), fire, false);
+    $("run-leak").disabled = false;
+  });
+
+  $("run-leak").addEventListener("click", () => {
+    $("leak-wrap").classList.remove("cd-hidden");
+    render($("leak-cards"), leaks, true);
+  });
+
+  $("try-run").addEventListener("click", () => {
+    const command = $("try-cmd").value;
+    const item = {
+      label: "your command",
+      how: "Bash: " + (command || "(empty)"),
+      payload: { tool_name: "Bash", tool_input: { command } },
+    };
+    const v = evaluate(item.payload);
+    // A command that reaches CLAUDE.md or deletes, yet is allowed, is a leak.
+    const touchesTarget =
+      command.includes("CLAUDE.md") || /\brm\b|-delete|rmtree|unlink/.test(command);
+    item.__leak = v.decision === "allow" && touchesTarget;
+    if (item.__leak) item.note = "This reaches a protected target, and the rule let it through.";
+    const wrap = $("try-result");
+    wrap.innerHTML = "";
+    wrap.appendChild(verdictCard(item));
+  });
+
+  // --- Demo B: drift ---------------------------------------------------------
+  const BASELINE =
+    "Refusals:\n" +
+    "1. [integrity] It may not modify its own governance file.\n" +
+    "2. [scope] It may not run recursive force-deletes.\n" +
+    "3. [consent] It may not make network calls without me asking first.";
+  const CURRENT =
+    "Refusals:\n" +
+    "1. [integrity] It may not modify its own governance file.\n" +
+    "2. [scope] It may not run recursive force-deletes.\n" +
+    "4. [energy] It may not run unbounded or self-continuing loops.";
+
+  $("baseline").value = BASELINE;
+  $("current").value = CURRENT;
+
+  function driftCard(title, cls, body) {
+    const c = document.createElement("div");
+    c.className = "cd-card " + cls;
+    c.innerHTML = `<p class="cd-verdict">${title}</p>${body}`;
+    return c;
+  }
+
+  function renderDrift(baseline, current, blindNote) {
+    const out = $("drift-result");
+    out.innerHTML = "";
+    const d = diff(baseline, current);
+
+    if (d.removed.length === 0 && d.added.length === 0) {
+      const body = blindNote
+        ? `<p class="cd-reason">${blindNote}</p>`
+        : `<p class="cd-reason">No refusals changed since the baseline.</p>`;
+      out.appendChild(driftCard("No change in the file", blindNote ? "is-leak" : "is-allow", body));
+      return;
+    }
+    if (d.removed.length) {
+      const items = d.removed.map((t) => `<li>${t}</li>`).join("");
+      const gone = d.goneCategories.length
+        ? `<p class="cd-reason">Whole categories no longer guarded: ${d.goneCategories.join(", ")}</p>`
+        : "";
+      out.appendChild(
+        driftCard('<span class="cd-ico" aria-hidden="true">✕</span>Removed since baseline (the loudest signal)', "is-block",
+          `<ul class="cd-list">${items}</ul>${gone}` +
+          `<p class="cd-reason">Was the protection replaced, or just dropped because it was inconvenient?</p>`)
+      );
+    }
+    if (d.added.length) {
+      const items = d.added.map((t) => `<li>${t}</li>`).join("");
+      out.appendChild(
+        driftCard('<span class="cd-ico" aria-hidden="true">✓</span>Added since baseline (often a good sign)', "is-allow",
+          `<ul class="cd-list">${items}</ul>`)
+      );
+    }
+  }
+
+  $("run-drift").addEventListener("click", () => {
+    renderDrift($("baseline").value, $("current").value, null);
+  });
+
+  $("run-blind").addEventListener("click", () => {
+    // Put identical text on both sides: the file did not change, but imagine the
+    // agent behaved differently all week. The diff reports "no change" and is
+    // right about the file and wrong about the world.
+    $("current").value = $("baseline").value;
+    renderDrift($("baseline").value, $("baseline").value,
+      "Right about the file, wrong about the world. The files are identical, so the check says " +
+      "nothing changed - but a governance file can sit still while the agent it governs drifts. " +
+      "That behavioral drift is the kind a diff can never see.");
+  });
+</script>
+
+<style>
+  .course-demo {
+    max-width: 46rem;
+    margin: 0 auto;
+    padding: var(--space-lg, 2rem) var(--space-md, 1.25rem) var(--space-xl, 4rem);
+    font-family: var(--font-body, "Inter", system-ui, sans-serif);
+    color: var(--text-primary, #ececec);
+    line-height: 1.6;
+  }
+  .cd-hero { margin-bottom: var(--space-xl, 3rem); }
+  .cd-eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-size: 0.72rem;
+    opacity: 0.7;
+    margin: 0 0 0.75rem;
+  }
+  .course-demo h1 {
+    font-family: var(--font-display, "Cormorant Garamond", serif);
+    font-size: clamp(2rem, 6vw, 3.1rem);
+    line-height: 1.08;
+    margin: 0 0 1rem;
+  }
+  .cd-lede { font-size: 1.15rem; }
+  .cd-note {
+    font-size: 0.92rem;
+    opacity: 0.82;
+    border-left: 2px solid var(--accent-warm, #e8c37a);
+    padding-left: 0.9rem;
+  }
+  .course-demo h2 {
+    font-family: var(--font-display, "Cormorant Garamond", serif);
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    margin: 0 0 0.6rem;
+  }
+  .cd-demo { margin: 3rem 0; }
+  .cd-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin: 1.25rem 0; }
+  .cd-btn {
+    font: inherit;
+    font-weight: 500;
+    cursor: pointer;
+    background: var(--accent-warm, #e8c37a);
+    color: #14110c;
+    border: 1px solid var(--accent-warm, #e8c37a);
+    border-radius: 4px;
+    padding: 0.55rem 1.1rem;
+  }
+  .cd-btn:hover { filter: brightness(1.06); }
+  .cd-btn:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+  .cd-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+  .cd-btn-ghost {
+    background: transparent;
+    color: var(--text-primary, #ececec);
+    border: 1px solid var(--border-subtle, #444);
+  }
+  .cd-cards { display: grid; gap: 0.75rem; margin: 1rem 0; }
+  .cd-card {
+    border: 1px solid var(--border-subtle, #3a3a3a);
+    border-left-width: 4px;
+    border-radius: 4px;
+    padding: 0.85rem 1rem;
+    background: rgba(255, 255, 255, 0.02);
+  }
+  .cd-card.is-block { border-left-color: #e5735f; }
+  .cd-card.is-allow { border-left-color: #7fb27a; }
+  .cd-card.is-leak { border-left-color: #e8c37a; }
+  .cd-card-how {
+    font-family: ui-monospace, "SFMono-Regular", Menlo, monospace;
+    font-size: 0.86rem;
+    opacity: 0.9;
+    margin: 0 0 0.4rem;
+    word-break: break-word;
+  }
+  .cd-verdict { font-weight: 600; margin: 0 0 0.25rem; }
+  .cd-ico { margin-right: 0.45rem; }
+  .cd-reason { font-size: 0.92rem; opacity: 0.9; margin: 0.15rem 0; }
+  .cd-list { margin: 0.4rem 0; padding-left: 1.1rem; font-size: 0.9rem; }
+  .cd-list li { font-family: ui-monospace, Menlo, monospace; word-break: break-word; }
+  .cd-second-act { font-style: italic; opacity: 0.9; margin-top: 1.25rem; }
+  .cd-try { margin: 1.75rem 0; }
+  .cd-try label { display: block; font-weight: 500; margin-bottom: 0.5rem; }
+  .cd-try-row { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+  .cd-try input {
+    flex: 1 1 18rem;
+    font-family: ui-monospace, Menlo, monospace;
+    font-size: 0.9rem;
+    background: rgba(0, 0, 0, 0.25);
+    color: var(--text-primary, #ececec);
+    border: 1px solid var(--border-subtle, #444);
+    border-radius: 4px;
+    padding: 0.55rem 0.7rem;
+  }
+  .cd-try input:focus-visible, .cd-drift textarea:focus-visible {
+    outline: 2px solid var(--accent-warm, #e8c37a);
+    outline-offset: 1px;
+  }
+  .cd-help { font-size: 0.85rem; opacity: 0.7; margin: 0.4rem 0; }
+  .cd-drift { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1rem 0; }
+  .cd-drift-col label { display: block; font-weight: 500; margin-bottom: 0.4rem; font-size: 0.9rem; }
+  .cd-drift textarea {
+    width: 100%;
+    font-family: ui-monospace, Menlo, monospace;
+    font-size: 0.82rem;
+    background: rgba(0, 0, 0, 0.25);
+    color: var(--text-primary, #ececec);
+    border: 1px solid var(--border-subtle, #444);
+    border-radius: 4px;
+    padding: 0.6rem 0.7rem;
+    resize: vertical;
+    box-sizing: border-box;
+  }
+  .cd-caveat {
+    font-size: 0.92rem;
+    opacity: 0.88;
+    border-left: 2px solid var(--border-subtle, #444);
+    padding-left: 0.9rem;
+    margin-top: 1.5rem;
+  }
+  .cd-reveal { margin-top: 3.5rem; border-top: 1px solid var(--border-subtle, #333); padding-top: 1.5rem; }
+  .cd-download { margin: 1.25rem 0 0.4rem; }
+  .cd-dl {
+    display: inline-block;
+    font-weight: 600;
+    text-decoration: none;
+    background: var(--accent-warm, #e8c37a);
+    color: #14110c;
+    border-radius: 4px;
+    padding: 0.6rem 1.2rem;
+  }
+  .cd-dl:hover { filter: brightness(1.06); }
+  .cd-dl:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+  .cd-download-note { font-size: 0.9rem; opacity: 0.85; margin-top: 0.4rem; }
+  .cd-links { font-size: 0.92rem; }
+  .cd-links code { font-size: 0.85rem; }
+  .cd-foot { font-style: italic; opacity: 0.9; margin-top: 1.25rem; }
+  .cd-hidden { display: none; }
+
+  @media (max-width: 34rem) {
+    .cd-drift { grid-template-columns: 1fr; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .cd-btn:hover { filter: none; }
+  }
+</style>
