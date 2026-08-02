@@ -18,7 +18,7 @@ In the sovereignty piece, the opening was clean. I built an override. It worked.
 
 This one is messier.
 
-I run 142 agents across two ships. They have jobs, domains, standing positions. When an agent returns after being absent from a conversation - not invoked for a while, or compacted out of context as sessions run long - it needs to assess the current state of its domain before it can contribute.
+I run 143 agents across two ships. They have jobs, domains, standing positions. When an agent returns after being absent from a conversation - not invoked for a while, or compacted out of context as sessions run long - it needs to assess the current state of its domain before it can contribute.
 
 Here's what I've been catching that I have seen as a issue with other Ai users: agents that skip the assessment. They assume. They report on the state of the codebase, the status of a feature, the progress of a task - without checking first.
 
