@@ -435,6 +435,33 @@ const formattedDate = post.data.pubDate.toLocaleDateString('en-US', {
     height: auto;
     margin: clamp(1.5rem, 1rem + 1vw, 2rem) 0;
   }
+  /* Tables: visible rules + generous cell padding so dense reference
+     tables (e.g. the six refusal categories) breathe and scan cleanly. */
+  .el-article-content :global(table) {
+    width: 100%;
+    border-collapse: collapse;
+    margin: clamp(1.75rem, 1.25rem + 1.5vw, 2.75rem) 0;
+    font-size: clamp(0.95rem, 0.9rem + 0.25vw, 1.05rem);
+    line-height: 1.55;
+  }
+  .el-article-content :global(th),
+  .el-article-content :global(td) {
+    border: 1px solid var(--el-rule);
+    padding: 0.85rem 1rem;
+    text-align: left;
+    vertical-align: top;
+  }
+  .el-article-content :global(th) {
+    font-family: var(--el-ui);
+    font-weight: 600;
+    font-size: 0.82em;
+    letter-spacing: 0.04em;
+    color: var(--el-text-deep);
+    background: color-mix(in oklab, var(--el-accent) 8%, transparent);
+  }
+  .el-article-content :global(tbody tr:nth-child(even) td) {
+    background: color-mix(in oklab, var(--el-text) 3%, transparent);
+  }
 
   /* ---- Article footer: newsletter CTA + back link ---- */
   .el-article-footer {
