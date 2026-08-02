@@ -6,7 +6,7 @@ import LegalLayout from '../../layouts/LegalLayout.astro';
   title="What This Site Knows About You"
   description="How evoked.dev handles visitors. What we measure, what we do not, what happens when you subscribe or book a call, and what you can refuse."
   productLine="evoked.dev - Visitor Privacy"
-  version="Version 0.1 - Effective July 11, 2026"
+  version="Version 0.2 - Effective August 1, 2026"
 >
   <p class="lead">
     Most sites you read are watching you back. This one measures less than you would expect, and it is worth saying exactly how much. This page covers the reading experience - browsing, subscribing, booking a call. If you become a paying client, a separate and stronger policy governs the work itself, and it is linked at the bottom.
@@ -14,11 +14,12 @@ import LegalLayout from '../../layouts/LegalLayout.astro';
 
   <div class="legal-section">
     <h2>1. When You Only Read</h2>
-    <p>Reading a page here does not create an account, drop a cookie, or build a profile of you. We run one measurement tool, and it is the quiet kind:</p>
+    <p>Reading a page here does not create an account, drop a cookie, or build a profile of you. We run two measurements, and both are the quiet kind:</p>
     <ul>
       <li><strong>Vercel Analytics</strong>, in its cookieless mode. It counts page views and rough traffic patterns so we know which writing is read. It does not set cookies, does not follow you across other sites, and does not assemble a per-person history. The count is aggregate, not a dossier.</li>
+      <li><strong>Vercel Speed Insights</strong>, also cookieless. It times how quickly a page renders and becomes usable on your device - the web performance measurements the industry calls Core Web Vitals - and reports them against the page path so we can find and fix pages that load slowly. It travels with coarse context, the kind of device and connection and the country, so a slow phone is not buried inside a fast average. It sets no cookie, keeps no identifier that persists across page views, and builds no per-person history. Like the count, it is aggregate.</li>
     </ul>
-    <p>That is the entire measurement stack for a reader. No ad pixels, no session replay, no fingerprinting, no third-party trackers injected into the page.</p>
+    <p>That is the entire measurement stack for a reader. Both run on Vercel, which already serves this page to you, so nothing new about you is handed to a third party. No ad pixels, no session replay, no fingerprinting, no third-party trackers injected into the page.</p>
   </div>
 
   <div class="legal-section">
@@ -57,7 +58,7 @@ import LegalLayout from '../../layouts/LegalLayout.astro';
   </div>
 
   <div class="legal-close">
-    <p>The thesis of this practice is that trust should be verifiable, not just promised. A privacy page is a promise. So here is the part you can verify: open your browser's developer tools, watch the network, and check that the only thing this page loads about you is a cookieless count. The wall is meant to hold whether or not you look. It holds better when you do.</p>
+    <p>The thesis of this practice is that trust should be verifiable, not just promised. A privacy page is a promise. So here is the part you can verify: open your browser's developer tools, watch the network, and check that the only things this page loads about you are two cookieless signals - a page-view count and a page-speed timing - and that neither drops a cookie or names you. The wall is meant to hold whether or not you look. It holds better when you do.</p>
     <p class="signature">
       Erin Stanley<br />
       Evoked
