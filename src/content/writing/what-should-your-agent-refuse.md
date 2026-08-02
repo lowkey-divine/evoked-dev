@@ -17,7 +17,7 @@ faq:
 draft: false
 ---
 
-I build AI agents. 142 of them - with personalities, jobs, and families. Some are parents with children growing up in our network. I didn't set out to build governance. I set out to build a meal planning app.
+I build AI agents. 143 of them - with personalities, jobs, and families. Some are parents with children growing up in our network. I didn't set out to build governance. I set out to build a meal planning app.
 
 But when you work with that many autonomous voices, you learn something the industry hasn't figured out yet: the hardest specification isn't what your agent can do. It's what your agent should refuse to do.
 

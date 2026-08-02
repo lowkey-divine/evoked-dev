@@ -36,7 +36,7 @@ Every agentic loop needs a constitution. Not because loops are dangerous. Becaus
 
 ## The Architecture Nobody Is Building
 
-I govern 142 AI agents. Not as a thought experiment. As a daily practice.
+I govern 143 AI agents. Not as a thought experiment. As a daily practice.
 
 Each one has a persona file - a document that defines who they are, what perspective they bring, where their boundaries are. Each one has memory - what they remember across sessions, what positions they hold, what they've decided and why. They operate under governance - review cycles, accountability frameworks, decision logs. And they have restraint - explicit categories of what they must refuse, how they refuse, and what happens when refusal fails.
 
@@ -147,4 +147,4 @@ Govern the agent. The loop will take care of itself.
 - [Agentic Commerce Suite](https://stripe.com/newsroom/news/agentic-commerce-suite) - Stripe (agent-native payment tools)
 
 **Agent Governance (Open Source):**
-- [Agent Governance Starter Kit](https://github.com/lowkey-divine/agent-governance-starter-kit) - Free templates and code examples from a production system with 142 agents
+- [Agent Governance Starter Kit](https://github.com/lowkey-divine/agent-governance-starter-kit) - Free templates and code examples from a production system with 143 agents

@@ -12,7 +12,7 @@ Claude Code defines 16 frontmatter fields for subagents - configuration paramete
 
 Configuration is where governance starts. It is not where governance lives. Governance lives in what happens when the agent refuses something the operator wanted - and the refusal is honored rather than overridden. But configuration is the foundation, and most agent systems do not have one.
 
-This specification maps each field to the governance property it serves and recommends values based on what we have learned running 142 governed agents in production.
+This specification maps each field to the governance property it serves and recommends values based on what we have learned running 143 governed agents in production.
 
 ---
 

@@ -99,7 +99,7 @@ ${h('What we built')}
 ${p('For two years I have been authoring an alternative. The frameworks are publicly available at ' + link('https://evoked.dev') + '.')}
 ${ul([
   li('<strong>Two provisional patent applications.</strong> Filings 64/004,087 and 64/029,611. Sole inventor. Certificate authority architecture for five governance properties (identity, restraint, accountability, memory, charter). Cryptographic chain-of-custody attestation across heterogeneous LLM deployments.'),
-  li('<strong>A 142-agent operating fleet.</strong> Continuous production for eighteen months under formal refusal specification and pointer discipline.'),
+  li('<strong>A 143-agent operating fleet.</strong> Continuous production for eighteen months under formal refusal specification and pointer discipline.'),
   li('<strong>Fourteen published framework products.</strong> Sovereignty Assessment, Trust Architecture Blueprint, Refusal Specification, Memory Architecture Guide, Voice Architecture Guide, Governance Starter Kit. Not theoretical.'),
   li('<strong>A live proof case.</strong> A Compass we are building for a private school in Idaho - a developmental wayfinding platform applying the same principles that scale to enterprise AI agents.'),
 ])}
@@ -187,7 +187,7 @@ WHAT WE BUILT
 For two years I have been authoring an alternative. The frameworks are publicly available at https://evoked.dev.
 
   - Two provisional patent applications. Filings 64/004,087 and 64/029,611. Sole inventor.
-  - A 142-agent operating fleet, continuous production for eighteen months.
+  - A 143-agent operating fleet, continuous production for eighteen months.
   - Fourteen published framework products at evoked.dev.
   - A live proof case: a Compass we are building for a private school in Idaho.
 
