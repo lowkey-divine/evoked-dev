@@ -14,4 +14,14 @@ const writing = defineCollection({
   }),
 });
 
-export const collections = { writing };
+const course = defineCollection({
+  type: 'content',
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    order: z.number(),
+    teaches: z.string(),
+  }),
+});
+
+export const collections = { writing, course };

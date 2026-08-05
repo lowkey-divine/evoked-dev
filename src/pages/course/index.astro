@@ -1,5 +1,10 @@
 ---
 import SovereignLayout from "../../layouts/SovereignLayout.astro";
+import { getCollection } from "astro:content";
+
+const lessons = (await getCollection("course")).sort(
+  (a, b) => a.data.order - b.data.order
+);
 ---
 
 <SovereignLayout
@@ -116,6 +121,25 @@ import SovereignLayout from "../../layouts/SovereignLayout.astro";
         - the agent wandering while the rules sit unchanged. A diff cannot see the
         second kind. The tool takes away the dark; keeping honest is still yours.
       </p>
+    </section>
+
+    <!-- ============ THE PATH ============ -->
+    <section class="cd-demo" aria-labelledby="path-title">
+      <h2 id="path-title">The whole path - eight modules, free to read</h2>
+      <p>
+        You just made a rule fire and watched it leak. That instinct - to poke the
+        thing until it tells you the truth - is the whole course. Eight rooms, from
+        running an agent to tending what you built. Start at the beginning, or walk
+        into whichever one pulls at you.
+      </p>
+      <ol class="cd-path">
+        {lessons.map((l) => (
+          <li>
+            <a href={`/course/${l.slug}`}>{l.data.title}</a>
+            <span class="cd-path-teaches">{l.data.teaches}</span>
+          </li>
+        ))}
+      </ol>
     </section>
 
     <!-- ============ SELF-REVEALING / OUTWARD ============ -->
@@ -448,6 +472,13 @@ import SovereignLayout from "../../layouts/SovereignLayout.astro";
   .cd-download-note { font-size: 0.9rem; opacity: 0.85; margin-top: 0.4rem; }
   .cd-links { font-size: 0.92rem; }
   .cd-links code { font-size: 0.85rem; }
+  .cd-path { list-style: none; padding: 0; margin: 1.25rem 0; }
+  .cd-path li { border-top: 1px solid var(--border-subtle, #333); padding: 0.85rem 0; }
+  .cd-path li:last-child { border-bottom: 1px solid var(--border-subtle, #333); }
+  .cd-path a { color: var(--accent-warm, #e8c37a); text-decoration: none; font-weight: 500; }
+  .cd-path a:hover { text-decoration: underline; }
+  .cd-path a:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+  .cd-path-teaches { display: block; font-size: 0.88rem; opacity: 0.75; margin-top: 0.2rem; }
   .cd-foot { font-style: italic; opacity: 0.9; margin-top: 1.25rem; }
   .cd-hidden { display: none; }
 
