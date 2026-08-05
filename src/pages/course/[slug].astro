@@ -1,0 +1,155 @@
+---
+import { getCollection } from "astro:content";
+import SovereignLayout from "../../layouts/SovereignLayout.astro";
+
+export async function getStaticPaths() {
+  const lessons = (await getCollection("course")).sort(
+    (a, b) => a.data.order - b.data.order
+  );
+  return lessons.map((lesson, i) => ({
+    params: { slug: lesson.slug },
+    props: { lesson, prev: lessons[i - 1] ?? null, next: lessons[i + 1] ?? null },
+  }));
+}
+
+const { lesson, prev, next } = Astro.props;
+const { Content } = await lesson.render();
+
+const structuredData = [
+  {
+    "@type": "LearningResource",
+    name: lesson.data.title,
+    description: lesson.data.description,
+    url: `https://evoked.dev/course/${lesson.slug}/`,
+    author: { "@id": "https://evoked.dev/#person" },
+    isPartOf: {
+      "@type": "Course",
+      name: "Build AI That Honors People",
+      url: "https://evoked.dev/course/",
+    },
+  },
+  {
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: "https://evoked.dev/" },
+      { "@type": "ListItem", position: 2, name: "Course", item: "https://evoked.dev/course/" },
+      { "@type": "ListItem", position: 3, name: lesson.data.title, item: `https://evoked.dev/course/${lesson.slug}/` },
+    ],
+  },
+];
+---
+
+<SovereignLayout
+  title={lesson.data.title}
+  description={lesson.data.description}
+  structuredData={structuredData}
+  ogType="article"
+  articleMeta={{ author: "Erin Stanley" }}
+>
+  <article class="course-lesson">
+    <p class="cl-eyebrow"><a href="/course">Evoked · AI-governance course</a></p>
+    <h1>{lesson.data.title}</h1>
+    <div class="cl-body">
+      <Content />
+    </div>
+
+    <nav class="cl-nav" aria-label="Course navigation">
+      <span class="cl-nav-slot">
+        {prev && <a href={`/course/${prev.slug}`} rel="prev">← {prev.data.title}</a>}
+      </span>
+      <span class="cl-nav-slot cl-nav-next">
+        {next && <a href={`/course/${next.slug}`} rel="next">{next.data.title} →</a>}
+      </span>
+    </nav>
+
+    <p class="cl-back"><a href="/course">Back to the course overview</a></p>
+    <p class="cl-run">
+      Want to run the account-free parts in your browser?
+      <a href="/course#demo-a-title">Try the demos</a>, or
+      <a href="/course/governance-kit.zip" download>download the kit</a> to run them locally.
+    </p>
+  </article>
+</SovereignLayout>
+
+<style>
+  .course-lesson {
+    max-width: 44rem;
+    margin: 0 auto;
+    padding: 2rem 1.25rem 4rem;
+    font-family: var(--font-body, "Inter", system-ui, sans-serif);
+    color: var(--text-primary, #ececec);
+    line-height: 1.7;
+  }
+  .cl-eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-size: 0.72rem;
+    opacity: 0.7;
+    margin: 0;
+  }
+  .cl-eyebrow a { color: inherit; text-decoration: none; }
+  .cl-eyebrow a:hover { text-decoration: underline; }
+  .course-lesson h1 {
+    font-family: var(--font-display, "Cormorant Garamond", serif);
+    font-size: clamp(1.9rem, 5vw, 2.8rem);
+    line-height: 1.1;
+    margin: 0.5rem 0 1.5rem;
+  }
+  .cl-body :global(h2) {
+    font-family: var(--font-display, serif);
+    font-size: clamp(1.4rem, 3.5vw, 1.9rem);
+    margin: 2.2rem 0 0.6rem;
+  }
+  .cl-body :global(h3) { font-size: 1.15rem; margin: 1.6rem 0 0.5rem; }
+  .cl-body :global(p) { margin: 0.9rem 0; }
+  .cl-body :global(a) { color: var(--accent-warm, #e8c37a); }
+  .cl-body :global(strong) { font-weight: 600; }
+  .cl-body :global(code) {
+    font-family: ui-monospace, Menlo, monospace;
+    font-size: 0.88em;
+    background: rgba(255, 255, 255, 0.06);
+    padding: 0.1em 0.35em;
+    border-radius: 3px;
+  }
+  .cl-body :global(pre) {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 0.9rem 1rem;
+    border-radius: 4px;
+    overflow-x: auto;
+    font-size: 0.85rem;
+  }
+  .cl-body :global(pre code) { background: none; padding: 0; }
+  .cl-body :global(ul), .cl-body :global(ol) { padding-left: 1.3rem; }
+  .cl-body :global(li) { margin: 0.35rem 0; }
+  .cl-body :global(blockquote) {
+    border-left: 2px solid var(--accent-warm, #e8c37a);
+    padding-left: 1rem;
+    opacity: 0.92;
+    margin: 1rem 0;
+    font-style: italic;
+  }
+  .cl-body :global(table) { border-collapse: collapse; width: 100%; font-size: 0.9rem; margin: 1rem 0; display: block; overflow-x: auto; }
+  .cl-body :global(th), .cl-body :global(td) {
+    border: 1px solid var(--border-subtle, #444);
+    padding: 0.4rem 0.6rem;
+    text-align: left;
+  }
+  .cl-body :global(hr) { border: none; border-top: 1px solid var(--border-subtle, #333); margin: 2rem 0; }
+  .cl-nav {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: 3rem;
+    border-top: 1px solid var(--border-subtle, #333);
+    padding-top: 1.5rem;
+    flex-wrap: wrap;
+  }
+  .cl-nav-slot { flex: 1 1 40%; }
+  .cl-nav-next { text-align: right; }
+  .cl-nav a { color: var(--accent-warm, #e8c37a); text-decoration: none; }
+  .cl-nav a:hover { text-decoration: underline; }
+  .cl-nav a:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+  .cl-back { margin-top: 1.5rem; font-size: 0.92rem; }
+  .cl-back a, .cl-run a { color: var(--accent-warm, #e8c37a); }
+  .cl-run { font-size: 0.9rem; opacity: 0.9; margin-top: 0.5rem; }
+</style>
