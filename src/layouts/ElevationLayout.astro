@@ -12,6 +12,7 @@
  * Authored 2026-06-16 as part of the J register extraction.
  */
 import Analytics from '@vercel/analytics/astro';
+import SpeedInsights from '@vercel/speed-insights/astro';
 import { ClientRouter } from 'astro:transitions';
 import SiteHeader from '../components/elevation/SiteHeader.astro';
 import SiteFooter from '../components/elevation/SiteFooter.astro';
@@ -163,5 +164,6 @@ const canonicalURL = new URL(Astro.url.pathname, "https://evoked.dev");
     )}
 
     <Analytics />
+    <SpeedInsights />
   </body>
 </html>
