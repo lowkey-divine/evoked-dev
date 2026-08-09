@@ -210,3 +210,4 @@ I'd rather start that conversation early than clean up after it later.
 - [Sovereignty Refusal](/writing/sovereignty-refusal/)
 - [Scope Refusal](/writing/scope-refusal/)
 - [Fifteen Frameworks, One Missing Layer](/writing/fifteen-frameworks/)
+- If you want to write your own, here is the exercise: [Write Your First Three Refusals](/writing/write-your-first-three-refusals/)
