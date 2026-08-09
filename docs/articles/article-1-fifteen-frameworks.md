@@ -17,7 +17,8 @@
 ## Core Questions This Article Must Answer
 
 1. **What does the governance gap actually look like across the ecosystem?**
-   Name 10-15 frameworks. Star counts. What each one offers for governance/guardrails. What none of them offer.
+   Name 10-15 frameworks. Star counts (pull live from GitHub at draft time and cite the retrieval date - counts drift daily; do not publish a count from this brief). What each one offers for governance/guardrails. What none of them offer.
+   *Live re-pull 2026-08-09 (GitHub API): [langchain-ai/langchain](https://github.com/langchain-ai/langchain) 143,792 stars; [langchain-ai/langgraph](https://github.com/langchain-ai/langgraph) 39,287 stars (separate repo); [crewAIInc/crewAI](https://github.com/crewAIInc/crewAI) 56,851 stars. The research brief's full 15-framework table was re-pulled the same day; re-pull again at draft time before publish, since counts drift daily.*
 
 2. **What's the difference between a guardrail and a constitution?**
    Not our definition -- a practical, technical distinction. A guardrail filters input/output. A constitution governs whether the agent should act at all. One sentence, no jargon.
@@ -26,7 +27,7 @@
    n8n's 8 CVEs. OpenHands zero-click exfiltration. Multi-turn attacks succeeding 60%+. Amazon's hiring algorithm. Not hypotheticals -- incidents.
 
 4. **What are users actually asking for?**
-   Direct quotes from the GitHub issues. The Agno user screaming. The CrewAI user saying "lots more required." The Pydantic AI commenter asking for constitutional approaches. Let their words make the case.
+   Direct quotes from the GitHub threads. The Agno user screaming (a discussion, and historical - Agno has since shipped guardrails in v2.1.0, so frame it as dated). The CrewAI user saying "lots more required." The Pydantic AI #1197 request - an open guardrails feature request (opened by mattaliev, Mar 2025) modeled on OpenAI's Agents SDK. [RESOLVED by direct fetch: the word "constitution" does NOT appear in #1197 - drop any constitution quote. Do NOT attribute to a maintainer or tie it to Anthropic's Constitutional AI.] Let their words make the case.
 
 5. **Where do you go from here?**
    Not a sales pitch. A breadcrumb trail: link to "What Should Your Agent Refuse?" for the refusal framework, link to "Who Governs the Agent?" for the four pillars, link to the free starter kit for implementation.
@@ -50,9 +51,9 @@
 The Phase 2 research should produce:
 
 - **Framework-by-framework table:** name, stars, governance features, specific gap. Cover at minimum: AutoGen, CrewAI, Pydantic AI, Agno, AutoGPT, OpenHands, smolagents, OpenAI Agents SDK, LangChain, n8n, LlamaIndex, Semantic Kernel, Haystack, DSPy, Langflow
-- **Direct quotes from each GitHub issue** (verbatim, with links): AutoGen #6017, CrewAI #1699, Pydantic AI #1197, Agno #3866. Capture the exact language users use
-- **Incident data with sources:** CVEs, breaches, failures. n8n (8 CVEs in Feb 2026), OpenHands (zero-click data exfiltration), multi-turn attack success rates (Cisco: 60%+ average, one model 92.78%), HiddenLayer bypass of OpenAI guardrails
-- **Current enterprise governance demand data:** ModelOp 2026 report (67% with 101-250 use cases, 94% with <25 in production), Deloitte findings (42% still developing strategy), commercial governance platform adoption surge (14% to ~50%)
+- **Direct quotes from each GitHub thread** (verbatim, with links): AutoGen #6017 (issue), CrewAI #1699 (discussion, not issue), Pydantic AI #1197 (issue), Agno #3866 (discussion, not issue). Label each correctly. Capture the exact language users use
+- **Incident data with sources:** CVEs, breaches, failures. n8n (8 CVEs disclosed Jan-early Feb 2026, incl. CVE-2026-21858, CVSS 10.0 (reported Nov 2025; the Jan 7 2026 date is only the Canadian Cyber Centre alert, NOT the disclosure date); do NOT use "six in a single day" - unverified), OpenHands (zero-click data exfiltration), multi-turn attack success rates (Cisco open-model analysis: 92.78% on Mistral Large-2, far above single-turn; cite the exact table cell rather than a quoted "60%+ average"), HiddenLayer bypass of OpenAI guardrails
+- **Current enterprise governance demand data:** ModelOp 2026 report (67% with 101-250 use cases, 94% with <25 in production; verified). Deloitte State of AI in the Enterprise 2026 - use "only 30% feel highly prepared on risk and governance, talent preparedness 20%" (NOTE: the "42%" figure means highly prepared for AI adoption, NOT "still developing strategy" - do not invert it). Commercial governance-platform demand [KILLED by claim-check - the previously-cited adoption trajectory has NO primary source in any report; drop it, or substitute a sourced figure such as Grand View ~36% market CAGR or Gartner ">$1B by 2030", each cited]
 - **One-paragraph summary of each framework's guardrail approach** -- what it does offer, precisely stated, so the gap is visible by contrast
 
 ---

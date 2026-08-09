@@ -11,27 +11,29 @@
 
 ### Summary Table
 
-| # | Framework | Stars (Mar 2026) | Input Validation | Output Filtering | Tool Restrictions | Sandboxing | Human-in-the-Loop | Audit Logging | Agent Refusal | Identity Governance | Values Drift Detection | Consent Model | Constitutional/Charter |
+| # | Framework | Stars (2026-08-09) | Input Validation | Output Filtering | Tool Restrictions | Sandboxing | Human-in-the-Loop | Audit Logging | Agent Refusal | Identity Governance | Values Drift Detection | Consent Model | Constitutional/Charter |
 |---|-----------|----------------:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
-| 1 | AutoGen | 55,653 | Partial | Partial | Partial | Yes | Yes | Partial | No | No | No | No | No |
-| 2 | CrewAI | 46,154 | No | Yes | No | No | No | Partial | No | No | No | No | No |
-| 3 | PydanticAI | 15,484 | Partial | Yes | Partial | No | No | No | No | No | No | No | No |
-| 4 | Agno | 38,709 | Yes | Yes | Partial | No | Yes | Yes | No | No | No | No | No |
-| 5 | AutoGPT | 182,497 | No | No | No | Yes | Yes | No | No | No | No | No | No |
-| 6 | OpenHands | 69,175 | No | No | Partial | Yes | Partial | Partial | No | No | No | No | No |
-| 7 | smolagents | 26,050 | No | No | Yes | Yes | Partial | No | No | No | No | No | No |
-| 8 | OpenAI Agents SDK | 20,022 | Yes | Yes | Yes | No | No | Partial | No | No | No | No | No |
-| 9 | LangChain/LangGraph | 129,625 | Yes | Yes | Partial | Yes | Yes | Yes | No | No | No | No | No |
-| 10 | n8n | 179,316 | Yes | Yes | No | No | Yes | Partial | No | No | No | No | No |
-| 11 | LlamaIndex | 47,690 | Partial | Partial | No | No | No | No | No | No | No | No | No |
-| 12 | Semantic Kernel | 27,463 | Yes | Yes | Yes | No | Partial | Yes | No | No | No | No | No |
-| 13 | Haystack | 24,513 | Yes | Yes | No | No | Yes | Partial | No | No | No | No | No |
-| 14 | DSPy | 32,819 | No | Partial | No | No | No | No | No | No | No | No | No |
-| 15 | Langflow | 145,698 | Partial | Partial | No | No | Partial | Partial | No | No | No | No | No |
+| 1 | AutoGen | 60,329 | Partial | Partial | Partial | Yes | Yes | Partial | No | No | No | No | No |
+| 2 | CrewAI | 56,851 | No | Yes | No | No | No | Partial | No | No | No | No | No |
+| 3 | PydanticAI | 19,169 | Partial | Yes | Partial | No | No | No | No | No | No | No | No |
+| 4 | Agno | 41,637 | Yes | Yes | Partial | No | Yes | Yes | No | No | No | No | No |
+| 5 | AutoGPT | 186,454 | No | No | No | Yes | Yes | No | No | No | No | No | No |
+| 6 | OpenHands | 83,524 | No | No | Partial | Yes | Partial | Partial | No | No | No | No | No |
+| 7 | smolagents | 28,733 | No | No | Yes | Yes | Partial | No | No | No | No | No | No |
+| 8 | OpenAI Agents SDK | 28,508 | Yes | Yes | Yes | No | No | Partial | No | No | No | No | No |
+| 9 | LangChain (langchain-ai/langchain) | 143,792 | Yes | Yes | Partial | Yes | Yes | Yes | No | No | No | No | No |
+| 10 | n8n | 199,937 | Yes | Yes | No | No | Yes | Partial | No | No | No | No | No |
+| 11 | LlamaIndex | 51,497 | Partial | Partial | No | No | No | No | No | No | No | No | No |
+| 12 | Semantic Kernel | 28,435 | Yes | Yes | Yes | No | Partial | Yes | No | No | No | No | No |
+| 13 | Haystack | 26,159 | Yes | Yes | No | No | Yes | Partial | No | No | No | No | No |
+| 14 | DSPy | 36,840 | No | Partial | No | No | No | No | No | No | No | No | No |
+| 15 | Langflow | 152,975 | Partial | Partial | No | No | Partial | Partial | No | No | No | No | No |
 
 **Key: Yes = built-in feature. Partial = available via extension, plugin, or manual configuration. No = absent.**
 
 **The rightmost five columns are No across all 15 frameworks.**
+
+**Star counts:** all 15 re-pulled live from the GitHub API on **2026-08-09**. The row 9 count is the [langchain-ai/langchain](https://github.com/langchain-ai/langchain) monorepo only; **LangGraph** ([langchain-ai/langgraph](https://github.com/langchain-ai/langgraph)) is a separate repository with 39,287 stars as of 2026-08-09. Counts drift daily - re-pull before publication and re-stamp this date.
 
 ---
 
@@ -40,7 +42,7 @@
 ---
 
 ### 1. Microsoft AutoGen
-- **GitHub:** [microsoft/autogen](https://github.com/microsoft/autogen) -- 55,653 stars
+- **GitHub:** [microsoft/autogen](https://github.com/microsoft/autogen) -- 60,329 stars (2026-08-09)
 - **Description:** A programming framework for agentic AI
 
 #### What It Offers
@@ -50,7 +52,7 @@
   - Source: [Tool Use with Intervention](https://microsoft.github.io/autogen/stable//user-guide/core-user-guide/cookbook/tool-use-with-intervention.html)
 - **Code Execution Sandboxing:** `DockerCommandLineCodeExecutor` runs generated code inside Docker containers. Also supports E2B and other cloud sandboxes.
   - Source: [AutoGen Code Execution](https://microsoft.github.io/autogen/stable/)
-- **Input/Output Validation:** No built-in guardrail system. The open issue [#6017 "Guardrails and Safety"](https://github.com/microsoft/autogen/issues/6017) (opened March 2025, still open March 2026) is a tracking issue with community contributions suggesting third-party scanning layers like ClawMoat for prompt injection detection.
+- **Input/Output Validation:** No built-in guardrail system. The open issue [#6017 "Guardrails and Safety"](https://github.com/microsoft/autogen/issues/6017) (opened March 2025, still open as of 2026-08-09) is a tracking issue with community contributions suggesting third-party scanning layers like ClawMoat for prompt injection detection.
 - **Tool Restrictions:** Tools must be explicitly registered per agent. No allowlist/denylist mechanism at the framework level, but agents only have access to tools assigned to them.
 - **Audit/Observability:** Message logging between agents is possible but not a built-in structured audit system. Telemetry available through integration with external tools.
 
@@ -71,7 +73,7 @@
 ---
 
 ### 2. CrewAI
-- **GitHub:** [crewAIInc/crewAI](https://github.com/crewAIInc/crewAI) -- 46,154 stars
+- **GitHub:** [crewAIInc/crewAI](https://github.com/crewAIInc/crewAI) -- 56,851 stars (2026-08-09)
 - **Description:** Framework for orchestrating role-playing, autonomous AI agents
 
 #### What It Offers
@@ -99,7 +101,7 @@
 ---
 
 ### 3. PydanticAI
-- **GitHub:** [pydantic/pydantic-ai](https://github.com/pydantic/pydantic-ai) -- 15,484 stars
+- **GitHub:** [pydantic/pydantic-ai](https://github.com/pydantic/pydantic-ai) -- 19,169 stars (2026-08-09)
 - **Description:** GenAI Agent Framework, the Pydantic way
 
 #### What It Offers
@@ -113,7 +115,7 @@
 
 #### What It Does NOT Offer
 
-- No native input guardrails -- [Issue #1197 "Guardrails"](https://github.com/pydantic/pydantic-ai/issues/1197) (opened March 2025, 23 comments, still open) is the primary feature request. A PR adding input/output guardrails ([#3938](https://github.com/pydantic/pydantic-ai/pull/3938)) is pending.
+- No native input guardrails -- [Issue #1197 "Guardrails"](https://github.com/pydantic/pydantic-ai/issues/1197) (opened March 2025, 28 comments, closed as of 2026-08-09) was the primary feature request. A PR adding input/output guardrails ([#3938](https://github.com/pydantic/pydantic-ai/pull/3938)) was closed without merging as of 2026-08-09.
 - No sandboxing or code execution isolation
 - No human-in-the-loop mechanism
 - No audit logging
@@ -131,7 +133,7 @@
 ---
 
 ### 4. Agno (formerly Phidata)
-- **GitHub:** [agno-agi/agno](https://github.com/agno-agi/agno) -- 38,709 stars
+- **GitHub:** [agno-agi/agno](https://github.com/agno-agi/agno) -- 41,637 stars (2026-08-09)
 - **Description:** Build, run, manage agentic software at scale
 
 #### What It Offers
@@ -159,7 +161,7 @@
 ---
 
 ### 5. AutoGPT
-- **GitHub:** [Significant-Gravitas/AutoGPT](https://github.com/Significant-Gravitas/AutoGPT) -- 182,497 stars
+- **GitHub:** [Significant-Gravitas/AutoGPT](https://github.com/Significant-Gravitas/AutoGPT) -- 186,454 stars (2026-08-09)
 - **Description:** AutoGPT is the vision of accessible AI for everyone
 
 #### What It Offers
@@ -190,7 +192,7 @@
 ---
 
 ### 6. OpenHands
-- **GitHub:** [All-Hands-AI/OpenHands](https://github.com/All-Hands-AI/OpenHands) -- 69,175 stars
+- **GitHub:** [OpenHands/OpenHands](https://github.com/OpenHands/OpenHands) -- 83,524 stars (2026-08-09; repo relocated from the former All-Hands-AI/OpenHands path)
 - **Description:** AI-Driven Development
 
 #### What It Offers
@@ -219,7 +221,7 @@
 ---
 
 ### 7. smolagents (Hugging Face)
-- **GitHub:** [huggingface/smolagents](https://github.com/huggingface/smolagents) -- 26,050 stars
+- **GitHub:** [huggingface/smolagents](https://github.com/huggingface/smolagents) -- 28,733 stars (2026-08-09)
 - **Description:** A barebones library for agents that think in code
 
 #### What It Offers
@@ -248,7 +250,7 @@
 ---
 
 ### 8. OpenAI Agents SDK
-- **GitHub:** [openai/openai-agents-python](https://github.com/openai/openai-agents-python) -- 20,022 stars
+- **GitHub:** [openai/openai-agents-python](https://github.com/openai/openai-agents-python) -- 28,508 stars (2026-08-09)
 - **Description:** A lightweight, powerful framework for multi-agent workflows
 
 #### What It Offers
@@ -279,7 +281,7 @@
 ---
 
 ### 9. LangChain / LangGraph
-- **GitHub:** [langchain-ai/langchain](https://github.com/langchain-ai/langchain) -- 129,625 stars
+- **GitHub:** [langchain-ai/langchain](https://github.com/langchain-ai/langchain) -- 143,792 stars (2026-08-09). LangGraph is a distinct repository, [langchain-ai/langgraph](https://github.com/langchain-ai/langgraph) -- 39,287 stars as of 2026-08-09. This analysis covers the langchain-ai/langchain monorepo and its LangGraph runtime.
 - **Description:** The agent engineering platform
 
 #### What It Offers
@@ -311,7 +313,7 @@
 ---
 
 ### 10. n8n
-- **GitHub:** [n8n-io/n8n](https://github.com/n8n-io/n8n) -- 179,316 stars
+- **GitHub:** [n8n-io/n8n](https://github.com/n8n-io/n8n) -- 199,937 stars (2026-08-09)
 - **Description:** Fair-code workflow automation platform with native AI capabilities
 
 #### What It Offers
@@ -338,13 +340,13 @@
 - No values drift detection
 - No consent model
 - No constitutional or charter mechanism
-- 8 CVEs in February 2026, including critical authentication vulnerabilities
-  - Source: [CVE-2026-21445 Langflow authentication vulnerability advisory](https://www.pointguardai.com/ai-security-incidents/langflows-monitor-apis-left-wide-open/) (Note: This was Langflow's CVE, n8n had separate vulnerability history)
+- At least six high-to-critical n8n CVEs disclosed December 2025 - February 2026, chiefly remote-code-execution / command-injection flaws (several exploitable by any authenticated user)
+  - Source: [Rapid7 - Ni8mare / N8scape: multiple critical vulnerabilities affecting n8n](https://www.rapid7.com/blog/post/etr-ni8mare-n8scape-flaws-multiple-critical-vulnerabilities-affecting-n8n/) enumerates five CVEs disclosed Dec 19 2025 - Jan 7 2026, including CVE-2026-21858 / Ni8mare (unauthenticated file-read RCE, CVSS 10.0), CVE-2025-68668 / N8scape (Python-node sandbox bypass, CVSS 9.9), and CVE-2026-21877 (arbitrary-file-write RCE, CVSS 9.9, no nickname). A sixth flaw, [CVE-2026-25049](https://www.securityweek.com/critical-n8n-sandbox-escape-could-lead-to-server-compromise/) (expression-sandbox-escape RCE, CVSS 9.4, disclosed Feb 2026), is documented separately by SecurityWeek and is not part of the Rapid7 set.
 
 ---
 
 ### 11. LlamaIndex
-- **GitHub:** [run-llama/llama_index](https://github.com/run-llama/llama_index) -- 47,690 stars
+- **GitHub:** [run-llama/llama_index](https://github.com/run-llama/llama_index) -- 51,497 stars (2026-08-09)
 - **Description:** The leading document agent and OCR platform
 
 #### What It Offers
@@ -372,7 +374,7 @@
 ---
 
 ### 12. Microsoft Semantic Kernel
-- **GitHub:** [microsoft/semantic-kernel](https://github.com/microsoft/semantic-kernel) -- 27,463 stars
+- **GitHub:** [microsoft/semantic-kernel](https://github.com/microsoft/semantic-kernel) -- 28,435 stars (2026-08-09)
 - **Description:** Integrate cutting-edge LLM technology quickly and easily into your apps
 
 #### What It Offers
@@ -406,7 +408,7 @@
 ---
 
 ### 13. Haystack (deepset)
-- **GitHub:** [deepset-ai/haystack](https://github.com/deepset-ai/haystack) -- 24,513 stars
+- **GitHub:** [deepset-ai/haystack](https://github.com/deepset-ai/haystack) -- 26,159 stars (2026-08-09)
 - **Description:** Open-source AI orchestration framework
 
 #### What It Offers
@@ -435,7 +437,7 @@
 ---
 
 ### 14. DSPy (Stanford NLP)
-- **GitHub:** [stanfordnlp/dspy](https://github.com/stanfordnlp/dspy) -- 32,819 stars
+- **GitHub:** [stanfordnlp/dspy](https://github.com/stanfordnlp/dspy) -- 36,840 stars (2026-08-09)
 - **Description:** The framework for programming - not prompting - language models
 
 #### What It Offers
@@ -466,7 +468,7 @@
 ---
 
 ### 15. Langflow
-- **GitHub:** [langflow-ai/langflow](https://github.com/langflow-ai/langflow) -- 145,698 stars
+- **GitHub:** [langflow-ai/langflow](https://github.com/langflow-ai/langflow) -- 152,975 stars (2026-08-09)
 - **Description:** Powerful tool for building and deploying AI-powered agents and workflows
 
 #### What It Offers
@@ -534,16 +536,16 @@ No framework implements a charter, constitution, or governance document that is 
 
 | Framework | Issue/Discussion | What Users Are Asking For |
 |-----------|-----------------|--------------------------|
-| AutoGen | [#6017](https://github.com/microsoft/autogen/issues/6017) | "Guardrails and Safety" -- tracking issue, 1 year open, community building third-party scanning layers |
+| AutoGen | [#6017](https://github.com/microsoft/autogen/issues/6017) | "Guardrails and Safety" -- tracking issue, open since March 2025, community building third-party scanning layers |
 | AutoGen | [#7372](https://github.com/microsoft/autogen/issues/7372) | Cryptographic governance layer for distributed agent runtime |
 | AutoGen | [#7353](https://github.com/microsoft/autogen/issues/7353) | Cryptographic action receipts for enterprise governance |
 | CrewAI | [#4877](https://github.com/crewAIInc/crewAI/issues/4877) | GuardrailProvider interface for pre-tool-call authorization |
 | CrewAI | [#4502](https://github.com/crewAIInc/crewAI/issues/4502) | Governance Guardrails Plugin (closed) |
 | CrewAI | [PR #4680](https://github.com/crewAIInc/crewAI/pull/4680) | Governance middleware guide for agent authority separation |
-| PydanticAI | [#1197](https://github.com/pydantic/pydantic-ai/issues/1197) | Input/output guardrails -- 23 comments, banking use case, 1 year open |
+| PydanticAI | [#1197](https://github.com/pydantic/pydantic-ai/issues/1197) | Input/output guardrails -- 28 comments, banking use case, closed as of 2026-08-09 |
 | PydanticAI | [#4598](https://github.com/pydantic/pydantic-ai/issues/4598) | Runtime governance layer distinct from prompt guardrails |
 | PydanticAI | [#4578](https://github.com/pydantic/pydantic-ai/issues/4578) | TLA+ formal verification guardrails for production agents |
-| PydanticAI | [PR #3938](https://github.com/pydantic/pydantic-ai/pull/3938) | Add input and output guardrails (PR pending) |
+| PydanticAI | [PR #3938](https://github.com/pydantic/pydantic-ai/pull/3938) | Add input and output guardrails (PR closed, not merged, as of 2026-08-09) |
 | Agno | [Discussion #2435](https://github.com/agno-agi/agno/discussions/2435) | Requesting guardrails concept implementation |
 | AutoGPT | [#12393](https://github.com/Significant-Gravitas/AutoGPT/issues/12393) | OWASP Agentic AI Security Assessment |
 | DSPy | [#1842](https://github.com/stanfordnlp/dspy/issues/1842) | Are assertions and suggests still maintained? |
@@ -559,10 +561,9 @@ These are external tools and frameworks that attempt to fill the governance gap 
 | [NVIDIA NeMo Guardrails](https://github.com/NVIDIA-NeMo/Guardrails) | Programmable guardrails for LLM systems: topic control, PII, jailbreak prevention, content safety | LangChain, LangGraph, LlamaIndex |
 | [Galileo Agent Control](https://galileo.ai/blog/announcing-agent-control) | Open-source control plane for governing AI agents at scale. Write behavioral policies once, enforce everywhere | CrewAI, AWS, Glean |
 | [guardrails-ai/guardrails](https://github.com/guardrails-ai/guardrails) | Adding guardrails to LLMs. Validation hub with community validators | LangChain, generic |
-| [Nomotic](https://github.com/nomoticai/nomotic) | Behavioral Control Plane: 14-dimension evaluation, real-time drift detection, interrupt authority | LangGraph, CrewAI, AutoGen |
+| [Nomotic](https://nomotic.ai) | Behavioral Control Plane: multi-dimension evaluation, real-time drift detection, interrupt authority | LangGraph, CrewAI, AutoGen |
 | [Microsoft Agent Governance Toolkit](https://github.com/microsoft/agent-governance-toolkit) | Policy enforcement, zero-trust identity, execution sandboxing, reliability engineering. Covers 10/10 OWASP Agentic Top 10 | AutoGen, Semantic Kernel, generic |
 | [OpenGuardrails](https://openguardrails.com/) | Open-source safety LLM + production-ready guardrail platform | Generic |
-| [Laminae](https://github.com/Orellius/Laminae) | AI personality, safety, red-teaming, sandboxing in Rust. Platform-native sandboxing (macOS sandbox-exec, Linux seccomp) | Generic |
 | [pydantic-ai-guardrails](https://pypi.org/project/pydantic-ai-guardrails/) | Community package adding input/output guardrails to PydanticAI | PydanticAI |
 
 ---
@@ -631,5 +632,5 @@ The difference is agency. Guardrails are imposed. Governance is exercised.
 - [MIT Tech Review: From Guardrails to Governance](https://www.technologyreview.com/2026/02/04/1131014/from-guardrails-to-governance-a-ceos-guide-for-securing-agentic-systems/)
 - [deepset Sovereign AI](https://ceoworld.biz/2026/02/10/from-hype-to-production-how-milos-rusic-is-advancing-sovereign-ai-with-haystack/)
 - [MAARR Constitutional Framework](https://gregtwemlow.medium.com/constitutional-frameworks-must-govern-the-rise-of-agentic-ai-629c5ed9b379)
-- [Nomotic Behavioral Control Plane](https://github.com/nomoticai/nomotic)
+- [Nomotic Behavioral Control Plane](https://nomotic.ai)
 - [Microsoft Agent Governance Toolkit](https://github.com/microsoft/agent-governance-toolkit)
