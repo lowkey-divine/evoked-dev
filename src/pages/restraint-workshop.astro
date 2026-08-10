@@ -1,0 +1,250 @@
+---
+import ElevationLayout from '../layouts/ElevationLayout.astro';
+import Hero from '../components/elevation/Hero.astro';
+import Section from '../components/elevation/Section.astro';
+
+// Standalone, unlisted demand-probe page. Not linked in nav; not part of the
+// /engage ladder. Sent to prospects directly as the single live buy-button test.
+//   BUY:  live Stripe Payment Link, $2,500 one-time
+//   BOOK: Calendly 30-min intro event
+const BUY_URL = 'https://buy.stripe.com/5kQ5kDe3u1eZaC87By2400i';
+const BOOK_URL = 'https://calendly.com/erin-stanley358/30min';
+---
+
+<ElevationLayout
+  title="AI Restraint Spec Workshop"
+  description="A focused, fixed-fee workshop that produces an opinionated restraint specification for your AI agents: what they may do, what they must refuse, and how you verify it."
+>
+  <Hero
+    eyebrowParts={["Erin Stanley, Evoked", "Restraint spec workshop"]}
+    headline="Your agent will do something you never told it to."
+    metaphor={["Let's decide what it must refuse.", "Before it does."]}
+    sub="A focused, fixed-fee workshop that produces an opinionated restraint specification for your actual agents: what they may do, what they must refuse, and how you verify it. Run by the founder of a live 143-agent governance system."
+  >
+    <a class="cta cta-primary" href={BUY_URL}>Buy the workshop - $2,500</a>
+    <a class="cta cta-secondary" href={BOOK_URL} target="_blank" rel="noopener">Book the 20-minute call first &rarr;</a>
+  </Hero>
+
+  <Section id="who" marker="FIG · I" heading="Who this is for">
+    <p class="lede">You lead a team shipping an AI agent or assistant, and one of these is true.</p>
+    <ul class="body-list">
+      <li>You have a shipping deadline and nobody owns "what should this thing refuse."</li>
+      <li>A customer, a regulator, or your board has started asking how the agent handles data and edge cases.</li>
+      <li>You had a near-miss - an output, a data path, a tool call - that made you realize the guardrails are implicit, not written down.</li>
+    </ul>
+    <p class="body">If your agent is a weekend prototype, you do not need this yet. If real users touch it, you do.</p>
+  </Section>
+
+  <Section id="what" marker="FIG · II" heading="What we do together">
+    <p class="body">A single working session, half-day and remote, plus a written deliverable. You bring your agent and how it actually behaves. We produce, together, three things you keep.</p>
+    <ul class="body-list">
+      <li><strong>A restraint spec for your system</strong> - the specific things your agent must not do, written as a document your engineers can build against and your reviewers can check.</li>
+      <li><strong>A refusal map</strong> - where each boundary lives, what triggers it, and what happens when it fires.</li>
+      <li><strong>A verification checklist</strong> - how you confirm the agent actually holds the line, not just that you intended it to.</li>
+    </ul>
+    <p class="body">You leave with a document, not a slide deck. It is yours to keep, extend, and reuse.</p>
+  </Section>
+
+  <Section id="not" marker="FIG · III" heading="What this is not">
+    <ul class="body-list">
+      <li><strong>Not software.</strong> There is nothing to install and no new dependency.</li>
+      <li><strong>We never touch your customer data.</strong> This is advisory. Your data stays in your systems. That is a deliberate design choice, and it is why we can move in days instead of quarters.</li>
+      <li><strong>Not a generic template.</strong> The spec is written for your agent, your risks, your users.</li>
+    </ul>
+  </Section>
+
+  <Section id="why-me" marker="FIG · IV" heading="Why me">
+    <div class="proof-bar">
+      <div class="proof-item">
+        <h4>Operator</h4>
+        <p>A live 143-agent governance system in daily operation - identity, memory, refusal rights, dissent records. Restraint architecture I run, not a theory I read about.</p>
+      </div>
+      <div class="proof-item">
+        <h4>Patent</h4>
+        <p>Inventor on active filings in AI agent governance. I publish restraint and sovereignty specifications openly.</p>
+      </div>
+      <div class="proof-item">
+        <h4>Principle</h4>
+        <p>We evoke, we never extract. No dark patterns, no dependency, no harvesting. If a boundary protects your users, I help you draw it and hold it.</p>
+      </div>
+    </div>
+    <p class="body">I am not a large firm with a compliance stamp. I am the person who has actually specified this, for a system larger than yours, and can do it for yours in a focused session.</p>
+  </Section>
+
+  <Section id="price" marker="FIG · V" heading="Price">
+    <div class="offer-card">
+      <div class="offer-head">
+        <span class="offer-tag">Restraint spec workshop</span>
+        <span class="offer-price">$2,500</span>
+      </div>
+      <p class="offer-outcome">One workshop. One written spec. One verification checklist.</p>
+      <p class="offer-window">Half-day, remote. Fixed fee, no hourly meter, no upsell required.</p>
+      <p class="offer-body">If, after our first 20 minutes, this is not the right fit, we stop and there is no charge.</p>
+      <div class="cta-row">
+        <a class="cta cta-primary" href={BUY_URL}>Buy the workshop - $2,500</a>
+        <a class="cta cta-secondary" href={BOOK_URL} target="_blank" rel="noopener">Book the 20-minute call first &rarr;</a>
+      </div>
+    </div>
+  </Section>
+
+  <Section id="next" marker="FIG · VI" heading="Next step">
+    <p class="body">Book a 20-minute call first. I want to hear what you are shipping and whether a restraint spec would actually help you this quarter. If it fits, we schedule the workshop. If it does not, I will tell you.</p>
+    <div class="cta-row">
+      <a class="cta cta-primary" href={BOOK_URL} target="_blank" rel="noopener">Book the 20-minute call</a>
+      <a class="cta cta-secondary" href={BUY_URL}>Or buy the workshop now - $2,500</a>
+    </div>
+  </Section>
+
+  <Section id="note" marker="NOTA · BENE" closing={true}>
+    <div class="closing-body">
+      <p>Your agent already has boundaries. Right now they live in prompts and code, implicit, unverified, owned by no one. A restraint spec is where they become a document your team can build against and your reviewers can check. If real users touch your agent, that document is worth an afternoon.</p>
+      <p class="signature">Erin Stanley, Evoked</p>
+    </div>
+  </Section>
+</ElevationLayout>
+
+<style>
+  .body {
+    font-family: var(--el-body);
+    font-size: 19px;
+    color: var(--el-text-soft);
+    line-height: 1.65;
+    margin-bottom: 1.5rem;
+    max-width: 62ch;
+  }
+  .body a {
+    color: var(--el-accent);
+    text-decoration: none;
+    border-bottom: 1px solid var(--el-accent);
+  }
+  .body a:hover { color: var(--el-text); }
+
+  .body-list {
+    margin: 0 0 1.5rem;
+    padding-left: 1.5rem;
+    color: var(--el-text-soft);
+    line-height: 1.75;
+    font-family: var(--el-body);
+    font-size: 18px;
+    max-width: 62ch;
+  }
+  .body-list li { margin-bottom: 0.75rem; }
+  .body-list li::marker { color: var(--el-accent); }
+  .body-list strong { color: var(--el-text); }
+
+  /* === offer card (single, mirrors /engage) === */
+  .offer-card {
+    padding: 2.75rem 2.5rem;
+    background: rgba(255, 250, 240, 0.5);
+    border: 1.5px solid var(--el-accent);
+    box-shadow: var(--el-panel-shadow);
+    transition: background 0.2s, border-color 0.2s;
+    margin-top: 2rem;
+  }
+  .offer-card:hover {
+    background: rgba(255, 250, 240, 0.85);
+    border-color: var(--el-accent-deep);
+  }
+  .offer-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--el-rule);
+  }
+  .offer-tag {
+    font-family: var(--el-ui);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--el-accent);
+  }
+  .offer-price {
+    font-family: var(--el-display);
+    font-size: 28px;
+    line-height: 1;
+    color: var(--el-accent-deep);
+    letter-spacing: 0.01em;
+  }
+  .offer-outcome {
+    font-family: var(--el-display);
+    font-size: 18px;
+    color: var(--el-accent);
+    margin: 0 0 1rem;
+    line-height: 1.4;
+    letter-spacing: 0.015em;
+    text-transform: uppercase;
+  }
+  .offer-window {
+    font-family: var(--el-body);
+    font-style: italic;
+    color: var(--el-text-quiet);
+    font-size: 16px;
+    margin: 0 0 1.5rem;
+  }
+  .offer-body {
+    font-family: var(--el-body);
+    font-size: 18px;
+    color: var(--el-text-soft);
+    line-height: 1.65;
+    margin: 0 0 1.5rem;
+  }
+
+  /* === proof bar (Why me) === */
+  .proof-bar {
+    margin-top: 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2rem;
+    border-top: 1px solid var(--el-accent);
+    border-bottom: 1px solid var(--el-accent);
+    padding: 2rem 0;
+    margin-bottom: 2rem;
+  }
+  .proof-item h4 {
+    font-family: var(--el-ui);
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--el-accent);
+    margin: 0 0 0.75rem;
+  }
+  .proof-item p {
+    font-family: var(--el-body);
+    color: var(--el-text-soft);
+    line-height: 1.6;
+    font-size: 17px;
+    margin: 0;
+  }
+
+  /* === CTA row === */
+  .cta-row {
+    display: flex;
+    gap: 2.5rem;
+    flex-wrap: wrap;
+    align-items: center;
+    margin: 1.75rem 0 0.5rem;
+  }
+
+  /* === closing === */
+  .closing-body p {
+    font-family: var(--el-body);
+    font-size: 19px;
+    color: var(--el-text-soft);
+    line-height: 1.7;
+    max-width: 60ch;
+    margin: 0 0 1.5rem;
+  }
+  .signature {
+    font-family: var(--el-display);
+    font-size: 18px;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: var(--el-accent);
+  }
+</style>
