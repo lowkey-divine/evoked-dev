@@ -56,7 +56,7 @@ Worst case, you can answer all four and you get data that proves you are okay. T
 
 If you want the structured version of this check, the free five-minute test walks the same ground and hands you the result. No signup, nothing to install.
 
-**[Run the free 5-minute sovereignty check](/products/sovereignty-checklist).**
+**[Run the free 5-minute sovereignty check](/products/sovereignty-checklist?utm_source=writing&utm_medium=writing&utm_campaign=audit-logs).**
 
 ---
 

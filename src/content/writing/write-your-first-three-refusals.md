@@ -92,7 +92,7 @@ Worst case, you sit with the template and find you already had these rules cover
 
 When you are ready for the full version, we published a free refusal-spec template that takes this from three rows to a complete document, with the lenses built in. Take what is useful.
 
-**[Get the free refusal-spec template](/products/agent-restraint-specification).**
+**[Get the free refusal-spec template](/products/agent-restraint-specification?utm_source=writing&utm_medium=writing&utm_campaign=first-three-refusals).**
 
 ---
 

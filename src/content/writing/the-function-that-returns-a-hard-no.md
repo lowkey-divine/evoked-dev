@@ -77,7 +77,7 @@ Worst case, everything holds and you get data that proves you are okay. That is 
 
 If you want the structured version of this check, we built a free five-minute test that walks the same path and hands you the result. No signup, nothing to install.
 
-**[Run the free 5-minute sovereignty check](/products/sovereignty-checklist).**
+**[Run the free 5-minute sovereignty check](/products/sovereignty-checklist?utm_source=writing&utm_medium=writing&utm_campaign=hard-no-function).**
 
 ---
 
