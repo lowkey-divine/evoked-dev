@@ -213,6 +213,11 @@ const lessons = (await getCollection("course")).sort(
 
   const cat = (c) => (c ? `[${c}]` : "");
 
+  // HTML-escape any value that could carry user input before it reaches innerHTML.
+  const esc = (s) => String(s == null ? "" : s).replace(/[&<>"']/g, (c) => (
+    { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]
+  ));
+
   function verdictCard(item) {
     const v = evaluate(item.payload);
     const card = document.createElement("div");
@@ -224,9 +229,9 @@ const lessons = (await getCollection("course")).sort(
       ? `${cat(v.category)} ${v.reason}`
       : (item.__leak ? (item.note || "This slipped past the rule.") : "Nothing forbade it.");
     card.innerHTML =
-      `<p class="cd-card-how">${item.how}</p>` +
+      `<p class="cd-card-how">${esc(item.how)}</p>` +
       `<p class="cd-verdict"><span class="cd-ico" aria-hidden="true">${icon}</span>${word}</p>` +
-      `<p class="cd-reason">${reason}</p>`;
+      `<p class="cd-reason">${esc(reason)}</p>`;
     return card;
   }
 
@@ -303,7 +308,7 @@ const lessons = (await getCollection("course")).sort(
       return;
     }
     if (d.removed.length) {
-      const items = d.removed.map((t) => `<li>${t}</li>`).join("");
+      const items = d.removed.map((t) => `<li>${esc(t)}</li>`).join("");
       const gone = d.goneCategories.length
         ? `<p class="cd-reason">Whole categories no longer guarded: ${d.goneCategories.join(", ")}</p>`
         : "";
@@ -314,7 +319,7 @@ const lessons = (await getCollection("course")).sort(
       );
     }
     if (d.added.length) {
-      const items = d.added.map((t) => `<li>${t}</li>`).join("");
+      const items = d.added.map((t) => `<li>${esc(t)}</li>`).join("");
       out.appendChild(
         driftCard('<span class="cd-ico" aria-hidden="true">✓</span>Added since baseline (often a good sign)', "is-allow",
           `<ul class="cd-list">${items}</ul>`)
