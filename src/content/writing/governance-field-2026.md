@@ -2,9 +2,12 @@
 title: "Governance Field 2026: What Exists, What Doesn't, What Scores Zero"
 description: "A reference map of the agent governance field as of June 2026. Frameworks, scoring, gaps, and the two requirements no one has built."
 pubDate: 2026-06-05
+updatedDate: 2026-08-10
 tags: ["ai-agents", "ai-governance", "reference", "ostrom-score", "microsoft-agt", "crewai", "autogen", "langgraph", "google-adk"]
 draft: false
 ---
+
+> **Re-scored August 2026.** AutoGen has since merged into the Microsoft Agent Framework, and the 2026 governance toolkits shipped. The current numbers - four frameworks, the ceiling still at 9 of 24, participation still zero everywhere - are in [A Year of Governance Toolkits Shipped. I Re-Scored. The Number Did Not Move.](/writing/agent-governance-2026-rescore/) The reference below is the June snapshot it re-scores against.
 
 Every production framework released in 2026 is built to one map. Governance is a set of controls you bolt onto an agent system to keep it inside an authorized scope. The map is useful - but it is not complete.
 
