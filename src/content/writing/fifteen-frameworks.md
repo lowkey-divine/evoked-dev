@@ -93,13 +93,13 @@ Some frameworks are reaching toward governance. CrewAI gives agents roles and ba
 
 This isn't theoretical.
 
-Cisco found that multi-turn attacks against AI agents succeed around 60% on average, with one model reaching 92.78%. The attacks aren't sophisticated. They're patient. The agent has guardrails for individual messages - but no memory of its own values across a conversation. Each turn is evaluated in isolation. The attacker just waits. This is a governance failure. The agent has no persistent identity to anchor against, so each message is a fresh opportunity for manipulation.
+Cisco found that multi-turn attacks against AI agents succeed around 64% on average, with one model reaching 92.78%. The attacks aren't sophisticated. They're patient. The agent has guardrails for individual messages - but no memory of its own values across a conversation. Each turn is evaluated in isolation. The attacker just waits. This is the gap a persistent identity is meant to close: with nothing to anchor against across turns, each message is a fresh opening for manipulation.
 
-OpenHands had a zero-click data exfiltration vulnerability. A prompt injection embedded in a website could force the agent to leak GitHub tokens to an attacker's server. No user interaction required. The researcher waited 148 days for a response. A sandbox existed - but nothing in the architecture asked whether the agent should be rendering external content as executable instructions in the first place. That's a governance question, not a filtering question.
+OpenHands had a zero-click data exfiltration vulnerability. A prompt injection embedded in a website could force the agent to leak GitHub tokens to an attacker's server. No user interaction required. The researcher waited 148 days for a response. That was a security-engineering failure, and better sandboxing is what fixes it. But it also surfaces a question a sandbox never asks: should the agent be treating external content as executable instructions at all? Governance does not replace the sandbox. It adds the question the sandbox cannot pose.
 
-n8n disclosed ten CVEs between January and February 2026, including a CVSS 10.0 - unauthenticated remote code execution. Over 24,000 servers remained exposed weeks later. These were infrastructure vulnerabilities - sandbox escapes, path traversals - and better engineering would have caught them. But the pattern underneath is worth noticing: 179,000 stars, widespread production use, and no structural layer asking what these automated workflows should and shouldn't be doing. Security patches fix the symptom. Governance addresses whether the system should have been making that decision at all.
+n8n disclosed multiple critical CVEs between January and February 2026, including a CVSS 10.0 - unauthenticated remote code execution. Over 24,000 servers remained exposed weeks later. These were infrastructure vulnerabilities - sandbox escapes, path traversals - and better engineering, not governance, is what catches them. Governance would not have patched the RCE, and it is no substitute for security. The case is here for a narrower reason: 179,000 stars and heavy production use, with no layer anywhere asking what these automated workflows should and shouldn't be doing.
 
-Different failures. Same missing layer.
+Different failures - and the n8n CVEs are security bugs, not governance ones. But the other two turn on a question no framework is built to ask: should this agent be doing this at all?
 
 ---
 
