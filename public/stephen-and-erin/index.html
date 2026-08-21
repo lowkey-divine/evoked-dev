@@ -269,8 +269,13 @@
       box-shadow: 0 0 18px rgba(111,242,255,.20);
     }
     .photos img.big { grid-row: 1 / 3; object-position: center; }   /* feature, spans both rows */
-    @media (max-width: 400px) {
-      .photos { grid-template-rows: 140px 140px; }
+    /* On phones the mosaic crops photos too small to see. Stack them full-width. */
+    @media (max-width: 600px) {
+      section.gallery .photos { display: block; }
+      section.gallery .photos img {
+        width: 100%; height: auto; display: block; margin-bottom: 12px;
+      }
+      section.gallery .photos img:last-child { margin-bottom: 0; }
     }
     /* full-width closing photo after the sign-off */
     .closer { margin: 26px 0 0; }
