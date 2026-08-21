@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <!-- ============================================================
+       Stephen & Erin - elopement / house-fund page. Fully wired:
+         Venmo (Erin-Stanley-12), Zelle (erin.stanley358@gmail.com + QR),
+         MyRegistry link, contact passionevoked@icloud.com.
+       Ready to publish (e.g. drag this folder onto app.netlify.com/drop).
+       ============================================================ -->
+  <title>Stephen &amp; Erin - We Got Married</title>
+  <meta name="description" content="Stephen Stewart and Erin Stanley got married at the courthouse. Instead of a wedding, we're building a home." />
+  <meta property="og:title" content="Stephen & Erin got married" />
+  <meta property="og:description" content="We got married at the courthouse on a sunny Friday. Instead of a wedding, we're building a home. Come celebrate with us." />
+  <meta property="og:type" content="website" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Monoton&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --cyan:    #6ff2ff;
+      --magenta: #ff6ad5;
+      --amber:   #ffb26b;
+      --text:    #f3ecff;
+      --muted:   #c3b3e6;
+      --glass:   rgba(14, 8, 38, 0.52);
+      --glass-line: rgba(111, 242, 255, 0.35);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--text);
+      font-family: "Poppins", -apple-system, "Segoe UI", Roboto, sans-serif;
+      line-height: 1.72;
+      font-size: 1.04rem;
+      -webkit-font-smoothing: antialiased;
+      /* desert-sunset -> space -> ocean, top to bottom */
+      background:
+        linear-gradient(180deg,
+          #140233 0%,
+          #2b0a5e 18%,
+          #5b1f9c 36%,
+          #a02b9c 49%,
+          #ff5e8a 59%,
+          #ff9e5e 65%,
+          #0b6b7a 74%,
+          #063a5c 86%,
+          #041f38 100%);
+      background-attachment: fixed;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* ---------- Starfield (upper third) ---------- */
+    .stars {
+      position: fixed;
+      inset: 0 0 55% 0;
+      pointer-events: none;
+      z-index: 0;
+      background-image:
+        radial-gradient(1.5px 1.5px at 12% 18%, #fff, transparent),
+        radial-gradient(1.5px 1.5px at 28% 42%, #fff, transparent),
+        radial-gradient(2px 2px   at 45% 12%, #fff, transparent),
+        radial-gradient(1px 1px   at 62% 30%, #cfe9ff, transparent),
+        radial-gradient(1.5px 1.5px at 78% 20%, #fff, transparent),
+        radial-gradient(1px 1px   at 88% 44%, #fff, transparent),
+        radial-gradient(1.5px 1.5px at 8% 52%, #fff, transparent),
+        radial-gradient(1px 1px   at 34% 62%, #d6c6ff, transparent),
+        radial-gradient(2px 2px   at 55% 50%, #fff, transparent),
+        radial-gradient(1px 1px   at 72% 60%, #fff, transparent),
+        radial-gradient(1.5px 1.5px at 92% 12%, #fff, transparent),
+        radial-gradient(1px 1px   at 20% 8%,  #fff, transparent);
+      animation: twinkle 4s ease-in-out infinite alternate;
+    }
+    @keyframes twinkle { from { opacity: .55; } to { opacity: 1; } }
+
+    /* ---------- Synthwave sun on the horizon ---------- */
+    .sun {
+      position: fixed;
+      left: 50%;
+      top: 50%;
+      width: 300px;
+      height: 300px;
+      transform: translate(-50%, -6%);
+      border-radius: 50%;
+      z-index: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(180deg, #ffe66b 0%, #ff8e3c 42%, #ff4d8d 100%);
+      /* horizontal cut lines, denser toward the bottom = classic synth sun */
+      -webkit-mask-image: repeating-linear-gradient(180deg, #000 0 12px, transparent 12px 15px),
+                          linear-gradient(180deg, #000 55%, transparent 92%);
+      mask-image: repeating-linear-gradient(180deg, #000 0 12px, transparent 12px 15px),
+                  linear-gradient(180deg, #000 55%, transparent 92%);
+      -webkit-mask-composite: source-in;
+      mask-composite: intersect;
+      filter: drop-shadow(0 0 40px rgba(255,120,160,.75)) drop-shadow(0 0 90px rgba(255,90,140,.5));
+    }
+
+    /* ---------- Neon ocean grid at the bottom ---------- */
+    .grid {
+      position: fixed;
+      left: -25%;
+      right: -25%;
+      bottom: 0;
+      height: 40vh;
+      z-index: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(90deg, rgba(111,242,255,.55) 1px, transparent 1px),
+        linear-gradient(0deg,  rgba(111,242,255,.45) 1px, transparent 1px);
+      background-size: 46px 46px;
+      transform: perspective(320px) rotateX(66deg);
+      transform-origin: bottom center;
+      -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 55%);
+      mask-image: linear-gradient(180deg, transparent 0%, #000 55%);
+      opacity: .8;
+    }
+
+    /* ---------- Layout ---------- */
+    .wrap {
+      position: relative;
+      z-index: 2;
+      max-width: 620px;
+      margin: 0 auto;
+      padding: 0 22px 90px;
+    }
+
+    /* ---------- Hero ---------- */
+    header.hero {
+      text-align: center;
+      padding: 96px 0 40px;
+      position: relative;
+    }
+    /* soft dark halo so hero text stays readable over the bright sun */
+    header.hero::before {
+      content: "";
+      position: absolute;
+      inset: 78px -14px 20px -14px;
+      z-index: -1;
+      background: radial-gradient(ellipse 78% 68% at 50% 58%, rgba(7,4,24,.62), rgba(7,4,24,.32) 55%, transparent 78%);
+      filter: blur(8px);
+    }
+    .eyebrow {
+      font-family: "Monoton", cursive;
+      font-size: clamp(1.1rem, 4vw, 1.7rem);
+      letter-spacing: 0.04em;
+      color: var(--cyan);
+      margin: 0 0 26px;
+      text-shadow: 0 0 8px var(--cyan), 0 0 22px rgba(111,242,255,.7), 0 0 40px rgba(111,242,255,.4);
+      animation: buzz 5s infinite;
+    }
+    @keyframes buzz {
+      0%,19%,21%,23%,80%,100% { opacity: 1; }
+      20%,22% { opacity: .55; }
+    }
+    .names {
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: 700;
+      font-size: clamp(2.7rem, 10vw, 4.4rem);
+      line-height: 1.02;
+      margin: 0;
+      color: #fff;
+      text-shadow:
+        0 0 7px #fff,
+        0 0 18px var(--magenta),
+        0 0 38px var(--magenta),
+        0 0 70px rgba(255,106,213,.6);
+    }
+    .names .amp { color: var(--cyan); font-style: italic; text-shadow: 0 0 10px var(--cyan), 0 0 30px var(--cyan); }
+    .date {
+      margin: 20px 0 0;
+      color: var(--amber);
+      font-size: 1rem;
+      letter-spacing: .04em;
+      text-shadow: 0 1px 3px rgba(0,0,0,.8), 0 0 12px rgba(255,178,107,.9);
+    }
+    .headline {
+      margin: 22px auto 0;
+      max-width: 22ch;
+      font-size: 1.35rem;
+      font-weight: 600;
+      color: var(--text);
+      text-shadow: 0 1px 4px rgba(0,0,0,.85), 0 0 14px rgba(111,242,255,.55);
+    }
+
+    /* ---------- Glass panels ---------- */
+    section {
+      background: var(--glass);
+      border: 1px solid var(--glass-line);
+      border-radius: 16px;
+      padding: 30px 28px;
+      margin-bottom: 22px;
+      backdrop-filter: blur(9px);
+      -webkit-backdrop-filter: blur(9px);
+      box-shadow: 0 0 24px rgba(111,242,255,.12), inset 0 0 30px rgba(160,43,156,.10);
+    }
+    h2 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin: 0 0 12px;
+      color: #fff;
+      text-shadow: 0 0 10px var(--magenta), 0 0 24px rgba(255,106,213,.55);
+    }
+    p { margin: 0 0 14px; }
+    p:last-child { margin-bottom: 0; }
+    .muted { color: var(--muted); font-size: .97rem; }
+    a { color: var(--cyan); text-decoration-color: rgba(111,242,255,.5); }
+
+    /* ---------- Neon buttons ---------- */
+    .btn-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 20px; }
+    .btn {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 7px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: .98rem;
+      padding: 12px 20px;
+      border-radius: 8px;
+      border: 1.6px solid var(--cyan);
+      color: var(--cyan);
+      background: rgba(111,242,255,.06);
+      text-shadow: 0 0 8px rgba(111,242,255,.7);
+      box-shadow: 0 0 10px rgba(111,242,255,.35), inset 0 0 10px rgba(111,242,255,.15);
+      transition: box-shadow .18s ease, background .18s ease, transform .12s ease;
+    }
+    .btn:hover {
+      background: rgba(111,242,255,.16);
+      box-shadow: 0 0 18px rgba(111,242,255,.7), inset 0 0 14px rgba(111,242,255,.3);
+    }
+    .btn small { font-weight: 400; font-size: .8rem; opacity: .85; }
+    .btn.zelle { cursor: default; }
+    .btn.zelle small { display: block; margin-top: 2px; }
+    .qr { margin: 22px 0 0; text-align: center; }
+    .qr img {
+      width: 240px; max-width: 72%;
+      background: #fff; padding: 10px; border-radius: 12px;
+      box-shadow: 0 0 20px rgba(111,242,255,.3);
+    }
+    .qr figcaption { margin-top: 8px; color: var(--muted); font-size: .85rem; }
+
+    /* ---------- Photo gallery ---------- */
+    section.gallery {
+      background: none; border: none; box-shadow: none;
+      backdrop-filter: none; -webkit-backdrop-filter: none; padding: 0;
+    }
+    .photos {
+      display: grid;
+      grid-template-columns: 1.6fr 1fr;
+      grid-template-rows: 175px 175px;
+      gap: 12px;
+    }
+    .photos img {
+      width: 100%; height: 100%; object-fit: cover; object-position: center 28%;
+      display: block; border-radius: 14px;
+      border: 1px solid var(--glass-line);
+      box-shadow: 0 0 18px rgba(111,242,255,.20);
+    }
+    .photos img.big { grid-row: 1 / 3; object-position: center; }   /* feature, spans both rows */
+    @media (max-width: 400px) {
+      .photos { grid-template-rows: 140px 140px; }
+    }
+    /* full-width closing photo after the sign-off */
+    .closer { margin: 26px 0 0; }
+    .closer img {
+      width: 100%; display: block; border-radius: 16px;
+      border: 1px solid var(--glass-line);
+      box-shadow: 0 0 22px rgba(111,242,255,.22);
+    }
+    .btn.fill {
+      border-color: var(--magenta);
+      color: #fff;
+      background: rgba(255,106,213,.16);
+      text-shadow: 0 0 10px rgba(255,106,213,.9);
+      box-shadow: 0 0 14px rgba(255,106,213,.55), inset 0 0 12px rgba(255,106,213,.25);
+    }
+    .btn.fill:hover {
+      background: rgba(255,106,213,.3);
+      box-shadow: 0 0 24px rgba(255,106,213,.9), inset 0 0 16px rgba(255,106,213,.4);
+    }
+
+    /* ---------- Closing + footer ---------- */
+    .closing {
+      text-align: center;
+      color: var(--muted);
+      font-style: italic;
+      max-width: 42ch;
+      margin: 34px auto 0;
+      text-shadow: 0 0 10px rgba(111,242,255,.25);
+    }
+    footer {
+      text-align: center;
+      margin-top: 30px;
+      color: var(--muted);
+      font-size: .95rem;
+    }
+    footer strong {
+      color: #fff;
+      text-shadow: 0 0 10px var(--magenta), 0 0 22px rgba(255,106,213,.5);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .stars, .eyebrow { animation: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="stars"></div>
+  <div class="sun"></div>
+  <div class="grid"></div>
+
+  <div class="wrap">
+
+    <!-- ==================== HERO ==================== -->
+    <header class="hero">
+      <p class="eyebrow">We got married</p>
+      <h1 class="names">Stephen <span class="amp">&amp;</span> Erin</h1>
+      <p class="date">FRIDAY, AUGUST 14, 2026 &middot; THE COURTHOUSE</p>
+      <p class="headline">Instead of a wedding, we're building a home.</p>
+    </header>
+
+    <!-- ==================== OUR STORY ==================== -->
+    <section>
+      <h2>How it happened</h2>
+      <p>On a sunny Friday morning, the two of us walked into the courthouse and got married. It took about six minutes. My mom stood with us as our witness. Stephen's dad passed this June, and we felt him with us the whole morning. We had worn our fanciest clothes, and I had found my dress only two days before. When we looked at each other and said the words, it was the easiest yes in the world.</p>
+      <p>We've been together almost five years, so marrying didn't change how we feel. It only said it out loud, and made it ours to keep.</p>
+      <p>Afterward, still dressed up with nowhere we needed to be, we walked over to Bar Gernika and worked our way through more plates of croquetas than we'd like to admit. Then we went home to our very happy pets. It was a small day, and a quiet one, and exactly the one we wanted.</p>
+    </section>
+
+    <!-- ==================== PHOTOS ==================== -->
+    <section class="gallery">
+      <div class="photos">
+        <img class="big" src="photo-1.jpg" alt="Erin and Stephen sharing a kiss in the courthouse lobby" loading="lazy" />
+        <img src="photo-2.jpg" alt="Erin laughing with her bouquet, Stephen beside her in a navy suit" loading="lazy" />
+        <img src="photo-3.jpg" alt="Erin and Stephen together, Erin holding a wildflower bouquet" loading="lazy" />
+      </div>
+    </section>
+
+    <!-- ==================== A NOTE ==================== -->
+    <section>
+      <h2>A note to the people we love</h2>
+      <p>We know some of you would have loved to be there, and we're a little sorry we didn't gather everyone for a big celebration. It was never about leaving anyone out. We just wanted a quiet start, the two of us, and a home to build from.</p>
+      <p>Mostly, we're looking forward to our life here in Idaho, and to filling it with the people we love. Come see us when you can. There's a place at our table, and we can't wait to fill it.</p>
+    </section>
+
+    <!-- ==================== THE HOUSE FUND ==================== -->
+    <section id="fund">
+      <h2>Building a home</h2>
+      <p>We're saving for our first home, and we haven't found it yet. Which means, honestly, we don't have room for much at the moment.</p>
+      <p>So if you'd like to give something, a little toward the down payment helps more than anything. It gets us to the front door sooner, and every bit goes straight there. We'll keep track of each gift so we can thank you properly.</p>
+
+      <div class="btn-row">
+        <a class="btn fill" href="https://venmo.com/u/Erin-Stanley-12" target="_blank" rel="noopener">Venmo</a>
+        <span class="btn zelle">Zelle <small>erin.stanley358@gmail.com</small></span>
+      </div>
+      <p class="muted" style="margin-top:16px;">For Zelle, send to <strong>erin.stanley358@gmail.com</strong> from your bank app and it lands straight in our account. Sending a card? <a href="mailto:passionevoked@icloud.com">Email us</a> and we'll get you our address.</p>
+
+      <figure class="qr">
+        <img src="zelle-qr.png" alt="Zelle QR code - scan in your banking app to send to Erin Stanley" />
+        <figcaption>Or scan to send with Zelle</figcaption>
+      </figure>
+    </section>
+
+    <!-- ==================== REGISTRY ==================== -->
+    <section id="registry">
+      <h2>Rather give something to wrap?</h2>
+      <p>Totally optional, and truly no rush. We've started a small list for once we're moved in, so if a physical gift feels more like you, pick anything here and don't worry about the timing.</p>
+      <div class="btn-row">
+        <!-- MyRegistry (public) -->
+        <a class="btn" href="https://www.myregistry.com/wedding-registry/erin-stanley-and-stephen-stewart-nampa-idaho/5588406" target="_blank" rel="noopener">See the registry</a>
+      </div>
+    </section>
+
+    <!-- ==================== CLOSING ==================== -->
+    <p class="closing">Really, there's no obligation at all. Having you in our lives is the gift. Once we've got a kitchen, come for dinner. We'd love that.</p>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer>
+      <p>With love,<br /><strong>Stephen &amp; Erin</strong></p>
+      <figure class="closer">
+        <img src="photo-4.jpg" alt="Erin and Stephen kissing under string lights at the reception that evening" loading="lazy" />
+      </figure>
+      <p class="muted">Reach us: <a href="mailto:passionevoked@icloud.com">passionevoked@icloud.com</a></p>
+    </footer>
+
+  </div>
+</body>
+</html>
