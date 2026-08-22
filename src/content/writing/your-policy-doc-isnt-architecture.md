@@ -59,6 +59,26 @@ We wrote a free, structured version of this walk, with each rung's next step nam
 
 ---
 
+## Common questions
+
+### What is the difference between an AI policy and AI architecture?
+
+A policy is a document that says what you intend. Architecture is a practice an outsider can check. They use the same words and live in the same folder, but the document says what you mean to do and the practice is what actually happens when an agent runs at two in the morning and no one is watching. You can have a beautiful version of the first and none of the second.
+
+### How do I tell which governance rung my team is on?
+
+Imagine an outsider asks you to prove one rule in your policy actually runs, not to show them the document but to show the rule firing. If your first move is to open the policy PDF, you are on the paper rung. If your first move is to point at code, a log, or a test that exercises the rule, you are higher, and the question becomes how high: can the outsider check it without you, and does the check survive a model change.
+
+### What are the rungs from policy to practice?
+
+On paper: the policy exists as a document and nothing in the running system depends on it. Implemented: the rules the document describes are things the code actually does. Verifiable: someone outside your team can confirm the rules run without taking your word. Durable: the verification survives change, so a provider's model update cannot silently break a rule without anyone knowing.
+
+### Is it bad to be on the paper rung?
+
+No. It is the most common place to be, and it is not dishonesty. It is what happens when the artifact and the practice share a name and only one of them is easy to produce. Knowing which rung you are on is the first useful fact, and you cannot start climbing until you have it.
+
+---
+
 *Licensed under [Creative Commons Attribution 4.0](https://creativecommons.org/licenses/by/4.0/) (CC BY 4.0). Free to use, share, and adapt with attribution to Erin Stanley, Evoked.*
 
 **Related reading:**

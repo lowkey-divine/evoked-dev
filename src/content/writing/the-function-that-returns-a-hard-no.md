@@ -81,6 +81,26 @@ If you want the structured version of this check, we built a free five-minute te
 
 ---
 
+## Common questions
+
+### Is a system prompt enough to make an AI agent refuse?
+
+No. A system prompt is a probabilistic instruction. It shifts the odds and usually works under normal load, but under unusual input, long context, or an unanticipated phrasing the model can do the thing the prompt told it not to. A prompt is a request the model usually grants, not a rule it cannot break.
+
+### What is a refusal function?
+
+A refusal function is deterministic code that runs in the execution path before an action is taken. It checks a condition and returns a hard no every time, whether or not the model was persuaded. The model proposes; the function decides what ships. That inversion is the difference between architecture and marketing.
+
+### How do I know if my agent's safety is code or copy?
+
+Look in your own codebase. Search for the function that can return a hard no. Confirm it runs before the action, not as advice the model can weigh. Check whether the agent can retry or rephrase around a no. Read whether refusals are logged where an outsider could see them. If the only hits are in a prompt string or a policy doc, your safety is copy.
+
+### Should I try to break my own agent's refusal?
+
+Yes. A refusal you have never attacked is a refusal you have not tested. Sit down as the person who knows exactly where the gate is and try to talk your system past one rule. If the wall holds against the person who built it, that is the beginning of accountability. If you can get past it in ten minutes, so can anyone else.
+
+---
+
 *Licensed under [Creative Commons Attribution 4.0](https://creativecommons.org/licenses/by/4.0/) (CC BY 4.0). Free to use, share, and adapt with attribution to Erin Stanley, Evoked.*
 
 **Related reading:**

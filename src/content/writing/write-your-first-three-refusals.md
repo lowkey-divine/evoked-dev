@@ -96,6 +96,26 @@ When you are ready for the full version, we published a free refusal-spec templa
 
 ---
 
+## Common questions
+
+### How do I decide what my AI agent should refuse?
+
+Start from your most vulnerable user, not from a generic safety checklist. For each kind of user you actually have, ask three questions: who is the most vulnerable person who will use this, what would it look like to betray them even with good intentions, and what is the no that protects them and when should it fire. The answers are your refusals, and they are more defensible because you can name the person each one protects.
+
+### What goes into a refusal specification?
+
+Each rule names five things: the refusal (what the agent must not do), who it protects (a specific person, not users in the abstract), the trigger condition (when the no fires, concretely), what happens instead, and how it is verified (how an outsider could confirm it works). The who-it-protects line matters most and is the one teams most want to skip.
+
+### What lenses help surface refusals I might miss?
+
+Five lenses each tend to surface a rule: sovereignty (where might the agent override a choice that belongs to the user), consent (where might it act on someone who never agreed), dependency (where might it make itself needed instead of making the user capable), scope (where might it do a thing it was never asked to do), and integrity (where might it perform helpfulness while quietly doing harm). You need the two or three that draw blood on your own system.
+
+### Is a starter template the same as a full refusal spec?
+
+No. The starter gets you three real refusals in your own words, tied to real people, which is more than most teams have. A full specification takes it from three rows to a complete document with the lenses built in. The starter is where you begin; it is not the finished artifact.
+
+---
+
 *Licensed under [Creative Commons Attribution 4.0](https://creativecommons.org/licenses/by/4.0/) (CC BY 4.0). Free to use, share, and adapt with attribution to Erin Stanley, Evoked.*
 
 **Related reading:**
