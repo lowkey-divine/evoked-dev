@@ -60,6 +60,26 @@ If you want the structured version of this check, the free five-minute test walk
 
 ---
 
+## Common questions
+
+### What is the difference between having logs and being accountable?
+
+Logging is a technical fact. Accountability is a structural one. Having logs means the events are recorded somewhere. Accountability means a person outside the vendor can read that record directly, without the vendor deciding what they see or when. They feel similar until something goes wrong, and then they are nothing alike.
+
+### Why is a log only the vendor can read a problem?
+
+If the only path to the logs runs through the vendor, the vendor controls what you see, controls when you see it, and is the party with the strongest reason to want the record to read a certain way. None of that requires bad faith. It only requires that the party being reviewed also holds the only copy of the review.
+
+### Who counts as someone outside the vendor?
+
+A specific person with a name who has the standing and access to read the logs without asking the vendor's permission: your security lead, an external auditor, a regulator if it comes to that. It does not mean the vendor's compliance page or a support ticket. If you cannot name that person, that is the finding.
+
+### What is a cryptographic chain of custody for logs?
+
+A record with a cryptographic chain of custody can show it has not been altered since it was written, which means even the party holding it cannot quietly change it. It is the difference between trust us, this is what happened and here is what happened, and here is the math that says no one touched it.
+
+---
+
 *Licensed under [Creative Commons Attribution 4.0](https://creativecommons.org/licenses/by/4.0/) (CC BY 4.0). Free to use, share, and adapt with attribution to Erin Stanley, Evoked.*
 
 **Related reading:**
