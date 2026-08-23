@@ -22,7 +22,7 @@ const { Content } = await lesson.render();
 const structuredData = [
   {
     "@type": "LearningResource",
-    name: lesson.data.title,
+    name: lesson.data.question ?? lesson.data.title,
     description: lesson.data.description,
     url: `https://evoked.dev/course/${lesson.slug}/`,
     author: { "@id": "https://evoked.dev/#person" },
@@ -44,7 +44,7 @@ const structuredData = [
 ---
 
 <SovereignLayout
-  title={lesson.data.title}
+  title={lesson.data.question ?? lesson.data.title}
   description={lesson.data.description}
   structuredData={structuredData}
   ogType="article"

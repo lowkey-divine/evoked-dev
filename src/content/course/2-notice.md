@@ -3,6 +3,7 @@ title: "Module 2 - Notice the missing constitution"
 description: "Name what was missing when your agent acted, and write the three refusals that become your first governance file."
 order: 2
 teaches: "Obedience is not safety"
+question: "Why an obedient AI agent is not a safe one"
 ---
 ## Start here
 

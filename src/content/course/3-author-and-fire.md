@@ -3,6 +3,7 @@ title: "Modules 3 & 4 - Author a refusal, then make it fire"
 description: "Write governance from your own refusals, then make one actually stop the agent, not just describe a boundary."
 order: 3
 teaches: "A rule that stops the agent"
+question: "How to write AI agent rules that actually stop it - not just describe limits"
 ---
 ## Start here
 

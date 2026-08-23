@@ -21,6 +21,10 @@ const course = defineCollection({
     description: z.string(),
     order: z.number(),
     teaches: z.string(),
+    // Search/answer-shaped phrasing for the <title> tag and JSON-LD name.
+    // The on-page H1 still uses `title` (e.g. "Module 1 - Enact"); `question`
+    // is the standalone query a searcher would type. Falls back to title.
+    question: z.string().optional(),
   }),
 });
 

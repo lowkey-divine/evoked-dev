@@ -3,6 +3,7 @@ title: "Module 9 - Steward what you made"
 description: "What do you owe what you made? A course that ends at creation teaches abandonment. This one ends at tending."
 order: 9
 teaches: "What you owe what you made"
+question: "What do you owe an AI system after you build it?"
 ---
 ## Start here
 

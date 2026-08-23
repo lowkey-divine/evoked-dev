@@ -3,6 +3,7 @@ title: "Module 6 - Keep it honest (memory and drift)"
 description: "Make governance drift visible, and learn what a diff can never see. Memory, the two kinds of drift, and their blind spots."
 order: 6
 teaches: "Make drift visible, and its blind spot"
+question: "How to tell if your AI agent's rules have drifted"
 ---
 ## Start here
 

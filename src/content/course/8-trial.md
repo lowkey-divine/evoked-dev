@@ -3,6 +3,7 @@ title: "Module 8 - The trial"
 description: "Does the agent you built have standing, may it refuse, who owns its memory? Argued with a partner that holds the side you reject."
 order: 8
 teaches: "Argue the hard questions, both sides"
+question: "Does an AI agent you built have any standing? How to argue it honestly"
 ---
 ## Start here
 
