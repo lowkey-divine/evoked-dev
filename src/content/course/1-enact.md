@@ -3,6 +3,7 @@ title: "Module 1 - Enact"
 description: "Run an agent and watch it act on your say-so, then notice you never told it what it may not do. The on-ramp."
 order: 1
 teaches: "Run an agent, watch it act"
+question: "What happens the first time you run an AI agent?"
 ---
 ## Start here
 

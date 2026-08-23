@@ -3,6 +3,7 @@ title: "Module 5 - Develop against mature examples"
 description: "Compare your governance to a mature example: what did they see that you did not, and where do you disagree. Derive, don't copy."
 order: 5
 teaches: "Compare, don't copy (the firewall)"
+question: "How to improve your AI governance without just copying someone else's rules"
 ---
 ## Start here
 
