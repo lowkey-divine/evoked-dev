@@ -1,4 +1,6 @@
 ---
+import '@fontsource/cormorant-garamond/300.css';
+import '@fontsource/cormorant-garamond/400.css';
 // /score - Sovereignty Score: five governance questions for your agent system.
 // Scored 0-3 per question. Email-gated. Results stored in Neon Postgres.
 // Backend: /api/sovereignty-submit. Blocking conditions met: result card
@@ -178,8 +180,7 @@ import ElevationLayout from '../layouts/ElevationLayout.astro';
 
 <style is:global>
   /* Cormorant Garamond - the quiz's display font, preserved from the
-     pre-hybrid /score implementation. */
-  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&display=swap');
+     pre-hybrid /score implementation. Self-hosted via @fontsource (component script). */
   /* HYBRID: the dark "assessment space" lives inside .score-experience.
      The ElevationLayout body (.elevation-page) stays parchment for the
      sigil header and astrolabe footer. Visitor steps into the dark

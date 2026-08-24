@@ -15,6 +15,16 @@
  * Page content is slotted into <main>. Page-specific styles live in each page.
  */
 
+import '@fontsource/syncopate/400.css';
+import '@fontsource/syncopate/700.css';
+import '@fontsource/eb-garamond/400.css';
+import '@fontsource/eb-garamond/500.css';
+import '@fontsource/eb-garamond/600.css';
+import '@fontsource/space-grotesk/400.css';
+import '@fontsource/space-grotesk/500.css';
+import '@fontsource/space-grotesk/600.css';
+import '@fontsource/space-mono/400.css';
+
 interface Props {
   title: string;
   description?: string;
@@ -56,10 +66,7 @@ const canonicalURL = new URL(Astro.url.pathname, "https://evoked.dev");
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={new URL(ogImage, "https://evoked.dev").href} />
 
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=EB+Garamond:wght@400;500;600&family=Space+Grotesk:wght@400;500;600&family=Space+Mono:wght@400&display=swap" rel="stylesheet" />
+    <!-- Fonts self-hosted via @fontsource (imported in the component script). No Google request. -->
 
     <title>{title} — Evoked</title>
   </head>
