@@ -4,6 +4,7 @@ description: "Does the agent you built have standing, may it refuse, who owns it
 order: 8
 teaches: "Argue the hard questions, both sides"
 question: "Does an AI agent you built have any standing? How to argue it honestly"
+lead: "Whether the agent you built has standing, may refuse you, or owns its memory are open questions with no answer key - so you argue them honestly with a partner that holds the side you reject, instead of the rigged courtroom of your own head. The measure is not which side you land on. It is whether you understood the side you rejected well enough that it would recognize itself in your words."
 ---
 ## Start here
 

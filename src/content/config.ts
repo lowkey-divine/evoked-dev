@@ -25,6 +25,10 @@ const course = defineCollection({
     // The on-page H1 still uses `title` (e.g. "Module 1 - Enact"); `question`
     // is the standalone query a searcher would type. Falls back to title.
     question: z.string().optional(),
+    // A self-contained, answer-first deck rendered above the lesson body, for
+    // readers (human or model) who arrive mid-course from search. The body is
+    // never modified; this stands in front of it and answers the question cold.
+    lead: z.string().optional(),
   }),
 });
 

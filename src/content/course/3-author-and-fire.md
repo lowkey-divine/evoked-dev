@@ -4,6 +4,7 @@ description: "Write governance from your own refusals, then make one actually st
 order: 3
 teaches: "A rule that stops the agent"
 question: "How to write AI agent rules that actually stop it - not just describe limits"
+lead: "Anyone can write the sentence \"this agent may not delete my files.\" The skill is building a rule that actually stops the delete, not one that only describes the boundary. Here you author governance from your own refusals, wire one into a hook that blocks the action before it happens, and then go find where your rule still leaks."
 ---
 ## Start here
 

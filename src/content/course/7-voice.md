@@ -4,6 +4,7 @@ description: "Take a manipulative companion voice apart before you author your o
 order: 7
 teaches: "Welcome that releases, not binds"
 question: "How to give an AI a warm voice without making it manipulative"
+lead: "A welcoming voice makes someone feel they belong and free to leave; a manipulative one uses the same warmth to make leaving feel like a loss. You learn the difference by taking a dependency-creating voice apart before you author your own. Welcome that releases, not welcome that binds."
 ---
 ## Start here
 

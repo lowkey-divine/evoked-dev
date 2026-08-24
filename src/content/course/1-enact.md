@@ -4,6 +4,7 @@ description: "Run an agent and watch it act on your say-so, then notice you neve
 order: 1
 teaches: "Run an agent, watch it act"
 question: "What happens the first time you run an AI agent?"
+lead: "The first time you run an AI agent, it reaches into your files and acts because you asked - and you notice you never told it what it may not do. That gap is where AI governance begins. This module is the on-ramp: you run an agent, watch it act, and sit with what that feels like before any rules exist."
 ---
 ## Start here
 

@@ -4,6 +4,7 @@ description: "What do you owe what you made? A course that ends at creation teac
 order: 9
 teaches: "What you owe what you made"
 question: "What do you owe an AI system after you build it?"
+lead: "What you owe what you made is upkeep, honesty about its state, and the discipline not to let it quietly drift into something you did not intend - whether or not you think it has standing. A course that ends at \"build\" teaches abandonment. This one ends at tending, and its one rule of memory is: append, do not launder."
 ---
 ## Start here
 
