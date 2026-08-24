@@ -4,6 +4,7 @@ description: "Compare your governance to a mature example: what did they see tha
 order: 5
 teaches: "Compare, don't copy (the firewall)"
 question: "How to improve your AI governance without just copying someone else's rules"
+lead: "You improve your AI governance by holding a mature example up against your own and asking two questions at once: what did they guard that you missed, and where do you disagree with them. Copying their file hands you the words and none of the judgment. Here you develop yours - adding what you missed, keeping what is already right, and arguing with what does not fit."
 ---
 ## Start here
 
