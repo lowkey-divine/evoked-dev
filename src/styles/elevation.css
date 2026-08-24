@@ -13,8 +13,16 @@
    the vocabulary walk-through.
    ============================================================ */
 
-/* font stack imports */
-@import url('https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=EB+Garamond:wght@400;500;600&family=Space+Grotesk:wght@400;500;600&family=Space+Mono:wght@400&display=swap');
+/* font stack imports - self-hosted via @fontsource (no Google request) */
+@import '@fontsource/syncopate/400.css';
+@import '@fontsource/syncopate/700.css';
+@import '@fontsource/eb-garamond/400.css';
+@import '@fontsource/eb-garamond/500.css';
+@import '@fontsource/eb-garamond/600.css';
+@import '@fontsource/space-grotesk/400.css';
+@import '@fontsource/space-grotesk/500.css';
+@import '@fontsource/space-grotesk/600.css';
+@import '@fontsource/space-mono/400.css';
 
 :root {
   /* palette - parchment + imperial gold */
