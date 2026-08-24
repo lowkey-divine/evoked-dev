@@ -2,6 +2,12 @@
 import ChatWidget from '../components/ai/ChatWidget.astro';
 import Analytics from '@vercel/analytics/astro';
 import SpeedInsights from '@vercel/speed-insights/astro';
+// Self-hosted fonts (no third-party request to Google). font-display: swap.
+import '@fontsource/inter/400.css';
+import '@fontsource/inter/500.css';
+import '@fontsource/cormorant-garamond/400.css';
+import '@fontsource/cormorant-garamond/500.css';
+import '@fontsource/cormorant-garamond/400-italic.css';
 
 interface Props {
   title: string;
@@ -103,10 +109,7 @@ const canonicalURL = new URL(Astro.url.pathname, "https://evoked.dev");
       )} />
     )}
 
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
+    <!-- Fonts are self-hosted via @fontsource (imported in the component script). No Google request. -->
 
     <title>{title} - evoked.dev</title>
   </head>
