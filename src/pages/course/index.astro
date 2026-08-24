@@ -1,9 +1,19 @@
 ---
 import SovereignLayout from "../../layouts/SovereignLayout.astro";
 import { getCollection } from "astro:content";
+import { faqJsonLd } from "../../lib/structured-data";
 
 const lessons = (await getCollection("course")).sort(
   (a, b) => a.data.order - b.data.order
+);
+
+// Each lesson's search-shaped `question` and self-contained `lead` become a
+// Q&A pair, so the course overview is a citable FAQ routing to every module.
+const courseFaq = faqJsonLd(
+  lessons.map((l) => ({
+    q: l.data.question ?? l.data.title,
+    a: l.data.lead ?? l.data.description,
+  }))
 );
 ---
 
@@ -11,6 +21,7 @@ const lessons = (await getCollection("course")).sort(
   title="Build AI That Honors People - try it"
   description="Two things you can run right now, in your browser, with no account and no sign-up: watch a governance rule stop an AI agent, then watch the same rule leak. The honest front door to the Evoked AI-governance course."
   ogType="website"
+  structuredData={[courseFaq]}
 >
   <article class="course-demo">
     <header class="cd-hero">
