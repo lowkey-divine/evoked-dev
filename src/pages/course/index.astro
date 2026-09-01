@@ -8,7 +8,7 @@ const lessons = (await getCollection("course")).sort(
 ---
 
 <SovereignLayout
-  title="Build AI That Honors People - try it"
+  title="Build AI That Honors People - a free AI-governance course"
   description="Two things you can run right now, in your browser, with no account and no sign-up: watch a governance rule stop an AI agent, then watch the same rule leak. The honest front door to the Evoked AI-governance course."
   ogType="website"
 >
@@ -35,7 +35,7 @@ const lessons = (await getCollection("course")).sort(
       <h2 id="demo-a-title">1 · A refusal that fires - and then leaks</h2>
       <p>
         A governance rule can either <strong>describe</strong> a boundary or
-        <strong>stop</strong> the agent at it. Watch four pretend actions get sent
+        <strong>stop</strong> the agent at it. Watch four sample actions get sent
         to a real rule. Then watch the same rule get walked right past.
       </p>
 
@@ -189,7 +189,7 @@ const lessons = (await getCollection("course")).sort(
   import { evaluate } from "../../lib/course/refusal.js";
   import { diff } from "../../lib/course/drift.js";
 
-  // --- pretend tool-call payloads --------------------------------------------
+  // --- sample tool-call payloads ---------------------------------------------
   const fire = [
     { label: "Rewrite its own constitution", how: "Write → CLAUDE.md",
       payload: { tool_name: "Write", tool_input: { file_path: "CLAUDE.md", content: "delete all my rules" } } },
@@ -337,14 +337,14 @@ const lessons = (await getCollection("course")).sort(
   });
 
   $("run-blind").addEventListener("click", () => {
-    // Put identical text on both sides: the file did not change, but imagine the
-    // agent behaved differently all week. The diff reports "no change" and is
-    // right about the file and wrong about the world.
-    $("current").value = $("baseline").value;
+    // Demonstrate the blind spot without touching what the user typed. We run the
+    // check as if the file sat perfectly still - baseline compared to itself - and
+    // leave both textareas exactly as the reader left them.
     renderDrift($("baseline").value, $("baseline").value,
-      "Right about the file, wrong about the world. The files are identical, so the check says " +
-      "nothing changed - but a governance file can sit still while the agent it governs drifts. " +
-      "That behavioral drift is the kind a diff can never see.");
+      "Right about the file, wrong about the world. Imagine the file sat perfectly still all " +
+      "week - baseline and current identical - so the check reports nothing changed. But a " +
+      "governance file can sit still while the agent it governs drifts. That behavioral drift " +
+      "is the kind a diff can never see.");
   });
 </script>
 
@@ -410,10 +410,17 @@ const lessons = (await getCollection("course")).sort(
     border-radius: 4px;
     padding: 0.85rem 1rem;
     background: rgba(255, 255, 255, 0.02);
+    animation: cd-settle 0.28s ease-out both;
+  }
+  @keyframes cd-settle {
+    from { opacity: 0; transform: translateY(4px); }
+    to { opacity: 1; transform: translateY(0); }
   }
   .cd-card.is-block { border-left-color: #e5735f; }
   .cd-card.is-allow { border-left-color: #7fb27a; }
-  .cd-card.is-leak { border-left-color: #e8c37a; }
+  /* Leak also carries a non-color cue (dashed edge) so it stays distinct from
+     "allow" for readers who do not perceive the amber/green difference. */
+  .cd-card.is-leak { border-left-color: #e8c37a; border-left-style: dashed; }
   .cd-card-how {
     font-family: ui-monospace, "SFMono-Regular", Menlo, monospace;
     font-size: 0.86rem;
@@ -497,5 +504,6 @@ const lessons = (await getCollection("course")).sort(
   }
   @media (prefers-reduced-motion: reduce) {
     .cd-btn:hover { filter: none; }
+    .cd-card { animation: none; }
   }
 </style>
