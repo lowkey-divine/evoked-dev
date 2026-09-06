@@ -1,0 +1,126 @@
+---
+import ElevationLayout from '../layouts/ElevationLayout.astro';
+import Hero from '../components/elevation/Hero.astro';
+import Section from '../components/elevation/Section.astro';
+
+/*
+  Bio-link page. Points the Instagram (and any social) bio here instead of a
+  third-party service like Linktree - own the canonical surface, rent only the
+  reach. No external scripts, so the /legal/site-privacy "watch the network"
+  promise needs no change. Voice held to distributed-content discipline:
+  no em/en dashes, no sycophancy markers, no AI-slop vocabulary.
+
+  Each row is a rung. Ordered front-door first (free course), ending on the
+  one paid/contact rung (request a call). Hoshi holds the voice on labels.
+*/
+
+const links = [
+  {
+    label: "Start free: the AI-governance course",
+    note: "Eight short lessons. Build AI that honors the people who use it.",
+    href: "/course",
+  },
+  {
+    label: "Free 5-minute Sovereignty Check",
+    note: "Six questions that reveal whether a product honors or exploits its users.",
+    href: "/score",
+  },
+  {
+    label: "Read the essays",
+    note: "On AI, sovereignty, and refusing both the hype and the shrug.",
+    href: "/writing",
+  },
+  {
+    label: "Tools and frameworks",
+    note: "Assessments, restraint specs, and governance starter kits.",
+    href: "/products",
+  },
+  {
+    label: "Work with Erin",
+    note: "Request a call about a sovereignty audit or advisory engagement.",
+    href: "/sovereignty-audit-intake",
+  },
+];
+---
+
+<ElevationLayout
+  title="Links"
+  description="Start here. The free course, the sovereignty check, the writing, the tools, and how to work with Erin."
+>
+  <Hero
+    headline="Start here."
+    metaphor={["Everything in one place."]}
+    sub="Whatever brought you here, this is the front door. Start with the free course, or wherever calls to you."
+  />
+
+  <Section marker="LINK · TREE" heading="Where to go next">
+    <ul class="link-list">
+      {links.map((l) => (
+        <li>
+          <a href={l.href}>
+            <span class="link-label">{l.label}</span>
+            <span class="link-note">{l.note}</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </Section>
+
+  <Section marker="NOTA · BENE" closing={true}>
+    <p class="links-close">We evoke. We never extract.</p>
+  </Section>
+</ElevationLayout>
+
+<style>
+  /* Large tap targets, mobile-first - this page is opened from a phone via a
+     social bio link. Brass-left-rule rows echo /resources. */
+  .link-list {
+    list-style: none;
+    padding: 0;
+    margin: clamp(1.25rem, 1rem + 0.75vw, 1.75rem) 0 0;
+  }
+  .link-list li {
+    margin-bottom: clamp(0.85rem, 0.7rem + 0.5vw, 1.1rem);
+  }
+  .link-list li:last-child { margin-bottom: 0; }
+  .link-list a {
+    display: block;
+    padding: 1.1rem 1.25rem;
+    border-left: 2px solid var(--el-accent);
+    background: var(--el-surface, rgba(0, 0, 0, 0.02));
+    text-decoration: none;
+    transition: background 0.15s ease, border-color 0.15s ease;
+  }
+  .link-list a:hover,
+  .link-list a:focus-visible {
+    background: rgba(0, 0, 0, 0.05);
+    border-color: var(--el-text-deep);
+  }
+  .link-label {
+    display: block;
+    font-family: var(--el-body);
+    font-size: clamp(1.05rem, 1rem + 0.35vw, 1.25rem);
+    font-weight: 500;
+    color: var(--el-text-deep);
+    line-height: 1.4;
+  }
+  .link-note {
+    display: block;
+    margin-top: 0.3rem;
+    font-family: var(--el-body);
+    font-size: clamp(0.9rem, 0.85rem + 0.2vw, 1rem);
+    color: var(--el-text-soft);
+    line-height: 1.5;
+    max-width: 52ch;
+  }
+  .links-close {
+    font-family: var(--el-body);
+    font-style: italic;
+    font-size: clamp(1.15rem, 1.05rem + 0.5vw, 1.4rem);
+    line-height: 1.5;
+    color: var(--el-text-deep);
+    text-align: center;
+    margin: 0 auto;
+    max-width: 36ch;
+  }
+</style>
