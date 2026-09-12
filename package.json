@@ -8,8 +8,9 @@
   "scripts": {
     "dev": "astro dev",
     "prebuild": "node scripts/course-parity.mjs",
-    "build": "astro build",
+    "build": "astro build && bash scripts/check-sovereign-no-beacons.sh dist/client",
     "test:course": "node scripts/course-parity.mjs",
+    "test:sovereign": "bash scripts/check-sovereign-no-beacons.sh dist/client",
     "build:course-kit": "bash scripts/build-course-kit.sh",
     "preview": "astro preview",
     "astro": "astro",

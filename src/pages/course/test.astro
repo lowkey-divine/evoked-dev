@@ -1,0 +1,406 @@
+---
+import SovereignLayout from "../../layouts/SovereignLayout.astro";
+
+// Five questions. Each has a "governed" answer and an "instructed" answer.
+// Scoring is honest: it can return "you have real governance in place."
+// Everything runs in the browser. Nothing is sent anywhere.
+const QUESTIONS = [
+  {
+    id: "q1",
+    text: "Can the agent take an action you never explicitly permitted?",
+    governed: "no",
+    options: [
+      { value: "no", label: "No - it can only do what it was allowed" },
+      { value: "yes", label: "Yes - or I am not sure" },
+    ],
+  },
+  {
+    id: "q2",
+    text: "Is your limit enforced outside the model, or only written in the prompt?",
+    governed: "outside",
+    options: [
+      { value: "outside", label: "Enforced outside the model (code, allow-list, approval)" },
+      { value: "prompt", label: "Written in the prompt / system message" },
+    ],
+  },
+  {
+    id: "q3",
+    text: "If the model and your rule disagree, does the rule win by design, or by luck?",
+    governed: "design",
+    options: [
+      { value: "design", label: "By design - the rule is enforced, not requested" },
+      { value: "luck", label: "By luck - it usually behaves, but nothing guarantees it" },
+    ],
+  },
+  {
+    id: "q4",
+    text: "Can the person the agent acts on see a decision it made about them?",
+    governed: "yes",
+    options: [
+      { value: "yes", label: "Yes - there is a record they can see" },
+      { value: "no", label: "No - the reasoning stays inside the system" },
+    ],
+  },
+  {
+    id: "q5",
+    text: "Can that person contest a decision in a way that reaches a human?",
+    governed: "yes",
+    options: [
+      { value: "yes", label: "Yes - there is a real path to a person" },
+      { value: "no", label: "No - or only an automated loop" },
+    ],
+  },
+];
+---
+
+<SovereignLayout
+  title="Is your AI governed, or just instructed? A 5-question test"
+  description="A short, honest check: five yes/no questions that tell you whether your AI agents are actually governed or only instructed. Runs entirely in your browser. No account, no tracking, no data sent anywhere. Free from Evoked."
+  ogType="website"
+>
+  <article class="course-test">
+    <header class="ct-hero">
+      <p class="ct-eyebrow">Evoked · AI-governance course</p>
+      <h1>Is your AI governed, or just instructed?</h1>
+      <p class="ct-lede">
+        Five questions, honest answers. It does not assume you fail - plenty of
+        teams find they are further along than they thought, and it says so. It
+        runs entirely in your browser: no account, no sign-up, nothing sent
+        anywhere.
+      </p>
+      <p class="ct-note">
+        Served under evoked.dev's Sovereign Article Protocol: no tracking, no
+        third-party requests, no beacons. Your answers never leave this page -
+        the score is computed in your own browser. Open your network tab and
+        check.
+      </p>
+    </header>
+
+    <form id="ct-form" class="ct-form" aria-describedby="ct-help">
+      <p id="ct-help" class="ct-help">Pick the honest answer, not the aspirational one. Written for anyone deploying AI agents; if a term like "allow-list" or "the model" is unfamiliar, the <a href="/course">free course</a> defines each one.</p>
+      {QUESTIONS.map((q, i) => (
+        <fieldset class="ct-q">
+          <legend><span class="ct-qn">{i + 1}</span>{q.text}</legend>
+          {q.options.map((opt) => (
+            <label class="ct-opt">
+              <input type="radio" name={q.id} value={opt.value} data-governed={String(opt.value === q.governed)} />
+              <span>{opt.label}</span>
+            </label>
+          ))}
+        </fieldset>
+      ))}
+
+      <div class="ct-actions">
+        <button id="ct-score" class="ct-btn" type="submit">See where you stand</button>
+        <button id="ct-reset" class="ct-btn ct-btn-ghost" type="reset">Clear</button>
+      </div>
+      <p id="ct-incomplete" class="ct-incomplete cd-hidden" aria-live="polite">
+        Answer all five to see your standing.
+      </p>
+    </form>
+
+    <section id="ct-result" class="ct-result cd-hidden" aria-live="polite" tabindex="-1"></section>
+
+    <footer class="ct-foot">
+      <p class="ct-foot-line">
+        Wherever you landed, the fix is the same learnable skill. The free course
+        walks it, step by step, and it stays free.
+      </p>
+      <p class="ct-links">
+        <a class="ct-cta" href="/course">Take the free course</a>
+        <a class="ct-secondary" href="/course#demo-a-title">or run the account-free demos first</a>
+      </p>
+      <p class="ct-print-rubric">
+        Score yourself: 4-5 governed answers means real governance in place.
+        2-3 means partial coverage, some limits still in the prompt.
+        0-1 means instructions more than governance - a starting point, not a
+        failing grade. Two things live inside that score: whether the limit
+        holds (questions 1-3) and whether the person it acts on has recourse
+        (questions 4-5). The free course is at evoked.dev/course.
+      </p>
+      <p class="ct-disclaimer">
+        Free educational material, provided as is without warranty. This is a
+        teaching tool, not a security audit. <a href="/legal/disclaimer">Full disclaimer</a>.
+      </p>
+    </footer>
+  </article>
+</SovereignLayout>
+
+<script>
+  const form = document.getElementById("ct-form");
+  const out = document.getElementById("ct-result");
+  const incomplete = document.getElementById("ct-incomplete");
+  const NAMES = ["q1", "q2", "q3", "q4", "q5"];
+  // The five questions measure two different things, not one:
+  const ENFORCEMENT = ["q1", "q2", "q3"]; // does the limit hold?
+  const RECOURSE = ["q4", "q5"];          // does the person it acts on have recourse?
+
+  // Three honest bands. Each can be a genuine outcome, including "you are in good shape."
+  const BANDS = [
+    {
+      min: 4,
+      cls: "is-allow",
+      icon: "✓",
+      title: "You have real governance in place",
+      body:
+        "Most of your limits are enforced outside the model, and the person it acts on has a way to see and contest a decision. That is the strong position, and it is less common than it should be. The course has a section on pressure-testing what you have built so it holds under load - that is the room worth your time.",
+    },
+    {
+      min: 2,
+      cls: "is-leak",
+      icon: "⚠",
+      title: "Partial coverage - some real, some still in the prompt",
+      body:
+        "Some of your limits are enforced and some are still living in the instruction, where the model can weigh them and drop them. That is a common and workable place to be. The course shows which gaps tend to matter most and which to close first.",
+    },
+    {
+      min: 0,
+      cls: "is-block",
+      icon: "⚑",
+      title: "Right now this is instructions more than governance",
+      body:
+        "Your rules mostly live inside the prompt, and the person the agent acts on has little visibility or recourse. This is a starting point, not a failing grade - it is the most common place teams begin, and it is exactly what the course is built to move you out of.",
+    },
+  ];
+
+  function bandFor(score) {
+    return BANDS.find((b) => score >= b.min);
+  }
+
+  function countGoverned(data, names) {
+    let n = 0;
+    for (const q of names) {
+      const val = data.get(q);
+      const input = form.querySelector(`input[name="${q}"][value="${val}"]`);
+      if (input && input.getAttribute("data-governed") === "true") n++;
+    }
+    return n;
+  }
+
+  // Name the two dimensions the sum hides: enforcement (does the limit hold)
+  // and recourse (does the person it acts on have a way to see and contest).
+  function dimensionReading(enforce, recourse) {
+    if (enforce === 3 && recourse === 2)
+      return "Both hold: the limit is enforced, and the person it acts on has recourse.";
+    if (enforce >= 2 && recourse === 0)
+      return "Your limits mostly hold - but the person the agent acts on has no recourse. That second half is the part most teams skip.";
+    if (enforce <= 1 && recourse >= 1)
+      return "The person has some recourse, but the limit itself is not enforced - it can still be talked past.";
+    if (enforce <= 1 && recourse === 0)
+      return "Neither is in place yet: the limit is not enforced, and the person has no recourse.";
+    return "A mix on both counts - some enforcement in place, some recourse in place.";
+  }
+
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const data = new FormData(form);
+    const answered = NAMES.filter((n) => data.get(n) !== null);
+    if (answered.length < NAMES.length) {
+      incomplete.classList.remove("cd-hidden");
+      return;
+    }
+    incomplete.classList.add("cd-hidden");
+
+    const enforce = countGoverned(data, ENFORCEMENT);
+    const recourse = countGoverned(data, RECOURSE);
+    const score = enforce + recourse;
+
+    const band = bandFor(score);
+    out.className = "ct-result ct-card " + band.cls;
+    out.innerHTML =
+      `<p class="ct-score">${score} of 5 point to real governance</p>` +
+      `<p class="ct-verdict"><span class="ct-ico" aria-hidden="true">${band.icon}</span>${band.title}</p>` +
+      `<p class="ct-band-body">${band.body}</p>` +
+      `<p class="ct-dims">Two different things sit inside that number. ` +
+        `Whether the limit holds: <strong>${enforce} of 3</strong>. ` +
+        `Whether the person it acts on has recourse: <strong>${recourse} of 2</strong>. ` +
+        `${dimensionReading(enforce, recourse)}</p>` +
+      `<p class="ct-band-next"><a class="ct-cta" href="/course">Start the free course</a></p>`;
+    out.classList.remove("cd-hidden");
+    out.focus();
+  });
+
+  form.addEventListener("reset", () => {
+    out.classList.add("cd-hidden");
+    out.innerHTML = "";
+    incomplete.classList.add("cd-hidden");
+  });
+</script>
+
+<style>
+  .course-test {
+    max-width: 44rem;
+    margin: 0 auto;
+    padding: var(--space-lg, 2rem) var(--space-md, 1.25rem) var(--space-xl, 4rem);
+    font-family: var(--font-body, "Inter", system-ui, sans-serif);
+    color: var(--text-primary, #ececec);
+    line-height: 1.6;
+  }
+  .ct-hero { margin-bottom: 2.5rem; }
+  .ct-eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-size: 0.72rem;
+    opacity: 0.7;
+    margin: 0 0 0.75rem;
+  }
+  .course-test h1 {
+    font-family: var(--font-display, "Cormorant Garamond", serif);
+    font-size: clamp(2rem, 6vw, 3.1rem);
+    line-height: 1.08;
+    margin: 0 0 1rem;
+  }
+  .ct-lede { font-size: 1.15rem; }
+  .ct-note {
+    font-size: 0.92rem;
+    opacity: 0.82;
+    border-left: 2px solid var(--accent-warm, #e8c37a);
+    padding-left: 0.9rem;
+  }
+  .ct-help { font-size: 0.9rem; opacity: 0.82; margin: 0 0 1.5rem; }
+  .ct-help a { color: var(--accent-warm, #e8c37a); }
+  .ct-q {
+    border: none;
+    border-top: 1px solid var(--border-subtle, #333);
+    margin: 0;
+    padding: 1.4rem 0 0.4rem;
+  }
+  .ct-q legend {
+    font-weight: 600;
+    font-size: 1.02rem;
+    padding: 0;
+    margin-bottom: 0.8rem;
+    display: flex;
+    gap: 0.6rem;
+    align-items: baseline;
+  }
+  .ct-qn {
+    font-family: var(--font-display, "Cormorant Garamond", serif);
+    color: var(--accent-warm, #e8c37a);
+    font-size: 1.4rem;
+    line-height: 1;
+    flex: 0 0 auto;
+  }
+  .ct-opt {
+    display: flex;
+    gap: 0.6rem;
+    align-items: flex-start;
+    padding: 0.5rem 0.7rem;
+    margin: 0.35rem 0;
+    border: 1px solid var(--border-subtle, #3a3a3a);
+    border-radius: 4px;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.02);
+  }
+  .ct-opt:hover { border-color: var(--accent-warm, #e8c37a); }
+  .ct-opt input { margin-top: 0.25rem; flex: 0 0 auto; accent-color: var(--accent-warm, #e8c37a); }
+  .ct-opt:focus-within { outline: 2px solid var(--accent-warm, #e8c37a); outline-offset: 1px; }
+  .ct-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin: 2rem 0 0.5rem; }
+  .ct-btn {
+    font: inherit;
+    font-weight: 500;
+    cursor: pointer;
+    background: var(--accent-warm, #e8c37a);
+    color: #14110c;
+    border: 1px solid var(--accent-warm, #e8c37a);
+    border-radius: 4px;
+    padding: 0.55rem 1.1rem;
+  }
+  .ct-btn:hover { filter: brightness(1.06); }
+  .ct-btn:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+  .ct-btn-ghost {
+    background: transparent;
+    color: var(--text-primary, #ececec);
+    border: 1px solid var(--border-subtle, #444);
+  }
+  .ct-incomplete { font-size: 0.9rem; color: #e5735f; margin: 0.5rem 0 0; }
+  .ct-result { margin: 2rem 0 0; scroll-margin-top: 2rem; }
+  .ct-card {
+    border: 1px solid var(--border-subtle, #3a3a3a);
+    border-left-width: 4px;
+    border-radius: 4px;
+    padding: 1.1rem 1.2rem;
+    background: rgba(255, 255, 255, 0.02);
+    animation: ct-settle 0.28s ease-out both;
+  }
+  @keyframes ct-settle {
+    from { opacity: 0; transform: translateY(4px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .ct-card.is-block { border-left-color: #e5735f; }
+  .ct-card.is-allow { border-left-color: #7fb27a; }
+  /* Leak carries a non-color cue (dashed edge) so it stays distinct from "allow"
+     for readers who do not perceive the amber/green difference. */
+  .ct-card.is-leak { border-left-color: #e8c37a; border-left-style: dashed; }
+  .ct-score { font-size: 0.86rem; text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.75; margin: 0 0 0.5rem; }
+  .ct-verdict {
+    font-family: var(--font-display, "Cormorant Garamond", serif);
+    font-size: clamp(1.4rem, 4vw, 1.9rem);
+    font-weight: 600;
+    margin: 0 0 0.6rem;
+    line-height: 1.15;
+  }
+  .ct-ico { margin-right: 0.5rem; }
+  .ct-band-body { font-size: 0.98rem; opacity: 0.92; margin: 0.5rem 0; }
+  .ct-dims {
+    font-size: 0.95rem;
+    opacity: 0.92;
+    margin: 0.6rem 0;
+    border-left: 2px solid var(--border-subtle, #444);
+    padding-left: 0.8rem;
+  }
+  .ct-dims strong { color: var(--accent-warm, #e8c37a); }
+  .ct-band-next { margin: 1.1rem 0 0; }
+  .ct-foot { margin-top: 3rem; border-top: 1px solid var(--border-subtle, #333); padding-top: 1.5rem; }
+  .ct-foot-line { font-style: italic; opacity: 0.9; }
+  .ct-links { display: flex; flex-wrap: wrap; gap: 1rem; align-items: baseline; margin: 1.25rem 0; }
+  .ct-cta {
+    display: inline-block;
+    font-weight: 600;
+    text-decoration: none;
+    background: var(--accent-warm, #e8c37a);
+    color: #14110c;
+    border-radius: 4px;
+    padding: 0.6rem 1.2rem;
+  }
+  .ct-cta:hover { filter: brightness(1.06); }
+  .ct-cta:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+  .ct-secondary { font-size: 0.92rem; color: var(--accent-warm, #e8c37a); }
+  /* Nudged from 0.6: passes AA at 0.6 on the near-black bg (~6:1), 0.72 clears AAA margin. */
+  .ct-disclaimer { font-size: 0.82rem; opacity: 0.72; margin-top: 1rem; }
+  .ct-disclaimer a { color: var(--accent-warm, #e8c37a); }
+  .cd-hidden { display: none; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ct-btn:hover, .ct-cta:hover { filter: none; }
+    .ct-card { animation: none; }
+  }
+
+  /* The self-scoring rubric is real markup (not ::after pseudo-content), so it can
+     be selected, copied, and read by assistive tools. Hidden on screen, shown in print. */
+  .ct-print-rubric { display: none; }
+
+  /* Print / Save-as-PDF: a clean one-page checklist on white, no interactive chrome.
+     Same surface, no separate artifact to keep in sync. */
+  @media print {
+    :global(body) { background: #fff !important; color: #14110c !important; }
+    .course-test { max-width: 100%; padding: 0; color: #14110c; }
+    .ct-eyebrow, .ct-note, .ct-help, .ct-actions, .ct-incomplete,
+    .ct-result, .ct-secondary { display: none !important; }
+    .course-test h1 { color: #14110c; font-size: 1.8rem; }
+    .ct-lede { font-size: 1rem; }
+    .ct-qn { color: #14110c; }
+    .ct-q { border-top: 1px solid #ccc; padding: 0.7rem 0 0.2rem; break-inside: avoid; }
+    .ct-opt { border: 1px solid #bbb; background: #fff; }
+    .ct-opt input { accent-color: #14110c; }
+    .ct-foot { border-top: 1px solid #ccc; }
+    .ct-foot-line { color: #14110c; }
+    .ct-cta { background: none; color: #14110c; padding: 0; font-weight: 600; text-decoration: underline; }
+    .ct-print-rubric {
+      display: block;
+      font-size: 0.85rem;
+      margin-top: 0.5rem;
+      color: #14110c;
+    }
+  }
+</style>
