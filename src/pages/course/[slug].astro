@@ -22,7 +22,7 @@ const { Content } = await lesson.render();
 const structuredData = [
   {
     "@type": "LearningResource",
-    name: lesson.data.title,
+    name: lesson.data.question ?? lesson.data.title,
     description: lesson.data.description,
     url: `https://evoked.dev/course/${lesson.slug}/`,
     author: { "@id": "https://evoked.dev/#person" },
@@ -44,7 +44,7 @@ const structuredData = [
 ---
 
 <SovereignLayout
-  title={lesson.data.title}
+  title={lesson.data.question ?? lesson.data.title}
   description={lesson.data.description}
   structuredData={structuredData}
   ogType="article"
@@ -54,6 +54,7 @@ const structuredData = [
     <p class="cl-eyebrow"><a href="/course">Evoked · AI-governance course</a></p>
     <h1>{lesson.data.title}</h1>
     <p class="cl-carry">{lesson.data.teaches}</p>
+    {lesson.data.lead && <p class="cl-lead">{lesson.data.lead}</p>}
     <div class="cl-body">
       <Content />
     </div>
@@ -123,7 +124,16 @@ const structuredData = [
   .cl-carry {
     font-size: 1.05rem;
     color: var(--accent-warm, #e8c37a);
-    margin: 0 0 1.75rem;
+    margin: 0 0 1.25rem;
+  }
+  .cl-lead {
+    font-size: 1.12rem;
+    line-height: 1.6;
+    color: var(--text-primary, #ececec);
+    opacity: 0.95;
+    border-left: 2px solid var(--accent-warm, #e8c37a);
+    padding-left: 1rem;
+    margin: 0 0 2rem;
   }
   .cl-body :global(h2) {
     font-family: var(--font-display, serif);
