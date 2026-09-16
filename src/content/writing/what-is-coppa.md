@@ -54,11 +54,11 @@ But here's the truth. Most apps never go through it. They self-declare. They che
 
 The methods are not sophisticated. They're just unchallenged.
 
-**The "General Audience" Shield.** COPPA applies to services "directed to children" or where the operator has "actual knowledge" of child users. So companies simply... claim they don't know. They set a minimum age of 13 in their terms of service and declare the problem solved. Never mind that their entire design - the characters, the colors, the marketing - screams children. On paper? No child users here.
+**The "General Audience" Shield.** COPPA applies to services "directed to children" or where the operator has "actual knowledge" of child users. So a company can classify a child-directed app as "general audience." Set a minimum age of 13 in the terms of service, and the self-certification system takes the declaration at face value. Never mind that the design - the characters, the colors, the marketing - is plainly aimed at children. On paper, no child users here.
 
-**Age Gates That Gate Nothing.** A date-of-birth field that a six-year-old can lie on is not parental consent. It's a legal fig leaf. Research shows parents themselves often help their children bypass these gates - because the gates are designed to be bypassed. They exist to create plausible deniability, not protection.
+**Age Gates That Gate Nothing.** A date-of-birth field that a six-year-old can lie on is not parental consent. It's a legal fig leaf. Research shows parents themselves often help their children bypass these gates - because the gates are trivially bypassable. They function as plausible deniability, not protection.
 
-**The SDK Blind Spot.** This is the big one - and it's the one that keeps me up at night. A developer might genuinely try to build a safe app - and then embed a third-party advertising SDK that silently collects device IDs, geolocation, and behavioral data on every child who opens it. 19% of children's apps use SDKs whose own terms of service prohibit use in child-directed apps. The SDK knows it shouldn't be there. The developer either doesn't know or doesn't check.
+**The SDK Blind Spot.** This is the big one - and it's the one that keeps me up at night. A developer might genuinely try to build a safe app - and then embed a third-party advertising SDK that silently collects device IDs, geolocation, and behavioral data on every child who opens it. 19% of children's apps use SDKs whose own terms of service prohibit use in child-directed apps. By its own terms, the SDK does not belong there. The developer either doesn't know or doesn't check.
 
 The FTC said it plainly in September 2025: "Using a third party's software in your app? Make sure you're all complying with COPPA." The developer is legally responsible for what their third-party code does. Most developers have never audited what their third-party code does.
 
@@ -87,7 +87,7 @@ These are the cases that made it to enforcement. The FTC brings a handful per ye
 COPPA is a data collection law. It was written in 1998. It does not address:
 
 - **Algorithmic manipulation:** Recommendation engines that amplify harmful content to children. Eating disorders. Self-harm. Rage. The data feeds the algorithms, but the algorithms themselves? Unregulated.
-- **Attention harvesting:** Infinite scroll, autoplay, notification bombardment, streaks. Design patterns engineered to maximize screen time - built on decades of behavioral psychology research - deployed on developing minds.
+- **Attention harvesting:** Infinite scroll, autoplay, notification bombardment, streaks. Design patterns that maximize screen time - built on decades of behavioral psychology research - deployed on developing minds.
 - **Teens:** COPPA protects children under 13. Thirteen-year-olds - arguably the most psychologically vulnerable digital users on the planet - have zero federal privacy protection. COPPA 2.0 would extend protection through age 16. It has not yet become law.
 - **Mental health:** There is a documented, direct line between platform data practices and the adolescent mental health crisis. COPPA does not address downstream harms. What companies do with what they collect - that's a different fight entirely.
 

@@ -53,7 +53,7 @@ Two reasons, and both matter.
 
 The first is that the toolkits poured their effort into cells that were already near the top. Ostrom's principle on monitoring was already maxed at 3 in the spring, because Microsoft had cryptographic identity and verifiable audit from the start. You cannot score a 4 out of 3. When the 2026 additions arrived - the audit spans, the OpenTelemetry hooks, the delegation chains that narrow scope - they made an already-strong cell stronger without changing its number. The investment landed exactly where there was no room left.
 
-The second reason is the one the toolkits are counting on you not to notice. The three principles that scored zero are the participation principles - whether the agent or the person it acts upon has any say in the rules. Not one 2026 release touched them. And they were never going to, because every one of those releases is built on the same assumption: the agent is a thing to be controlled, and the person is a thing to be decided about. Better control does not become participation no matter how much of it you ship.
+The second reason is the one easiest to miss in the release notes. The three principles that scored zero are the participation principles - whether the agent or the person it acts upon has any say in the rules. Not one 2026 release touched them. And the structure is consistent: every one of those releases treats the agent as a thing to be controlled, and the person as a thing to be decided about. Better control does not become participation no matter how much of it you ship.
 
 So the total held at 9. Enforcement improved across the board. Participation is still zero everywhere.
 
@@ -75,7 +75,7 @@ If you shipped an agent this year and added a governance toolkit to it, you did 
 
 I am here to tell you what it did not buy. It did not give the person your agent acts upon a way to know it happened, understand it, or challenge it. It did not give your agent a way to refuse an instruction and have that refusal read as a signal instead of a fault. It moved you up the enforcement axis and left you at zero on the participation axis, and the second one is the one that separates a governed system from a controlled one.
 
-The frameworks are not going to close that gap for you, because they were designed on the assumption it does not need closing. That part is yours.
+The frameworks are not going to close that gap for you. Nothing in them is structured to close it. That part is yours.
 
 ## The rung
 
