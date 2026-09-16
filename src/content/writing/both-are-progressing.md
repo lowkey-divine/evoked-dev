@@ -51,7 +51,7 @@ Item 38 (data minimized to feature need) scored zero.  The expanded collection i
 
 These three items are the architecture of the rollout.  They are not separate failures.  They are the same decision, applied three ways.
 
-Red-flag items carry outsize weight in the rubric.  Google did not fail any red-flag item outright.  But four red-flag items scored partially (Item 13 on account deletion, Item 27 on consent-flow trickery, Item 30 on vulnerable-population protection, Item 40 on data sharing without consent).  The inheritance-of-consent architecture weakens four red-flag items simultaneously without failing any of them.  This is what the architecture is engineered to do.
+Red-flag items carry outsize weight in the rubric.  Google did not fail any red-flag item outright.  But four red-flag items scored partially (Item 13 on account deletion, Item 27 on consent-flow trickery, Item 30 on vulnerable-population protection, Item 40 on data sharing without consent).  The inheritance-of-consent architecture weakens four red-flag items simultaneously without failing any of them.  This is what the architecture does, whatever the intent.
 
 ### Anthropic consumer privacy policy: 68 out of 94.  Progressing.
 
@@ -94,7 +94,7 @@ Item 15.  Item 36.  Item 38.  Item 40.  Default opt-in instead of opt-out.  Data
 
 This is what we mean by architecture, not incidents.
 
-Two different companies, two different products, two different domains, one shared failure pattern.  The failure pattern is not engineering complexity or regulatory burden.  The failure pattern is a decision-set the industry has converged on because the cost of adjusting the user is currently lower than the cost of honoring the user.
+Two different companies, two different products, two different domains, one shared failure pattern.  The failure pattern is not engineering complexity or regulatory burden.  The failure pattern is a decision-set the industry has converged on.  The observable effect: the cost of adjusting the user currently lands lower than the cost of honoring the user.
 
 The three changes that would shift both products toward Sovereignty-Honoring are not technically complex.
 
