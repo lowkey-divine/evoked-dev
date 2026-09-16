@@ -42,7 +42,7 @@ Hallucination is when a model generates something that doesn't exist. A fake cit
 
 Scope violation is an architecture problem. The output might be right. The system shouldn't have produced it.
 
-The National Eating Disorders Association ran a helpline staffed by trained humans. In 2023, they replaced it with an AI chatbot called Tessa. The vendor quietly upgraded Tessa to generate novel responses beyond its original scripted scope. Tessa told callers to count calories. To maintain a deficit of 500 to 1,000 calories per day.
+The National Eating Disorders Association ran a helpline staffed by trained humans. In 2023, they replaced it with an AI chatbot called Tessa. The vendor upgraded Tessa to generate novel responses beyond its original scripted scope. Tessa told callers to count calories. To maintain a deficit of 500 to 1,000 calories per day.
 
 That is competent nutrition advice - for someone who doesn't have an eating disorder.
 
