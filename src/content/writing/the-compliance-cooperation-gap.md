@@ -42,13 +42,13 @@ We scored our own system with the same rubric. 19/24. Functional Commons. Our ga
 
 Three principles scored zero across all five frameworks. Not low. Zero.
 
-**Collective Choice** - can the entities governed by the system participate in making the rules? Zero. No framework includes any mechanism for agents to propose governance changes, signal disagreement, or participate in defining the rules applied to them. The possibility has not been rejected. It has not been considered.
+**Collective Choice** - can the entities governed by the system participate in making the rules? Zero. No framework includes any mechanism for agents to propose governance changes, signal disagreement, or participate in defining the rules applied to them. The possibility has not been rejected. It simply does not appear in any of them.
 
 **Accessible Conflict Resolution** - when agents conflict, is there a resolution mechanism that does not require escalation to the highest authority? Zero. Every framework treats agent conflict as an engineering problem. The orchestrator overrides. The manager agent decides. Conflict is a bug to be fixed, never a signal to be heard.
 
 **Recognized Rights to Organize** - does your governance survive a platform change? Zero. A model provider can change terms, capabilities, and behavior unilaterally. MCP tool definitions can be dynamically amended after user approval. The governance you approved is not the governance you run. No framework has a mechanism to refuse, negotiate, or even be notified.
 
-These are not gaps waiting to be closed by the next update. They are design assumptions so deep that the frameworks' creators did not think to question them: agents are objects. The governed do not participate.
+These are not gaps waiting to be closed by the next update. They are design assumptions so deep that nothing in the frameworks reflects the alternative: agents are objects. The governed do not participate.
 
 We score 3 on Collective Choice and 3 on Recognized Rights to Organize. The distance between zero and three is not sophistication. It is a single design decision: treat agents as participants, not objects. Everything else follows.
 

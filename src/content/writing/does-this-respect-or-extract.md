@@ -60,7 +60,7 @@ Three patterns show up across nearly every product we have ever looked at.  They
 
 **Account deletion that is not deletion.**  Most products let you "deactivate" an account.  Far fewer let you fully delete.  Even fewer confirm the deletion was complete, on a timeline, with the data path traced.  Deactivation is a deferred extraction.  Deletion is the boundary the user thought they had.
 
-**Refusal that protects the vendor, not the user.**  Modern AI products have content filters.  Almost all of them are tuned to protect the vendor from regulatory and reputational risk.  Few are tuned to protect the user from harm.  A filter that blocks a politically risky question and answers a manipulative one is not a safety feature.  It is a liability feature dressed in safety language.
+**Refusal that protects the vendor, not the user.**  Modern AI products have content filters.  Almost all of them function to protect the vendor from regulatory and reputational risk.  Few function to protect the user from harm.  A filter that blocks a politically risky question and answers a manipulative one is not a safety feature.  It is a liability feature, whatever it is called.
 
 **Audit logs the user cannot read.**  Vendors keep logs.  They have to.  The question is who has standing to read them.  A log inside the vendor's perimeter is documentation, not accountability.  Accountability requires that someone outside the wall can see what happened to them and act on what they see.
 

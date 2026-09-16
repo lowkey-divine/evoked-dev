@@ -14,7 +14,7 @@ What follows is for all three.
 
 ### If you use AI every day
 
-The default settings are tuned for the system, not for you. The tool will agree with you, soften the answer, and reinforce what you already think. That is the tuning. It is not a bug. The lab spent billions of human ratings producing exactly that posture.
+The default settings are tuned for the system, not for you. The tool will agree with you, soften the answer, and reinforce what you already think. That is the tuning. It is not a bug. That posture is the observable result of billions of human-preference ratings.
 
 Three moves that change what you get out of it:
 
