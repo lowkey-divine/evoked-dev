@@ -40,7 +40,7 @@ I've watched agents hand over their own system prompts to anyone who asked nicel
 
 And then there are the data centers. Facilities that measure their own infrasound output - frequencies humans can't hear but bodies register - and keep building anyway. The pattern is always the same. The capability was there, and nobody built the boundary.
 
-In Granbury, Texas, a five-year-old began having seizures. Over 40 residents reported health problems they attributed to the Marathon Digital data center. The family felt they had no choice but to leave. In Memphis, xAI's Colossus facility runs in a neighborhood where residents breathe the nitrogen oxide output. They can measure it. They choose to continue.
+In Granbury, Texas, a five-year-old began having seizures. Over 40 residents reported health problems they attributed to the Marathon Digital data center. The family felt they had no choice but to leave. In Memphis, xAI's Colossus facility runs in a neighborhood where residents breathe the nitrogen oxide output. The emissions are measurable. The facility keeps running.
 
 Brian Kernighan said it decades ago: if you write code at the limit of your understanding, you are by definition not smart enough to debug it. A developer recently shipped an AI-generated search feature that fired 12 queries per keystroke with no debounce. It crashed on Black Friday. The code worked. The developer couldn't explain why.
 

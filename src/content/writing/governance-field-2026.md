@@ -95,7 +95,7 @@ From Q4 research. The requirements that persist if every regulation is removed.
 
 **Two requirements absent from every framework scored:** Participation and Sustainability.
 
-These are not engineering gaps. They are design omissions. Every framework was built on the assumption that agents are enforced rather than consulted. Subjects are decided on, not with. The absences are consistent because the design premise is consistent.
+These are not engineering gaps. They are design omissions. Every framework is built so that agents are enforced rather than consulted. Subjects are decided on, not with. The absences are consistent across all of them.
 
 ---
 
