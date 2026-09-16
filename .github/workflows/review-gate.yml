@@ -1,0 +1,24 @@
+name: review-gate
+
+# Posts a failing check on any PR labeled "do-not-merge" so a writing/
+# PR under accuracy / fresh-eyes review cannot be merged out from under
+# the review by a concurrent session. Trivial job (no checkout, no build,
+# no network) so it is fast and does not flake. Remove the label when
+# review is complete and the check goes green.
+
+on:
+  pull_request:
+    types: [opened, reopened, synchronize, labeled, unlabeled]
+
+jobs:
+  review-gate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Block while under review
+        if: contains(github.event.pull_request.labels.*.name, 'do-not-merge')
+        run: |
+          echo "::error::PR is labeled 'do-not-merge' - it is under review. Remove the label when review is complete, then this check clears."
+          exit 1
+      - name: Clear
+        if: ${{ !contains(github.event.pull_request.labels.*.name, 'do-not-merge') }}
+        run: echo "No do-not-merge label present. Clear to merge."
