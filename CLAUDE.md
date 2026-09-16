@@ -84,6 +84,9 @@ Before publishing anything, ask:
 7. **Show-don't-tell audit** - Replace abstract claims with concrete evidence
 8. **Final pass** - Removes excess formatting, tightens grammar, adjusts tone
 
+### Merge Gate (concurrent-session coordination)
+While a `writing/` PR is under any review (voice-tells, fact-check, claim-check, or fresh-eyes), apply the **`do-not-merge`** label. **Never merge a PR carrying that label** - remove it only when review is complete. The `review-gate` GitHub Action posts a failing check on any labeled PR as a visible signal. This exists because a parallel session once merged a pre-review draft mid-review, publishing factual errors to the live site; the label is how concurrent sessions avoid merging a claims-piece out from under an in-flight review. (Added 2026-09-16.)
+
 ### Closing Signatures
 Each article gets a distinct closing signature. No two articles share the same one.
 
