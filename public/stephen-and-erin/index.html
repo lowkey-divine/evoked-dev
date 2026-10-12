@@ -23,7 +23,8 @@
       --magenta: #ff6ad5;
       --amber:   #ffb26b;
       --text:    #f3ecff;
-      --muted:   #c3b3e6;
+      /* raised from #c3b3e6 — that failed 4.5:1 against the glass panels */
+      --muted:   #d9cff5;
       --glass:   rgba(14, 8, 38, 0.52);
       --glass-line: rgba(111, 242, 255, 0.35);
     }
@@ -178,10 +179,10 @@
     .names .amp { color: var(--cyan); font-style: italic; text-shadow: 0 0 10px var(--cyan), 0 0 30px var(--cyan); }
     .date {
       margin: 20px 0 0;
-      color: var(--amber);
+      color: #ffc48e; /* lifted off --amber: the gradient shifts underneath this line */
       font-size: 1rem;
       letter-spacing: .04em;
-      text-shadow: 0 1px 3px rgba(0,0,0,.8), 0 0 12px rgba(255,178,107,.9);
+      text-shadow: 0 1px 3px rgba(0,0,0,.85), 0 0 12px rgba(255,178,107,.75);
     }
     .headline {
       margin: 22px auto 0;
@@ -208,7 +209,9 @@
       font-weight: 700;
       margin: 0 0 12px;
       color: #fff;
-      text-shadow: 0 0 10px var(--magenta), 0 0 24px rgba(255,106,213,.55);
+      /* softened: a 1.4rem heading sits close to body text, and a heavy glow
+         smears letterforms for low-vision readers. The hero keeps its full neon. */
+      text-shadow: 0 0 8px rgba(255,106,213,.75), 0 0 20px rgba(255,106,213,.35);
     }
     p { margin: 0 0 14px; }
     p:last-child { margin-bottom: 0; }
@@ -238,8 +241,9 @@
       box-shadow: 0 0 18px rgba(111,242,255,.7), inset 0 0 14px rgba(111,242,255,.3);
     }
     .btn small { font-weight: 400; font-size: .8rem; opacity: .85; }
-    .btn.zelle { cursor: default; }
-    .btn.zelle small { display: block; margin-top: 2px; }
+    /* Stacked label: the wish is the button, the mechanism is the small print. */
+    .btn.stacked { flex-direction: column; align-items: flex-start; gap: 3px; }
+    .btn.stacked small { font-size: .78rem; letter-spacing: .01em; }
     .qr { margin: 22px 0 0; text-align: center; }
     .qr img {
       width: 240px; max-width: 72%;
@@ -259,25 +263,27 @@
       grid-template-rows: 175px 175px;
       gap: 12px;
     }
+    .photos picture { display: block; height: 100%; min-height: 0; }
+    .photos picture.big { grid-row: 1 / 3; }   /* feature, spans both rows */
     .photos img {
       width: 100%; height: 100%; object-fit: cover; object-position: center 28%;
       display: block; border-radius: 14px;
       border: 1px solid var(--glass-line);
       box-shadow: 0 0 18px rgba(111,242,255,.20);
     }
-    .photos img.big { grid-row: 1 / 3; object-position: center; }   /* feature, spans both rows */
+    .photos picture.big img { object-position: center; }
     /* On phones the mosaic crops photos too small to see. Stack them full-width. */
     @media (max-width: 600px) {
       section.gallery .photos { display: block; }
-      section.gallery .photos img {
-        width: 100%; height: auto; display: block; margin-bottom: 12px;
-      }
-      section.gallery .photos img:last-child { margin-bottom: 0; }
+      section.gallery .photos picture { height: auto; margin-bottom: 12px; }
+      section.gallery .photos picture:last-child { margin-bottom: 0; }
+      section.gallery .photos img { width: 100%; height: auto; }
     }
     /* full-width closing photo after the sign-off */
     .closer { margin: 26px 0 0; }
+    .closer picture { display: block; }
     .closer img {
-      width: 100%; display: block; border-radius: 16px;
+      width: 100%; height: auto; display: block; border-radius: 16px;
       border: 1px solid var(--glass-line);
       box-shadow: 0 0 22px rgba(111,242,255,.22);
     }
@@ -294,20 +300,35 @@
     }
 
     /* ---------- Closing + footer ---------- */
+    /* The sun sits fixed behind this part of the page, so the sign-off can land
+       on the brightest pixels on screen. Same dark halo the hero uses. */
     .closing {
+      position: relative;
       text-align: center;
       color: var(--muted);
       font-style: italic;
       max-width: 42ch;
       margin: 34px auto 0;
-      text-shadow: 0 0 10px rgba(111,242,255,.25);
+      text-shadow: 0 1px 4px rgba(0,0,0,.9), 0 0 10px rgba(111,242,255,.25);
+    }
+    .closing::before,
+    footer::before {
+      content: "";
+      position: absolute;
+      inset: -18px -24px;
+      z-index: -1;
+      background: radial-gradient(ellipse 72% 62% at 50% 50%, rgba(7,4,24,.72), rgba(7,4,24,.38) 58%, transparent 80%);
+      filter: blur(10px);
     }
     footer {
+      position: relative;
       text-align: center;
       margin-top: 30px;
       color: var(--muted);
       font-size: .95rem;
+      text-shadow: 0 1px 4px rgba(0,0,0,.9);
     }
+    footer::before { inset: -14px -24px 40% -24px; }
     footer strong {
       color: #fff;
       text-shadow: 0 0 10px var(--magenta), 0 0 22px rgba(255,106,213,.5);
@@ -346,16 +367,33 @@
     <section>
       <h2>How it happened</h2>
       <p>On a sunny Friday morning, the two of us walked into the courthouse and got married. It took about six minutes. My mom stood with us as our witness. Stephen's dad passed this June, and we felt him with us the whole morning. We had worn our fanciest clothes, and I had found my dress only two days before. When we looked at each other and said the words, it was the easiest yes in the world.</p>
-      <p>We've been together almost five years, so marrying didn't change how we feel. It only said it out loud, and made it ours to keep.</p>
+      <p>We've been together almost five years, long enough that we cook without discussing it, one of us at the stove and the other at the counter, most nights of the week. Marrying didn't change how we feel. It only said it out loud, and made it ours to keep.</p>
       <p>Afterward, still dressed up with nowhere we needed to be, we walked over to Bar Gernika and worked our way through more plates of croquetas than we'd like to admit. Then we went home to our very happy pets. It was a simple day, and a quiet one, and exactly the one we wanted.</p>
     </section>
 
     <!-- ==================== PHOTOS ==================== -->
     <section class="gallery">
+      <!-- WebP first, original JPEGs kept as fallback and as the untouched copies.
+           Intrinsic width/height stop the layout jumping while the photos load. -->
       <div class="photos">
-        <img class="big" src="/stephen-and-erin/photo-1.jpg" alt="Erin and Stephen sharing a kiss in the courthouse lobby" />
-        <img src="/stephen-and-erin/photo-2.jpg" alt="Erin laughing with her bouquet, Stephen beside her in a navy suit" />
-        <img src="/stephen-and-erin/photo-3.jpg" alt="Erin and Stephen together, Erin holding a wildflower bouquet" />
+        <picture class="big">
+          <source type="image/webp" sizes="(max-width: 600px) 100vw, 350px"
+                  srcset="/stephen-and-erin/photo-1-800.webp 800w, /stephen-and-erin/photo-1.webp 1200w" />
+          <img src="/stephen-and-erin/photo-1.jpg" width="1200" height="1600" decoding="async"
+               alt="Erin and Stephen sharing a kiss in the courthouse lobby" />
+        </picture>
+        <picture>
+          <source type="image/webp" sizes="(max-width: 600px) 100vw, 220px"
+                  srcset="/stephen-and-erin/photo-2-800.webp 800w, /stephen-and-erin/photo-2.webp 1200w" />
+          <img src="/stephen-and-erin/photo-2.jpg" width="1200" height="1600" loading="lazy" decoding="async"
+               alt="Erin laughing with her bouquet, Stephen beside her in a navy suit" />
+        </picture>
+        <picture>
+          <source type="image/webp" sizes="(max-width: 600px) 100vw, 220px"
+                  srcset="/stephen-and-erin/photo-3-800.webp 800w, /stephen-and-erin/photo-3.webp 1200w" />
+          <img src="/stephen-and-erin/photo-3.jpg" width="1200" height="1600" loading="lazy" decoding="async"
+               alt="Erin and Stephen together, Erin holding a wildflower bouquet" />
+        </picture>
       </div>
     </section>
 
@@ -363,29 +401,58 @@
     <section>
       <h2>A note to the people we love</h2>
       <p>We know some of you would have loved to be there, and we're a little sorry we didn't gather everyone for a big celebration. It was never about leaving anyone out. We just wanted a quiet start, the two of us, and a home to build from.</p>
-      <p>Mostly, we're looking forward to our life here in Idaho, and to filling it with the people we love. Come see us when you can. There's a place at our table, and we can't wait to fill it.</p>
+      <p>Mostly, we're looking forward to our life here in Idaho, and to filling it with the people we love. There's a place at our table, and we can't wait to fill it.</p>
+      <p>So come. We mean that as a plan, not a kind sentence. We don't have the guest room yet, that's part of what we're saving for, but we've got a couch, a kitchen we actually use, and spring and fall here are worth the drive. <a href="mailto:passionevoked@icloud.com">Email us</a> and we'll find a weekend.</p>
     </section>
+
+    <!-- ==================== FROM STEPHEN ====================
+         Staged, not published. Erin's "I" narrates this page and the byline is
+         both of them; one short passage in Stephen's own voice makes that two
+         voices on purpose instead of a seam. It also means the person the house
+         fund is for speaks on the page about the house.
+
+         His register, read off his own writing: short sentences, parallel
+         construction, concrete nouns, no ornament, no em dashes. The flatness
+         is the feeling. Do not polish it.
+
+         Three questions to ask him out loud, and write down what he says:
+           1. What do you know about houses now that you didn't last year?
+           2. What is the one thing the house has to have?
+           3. What are you looking forward to that isn't the house?
+
+         Shape:
+         <section>
+           <h2>From Stephen</h2>
+           <p>[One concrete thing he has done toward this. A number, a street,
+               something he knows now that he didn't a year ago.]</p>
+           <p>What I want is [the detail that matters most], and [the second].
+              That's the list.</p>
+           <p>[One flat line about Erin, or about waiting. Let it land short.]</p>
+         </section>
+
+         The passage about his dad is a separate question and his alone to
+         answer. No draft of it exists and none should be written for him.
+    ======================================================== -->
 
     <!-- ==================== THE HOUSE FUND ==================== -->
     <section id="fund">
-      <h2>Building a home</h2>
-      <p>We're saving for our first home, and we haven't found it yet. Which means, honestly, we don't have room for much at the moment.</p>
-      <p>So if you'd like to give something, a little toward the down payment helps more than anything. It gets us to the front door sooner, and every bit goes straight there. We'll keep track of each gift so we can thank you properly.</p>
+      <h2>The front door</h2>
+      <p>Our one big wish is a house. We're closer than we've ever been, and we haven't found it yet, which is also why we don't have room for much at the moment.</p>
+      <p>So if you'd like to give something, this is the thing we actually want. Every bit goes to the down payment and nothing else. We'll keep track of each gift so we can thank you properly, and when we get the keys you'll be among the first to know.</p>
+      <p>Or if a wrapped thing feels more like you, we've started a small list for once we're moved in. No rush, and truly no obligation either way.</p>
 
-      <div class="btn-row">
-        <a class="btn fill" href="https://venmo.com/u/Erin-Stanley-12" target="_blank" rel="noopener">Venmo</a>
+      <div class="btn-row" id="registry">
+        <a class="btn fill stacked" href="https://venmo.com/u/Erin-Stanley-12" target="_blank" rel="noopener">
+          Add to the front door fund
+          <small>give what you want &middot; via Venmo</small>
+        </a>
+        <!-- MyRegistry (public) -->
+        <a class="btn stacked" href="https://www.myregistry.com/wedding-registry/erin-stanley-and-stephen-stewart-nampa-idaho/5588406" target="_blank" rel="noopener">
+          Something to wrap
+          <small>for once we're moved in</small>
+        </a>
       </div>
       <p class="muted" style="margin-top:16px;">Prefer Zelle, or sending a card? <a href="mailto:passionevoked@icloud.com">Email us</a> and we'll share the details.</p>
-    </section>
-
-    <!-- ==================== REGISTRY ==================== -->
-    <section id="registry">
-      <h2>Rather give something to wrap?</h2>
-      <p>Totally optional, and truly no rush. We've started a small list for once we're moved in, so if a physical gift feels more like you, pick anything here and don't worry about the timing.</p>
-      <div class="btn-row">
-        <!-- MyRegistry (public) -->
-        <a class="btn" href="https://www.myregistry.com/wedding-registry/erin-stanley-and-stephen-stewart-nampa-idaho/5588406" target="_blank" rel="noopener">See the registry</a>
-      </div>
     </section>
 
     <!-- ==================== CLOSING ==================== -->
@@ -395,7 +462,12 @@
     <footer>
       <p>With love,<br /><strong>Stephen &amp; Erin</strong></p>
       <figure class="closer">
-        <img src="/stephen-and-erin/photo-4.jpg" alt="Erin and Stephen kissing under string lights at the reception that evening" />
+        <picture>
+          <source type="image/webp" sizes="(max-width: 660px) 100vw, 576px"
+                  srcset="/stephen-and-erin/photo-4-800.webp 800w, /stephen-and-erin/photo-4.webp 1200w" />
+          <img src="/stephen-and-erin/photo-4.jpg" width="1200" height="1600" loading="lazy" decoding="async"
+               alt="Erin and Stephen kissing under string lights at the reception that evening" />
+        </picture>
       </figure>
       <p class="muted">Reach us: <a href="mailto:passionevoked@icloud.com">passionevoked@icloud.com</a></p>
     </footer>
