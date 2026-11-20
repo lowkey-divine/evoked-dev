@@ -3,8 +3,11 @@ title: "If You Use It. If You Don't. If You Build It."
 description: "Three relationships with AI right now. Same world, different views. Same question underneath: what do you do about it this week?"
 author: "Evoked"
 pubDate: 2026-06-30
+updatedDate: 2026-11-18
 draft: false
 ---
+
+> **Correction (2026-11-18).** This article originally stated that most consumer AI products score between 11 and 19 out of 47 on our sovereignty rubric. We have withdrawn that sentence. It was wrong twice: 47 is the item count and 94 is the point maximum, and we had no dataset supporting any band figure for consumer products generally. The only two we have scored landed at 63 and 68 out of 94, both Progressing, in [Both Are Progressing. Both Failed the Same Three Items.](/writing/both-are-progressing/) We can say what we measured. We could not say what most products score, and we should not have.
 
 Three relationships with AI are happening at the same time, in the same world. You use it. You don't. You build it.
 
@@ -48,7 +51,7 @@ Three places that question lands this quarter:
 
 **Write the refusal specification.** [Six categories.](/refusals) Sovereignty. Scope. Dependency. Consent. Integrity. Energy. Pick the one your product is most at risk of failing and ship a refusal pattern this sprint. The boundary you draw is the boundary your users get to trust.
 
-**Run the Sovereignty Assessment.** [47 points across 7 domains.](/products/sovereignty-toolkit) Most consumer AI products score between 11 and 19 out of 47. Knowing where you are is the first audit. The score is not the point. The conversation it surfaces inside your team is.
+**Run the Sovereignty Assessment.** [47 items across 7 domains, scored out of 94.](/products/sovereignty-toolkit) Knowing where you are is the first audit. The score is not the point. The conversation it surfaces inside your team is.
 
 **Build the architecture conversation.** Get the people who design with the people who deploy with the people who handle support, in one room, with no slide deck. Architecture moves do not happen on Slack. They happen across a table when someone asks the question nobody on the spec doc thought to ask.
 

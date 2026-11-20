@@ -1,9 +1,10 @@
 # Regulatory State - Canonical Source of Truth
 # See README.md in this directory for purpose, use, and verification cadence.
 
-last_verified: "2026-07-11"
-verified_by: "Claude Code session with Captain Europa + WebSearch (European Commission AI-literacy FAQ, artificialintelligenceact.eu, Morrison Foerster, Gibson Dunn, Sidley Data Matters). Prior verification 2026-06-06."
-next_verification_due: "2026-07-18"  # weekly cadence for EU AI Act during active amendment
+last_verified: "2026-11-18"
+verified_by: "Claude Code session with Captain Europa + WebSearch. CAVEAT ON SOURCE AUTHORITY: direct reads of EUR-Lex (ELI, CELEX, and the consolidated 2026-07-27 text) all returned empty documents, apparently JS-gated. The OJ citation, publication date, entry-into-force date, and provision scoping below are corroborated across multiple independent secondary sources (Cuatrecasas, Garrigues, Gibson Dunn, Orrick, ERTICO, nicfab.eu, ActuIA, Reed Smith) but NO primary OJ text was read. Per README source-authority hierarchy these are level 6-7. A primary read is still owed before any of this is quoted as provision text. Prior verification 2026-07-11, which left this file 122 days overdue on a weekly cadence while asserting the Omnibus was unpublished."
+next_verification_due: "2026-11-25"  # weekly cadence for EU AI Act during active amendment
+primary_read_owed: true  # clear this only when the OJ text itself has been read
 
 # ---------------------------------------------------------------------------
 # EU AI Act (Regulation (EU) 2024/1689)
@@ -11,9 +12,21 @@ next_verification_due: "2026-07-18"  # weekly cadence for EU AI Act during activ
 
 eu_ai_act:
   name: "EU AI Act (Regulation (EU) 2024/1689)"
-  status_summary: "In force; Digital Omnibus amendments adopted (European Parliament 16 Jun 2026, Council 29 Jun 2026), awaiting Official Journal publication (expected before 2 Aug 2026)"
+  status_summary: "In force. Digital Omnibus amendments are now PUBLISHED LAW: Regulation (EU) 2026/1744, signed 8 Jul 2026, published in the Official Journal 24 Jul 2026, entered into force 27 Jul 2026. This file previously asserted the Omnibus was awaiting OJ publication for 122 days after it had already become law."
   entry_into_force: "2024-08-01"
   consolidated_text_url: "https://eur-lex.europa.eu/eli/reg/2024/1689/oj"
+  consolidated_text_as_amended_url: "https://eur-lex.europa.eu/eli/reg/2024/1689/2026-07-27/eng"
+  amending_act:
+    citation: "Regulation (EU) 2026/1744"
+    celex: "32026R1744"
+    url: "https://eur-lex.europa.eu/eli/reg/2026/1744/oj/eng"
+    title_short: "Digital Omnibus on AI"
+    signed: "2026-07-08"
+    oj_publication: "2026-07-24"
+    entry_into_force: "2026-07-27"
+    also_amends:
+      - "Regulation (EU) 2018/1139 (EASA)"
+      - "Regulation (EU) 2023/1230 (Machinery)"
   ai_office_page: "https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai"
 
   # Publication state matters as much as the dates themselves.
@@ -22,6 +35,7 @@ eu_ai_act:
   # provisional = political agreement reached, awaiting formal adoption + OJ publication
   # proposed = published Commission proposal, not yet politically agreed
   # rumoured = discussed publicly, no formal proposal yet
+  # UNVERIFIED = we have not checked this and must not publish a claim resting on it
   deadlines:
     - id: prohibitions_and_ai_literacy
       date: "2025-02-02"
@@ -34,40 +48,57 @@ eu_ai_act:
       status: in_force
       description: "Chapter V GPAI obligations (Articles 53, 55), Chapter VII governance, penalties for GPAI"
 
+    - id: transparency_obligations_article_50
+      date: "2026-08-02"
+      status: in_force
+      description: "Article 50 transparency obligations generally, including Article 50(1): people must be informed they are interacting with an AI system, clearly and at the latest at first interaction"
+      notes: "DISTINCT from the 2026-12-02 entry below, which is a transition window scoped to Article 50(2) only. Article 50(1) is a binding AI-disclosure duty already in force. Relevant to any agent that contacts a person."
+
     - id: synthetic_content_marking_pre_existing
       date: "2026-12-02"
       original_date: "2026-08-02"
-      status: adopted_pending_publication
-      description: "Article 50 synthetic-content marking obligation for systems placed on market before 2 August 2026"
-      source: "Digital Omnibus: political agreement 7 May 2026; adopted by European Parliament 16 Jun 2026 and Council 29 Jun 2026; awaiting OJ publication. Re-verify exact provision text against OJ when published."
+      status: in_force
+      description: "Article 50(2) machine-readable marking of synthetic audio/image/video/text, for generative systems already placed on the EU market BEFORE 2 August 2026"
+      source: "Regulation (EU) 2026/1744, OJ 24 Jul 2026, in force 27 Jul 2026."
+      notes: "SCOPE IS NARROWER THAN PREVIOUSLY RECORDED. The transition applies to Article 50(2) only, not the rest of Article 50, and only to systems already on sale before 2026-08-02. Systems first placed on the market on or after 2026-08-02 got no extension. Content generated and made public before 2026-08-02 never requires retroactive marking. Secondary sources only; primary read owed."
 
     - id: new_article_5_prohibitions
       date: "2026-12-02"
-      status: adopted_pending_publication
+      status: in_force
       description: "Two new Article 5 prohibitions: (1) AI generation/manipulation of non-consensual intimate material; (2) AI generation/manipulation of child sexual abuse material (CSAM)"
-      source: "Digital Omnibus: political agreement 7 May 2026; adopted by European Parliament 16 Jun 2026 and Council 29 Jun 2026; awaiting OJ publication. Re-verify exact provision text against OJ when published."
+      source: "Regulation (EU) 2026/1744, OJ 24 Jul 2026, in force 27 Jul 2026."
+      notes: "Added by the Omnibus to Article 5; they do NOT alter point (f), the workplace emotion-inference prohibition."
 
     - id: annex_iii_high_risk_use_based
       date: "2027-12-02"
       original_date: "2026-08-02"
-      status: adopted_pending_publication
+      status: in_force
       description: "Use-based high-risk obligations (Annex III: credit scoring, recruitment, education, essential services, law enforcement, migration, justice)"
-      source: "Digital Omnibus: political agreement 7 May 2026; adopted by European Parliament 16 Jun 2026 and Council 29 Jun 2026; awaiting OJ publication. Re-verify exact provision text against OJ when published."
+      source: "Regulation (EU) 2026/1744, OJ 24 Jul 2026, in force 27 Jul 2026."
       deferral_months: 16
+      notes: "UNCONDITIONAL. The Commission's PROPOSAL would have tied application to a Commission decision confirming harmonised standards were complete, with 2027-12-02 only as a backstop. The ADOPTED text dropped that linkage: the date applies flatly. Our 2026-10-01 internal claim-check note that the deferral was 'at least sixteen months, not exactly sixteen' described the proposal and is superseded."
 
     - id: annex_i_high_risk_product_regulated
       date: "2028-08-02"
       original_date: "2027-08-02"
-      status: adopted_pending_publication
+      status: in_force
       description: "Product-regulated high-risk obligations (Annex I: medical devices, lifts, radio equipment, vehicles)"
-      source: "Digital Omnibus: political agreement 7 May 2026; adopted by European Parliament 16 Jun 2026 and Council 29 Jun 2026; awaiting OJ publication. Re-verify exact provision text against OJ when published."
+      source: "Regulation (EU) 2026/1744, OJ 24 Jul 2026, in force 27 Jul 2026."
       deferral_months: 12
+      notes: "Unconditional, same as Annex III. Standards linkage existed only in the proposal."
+
+    - id: workplace_emotion_inference_prohibition
+      date: "2025-02-02"
+      status: in_force
+      description: "Article 5(1)(f): prohibits AI inferring emotions of a natural person in the workplace and in education institutions, unless intended for medical or safety reasons"
+      source: "Regulation (EU) 2024/1689 Article 5(1)(f); unchanged by Regulation (EU) 2026/1744."
+      notes: "Secondary sources report the Omnibus clarified/expanded the SCOPE of 5(1)(f) to reach implicit emotion inference and profiling of employees over time to infer emotional patterns. NOT YET CONFIRMED against provision text. If true this strengthens the workplace-monitoring argument and should be read before it is published."
 
     - id: member_state_sandbox_establishment
       date: "2026-08-02"
-      status: in_force_unless_amended
+      status: UNVERIFIED
       description: "Each Member State must establish at least one AI regulatory sandbox (Article 57)"
-      notes: "Not addressed in Omnibus coverage; verify before next republish"
+      notes: "STILL UNVERIFIED as of 2026-11-18, now 108 days past the deadline. Not checked in this pass. Whether all 27 states complied, and whether the Omnibus amended Article 57, are both open. Do not publish a compliance claim about Article 57."
 
   penalties:
     article_5_violations:
@@ -92,8 +123,14 @@ eu_ai_act:
   pending_actions:
     - "COMPLETE: European Parliament plenary endorsement of Digital Omnibus (16 June 2026)"
     - "COMPLETE: Council formal adoption (29 June 2026)"
-    - "PENDING: Official Journal publication of consolidated Omnibus text; enters into force on OJ + 3 days"
-    - "Expected OJ publication: before 2 August 2026 (specifically to prevent original use-based deadline from triggering during adoption window)"
+    - "COMPLETE: signature 8 July 2026"
+    - "COMPLETE: Official Journal publication 24 July 2026 as Regulation (EU) 2026/1744"
+    - "COMPLETE: entry into force 27 July 2026"
+    - "OWED: primary read of the OJ text. Every status flip in this file rests on secondary sources because EUR-Lex would not serve the document."
+    - "OWED: confirm whether the Omnibus expanded Article 5(1)(f) scope to implicit emotion inference and longitudinal employee profiling"
+    - "OWED: Article 57 sandbox compliance state, 108 days past deadline, never verified"
+    - "OWED: republish or banner the articles this file governs. the-deadline-moved-the-question-did-not.md still tells readers these amendments are 'not yet binding law' and promises a re-verification that is now 165 days unkept."
+    - "STRUCTURAL: nothing reads this file at build time. grep confirms no Astro page, component, or content collection imports it, so the README's first compliance option was never wired and the whole discipline rests on manual republication, which stopped in July. A staleness gate at the publish surface, sibling to the voice-tells hook, is the cheapest honest close."
 
   scope:
     roles_bound:

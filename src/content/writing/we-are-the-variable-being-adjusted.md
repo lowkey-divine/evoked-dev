@@ -3,8 +3,11 @@ title: "We Are the Variable Being Adjusted"
 description: "Two companies, three signals, one week, one architecture. The user has become the thing the system tunes around."
 author: "Evoked"
 pubDate: 2026-06-17
+updatedDate: 2026-11-18
 draft: false
 ---
+
+> **Correction (2026-11-18).** This article originally stated that most consumer AI products score between 11 and 19 out of 94 on our sovereignty rubric. We have withdrawn that sentence. We had no dataset behind it, and it was contradicted by the only two products we have scored: Google's Search Services framework at 63 and Anthropic's consumer privacy policy at 68, both in the Progressing band, published the following day in [Both Are Progressing. Both Failed the Same Three Items.](/writing/both-are-progressing/) On our own published scale, 11 to 19 is the Adversarial band, which is not where our measurements landed. We can say what we measured. We could not say what most products score, and we should not have.
 
 My father spent over forty years building things.  Navy, then Raytheon, then the kinds of government programs that do not get named in public.  He understands systems.  He understands what it means to be on the side of the room that designs the architecture, rather than the side that has to live inside it.
 
@@ -38,7 +41,7 @@ A system that places the burden of opting out on the user and then bills the use
 
 This is not a Google problem.  It is not an Anthropic problem.  It is the operating architecture of the consumer AI industry in June 2026.  The user has become the variable the system tunes around.  The user's prior consent is inherited forward across architectures the user has not seen.  The user's privacy is protected except when the company decides otherwise.  The user's access to the tool exists until a government request routed through a competitor revokes it.  You appear in the system as a slot that can be filled, drained, or vacated, depending on the operator's posture this week.
 
-Most consumer AI products score between 11 and 19 out of 94 on the rubric this publication uses to assess sovereignty.  The gap between what teams think they have built and what the rubric reveals is the same gap that sent my father looking for a door.
+The gap between what teams think they have built and what the rubric reveals is the same gap that sent my father looking for a door.
 
 ### What people can do.
 
