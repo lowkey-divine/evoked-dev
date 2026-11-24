@@ -38,7 +38,9 @@ In the United States a worker has a right to refuse dangerous work. It's narrowe
 
 It fails in two ways. There's the authority on the poster by the gate. He uses it, he goes home at ten in the morning, and nothing on paper says why. And there's the card that gets checked for the audit and not for the man holding it.
 
-I run a system of about a hundred and forty AI agents with a refusal right built into it. Each one can decline an instruction, and the refusal is written to an append-only, hashed audit log. That log turned out to be the most useful record in the whole system, which I did not expect. A refusal that's recorded is one you can check later, and one that costs something to override.
+I run a hundred and forty-four AI agents, and every one of them can decline an instruction. I built the record for it the way this piece argues you should. Append-only, hash-chained, so overriding a refusal costs something and leaves a mark.
+
+Then I went and checked it before writing this paragraph. The chain is built and tested and it has never carried a production entry. Every refusal in it was logged by one agent, in a build session, in July. The signing key is still the development default, which one of my own reviewers flagged at the time in a line I kept in the source. A tooth signed with a dev secret is not a tooth. So I have the architecture and not the record. That's rung one with better plumbing, and safety got there first.
 
 ## Where it is going
 
