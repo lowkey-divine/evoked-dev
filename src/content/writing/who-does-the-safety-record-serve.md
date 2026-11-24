@@ -1,7 +1,7 @@
 ---
 title: "Who Does the Safety Record Serve?"
 description: "Workplace safety spent a century learning that a policy is not a protection. AI governance is relearning it in five years, and safety itself is about to be sold cameras. The record should belong to the worker."
-pubDate: 2026-11-16
+pubDate: 2026-11-24
 tags: ["AI governance", "workplace safety", "OSHA", "EU AI Act", "verification", "refusal"]
 faq:
   - q: "What does workplace safety have to teach AI governance?"
@@ -10,8 +10,8 @@ faq:
     a: "Partly. Since 2 February 2025 the EU AI Act bans AI that infers emotions in the workplace, with an exception for medical or safety reasons. AI used for task allocation and performance monitoring at work is classed as high-risk, and the Digital Omnibus moved those high-risk obligations to 2 December 2027. OSHA in the United States has no AI-specific rule."
   - q: "Do workers have a right to refuse unsafe work?"
     a: "In the United States, a narrow one. Under 29 CFR 1977.12 the protection holds only if all four of these are true: the worker refuses in good faith and has no reasonable alternative, a reasonable person would see a real danger of death or serious injury, there is no time to go through normal enforcement channels, and the worker already asked the employer to correct the danger and could not get it done. Stop-work authority on construction sites is mostly a site practice, not a general OSHA requirement."
-draft: true
-sovereign: false
+draft: false
+sovereign: true
 ---
 
 An electrician starts his first day on a fab construction site outside Boise. It's six in the morning and cold. Before he touches a tool he sits through an orientation, takes a test on it, and shows a card. The card says he finished a ten-hour safety course. It has his name on it. It lives in his wallet, not in the site's filing cabinet, and when this job ends he carries it to the next one.
