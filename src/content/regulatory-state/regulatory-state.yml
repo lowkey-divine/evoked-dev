@@ -3,8 +3,25 @@
 
 last_verified: "2026-11-18"
 verified_by: "Claude Code session with Captain Europa + WebSearch. CAVEAT ON SOURCE AUTHORITY: direct reads of EUR-Lex (ELI, CELEX, and the consolidated 2026-07-27 text) all returned empty documents, apparently JS-gated. The OJ citation, publication date, entry-into-force date, and provision scoping below are corroborated across multiple independent secondary sources (Cuatrecasas, Garrigues, Gibson Dunn, Orrick, ERTICO, nicfab.eu, ActuIA, Reed Smith) but NO primary OJ text was read. Per README source-authority hierarchy these are level 6-7. A primary read is still owed before any of this is quoted as provision text. Prior verification 2026-07-11, which left this file 122 days overdue on a weekly cadence while asserting the Omnibus was unpublished."
-next_verification_due: "2026-11-25"  # weekly cadence for EU AI Act during active amendment
-primary_read_owed: true  # clear this only when the OJ text itself has been read
+next_verification_due: "2026-12-02"  # weekly cadence for EU AI Act during active amendment
+primary_read_owed: partial  # see primary_read_log below
+primary_read_log:
+  date: "2026-11-25"
+  method: "EUR-Lex rendered in a real browser. WebFetch returned an empty document through three URL forms on 2026-11-18 because the pages are JS-gated; a browser session retrieved the text."
+  source: "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32026R1744"
+  confirmed_from_primary_text:
+    - "Citation and OJ reference read verbatim from the document header: OJ L, 2026/1744, 24.7.2026. ELI http://data.europa.eu/eli/reg/2026/1744/oj. Status line reads In force."
+    - "Adopted 8 July 2026. Full title confirms it amends Regulations (EU) 2024/1689, (EU) 2018/1139 and (EU) 2023/1230."
+    - "Entry into force 27 July 2026, cross-confirmed by recital 18, which measures an 18-month notified-body window from that date."
+    - "Annex III high-risk applies from 2 December 2027, quoted from the application article: '2 December 2027 as regards AI systems classified as high-risk pursuant to Article 6(2) and Annex III'."
+    - "Annex I high-risk applies from 2 August 2028, quoted: '2 August 2028 as regards AI systems classified as high-risk pursuant to Article 6(1) and Annex I'."
+    - "UNCONDITIONAL CONFIRMED. Both dates appear as flat enumerated items in the application article with no linkage to harmonised standards readiness or a Commission decision. The standards condition existed only in the Commission proposal."
+    - "Article 4 AI literacy softening confirmed at recital 8: the obligation becomes to 'take measures to support the development of AI literacy' rather than to ensure a sufficient level. Article 4 was not deferred."
+    - "The two new Article 5 prohibitions on non-consensual intimate material and child sexual abuse material are confirmed present and extensively defined at recitals 10 through 16."
+  NOT_confirmed_still_owed:
+    - "The 2 December 2026 date. It does not appear in the searchable text of this document, and it is the date this file asserts for BOTH the Article 50(2) marking transition for pre-2 Aug 2026 systems AND the two new Article 5 prohibitions. The document runs 152,000 characters and the read was partial, so absence here is not evidence it is absent from the text. This is the most time-critical open item in this file: the date is seven days away. Read the consolidated AI Act application article, or the Omnibus article amending it, before any public claim that names it."
+    - "Whether the Omnibus expanded Article 5(1)(f) scope to implicit emotion inference and longitudinal employee profiling. Secondary sources report it; not checked against provision text."
+    - "Article 57 sandbox compliance state, still unverified, now 115 days past deadline. Recitals 23 to 25 confirm the Omnibus DID amend Articles 57, 58 and 60 and added a Union-level sandbox run by the AI Office, which means the entry below marked UNVERIFIED is now known to be affected rather than merely unchecked."
 
 # ---------------------------------------------------------------------------
 # EU AI Act (Regulation (EU) 2024/1689)
