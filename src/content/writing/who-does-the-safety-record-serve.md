@@ -2,6 +2,7 @@
 title: "Who Does the Safety Record Serve?"
 description: "Workplace safety spent a century learning that a policy is not a protection. AI governance is relearning it in five years, and safety itself is about to be sold cameras. The record should belong to the worker."
 pubDate: 2026-11-24
+updatedDate: 2026-11-25
 tags: ["AI governance", "workplace safety", "OSHA", "EU AI Act", "verification", "refusal"]
 faq:
   - q: "What does workplace safety have to teach AI governance?"
@@ -62,6 +63,8 @@ Write down what was taught, what was tested, and what the site did to keep him s
 
 He gets to read it. If he can't, you didn't set out to build surveillance and that's what you're running. You're also the only person in that building who can change it.
 
+And when he reads it and finds it wrong, somebody has to be obliged to look again. Not a suggestion box. A named person with the authority to change the record and a duty to answer him. A record he can read with nowhere to take it is a courtesy and not a right.
+
 And he takes it with him. Training, tests, the certifications a trade actually asks for, in a form the next site accepts, so the proof of his protection doesn't vanish the day the contract ends. Be careful here, because a record that travels is a record that travels both ways. The card helps him get hired. A file that follows him between sites could just as easily keep him from working, and that is the version to refuse.
 
 Then automate the verification, not the surveillance. Let software check that every person on site today holds a current card and sat through the orientation. Let it flag the gap in the record before the inspector does. That's the workflow worth building in a safety office, and it's a different product from the one that watches. I'll say the obvious thing about that. It's the same software with a narrower job, and narrowing a job is a setting somebody can change.
@@ -69,6 +72,8 @@ Then automate the verification, not the surveillance. Let software check that ev
 The electrician finishes at six tonight with the card still in his wallet. In a year this job will be done and he'll hold it up at the gate of the next one. He should be able to pull it out and have it be the whole story.
 
 ---
+
+*Updated 25 November 2026. The first version of this piece asked three things of a safety record and left out the fourth. [An earlier article here](/writing/the-audit-trail-was-never-for-you) argues that a record you can verify and read but cannot take to anyone is a courtesy and not a right, and the prescription below had the same hole the rest of the field has. One of my own reviewers caught it, against my own earlier standard. The paragraph about being answered when the record is wrong was added.*
 
 *This is practical argument, not legal advice. The EU AI Act workplace emotion-recognition ban in Article 5(1)(f) has applied since 2 February 2025 and was not altered by the Digital Omnibus. That Omnibus, Regulation (EU) 2026/1744, was published in the Official Journal on 24 July 2026 and entered into force on 27 July 2026; it moved Annex III high-risk obligations, including employment uses, to 2 December 2027, and that date is not conditional on harmonised standards being ready. OSHA has issued no AI-specific regulation as of November 2026.*
 
