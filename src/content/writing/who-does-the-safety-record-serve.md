@@ -63,7 +63,7 @@ Write down what was taught, what was tested, and what the site did to keep him s
 
 He gets to read it. If he can't, you didn't set out to build surveillance and that's what you're running. You're also the only person in that building who can change it.
 
-And when he reads it and finds it wrong, somebody has to be obliged to look again. Not a suggestion box. A named person with the authority to change the record and a duty to answer him. A record he can read with nowhere to take it is a courtesy and not a right.
+Somebody has to be obliged to look again when he reads it and finds it wrong. Not the number on the poster. It has to be a named person with the authority to change the record and a duty to answer him. If the answer is no, his account goes in the file next to theirs. On a job that size, somebody he can get to before shift end.
 
 And he takes it with him. Training, tests, the certifications a trade actually asks for, in a form the next site accepts, so the proof of his protection doesn't vanish the day the contract ends. Be careful here, because a record that travels is a record that travels both ways. The card helps him get hired. A file that follows him between sites could just as easily keep him from working, and that is the version to refuse.
 
